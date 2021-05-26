@@ -32,19 +32,16 @@ static struct RegistrationHelper
 {
     RegistrationHelper()
     {
-        QWebEngineUrlScheme scheme( DataProvider::URL_SCHEME_EPUB );
+        QWebEngineUrlScheme scheme( EBook_EPUB::URL_SCHEME_EPUB );
         scheme.setSyntax( QWebEngineUrlScheme::Syntax::HostAndPort );
         scheme.setDefaultPort( 443 );
         scheme.setFlags( QWebEngineUrlScheme::SecureScheme );
         QWebEngineUrlScheme::registerScheme( scheme );
 
-        scheme.setName( DataProvider::URL_SCHEME_CHM );
+        scheme.setName( EBook_CHM::URL_SCHEME_CHM );
         QWebEngineUrlScheme::registerScheme( scheme );
     }
 } helper;
-
-const char * DataProvider::URL_SCHEME_CHM    = EBook_CHM::URL_SCHEME_CHM;
-const char * DataProvider::URL_SCHEME_EPUB   = EBook_EPUB::URL_SCHEME_EPUB;
 
 DataProvider::DataProvider( QObject *parent )
     : QWebEngineUrlSchemeHandler( parent )

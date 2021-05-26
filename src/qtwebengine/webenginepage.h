@@ -26,6 +26,8 @@
 #include <QWebEngineProfile>
 
 #include "dataprovider.h"
+#include "ebook_chm.h"
+#include "ebook_epub.h"
 
 
 #define PRINT_DEBUG ( defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEPAGE )
@@ -44,12 +46,12 @@ public:
         : QWebEnginePage( parent )
     {
         QWebEngineProfile *pf = profile();
-        if ( pf->urlSchemeHandler( DataProvider::URL_SCHEME_CHM ) == NULL ) {
-            pf->installUrlSchemeHandler(DataProvider::URL_SCHEME_CHM, new DataProvider( pf ) );
+        if ( pf->urlSchemeHandler( EBook_CHM::URL_SCHEME_CHM ) == NULL ) {
+            pf->installUrlSchemeHandler( EBook_CHM::URL_SCHEME_CHM, new DataProvider( pf ) );
         }
 
-        if ( pf->urlSchemeHandler( DataProvider::URL_SCHEME_EPUB ) == NULL ) {
-            pf->installUrlSchemeHandler( DataProvider::URL_SCHEME_EPUB, new DataProvider( pf ) );
+        if ( pf->urlSchemeHandler( EBook_EPUB::URL_SCHEME_EPUB ) == NULL ) {
+            pf->installUrlSchemeHandler( EBook_EPUB::URL_SCHEME_EPUB, new DataProvider( pf ) );
         }
 
         connect( this, SIGNAL( linkHovered( const QString & ) ), this, SLOT( onLinkHovered( const QString & ) ) );

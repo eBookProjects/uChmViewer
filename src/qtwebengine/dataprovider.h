@@ -28,9 +28,6 @@ class DataProvider : public QWebEngineUrlSchemeHandler
         DataProvider( QObject *parent );
 
         void requestStarted( QWebEngineUrlRequestJob *request );
-
-        static const char * URL_SCHEME_EPUB;
-        static const char * URL_SCHEME_CHM;
 };
 
 #endif // QTWEBENGINE_DATAPROVIDER_H
