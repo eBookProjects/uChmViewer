@@ -18,7 +18,6 @@
  */
 
 #include <QBuffer>
-#include <QWebEngineUrlScheme>
 #include <QWebEngineUrlRequestJob>
 
 #include "../mainwindow.h"
@@ -27,6 +26,10 @@
 #include "ebook_epub.h"
 
 #define PRINT_DEBUG ( defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEDATAPROVIDER )
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
+
+#include <QWebEngineUrlScheme>
 
 static struct RegistrationHelper
 {
@@ -42,6 +45,8 @@ static struct RegistrationHelper
         QWebEngineUrlScheme::registerScheme( scheme );
     }
 } helper;
+
+#endif // (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
 
 DataProvider::DataProvider( QObject *parent )
     : QWebEngineUrlSchemeHandler( parent )
