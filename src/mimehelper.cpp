@@ -40,7 +40,7 @@ QByteArray MimeHelper::mimeType(const QUrl &url, const QByteArray &buf)
 
     // If the first non space character in buf is '<',
     // then we assume that the buffer contains HTML.
-    for (auto iter = buf.cbegin(); iter != buf.cend() ; iter++) {
+    for (auto iter = buf.begin(); iter != buf.end() ; iter++) {
         char c = *iter;
 
         if (c == '<')
