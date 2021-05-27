@@ -21,6 +21,7 @@
 #include <QWebEngineUrlRequestJob>
 
 #include "../mainwindow.h"
+#include "../mimehelper.h"
 #include "dataprovider.h"
 #include "ebook_chm.h"
 #include "ebook_epub.h"
@@ -56,13 +57,10 @@ DataProvider::DataProvider( QObject *parent )
 void DataProvider::requestStarted( QWebEngineUrlRequestJob *request )
 {
     QUrl url = request->requestUrl();
-    QByteArray headerAccept = request->requestHeaders().value( "Accept" );
 #if PRINT_DEBUG
     qDebug() << "[DEBUG] DataProvider::requestStarted";
     qDebug() << "  url = " << url.toString();
-    qDebug() << "  Header \"Accept\" = " << headerAccept;
 #endif
-    bool htmlfile = headerAccept.contains( "text/html" );
 
     // Retreive the data from ebook file
     QByteArray buf;
@@ -74,22 +72,17 @@ void DataProvider::requestStarted( QWebEngineUrlRequestJob *request )
         return;
     }
 
-    QByteArray mimetype;
+    QByteArray mimetype = MimeHelper::mimeType( url, buf );
 
     // We must specify the proper MIME type for the page to display correctly.
     // The HTML and XML files correspond to "text/html";
     // for other types "application/octet-stream" is sufficient.
     // In addition, for "text/html", a "meta" tag is added specifying the text encoding.
     // This is the easiest and most stable way to set the encoding.
-    if ( htmlfile )
+    if ( mimetype == "text/html")
     {
-        mimetype = "text/html";
         buf.prepend(QString( "<META http-equiv='Content-Type' content='text/html; charset=%1'>" )
                     .arg( ::mainWindow->chmFile()->currentEncoding() ).toLatin1() );
-    }
-    else
-    {
-        mimetype = "application/octet-stream";
     }
 
     // We will use the buffer because reply() requires the QIODevice.
