@@ -30,7 +30,8 @@ HEADERS += \
     toolbareditor.h \
     textencodings.h \
     treeitem_toc.h \
-    treeitem_index.h
+    treeitem_index.h \
+    mimehelper.h
 
 SOURCES += \
     config.cpp \
@@ -51,7 +52,8 @@ SOURCES += \
     toolbareditor.cpp \
     textencodings.cpp \
     treeitem_toc.cpp \
-    treeitem_index.cpp
+    treeitem_index.cpp \
+    mimehelper.cpp
 
 FORMS += tab_bookmarks.ui \
     tab_index.ui \

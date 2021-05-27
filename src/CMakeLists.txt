@@ -25,6 +25,7 @@ set(CPP_SOURCES
     textencodings.cpp
     treeitem_toc.cpp
     treeitem_index.cpp
+    mimehelper.cpp
     )
 
 set(MOC_HEADERS
