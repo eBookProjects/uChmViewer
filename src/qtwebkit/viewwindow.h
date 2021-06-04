@@ -21,7 +21,7 @@
 
 #include <QWebView>
 
-#include "kde-qt.h"
+#include "../kde-qt.h"
 
 class ViewWindow : public QWebView
 {
@@ -99,7 +99,7 @@ class ViewWindow : public QWebView
 		
 		// Overriden to change the source
 		void			setSource ( const QUrl & name );
-		QString			anchorAt( const QPoint & pos );
+		QUrl			anchorAt( const QPoint & pos );
 
 		// Overloaded to provide custom context menu
 		void 			contextMenuEvent( QContextMenuEvent *e );

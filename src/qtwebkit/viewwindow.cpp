@@ -25,11 +25,11 @@
 #include <QWebView>
 #include <QWebFrame>
 
-#include "config.h"
-#include "viewwindow_webkit.h"
-#include "mainwindow.h"
-#include "viewwindowmgr.h"
-#include "dataprovider_qwebkit.h"
+#include "../config.h"
+#include "../viewwindow.h"
+#include "../mainwindow.h"
+#include "../viewwindowmgr.h"
+#include "dataprovider.h"
 
 static const qreal ZOOM_FACTOR_CHANGE = 0.1;
 
@@ -235,14 +235,14 @@ void ViewWindow::updateHistoryIcons()
 	}
 }
 
-QString ViewWindow::anchorAt(const QPoint & pos)
+QUrl ViewWindow::anchorAt(const QPoint & pos)
 {
 	QWebHitTestResult res = page()->currentFrame()->hitTestContent( pos );
 
 	if ( !res.linkUrl().isValid() )
-		return QString::null;
+		return QUrl();
 
-	return  res.linkUrl().path();
+	return  res.linkUrl();
 }
 
 
@@ -250,7 +250,7 @@ void ViewWindow::mouseReleaseEvent ( QMouseEvent * event )
 {
 	if ( event->button() == Qt::MidButton )
 	{
-		QString link = anchorAt( event->pos() );
+		QUrl link = anchorAt( event->pos() );
 
 		if ( !link.isEmpty() )
 		{
@@ -268,7 +268,7 @@ void ViewWindow::contextMenuEvent(QContextMenuEvent *e)
 {
 	// From Qt Assistant
 	QMenu *m = new QMenu(0);
-	QString link = anchorAt( e->pos() );
+	QUrl link = anchorAt( e->pos() );
 
 	if ( !link.isEmpty() )
 	{

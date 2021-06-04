@@ -16,17 +16,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef VIEWWINDOW_WEBENGINE_H
-#define VIEWWINDOW_WEBENGINE_H
+#ifndef QTWEBENGINE_VIEWWINDOW_H
+#define QTWEBENGINE_VIEWWINDOW_H
 
 #include <QWebEngineView>
 
-#include "kde-qt.h"
-#include "dataprovider_qwebengine.h"
-
-// NOT WORKING PROPERLY YET, DO NOT USE.
-// Unfortunately as of 5.7 QWebEngine is still not having all the required functions for kchmviewer
-// to implement. Notably this bug: https://bugreports.qt.io/browse/QTBUG-41242 results in kernel crash on my machine.
+#include "../kde-qt.h"
+#include "dataprovider.h"
 
 class ViewWindow : public QWebEngineView
 {
@@ -44,6 +40,9 @@ class ViewWindow : public QWebEngineView
 
     signals:
         void    dataLoaded( ViewWindow * window );
+
+        // This signal is emitted whenever the user clicks on a link.
+        void linkClicked(const QUrl &url);
 
     public:
         // Apply the configuration settings (JS enabled etc) to the web renderer
@@ -104,15 +103,16 @@ class ViewWindow : public QWebEngineView
 
         // Overriden to change the source
         void			setSource ( const QUrl & name );
-        //QString			anchorAt( const QPoint & pos );
 
         // Overloaded to provide custom context menu
         void 			contextMenuEvent( QContextMenuEvent *e );
+        void            showContextMenu(const QPoint *point, const QString link);
         //void			mouseReleaseEvent ( QMouseEvent * event );
 
     private slots:
         // Used to restore the scrollbar position and the navigation button status
         void			onLoadFinished ( bool ok );
+        void            onLinkClicked(const QUrl &url);
 
     private:
         QMenu 				*	m_contextMenu;
@@ -124,9 +124,6 @@ class ViewWindow : public QWebEngineView
 
         // Keeps the scrollbar position to move after the page is loaded
         int						m_storedScrollbarPosition;
-
-        // Data provider
-        DataProvider_QWebEngine * m_provider;
 };
 
-#endif // VIEWWINDOW_WEBENGINE_H
+#endif // QTWEBENGINE_VIEWWINDOW_H

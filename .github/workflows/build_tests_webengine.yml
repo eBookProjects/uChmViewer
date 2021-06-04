@@ -1,0 +1,111 @@
+name: WebEngine Build Tests
+
+on: [push]
+
+env:
+  QT_VERSION: 5.14.1
+  QT_PACKAGES: qtwebengine
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    #continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - {
+            name:  "Win x86 :: Qt5 :: cmake",
+            os:    windows-latest,
+            setup: "cmake -DQT5_ONLY=ON -DQT_USE_WEBENGINE=ON .",
+            build:  "cmake --build ."
+          }
+        - {
+            name:  "Win x64 :: Qt5 :: cmake",
+            os:    windows-latest,
+            setup: "cmake -DQT5_ONLY=ON -DQT_USE_WEBENGINE=ON .",
+            build: "cmake --build ."
+          }
+        - {
+            name:  "Linux x64 :: Qt5 :: cmake",
+            os:    ubuntu-latest,
+            setup: "cmake -DQT5_ONLY=ON -DQT_USE_WEBENGINE=ON .",
+            build: "cmake --build ."
+          }
+        - {
+            name:  "macOS x64 :: Qt5 :: cmake",
+            os:    macos-latest,
+            setup: "cmake -DQT5_ONLY=ON -DQT_USE_WEBENGINE=ON .",
+            build: "cmake --build ."
+          }
+        #- {
+            #name:  "Win x86 :: Qt5 :: qmake",
+            #os:    windows-latest,
+            #setup: "qmake",
+            #build:  "nmake"
+          #}
+        - {
+            name:  "Linux x64 :: Qt5 :: qmake",
+            os:    ubuntu-latest,
+            setup: "qmake USE_WEBENGINE=1",
+            build: "make"
+          }
+        #- {
+            #name:  "macOS x64 :: Qt5 :: qmake",
+            #os:    macos-latest,
+            #setup: "qmake",
+            #build: "make"
+          #}
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v1
+      with:
+        submodules: true
+
+    - name: MSVC Environment Setup
+      if: contains( matrix.config.os, 'Windows' )
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2 # Fuck!!! .7.2
+      with:
+        version:  ${{ env.QT_VERSION }}
+        modules: ${{ env.QT_PACKAGES }}
+
+    - name: Build & install zlib
+      if: contains( matrix.config.os, 'Windows' )
+      shell: bash
+      run: |
+        cd ../
+        git clone https://github.com/madler/zlib.git
+        cd zlib
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build . --config Release
+        cmake --install . --config Release
+    - name: Build & install libzip
+      shell: bash
+      run: |
+        cd ../
+        git clone https://github.com/nih-at/libzip.git
+        cd libzip
+        git checkout v1.7.3
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build . --config Release
+        if "${{ contains(matrix.config.os, 'Windows') }}" == "true"
+        then
+          cmake --install . --config Release
+        else
+          sudo cmake --install . --config Release
+        fi
+    - name: Setup project
+      run: ${{ matrix.config.setup }}
+
+    - name: Build project
+      run: ${{ matrix.config.build }}

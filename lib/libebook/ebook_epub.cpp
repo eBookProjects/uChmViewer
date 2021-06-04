@@ -30,7 +30,7 @@
 #include "helperxmlhandler_epubcontent.h"
 #include "helperxmlhandler_epubtoc.h"
 
-static const char * URL_SCHEME_EPUB = "epub";
+const char * EBook_EPUB::URL_SCHEME_EPUB = "epub";
 
 EBook_EPUB::EBook_EPUB()
     : EBook()

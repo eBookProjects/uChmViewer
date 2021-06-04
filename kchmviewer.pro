@@ -1,4 +1,4 @@
-SUBDIRS += lib src
-TEMPLATE = subdirs 
-CONFIG += debug
+
+TEMPLATE = subdirs
+SUBDIRS = lib src
 src.depends = lib

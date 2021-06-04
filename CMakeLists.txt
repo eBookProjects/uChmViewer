@@ -1,32 +1,56 @@
+#
+# Option:
+# -DQT4_ONLY=ON          build with Qt4, not use KDE
+# -DQT5_ONLY=ON          build with Qt5, not use KDE
+# -DQT_USE_WEBENGINE=ON  use Qt WebEngine
+################################################
+
+cmake_minimum_required(VERSION 3.0)
+
 # Project name
-PROJECT( kchmviewer )
+project(kchmviewer)
+
+option(QT4_ONLY         "Build with Qt4, not use KDE")
+option(QT5_ONLY         "Build with Qt4, not use KDE")
+option(QT_USE_WEBENGINE "Use Qt WebEngine")
 
 # Init cmake
-set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
 # Necessary packages
-FIND_PACKAGE( KDE4 REQUIRED )
-FIND_PACKAGE( Libchm REQUIRED)
-
 # libzip
-FIND_PATH(LIBZIP_INCLUDE_DIR zip.h)
-FIND_LIBRARY(LIBZIP_LIBRARY NAMES zip)
+find_package(libzip REQUIRED)
 
-IF (LIBZIP_INCLUDE_DIR AND LIBZIP_LIBRARY)
-	MESSAGE(STATUS "Found libzip: ${LIBZIP_LIBRARY}")
-ELSE ()
-	MESSAGE(FATAL_ERROR "Could not find libzip. Please install libzip and libzip-devel packages")
-ENDIF ()
+if (${QT4_ONLY})
+    find_package(Qt4 REQUIRED QtCore QtDBus QtNetwork QtWebKit QtGui QtXml)
+elseif (${QT5_ONLY})
+    find_package(Qt5 REQUIRED Core DBus Network PrintSupport Widgets Xml)
+    if (${QT_USE_WEBENGINE})
+        find_package(Qt5 5.9 REQUIRED WebEngine WebEngineWidgets)
+    else ()
+        find_package(Qt5 REQUIRED WebKit WebKitWidgets)
+    endif ()
+else ()
+    find_package(KDE4 REQUIRED)
+    add_definitions(${KDE4_DEFINITIONS})
+    add_definitions(-DUSE_KDE)
+    include_directories(${KDE4_INCLUDES})
+endif ()
 
-# Set compilation params
-INCLUDE_DIRECTORIES( ${KDE4_INCLUDES}
-		${CMAKE_SOURCE_DIR}/src
-		${CMAKE_SOURCE_DIR}/lib/libebook )
-ADD_DEFINITIONS( ${KDE4_DEFINITIONS} )
-ADD_DEFINITIONS( -DUSE_KDE )
+if (${QT_USE_WEBENGINE})
+    add_definitions(-DUSE_WEBENGINE)
+endif ()
+
+include(cmake/qt-aliases.cmake)
+
+add_compile_options(
+    $<$<CXX_COMPILER_ID:MSVC>:/W3>
+    $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall>
+    $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wextra>)
 
 # Run in those subdirectories
-ADD_SUBDIRECTORY( lib/libebook )
-ADD_SUBDIRECTORY( src )
-ADD_SUBDIRECTORY( po )
-ADD_SUBDIRECTORY( packages )
+add_subdirectory(lib)
+#add_subdirectory(lib/libebook)
+add_subdirectory(src)
+add_subdirectory(po)
+add_subdirectory(packages)

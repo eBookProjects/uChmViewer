@@ -18,10 +18,11 @@
 
 #include <QDir>
 
-#include "dataprovider_qwebkit.h"
-#include "viewwindow.h"
-#include "config.h"
-#include "mainwindow.h"
+#include "dataprovider.h"
+#include "../viewwindow.h"
+#include "../config.h"
+#include "../mainwindow.h"
+#include "../mimehelper.h"
 
 
 KCHMNetworkReply::KCHMNetworkReply( const QNetworkRequest &request, const QUrl &url )
@@ -67,8 +68,6 @@ QByteArray KCHMNetworkReply::loadResource( const QUrl &url )
 {
     //qDebug("loadResource %s", qPrintable(url.toString()) );
 
-	bool htmlfile = url.path().endsWith( ".html" ) || url.path().endsWith( ".htm" ) || url.path().endsWith( ".xhtml" );
-
 	// Retreive the data from ebook file
 	QByteArray buf;
 
@@ -76,11 +75,9 @@ QByteArray KCHMNetworkReply::loadResource( const QUrl &url )
 	{
 		qWarning( "Could not resolve file %s\n", qPrintable( url.toString() ) );
 
-		if ( htmlfile )
-			buf = (QString("Could not load file %1").arg( url.path())).toUtf8();
 	}
 
-    if ( htmlfile )
+    if ( MimeHelper::mimeType( url, buf ) == "text/html" )
         setHeader( QNetworkRequest::ContentTypeHeader, QString( "text/html; charset=%1" ) .arg( ::mainWindow->chmFile()->currentEncoding() ) );
 
 	return buf;

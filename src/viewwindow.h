@@ -3,9 +3,9 @@
 
 // We support both engines
 #if defined (USE_WEBENGINE)
-    #include "viewwindow_webengine.h"
+    #include "qtwebengine/viewwindow.h"
 #else
-    #include "viewwindow_webkit.h"
+    #include "qtwebkit/viewwindow.h"
 #endif
 
 #endif // VIEWWINDOW_H

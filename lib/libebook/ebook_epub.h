@@ -36,6 +36,8 @@ class EBook_EPUB : public EBook
 		EBook_EPUB();
 		virtual ~EBook_EPUB();
 
+		static const char * URL_SCHEME_EPUB;
+
 		/*!
 		 * \brief Attempts to load epub file.
 		 * \param archiveName filename.

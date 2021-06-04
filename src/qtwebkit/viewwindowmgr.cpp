@@ -16,10 +16,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config.h"
-#include "mainwindow.h"
-#include "viewwindow.h"
-#include "viewwindowmgr.h"
+#include "../config.h"
+#include "../mainwindow.h"
+#include "../viewwindow.h"
+#include "../viewwindowmgr.h"
 
 
 // A small overriden class to handle a middle click

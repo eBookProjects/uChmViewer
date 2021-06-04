@@ -36,7 +36,7 @@
 //#define DEBUGPARSER(A)	qDebug A
 #define DEBUGPARSER(A)
 
-static const char * URL_SCHEME_CHM = "ms-its";
+const char * EBook_CHM::URL_SCHEME_CHM = "ms-its";
 
 
 EBook_CHM::EBook_CHM()

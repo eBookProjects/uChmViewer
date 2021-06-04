@@ -38,6 +38,8 @@ class EBook_CHM : public EBook
 		EBook_CHM();
 		~EBook_CHM();
 
+		static const char * URL_SCHEME_CHM;
+
 		/*!
 		 * \brief Attempts to load chm file.
 		 * \param archiveName filename.

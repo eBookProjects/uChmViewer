@@ -1,0 +1,75 @@
+name: WebKit Build Tests
+
+on: [push]
+
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    #continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - {
+            name:     "Test :: KDE",
+            os:       ubuntu-18.04,
+            packages: qt4-default libqtwebkit-dev kdelibs5-dev,
+            xmake:    "cmake ."
+          }
+        - {
+            name:     "Test :: Qt4 qmake",
+            os:       ubuntu-18.04,
+            packages: qt4-default libqtwebkit-dev,
+            xmake:    "qmake"
+          }
+        - {
+            name:     "Test :: Qt4 cmake",
+            os:       ubuntu-18.04,
+            packages: qt4-default libqtwebkit-dev,
+            xmake:    "cmake -DQT4_ONLY=ON ."
+          }
+        - {
+            name:     "Test :: Qt5 qmake",
+            os:       ubuntu-18.04,
+            packages: qt5-default libqt5webkit5-dev,
+            xmake:    "qmake"
+          }
+        - {
+            name:     "Test :: Qt5 cmake",
+            os:       ubuntu-18.04,
+            packages: qt5-default libqt5webkit5-dev,
+            xmake:    "cmake -DQT5_ONLY=ON ."
+          }
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v1
+      with:
+        submodules: true
+
+    - name: Build & install libzip
+      shell: bash
+      run: |
+        cd ../
+        git clone https://github.com/nih-at/libzip.git
+        cd libzip
+        git checkout v1.7.3
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build . --config Release
+        sudo cmake --install . --config Release
+
+    - name: Install packages
+      run: sudo apt-get update && sudo apt-get install ${{ matrix.config.packages }} -y
+      shell: bash
+
+    - name: Setup build
+      run: ${{ matrix.config.xmake }}
+
+    - name: Build
+      run: make

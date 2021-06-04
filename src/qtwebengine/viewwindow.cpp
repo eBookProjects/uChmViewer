@@ -21,19 +21,21 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QWebEngineHistory>
-#include <QWebEngineView>
 #include <QWebEnginePage>
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
+#include <QWebEngineScript>
+#include <QWebEngineView>
 
-#include "config.h"
-#include "viewwindow_webengine.h"
-#include "mainwindow.h"
-#include "viewwindowmgr.h"
+#include "../config.h"
+#include "../viewwindow.h"
+#include "../mainwindow.h"
+#include "../viewwindowmgr.h"
+#include "webenginepage.h"
 
+#define PRINT_DEBUG (defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEVIEWWINDOW)
 
 static const qreal ZOOM_FACTOR_CHANGE = 0.1;
-
 
 ViewWindow::ViewWindow( QWidget * parent )
     : QWebEngineView ( parent )
@@ -43,15 +45,9 @@ ViewWindow::ViewWindow( QWidget * parent )
     m_contextMenuLink = 0;
     m_storedScrollbarPosition = 0;
 
-    //QWebEnginePage *page
-
-    // Use our network emulation layer. I don't know if we transfer the ownership when we install it, so we create
-    // one per page. May be unnecessary.
-    m_provider = new DataProvider_QWebEngine( this );
-    page()->profile()->installUrlSchemeHandler( ::mainWindow->chmFile()->ebookURLscheme().toUtf8(), m_provider );
-
-    // All links are going through us
-    //page()->setLinkDelegationPolicy( QWebPage::DelegateAllLinks );
+    WebEnginePage * page = new WebEnginePage( this );
+    connect( page, SIGNAL( linkClicked ( const QUrl& ) ), this, SLOT( onLinkClicked( const QUrl& ) ) );
+    setPage( page );
 
     connect( this, SIGNAL( loadFinished(bool)), this, SLOT( onLoadFinished(bool)) );
 
@@ -75,8 +71,6 @@ void ViewWindow::invalidate( )
 
 bool ViewWindow::openUrl ( const QUrl& url )
 {
-    //qDebug("ViewWindow::openUrl %s", qPrintable(url.toString()));
-
     // Do not use setContent() here, it resets QWebHistory
     load( url );
 
@@ -96,7 +90,6 @@ QMenu * ViewWindow::createStandardContextMenu( QWidget * parent )
     return contextMenu;
 }
 
-
 QMenu * ViewWindow::getContextMenu( const QUrl & link, QWidget * parent )
 {
     if ( link.isEmpty() )
@@ -115,9 +108,7 @@ QMenu * ViewWindow::getContextMenu( const QUrl & link, QWidget * parent )
         {
             m_contextMenuLink = createStandardContextMenu( parent );
             m_contextMenuLink->addSeparator();
-
             m_contextMenuLink->addAction( "&Open this link in a new tab", ::mainWindow, SLOT(onOpenPageInNewTab()), QKeySequence("Shift+Enter") );
-
             m_contextMenuLink->addAction( "&Open this link in a new background tab", ::mainWindow, SLOT(onOpenPageInNewBackgroundTab()), QKeySequence("Ctrl+Enter") );
         }
 
@@ -136,7 +127,6 @@ QString ViewWindow::title() const
 
     return title;
 }
-
 
 void ViewWindow::navigateForward()
 {
@@ -160,18 +150,19 @@ void ViewWindow::setTabKeeper( const QUrl& link )
 
 bool ViewWindow::printCurrentPage()
 {
-/*    QPrinter printer( QPrinter::HighResolution );
-    QPrintDialog dlg( &printer, this );
-
+    QPrinter *printer = new QPrinter( QPrinter::HighResolution );
+    QPrintDialog dlg( printer, this );
     if ( dlg.exec() != QDialog::Accepted )
     {
         ::mainWindow->showInStatusBar( i18n( "Printing aborted") );
         return false;
     }
 
-    print( &printer );
-    ::mainWindow->showInStatusBar( i18n( "Printing finished") );
-*/
+    page()->print( printer, [printer](bool result){
+        ::mainWindow->showInStatusBar( i18n( "Printing finished") );
+        delete printer;
+    });
+
     return true;
 }
 
@@ -199,30 +190,25 @@ int ViewWindow::getScrollbarPosition()
 {
     QAtomicInt value = -1;
 
-    page()->runJavaScript("document.body.scrollTop", [&value](const QVariant &v) { qDebug( "value retrieved: %d\n", v.toInt()); value = v.toInt(); });
+    page()->runJavaScript("document.body.scrollTop",
+                            QWebEngineScript::UserWorld,
+                            [&value](const QVariant &v) { value = v.toInt(); });
 
     while ( value == -1 )
     {
         QApplication::processEvents();
     }
 
-    qDebug( "scroll value %d", value.load() );
     return value;
 }
 
 void ViewWindow::setScrollbarPosition(int pos, bool force)
 {
-    /*
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     if ( !force )
-         m_storedScrollbarPosition = pos;
-     else
-         page()->scrollPosition() ScurrentFrame()->setScrollBarValue( Qt::Vertical, pos );
-
-#else
-    return 0;
-#endi
-*/
+        m_storedScrollbarPosition = pos;
+    else
+        page()->runJavaScript( QString( "document.body.scrollTop=%1" ).arg( pos )
+                                                  ,QWebEngineScript::UserWorld );
 }
 
 void ViewWindow::clipSelectAll()
@@ -246,9 +232,42 @@ void ViewWindow::updateHistoryIcons()
 
 void ViewWindow::contextMenuEvent(QContextMenuEvent *e)
 {
-    // From Qt Assistant
+    QString script ="getLink(%1, %2);\
+function getLink(x, y) {\
+    var el = document.elementFromPoint(x, y);\
+\
+    while (el.tagName != 'A') {\
+        if (el.parentElement == null) {\
+            break;\
+        }\
+\
+        el = el.parentElement;\
+    }\
+\
+    if (el.hasAttribute('href')){\
+        return el.href;\
+    } else {\
+        return null;\
+    }\
+}";
+    const QPoint *m_point = new QPoint(e->globalPos());
+    page()->runJavaScript( script.arg( e->pos().x() ).arg( e->pos().y() ),
+                           QWebEngineScript::UserWorld,
+                           [ this, m_point ]( const QVariant &v )
+        {
+#if PRINT_DEBUG
+            qDebug() << "[DEBUG] ViewWindow::contextMenuEvent";
+            qDebug() << "  ::resultCallBack";
+            qDebug() << "  url =  " << v.toString();
+#endif
+            showContextMenu( m_point, v.toString() );
+            delete m_point;
+        });
+}
+
+void ViewWindow::showContextMenu(const QPoint *point, const QString link)
+{
     QMenu *m = new QMenu(0);
-/*    QString link = anchorAt( e->pos() );
 
     if ( !link.isEmpty() )
     {
@@ -257,23 +276,29 @@ void ViewWindow::contextMenuEvent(QContextMenuEvent *e)
         m->addSeparator();
         setTabKeeper( link );
     }
-*/
+
     ::mainWindow->setupPopupMenu( m );
-    m->exec( e->globalPos() );
+    m->exec( *point );
     delete m;
 }
 
 void ViewWindow::onLoadFinished ( bool )
 {
-/*    if ( m_storedScrollbarPosition > 0 )
+    if ( m_storedScrollbarPosition > 0 )
     {
-        page()->currentFrame()->setScrollBarValue( Qt::Vertical, m_storedScrollbarPosition );
+        page()->runJavaScript( QString( "document.body.scrollTop=%1" ).arg( m_storedScrollbarPosition )
+                              , QWebEngineScript::UserWorld );
         m_storedScrollbarPosition = 0;
     }
-*/
+
     updateHistoryIcons();
 
     emit dataLoaded( this );
+}
+
+void ViewWindow::onLinkClicked(const QUrl &url)
+{
+    emit linkClicked( url );
 }
 
 void ViewWindow::applySettings()
@@ -282,9 +307,6 @@ void ViewWindow::applySettings()
 
     setup->setAttribute( QWebEngineSettings::AutoLoadImages, pConfig->m_browserEnableImages );
     setup->setAttribute( QWebEngineSettings::JavascriptEnabled, pConfig->m_browserEnableJS );
-    //setup->setAttribute( QWebEngineSettings::JavaEnabled, pConfig->m_browserEnableJava );
     setup->setAttribute( QWebEngineSettings::PluginsEnabled, pConfig->m_browserEnablePlugins );
-    //setup->setAttribute( QWebEngineSettings::OfflineStorageDatabaseEnabled, pConfig->m_browserEnableOfflineStorage );
-    //setup->setAttribute( QWebEngineSettings::LocalStorageDatabaseEnabled, pConfig->m_browserEnableLocalStorage );
     setup->setAttribute( QWebEngineSettings::LocalStorageEnabled, pConfig->m_browserEnableLocalStorage );
 }
