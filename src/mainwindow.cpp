@@ -424,8 +424,9 @@ bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 
 	if ( flags & OPF_NEW_TAB )
     {
+        qreal zoom = currentBrowser()->zoomFactor();
 		vwnd = m_viewWindowMgr->addNewTab( !(flags & OPF_BACKGROUND) );
-        vwnd->setZoomFactor( currentBrowser()->zoomFactor() );
+        vwnd->setZoomFactor( zoom );
     }
 	
 	if ( vwnd->openUrl (url) )
