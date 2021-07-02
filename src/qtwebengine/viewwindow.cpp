@@ -20,6 +20,7 @@
 #include <QString>
 #include <QPrinter>
 #include <QPrintDialog>
+#include <QWebEngineContextMenuData>
 #include <QWebEngineHistory>
 #include <QWebEnginePage>
 #include <QWebEngineProfile>
@@ -232,42 +233,8 @@ void ViewWindow::updateHistoryIcons()
 
 void ViewWindow::contextMenuEvent(QContextMenuEvent *e)
 {
-    QString script ="getLink(%1, %2);\
-function getLink(x, y) {\
-    var el = document.elementFromPoint(x, y);\
-\
-    while (el.tagName != 'A') {\
-        if (el.parentElement == null) {\
-            break;\
-        }\
-\
-        el = el.parentElement;\
-    }\
-\
-    if (el.hasAttribute('href')){\
-        return el.href;\
-    } else {\
-        return null;\
-    }\
-}";
-    const QPoint *m_point = new QPoint(e->globalPos());
-    page()->runJavaScript( script.arg( e->pos().x() ).arg( e->pos().y() ),
-                           QWebEngineScript::UserWorld,
-                           [ this, m_point ]( const QVariant &v )
-        {
-#if PRINT_DEBUG
-            qDebug() << "[DEBUG] ViewWindow::contextMenuEvent";
-            qDebug() << "  ::resultCallBack";
-            qDebug() << "  url =  " << v.toString();
-#endif
-            showContextMenu( m_point, v.toString() );
-            delete m_point;
-        });
-}
-
-void ViewWindow::showContextMenu(const QPoint *point, const QString link)
-{
     QMenu *m = new QMenu(0);
+    QUrl link = page()->contextMenuData().linkUrl();
 
     if ( !link.isEmpty() )
     {
@@ -278,7 +245,7 @@ void ViewWindow::showContextMenu(const QPoint *point, const QString link)
     }
 
     ::mainWindow->setupPopupMenu( m );
-    m->exec( *point );
+    m->exec( e->globalPos() );
     delete m;
 }
 

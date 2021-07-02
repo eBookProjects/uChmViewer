@@ -106,7 +106,6 @@ class ViewWindow : public QWebEngineView
 
         // Overloaded to provide custom context menu
         void 			contextMenuEvent( QContextMenuEvent *e );
-        void            showContextMenu(const QPoint *point, const QString link);
         //void			mouseReleaseEvent ( QMouseEvent * event );
 
     private slots:
