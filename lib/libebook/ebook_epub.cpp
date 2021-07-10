@@ -25,6 +25,8 @@
 #include <QMessageBox>
 #include <QtXml/QXmlSimpleReader>
 
+#include "zip.h"
+
 #include "ebook_epub.h"
 #include "helperxmlhandler_epubcontainer.h"
 #include "helperxmlhandler_epubcontent.h"

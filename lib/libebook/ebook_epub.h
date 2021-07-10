@@ -25,7 +25,6 @@
 #include <QUrl>
 
 #include "ebook.h"
-#include "zip.h"
 
 class QXmlDefaultHandler;
 
