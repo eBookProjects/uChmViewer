@@ -1,7 +1,7 @@
 
 TEMPLATE = lib
 TARGET = ebook
-CONFIG *= c++11 warn_on qt staticlib
+CONFIG *= c++11 warn_on staticlib
 QT += widgets
 
 HEADERS += \
@@ -29,7 +29,10 @@ SOURCES += \
     helperxmlhandler_epubcontent.cpp \
     helperxmlhandler_epubtoc.cpp
 
-INCLUDEPATH *= ../CHMLib/src
+!isEmpty(USE_STATIC_CHMLIB) {
+    INCLUDEPATH *= ../CHMLib/src
+} else {
+    !isEmpty(CHMLIB_ROOT): INCLUDEPATH *= "$$CHMLIB_ROOT/include"
+}
 
-defined(LIBZIP_ROOT_DIR, var): INCLUDEPATH *= "$${LIBZIP_ROOT_DIR}/include"
-defined(LIBCHM_ROOT_DIR, var): INCLUDEPATH *= "$${LIBCHM_ROOT_DIR}/include"
+!isEmpty(LIBZIP_ROOT): INCLUDEPATH *= "$$LIBZIP_ROOT/include"

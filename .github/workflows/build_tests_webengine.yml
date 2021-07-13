@@ -49,7 +49,7 @@ jobs:
         - {
             name:  "Linux x64 :: Qt5 :: qmake",
             os:    ubuntu-latest,
-            setup: "qmake USE_WEBENGINE=1",
+            setup: 'qmake -r "USE_WEBENGINE=1" "USE_STATIC_CHMLIB=1"',
             build: "make"
           }
         #- {

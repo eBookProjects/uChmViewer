@@ -1,9 +1,9 @@
 
 TEMPLATE = app
 TARGET = ../bin/kchmviewer
-CONFIG *= c++11 warn_on threads # xml dbus precompile_header
+CONFIG *= c++11 warn_on threads
+
 QT += \
-    dbus \
     xml \
     network \
     widgets \
@@ -69,15 +69,20 @@ FORMS += tab_bookmarks.ui \
 
 RESOURCES += resources/images.qrc
 
-INCLUDEPATH *= ../lib/libebook ../lib/CHMLib/src
+INCLUDEPATH *= ../lib/libebook
+LIBS *= -L"../lib/libebook"
 
-LIBS *= \
-    -L"../lib/libebook" -lebook \
-    -L"../lib" -lchm \
-    -lzip
+!isEmpty(USE_STATIC_CHMLIB) {
+    INCLUDEPATH *= ../lib/CHMLib/src
+    LIBS *= -L"../lib"
+} else {
+    !isEmpty(CHMLIB_ROOT): INCLUDEPATH *= "$$CHMLIB_ROOT/include"
+    !isEmpty(CHMLIB_ROOT): LIBS *= -L"$$CHMLIB_ROOT/lib"
+}
 
-defined(LIBZIP_ROOT_DIR, var): LIBS *= -L"$${LIBZIP_ROOT_DIR}/lib"
-defined(LIBCHM_ROOT_DIR, var): LIBS *= -L"$${LIBCHM_ROOT_DIR}/lib"
+!isEmpty(LIBZIP_ROOT): LIBS *= -L"$$LIBZIP_ROOT/lib"
+
+LIBS *= -lebook -lchm -lzip
 
 linux-g++*:{
     LIBS *= -lX11
@@ -111,10 +116,9 @@ unix:!macx: {
     HEADERS += dbus_interface.h
     SOURCES += dbus_interface.cpp
     CONFIG += dbus
-    #LIBS *= ../lib/libebook/libebook.a
 }
 
-defined(USE_WEBENGINE, var) {
+!isEmpty(USE_WEBENGINE) {
     isEqual(QT_MAJOR_VERSION, 5):lessThan(QT_MINOR_VERSION, 9):error("QtWebEnginew requires at least Qt5.9")
 
     QT += webengine webenginewidgets
