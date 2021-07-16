@@ -184,7 +184,7 @@ qt_aliase(PrintSupport QtGui)
 qt_aliase(Widgets QtGui)
 qt_aliase(Xml QtXml)
 
-if (${QT_USE_WEBENGINE})
+if (${USE_WEBENGINE})
     qt_aliase(WebEngine WebEngine)
     qt_aliase(WebEngineWidgets WebEngineWidgets)
 else ()

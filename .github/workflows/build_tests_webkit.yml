@@ -18,7 +18,7 @@ jobs:
             name:     "Test :: KDE",
             os:       ubuntu-18.04,
             packages: qt4-default libqtwebkit-dev kdelibs5-dev,
-            xmake:    "cmake ."
+            xmake:    "cmake -DFRAMEWORK=KDE4 -DUSE_STATIC_CHMLIB=ON ."
           }
         - {
             name:     "Test :: Qt4 qmake",
@@ -30,7 +30,7 @@ jobs:
             name:     "Test :: Qt4 cmake",
             os:       ubuntu-18.04,
             packages: qt4-default libqtwebkit-dev,
-            xmake:    "cmake -DQT4_ONLY=ON ."
+            xmake:    "cmake -DFRAMEWORK=Qt4 -DUSE_STATIC_CHMLIB=ON ."
           }
         - {
             name:     "Test :: Qt5 qmake",
@@ -42,7 +42,7 @@ jobs:
             name:     "Test :: Qt5 cmake",
             os:       ubuntu-18.04,
             packages: qt5-default libqt5webkit5-dev,
-            xmake:    "cmake -DQT5_ONLY=ON ."
+            xmake:    "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON ."
           }
 
     steps:

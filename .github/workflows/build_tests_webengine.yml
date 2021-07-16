@@ -19,25 +19,25 @@ jobs:
         - {
             name:  "Win x86 :: Qt5 :: cmake",
             os:    windows-latest,
-            setup: "cmake -DQT5_ONLY=ON -DQT_USE_WEBENGINE=ON .",
+            setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
             build:  "cmake --build ."
           }
         - {
             name:  "Win x64 :: Qt5 :: cmake",
             os:    windows-latest,
-            setup: "cmake -DQT5_ONLY=ON -DQT_USE_WEBENGINE=ON .",
+            setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
             build: "cmake --build ."
           }
         - {
             name:  "Linux x64 :: Qt5 :: cmake",
             os:    ubuntu-latest,
-            setup: "cmake -DQT5_ONLY=ON -DQT_USE_WEBENGINE=ON .",
+            setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
             build: "cmake --build ."
           }
         - {
             name:  "macOS x64 :: Qt5 :: cmake",
             os:    macos-latest,
-            setup: "cmake -DQT5_ONLY=ON -DQT_USE_WEBENGINE=ON .",
+            setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
             build: "cmake --build ."
           }
         #- {

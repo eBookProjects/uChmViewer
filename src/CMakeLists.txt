@@ -60,7 +60,7 @@ set(UIS
     window_browser.ui
     )
 
-if (${QT_USE_WEBENGINE})
+if (${USE_WEBENGINE})
     set(CPP_SOURCES ${CPP_SOURCES}
         qtwebengine/viewwindow.cpp
         qtwebengine/dataprovider.cpp
@@ -86,7 +86,7 @@ endif ()
 
 qt_add_resources(RSRCS resources/images.qrc)
 
-if (${KDE4_FOUND})
+if (${FRAMEWORK} STREQUAL KDE4)
     kde4_add_ui_files(CPP_SOURCES ${UIS})
     # automoc in some cases cannot find a suitable header file, at the same time
     # kde4_add_executable always does automoc and this is can't disabled.
