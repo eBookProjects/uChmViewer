@@ -17,12 +17,6 @@ jobs:
       matrix:
         config:
         - {
-            name:  "Win x86 :: Qt5 :: cmake",
-            os:    windows-latest,
-            setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
-            build:  "cmake --build ."
-          }
-        - {
             name:  "Win x64 :: Qt5 :: cmake",
             os:    windows-latest,
             setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
@@ -40,24 +34,24 @@ jobs:
             setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
             build: "cmake --build ."
           }
-        #- {
-            #name:  "Win x86 :: Qt5 :: qmake",
-            #os:    windows-latest,
-            #setup: "qmake",
-            #build:  "nmake"
-          #}
+        - {
+            name:  "Win x86 :: Qt5 :: qmake",
+            os:    windows-latest,
+            setup: 'qmake -r "USE_STATIC_CHMLIB=1" "USE_WEBENGINE=1" "LIBZIP_ROOT=C:/Program Files (x86)/libzip"',
+            build:  "nmake"
+          }
         - {
             name:  "Linux x64 :: Qt5 :: qmake",
             os:    ubuntu-latest,
-            setup: 'qmake -r "USE_WEBENGINE=1" "USE_STATIC_CHMLIB=1"',
+            setup: 'qmake -r "USE_STATIC_CHMLIB=1" "USE_WEBENGINE=1"',
             build: "make"
           }
-        #- {
-            #name:  "macOS x64 :: Qt5 :: qmake",
-            #os:    macos-latest,
-            #setup: "qmake",
-            #build: "make"
-          #}
+        - {
+            name:  "macOS x64 :: Qt5 :: qmake",
+            os:    macos-latest,
+            setup: 'qmake -r "USE_STATIC_CHMLIB=1" "USE_WEBENGINE=1" "LIBZIP_ROOT=/usr/local"',
+            build: "make"
+          }
 
     steps:
     - name: checkout
