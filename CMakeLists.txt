@@ -7,10 +7,11 @@
 # USE_WEBENGINE=ON - if defined, WebEngine is used, otherwise WebKit is used
 ################################################
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.9)
 
 # Project name
 project(kchmviewer)
+include(cmake/get-version.cmake)
 
 option(USE_WEBENGINE "Use Qt WebEngine")
 option(USE_STATIC_CHMLIB "Use static link with chm library")
