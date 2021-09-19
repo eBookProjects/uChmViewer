@@ -102,8 +102,6 @@ if (${FRAMEWORK} STREQUAL KDE4)
         $<$<BOOL:UNIX>:X11>
         $<$<PLATFORM_ID:Windows>:wsock32>
         )
-
-    install(TARGETS kchmviewer DESTINATION ${KDE4_BIN_INSTALL_DIR})
 else ()
     qt_wrap_ui(UI_SOURCES ${UIS})
     qt_wrap_cpp(MOC_SOURCES ${MOC_HEADERS})
@@ -121,5 +119,23 @@ else ()
         $<$<PLATFORM_ID:Linux>:X11>
         $<$<PLATFORM_ID:Windows>:wsock32>
         )
+endif ()
 
+install(TARGETS kchmviewer DESTINATION ${APP_BIN_INSTALL_DIR})
+
+# Copying runtime dependencies for Windows deployment
+# See https://doc.qt.io/qt-5/windows-deployment.html
+if (CMAKE_SYSTEM_NAME MATCHES "Windows" AND USE_WINDEPLOYQT)
+    set(QT_DEPLOY_DIR ${CMAKE_CURRENT_BINARY_DIR}/qt-deploy)
+    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${_qt_bin_dir}")
+
+    add_custom_command(TARGET kchmviewer POST_BUILD
+        COMMAND "${WINDEPLOYQT_EXECUTABLE}"
+            --no-quick-import
+            --dir ${QT_DEPLOY_DIR}
+            --plugindir ${QT_DEPLOY_DIR}/plugins  $<TARGET_FILE:kchmviewer>
+        COMMENT "Copying runtime dependencies"
+    )
+
+    install(DIRECTORY ${QT_DEPLOY_DIR}/ DESTINATION ${APP_BIN_INSTALL_DIR})
 endif ()

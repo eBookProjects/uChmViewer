@@ -5,6 +5,8 @@
 # FRAMEWORK=<Qt4 | Qt5 | KDE4>
 # USE_STATIC_CHMLIB=ON - if defined, static linkage to the chm library is used
 # USE_WEBENGINE=ON - if defined, WebEngine is used, otherwise WebKit is used
+# USE_WINDEPLOYQT=ON - if defined, the runtime dependencies will be copied to
+#     the folder with the executable. This option is applicable only for Windows.
 ################################################
 
 cmake_minimum_required(VERSION 3.9)
@@ -15,6 +17,7 @@ include(cmake/get-version.cmake)
 
 option(USE_WEBENGINE "Use Qt WebEngine")
 option(USE_STATIC_CHMLIB "Use static link with chm library")
+option(USE_WINDEPLOYQT "Copying runtime dependencies for Windows deployment")
 
 # Init cmake
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
