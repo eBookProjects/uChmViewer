@@ -51,6 +51,7 @@ if (${USE_WEBENGINE})
 endif ()
 
 include(cmake/qt-aliases.cmake)
+include(cmake/install-helper.cmake)
 
 add_compile_options(
     $<$<CXX_COMPILER_ID:MSVC>:/W3>
