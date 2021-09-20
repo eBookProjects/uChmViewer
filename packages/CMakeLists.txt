@@ -27,8 +27,8 @@ files, and with new search engine is able to search in any chm file no matter
 what language it is written.
 ]])
 #set(CPACK_PACKAGE_INSTALL_DIRECTORY "kchmviewer")
-set(CPACK_PACKAGE_ICON ./kchmviewer.png)
-set(CPACK_RESOURCE_FILE_LICENSE ../COPYING)
+#set(CPACK_PACKAGE_ICON ./kchmviewer.png)
+#set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_SOURCE_DIR}/COPYING)
 #set(CPACK_RESOURCE_FILE_README)
 #set(CPACK_RESOURCE_FILE_WELCOME)
 
