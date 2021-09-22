@@ -35,16 +35,19 @@ QByteArray MimeHelper::mimeType(const QUrl &url, const QByteArray &buf)
         return "text/css";
     else if ( path.endsWith( ".js" ) )
         return "text/js";
-    else if ( path.endsWith( ".htm" ) | path.endsWith( ".html" ) | path.endsWith( ".xhtml" ) )
-        return "text/html";
 
     // If the first non space character in buf is '<',
     // then we assume that the buffer contains HTML.
     for (auto iter = buf.begin(); iter != buf.end() ; iter++) {
         char c = *iter;
 
-        if (c == '<')
-            return "text/html";
+        if (c == '<') {
+            c = *(++iter);
+            if( c =='?')
+                return "text/xml";
+            else
+                return "text/html";
+        }
 
         if (!isspace(c))
             break;
