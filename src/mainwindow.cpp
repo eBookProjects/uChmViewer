@@ -16,11 +16,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QProcess>
-#include <QDesktopServices>
-#include <QSettings>
 #include <QDateTime>
+#include <QDesktopServices>
+#include <QDir>
+#include <QFileDialog>
+#include <QFileInfo>
+#include <QMessageBox>
+#include <QProcess>
+#include <QShortcut>
+#include <QSettings>
+#include <QTemporaryFile>
+#include <QTextEdit>
 #include <QTextStream>
+#include <QTimer>
+#include <QWhatsThis>
 
 #include "kde-qt.h"
 #include "i18n.h"

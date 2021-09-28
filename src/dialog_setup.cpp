@@ -16,6 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QFileDialog>
+#include <QMessageBox>
+
 #include "kde-qt.h"
 #include "i18n.h"
 

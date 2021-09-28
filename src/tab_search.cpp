@@ -16,7 +16,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QFile>
 #include <QHeaderView>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QWhatsThis>
 
 #include "i18n.h"
 

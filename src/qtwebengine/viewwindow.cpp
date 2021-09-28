@@ -16,10 +16,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QRegExp>
-#include <QString>
+#include <QContextMenuEvent>
 #include <QPrinter>
 #include <QPrintDialog>
+#include <QRegExp>
+#include <QString>
 #include <QWebEngineContextMenuData>
 #include <QWebEngineHistory>
 #include <QWebEnginePage>
@@ -35,6 +36,7 @@
 #include "../mainwindow.h"
 #include "../viewwindowmgr.h"
 #include "webenginepage.h"
+
 
 #define PRINT_DEBUG (defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEVIEWWINDOW)
 

@@ -16,14 +16,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QRegExp>
-#include <QString>
+#include <QContextMenuEvent>
 #include <QPrinter>
 #include <QPrintDialog>
+#include <QRegExp>
+#include <QString>
 #include <QWebHistory>
-
-#include <QWebView>
 #include <QWebFrame>
+#include <QWebView>
 
 #include "../i18n.h"
 
@@ -33,8 +33,8 @@
 #include "../viewwindowmgr.h"
 #include "dataprovider.h"
 
-static const qreal ZOOM_FACTOR_CHANGE = 0.1;
 
+static const qreal ZOOM_FACTOR_CHANGE = 0.1;
 
 ViewWindow::ViewWindow( QWidget * parent )
 	: QWebView ( parent )

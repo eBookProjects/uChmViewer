@@ -19,7 +19,10 @@
 #ifndef TAB_BOOKMARK_H
 #define TAB_BOOKMARK_H
 
-#include "kde-qt.h"
+#include <QMenu>
+#include <QString>
+#include <QWidget>
+
 #include "settings.h"
 
 #include "ui_tab_bookmarks.h"

@@ -21,7 +21,7 @@
 #define MAINWINDOW_H
 
 #include <QSharedMemory>
-#include "kde-qt.h"
+
 #include "ebook.h"
 #include "viewwindow.h"
 #include "checknewversion.h"
@@ -42,10 +42,13 @@ class UserEvent : public QEvent
 		QStringList		m_args;
 };
 
+class QTemporaryFile;
 
+class Settings;
 class RecentFiles;
 class ToolbarManager;
 class NavigationPanel;
+class ViewWindowMgr;
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {

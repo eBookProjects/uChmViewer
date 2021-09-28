@@ -16,8 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "kde-qt.h"
 #include "dialog_chooseurlfromlist.h"
+
 
 DialogChooseUrlFromList::DialogChooseUrlFromList( QWidget* parent )
 	: QDialog( parent ), Ui::DialogTopicSelector()

@@ -20,6 +20,12 @@
 #define DIALOG_CHOOSEURLFROMLIST_H
 
 #include <QDialog>
+#include <QList>
+#include <QListWidgetItem>
+#include <QStringList>
+#include <QUrl>
+#include <QWidget>
+
 #include "ui_dialog_topicselector.h"
 
 

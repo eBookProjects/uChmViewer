@@ -19,9 +19,9 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include <QSettings>
 #include <QString>
 #include <QStringList>
-#include <QSettings>
 
 #include "recentfiles.h"
 

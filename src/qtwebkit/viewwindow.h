@@ -21,7 +21,6 @@
 
 #include <QWebView>
 
-#include "../kde-qt.h"
 
 class ViewWindow : public QWebView
 {

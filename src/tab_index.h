@@ -19,8 +19,10 @@
 #ifndef TAB_INDEX_H
 #define TAB_INDEX_H
 
+#include <QMenu>
+#include <QTreeWidgetItem>
+#include <QWidget>
 
-#include "kde-qt.h"
 #include "ui_tab_index.h"
 
 

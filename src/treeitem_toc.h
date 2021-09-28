@@ -20,6 +20,10 @@
 #define TREEITEM_TOC_H
 
 #include <QTreeWidgetItem>
+#include <QString>
+#include <QVariant>
+#include <QUrl>
+
 
 class TreeItem_TOC : public QTreeWidgetItem
 {
