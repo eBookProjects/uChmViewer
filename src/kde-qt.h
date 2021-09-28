@@ -129,14 +129,6 @@ public:
 #include <QSharedMemory>
 
 
-class ShowWaitCursor
-{
-	public:
-		ShowWaitCursor() { QApplication::setOverrideCursor( QCursor(Qt::WaitCursor) ); }
-		~ShowWaitCursor() { QApplication::restoreOverrideCursor(); }
-};
-
-
 // Forward declarations
 class MainWindow;
 class ViewWindow;

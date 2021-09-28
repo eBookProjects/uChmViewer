@@ -22,6 +22,7 @@
 #include "config.h"
 #include "tab_search.h"
 #include "ebook_search.h"
+#include "showwaitcursor.h"
 
 
 class SearchTreeViewItem : public QTreeWidgetItem

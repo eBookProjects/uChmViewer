@@ -31,7 +31,8 @@ HEADERS += \
     textencodings.h \
     treeitem_toc.h \
     treeitem_index.h \
-    mimehelper.h
+    mimehelper.h \
+    showwaitcursor.h
 
 SOURCES += \
     config.cpp \

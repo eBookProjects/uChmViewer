@@ -22,6 +22,7 @@
 #include "treeitem_toc.h"
 #include "tab_contents.h"
 #include "config.h"
+#include "showwaitcursor.h"
 
 
 TabContents::TabContents( QWidget *parent )
