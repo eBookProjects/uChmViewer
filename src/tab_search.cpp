@@ -18,6 +18,8 @@
 
 #include <QHeaderView>
 
+#include "i18n.h"
+
 #include "mainwindow.h"
 #include "config.h"
 #include "tab_search.h"

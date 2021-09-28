@@ -25,6 +25,8 @@
 #include <QWebView>
 #include <QWebFrame>
 
+#include "../i18n.h"
+
 #include "../config.h"
 #include "../viewwindow.h"
 #include "../mainwindow.h"

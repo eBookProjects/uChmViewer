@@ -16,6 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "i18n.h"
+
 #include "navigationpanel.h"
 #include "tab_contents.h"
 #include "tab_index.h"

@@ -26,6 +26,7 @@ set(CPP_SOURCES
     treeitem_toc.cpp
     treeitem_index.cpp
     mimehelper.cpp
+    i18n.cpp
     )
 
 set(MOC_HEADERS

@@ -18,6 +18,8 @@
 
 #include <QWebEngineSettings>
 
+#include "../i18n.h"
+
 #include "../config.h"
 #include "../mainwindow.h"
 #include "../viewwindow.h"

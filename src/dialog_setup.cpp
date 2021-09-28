@@ -17,6 +17,8 @@
  */
 
 #include "kde-qt.h"
+#include "i18n.h"
+
 #include "config.h"
 #include "dialog_setup.h"
 #include "mainwindow.h"

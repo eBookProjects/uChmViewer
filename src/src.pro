@@ -32,7 +32,8 @@ HEADERS += \
     treeitem_toc.h \
     treeitem_index.h \
     mimehelper.h \
-    showwaitcursor.h
+    showwaitcursor.h \
+    i18n.h
 
 SOURCES += \
     config.cpp \
@@ -54,7 +55,8 @@ SOURCES += \
     textencodings.cpp \
     treeitem_toc.cpp \
     treeitem_index.cpp \
-    mimehelper.cpp
+    mimehelper.cpp \
+    i18n.cpp
 
 FORMS += tab_bookmarks.ui \
     tab_index.ui \

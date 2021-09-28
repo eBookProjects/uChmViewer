@@ -56,8 +56,6 @@
     #include <QPrinter>
     #include <QPrintDialog>
 
-	#define i18n(A)		tr(A)
-
 #endif /* USE_KDE */
 
 // common non-wrapped UI classes

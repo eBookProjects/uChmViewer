@@ -23,6 +23,7 @@
 #include <QTextStream>
 
 #include "kde-qt.h"
+#include "i18n.h"
 
 #include "mainwindow.h"
 #include "config.h"

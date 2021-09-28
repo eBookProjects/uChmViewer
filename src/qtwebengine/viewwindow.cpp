@@ -28,6 +28,8 @@
 #include <QWebEngineScript>
 #include <QWebEngineView>
 
+#include "../i18n.h"
+
 #include "../config.h"
 #include "../viewwindow.h"
 #include "../mainwindow.h"

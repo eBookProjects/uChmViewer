@@ -17,6 +17,7 @@
  */
 
 #include "kde-qt.h"
+#include "i18n.h"
 
 #include "mainwindow.h"
 #include "config.h"
@@ -61,6 +62,8 @@ int main( int argc, char ** argv )
 
 	app.addLibraryPath ( "qt-plugins" );
 #endif
+
+app_i18n::init();	
 
 	// Set data for QSettings
 	QCoreApplication::setOrganizationName("Ulduzsoft");
