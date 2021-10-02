@@ -122,6 +122,8 @@ else ()
         )
 endif ()
 
+target_link_libraries(kchmviewer i18n)
+
 install(TARGETS kchmviewer DESTINATION ${APP_BIN_INSTALL_DIR})
 
 # Copying runtime dependencies for Windows deployment

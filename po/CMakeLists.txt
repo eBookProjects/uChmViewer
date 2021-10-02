@@ -1,35 +1,59 @@
+# Create and install translation files.
 
-if (NOT ${FRAMEWORK} STREQUAL KDE4)
-    return()
+cmake_minimum_required(VERSION 3.1)
+
+set(CATALOG_NAME kchmviewer)
+# The languages.txt file contains a list of locales.
+file(READ languages.txt LANGUAGES)
+string(REGEX REPLACE "[\t ]+" ";" LANGUAGES ${LANGUAGES})
+
+add_library(i18n INTERFACE)
+
+if (USE_GETTEXT)
+    find_program(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
+
+    if (GETTEXT_MSGFMT_EXECUTABLE)    
+        add_custom_target(update_translations
+            COMMAND sh update_translations.sh
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    else ()
+        set(USE_GETTEXT OFF)
+        message(STATUS "USE_GETTEXT flag set, but the GNU gettext toolset was not found.")
+    endif ()
 endif ()
 
-FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
- 
-IF(NOT GETTEXT_MSGFMT_EXECUTABLE)
+if (USE_GETTEXT)
+    find_package(Intl)
 
-	MESSAGE( "------ NOTE: msgfmt not found. Translations will *not* be installed ------")
+    if (Intl_FOUND)
+        target_compile_definitions(i18n INTERFACE USE_GETTEXT)
+        target_include_directories(i18n INTERFACE ${Intl_INCLUDE_DIRS})
+        target_link_libraries(i18n INTERFACE ${Intl_LIBRARIES})
+    else ()
+        set(USE_GETTEXT OFF)
+        message(STATUS "USE_GETTEXT flag set, but the GNU libintl headers and libraries was not found.")
+    endif ()
+endif ()
 
-ELSE(NOT GETTEXT_MSGFMT_EXECUTABLE)
-	
-	SET(catalogname kchmviewer)
-	ADD_CUSTOM_TARGET(translations ALL)
-	FILE(GLOB PO_FILES ${catalogname}*.po)
-
-	FOREACH(_poFile ${PO_FILES})
-		GET_FILENAME_COMPONENT(_poFileName ${_poFile} NAME)
-		STRING(REGEX REPLACE "^${catalogname}_?" "" _langCode ${_poFileName} )
-		STRING(REGEX REPLACE "\\.po$" "" _langCode ${_langCode} )
-
-		IF( _langCode )
-			GET_FILENAME_COMPONENT(_lang ${_poFile} NAME_WE)
-			SET(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.gmo)
-
-			ADD_CUSTOM_COMMAND(TARGET translations
-								COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} --check -o ${_gmoFile} ${_poFile}
-								DEPENDS ${_poFile})
-			INSTALL(FILES ${_gmoFile} DESTINATION ${APP_LOCALE_INSTALL_DIR}/${_langCode}/LC_MESSAGES/ RENAME ${catalogname}.mo)
-		ENDIF( _langCode )
- 
-	ENDFOREACH(_poFile ${PO_FILES})
-
-ENDIF(NOT GETTEXT_MSGFMT_EXECUTABLE)
+if (USE_GETTEXT)
+    foreach (LANG ${LANGUAGES})
+        set(CATALOG ${CMAKE_CURRENT_SOURCE_DIR}/${CATALOG_NAME}_${LANG}.po)
+        if(EXISTS ${CATALOG})
+            set(GMO_FILE ${CMAKE_CURRENT_BINARY_DIR}/${CATALOG_NAME}_${LANG}.gmo)
+            list(APPEND GMO_LIST ${GMO_FILE})
+            file(RELATIVE_PATH GMO_FILE_D ${CMAKE_BINARY_DIR} ${GMO_FILE})
+            add_custom_command(OUTPUT ${GMO_FILE}
+                COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} --check -f -o ${GMO_FILE} ${CATALOG}
+                DEPENDS ${CATALOG}
+                COMMENT "Generate ${GMO_FILE_D}")
+            install(FILES ${GMO_FILE} DESTINATION ${APP_LOCALE_INSTALL_DIR}/${LANG}/LC_MESSAGES/ RENAME ${CATALOG_NAME}.mo)
+        else ()
+            file(RELATIVE_PATH CATALOG ${CMAKE_SOURCE_DIR} ${CATALOG})
+            message(WARNING "File ${CATALOG}.po not exist")
+        endif ()
+    endforeach ()
+    
+    add_custom_target(translations ALL DEPENDS ${GMO_LIST})
+else (USE_GETTEXT)
+# TODO generate Qt translation files (*.qm)
+endif (USE_GETTEXT)

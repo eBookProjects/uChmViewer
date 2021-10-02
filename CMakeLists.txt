@@ -7,6 +7,8 @@
 # USE_WEBENGINE=ON - if defined, WebEngine is used, otherwise WebKit is used
 # USE_WINDEPLOYQT=ON - if defined, the runtime dependencies will be copied to
 #     the folder with the executable. This option is applicable only for Windows.
+# USE_GETTEXT=ON - if defined, then GNU Gettext will be used for translation.
+#     The default is ON.
 ################################################
 
 cmake_minimum_required(VERSION 3.9)
@@ -15,9 +17,10 @@ cmake_minimum_required(VERSION 3.9)
 project(kchmviewer)
 include(cmake/get-version.cmake)
 
-option(USE_WEBENGINE "Use Qt WebEngine")
-option(USE_STATIC_CHMLIB "Use static link with chm library")
-option(USE_WINDEPLOYQT "Copying runtime dependencies for Windows deployment")
+option(USE_WEBENGINE     "Use Qt WebEngine"                                    OFF)
+option(USE_STATIC_CHMLIB "Use static link with chm library"                    OFF)
+option(USE_WINDEPLOYQT   "Copying runtime dependencies for Windows deployment" OFF)
+option(USE_GETTEXT       "Use GNU Gettext for translation"                     ON)
 
 # Init cmake
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")

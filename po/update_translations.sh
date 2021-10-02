@@ -1,59 +1,69 @@
 #!/bin/sh
 #
-BASEDIR="../src/" # root of translatable sources
-PROJECT="kchmviewer" # project name
-BUGADDR="kchmviewer@ulduzsoft.com" # MSGID-Bugs
-WDIR=`pwd` # working dir
-
-echo "Preparing rc files"
-cd ${BASEDIR}
-
-# we use simple sorting to make sure the lines do not jump around too much from system to system
+# Update pot and po files.
+# Requires the GNU gettext toolkit and Qt's lupdate and lconvert tools.
 #
-find . -name '*.rc' -o -name '*.ui' -o -name '*.kcfg' | sort > ${WDIR}/rcfiles.list
-xargs --arg-file=${WDIR}/rcfiles.list extractrc > ${WDIR}/rc.cpp
-
-# additional string for KAboutData
-echo 'i18nc("NAME OF TRANSLATORS","Your names");' >> ${WDIR}/rc.cpp
-echo 'i18nc("EMAIL OF TRANSLATORS","Your emails");' >> ${WDIR}/rc.cpp
-cd ${WDIR}
-echo "Done preparing rc files"
- 
+# Initially, translations were only in KDE and GNU Gettext was used for this.
+# This causes some difficulties when extracting strings for translation from
+# *.ui files. Previously, an extractrc script was used which generated an rc.cpp
+# file from *.ui files and then rc.cpp (and other cpp) was handled by xgettext.
+# In this case, references to line locations in the ui file were obtained as
+# translator comments. A similar result is obtained when converting *.ui files
+# to *.h using uic.
 #
-echo "Extracting messages"
-cd ${BASEDIR}
-
+# Now lupdate is used to extract strings for translation. The lconvert utility
+# then makes a pot file from the ts file.
 #
-# see above on sorting
+# Old way
+#---------------------------------
+# #. i18n: file: dialog_about.ui:14
+# #. i18n: ectx: property (windowTitle), widget (QDialog, DialogAbout)
+# #: mainwindow.cpp:970 ui_dialog_about.h:111 rc.cpp:3
+# msgid "About kchmviewer"
+# msgstr ""
 #
-find . -name '*.cpp' -o -name '*.h' -o -name '*.c' | sort > ${WDIR}/infiles.list
-echo "rc.cpp" >> ${WDIR}/infiles.list
-cd ${WDIR}
+# New way
+#---------------------------------
+# #: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1117
+# msgid "About kchmviewer"
+# msgstr ""
 
-xgettext --from-code=UTF-8 -C -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki18ncp:1c,2,3 -ktr2i18n:1 \
-	-kI18N_NOOP:1 -kI18N_NOOP2:1c,2 -kaliasLocale -kki18n:1 -kki18nc:1c,2 -kki18np:1,2 -kki18ncp:1c,2,3 \
-	--msgid-bugs-address="${BUGADDR}" \
-	--files-from=infiles.list -D ${BASEDIR} -D ${WDIR} -o ${PROJECT}.pot || { echo "error while calling xgettext. aborting."; exit 1; }
+PWD_DIR=`pwd`
+cd `dirname $0`
 
-echo "Done extracting messages"
+# The languages.txt file contains a list of locales.
+read LANGUAGES < languages.txt
+CAT_NAME=kchmviewer
+POT_FILE=${CAT_NAME}.pot
+TS_FILE=tmp.ts
+POT_TMP=tmp.pot
 
-#
-echo "Merging translations"
-catalogs=`find . -name '*.po'`
+echo Update pot and po files
+echo Language list:
+echo "  $LANGUAGES"
 
-for cat in $catalogs; do
-	echo $cat
-	msgmerge -o $cat.new $cat ${PROJECT}.pot
-	mv $cat.new $cat
+lupdate -tr-function-alias tr+=i18n,QT_TRANSLATE_NOOP+=ki18n ../src -ts ${TS_FILE}
+lconvert -i ${TS_FILE} -o ${POT_TMP}
+# Removing strings with "msgctxt", otherwise Qt Linguist doesn't show sources
+# and forms correctly. Then merging the duplicates and next adding translations
+# specifically for main.cpp.
+# \n[\t ]*msgctxt[\S\t ]*$
+sed -r '/msgctxt/d' ${POT_TMP} > ${POT_FILE}
+msguniq -o ${POT_FILE} ${POT_FILE}
+xgettext -C -c -j --from-code=utf-8 -o ${POT_FILE} -ki18n:1 -kki18n:1 ../src/main.cpp
+
+# Update catalogs or create new.
+for LANG in ${LANGUAGES}; do
+	CAT="${CAT_NAME}_${LANG}.po"
+	if [ -e  ${CAT} ]
+	then
+		echo Update ${CAT}
+		msgmerge -v --lang=${LANG} --update ${CAT} ${POT_FILE} # -o ${CAT}
+	else
+		msginit --no-translator --locale=${LANG} -o ${CAT} -i ${POT_FILE}
+	fi
 done
 
-echo "Done merging translations"
- 
-#
-echo "Cleaning up"
-cd ${WDIR}
-rm rcfiles.list
-rm infiles.list
-rm rc.cpp
-
-echo "Done"
+rm ${TS_FILE}
+rm ${POT_TMP}
+cd ${PWD_DIR}
