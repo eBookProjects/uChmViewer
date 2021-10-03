@@ -21,6 +21,8 @@
 #include <QLocale>
 #include <QTranslator>
 
+#include "i18n.h"
+
 #if !defined USE_KDE && defined USE_GETTEXT
 #include <libintl.h>
 
@@ -29,7 +31,7 @@ class Translator: public QTranslator
 	public:
 		Translator() {}
 
-		QString translate( const char* context, const char* sourceText, const char* disambiguation = nullptr, int n = -1 ) const
+		virtual QString translate( const char* context, const char* sourceText, const char* disambiguation, int n ) const
 		{
 			Q_UNUSED( context )
 			Q_UNUSED( disambiguation )
@@ -38,27 +40,46 @@ class Translator: public QTranslator
 			const char* res = gettext( sourceText );
 
 			if ( res != sourceText )
-				return QString( res );
+				return QString::fromUtf8( res );
 
 
 			return QString();
 		}
+
+        // Special for qt4. See https://doc.qt.io/archives/qt-4.8/qtranslator.html#translate
+		virtual QString translate( const char* context, const char* sourceText, const char* disambiguation ) const
+		{
+			return translate( context, sourceText, disambiguation, -1 );
+		}
 };
-#endif
-#include "i18n.h"
+#endif // !defined USE_KDE && defined USE_GETTEXT
 
 void app_i18n::init()
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+	QString qt_file_name = QLatin1String( "qtbase" );
+#else
+	QString qt_file_name = QLatin1String( "qt" );
+#endif
 	static QTranslator qt_i18n;
-	bool loaded = qt_i18n.load( QLocale(), QLatin1String( "qtbase" ),
-	                            "_",  QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+	bool loaded = qt_i18n.load( QLocale(), qt_file_name, "_",
+	                            QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
 
 	if ( loaded )
 		QCoreApplication::installTranslator( &qt_i18n );
 
+#if defined USE_WEBENGINE
+	static QTranslator we_i18n;
+	loaded = we_i18n.load( QLocale(), QLatin1String( "qtwebengine" ),
+	                       "_",  QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+
+	if ( loaded )
+		QCoreApplication::installTranslator( &we_i18n );
+
+#endif // defined USE_WEBENGINE
+
 #if !defined USE_KDE && defined USE_GETTEXT
 	static Translator app_i18n;
-
 	//bindtextdomain ( "kchmviewer", "/usr/share/locale" );
 	textdomain ( "kchmviewer" );
 	QCoreApplication::installTranslator( &app_i18n );
