@@ -95,7 +95,7 @@ app_i18n::init();
     QStringList arguments;
 
     for ( int i = 0; i < argc; i++ )
-        arguments << argv[i];
+        arguments << QString::fromUtf8( argv[i] );
 
     mainWindow = new MainWindow( arguments );
 #else
