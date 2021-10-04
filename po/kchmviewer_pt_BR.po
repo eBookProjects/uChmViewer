@@ -5,11 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: kchmviewer@ulduzsoft.com\n"
-"POT-Creation-Date: 2009-07-19 20:41-0700\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-04 21:31+0300\n"
 "PO-Revision-Date: 2009-12-15 23:31-0300\n"
 "Last-Translator: Márcio Moraes <marciopanto@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-doc@kde.org>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,57 +18,807 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: pt_BR\n"
 
-#: kchmbookmarkwindow.cpp:113
-msgid "%1 - add a bookmark"
-msgstr "%1 - adicionar um marcador"
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1117
+#, fuzzy
+msgid "About kchmviewer"
+msgstr "kchmviewer"
 
-#: kchmbookmarkwindow.cpp:114 kchmbookmarkwindow.cpp:156
-msgid "Enter the name for this bookmark:"
-msgstr "Digite o nome para este marcador:"
+#: ../src/dialog_about.ui:24
+#, fuzzy
+msgid "About appplication"
+msgstr "Sai do programa"
 
-#: kchmbookmarkwindow.cpp:155
-msgid "%1 - edit the bookmark name"
-msgstr "%1 - editar o nome do marcador"
+#: ../src/dialog_about.ui:46
+#, fuzzy
+msgid "About text"
+msgstr "Sobre o &Qt"
 
-#: kchmmainwindow.cpp:96
-msgid "Bookmarks"
+#: ../src/dialog_about.ui:57
+msgid "Thanks"
+msgstr ""
+
+#: ../src/dialog_about.ui:63
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"family:'Liberation Sans'; font-size:10pt; font-weight:600;\">I would like to "
+"thank:</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"family:'Liberation Sans'; font-size:10pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"family:'Liberation Sans'; font-size:10pt;\">- Razvan Cojocaru, the author of "
+"xchm.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"family:'Liberation Sans'; font-size:10pt;\">- Peter Volkov for significant "
+"QA (more than 20 reported bugs!)</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"family:'Liberation Sans'; font-size:10pt;\">- And of course </span><span "
+"style=\" font-family:'Liberation Sans'; font-size:10pt; font-weight:600;"
+"\">everyone</span><span style=\" font-family:'Liberation Sans'; font-"
+"size:10pt;\">, who report bugs,  and suggest features.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"family:'Liberation Sans'; font-size:10pt;\"><br /></p></body></html>"
+msgstr ""
+
+#: ../src/dialog_about.ui:83
+msgid "3rd party software"
+msgstr ""
+
+#: ../src/dialog_about.ui:89
+msgid ""
+"<html><head/><body><p>kchmviewer uses the following 3rd party software:</"
+"p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
+"right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-"
+"bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
+"indent:0px;\">Qt library from http://qt-project.org by Digia; </li><li style="
+"\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -"
+"qt-block-indent:0; text-indent:0px;\">libchm for parsing CHM files by Jed "
+"Wing; </li><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">libzip for handling "
+"EPUB files by Dieter Baron and Thomas Klausner</li><li style=\" margin-"
+"top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
+"indent:0; text-indent:0px;\">Icons from DryIcons, http://dryicons.com</li></"
+"ul></body></html>"
+msgstr ""
+
+#: ../src/dialog_setup.ui:20
+msgid "KchmViewer settings"
+msgstr "Configurações do KchmViewer"
+
+#: ../src/dialog_setup.ui:42
+msgid "General behavior"
+msgstr "Comportamento geral"
+
+#: ../src/dialog_setup.ui:62
+msgid "If started with no arguments"
+msgstr ""
+
+#: ../src/dialog_setup.ui:74
+msgid "Start with nothing loaded"
+msgstr ""
+
+#: ../src/dialog_setup.ui:81
+#, fuzzy
+msgid "Pop up the \"open file\" dialog"
+msgstr "Abrir o diálogo 'abrir arquivo CHM'"
+
+#: ../src/dialog_setup.ui:88
+msgid "Open the &last used CHM file, if exist"
+msgstr "Abrir o ú&ltimo arquivo CHM usado, se existir"
+
+#: ../src/dialog_setup.ui:91
+msgid "Alt+L"
+msgstr "Alt+L"
+
+#: ../src/dialog_setup.ui:101
+msgid "History"
+msgstr "Histórico"
+
+#: ../src/dialog_setup.ui:121
+msgid "Store history information for"
+msgstr "Armazenar informações do histórico para"
+
+#: ../src/dialog_setup.ui:141
+msgid "latest files"
+msgstr "últimos arquivos"
+
+#: ../src/dialog_setup.ui:153
+msgid ""
+"Remembers the information about the files, which were opened. Remembers last "
+"opened page, search history, font size, bookmarks and so on."
+msgstr ""
+"Lembrar-se das informações sobre os arquivos que foram abertos. Lembrar-se "
+"da última página aberta, do histórico de pesquisa, do tamanho da fonte, dos "
+"marcadores e assim por diante."
+
+#: ../src/dialog_setup.ui:156
+msgid "R&emember extra information for history files"
+msgstr "L&embre-se de informações adicionais para os arquivos de histórico"
+
+#: ../src/dialog_setup.ui:159
+msgid "Alt+E"
+msgstr "Alt+E"
+
+#: ../src/dialog_setup.ui:171
+msgid "CHM security settings"
+msgstr "Configurações de segurança CHM"
+
+#: ../src/dialog_setup.ui:183
+msgid "When external link clicked"
+msgstr "Quando clicado em um link externo"
+
+#: ../src/dialog_setup.ui:195
+msgid "Alwa&ys open it in external browser"
+msgstr "Se&mpre abri-lo em um navegador externo"
+
+#: ../src/dialog_setup.ui:198
+msgid "Alt+Y"
+msgstr "Alt+Y"
+
+#: ../src/dialog_setup.ui:205 ../src/dialog_setup.ui:244
+msgid "Ask for confirmation"
+msgstr "Solicitar confirmação"
+
+#: ../src/dialog_setup.ui:212
+msgid "Do not open the link"
+msgstr "Não abrir o link"
+
+#: ../src/dialog_setup.ui:225
+msgid "When link pointed to a new CHM file clicked"
+msgstr "Quando o link aponta para um novo arquivo CHM clicado"
+
+#: ../src/dialog_setup.ui:237
+msgid "Always open a new CHM file"
+msgstr "Sempre abrir um novo arquivo CHM"
+
+#: ../src/dialog_setup.ui:251
+msgid "Do not open a new CHM file"
+msgstr "Não abrir um novo arquivo CHM"
+
+#: ../src/dialog_setup.ui:278
+#, fuzzy
+msgid "Browser"
+msgstr "&Navegar"
+
+#: ../src/dialog_setup.ui:290
+#, fuzzy
+msgid "HTML browser settings"
+msgstr "Configurações de segurança CHM"
+
+#: ../src/dialog_setup.ui:296
+msgid "Load the &images"
+msgstr ""
+
+#: ../src/dialog_setup.ui:303
+msgid "Enable browser &plugins (i.e. Flash)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:306
+msgid "Alt+P"
+msgstr "Alt+P"
+
+#: ../src/dialog_setup.ui:313
+msgid "Enable &Java"
+msgstr "Habilitar &Java"
+
+#: ../src/dialog_setup.ui:316
+msgid "Alt+J"
+msgstr "Alt+J"
+
+#: ../src/dialog_setup.ui:323
+msgid "Enable Java&Script"
+msgstr "Habilitar Java&Script"
+
+#: ../src/dialog_setup.ui:326
+msgid "Alt+S"
+msgstr "Alt+S"
+
+#: ../src/dialog_setup.ui:333
+msgid "Enable &offline storage (HTML5)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:336
+msgid "Alt+R"
+msgstr "Alt+R"
+
+#: ../src/dialog_setup.ui:343
+msgid "Enable &local storage (HTML5)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:350
+msgid "Highlight search results during in-page search"
+msgstr ""
+
+#: ../src/dialog_setup.ui:360
+msgid "Table of Contents and other windows"
+msgstr ""
+
+#: ../src/dialog_setup.ui:366
+msgid "Open all Table of Contents entries automatically"
+msgstr ""
+
+#: ../src/dialog_setup.ui:373
+msgid ""
+"Always use a single click to open the elements instead of OS-specific "
+"activation"
+msgstr ""
+
+#: ../src/dialog_setup.ui:397
+msgid "Advanced"
+msgstr "Avançado"
+
+#: ../src/dialog_setup.ui:403
+msgid "View HTML source command uses"
+msgstr "Exibir comandos utilizados no fonte do HTML"
+
+#: ../src/dialog_setup.ui:415
+msgid "Built-in HTML source viewer"
+msgstr "Exibir fonte do HTML embutido"
+
+#: ../src/dialog_setup.ui:425
+msgid "E&xternal program, specified below"
+msgstr "Programa e&xterno, especificado a seguir"
+
+#: ../src/dialog_setup.ui:428
+msgid "Alt+X"
+msgstr "Alt+X"
+
+#: ../src/dialog_setup.ui:443
+msgid "External program:"
+msgstr "Programa externo:"
+
+#: ../src/dialog_setup.ui:456
+msgid "&Browse"
+msgstr "&Navegar"
+
+#: ../src/dialog_setup.ui:468
+msgid "Other"
+msgstr "Outro"
+
+#: ../src/dialog_setup.ui:474
+#, fuzzy
+msgid "Use right-to-left layout direction (Arabic and Hebrew layouts)"
+msgstr ""
+"Utilizar a direção do layout da direita para a esquerda (layouts Hebraico e "
+"Árabe)"
+
+#: ../src/dialog_setup.ui:481
+msgid ""
+"Automatically detect encoding for KHTMLPart and WebKit browsers (not "
+"recommended)"
+msgstr ""
+"Detectar automaticamente a codificação para os navegadores Webkit e "
+"KHTMLPart (não recomendado)"
+
+#: ../src/dialog_setup.ui:488
+msgid ""
+"If this option is enabled, the application will check for updates (when new "
+"version of application is released). If a new version is available, the "
+"program will show a messagebox dialog informing you about new version. This "
+"check will only performed once in 24 hours. No user information is requested "
+"or transmitted from your computer during this check."
+msgstr ""
+
+#: ../src/dialog_setup.ui:491
+msgid "Perform a check whether a new version is available (once a week)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:501
+#, fuzzy
+msgid "Toolbars"
+msgstr "Barra de ferramentas de ação"
+
+#: ../src/dialog_setup.ui:507
+msgid "Small icons"
+msgstr ""
+
+#: ../src/dialog_setup.ui:514
+msgid "Large icons"
+msgstr ""
+
+#: ../src/dialog_setup.ui:521
+msgid "Large icons and text"
+msgstr ""
+
+#: ../src/dialog_setup.ui:528
+#, fuzzy
+msgid "Just text"
+msgstr "Sobre o &Qt"
+
+#: ../src/dialog_setup.cpp:209
+msgid ""
+"Changing those options requires restarting the application to take effect."
+msgstr ""
+"Alterar essas opções requer a reinicialização do programa para fazer efeito."
+
+#: ../src/dialog_setup.cpp:218
+msgid "*|Executables"
+msgstr "*|Executáveis"
+
+#: ../src/dialog_setup.cpp:218 ../src/dialog_setup.cpp:221
+msgid "Choose an editor executable"
+msgstr "Escolha um editor executável"
+
+#: ../src/dialog_setup.cpp:223
+msgid "Executables (*)"
+msgstr "Executáveis (*)"
+
+#: ../src/dialog_topicselector.ui:13
+msgid "Multiple topics"
+msgstr ""
+
+#: ../src/dialog_topicselector.ui:25
+msgid "Please select the topic to open:"
+msgstr ""
+
+#: ../src/mainwindow.ui:14 ../src/main.cpp:49
+msgid "kchmviewer"
+msgstr "kchmviewer"
+
+#: ../src/mainwindow.ui:28
+msgid "&Settings"
+msgstr "&Configurações"
+
+#: ../src/mainwindow.ui:37
+msgid "&Bookmarks"
+msgstr "&Marcadores"
+
+#: ../src/mainwindow.ui:44
+msgid "&File"
+msgstr "&Arquivo"
+
+#: ../src/mainwindow.ui:55
+msgid "&Edit"
+msgstr "&Editar"
+
+#: ../src/mainwindow.ui:64
+msgid "&View"
+msgstr "&Exibir"
+
+#: ../src/mainwindow.ui:78
+msgid "&Windows"
+msgstr "&Janelas"
+
+#: ../src/mainwindow.ui:85
+#, fuzzy
+msgid "Help"
+msgstr "A&juda"
+
+#: ../src/mainwindow.ui:100
+#, fuzzy
+msgid "General toolbar"
+msgstr "Barra de ferramentas geral"
+
+#: ../src/mainwindow.ui:125
+#, fuzzy
+msgid "Navigation toolbar"
+msgstr "Barra de ferramentas de navegação"
+
+#: ../src/mainwindow.ui:151
+#, fuzzy
+msgid "View toolbar"
+msgstr "Barra de ferramentas de ação"
+
+#: ../src/mainwindow.ui:186
+msgid "&Print..."
+msgstr "&Imprimir..."
+
+#: ../src/mainwindow.ui:189
+msgid "Print"
+msgstr "Imprimir"
+
+#: ../src/mainwindow.ui:192
+msgid "Print current page"
+msgstr "Imprimir página atual"
+
+#: ../src/mainwindow.ui:195
+msgid "Prints currently opened page."
+msgstr "Imprime a página aberta atualmente."
+
+#: ../src/mainwindow.ui:198
+msgid "Ctrl+P"
+msgstr "Ctrl+P"
+
+#: ../src/mainwindow.ui:207
+msgid "&Quit"
+msgstr "&Sair"
+
+#: ../src/mainwindow.ui:210
+msgid "Exit"
+msgstr "Sair"
+
+#: ../src/mainwindow.ui:213
+msgid "Exits the application"
+msgstr "Sai do programa"
+
+#: ../src/mainwindow.ui:216
+msgid "Ctrl+Q"
+msgstr "Ctrl+Q"
+
+#: ../src/mainwindow.ui:225
+msgid "C&opy"
+msgstr "C&opiar"
+
+#: ../src/mainwindow.ui:228
+msgid "Copy"
+msgstr "Copiar"
+
+#: ../src/mainwindow.ui:231
+msgid "Copies selected content to clipboard"
+msgstr "Copia o conteúdo selecionado para a área de transferência"
+
+#: ../src/mainwindow.ui:234
+msgid "Ctrl+C"
+msgstr "Ctrl+C"
+
+#: ../src/mainwindow.ui:243
+msgid "&Select All"
+msgstr "&Selecionar tudo"
+
+#: ../src/mainwindow.ui:246
+msgid "Paste"
+msgstr "Colar"
+
+#: ../src/mainwindow.ui:249
+msgid "Selects everything in the document"
+msgstr "Seleciona tudo no documento"
+
+#: ../src/mainwindow.ui:252
+msgid "Ctrl+V"
+msgstr "Ctrl+V"
+
+#: ../src/mainwindow.ui:261
+msgid "&Find..."
+msgstr "&Localizar..."
+
+#: ../src/mainwindow.ui:264
+msgid "Find text in currently opened page"
+msgstr "Localizar texto na página aberta atualmente"
+
+#: ../src/mainwindow.ui:267
+msgid "Enters the Find in page mode"
+msgstr "Entra no Localizar no modo de página"
+
+#: ../src/mainwindow.ui:270
+msgid "Ctrl+F"
+msgstr "Ctrl+F"
+
+#: ../src/mainwindow.ui:279
+msgid "E&xtract CHM content..."
+msgstr "E&xtrair conteúdo CHM..."
+
+#: ../src/mainwindow.ui:282
+msgid "Extract the CHM content to the directory"
+msgstr "Extrair o conteúdo CHM para o diretório"
+
+#: ../src/mainwindow.ui:285
+msgid ""
+"Exctracts the CHM archive content to the specified directory. All the files "
+"are extracted."
+msgstr ""
+"Extrai o conteúdo do arquivo CHM para o diretório especificado. Todos os "
+"arquivos são extraídos."
+
+#: ../src/mainwindow.ui:294
+msgid "&Application settings..."
+msgstr "Configur&ações do programa..."
+
+#: ../src/mainwindow.ui:297 ../src/mainwindow.ui:300
+msgid "Change the application settings"
+msgstr "Altera as configurações do programa"
+
+#: ../src/mainwindow.ui:309
+msgid "&Add bookmark"
+msgstr "&Adicionar marcador"
+
+#: ../src/mainwindow.ui:312
+#, fuzzy
+msgid "Bookmark"
 msgstr "Marcadores"
 
-#: kchmmainwindow.cpp:121
-msgid ""
-"<html><b>%1 version %2</b><br><br>Copyright (C) George Yunaev, "
-"2004-2008<br><a "
-"href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</a><br><a "
-"href=\"http://www.kchmviewer.net\">http://www.kchmviewer.net</a><br><br>Licensed "
-"under GNU GPL license.</html>"
-msgstr ""
-"<html><b>%1 versão %2</b><br><br>Copyright (C) George Yunaev, "
-"2004-2008<br><a "
-"href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</a><br><a "
-"href=\"http://www.kchmviewer.net\">http://www.kchmviewer.net</a><br><br>Licenciado "
-"sob os termos da licença GPL GNU.</html>"
+#: ../src/mainwindow.ui:315
+msgid "Adds a bookmark for currently opened page"
+msgstr "Adicionar um marcador para a página aberta atualmente"
 
-#: kchmmainwindow.cpp:163
+#: ../src/mainwindow.ui:318
+msgid ""
+"Adds a bookmark for currently opened page. Remembers the opened page, and "
+"scroll position. Bookmarks are accessible through Bookmarks menu or tab."
+msgstr ""
+"Adiciona um marcador para a página aberta atualmente. Recorda a página "
+"aberta, e a posição de rolagem. Marcadores são acessíveis através da aba ou "
+"menu Marcadores."
+
+#: ../src/mainwindow.ui:321
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: ../src/mainwindow.ui:330
+msgid "&Increase font size"
+msgstr "&Aumentar o tamanho da fonte"
+
+#: ../src/mainwindow.ui:333
+msgid "Larger"
+msgstr ""
+
+#: ../src/mainwindow.ui:336
+msgid "Increase the font size"
+msgstr "Aumentar o tamanho da fonte"
+
+#: ../src/mainwindow.ui:339
+msgid "Increases the document font size. The new font size will be stored."
+msgstr ""
+"Aumenta o tamanho da fonte do documento. O tamanho da nova fonte será "
+"armazenada."
+
+#: ../src/mainwindow.ui:342
+#, fuzzy
+msgid "Ctrl+="
+msgstr "Ctrl+"
+
+#: ../src/mainwindow.ui:351
+msgid "&Decrease font size"
+msgstr "&Diminuir o tamanho da fonte"
+
+#: ../src/mainwindow.ui:354
+msgid "Smaller"
+msgstr ""
+
+#: ../src/mainwindow.ui:357
+msgid "Decrease the font size"
+msgstr "Diminuir o tamanho da fonte"
+
+#: ../src/mainwindow.ui:360
+msgid "Decreases the document font size. The new font size will be stored."
+msgstr ""
+"Diminui o tamanho da fonte do documento. O tamanho da nova fonte será "
+"armazenada."
+
+#: ../src/mainwindow.ui:363
+msgid "Ctrl+-"
+msgstr "Ctrl+-"
+
+#: ../src/mainwindow.ui:372
+msgid "See &HTML"
+msgstr ""
+
+#: ../src/mainwindow.ui:375
+msgid "View HTML source of current page"
+msgstr "Exibir fonte do HTML da página atual"
+
+#: ../src/mainwindow.ui:378
+msgid "Shows the HTML source of currently opened page"
+msgstr "Mostra o fonte do HTML da página aberta atualmente"
+
+#: ../src/mainwindow.ui:381
+msgid "Ctrl+U"
+msgstr "Ctrl+U"
+
+#: ../src/mainwindow.ui:393
+msgid "Enable &full screen mode"
+msgstr "Habilitar modo &tela cheia"
+
+#: ../src/mainwindow.ui:396
+msgid "Enters or leaves the fullscreen mode"
+msgstr "Entra ou sai do modo tela cheia"
+
+#: ../src/mainwindow.ui:399
+msgid "F11"
+msgstr "F11"
+
+#: ../src/mainwindow.ui:417
+msgid "Show &navigator window"
+msgstr ""
+
+#: ../src/mainwindow.ui:420
+msgid "Show navigator dock window"
+msgstr ""
+
+#: ../src/mainwindow.ui:423
+msgid ""
+"Shows or hides the size window (with Content, Index, Search and Bookmark "
+"tabs)"
+msgstr ""
+"Mostra ou oculta o tamanho da janela (como as abas Conteúdo, Índice, "
+"Pesquisar e Favoritos)"
+
+#: ../src/mainwindow.ui:426
+msgid "F9"
+msgstr "F9"
+
+#: ../src/mainwindow.ui:438
+msgid "&Locate"
+msgstr ""
+
+#: ../src/mainwindow.ui:441
+msgid "Locate the current page in contents window"
+msgstr "Localizar a página atual no conteúdo da janela"
+
+#: ../src/mainwindow.ui:444
+msgid ""
+"If the current page is present in the Table of Contents, locate it there. "
+msgstr ""
+"Se a página atual está presente na Tabela de Conteúdo, localize-a nessa "
+"Tabela."
+
+#: ../src/mainwindow.ui:447
+#, fuzzy
+msgid "Ctrl+L"
+msgstr "Ctrl+"
+
+#: ../src/mainwindow.ui:456
+msgid "Set &encoding"
+msgstr "D&efinir codificação"
+
+#: ../src/mainwindow.ui:459
+msgid "Changes the current document encoding. "
+msgstr "Altera a codificação do documento atual."
+
+#: ../src/mainwindow.ui:468
+msgid "&Open..."
+msgstr "&Abrir..."
+
+#: ../src/mainwindow.ui:471
+msgid "Open a CHM file"
+msgstr "Abrir um arquivo CHM"
+
+#: ../src/mainwindow.ui:474
+msgid "Opens a new CHM file"
+msgstr "Abre um novo arquivo CHM"
+
+#: ../src/mainwindow.ui:483
+msgid "Back"
+msgstr "Voltar"
+
+#: ../src/mainwindow.ui:486
+msgid "Navigate back"
+msgstr "Navegar para trás"
+
+#: ../src/mainwindow.ui:489
+msgid "Navigate back in navigation history"
+msgstr "Navegar para trás no histórico da navegação"
+
+#: ../src/mainwindow.ui:498
+msgid "Forward"
+msgstr "Avançar"
+
+#: ../src/mainwindow.ui:501
+msgid "Navigate forward"
+msgstr "Navegar para frente"
+
+#: ../src/mainwindow.ui:504
+msgid "Navigate forward in navigation history"
+msgstr "Navegar para frente no histórico da navegação"
+
+#: ../src/mainwindow.ui:513
+msgid "Home"
+msgstr "Início"
+
+#: ../src/mainwindow.ui:516
+msgid "Navigate home"
+msgstr "Navegar até o início"
+
+#: ../src/mainwindow.ui:519
+msgid "Navigate to the document Home page, as specified in the document."
+msgstr ""
+"Navegar até a página Inicial do documento, conforme especificado no "
+"documento."
+
+#: ../src/mainwindow.ui:528 ../src/window_browser.ui:90
+msgid "Previous"
+msgstr ""
+
+#: ../src/mainwindow.ui:531
+msgid "Go to the previous page in the Table of Contents"
+msgstr "Ir para a página anterior na Tabela de Conteúdo"
+
+#: ../src/mainwindow.ui:534
+msgid ""
+"Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
+"Ctrl+Left Arrow</i>"
+msgstr ""
+"Ir para a página anterior na <b>Tabela de Conteúdo</b><br><br><i>Atalho: Ctrl"
+"+Seta para a esquerda</i>"
+
+#: ../src/mainwindow.ui:543 ../src/window_browser.ui:113
+msgid "Next"
+msgstr ""
+
+#: ../src/mainwindow.ui:546
+msgid "Go to the next page in the Table of Contents"
+msgstr "Ir para a próxima página na Tabela de Conteúdo"
+
+#: ../src/mainwindow.ui:549
+msgid ""
+"Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: Ctrl"
+"+Right Arrow</i>"
+msgstr ""
+"Ir para a próxima página na <b>Tabela de Conteúdo</b><br><br><i>Atalho: Ctrl"
+"+Seta para a direita</i>"
+
+#: ../src/mainwindow.ui:558
+msgid "&Close window"
+msgstr "Fe&char janela"
+
+#: ../src/mainwindow.ui:561
+msgid "Close current window"
+msgstr "Fechar a janela atual"
+
+#: ../src/mainwindow.ui:564
+msgid "Closes currently opened window"
+msgstr "Fecha a janela aberta atualmente"
+
+#: ../src/mainwindow.ui:567
+msgid "Ctrl+W"
+msgstr "Ctrl+W"
+
+#: ../src/mainwindow.ui:572
+#, fuzzy
+msgid "About kchmviewer..."
+msgstr "kchmviewer"
+
+#: ../src/mainwindow.ui:577
+#, fuzzy
+msgid "About Qt"
+msgstr "Sobre o &Qt"
+
+#: ../src/mainwindow.ui:586
+msgid "Check for updates"
+msgstr ""
+
+#: ../src/mainwindow.ui:595
+#, fuzzy
+msgid "Edit toolbars..."
+msgstr "Barra de ferramentas de ação"
+
+#: ../src/mainwindow.cpp:199
+msgid "Shared memory segment failed"
+msgstr ""
+
+#: ../src/mainwindow.cpp:200
+#, qt-format
+msgid "Failed to create a shared memory segment: %1"
+msgstr ""
+
+#: ../src/mainwindow.cpp:276
+#, qt-format
 msgid "Detected file encoding: %1 ( %2 )"
 msgstr "Codificação do arquivo detectado: %1 ( %2 )"
 
-#: kchmmainwindow.cpp:254
+#: ../src/mainwindow.cpp:346
+#, qt-format
 msgid "%1 - failed to load the chm file"
 msgstr "%1 - falha ao carregar o arquivo chm"
 
-#: kchmmainwindow.cpp:255
+#: ../src/mainwindow.cpp:347
+#, qt-format
 msgid "Unable to load the chm file %1"
 msgstr "Não foi possível carregar o arquivo chm %1"
 
-#: kchmmainwindow.cpp:263
+#: ../src/mainwindow.cpp:355
+#, qt-format
 msgid "Could not load file %1"
 msgstr "Não foi possível carregar arquivo %1"
 
-#: kchmmainwindow.cpp:331
+#: ../src/mainwindow.cpp:413
+#, qt-format
 msgid "%1 - remote link clicked - %2"
 msgstr "%1 - link remoto clicado - %2"
 
-#: kchmmainwindow.cpp:332
+#: ../src/mainwindow.cpp:414
+#, qt-format
 msgid ""
 "A remote link %1 will start the external program to open it.\n"
 "\n"
@@ -77,168 +828,253 @@ msgstr ""
 "\n"
 "Você deseja continuar?"
 
-#: kchmmainwindow.cpp:333 kchmmainwindow.cpp:377
+#: ../src/mainwindow.cpp:415
 msgid "&Yes"
 msgstr "&Sim"
 
-#: kchmmainwindow.cpp:333 kchmmainwindow.cpp:377
+#: ../src/mainwindow.cpp:415
 msgid "&No"
 msgstr "&Não"
 
-#: kchmmainwindow.cpp:355
-msgid "%1 - JavsScript link clicked"
-msgstr "%1 - Link JavsScript clicado"
-
-#: kchmmainwindow.cpp:356
+#: ../src/mainwindow.cpp:853
+#, fuzzy
 msgid ""
-"You have clicked a JavaScript link.\n"
-"To prevent security-related issues JavaScript URLs are disabled in CHM files."
-msgstr ""
-"Você clicou em um link JavaScript.\n"
-"Para evitar problemas de segurança relacionados com JavaScript, URLs são "
-"desativadas em arquivos CHM."
-
-#: kchmmainwindow.cpp:375
-msgid "%1 - link to a new CHM file clicked"
-msgstr "%1 - link para um novo arquivo CHM clicado"
-
-#: kchmmainwindow.cpp:376
-msgid ""
-"You have clicked a link, which leads to a new CHM file %1.\n"
-"The current file will be closed.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-"Você clicou em um link, que leva a um novo arquivo CHM %1.\n"
-"O arquivo atual será fechado.\n"
-"\n"
-"Você deseja continuar?"
-
-#: kchmmainwindow.cpp:639
-msgid "Contents"
-msgstr "Conteúdo"
-
-#: kchmmainwindow.cpp:664
-msgid "Index"
-msgstr "Índice"
-
-#: kchmmainwindow.cpp:687
-msgid "Search"
-msgstr "Pesquisar"
-
-#: kchmmainwindow.cpp:855
-msgid "*.chm|Compressed Help Manual (*.chm)"
+"*.chm *.epub|All electronic book\n"
+"*.chm|Compressed Help Manual\n"
+"*.epub|EPUB electronic book"
 msgstr "*.chm|Manual de Ajuda Comprimido (*.chm)"
 
-#: kchmmainwindow.cpp:858
+#: ../src/mainwindow.cpp:856
 msgid "Open a chm file"
 msgstr "Abrir um arquivo chm"
 
-#: kchmmainwindow.cpp:860
-msgid "Compressed Help Manual (*.chm)"
-msgstr "Manual de Ajuda Comprimido (*.chm)"
+#: ../src/mainwindow.cpp:858
+msgid "Electronic books (*.chm *.epub)"
+msgstr ""
 
-#: kchmmainwindow.cpp:872
-msgid "Loading aborted"
-msgstr "Carregamento cancelado"
-
-#: kchmmainwindow.cpp:912 kchmmainwindow.cpp:916
+#: ../src/mainwindow.cpp:903 ../src/mainwindow.cpp:907
 msgid "Choose a directory to store CHM content"
 msgstr "Escolha um diretório para armazenar o conteúdo CHM"
 
-#: kchmmainwindow.cpp:930
+#: ../src/mainwindow.cpp:921
 msgid "Extracting CHM content"
 msgstr "Extraindo o conteúdo CHM"
 
-#: kchmmainwindow.cpp:931
+#: ../src/mainwindow.cpp:922
 msgid "Extracting files..."
 msgstr "Extraindo arquivos..."
 
-#: kchmmainwindow.cpp:932
+#: ../src/mainwindow.cpp:923
 msgid "Abort"
 msgstr "Cancelar"
 
-#: kchmmainwindow.cpp:1122
+#: ../src/mainwindow.cpp:1016
+#, fuzzy
+msgid "HTML source"
+msgstr "&Exibir fonte do HTML"
+
+#: ../src/mainwindow.cpp:1042
+#, qt-format
+msgid ""
+"Cannot start external editor %1.\n"
+"Make sure the path is absolute!"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
 msgstr "Não foi possível localizar tópico aberto na janela de conteúdo"
 
-#: kchmmainwindow.cpp:1164
-msgid "About %1"
-msgstr "Sobre o %1"
+#: ../src/mainwindow.cpp:1108
+#, fuzzy, qt-format
+msgid ""
+"<html><b>kchmviewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2015<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
+"a><br><a href=\"http://www.ulduzsoft.com/kchmviewer\">http://www.ulduzsoft."
+"com/kchmviewer</a><br><br>Licensed under GNU GPL license version 3.</html>"
+msgstr ""
+"<html><b>%1 versão %2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2008<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
+"a><br><a href=\"http://www.kchmviewer.net\">http://www.kchmviewer.net</"
+"a><br><br>Licenciado sob os termos da licença GPL GNU.</html>"
 
-#: kchmmainwindow.cpp:1326
-msgid "&Help"
-msgstr "A&juda"
-
-#: kchmmainwindow.cpp:1327
-msgid "&About"
-msgstr "&Sobre"
-
-#: kchmmainwindow.cpp:1328
-msgid "About &Qt"
-msgstr "Sobre o &Qt"
-
-#: kchmmainwindow.cpp:1340
+#: ../src/mainwindow.cpp:1212
 msgid "Ctrl+1"
 msgstr "Ctrl+1"
 
-#: kchmmainwindow.cpp:1346
+#: ../src/mainwindow.cpp:1218
 msgid "Ctrl+2"
 msgstr "Ctrl+2"
 
-#: kchmmainwindow.cpp:1352
+#: ../src/mainwindow.cpp:1224
 msgid "Ctrl+3"
 msgstr "Ctrl+3"
 
-#: kchmmainwindow.cpp:1358
+#: ../src/mainwindow.cpp:1230
 msgid "Ctrl+4"
 msgstr "Ctrl+4"
 
-#: kchmmainwindow.cpp:1365
+#: ../src/mainwindow.cpp:1237
 msgid "/"
 msgstr "/"
 
-#: kchmmainwindow.cpp:1372
+#: ../src/mainwindow.cpp:1244
 msgid "F3"
 msgstr "F3"
 
-#: kchmmainwindow.cpp:1379
+#: ../src/mainwindow.cpp:1264
 msgid "Ctrl+Right"
 msgstr "Ctrl+Direito"
 
-#: kchmmainwindow.cpp:1386
+#: ../src/mainwindow.cpp:1271
 msgid "Ctrl+Left"
 msgstr "Ctrl+Esquerdo"
 
-#: kchmmainwindow.cpp:1492
+#: ../src/mainwindow.cpp:1278
+#, fuzzy
+msgid "Ctrl+I"
+msgstr "Ctrl+"
+
+#: ../src/mainwindow.cpp:1362
+#, qt-format
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: kchmsearchwindow.cpp:151
+#: ../src/mainwindow.cpp:1464
+msgid "Unable to check whether a new version is available"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1477
+msgid "New version available"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1478
+#, qt-format
+msgid ""
+"<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>You are "
+"currently using version %3.<br>Do you want to visit the application web site "
+"%2?"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1491
+msgid "Checked for updates; you are using the latest version of kchmviewer"
+msgstr ""
+
+#: ../src/navigationpanel.cpp:40
+msgid "Search"
+msgstr "Pesquisar"
+
+#: ../src/navigationpanel.cpp:43
+msgid "Bookmarks"
+msgstr "Marcadores"
+
+#: ../src/navigationpanel.cpp:83
+msgid "Index"
+msgstr "Índice"
+
+#: ../src/navigationpanel.cpp:89
+msgid "Contents"
+msgstr "Conteúdo"
+
+#: ../src/navigatorpanel.ui:17
+#, fuzzy
+msgid "Navigator panel"
+msgstr "Navegar para frente"
+
+#: ../src/navigatorpanel.ui:28
+msgid "Tab 1"
+msgstr ""
+
+#: ../src/recentfiles.cpp:96
+#, qt-format
+msgid "&%1 %2"
+msgstr ""
+
+#: ../src/tab_bookmarks.ui:36
+msgid "&Add"
+msgstr ""
+
+#: ../src/tab_bookmarks.ui:43
+msgid "Edi&t"
+msgstr ""
+
+#: ../src/tab_bookmarks.ui:50
+msgid "&Del"
+msgstr ""
+
+#: ../src/tab_bookmarks.cpp:133
+#, qt-format
+msgid "%1 - add a bookmark"
+msgstr "%1 - adicionar um marcador"
+
+#: ../src/tab_bookmarks.cpp:134 ../src/tab_bookmarks.cpp:176
+msgid "Enter the name for this bookmark:"
+msgstr "Digite o nome para este marcador:"
+
+#: ../src/tab_bookmarks.cpp:175
+#, qt-format
+msgid "%1 - edit the bookmark name"
+msgstr "%1 - editar o nome do marcador"
+
+#: ../src/tab_contents.ui:13 ../src/tab_index.ui:14 ../src/tab_search.ui:13
+msgid "Form1"
+msgstr ""
+
+#: ../src/tab_index.ui:22
+msgid "F&ind:"
+msgstr ""
+
+#: ../src/tab_index.ui:50
+msgid "1"
+msgstr ""
+
+#: ../src/tab_search.ui:33
+msgid "Type in word(s) to search for:"
+msgstr ""
+
+#: ../src/tab_search.ui:48
+msgid "<a href=\"help\">Help</a>"
+msgstr ""
+
+#: ../src/tab_search.ui:86
+#, fuzzy
+msgid "&Go"
+msgstr "&Não"
+
+#: ../src/tab_search.ui:111
+msgid "Title"
+msgstr ""
+
+#: ../src/tab_search.ui:116
+msgid "Location"
+msgstr ""
+
+#: ../src/tab_search.cpp:166
+#, qt-format
 msgid "Search returned %1 result(s)"
 msgstr "A pesquisa devolveu %1 resultado(s)"
 
-#: kchmsearchwindow.cpp:154
+#: ../src/tab_search.cpp:170
 msgid "Search returned no results"
 msgstr "A pesquisa não devolveu resultados"
 
-#: kchmsearchwindow.cpp:157
+#: ../src/tab_search.cpp:173
 msgid "Search failed"
 msgstr "A pesquisa falhou"
 
-#: kchmsearchwindow.cpp:190
+#: ../src/tab_search.cpp:206
+#, fuzzy
 msgid ""
 "<html><p>The improved search engine allows you to search for a word, symbol "
 "or phrase, which is set of words and symbols included in quotes. Only the "
-"documents which include all the terms speficide in th search query are "
+"documents which include all the terms specified in th search query are "
 "shown; no prefixes needed.<p>Unlike MS CHM internal search index, my "
 "improved search engine indexes everything, including special symbols. "
 "Therefore it is possible to search (and find!) for something like <i>$q = "
 "new ChmFile();</i>. This search also fully supports Unicode, which means "
 "that you can search in non-English documents.<p>If you want to search for a "
 "quote symbol, use quotation mark instead. The engine treats a quote and a "
-"quotation mark as the same symbol, which allows to use them in "
-"phrases.</html>"
+"quotation mark as the same symbol, which allows to use them in phrases.</"
+"html>"
 msgstr ""
 "<html><p>A melhor engine de busca lhe permite procurar por uma palavra, "
 "frase ou símbolo, que é um conjunto de palavras e símbolos incluído entre "
@@ -252,980 +1088,238 @@ msgstr ""
 "de cotação, use aspas em vez disso. A engine trata uma cotação e uma aspa "
 "como o mesmo símbolo, o que permite usá-los em frases. </html>"
 
-#: kchmsearchwindow.cpp:207
+#: ../src/tab_search.cpp:223
 msgid "Reading dictionary..."
 msgstr "Lendo diretório..."
 
-#: kchmsearchwindow.cpp:221 kchmsearchwindow.cpp:222
+#: ../src/tab_search.cpp:237 ../src/tab_search.cpp:238
+#: ../src/tab_search.cpp:243
 msgid "Generating search index..."
 msgstr "Gerando índice de pesquisa..."
 
-#: kchmsetupdialog.cpp:183
-msgid ""
-"Changing those options requires restarting the application to take effect."
+#: ../src/tab_search.cpp:253
+#, qt-format
+msgid "The index cannot be saved into file %1"
 msgstr ""
-"Alterar essas opções requer a reinicialização do programa para fazer efeito."
 
-#: kchmsetupdialog.cpp:192
-msgid "*|Executables"
-msgstr "*|Executáveis"
+#: ../src/window_browser.ui:36
+#, fuzzy
+msgid "TabbedBrowser"
+msgstr "&Navegar"
 
-#: kchmsetupdialog.cpp:192 kchmsetupdialog.cpp:195
-msgid "Choose an editor executable"
-msgstr "Escolha um editor executável"
+#: ../src/window_browser.ui:133
+msgid "Case Sensitive"
+msgstr ""
 
-#: kchmsetupdialog.cpp:197
-msgid "Executables (*)"
-msgstr "Executáveis (*)"
+#: ../src/window_browser.ui:152
+msgid "<img src=\":/images/find_wrap.png\">&nbsp;Search wrapped"
+msgstr ""
 
-#: kchmviewwindowmgr.cpp:58
-msgid "Close current page"
-msgstr "Fechar página atual"
+#: ../src/toolbareditor.ui:14
+msgid "Dialog"
+msgstr ""
 
-#: kchmviewwindowmgr.cpp:70
-msgid "Add page"
-msgstr "Adicionar página"
+#: ../src/toolbareditor.ui:20
+#, fuzzy
+msgid "Select a toolbar"
+msgstr "Barra de ferramentas geral"
 
-#: kchmviewwindowmgr.cpp:171 kchmviewwindowmgr.cpp:238
-msgid "Alt+%1"
-msgstr "Alt+%1"
+#: ../src/toolbareditor.ui:26
+#, fuzzy
+msgid "Editing the toolbar "
+msgstr "Barra de ferramentas de ação"
 
-#: kchmviewwindow_qtextbrowser.cpp:121 kchmviewwindow_qtwebkit.cpp:256
+#: ../src/toolbareditor.ui:46
+msgid ""
+"Drag the actions to the toolbar list to add them to the toolbar. \n"
+"Drag them from toolbar list to remove them from the toolbar."
+msgstr ""
+
+#: ../src/toolbareditor.ui:65
+msgid "Available actions"
+msgstr ""
+
+#: ../src/toolbareditor.ui:90
+msgid "Toolbar actions"
+msgstr ""
+
+#: ../src/qtwebengine/viewwindow.cpp:162 ../src/qtwebkit/viewwindow.cpp:178
 msgid "Printing aborted"
 msgstr "Impressão cancelada"
 
-#: kchmviewwindow_qtextbrowser.cpp:126 kchmviewwindow_qtwebkit.cpp:261
+#: ../src/qtwebengine/viewwindow.cpp:167 ../src/qtwebkit/viewwindow.cpp:183
 msgid "Printing finished"
 msgstr "Impressão concluída"
 
-#: kchmviewwindow_qtextbrowser.cpp:317 kchmviewwindow_qtwebkit.cpp:375
+#: ../src/qtwebengine/viewwindow.cpp:245 ../src/qtwebkit/viewwindow.cpp:277
 msgid "Open Link in a new tab\tShift+LMB"
 msgstr "Abrir Link em uma nova aba\tShift+Botão esquerdo do mouse"
 
-#: kchmviewwindow_qtextbrowser.cpp:318 kchmviewwindow_qtwebkit.cpp:376
+#: ../src/qtwebengine/viewwindow.cpp:246 ../src/qtwebkit/viewwindow.cpp:278
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr ""
 "Abrir Link em uma nova aba em segundo plano\tCtrl+Botão esquerdo do mouse"
 
-#: main.cpp:45
-msgid "Perform auto testing"
-msgstr "Realizar testes automaticamente"
+#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:73
+msgid "Add page"
+msgstr "Adicionar página"
 
-#: main.cpp:46
-msgid "Perform short auto testing"
-msgstr "Realizar testes curtos automaticamente"
+#: ../src/qtwebengine/viewwindowmgr.cpp:159
+#: ../src/qtwebengine/viewwindowmgr.cpp:237
+#: ../src/qtwebkit/viewwindowmgr.cpp:160 ../src/qtwebkit/viewwindowmgr.cpp:239
+#, qt-format
+msgid "Alt+%1"
+msgstr "Alt+%1"
 
-#: main.cpp:47
-msgid "A CHM file to show"
-msgstr "Um arquivo CHM para mostrar"
-
-#: main.cpp:48
-msgid ""
-"'--search <query>' specifies the search query to search, and activate the "
-"first entry if found"
-msgstr ""
-"'--search <consultar>' especifica a consulta da pesquisa, e destaca a "
-"primeira entrada se encontrada"
-
-#: main.cpp:49
-msgid ""
-"'--sindex <word>' specifies the word to find in index, and activate if found"
-msgstr ""
-"'--sindex <palavra>' especifica a palavra para encontrar no índice, e a "
-"destaca se encontrada"
-
-#: main.cpp:50
-msgid ""
-"'--stoc <word(s)>' specifies the word(s) to find in TOC, and activate if "
-"found. Wildcards allowed."
-msgstr ""
-"'--stoc <palavra(s)>'  especifica a(s) palavra(s) para localizar na Tabela "
-"de Conteúdo, e a(s) destaca(s) se encontrada(s). Caracteres especiais são "
-"permitidos."
-
-#: main.cpp:56
+#: ../src/main.cpp:51
 msgid "CHM file viewer"
 msgstr "Visualizador de arquivos CHM"
 
-#: main.cpp:58
-msgid "(c) 2004-2008 George Yunaev, gyunaev@ulduzsoft.com"
+#: ../src/main.cpp:53
+#, fuzzy
+msgid "(c) 2004-2015 George Yunaev, gyunaev@ulduzsoft.com"
 msgstr "(c) 2004-2008 George Yunaev, gyunaev@ulduzsoft.com"
 
-#: main.cpp:59
+#: ../src/main.cpp:54
 msgid "Please report bugs to kchmviewer@ulduzsoft.com"
 msgstr "Por favor, relate falhas para kchmviewer@ulduzsoft.com"
 
-#. i18n: file ./dialog_setup.ui line 20
-#: rc.cpp:3
-#, no-c-format
-msgid "KchmViewer settings"
-msgstr "Configurações do KchmViewer"
-
-#. i18n: file ./dialog_setup.ui line 42
-#: rc.cpp:6
-#, no-c-format
-msgid "General behavior"
-msgstr "Comportamento geral"
-
-#. i18n: file ./dialog_setup.ui line 62
-#: rc.cpp:9
-#, no-c-format
-msgid "If no arguments given on load"
-msgstr "Se não houver argumentos apresentados na carregamento"
-
-#. i18n: file ./dialog_setup.ui line 74
-#: rc.cpp:12
-#, no-c-format
-msgid "Open the 'open CHM file' dialog"
-msgstr "Abrir o diálogo 'abrir arquivo CHM'"
-
-#. i18n: file ./dialog_setup.ui line 81
-#: rc.cpp:15
-#, no-c-format
-msgid "Open the &last used CHM file, if exist"
-msgstr "Abrir o ú&ltimo arquivo CHM usado, se existir"
-
-#. i18n: file ./dialog_setup.ui line 84
-#: rc.cpp:18
-#, no-c-format
-msgid "Alt+L"
-msgstr "Alt+L"
-
-#. i18n: file ./dialog_setup.ui line 94
-#: rc.cpp:21
-#, no-c-format
-msgid "History"
-msgstr "Histórico"
-
-#. i18n: file ./dialog_setup.ui line 114
-#: rc.cpp:24
-#, no-c-format
-msgid "Store history information for"
-msgstr "Armazenar informações do histórico para"
-
-#. i18n: file ./dialog_setup.ui line 134
-#: rc.cpp:27
-#, no-c-format
-msgid "latest files"
-msgstr "últimos arquivos"
-
-#. i18n: file ./dialog_setup.ui line 146
-#: rc.cpp:30
-#, no-c-format
-msgid ""
-"Remembers the information about the files, which were opened. Remembers last "
-"opened page, search history, font size, bookmarks and so on."
-msgstr ""
-"Lembrar-se das informações sobre os arquivos que foram abertos. Lembrar-se "
-"da última página aberta, do histórico de pesquisa, do tamanho da fonte, dos "
-"marcadores e assim por diante."
-
-#. i18n: file ./dialog_setup.ui line 149
-#: rc.cpp:33
-#, no-c-format
-msgid "R&emember extra information for history files"
-msgstr "L&embre-se de informações adicionais para os arquivos de histórico"
-
-#. i18n: file ./dialog_setup.ui line 152
-#: rc.cpp:36
-#, no-c-format
-msgid "Alt+E"
-msgstr "Alt+E"
-
-#. i18n: file ./dialog_setup.ui line 164
-#: rc.cpp:39
-#, no-c-format
-msgid "CHM security settings"
-msgstr "Configurações de segurança CHM"
-
-#. i18n: file ./dialog_setup.ui line 176
-#: rc.cpp:42
-#, no-c-format
-msgid "When external link clicked"
-msgstr "Quando clicado em um link externo"
-
-#. i18n: file ./dialog_setup.ui line 188
-#: rc.cpp:45
-#, no-c-format
-msgid "Alwa&ys open it in external browser"
-msgstr "Se&mpre abri-lo em um navegador externo"
-
-#. i18n: file ./dialog_setup.ui line 191
-#: rc.cpp:48
-#, no-c-format
-msgid "Alt+Y"
-msgstr "Alt+Y"
-
-#. i18n: file ./dialog_setup.ui line 198
-#. i18n: file ./dialog_setup.ui line 237
-#: rc.cpp:51 rc.cpp:63
-#, no-c-format
-msgid "Ask for confirmation"
-msgstr "Solicitar confirmação"
-
-#. i18n: file ./dialog_setup.ui line 205
-#: rc.cpp:54
-#, no-c-format
-msgid "Do not open the link"
-msgstr "Não abrir o link"
-
-#. i18n: file ./dialog_setup.ui line 218
-#: rc.cpp:57
-#, no-c-format
-msgid "When link pointed to a new CHM file clicked"
-msgstr "Quando o link aponta para um novo arquivo CHM clicado"
-
-#. i18n: file ./dialog_setup.ui line 230
-#: rc.cpp:60
-#, no-c-format
-msgid "Always open a new CHM file"
-msgstr "Sempre abrir um novo arquivo CHM"
-
-#. i18n: file ./dialog_setup.ui line 244
-#: rc.cpp:66
-#, no-c-format
-msgid "Do not open a new CHM file"
-msgstr "Não abrir um novo arquivo CHM"
-
-#. i18n: file ./dialog_setup.ui line 271
-#: rc.cpp:69
-#, no-c-format
-msgid "Version-specific settings"
-msgstr "Configurações específicas da versão"
-
-#. i18n: file ./dialog_setup.ui line 283
-#: rc.cpp:72
-#, no-c-format
-msgid "KDE version settings"
-msgstr "Configurações da versão do KDE"
-
-#. i18n: file ./dialog_setup.ui line 295
-#: rc.cpp:75
-#, no-c-format
-msgid "To show HTML content, use"
-msgstr "Para mostrar o conteúdo HTML, utilize"
-
-#. i18n: file ./dialog_setup.ui line 307
-#: rc.cpp:78
-#, no-c-format
-msgid "&QTextBrowser-based widget"
-msgstr "Componente baseado no &QTextBrowser"
-
-#. i18n: file ./dialog_setup.ui line 310
-#: rc.cpp:81
-#, no-c-format
-msgid "Alt+Q"
-msgstr "Alt+Q"
-
-#. i18n: file ./dialog_setup.ui line 317
-#: rc.cpp:84
-#, no-c-format
-msgid "&KHTMLPart-based widget"
-msgstr "Componente baseado no &KHTMLPart"
-
-#. i18n: file ./dialog_setup.ui line 320
-#: rc.cpp:87
-#, no-c-format
-msgid "Alt+K"
-msgstr "Alt+K"
-
-#. i18n: file ./dialog_setup.ui line 327
-#: rc.cpp:90
-#, no-c-format
-msgid "Qt &Webkit (requires Qt 4.4 or higher)"
-msgstr "Qt &Webkit (requer Qt 4.4 ou superior)"
-
-#. i18n: file ./dialog_setup.ui line 337
-#: rc.cpp:93
-#, no-c-format
-msgid "KHTMLPart security"
-msgstr "Segurança KHTMLPart"
-
-#. i18n: file ./dialog_setup.ui line 349
-#: rc.cpp:96
-#, no-c-format
-msgid "Enable &refresh"
-msgstr "Habilitar &atualizar automaticamente"
-
-#. i18n: file ./dialog_setup.ui line 352
-#: rc.cpp:99
-#, no-c-format
-msgid "Alt+R"
-msgstr "Alt+R"
-
-#. i18n: file ./dialog_setup.ui line 359
-#: rc.cpp:102
-#, no-c-format
-msgid "Enable &Java"
-msgstr "Habilitar &Java"
-
-#. i18n: file ./dialog_setup.ui line 362
-#: rc.cpp:105
-#, no-c-format
-msgid "Alt+J"
-msgstr "Alt+J"
-
-#. i18n: file ./dialog_setup.ui line 369
-#: rc.cpp:108
-#, no-c-format
-msgid "Enable &plugins"
-msgstr "Habilitar &plug-ins"
-
-#. i18n: file ./dialog_setup.ui line 372
-#: rc.cpp:111
-#, no-c-format
-msgid "Alt+P"
-msgstr "Alt+P"
-
-#. i18n: file ./dialog_setup.ui line 379
-#: rc.cpp:114
-#, no-c-format
-msgid "Enable Java&Script"
-msgstr "Habilitar Java&Script"
-
-#. i18n: file ./dialog_setup.ui line 382
-#: rc.cpp:117
-#, no-c-format
-msgid "Alt+S"
-msgstr "Alt+S"
-
-#. i18n: file ./dialog_setup.ui line 409
-#: rc.cpp:120
-#, no-c-format
-msgid "Advanced"
-msgstr "Avançado"
-
-#. i18n: file ./dialog_setup.ui line 415
-#: rc.cpp:123
-#, no-c-format
-msgid "View HTML source command uses"
-msgstr "Exibir comandos utilizados no fonte do HTML"
-
-#. i18n: file ./dialog_setup.ui line 427
-#: rc.cpp:126
-#, no-c-format
-msgid "Built-in HTML source viewer"
-msgstr "Exibir fonte do HTML embutido"
-
-#. i18n: file ./dialog_setup.ui line 437
-#: rc.cpp:129
-#, no-c-format
-msgid "E&xternal program, specified below"
-msgstr "Programa e&xterno, especificado a seguir"
-
-#. i18n: file ./dialog_setup.ui line 440
-#: rc.cpp:132
-#, no-c-format
-msgid "Alt+X"
-msgstr "Alt+X"
-
-#. i18n: file ./dialog_setup.ui line 455
-#: rc.cpp:135
-#, no-c-format
-msgid "External program:"
-msgstr "Programa externo:"
-
-#. i18n: file ./dialog_setup.ui line 468
-#: rc.cpp:138
-#, no-c-format
-msgid "&Browse"
-msgstr "&Navegar"
-
-#. i18n: file ./dialog_setup.ui line 480
-#: rc.cpp:141
-#, no-c-format
-msgid "Other"
-msgstr "Outro"
-
-#. i18n: file ./dialog_setup.ui line 486
-#: rc.cpp:144
-#, no-c-format
-msgid "Use right-to-left layout direction (Arabic adn Hebrew layouts)"
-msgstr ""
-"Utilizar a direção do layout da direita para a esquerda (layouts Hebraico e "
-"Árabe)"
-
-#. i18n: file ./dialog_setup.ui line 493
-#: rc.cpp:147
-#, no-c-format
-msgid ""
-"Automatically detect encoding for KHTMLPart and WebKit browsers (not "
-"recommended)"
-msgstr ""
-"Detectar automaticamente a codificação para os navegadores Webkit e "
-"KHTMLPart (não recomendado)"
-
-#. i18n: file ./window_main.ui line 14
-#: rc.cpp:150
-#, no-c-format
-msgid "kchmviewer"
-msgstr "kchmviewer"
-
-#. i18n: file ./window_main.ui line 28
-#: rc.cpp:153
-#, no-c-format
-msgid "&Settings"
-msgstr "&Configurações"
-
-#. i18n: file ./window_main.ui line 34
-#: rc.cpp:156
-#, no-c-format
-msgid "&Bookmarks"
-msgstr "&Marcadores"
-
-#. i18n: file ./window_main.ui line 41
-#: rc.cpp:159
-#, no-c-format
-msgid "&File"
-msgstr "&Arquivo"
-
-#. i18n: file ./window_main.ui line 50
-#: rc.cpp:162
-#, no-c-format
-msgid "&Edit"
-msgstr "&Editar"
-
-#. i18n: file ./window_main.ui line 59
-#: rc.cpp:165
-#, no-c-format
-msgid "&View"
-msgstr "&Exibir"
-
-#. i18n: file ./window_main.ui line 73
-#: rc.cpp:168
-#, no-c-format
-msgid "&Windows"
-msgstr "&Janelas"
-
-#. i18n: file ./window_main.ui line 87
-#: rc.cpp:171
-#, no-c-format
-msgid "general toolbar"
-msgstr "Barra de ferramentas geral"
-
-#. i18n: file ./window_main.ui line 103
-#: rc.cpp:174
-#, no-c-format
-msgid "navigation toolbar"
-msgstr "Barra de ferramentas de navegação"
-
-#. i18n: file ./window_main.ui line 120
-#: rc.cpp:177
-#, no-c-format
-msgid "action toolbar"
-msgstr "Barra de ferramentas de ação"
-
-#. i18n: file ./window_main.ui line 146
-#: rc.cpp:180
-#, no-c-format
-msgid "&Print..."
-msgstr "&Imprimir..."
-
-#. i18n: file ./window_main.ui line 149
-#: rc.cpp:183
-#, no-c-format
-msgid "Print"
-msgstr "Imprimir"
-
-#. i18n: file ./window_main.ui line 152
-#: rc.cpp:186
-#, no-c-format
-msgid "Print current page"
-msgstr "Imprimir página atual"
-
-#. i18n: file ./window_main.ui line 155
-#: rc.cpp:189
-#, no-c-format
-msgid "Prints currently opened page."
-msgstr "Imprime a página aberta atualmente."
-
-#. i18n: file ./window_main.ui line 158
-#: rc.cpp:192
-#, no-c-format
-msgid "Ctrl+P"
-msgstr "Ctrl+P"
-
-#. i18n: file ./window_main.ui line 163
-#: rc.cpp:195
-#, no-c-format
-msgid "&Quit"
-msgstr "&Sair"
-
-#. i18n: file ./window_main.ui line 166
-#: rc.cpp:198
-#, no-c-format
-msgid "Exit"
-msgstr "Sair"
-
-#. i18n: file ./window_main.ui line 169
-#: rc.cpp:201
-#, no-c-format
-msgid "Exits the application"
-msgstr "Sai do programa"
-
-#. i18n: file ./window_main.ui line 172
-#: rc.cpp:204
-#, no-c-format
-msgid "Ctrl+Q"
-msgstr "Ctrl+Q"
-
-#. i18n: file ./window_main.ui line 181
-#: rc.cpp:207
-#, no-c-format
-msgid "C&opy"
-msgstr "C&opiar"
-
-#. i18n: file ./window_main.ui line 184
-#: rc.cpp:210
-#, no-c-format
-msgid "Copy"
-msgstr "Copiar"
-
-#. i18n: file ./window_main.ui line 187
-#: rc.cpp:213
-#, no-c-format
-msgid "Copies selected content to clipboard"
-msgstr "Copia o conteúdo selecionado para a área de transferência"
-
-#. i18n: file ./window_main.ui line 190
-#: rc.cpp:216
-#, no-c-format
-msgid "Ctrl+C"
-msgstr "Ctrl+C"
-
-#. i18n: file ./window_main.ui line 199
-#: rc.cpp:219
-#, no-c-format
-msgid "&Select All"
-msgstr "&Selecionar tudo"
-
-#. i18n: file ./window_main.ui line 202
-#: rc.cpp:222
-#, no-c-format
-msgid "Paste"
-msgstr "Colar"
-
-#. i18n: file ./window_main.ui line 205
-#: rc.cpp:225
-#, no-c-format
-msgid "Selects everything in the document"
-msgstr "Seleciona tudo no documento"
-
-#. i18n: file ./window_main.ui line 208
-#: rc.cpp:228
-#, no-c-format
-msgid "Ctrl+V"
-msgstr "Ctrl+V"
-
-#. i18n: file ./window_main.ui line 217
-#: rc.cpp:231
-#, no-c-format
-msgid "&Find..."
-msgstr "&Localizar..."
-
-#. i18n: file ./window_main.ui line 220
-#: rc.cpp:234
-#, no-c-format
-msgid "Find"
-msgstr "Localizar"
-
-#. i18n: file ./window_main.ui line 223
-#: rc.cpp:237
-#, no-c-format
-msgid "Find text in currently opened page"
-msgstr "Localizar texto na página aberta atualmente"
-
-#. i18n: file ./window_main.ui line 226
-#: rc.cpp:240
-#, no-c-format
-msgid "Enters the Find in page mode"
-msgstr "Entra no Localizar no modo de página"
-
-#. i18n: file ./window_main.ui line 229
-#: rc.cpp:243
-#, no-c-format
-msgid "Ctrl+F"
-msgstr "Ctrl+F"
-
-#. i18n: file ./window_main.ui line 234
-#: rc.cpp:246
-#, no-c-format
-msgid "E&xtract CHM content..."
-msgstr "E&xtrair conteúdo CHM..."
-
-#. i18n: file ./window_main.ui line 237
-#: rc.cpp:249
-#, no-c-format
-msgid "Extract the CHM content to the directory"
-msgstr "Extrair o conteúdo CHM para o diretório"
-
-#. i18n: file ./window_main.ui line 240
-#: rc.cpp:252
-#, no-c-format
-msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
-"are extracted."
-msgstr ""
-"Extrai o conteúdo do arquivo CHM para o diretório especificado. Todos os "
-"arquivos são extraídos."
-
-#. i18n: file ./window_main.ui line 245
-#: rc.cpp:255
-#, no-c-format
-msgid "&Application settings..."
-msgstr "Configur&ações do programa..."
-
-#. i18n: file ./window_main.ui line 248
-#. i18n: file ./window_main.ui line 251
-#: rc.cpp:258 rc.cpp:261
-#, no-c-format
-msgid "Change the application settings"
-msgstr "Altera as configurações do programa"
-
-#. i18n: file ./window_main.ui line 260
-#: rc.cpp:264
-#, no-c-format
-msgid "&Add bookmark"
-msgstr "&Adicionar marcador"
-
-#. i18n: file ./window_main.ui line 263
-#: rc.cpp:267
-#, no-c-format
-msgid "Adds a bookmark for currently opened page"
-msgstr "Adicionar um marcador para a página aberta atualmente"
-
-#. i18n: file ./window_main.ui line 266
-#: rc.cpp:270
-#, no-c-format
-msgid ""
-"Adds a bookmark for currently opened page. Remembers the opened page, and "
-"scroll position. Bookmarks are accessible through Bookmarks menu or tab."
-msgstr ""
-"Adiciona um marcador para a página aberta atualmente. Recorda a página "
-"aberta, e a posição de rolagem. Marcadores são acessíveis através da aba ou "
-"menu Marcadores."
-
-#. i18n: file ./window_main.ui line 269
-#: rc.cpp:273
-#, no-c-format
-msgid "Ctrl+B"
-msgstr "Ctrl+B"
-
-#. i18n: file ./window_main.ui line 278
-#: rc.cpp:276
-#, no-c-format
-msgid "&Increase font size"
-msgstr "&Aumentar o tamanho da fonte"
-
-#. i18n: file ./window_main.ui line 281
-#: rc.cpp:279
-#, no-c-format
-msgid "Increase the font size"
-msgstr "Aumentar o tamanho da fonte"
-
-#. i18n: file ./window_main.ui line 284
-#: rc.cpp:282
-#, no-c-format
-msgid "Increases the document font size. The new font size will be stored."
-msgstr ""
-"Aumenta o tamanho da fonte do documento. O tamanho da nova fonte será "
-"armazenada."
-
-#. i18n: file ./window_main.ui line 287
-#: rc.cpp:285
-#, no-c-format
-msgid "Ctrl++"
-msgstr "Ctrl++"
-
-#. i18n: file ./window_main.ui line 296
-#: rc.cpp:288
-#, no-c-format
-msgid "&Decrease font size"
-msgstr "&Diminuir o tamanho da fonte"
-
-#. i18n: file ./window_main.ui line 299
-#: rc.cpp:291
-#, no-c-format
-msgid "Decrease the font size"
-msgstr "Diminuir o tamanho da fonte"
-
-#. i18n: file ./window_main.ui line 302
-#: rc.cpp:294
-#, no-c-format
-msgid "Decreases the document font size. The new font size will be stored."
-msgstr ""
-"Diminui o tamanho da fonte do documento. O tamanho da nova fonte será "
-"armazenada."
-
-#. i18n: file ./window_main.ui line 305
-#: rc.cpp:297
-#, no-c-format
-msgid "Ctrl+-"
-msgstr "Ctrl+-"
-
-#. i18n: file ./window_main.ui line 314
-#: rc.cpp:300
-#, no-c-format
-msgid "&View HTML source"
-msgstr "&Exibir fonte do HTML"
-
-#. i18n: file ./window_main.ui line 317
-#: rc.cpp:303
-#, no-c-format
-msgid "View HTML source of current page"
-msgstr "Exibir fonte do HTML da página atual"
-
-#. i18n: file ./window_main.ui line 320
-#: rc.cpp:306
-#, no-c-format
-msgid "Shows the HTML source of currently opened page"
-msgstr "Mostra o fonte do HTML da página aberta atualmente"
-
-#. i18n: file ./window_main.ui line 323
-#: rc.cpp:309
-#, no-c-format
-msgid "Ctrl+U"
-msgstr "Ctrl+U"
-
-#. i18n: file ./window_main.ui line 331
-#: rc.cpp:312
-#, no-c-format
-msgid "Enable &full screen mode"
-msgstr "Habilitar modo &tela cheia"
-
-#. i18n: file ./window_main.ui line 334
-#: rc.cpp:315
-#, no-c-format
-msgid "Enters or leaves the fullscreen mode"
-msgstr "Entra ou sai do modo tela cheia"
-
-#. i18n: file ./window_main.ui line 337
-#: rc.cpp:318
-#, no-c-format
-msgid "F11"
-msgstr "F11"
-
-#. i18n: file ./window_main.ui line 351
-#: rc.cpp:321
-#, no-c-format
-msgid "Enable &side window"
-msgstr "Habilitar &janela lateral"
-
-#. i18n: file ./window_main.ui line 354
-#: rc.cpp:324
-#, no-c-format
-msgid ""
-"Shows or hides the size window (with Content, Index, Search and Bookmark "
-"tabs)"
-msgstr ""
-"Mostra ou oculta o tamanho da janela (como as abas Conteúdo, Índice, "
-"Pesquisar e Favoritos)"
-
-#. i18n: file ./window_main.ui line 357
-#: rc.cpp:327
-#, no-c-format
-msgid "F9"
-msgstr "F9"
-
-#. i18n: file ./window_main.ui line 369
-#: rc.cpp:330
-#, no-c-format
-msgid "&Locate in contents window"
-msgstr "&Localizar no conteúdo da janela"
-
-#. i18n: file ./window_main.ui line 372
-#: rc.cpp:333
-#, no-c-format
-msgid "Locate the current page in contents window"
-msgstr "Localizar a página atual no conteúdo da janela"
-
-#. i18n: file ./window_main.ui line 375
-#: rc.cpp:336
-#, no-c-format
-msgid ""
-"If the current page is present in the Table of Contents, locate it there. "
-msgstr ""
-"Se a página atual está presente na Tabela de Conteúdo, localize-a nessa "
-"Tabela."
-
-#. i18n: file ./window_main.ui line 378
-#: rc.cpp:339
-#, no-c-format
-msgid "Ctrl+"
-msgstr "Ctrl+"
-
-#. i18n: file ./window_main.ui line 383
-#: rc.cpp:342
-#, no-c-format
-msgid "Set &encoding"
-msgstr "D&efinir codificação"
-
-#. i18n: file ./window_main.ui line 386
-#: rc.cpp:345
-#, no-c-format
-msgid "Changes the current document encoding. "
-msgstr "Altera a codificação do documento atual."
-
-#. i18n: file ./window_main.ui line 395
-#: rc.cpp:348
-#, no-c-format
-msgid "&Open..."
-msgstr "&Abrir..."
-
-#. i18n: file ./window_main.ui line 398
-#: rc.cpp:351
-#, no-c-format
-msgid "Open a CHM file"
-msgstr "Abrir um arquivo CHM"
-
-#. i18n: file ./window_main.ui line 401
-#: rc.cpp:354
-#, no-c-format
-msgid "Opens a new CHM file"
-msgstr "Abre um novo arquivo CHM"
-
-#. i18n: file ./window_main.ui line 410
-#: rc.cpp:357
-#, no-c-format
-msgid "Back"
-msgstr "Voltar"
-
-#. i18n: file ./window_main.ui line 413
-#: rc.cpp:360
-#, no-c-format
-msgid "Navigate back"
-msgstr "Navegar para trás"
-
-#. i18n: file ./window_main.ui line 416
-#: rc.cpp:363
-#, no-c-format
-msgid "Navigate back in navigation history"
-msgstr "Navegar para trás no histórico da navegação"
-
-#. i18n: file ./window_main.ui line 425
-#: rc.cpp:366
-#, no-c-format
-msgid "Forward"
-msgstr "Avançar"
-
-#. i18n: file ./window_main.ui line 428
-#: rc.cpp:369
-#, no-c-format
-msgid "Navigate forward"
-msgstr "Navegar para frente"
-
-#. i18n: file ./window_main.ui line 431
-#: rc.cpp:372
-#, no-c-format
-msgid "Navigate forward in navigation history"
-msgstr "Navegar para frente no histórico da navegação"
-
-#. i18n: file ./window_main.ui line 440
-#: rc.cpp:375
-#, no-c-format
-msgid "Home"
-msgstr "Início"
-
-#. i18n: file ./window_main.ui line 443
-#: rc.cpp:378
-#, no-c-format
-msgid "Navigate home"
-msgstr "Navegar até o início"
-
-#. i18n: file ./window_main.ui line 446
-#: rc.cpp:381
-#, no-c-format
-msgid "Navigate to the document Home page, as specified in the document."
-msgstr ""
-"Navegar até a página Inicial do documento, conforme especificado no "
-"documento."
-
-#. i18n: file ./window_main.ui line 455
-#: rc.cpp:384
-#, no-c-format
-msgid "Previous page in Table of Context"
-msgstr "Página anterior na Tabela de Contexto"
-
-#. i18n: file ./window_main.ui line 458
-#: rc.cpp:387
-#, no-c-format
-msgid "Previous page in TOC"
-msgstr "Página anterior na TDC (Tabela de Contexto)"
-
-#. i18n: file ./window_main.ui line 461
-#: rc.cpp:390
-#, no-c-format
-msgid "Go to the previous page in the Table of Contents"
-msgstr "Ir para a página anterior na Tabela de Conteúdo"
-
-#. i18n: file ./window_main.ui line 464
-#: rc.cpp:393
-#, no-c-format
-msgid ""
-"Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
-"Ctrl+Left Arrow</i>"
-msgstr ""
-"Ir para a página anterior na <b>Tabela de Conteúdo</b><br><br><i>Atalho: "
-"Ctrl+Seta para a esquerda</i>"
-
-#. i18n: file ./window_main.ui line 473
-#: rc.cpp:396
-#, no-c-format
-msgid "Next page in Table of Context"
-msgstr "Próxima página na Tabela de Contexto"
-
-#. i18n: file ./window_main.ui line 476
-#: rc.cpp:399
-#, no-c-format
-msgid "Next page in TOC"
-msgstr "Próxima página na TDC"
-
-#. i18n: file ./window_main.ui line 479
-#: rc.cpp:402
-#, no-c-format
-msgid "Go to the next page in the Table of Contents"
-msgstr "Ir para a próxima página na Tabela de Conteúdo"
-
-#. i18n: file ./window_main.ui line 482
-#: rc.cpp:405
-#, no-c-format
-msgid ""
-"Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: "
-"Ctrl+Right Arrow</i>"
-msgstr ""
-"Ir para a próxima página na <b>Tabela de Conteúdo</b><br><br><i>Atalho: "
-"Ctrl+Seta para a direita</i>"
-
-#. i18n: file ./window_main.ui line 487
-#: rc.cpp:408
-#, no-c-format
-msgid "&Close window"
-msgstr "Fe&char janela"
-
-#. i18n: file ./window_main.ui line 490
-#: rc.cpp:411
-#, no-c-format
-msgid "Close current window"
-msgstr "Fechar a janela atual"
-
-#. i18n: file ./window_main.ui line 493
-#: rc.cpp:414
-#, no-c-format
-msgid "Closes currently opened window"
-msgstr "Fecha a janela aberta atualmente"
-
-#. i18n: file ./window_main.ui line 496
-#: rc.cpp:417
-#, no-c-format
-msgid "Ctrl+W"
-msgstr "Ctrl+W"
-
-#: rc.cpp:418
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Márcio Moraes"
-
-#: rc.cpp:419
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "marciopanto@gmail.com"
+#~ msgid "%1 - JavsScript link clicked"
+#~ msgstr "%1 - Link JavsScript clicado"
+
+#~ msgid ""
+#~ "You have clicked a JavaScript link.\n"
+#~ "To prevent security-related issues JavaScript URLs are disabled in CHM "
+#~ "files."
+#~ msgstr ""
+#~ "Você clicou em um link JavaScript.\n"
+#~ "Para evitar problemas de segurança relacionados com JavaScript, URLs são "
+#~ "desativadas em arquivos CHM."
+
+#~ msgid "%1 - link to a new CHM file clicked"
+#~ msgstr "%1 - link para um novo arquivo CHM clicado"
+
+#~ msgid ""
+#~ "You have clicked a link, which leads to a new CHM file %1.\n"
+#~ "The current file will be closed.\n"
+#~ "\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "Você clicou em um link, que leva a um novo arquivo CHM %1.\n"
+#~ "O arquivo atual será fechado.\n"
+#~ "\n"
+#~ "Você deseja continuar?"
+
+#~ msgid "Compressed Help Manual (*.chm)"
+#~ msgstr "Manual de Ajuda Comprimido (*.chm)"
+
+#~ msgid "Loading aborted"
+#~ msgstr "Carregamento cancelado"
+
+#~ msgid "About %1"
+#~ msgstr "Sobre o %1"
+
+#~ msgid "&About"
+#~ msgstr "&Sobre"
+
+#~ msgid "Close current page"
+#~ msgstr "Fechar página atual"
+
+#~ msgid "Perform auto testing"
+#~ msgstr "Realizar testes automaticamente"
+
+#~ msgid "Perform short auto testing"
+#~ msgstr "Realizar testes curtos automaticamente"
+
+#~ msgid "A CHM file to show"
+#~ msgstr "Um arquivo CHM para mostrar"
+
+#~ msgid ""
+#~ "'--search <query>' specifies the search query to search, and activate the "
+#~ "first entry if found"
+#~ msgstr ""
+#~ "'--search <consultar>' especifica a consulta da pesquisa, e destaca a "
+#~ "primeira entrada se encontrada"
+
+#~ msgid ""
+#~ "'--sindex <word>' specifies the word to find in index, and activate if "
+#~ "found"
+#~ msgstr ""
+#~ "'--sindex <palavra>' especifica a palavra para encontrar no índice, e a "
+#~ "destaca se encontrada"
+
+#~ msgid ""
+#~ "'--stoc <word(s)>' specifies the word(s) to find in TOC, and activate if "
+#~ "found. Wildcards allowed."
+#~ msgstr ""
+#~ "'--stoc <palavra(s)>'  especifica a(s) palavra(s) para localizar na "
+#~ "Tabela de Conteúdo, e a(s) destaca(s) se encontrada(s). Caracteres "
+#~ "especiais são permitidos."
+
+#~ msgid "If no arguments given on load"
+#~ msgstr "Se não houver argumentos apresentados na carregamento"
+
+#~ msgid "Version-specific settings"
+#~ msgstr "Configurações específicas da versão"
+
+#~ msgid "KDE version settings"
+#~ msgstr "Configurações da versão do KDE"
+
+#~ msgid "To show HTML content, use"
+#~ msgstr "Para mostrar o conteúdo HTML, utilize"
+
+#~ msgid "&QTextBrowser-based widget"
+#~ msgstr "Componente baseado no &QTextBrowser"
+
+#~ msgid "Alt+Q"
+#~ msgstr "Alt+Q"
+
+#~ msgid "&KHTMLPart-based widget"
+#~ msgstr "Componente baseado no &KHTMLPart"
+
+#~ msgid "Alt+K"
+#~ msgstr "Alt+K"
+
+#~ msgid "Qt &Webkit (requires Qt 4.4 or higher)"
+#~ msgstr "Qt &Webkit (requer Qt 4.4 ou superior)"
+
+#~ msgid "KHTMLPart security"
+#~ msgstr "Segurança KHTMLPart"
+
+#~ msgid "Enable &refresh"
+#~ msgstr "Habilitar &atualizar automaticamente"
+
+#~ msgid "Enable &plugins"
+#~ msgstr "Habilitar &plug-ins"
+
+#~ msgid "Find"
+#~ msgstr "Localizar"
+
+#~ msgid "Ctrl++"
+#~ msgstr "Ctrl++"
+
+#~ msgid "Enable &side window"
+#~ msgstr "Habilitar &janela lateral"
+
+#~ msgid "&Locate in contents window"
+#~ msgstr "&Localizar no conteúdo da janela"
+
+#~ msgid "Previous page in Table of Context"
+#~ msgstr "Página anterior na Tabela de Contexto"
+
+#~ msgid "Previous page in TOC"
+#~ msgstr "Página anterior na TDC (Tabela de Contexto)"
+
+#~ msgid "Next page in Table of Context"
+#~ msgstr "Próxima página na Tabela de Contexto"
+
+#~ msgid "Next page in TOC"
+#~ msgstr "Próxima página na TDC"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Márcio Moraes"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "marciopanto@gmail.com"
