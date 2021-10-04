@@ -850,7 +850,7 @@ void MainWindow::actionNavigateHome()
 void MainWindow::actionOpenFile()
 {
 #if defined (USE_KDE)
-	QString fn = KFileDialog::getOpenFileName( pConfig->m_lastOpenedDir, i18n("*.chm|Compressed Help Manual;*.epub|EPUB electronic book"), this);
+	QString fn = KFileDialog::getOpenFileName( pConfig->m_lastOpenedDir, i18n("*.chm *.epub|All electronic book\n*.chm|Compressed Help Manual\n*.epub|EPUB electronic book"), this);
 #else
 	QString fn = QFileDialog::getOpenFileName( this, 
 	                                           i18n( "Open a chm file"), 
