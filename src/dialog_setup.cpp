@@ -82,6 +82,13 @@ DialogSetup::DialogSetup(QWidget *parent)
     m_openAllTOCEntries->setChecked( pConfig->m_tocOpenAllEntries );
     boxUseSingleClick->setChecked( pConfig->m_tabUseSingleClick );
 
+#if defined (USE_WEBENGINE)
+    m_enableOfflineStorage->setChecked( false );
+    m_enableOfflineStorage->setEnabled( false );
+    m_enableJava->setChecked( false );
+    m_enableJava->setEnabled( false );
+#endif
+
 	switch ( pConfig->m_toolbarMode )
 	{
 		case Config::TOOLBAR_SMALLICONS:
