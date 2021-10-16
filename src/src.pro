@@ -100,8 +100,6 @@ linux-g++-32: {
 macx:{
     HEADERS += kchmviewerapp.h
     SOURCES += kchmviewerapp.cpp
-    QMAKE_INFO_PLIST=resources/Info.plist
-    ICON = resources/kchmviewer.icns
 }
 
 win32:{

@@ -3,13 +3,13 @@
 <plist version="0.9">
 <dict>
 	<key>CFBundleExecutable</key>
-	<string>kchmviewer</string>
+	<string>@CMAKE_PROJECT_NAME@</string>
 	<key>CFBundleIconFile</key>
 	<string>kchmviewer.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>www.kchmviewer.net</string>
+	<string>@CMAKE_PROJECT_HOMEPAGE_URL@</string>
 	<key>CFBundleInfoDictionaryVersion</key>
-	<string>5.2</string>
+	<string>@CMAKE_PROJECT_VERSION@</string>
 	<key>CFBundleName</key>
 	<string>kchmviewer</string>
 	<key>CFBundlePackageType</key>
@@ -17,9 +17,9 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>5.2</string>
+	<string>@CMAKE_PROJECT_VERSION@</string>
 	<key>SUFeedURL</key>
-	<string>http://www.kchmviewer.net</string>
+	<string>@CMAKE_PROJECT_HOMEPAGE_URL@</string>
 		
 	<key>CFBundleDocumentTypes</key>
 	<array>
@@ -28,6 +28,8 @@
 			<array>
 				<string>chm</string>
 				<string>CHM</string>
+				<string>epub</string>
+				<string>EPUB</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>kchmviewer.icns</string>
@@ -36,6 +38,7 @@
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>CHM</string>
+				<string>EPUB</string>
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
