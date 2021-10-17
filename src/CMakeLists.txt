@@ -123,5 +123,10 @@ else ()
 endif ()
 
 target_link_libraries(kchmviewer i18n)
+# For Gettext to work correctly, we tell the application the location
+# of the folders with binaries and translations.
+target_compile_definitions(kchmviewer PRIVATE
+        APP_INSTALL_DIR_BIN="${APP_BIN_INSTALL_DIR}"
+        APP_INSTALL_DIR_LOCALE="${APP_LOCALE_INSTALL_DIR}")
 
 install(TARGETS kchmviewer DESTINATION ${APP_BIN_INSTALL_DIR})
