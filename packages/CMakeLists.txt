@@ -1,9 +1,47 @@
 
 cmake_minimum_required(VERSION 3.0)
 
-if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     install(FILES freedesktop/kchmviewer.desktop DESTINATION ${APP_DEF_INSTALL_DIR})
     install(DIRECTORY freedesktop/icons/ DESTINATION ${APP_ICONS_INSTALL_DIR})
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin" AND USE_MACOS_BUNDLE)
+    set(PLIST macos/Info.plist)
+    set(PLIST_OUT ${CMAKE_CURRENT_BINARY_DIR}/${PLIST})
+    configure_file(${PLIST}.in ${PLIST_OUT})
+    install(FILES ${PLIST_OUT} DESTINATION ${APP_ROOT_INSTALL_DIR})
+    install(FILES macos/kchmviewer.icns DESTINATION ${APP_ICONS_INSTALL_DIR})
+elseif (&{CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    install(FILES kchmviewer.png DESTINATION ${APP_ICONS_INSTALL_DIR})
+endif ()
+
+
+#
+# Deployment section
+################################################################################
+
+if (USE_DEPLOY_RUNTIME)
+    install(FILES $<TARGET_FILE:libzip::zip> DESTINATION ${APP_BIN_INSTALL_DIR})
+    
+    if (NOT USE_STATIC_CHMLIB)
+        install(FILES $<TARGET_FILE:chm> DESTINATION ${APP_BIN_INSTALL_DIR})
+    endif ()
+
+    if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+        # Copying runtime dependencies for Windows deployment
+        # See https://doc.qt.io/qt-5/windows-deployment.html
+        set(QT_DEPLOY_DIR ${CMAKE_CURRENT_BINARY_DIR}/qt-deploy)
+        find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${_qt_bin_dir}")
+
+        add_custom_command(TARGET kchmviewer POST_BUILD
+            COMMAND "${WINDEPLOYQT_EXECUTABLE}"
+                --no-quick-import
+                --dir ${QT_DEPLOY_DIR}
+                --plugindir ${QT_DEPLOY_DIR}/plugins  $<TARGET_FILE:kchmviewer>
+            COMMENT "Copying runtime dependencies"
+        )
+
+        install(DIRECTORY ${QT_DEPLOY_DIR}/ DESTINATION ${APP_BIN_INSTALL_DIR})
+    endif ()
 endif ()
 
 
@@ -26,8 +64,8 @@ table of context in Russian, Spanish, Romanian, Korean, Chinese and Arabic help
 files, and with new search engine is able to search in any chm file no matter
 what language it is written.
 ]])
-#set(CPACK_PACKAGE_INSTALL_DIRECTORY "kchmviewer")
-#set(CPACK_PACKAGE_ICON ./kchmviewer.png)
+
+#set(CPACK_PACKAGE_ICON ${CMAKE_CURRENT_SOURCE_DIR}/kchmviewer.png)
 #set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_SOURCE_DIR}/COPYING)
 #set(CPACK_RESOURCE_FILE_README)
 #set(CPACK_RESOURCE_FILE_WELCOME)

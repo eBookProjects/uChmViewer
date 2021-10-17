@@ -125,20 +125,3 @@ endif ()
 target_link_libraries(kchmviewer i18n)
 
 install(TARGETS kchmviewer DESTINATION ${APP_BIN_INSTALL_DIR})
-
-# Copying runtime dependencies for Windows deployment
-# See https://doc.qt.io/qt-5/windows-deployment.html
-if (CMAKE_SYSTEM_NAME MATCHES "Windows" AND USE_WINDEPLOYQT)
-    set(QT_DEPLOY_DIR ${CMAKE_CURRENT_BINARY_DIR}/qt-deploy)
-    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${_qt_bin_dir}")
-
-    add_custom_command(TARGET kchmviewer POST_BUILD
-        COMMAND "${WINDEPLOYQT_EXECUTABLE}"
-            --no-quick-import
-            --dir ${QT_DEPLOY_DIR}
-            --plugindir ${QT_DEPLOY_DIR}/plugins  $<TARGET_FILE:kchmviewer>
-        COMMENT "Copying runtime dependencies"
-    )
-
-    install(DIRECTORY ${QT_DEPLOY_DIR}/ DESTINATION ${APP_BIN_INSTALL_DIR})
-endif ()
