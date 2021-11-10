@@ -1,23 +1,36 @@
 # kchmviewer build script with cmake
 #
-#    Option:
-#
+#       Common option:
 # FRAMEWORK=<Qt4 | Qt5 | KDE4>
 # USE_STATIC_CHMLIB=ON - if defined, static linkage to the chm library is used
 # USE_WEBENGINE=ON - if defined, WebEngine is used, otherwise WebKit is used
-# USE_WINDEPLOYQT=ON - if defined, the runtime dependencies will be copied to
-#     the folder with the executable. This option is applicable only for Windows.
+# USE_GETTEXT=ON - if defined, then GNU Gettext will be used for translation.
+#     The default is ON.
+#
+#       System-specific option:
+#
+# USE_DEPLOY_RUNTIME=ON - if defined, the runtime dependencies will be copied to
+#     the folder with the executable. This option is applicable for Windows and
+#     macOS.
+# USE_MACOS_BUNDLE=ON - if defined, configure installation for macOS as a bundle.
+#     The default is ON.
 ################################################
 
 cmake_minimum_required(VERSION 3.9)
 
-# Project name
+# Project info
 project(kchmviewer)
 include(cmake/get-version.cmake)
+set(CMAKE_PROJECT_VERSION ${PROJECT_VERSION})
+# Maybe upgrade the minimum version of CMake to 3.12?
+set(PROJECT_HOMEPAGE_URL "https://github.com/u-235/kchmviewer")
+set(CMAKE_PROJECT_HOMEPAGE_URL ${PROJECT_HOMEPAGE_URL})
 
-option(USE_WEBENGINE "Use Qt WebEngine")
-option(USE_STATIC_CHMLIB "Use static link with chm library")
-option(USE_WINDEPLOYQT "Copying runtime dependencies for Windows deployment")
+option(USE_WEBENGINE      "Use Qt WebEngine"                                OFF)
+option(USE_STATIC_CHMLIB  "Use static link with chm library"                OFF)
+option(USE_DEPLOY_RUNTIME "Copying runtime dependencies for deployment"     OFF)
+option(USE_GETTEXT        "Use GNU Gettext for translation"                  ON)
+option(USE_MACOS_BUNDLE   "Install as macOS bundle"                          ON)
 
 # Init cmake
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")

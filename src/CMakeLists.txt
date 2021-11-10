@@ -26,6 +26,7 @@ set(CPP_SOURCES
     treeitem_toc.cpp
     treeitem_index.cpp
     mimehelper.cpp
+    i18n.cpp
     )
 
 set(MOC_HEADERS
@@ -121,21 +122,11 @@ else ()
         )
 endif ()
 
+target_link_libraries(kchmviewer i18n)
+# For Gettext to work correctly, we tell the application the location
+# of the folders with binaries and translations.
+target_compile_definitions(kchmviewer PRIVATE
+        APP_INSTALL_DIR_BIN="${APP_BIN_INSTALL_DIR}"
+        APP_INSTALL_DIR_LOCALE="${APP_LOCALE_INSTALL_DIR}")
+
 install(TARGETS kchmviewer DESTINATION ${APP_BIN_INSTALL_DIR})
-
-# Copying runtime dependencies for Windows deployment
-# See https://doc.qt.io/qt-5/windows-deployment.html
-if (CMAKE_SYSTEM_NAME MATCHES "Windows" AND USE_WINDEPLOYQT)
-    set(QT_DEPLOY_DIR ${CMAKE_CURRENT_BINARY_DIR}/qt-deploy)
-    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${_qt_bin_dir}")
-
-    add_custom_command(TARGET kchmviewer POST_BUILD
-        COMMAND "${WINDEPLOYQT_EXECUTABLE}"
-            --no-quick-import
-            --dir ${QT_DEPLOY_DIR}
-            --plugindir ${QT_DEPLOY_DIR}/plugins  $<TARGET_FILE:kchmviewer>
-        COMMENT "Copying runtime dependencies"
-    )
-
-    install(DIRECTORY ${QT_DEPLOY_DIR}/ DESTINATION ${APP_BIN_INSTALL_DIR})
-endif ()

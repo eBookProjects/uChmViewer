@@ -31,7 +31,9 @@ HEADERS += \
     textencodings.h \
     treeitem_toc.h \
     treeitem_index.h \
-    mimehelper.h
+    mimehelper.h \
+    showwaitcursor.h \
+    i18n.h
 
 SOURCES += \
     config.cpp \
@@ -53,7 +55,8 @@ SOURCES += \
     textencodings.cpp \
     treeitem_toc.cpp \
     treeitem_index.cpp \
-    mimehelper.cpp
+    mimehelper.cpp \
+    i18n.cpp
 
 FORMS += tab_bookmarks.ui \
     tab_index.ui \
@@ -97,8 +100,6 @@ linux-g++-32: {
 macx:{
     HEADERS += kchmviewerapp.h
     SOURCES += kchmviewerapp.cpp
-    QMAKE_INFO_PLIST=resources/Info.plist
-    ICON = resources/kchmviewer.icns
 }
 
 win32:{

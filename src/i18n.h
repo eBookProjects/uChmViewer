@@ -1,6 +1,6 @@
 /*
  *  Kchmviewer - a CHM and EPUB file viewer with broad language support
- *  Copyright (C) 2004-2014 George Yunaev, gyunaev@ulduzsoft.com
+ *  Copyright (C) 2021 Nick Egorrov, nicegorov@yandex.ru
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,10 +16,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INCLUDE_VERSION_H
-#define INCLUDE_VERSION_H
+#ifndef I18N_H
+#define I18N_H
 
-#define APP_VERSION_MAJOR	8
-#define APP_VERSION_MINOR	1
+#if defined USE_KDE
+	//klocalizedstring.h
+	#include <klocale.h>
+#else
+	#define i18n(str)	tr(str)
+#endif
 
-#endif /* INCLUDE_VERSION_H */
+namespace app_i18n
+{
+void init();
+}
+
+#endif // I18N_H

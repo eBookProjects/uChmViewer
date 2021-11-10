@@ -16,7 +16,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QFileDialog>
+#include <QMessageBox>
+
 #include "kde-qt.h"
+#include "i18n.h"
+
 #include "config.h"
 #include "dialog_setup.h"
 #include "mainwindow.h"
@@ -76,6 +81,13 @@ DialogSetup::DialogSetup(QWidget *parent)
 	m_enableLocalStorage->setChecked( pConfig->m_browserEnableLocalStorage );
     m_openAllTOCEntries->setChecked( pConfig->m_tocOpenAllEntries );
     boxUseSingleClick->setChecked( pConfig->m_tabUseSingleClick );
+
+#if defined (USE_WEBENGINE)
+    m_enableOfflineStorage->setChecked( false );
+    m_enableOfflineStorage->setEnabled( false );
+    m_enableJava->setChecked( false );
+    m_enableJava->setEnabled( false );
+#endif
 
 	switch ( pConfig->m_toolbarMode )
 	{

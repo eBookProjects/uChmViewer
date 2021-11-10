@@ -16,12 +16,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "kde-qt.h"
-
 #include "mainwindow.h"
 #include "treeitem_toc.h"
 #include "tab_contents.h"
 #include "config.h"
+#include "showwaitcursor.h"
 
 
 TabContents::TabContents( QWidget *parent )

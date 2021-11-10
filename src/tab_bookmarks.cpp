@@ -16,6 +16,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QInputDialog>
+#include <QLineEdit>
+
+#include "i18n.h"
+
 #include "mainwindow.h"
 #include "viewwindow.h"
 #include "version.h"

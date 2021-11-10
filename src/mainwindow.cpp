@@ -16,13 +16,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QProcess>
-#include <QDesktopServices>
-#include <QSettings>
 #include <QDateTime>
+#include <QDesktopServices>
+#include <QDir>
+#include <QFileDialog>
+#include <QFileInfo>
+#include <QMessageBox>
+#include <QProcess>
+#include <QShortcut>
+#include <QSettings>
+#include <QTemporaryFile>
+#include <QTextEdit>
 #include <QTextStream>
+#include <QTimer>
+#include <QWhatsThis>
 
 #include "kde-qt.h"
+#include "i18n.h"
 
 #include "mainwindow.h"
 #include "config.h"
@@ -840,7 +850,7 @@ void MainWindow::actionNavigateHome()
 void MainWindow::actionOpenFile()
 {
 #if defined (USE_KDE)
-	QString fn = KFileDialog::getOpenFileName( pConfig->m_lastOpenedDir, i18n("*.chm|Compressed Help Manual;*.epub|EPUB electronic book"), this);
+	QString fn = KFileDialog::getOpenFileName( pConfig->m_lastOpenedDir, i18n("*.chm *.epub|All electronic book\n*.chm|Compressed Help Manual\n*.epub|EPUB electronic book"), this);
 #else
 	QString fn = QFileDialog::getOpenFileName( this, 
 	                                           i18n( "Open a chm file"), 

@@ -6,62 +6,826 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: zh_TW\n"
-"Report-Msgid-Bugs-To: kchmviewer@ulduzsoft.com\n"
-"POT-Creation-Date: 2009-07-19 20:41-0700\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-04 21:31+0300\n"
 "PO-Revision-Date: 2006-05-07 20:30-0400\n"
 "Last-Translator: 呂健 <oldwolf.mick@gmail.com>\n"
 "Language-Team:  <zh@li.org>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: kchmbookmarkwindow.cpp:113
-msgid "%1 - add a bookmark"
-msgstr "%1 - 添加書籤"
-
-#: kchmbookmarkwindow.cpp:114 kchmbookmarkwindow.cpp:156
-msgid "Enter the name for this bookmark:"
-msgstr "輸入書籤的名稱"
-
-#: kchmbookmarkwindow.cpp:155
-msgid "%1 - edit the bookmark name"
-msgstr "%1 - 編輯書籤名稱"
-
-#: kchmmainwindow.cpp:96
-#, fuzzy
-msgid "Bookmarks"
-msgstr "添加當前頁面為書籤(&B)"
-
-#: kchmmainwindow.cpp:121
-msgid ""
-"<html><b>%1 version %2</b><br><br>Copyright (C) George Yunaev, 2004-"
-"2008<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
-"a><br><a href=\"http://www.kchmviewer.net\">http://www.kchmviewer.net</"
-"a><br><br>Licensed under GNU GPL license.</html>"
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1117
+msgid "About kchmviewer"
 msgstr ""
 
-#: kchmmainwindow.cpp:163
+#: ../src/dialog_about.ui:24
+msgid "About appplication"
+msgstr ""
+
+#: ../src/dialog_about.ui:46
+#, fuzzy
+msgid "About text"
+msgstr "關於QT(&Q)"
+
+#: ../src/dialog_about.ui:57
+msgid "Thanks"
+msgstr ""
+
+#: ../src/dialog_about.ui:63
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"family:'Liberation Sans'; font-size:10pt; font-weight:600;\">I would like to "
+"thank:</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"family:'Liberation Sans'; font-size:10pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"family:'Liberation Sans'; font-size:10pt;\">- Razvan Cojocaru, the author of "
+"xchm.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"family:'Liberation Sans'; font-size:10pt;\">- Peter Volkov for significant "
+"QA (more than 20 reported bugs!)</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"family:'Liberation Sans'; font-size:10pt;\">- And of course </span><span "
+"style=\" font-family:'Liberation Sans'; font-size:10pt; font-weight:600;"
+"\">everyone</span><span style=\" font-family:'Liberation Sans'; font-"
+"size:10pt;\">, who report bugs,  and suggest features.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
+"family:'Liberation Sans'; font-size:10pt;\"><br /></p></body></html>"
+msgstr ""
+
+#: ../src/dialog_about.ui:83
+msgid "3rd party software"
+msgstr ""
+
+#: ../src/dialog_about.ui:89
+msgid ""
+"<html><head/><body><p>kchmviewer uses the following 3rd party software:</"
+"p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
+"right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-"
+"bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
+"indent:0px;\">Qt library from http://qt-project.org by Digia; </li><li style="
+"\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -"
+"qt-block-indent:0; text-indent:0px;\">libchm for parsing CHM files by Jed "
+"Wing; </li><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">libzip for handling "
+"EPUB files by Dieter Baron and Thomas Klausner</li><li style=\" margin-"
+"top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
+"indent:0; text-indent:0px;\">Icons from DryIcons, http://dryicons.com</li></"
+"ul></body></html>"
+msgstr ""
+
+#: ../src/dialog_setup.ui:20
+msgid "KchmViewer settings"
+msgstr "KchmViewer設置"
+
+#: ../src/dialog_setup.ui:42
+msgid "General behavior"
+msgstr "通用行為"
+
+#: ../src/dialog_setup.ui:62
+msgid "If started with no arguments"
+msgstr ""
+
+#: ../src/dialog_setup.ui:74
+msgid "Start with nothing loaded"
+msgstr ""
+
+#: ../src/dialog_setup.ui:81
+#, fuzzy
+msgid "Pop up the \"open file\" dialog"
+msgstr "打開'打開CHM檔案'對話框"
+
+#: ../src/dialog_setup.ui:88
+msgid "Open the &last used CHM file, if exist"
+msgstr "如果存在,打開最後使用的CHM檔案(&L)"
+
+#: ../src/dialog_setup.ui:91
+#, fuzzy
+msgid "Alt+L"
+msgstr "Alt+E"
+
+#: ../src/dialog_setup.ui:101
+msgid "History"
+msgstr "歷史"
+
+#: ../src/dialog_setup.ui:121
+msgid "Store history information for"
+msgstr "保存歷史信息"
+
+#: ../src/dialog_setup.ui:141
+msgid "latest files"
+msgstr "最近使用的檔案"
+
+#: ../src/dialog_setup.ui:153
+msgid ""
+"Remembers the information about the files, which were opened. Remembers last "
+"opened page, search history, font size, bookmarks and so on."
+msgstr ""
+"記錄已經打開的檔案的相關信息。 記錄最後打開的頁面，搜索記錄，字體大小，書籤等"
+"信息。"
+
+#: ../src/dialog_setup.ui:156
+msgid "R&emember extra information for history files"
+msgstr "記錄歷史檔案額外信息(&E)"
+
+#: ../src/dialog_setup.ui:159
+msgid "Alt+E"
+msgstr "Alt+E"
+
+#: ../src/dialog_setup.ui:171
+msgid "CHM security settings"
+msgstr "CHM 安全設置"
+
+#: ../src/dialog_setup.ui:183
+msgid "When external link clicked"
+msgstr "當點擊外部鏈接時"
+
+#: ../src/dialog_setup.ui:195
+msgid "Alwa&ys open it in external browser"
+msgstr "總在外部瀏覽器中打開(&Y)"
+
+#: ../src/dialog_setup.ui:198
+msgid "Alt+Y"
+msgstr "Alt+Y"
+
+#: ../src/dialog_setup.ui:205 ../src/dialog_setup.ui:244
+msgid "Ask for confirmation"
+msgstr "請求确認"
+
+#: ../src/dialog_setup.ui:212
+msgid "Do not open the link"
+msgstr "不打開鏈接"
+
+#: ../src/dialog_setup.ui:225
+msgid "When link pointed to a new CHM file clicked"
+msgstr "當點擊指向新的CHM檔案的鏈接時"
+
+#: ../src/dialog_setup.ui:237
+msgid "Always open a new CHM file"
+msgstr "總打開新的CHM檔案"
+
+#: ../src/dialog_setup.ui:251
+msgid "Do not open a new CHM file"
+msgstr "不打開新的CHM檔案"
+
+#: ../src/dialog_setup.ui:278
+msgid "Browser"
+msgstr ""
+
+#: ../src/dialog_setup.ui:290
+#, fuzzy
+msgid "HTML browser settings"
+msgstr "CHM 安全設置"
+
+#: ../src/dialog_setup.ui:296
+msgid "Load the &images"
+msgstr ""
+
+#: ../src/dialog_setup.ui:303
+msgid "Enable browser &plugins (i.e. Flash)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:306
+msgid "Alt+P"
+msgstr "Alt+P"
+
+#: ../src/dialog_setup.ui:313
+msgid "Enable &Java"
+msgstr "啟用Java(&J)"
+
+#: ../src/dialog_setup.ui:316
+msgid "Alt+J"
+msgstr "Alt+J"
+
+#: ../src/dialog_setup.ui:323
+msgid "Enable Java&Script"
+msgstr "啟用JavaScript(&S)"
+
+#: ../src/dialog_setup.ui:326
+msgid "Alt+S"
+msgstr "Alt+S"
+
+#: ../src/dialog_setup.ui:333
+msgid "Enable &offline storage (HTML5)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:336
+msgid "Alt+R"
+msgstr "Alt+R"
+
+#: ../src/dialog_setup.ui:343
+msgid "Enable &local storage (HTML5)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:350
+msgid "Highlight search results during in-page search"
+msgstr ""
+
+#: ../src/dialog_setup.ui:360
+msgid "Table of Contents and other windows"
+msgstr ""
+
+#: ../src/dialog_setup.ui:366
+msgid "Open all Table of Contents entries automatically"
+msgstr ""
+
+#: ../src/dialog_setup.ui:373
+msgid ""
+"Always use a single click to open the elements instead of OS-specific "
+"activation"
+msgstr ""
+
+#: ../src/dialog_setup.ui:397
+msgid "Advanced"
+msgstr "高級"
+
+#: ../src/dialog_setup.ui:403
+msgid "View HTML source command uses"
+msgstr "查看HTML源碼使用"
+
+#: ../src/dialog_setup.ui:415
+msgid "Built-in HTML source viewer"
+msgstr "內建HTML源碼查看器"
+
+#: ../src/dialog_setup.ui:425
+msgid "E&xternal program, specified below"
+msgstr "外部程式，在下面特別指定(&X)"
+
+#: ../src/dialog_setup.ui:428
+msgid "Alt+X"
+msgstr "Alt+x"
+
+#: ../src/dialog_setup.ui:443
+msgid "External program:"
+msgstr "外部程式"
+
+#: ../src/dialog_setup.ui:456
+msgid "&Browse"
+msgstr ""
+
+#: ../src/dialog_setup.ui:468
+msgid "Other"
+msgstr ""
+
+#: ../src/dialog_setup.ui:474
+msgid "Use right-to-left layout direction (Arabic and Hebrew layouts)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:481
+msgid ""
+"Automatically detect encoding for KHTMLPart and WebKit browsers (not "
+"recommended)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:488
+msgid ""
+"If this option is enabled, the application will check for updates (when new "
+"version of application is released). If a new version is available, the "
+"program will show a messagebox dialog informing you about new version. This "
+"check will only performed once in 24 hours. No user information is requested "
+"or transmitted from your computer during this check."
+msgstr ""
+
+#: ../src/dialog_setup.ui:491
+msgid "Perform a check whether a new version is available (once a week)"
+msgstr ""
+
+#: ../src/dialog_setup.ui:501
+#, fuzzy
+msgid "Toolbars"
+msgstr "通用行為"
+
+#: ../src/dialog_setup.ui:507
+msgid "Small icons"
+msgstr ""
+
+#: ../src/dialog_setup.ui:514
+msgid "Large icons"
+msgstr ""
+
+#: ../src/dialog_setup.ui:521
+msgid "Large icons and text"
+msgstr ""
+
+#: ../src/dialog_setup.ui:528
+#, fuzzy
+msgid "Just text"
+msgstr "關於QT(&Q)"
+
+#: ../src/dialog_setup.cpp:209
+msgid ""
+"Changing those options requires restarting the application to take effect."
+msgstr ""
+
+#: ../src/dialog_setup.cpp:218
+msgid "*|Executables"
+msgstr ""
+
+#: ../src/dialog_setup.cpp:218 ../src/dialog_setup.cpp:221
+msgid "Choose an editor executable"
+msgstr ""
+
+#: ../src/dialog_setup.cpp:223
+msgid "Executables (*)"
+msgstr ""
+
+#: ../src/dialog_topicselector.ui:13
+msgid "Multiple topics"
+msgstr ""
+
+#: ../src/dialog_topicselector.ui:25
+#, fuzzy
+msgid "Please select the topic to open:"
+msgstr "請在下面選取一個主題"
+
+#: ../src/mainwindow.ui:14 ../src/main.cpp:49
+msgid "kchmviewer"
+msgstr ""
+
+#: ../src/mainwindow.ui:28
+msgid "&Settings"
+msgstr ""
+
+#: ../src/mainwindow.ui:37
+#, fuzzy
+msgid "&Bookmarks"
+msgstr "添加當前頁面為書籤(&B)"
+
+#: ../src/mainwindow.ui:44
+#, fuzzy
+msgid "&File"
+msgstr "標題"
+
+#: ../src/mainwindow.ui:55
+msgid "&Edit"
+msgstr ""
+
+#: ../src/mainwindow.ui:64
+msgid "&View"
+msgstr ""
+
+#: ../src/mainwindow.ui:78
+#, fuzzy
+msgid "&Windows"
+msgstr "窗口(&W)"
+
+#: ../src/mainwindow.ui:85
+#, fuzzy
+msgid "Help"
+msgstr "刪除(&D)"
+
+#: ../src/mainwindow.ui:100
+#, fuzzy
+msgid "General toolbar"
+msgstr "通用行為"
+
+#: ../src/mainwindow.ui:125
+#, fuzzy
+msgid "Navigation toolbar"
+msgstr "導航"
+
+#: ../src/mainwindow.ui:151
+#, fuzzy
+msgid "View toolbar"
+msgstr "通用行為"
+
+#: ../src/mainwindow.ui:186
+#, fuzzy
+msgid "&Print..."
+msgstr "列印檔案"
+
+#: ../src/mainwindow.ui:189
+#, fuzzy
+msgid "Print"
+msgstr "列印檔案"
+
+#: ../src/mainwindow.ui:192
+msgid "Print current page"
+msgstr ""
+
+#: ../src/mainwindow.ui:195
+msgid "Prints currently opened page."
+msgstr ""
+
+#: ../src/mainwindow.ui:198
+msgid "Ctrl+P"
+msgstr ""
+
+#: ../src/mainwindow.ui:207
+msgid "&Quit"
+msgstr ""
+
+#: ../src/mainwindow.ui:210
+msgid "Exit"
+msgstr ""
+
+#: ../src/mainwindow.ui:213
+#, fuzzy
+msgid "Exits the application"
+msgstr "更改設置(&C)"
+
+#: ../src/mainwindow.ui:216
+msgid "Ctrl+Q"
+msgstr ""
+
+#: ../src/mainwindow.ui:225
+msgid "C&opy"
+msgstr ""
+
+#: ../src/mainwindow.ui:228
+msgid "Copy"
+msgstr ""
+
+#: ../src/mainwindow.ui:231
+msgid "Copies selected content to clipboard"
+msgstr ""
+
+#: ../src/mainwindow.ui:234
+msgid "Ctrl+C"
+msgstr ""
+
+#: ../src/mainwindow.ui:243
+#, fuzzy
+msgid "&Select All"
+msgstr "選擇全部(&S)"
+
+#: ../src/mainwindow.ui:246
+msgid "Paste"
+msgstr ""
+
+#: ../src/mainwindow.ui:249
+msgid "Selects everything in the document"
+msgstr ""
+
+#: ../src/mainwindow.ui:252
+msgid "Ctrl+V"
+msgstr ""
+
+#: ../src/mainwindow.ui:261
+msgid "&Find..."
+msgstr ""
+
+#: ../src/mainwindow.ui:264
+msgid "Find text in currently opened page"
+msgstr ""
+
+#: ../src/mainwindow.ui:267
+msgid "Enters the Find in page mode"
+msgstr ""
+
+#: ../src/mainwindow.ui:270
+msgid "Ctrl+F"
+msgstr ""
+
+#: ../src/mainwindow.ui:279
+msgid "E&xtract CHM content..."
+msgstr "提取CHM目錄(&X)"
+
+#: ../src/mainwindow.ui:282
+#, fuzzy
+msgid "Extract the CHM content to the directory"
+msgstr "提取CHM目錄"
+
+#: ../src/mainwindow.ui:285
+#, fuzzy
+msgid ""
+"Exctracts the CHM archive content to the specified directory. All the files "
+"are extracted."
+msgstr "提取CHM目錄"
+
+#: ../src/mainwindow.ui:294
+#, fuzzy
+msgid "&Application settings..."
+msgstr "更改設置(&C)"
+
+#: ../src/mainwindow.ui:297 ../src/mainwindow.ui:300
+#, fuzzy
+msgid "Change the application settings"
+msgstr "更改設置(&C)"
+
+#: ../src/mainwindow.ui:309
+msgid "&Add bookmark"
+msgstr "添加書籤(&A)"
+
+#: ../src/mainwindow.ui:312
+#, fuzzy
+msgid "Bookmark"
+msgstr "添加當前頁面為書籤(&B)"
+
+#: ../src/mainwindow.ui:315
+msgid "Adds a bookmark for currently opened page"
+msgstr ""
+
+#: ../src/mainwindow.ui:318
+msgid ""
+"Adds a bookmark for currently opened page. Remembers the opened page, and "
+"scroll position. Bookmarks are accessible through Bookmarks menu or tab."
+msgstr ""
+
+#: ../src/mainwindow.ui:321
+msgid "Ctrl+B"
+msgstr ""
+
+#: ../src/mainwindow.ui:330
+#, fuzzy
+msgid "&Increase font size"
+msgstr "增大字體大小"
+
+#: ../src/mainwindow.ui:333
+msgid "Larger"
+msgstr ""
+
+#: ../src/mainwindow.ui:336
+#, fuzzy
+msgid "Increase the font size"
+msgstr "增大字體大小"
+
+#: ../src/mainwindow.ui:339
+msgid "Increases the document font size. The new font size will be stored."
+msgstr ""
+
+#: ../src/mainwindow.ui:342
+msgid "Ctrl+="
+msgstr ""
+
+#: ../src/mainwindow.ui:351
+#, fuzzy
+msgid "&Decrease font size"
+msgstr "縮小字體大小"
+
+#: ../src/mainwindow.ui:354
+msgid "Smaller"
+msgstr ""
+
+#: ../src/mainwindow.ui:357
+#, fuzzy
+msgid "Decrease the font size"
+msgstr "縮小字體大小"
+
+#: ../src/mainwindow.ui:360
+msgid "Decreases the document font size. The new font size will be stored."
+msgstr ""
+
+#: ../src/mainwindow.ui:363
+msgid "Ctrl+-"
+msgstr ""
+
+#: ../src/mainwindow.ui:372
+msgid "See &HTML"
+msgstr ""
+
+#: ../src/mainwindow.ui:375
+#, fuzzy
+msgid "View HTML source of current page"
+msgstr "查看HTML源碼使用"
+
+#: ../src/mainwindow.ui:378
+#, fuzzy
+msgid "Shows the HTML source of currently opened page"
+msgstr "查看HTML源碼使用"
+
+#: ../src/mainwindow.ui:381
+msgid "Ctrl+U"
+msgstr ""
+
+#: ../src/mainwindow.ui:393
+#, fuzzy
+msgid "Enable &full screen mode"
+msgstr "全屏(&F)"
+
+#: ../src/mainwindow.ui:396
+#, fuzzy
+msgid "Enters or leaves the fullscreen mode"
+msgstr "全屏(&F)"
+
+#: ../src/mainwindow.ui:399
+#, fuzzy
+msgid "F11"
+msgstr "F1"
+
+#: ../src/mainwindow.ui:417
+msgid "Show &navigator window"
+msgstr ""
+
+#: ../src/mainwindow.ui:420
+msgid "Show navigator dock window"
+msgstr ""
+
+#: ../src/mainwindow.ui:423
+msgid ""
+"Shows or hides the size window (with Content, Index, Search and Bookmark "
+"tabs)"
+msgstr ""
+
+#: ../src/mainwindow.ui:426
+msgid "F9"
+msgstr ""
+
+#: ../src/mainwindow.ui:438
+#, fuzzy
+msgid "&Locate"
+msgstr "位置"
+
+#: ../src/mainwindow.ui:441
+#, fuzzy
+msgid "Locate the current page in contents window"
+msgstr "在錄窗口定位主題"
+
+#: ../src/mainwindow.ui:444
+#, fuzzy
+msgid ""
+"If the current page is present in the Table of Contents, locate it there. "
+msgstr "點擊此按鈕前往目錄錶格的後一頁"
+
+#: ../src/mainwindow.ui:447
+msgid "Ctrl+L"
+msgstr ""
+
+#: ../src/mainwindow.ui:456
+#, fuzzy
+msgid "Set &encoding"
+msgstr "設置編碼(&S)"
+
+#: ../src/mainwindow.ui:459
+msgid "Changes the current document encoding. "
+msgstr ""
+
+#: ../src/mainwindow.ui:468
+msgid "&Open..."
+msgstr ""
+
+#: ../src/mainwindow.ui:471
+#, fuzzy
+msgid "Open a CHM file"
+msgstr "打開檔案"
+
+#: ../src/mainwindow.ui:474
+#, fuzzy
+msgid "Opens a new CHM file"
+msgstr "總打開新的CHM檔案"
+
+#: ../src/mainwindow.ui:483
+msgid "Back"
+msgstr ""
+
+#: ../src/mainwindow.ui:486
+#, fuzzy
+msgid "Navigate back"
+msgstr "導航"
+
+#: ../src/mainwindow.ui:489
+#, fuzzy
+msgid "Navigate back in navigation history"
+msgstr "在歷史中後退"
+
+#: ../src/mainwindow.ui:498
+msgid "Forward"
+msgstr ""
+
+#: ../src/mainwindow.ui:501
+#, fuzzy
+msgid "Navigate forward"
+msgstr "導航"
+
+#: ../src/mainwindow.ui:504
+#, fuzzy
+msgid "Navigate forward in navigation history"
+msgstr "在歷史中前進"
+
+#: ../src/mainwindow.ui:513
+msgid "Home"
+msgstr ""
+
+#: ../src/mainwindow.ui:516
+#, fuzzy
+msgid "Navigate home"
+msgstr "導航"
+
+#: ../src/mainwindow.ui:519
+msgid "Navigate to the document Home page, as specified in the document."
+msgstr ""
+
+#: ../src/mainwindow.ui:528 ../src/window_browser.ui:90
+msgid "Previous"
+msgstr ""
+
+#: ../src/mainwindow.ui:531
+#, fuzzy
+msgid "Go to the previous page in the Table of Contents"
+msgstr "點擊此按鈕前往目錄錶格中的前一頁"
+
+#: ../src/mainwindow.ui:534
+#, fuzzy
+msgid ""
+"Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
+"Ctrl+Left Arrow</i>"
+msgstr "點擊此按鈕前往目錄錶格中的前一頁"
+
+#: ../src/mainwindow.ui:543 ../src/window_browser.ui:113
+msgid "Next"
+msgstr ""
+
+#: ../src/mainwindow.ui:546
+#, fuzzy
+msgid "Go to the next page in the Table of Contents"
+msgstr "點擊此按鈕前往目錄錶格的後一頁"
+
+#: ../src/mainwindow.ui:549
+#, fuzzy
+msgid ""
+"Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: Ctrl"
+"+Right Arrow</i>"
+msgstr "點擊此按鈕前往目錄錶格的後一頁"
+
+#: ../src/mainwindow.ui:558
+#, fuzzy
+msgid "&Close window"
+msgstr "窗口(&W)"
+
+#: ../src/mainwindow.ui:561
+#, fuzzy
+msgid "Close current window"
+msgstr "顯示目錄窗口(&S)"
+
+#: ../src/mainwindow.ui:564
+#, fuzzy
+msgid "Closes currently opened window"
+msgstr "顯示目錄窗口(&S)"
+
+#: ../src/mainwindow.ui:567
+msgid "Ctrl+W"
+msgstr ""
+
+#: ../src/mainwindow.ui:572
+msgid "About kchmviewer..."
+msgstr ""
+
+#: ../src/mainwindow.ui:577
+#, fuzzy
+msgid "About Qt"
+msgstr "關於QT(&Q)"
+
+#: ../src/mainwindow.ui:586
+msgid "Check for updates"
+msgstr ""
+
+#: ../src/mainwindow.ui:595
+#, fuzzy
+msgid "Edit toolbars..."
+msgstr "導航"
+
+#: ../src/mainwindow.cpp:199
+msgid "Shared memory segment failed"
+msgstr ""
+
+#: ../src/mainwindow.cpp:200
+#, qt-format
+msgid "Failed to create a shared memory segment: %1"
+msgstr ""
+
+#: ../src/mainwindow.cpp:276
+#, qt-format
 msgid "Detected file encoding: %1 ( %2 )"
 msgstr ""
 
-#: kchmmainwindow.cpp:254
+#: ../src/mainwindow.cpp:346
+#, qt-format
 msgid "%1 - failed to load the chm file"
 msgstr "%1 - 載入CHM檔案失敗"
 
-#: kchmmainwindow.cpp:255
+#: ../src/mainwindow.cpp:347
+#, qt-format
 msgid "Unable to load the chm file %1"
 msgstr "無法載入CHM檔案%1"
 
-#: kchmmainwindow.cpp:263
+#: ../src/mainwindow.cpp:355
+#, qt-format
 msgid "Could not load file %1"
 msgstr "無法載入檔案%1"
 
-#: kchmmainwindow.cpp:331
+#: ../src/mainwindow.cpp:413
+#, qt-format
 msgid "%1 - remote link clicked - %2"
 msgstr "%1 - 點擊遠程鏈接 - %2"
 
-#: kchmmainwindow.cpp:332
+#: ../src/mainwindow.cpp:414
+#, qt-format
 msgid ""
 "A remote link %1 will start the external program to open it.\n"
 "\n"
@@ -71,162 +835,242 @@ msgstr ""
 "\n"
 "你要繼續嗎？"
 
-#: kchmmainwindow.cpp:333 kchmmainwindow.cpp:377
+#: ../src/mainwindow.cpp:415
 msgid "&Yes"
 msgstr "是(&Y)"
 
-#: kchmmainwindow.cpp:333 kchmmainwindow.cpp:377
+#: ../src/mainwindow.cpp:415
 msgid "&No"
 msgstr "否(&N)"
 
-#: kchmmainwindow.cpp:355
-msgid "%1 - JavsScript link clicked"
-msgstr "%1 - 點擊JavaScript鏈接"
-
-#: kchmmainwindow.cpp:356
+#: ../src/mainwindow.cpp:853
+#, fuzzy
 msgid ""
-"You have clicked a JavaScript link.\n"
-"To prevent security-related issues JavaScript URLs are disabled in CHM files."
-msgstr ""
-"你點擊了JavaScript鏈接。\n"
-"為了了避免安全問題，在CHM檔案中不啟用JavaScript URLs支持。"
-
-#: kchmmainwindow.cpp:375
-msgid "%1 - link to a new CHM file clicked"
-msgstr "%1 - 點擊指向新的CHM檔案的鏈接。"
-
-#: kchmmainwindow.cpp:376
-msgid ""
-"You have clicked a link, which leads to a new CHM file %1.\n"
-"The current file will be closed.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-"你點擊了指向新的CHM檔案的鏈接%1。\n"
-"現在打開的檔案將被關閉。\n"
-"\n"
-"你要繼續嗎？"
-
-#: kchmmainwindow.cpp:639
-msgid "Contents"
-msgstr ""
-
-#: kchmmainwindow.cpp:664
-msgid "Index"
-msgstr "索引"
-
-#: kchmmainwindow.cpp:687
-msgid "Search"
-msgstr "搜索"
-
-#: kchmmainwindow.cpp:855
-msgid "*.chm|Compressed Help Manual (*.chm)"
+"*.chm *.epub|All electronic book\n"
+"*.chm|Compressed Help Manual\n"
+"*.epub|EPUB electronic book"
 msgstr "*.chm|壓縮的幫助手冊 (*.chm)"
 
-#: kchmmainwindow.cpp:858
+#: ../src/mainwindow.cpp:856
 #, fuzzy
 msgid "Open a chm file"
 msgstr "打開檔案"
 
-#: kchmmainwindow.cpp:860
-msgid "Compressed Help Manual (*.chm)"
-msgstr "壓縮的幫助手冊 (*.chm)"
+#: ../src/mainwindow.cpp:858
+msgid "Electronic books (*.chm *.epub)"
+msgstr ""
 
-#: kchmmainwindow.cpp:872
-msgid "Loading aborted"
-msgstr "取消載入"
-
-#: kchmmainwindow.cpp:912 kchmmainwindow.cpp:916
+#: ../src/mainwindow.cpp:903 ../src/mainwindow.cpp:907
 msgid "Choose a directory to store CHM content"
 msgstr "選擇目錄來保存CHM目錄"
 
-#: kchmmainwindow.cpp:930
+#: ../src/mainwindow.cpp:921
 msgid "Extracting CHM content"
 msgstr "提取CHM目錄"
 
-#: kchmmainwindow.cpp:931
+#: ../src/mainwindow.cpp:922
 msgid "Extracting files..."
 msgstr "提取檔案..."
 
-#: kchmmainwindow.cpp:932
+#: ../src/mainwindow.cpp:923
 msgid "Abort"
 msgstr "取消"
 
-#: kchmmainwindow.cpp:1122
+#: ../src/mainwindow.cpp:1016
+#, fuzzy
+msgid "HTML source"
+msgstr "查看HTML源碼"
+
+#: ../src/mainwindow.cpp:1042
+#, qt-format
+msgid ""
+"Cannot start external editor %1.\n"
+"Make sure the path is absolute!"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
 msgstr "無法在目錄窗口定位打開的主題"
 
-#: kchmmainwindow.cpp:1164
-msgid "About %1"
-msgstr "關於%1"
+#: ../src/mainwindow.cpp:1108
+#, qt-format
+msgid ""
+"<html><b>kchmviewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2015<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
+"a><br><a href=\"http://www.ulduzsoft.com/kchmviewer\">http://www.ulduzsoft."
+"com/kchmviewer</a><br><br>Licensed under GNU GPL license version 3.</html>"
+msgstr ""
 
-#: kchmmainwindow.cpp:1326
-#, fuzzy
-msgid "&Help"
-msgstr "刪除(&D)"
-
-#: kchmmainwindow.cpp:1327
-#, fuzzy
-msgid "&About"
-msgstr "取消"
-
-#: kchmmainwindow.cpp:1328
-msgid "About &Qt"
-msgstr "關於QT(&Q)"
-
-#: kchmmainwindow.cpp:1340
+#: ../src/mainwindow.cpp:1212
 msgid "Ctrl+1"
 msgstr ""
 
-#: kchmmainwindow.cpp:1346
+#: ../src/mainwindow.cpp:1218
 msgid "Ctrl+2"
 msgstr ""
 
-#: kchmmainwindow.cpp:1352
+#: ../src/mainwindow.cpp:1224
 msgid "Ctrl+3"
 msgstr ""
 
-#: kchmmainwindow.cpp:1358
+#: ../src/mainwindow.cpp:1230
 msgid "Ctrl+4"
 msgstr ""
 
-#: kchmmainwindow.cpp:1365
+#: ../src/mainwindow.cpp:1237
 msgid "/"
 msgstr ""
 
-#: kchmmainwindow.cpp:1372
+#: ../src/mainwindow.cpp:1244
 msgid "F3"
 msgstr ""
 
-#: kchmmainwindow.cpp:1379
+#: ../src/mainwindow.cpp:1264
 msgid "Ctrl+Right"
 msgstr ""
 
-#: kchmmainwindow.cpp:1386
+#: ../src/mainwindow.cpp:1271
 msgid "Ctrl+Left"
 msgstr ""
 
-#: kchmmainwindow.cpp:1492
+#: ../src/mainwindow.cpp:1278
+msgid "Ctrl+I"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1362
+#, qt-format
 msgid "%1 ( %2 )"
 msgstr ""
 
-#: kchmsearchwindow.cpp:151
+#: ../src/mainwindow.cpp:1464
+msgid "Unable to check whether a new version is available"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1477
+#, fuzzy
+msgid "New version available"
+msgstr "搜索失敗"
+
+#: ../src/mainwindow.cpp:1478
+#, qt-format
+msgid ""
+"<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>You are "
+"currently using version %3.<br>Do you want to visit the application web site "
+"%2?"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1491
+msgid "Checked for updates; you are using the latest version of kchmviewer"
+msgstr ""
+
+#: ../src/navigationpanel.cpp:40
+msgid "Search"
+msgstr "搜索"
+
+#: ../src/navigationpanel.cpp:43
+#, fuzzy
+msgid "Bookmarks"
+msgstr "添加當前頁面為書籤(&B)"
+
+#: ../src/navigationpanel.cpp:83
+msgid "Index"
+msgstr "索引"
+
+#: ../src/navigationpanel.cpp:89
+msgid "Contents"
+msgstr ""
+
+#: ../src/navigatorpanel.ui:17
+#, fuzzy
+msgid "Navigator panel"
+msgstr "導航"
+
+#: ../src/navigatorpanel.ui:28
+msgid "Tab 1"
+msgstr ""
+
+#: ../src/recentfiles.cpp:96
+#, qt-format
+msgid "&%1 %2"
+msgstr ""
+
+#: ../src/tab_bookmarks.ui:36
+msgid "&Add"
+msgstr "添加(&A)"
+
+#: ../src/tab_bookmarks.ui:43
+msgid "Edi&t"
+msgstr ""
+
+#: ../src/tab_bookmarks.ui:50
+msgid "&Del"
+msgstr ""
+
+#: ../src/tab_bookmarks.cpp:133
+#, qt-format
+msgid "%1 - add a bookmark"
+msgstr "%1 - 添加書籤"
+
+#: ../src/tab_bookmarks.cpp:134 ../src/tab_bookmarks.cpp:176
+msgid "Enter the name for this bookmark:"
+msgstr "輸入書籤的名稱"
+
+#: ../src/tab_bookmarks.cpp:175
+#, qt-format
+msgid "%1 - edit the bookmark name"
+msgstr "%1 - 編輯書籤名稱"
+
+#: ../src/tab_contents.ui:13 ../src/tab_index.ui:14 ../src/tab_search.ui:13
+msgid "Form1"
+msgstr ""
+
+#: ../src/tab_index.ui:22
+msgid "F&ind:"
+msgstr ""
+
+#: ../src/tab_index.ui:50
+msgid "1"
+msgstr ""
+
+#: ../src/tab_search.ui:33
+msgid "Type in word(s) to search for:"
+msgstr "輸入要搜索的詞"
+
+#: ../src/tab_search.ui:48
+msgid "<a href=\"help\">Help</a>"
+msgstr ""
+
+#: ../src/tab_search.ui:86
+#, fuzzy
+msgid "&Go"
+msgstr "否(&N)"
+
+#: ../src/tab_search.ui:111
+msgid "Title"
+msgstr ""
+
+#: ../src/tab_search.ui:116
+msgid "Location"
+msgstr "位置"
+
+#: ../src/tab_search.cpp:166
+#, qt-format
 msgid "Search returned %1 result(s)"
 msgstr "搜索返回 %1 個結果"
 
-#: kchmsearchwindow.cpp:154
+#: ../src/tab_search.cpp:170
 msgid "Search returned no results"
 msgstr "搜索沒有返回結果"
 
-#: kchmsearchwindow.cpp:157
+#: ../src/tab_search.cpp:173
 msgid "Search failed"
 msgstr "搜索失敗"
 
-#: kchmsearchwindow.cpp:190
+#: ../src/tab_search.cpp:206
 msgid ""
 "<html><p>The improved search engine allows you to search for a word, symbol "
 "or phrase, which is set of words and symbols included in quotes. Only the "
-"documents which include all the terms speficide in th search query are "
+"documents which include all the terms specified in th search query are "
 "shown; no prefixes needed.<p>Unlike MS CHM internal search index, my "
 "improved search engine indexes everything, including special symbols. "
 "Therefore it is possible to search (and find!) for something like <i>$q = "
@@ -237,956 +1081,200 @@ msgid ""
 "html>"
 msgstr ""
 
-#: kchmsearchwindow.cpp:207
+#: ../src/tab_search.cpp:223
 msgid "Reading dictionary..."
 msgstr ""
 
-#: kchmsearchwindow.cpp:221 kchmsearchwindow.cpp:222
+#: ../src/tab_search.cpp:237 ../src/tab_search.cpp:238
+#: ../src/tab_search.cpp:243
 msgid "Generating search index..."
 msgstr ""
 
-#: kchmsetupdialog.cpp:183
+#: ../src/tab_search.cpp:253
+#, qt-format
+msgid "The index cannot be saved into file %1"
+msgstr ""
+
+#: ../src/window_browser.ui:36
+msgid "TabbedBrowser"
+msgstr ""
+
+#: ../src/window_browser.ui:133
+msgid "Case Sensitive"
+msgstr ""
+
+#: ../src/window_browser.ui:152
+msgid "<img src=\":/images/find_wrap.png\">&nbsp;Search wrapped"
+msgstr ""
+
+#: ../src/toolbareditor.ui:14
+msgid "Dialog"
+msgstr ""
+
+#: ../src/toolbareditor.ui:20
+#, fuzzy
+msgid "Select a toolbar"
+msgstr "通用行為"
+
+#: ../src/toolbareditor.ui:26
+#, fuzzy
+msgid "Editing the toolbar "
+msgstr "導航"
+
+#: ../src/toolbareditor.ui:46
 msgid ""
-"Changing those options requires restarting the application to take effect."
+"Drag the actions to the toolbar list to add them to the toolbar. \n"
+"Drag them from toolbar list to remove them from the toolbar."
 msgstr ""
 
-#: kchmsetupdialog.cpp:192
-msgid "*|Executables"
-msgstr ""
-
-#: kchmsetupdialog.cpp:192 kchmsetupdialog.cpp:195
-msgid "Choose an editor executable"
-msgstr ""
-
-#: kchmsetupdialog.cpp:197
-msgid "Executables (*)"
-msgstr ""
-
-#: kchmviewwindowmgr.cpp:58
-msgid "Close current page"
-msgstr ""
-
-#: kchmviewwindowmgr.cpp:70
+#: ../src/toolbareditor.ui:65
 #, fuzzy
-msgid "Add page"
-msgstr "在頁面中搜索"
+msgid "Available actions"
+msgstr "檔案操作"
 
-#: kchmviewwindowmgr.cpp:171 kchmviewwindowmgr.cpp:238
+#: ../src/toolbareditor.ui:90
 #, fuzzy
-msgid "Alt+%1"
-msgstr "Alt+L"
+msgid "Toolbar actions"
+msgstr "檔案操作"
 
-#: kchmviewwindow_qtextbrowser.cpp:121 kchmviewwindow_qtwebkit.cpp:256
+#: ../src/qtwebengine/viewwindow.cpp:162 ../src/qtwebkit/viewwindow.cpp:178
 msgid "Printing aborted"
 msgstr "列印被取消"
 
-#: kchmviewwindow_qtextbrowser.cpp:126 kchmviewwindow_qtwebkit.cpp:261
+#: ../src/qtwebengine/viewwindow.cpp:167 ../src/qtwebkit/viewwindow.cpp:183
 #, fuzzy
 msgid "Printing finished"
 msgstr "列印被取消"
 
-#: kchmviewwindow_qtextbrowser.cpp:317 kchmviewwindow_qtwebkit.cpp:375
+#: ../src/qtwebengine/viewwindow.cpp:245 ../src/qtwebkit/viewwindow.cpp:277
 #, fuzzy
 msgid "Open Link in a new tab\tShift+LMB"
 msgstr "在新的書籤頁打開此鏈接(&O)"
 
-#: kchmviewwindow_qtextbrowser.cpp:318 kchmviewwindow_qtwebkit.cpp:376
+#: ../src/qtwebengine/viewwindow.cpp:246 ../src/qtwebkit/viewwindow.cpp:278
 #, fuzzy
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr "在後臺書籤也打開此鏈接(&O)"
 
-#: main.cpp:45
-msgid "Perform auto testing"
-msgstr ""
-
-#: main.cpp:46
-msgid "Perform short auto testing"
-msgstr ""
-
-#: main.cpp:47
+#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:73
 #, fuzzy
-msgid "A CHM file to show"
-msgstr "CHM檔案查看器"
+msgid "Add page"
+msgstr "在頁面中搜索"
 
-#: main.cpp:48
-msgid ""
-"'--search <query>' specifies the search query to search, and activate the "
-"first entry if found"
-msgstr ""
+#: ../src/qtwebengine/viewwindowmgr.cpp:159
+#: ../src/qtwebengine/viewwindowmgr.cpp:237
+#: ../src/qtwebkit/viewwindowmgr.cpp:160 ../src/qtwebkit/viewwindowmgr.cpp:239
+#, fuzzy, qt-format
+msgid "Alt+%1"
+msgstr "Alt+%1"
 
-#: main.cpp:49
-msgid ""
-"'--sindex <word>' specifies the word to find in index, and activate if found"
-msgstr ""
-
-#: main.cpp:50
-msgid ""
-"'--stoc <word(s)>' specifies the word(s) to find in TOC, and activate if "
-"found. Wildcards allowed."
-msgstr ""
-
-#: main.cpp:56
+#: ../src/main.cpp:51
 msgid "CHM file viewer"
 msgstr "CHM檔案查看器"
 
-#: main.cpp:58
-msgid "(c) 2004-2008 George Yunaev, gyunaev@ulduzsoft.com"
+#: ../src/main.cpp:53
+msgid "(c) 2004-2015 George Yunaev, gyunaev@ulduzsoft.com"
 msgstr ""
 
-#: main.cpp:59
+#: ../src/main.cpp:54
 msgid "Please report bugs to kchmviewer@ulduzsoft.com"
 msgstr ""
 
-#. i18n: file ./dialog_setup.ui line 20
-#: rc.cpp:3
-#, no-c-format
-msgid "KchmViewer settings"
-msgstr "KchmViewer設置"
+#~ msgid "%1 - JavsScript link clicked"
+#~ msgstr "%1 - 點擊JavaScript鏈接"
 
-#. i18n: file ./dialog_setup.ui line 42
-#: rc.cpp:6
-#, no-c-format
-msgid "General behavior"
-msgstr "通用行為"
+#~ msgid ""
+#~ "You have clicked a JavaScript link.\n"
+#~ "To prevent security-related issues JavaScript URLs are disabled in CHM "
+#~ "files."
+#~ msgstr ""
+#~ "你點擊了JavaScript鏈接。\n"
+#~ "為了了避免安全問題，在CHM檔案中不啟用JavaScript URLs支持。"
 
-#. i18n: file ./dialog_setup.ui line 62
-#: rc.cpp:9
-#, no-c-format
-msgid "If no arguments given on load"
-msgstr "如果載入時沒有參數"
+#~ msgid "%1 - link to a new CHM file clicked"
+#~ msgstr "%1 - 點擊指向新的CHM檔案的鏈接。"
 
-#. i18n: file ./dialog_setup.ui line 74
-#: rc.cpp:12
-#, no-c-format
-msgid "Open the 'open CHM file' dialog"
-msgstr "打開'打開CHM檔案'對話框"
+#~ msgid ""
+#~ "You have clicked a link, which leads to a new CHM file %1.\n"
+#~ "The current file will be closed.\n"
+#~ "\n"
+#~ "Do you want to continue?"
+#~ msgstr ""
+#~ "你點擊了指向新的CHM檔案的鏈接%1。\n"
+#~ "現在打開的檔案將被關閉。\n"
+#~ "\n"
+#~ "你要繼續嗎？"
 
-#. i18n: file ./dialog_setup.ui line 81
-#: rc.cpp:15
-#, no-c-format
-msgid "Open the &last used CHM file, if exist"
-msgstr "如果存在,打開最後使用的CHM檔案(&L)"
+#~ msgid "Compressed Help Manual (*.chm)"
+#~ msgstr "壓縮的幫助手冊 (*.chm)"
 
-#. i18n: file ./dialog_setup.ui line 84
-#: rc.cpp:18
-#, fuzzy, no-c-format
-msgid "Alt+L"
-msgstr "Alt+E"
+#~ msgid "Loading aborted"
+#~ msgstr "取消載入"
 
-#. i18n: file ./dialog_setup.ui line 94
-#: rc.cpp:21
-#, no-c-format
-msgid "History"
-msgstr "歷史"
+#~ msgid "About %1"
+#~ msgstr "關於%1"
 
-#. i18n: file ./dialog_setup.ui line 114
-#: rc.cpp:24
-#, no-c-format
-msgid "Store history information for"
-msgstr "保存歷史信息"
+#, fuzzy
+#~ msgid "&About"
+#~ msgstr "取消"
 
-#. i18n: file ./dialog_setup.ui line 134
-#: rc.cpp:27
-#, no-c-format
-msgid "latest files"
-msgstr "最近使用的檔案"
+#, fuzzy
+#~ msgid "A CHM file to show"
+#~ msgstr "CHM檔案查看器"
 
-#. i18n: file ./dialog_setup.ui line 146
-#: rc.cpp:30
-#, no-c-format
-msgid ""
-"Remembers the information about the files, which were opened. Remembers last "
-"opened page, search history, font size, bookmarks and so on."
-msgstr ""
-"記錄已經打開的檔案的相關信息。 記錄最後打開的頁面，搜索記錄，字體大小，書籤等"
-"信息。"
+#~ msgid "If no arguments given on load"
+#~ msgstr "如果載入時沒有參數"
 
-#. i18n: file ./dialog_setup.ui line 149
-#: rc.cpp:33
-#, no-c-format
-msgid "R&emember extra information for history files"
-msgstr "記錄歷史檔案額外信息(&E)"
+#~ msgid "Version-specific settings"
+#~ msgstr "版本指定設置"
 
-#. i18n: file ./dialog_setup.ui line 152
-#: rc.cpp:36
-#, no-c-format
-msgid "Alt+E"
-msgstr "Alt+E"
+#~ msgid "KDE version settings"
+#~ msgstr "KDE 版本設置"
 
-#. i18n: file ./dialog_setup.ui line 164
-#: rc.cpp:39
-#, no-c-format
-msgid "CHM security settings"
-msgstr "CHM 安全設置"
+#~ msgid "To show HTML content, use"
+#~ msgstr "要顯示HTML目錄，使用"
 
-#. i18n: file ./dialog_setup.ui line 176
-#: rc.cpp:42
-#, no-c-format
-msgid "When external link clicked"
-msgstr "當點擊外部鏈接時"
+#~ msgid "&QTextBrowser-based widget"
+#~ msgstr "基於QTextBrowser的組件(&Q)"
 
-#. i18n: file ./dialog_setup.ui line 188
-#: rc.cpp:45
-#, no-c-format
-msgid "Alwa&ys open it in external browser"
-msgstr "總在外部瀏覽器中打開(&Y)"
+#~ msgid "Alt+Q"
+#~ msgstr "Alt+Q"
 
-#. i18n: file ./dialog_setup.ui line 191
-#: rc.cpp:48
-#, no-c-format
-msgid "Alt+Y"
-msgstr "Alt+Y"
+#~ msgid "&KHTMLPart-based widget"
+#~ msgstr "基於KHTMLPart的組件(&K)"
 
-#. i18n: file ./dialog_setup.ui line 198
-#. i18n: file ./dialog_setup.ui line 237
-#: rc.cpp:51 rc.cpp:63
-#, no-c-format
-msgid "Ask for confirmation"
-msgstr "請求确認"
+#~ msgid "Alt+K"
+#~ msgstr "Alt+K"
 
-#. i18n: file ./dialog_setup.ui line 205
-#: rc.cpp:54
-#, no-c-format
-msgid "Do not open the link"
-msgstr "不打開鏈接"
+#~ msgid "KHTMLPart security"
+#~ msgstr "KHTMLPart 安全性"
 
-#. i18n: file ./dialog_setup.ui line 218
-#: rc.cpp:57
-#, no-c-format
-msgid "When link pointed to a new CHM file clicked"
-msgstr "當點擊指向新的CHM檔案的鏈接時"
+#~ msgid "Enable &refresh"
+#~ msgstr "啟用刷新(&R)"
 
-#. i18n: file ./dialog_setup.ui line 230
-#: rc.cpp:60
-#, no-c-format
-msgid "Always open a new CHM file"
-msgstr "總打開新的CHM檔案"
+#~ msgid "Enable &plugins"
+#~ msgstr "啟用插件(&P)"
 
-#. i18n: file ./dialog_setup.ui line 244
-#: rc.cpp:66
-#, no-c-format
-msgid "Do not open a new CHM file"
-msgstr "不打開新的CHM檔案"
+#~ msgid "&View HTML source"
+#~ msgstr "查看HTML源碼(&V)"
 
-#. i18n: file ./dialog_setup.ui line 271
-#: rc.cpp:69
-#, no-c-format
-msgid "Version-specific settings"
-msgstr "版本指定設置"
+#~ msgid "&Locate in contents window"
+#~ msgstr "目錄窗口&定位(&L)"
 
-#. i18n: file ./dialog_setup.ui line 283
-#: rc.cpp:72
-#, no-c-format
-msgid "KDE version settings"
-msgstr "KDE 版本設置"
+#, fuzzy
+#~ msgid "Previous page in Table of Context"
+#~ msgstr "點擊此按鈕前往目錄錶格中的前一頁"
 
-#. i18n: file ./dialog_setup.ui line 295
-#: rc.cpp:75
-#, no-c-format
-msgid "To show HTML content, use"
-msgstr "要顯示HTML目錄，使用"
+#, fuzzy
+#~ msgid "Previous page in TOC"
+#~ msgstr "目錄錶格的前一頁"
 
-#. i18n: file ./dialog_setup.ui line 307
-#: rc.cpp:78
-#, no-c-format
-msgid "&QTextBrowser-based widget"
-msgstr "基於QTextBrowser的組件(&Q)"
+#, fuzzy
+#~ msgid "Next page in Table of Context"
+#~ msgstr "目錄錶格的後一頁"
 
-#. i18n: file ./dialog_setup.ui line 310
-#: rc.cpp:81
-#, no-c-format
-msgid "Alt+Q"
-msgstr "Alt+Q"
-
-#. i18n: file ./dialog_setup.ui line 317
-#: rc.cpp:84
-#, no-c-format
-msgid "&KHTMLPart-based widget"
-msgstr "基於KHTMLPart的組件(&K)"
-
-#. i18n: file ./dialog_setup.ui line 320
-#: rc.cpp:87
-#, no-c-format
-msgid "Alt+K"
-msgstr "Alt+K"
-
-#. i18n: file ./dialog_setup.ui line 327
-#: rc.cpp:90
-#, no-c-format
-msgid "Qt &Webkit (requires Qt 4.4 or higher)"
-msgstr ""
-
-#. i18n: file ./dialog_setup.ui line 337
-#: rc.cpp:93
-#, no-c-format
-msgid "KHTMLPart security"
-msgstr "KHTMLPart 安全性"
-
-#. i18n: file ./dialog_setup.ui line 349
-#: rc.cpp:96
-#, no-c-format
-msgid "Enable &refresh"
-msgstr "啟用刷新(&R)"
-
-#. i18n: file ./dialog_setup.ui line 352
-#: rc.cpp:99
-#, no-c-format
-msgid "Alt+R"
-msgstr "Alt+R"
-
-#. i18n: file ./dialog_setup.ui line 359
-#: rc.cpp:102
-#, no-c-format
-msgid "Enable &Java"
-msgstr "啟用Java(&J)"
-
-#. i18n: file ./dialog_setup.ui line 362
-#: rc.cpp:105
-#, no-c-format
-msgid "Alt+J"
-msgstr "Alt+J"
-
-#. i18n: file ./dialog_setup.ui line 369
-#: rc.cpp:108
-#, no-c-format
-msgid "Enable &plugins"
-msgstr "啟用插件(&P)"
-
-#. i18n: file ./dialog_setup.ui line 372
-#: rc.cpp:111
-#, no-c-format
-msgid "Alt+P"
-msgstr "Alt+P"
-
-#. i18n: file ./dialog_setup.ui line 379
-#: rc.cpp:114
-#, no-c-format
-msgid "Enable Java&Script"
-msgstr "啟用JavaScript(&S)"
-
-#. i18n: file ./dialog_setup.ui line 382
-#: rc.cpp:117
-#, no-c-format
-msgid "Alt+S"
-msgstr "Alt+S"
-
-#. i18n: file ./dialog_setup.ui line 409
-#: rc.cpp:120
-#, no-c-format
-msgid "Advanced"
-msgstr "高級"
-
-#. i18n: file ./dialog_setup.ui line 415
-#: rc.cpp:123
-#, no-c-format
-msgid "View HTML source command uses"
-msgstr "查看HTML源碼使用"
-
-#. i18n: file ./dialog_setup.ui line 427
-#: rc.cpp:126
-#, no-c-format
-msgid "Built-in HTML source viewer"
-msgstr "內建HTML源碼查看器"
-
-#. i18n: file ./dialog_setup.ui line 437
-#: rc.cpp:129
-#, no-c-format
-msgid "E&xternal program, specified below"
-msgstr "外部程式，在下面特別指定(&X)"
-
-#. i18n: file ./dialog_setup.ui line 440
-#: rc.cpp:132
-#, no-c-format
-msgid "Alt+X"
-msgstr "Alt+x"
-
-#. i18n: file ./dialog_setup.ui line 455
-#: rc.cpp:135
-#, no-c-format
-msgid "External program:"
-msgstr "外部程式"
-
-#. i18n: file ./dialog_setup.ui line 468
-#: rc.cpp:138
-#, no-c-format
-msgid "&Browse"
-msgstr ""
-
-#. i18n: file ./dialog_setup.ui line 480
-#: rc.cpp:141
-#, no-c-format
-msgid "Other"
-msgstr ""
-
-#. i18n: file ./dialog_setup.ui line 486
-#: rc.cpp:144
-#, no-c-format
-msgid "Use right-to-left layout direction (Arabic adn Hebrew layouts)"
-msgstr ""
-
-#. i18n: file ./dialog_setup.ui line 493
-#: rc.cpp:147
-#, no-c-format
-msgid ""
-"Automatically detect encoding for KHTMLPart and WebKit browsers (not "
-"recommended)"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 14
-#: rc.cpp:150
-#, no-c-format
-msgid "kchmviewer"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 28
-#: rc.cpp:153
-#, no-c-format
-msgid "&Settings"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 34
-#: rc.cpp:156
-#, fuzzy, no-c-format
-msgid "&Bookmarks"
-msgstr "添加當前頁面為書籤(&B)"
-
-#. i18n: file ./window_main.ui line 41
-#: rc.cpp:159
-#, fuzzy, no-c-format
-msgid "&File"
-msgstr "標題"
-
-#. i18n: file ./window_main.ui line 50
-#: rc.cpp:162
-#, no-c-format
-msgid "&Edit"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 59
-#: rc.cpp:165
-#, no-c-format
-msgid "&View"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 73
-#: rc.cpp:168
-#, fuzzy, no-c-format
-msgid "&Windows"
-msgstr "窗口(&W)"
-
-#. i18n: file ./window_main.ui line 87
-#: rc.cpp:171
-#, fuzzy, no-c-format
-msgid "general toolbar"
-msgstr "通用行為"
-
-#. i18n: file ./window_main.ui line 103
-#: rc.cpp:174
-#, fuzzy, no-c-format
-msgid "navigation toolbar"
-msgstr "導航"
-
-#. i18n: file ./window_main.ui line 120
-#: rc.cpp:177
-#, no-c-format
-msgid "action toolbar"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 146
-#: rc.cpp:180
-#, no-c-format
-msgid "&Print..."
-msgstr ""
-
-#. i18n: file ./window_main.ui line 149
-#: rc.cpp:183
-#, fuzzy, no-c-format
-msgid "Print"
-msgstr "列印檔案"
-
-#. i18n: file ./window_main.ui line 152
-#: rc.cpp:186
-#, no-c-format
-msgid "Print current page"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 155
-#: rc.cpp:189
-#, no-c-format
-msgid "Prints currently opened page."
-msgstr ""
-
-#. i18n: file ./window_main.ui line 158
-#: rc.cpp:192
-#, no-c-format
-msgid "Ctrl+P"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 163
-#: rc.cpp:195
-#, no-c-format
-msgid "&Quit"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 166
-#: rc.cpp:198
-#, no-c-format
-msgid "Exit"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 169
-#: rc.cpp:201
-#, no-c-format
-msgid "Exits the application"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 172
-#: rc.cpp:204
-#, no-c-format
-msgid "Ctrl+Q"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 181
-#: rc.cpp:207
-#, no-c-format
-msgid "C&opy"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 184
-#: rc.cpp:210
-#, no-c-format
-msgid "Copy"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 187
-#: rc.cpp:213
-#, no-c-format
-msgid "Copies selected content to clipboard"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 190
-#: rc.cpp:216
-#, no-c-format
-msgid "Ctrl+C"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 199
-#: rc.cpp:219
-#, fuzzy, no-c-format
-msgid "&Select All"
-msgstr "選擇全部(&S)"
-
-#. i18n: file ./window_main.ui line 202
-#: rc.cpp:222
-#, no-c-format
-msgid "Paste"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 205
-#: rc.cpp:225
-#, no-c-format
-msgid "Selects everything in the document"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 208
-#: rc.cpp:228
-#, no-c-format
-msgid "Ctrl+V"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 217
-#: rc.cpp:231
-#, no-c-format
-msgid "&Find..."
-msgstr ""
-
-#. i18n: file ./window_main.ui line 220
-#: rc.cpp:234
-#, no-c-format
-msgid "Find"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 223
-#: rc.cpp:237
-#, no-c-format
-msgid "Find text in currently opened page"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 226
-#: rc.cpp:240
-#, no-c-format
-msgid "Enters the Find in page mode"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 229
-#: rc.cpp:243
-#, no-c-format
-msgid "Ctrl+F"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 234
-#: rc.cpp:246
-#, no-c-format
-msgid "E&xtract CHM content..."
-msgstr "提取CHM目錄(&X)"
-
-#. i18n: file ./window_main.ui line 237
-#: rc.cpp:249
-#, fuzzy, no-c-format
-msgid "Extract the CHM content to the directory"
-msgstr "提取CHM目錄"
-
-#. i18n: file ./window_main.ui line 240
-#: rc.cpp:252
-#, no-c-format
-msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
-"are extracted."
-msgstr ""
-
-#. i18n: file ./window_main.ui line 245
-#: rc.cpp:255
-#, fuzzy, no-c-format
-msgid "&Application settings..."
-msgstr "更改設置(&C)"
-
-#. i18n: file ./window_main.ui line 248
-#. i18n: file ./window_main.ui line 251
-#: rc.cpp:258 rc.cpp:261
-#, fuzzy, no-c-format
-msgid "Change the application settings"
-msgstr "更改設置(&C)"
-
-#. i18n: file ./window_main.ui line 260
-#: rc.cpp:264
-#, no-c-format
-msgid "&Add bookmark"
-msgstr "添加書籤(&A)"
-
-#. i18n: file ./window_main.ui line 263
-#: rc.cpp:267
-#, no-c-format
-msgid "Adds a bookmark for currently opened page"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 266
-#: rc.cpp:270
-#, no-c-format
-msgid ""
-"Adds a bookmark for currently opened page. Remembers the opened page, and "
-"scroll position. Bookmarks are accessible through Bookmarks menu or tab."
-msgstr ""
-
-#. i18n: file ./window_main.ui line 269
-#: rc.cpp:273
-#, no-c-format
-msgid "Ctrl+B"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 278
-#: rc.cpp:276
-#, fuzzy, no-c-format
-msgid "&Increase font size"
-msgstr "增大字體大小"
-
-#. i18n: file ./window_main.ui line 281
-#: rc.cpp:279
-#, fuzzy, no-c-format
-msgid "Increase the font size"
-msgstr "增大字體大小"
-
-#. i18n: file ./window_main.ui line 284
-#: rc.cpp:282
-#, no-c-format
-msgid "Increases the document font size. The new font size will be stored."
-msgstr ""
-
-#. i18n: file ./window_main.ui line 287
-#: rc.cpp:285
-#, no-c-format
-msgid "Ctrl++"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 296
-#: rc.cpp:288
-#, fuzzy, no-c-format
-msgid "&Decrease font size"
-msgstr "縮小字體大小"
-
-#. i18n: file ./window_main.ui line 299
-#: rc.cpp:291
-#, fuzzy, no-c-format
-msgid "Decrease the font size"
-msgstr "縮小字體大小"
-
-#. i18n: file ./window_main.ui line 302
-#: rc.cpp:294
-#, no-c-format
-msgid "Decreases the document font size. The new font size will be stored."
-msgstr ""
-
-#. i18n: file ./window_main.ui line 305
-#: rc.cpp:297
-#, no-c-format
-msgid "Ctrl+-"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 314
-#: rc.cpp:300
-#, no-c-format
-msgid "&View HTML source"
-msgstr "查看HTML源碼(&V)"
-
-#. i18n: file ./window_main.ui line 317
-#: rc.cpp:303
-#, fuzzy, no-c-format
-msgid "View HTML source of current page"
-msgstr "查看HTML源碼使用"
-
-#. i18n: file ./window_main.ui line 320
-#: rc.cpp:306
-#, no-c-format
-msgid "Shows the HTML source of currently opened page"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 323
-#: rc.cpp:309
-#, no-c-format
-msgid "Ctrl+U"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 331
-#: rc.cpp:312
-#, fuzzy, no-c-format
-msgid "Enable &full screen mode"
-msgstr "全屏(&F)"
-
-#. i18n: file ./window_main.ui line 334
-#: rc.cpp:315
-#, no-c-format
-msgid "Enters or leaves the fullscreen mode"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 337
-#: rc.cpp:318
-#, fuzzy, no-c-format
-msgid "F11"
-msgstr "F1"
-
-#. i18n: file ./window_main.ui line 351
-#: rc.cpp:321
-#, no-c-format
-msgid "Enable &side window"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 354
-#: rc.cpp:324
-#, no-c-format
-msgid ""
-"Shows or hides the size window (with Content, Index, Search and Bookmark "
-"tabs)"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 357
-#: rc.cpp:327
-#, no-c-format
-msgid "F9"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 369
-#: rc.cpp:330
-#, no-c-format
-msgid "&Locate in contents window"
-msgstr "目錄窗口&定位(&L)"
-
-#. i18n: file ./window_main.ui line 372
-#: rc.cpp:333
-#, fuzzy, no-c-format
-msgid "Locate the current page in contents window"
-msgstr "在錄窗口定位主題"
-
-#. i18n: file ./window_main.ui line 375
-#: rc.cpp:336
-#, no-c-format
-msgid ""
-"If the current page is present in the Table of Contents, locate it there. "
-msgstr ""
-
-#. i18n: file ./window_main.ui line 378
-#: rc.cpp:339
-#, no-c-format
-msgid "Ctrl+"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 383
-#: rc.cpp:342
-#, fuzzy, no-c-format
-msgid "Set &encoding"
-msgstr "設置編碼(&S)"
-
-#. i18n: file ./window_main.ui line 386
-#: rc.cpp:345
-#, no-c-format
-msgid "Changes the current document encoding. "
-msgstr ""
-
-#. i18n: file ./window_main.ui line 395
-#: rc.cpp:348
-#, no-c-format
-msgid "&Open..."
-msgstr ""
-
-#. i18n: file ./window_main.ui line 398
-#: rc.cpp:351
-#, fuzzy, no-c-format
-msgid "Open a CHM file"
-msgstr "打開檔案"
-
-#. i18n: file ./window_main.ui line 401
-#: rc.cpp:354
-#, fuzzy, no-c-format
-msgid "Opens a new CHM file"
-msgstr "總打開新的CHM檔案"
-
-#. i18n: file ./window_main.ui line 410
-#: rc.cpp:357
-#, no-c-format
-msgid "Back"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 413
-#: rc.cpp:360
-#, fuzzy, no-c-format
-msgid "Navigate back"
-msgstr "導航"
-
-#. i18n: file ./window_main.ui line 416
-#: rc.cpp:363
-#, fuzzy, no-c-format
-msgid "Navigate back in navigation history"
-msgstr "在歷史中後退"
-
-#. i18n: file ./window_main.ui line 425
-#: rc.cpp:366
-#, no-c-format
-msgid "Forward"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 428
-#: rc.cpp:369
-#, fuzzy, no-c-format
-msgid "Navigate forward"
-msgstr "導航"
-
-#. i18n: file ./window_main.ui line 431
-#: rc.cpp:372
-#, fuzzy, no-c-format
-msgid "Navigate forward in navigation history"
-msgstr "在歷史中前進"
-
-#. i18n: file ./window_main.ui line 440
-#: rc.cpp:375
-#, no-c-format
-msgid "Home"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 443
-#: rc.cpp:378
-#, fuzzy, no-c-format
-msgid "Navigate home"
-msgstr "導航"
-
-#. i18n: file ./window_main.ui line 446
-#: rc.cpp:381
-#, no-c-format
-msgid "Navigate to the document Home page, as specified in the document."
-msgstr ""
-
-#. i18n: file ./window_main.ui line 455
-#: rc.cpp:384
-#, fuzzy, no-c-format
-msgid "Previous page in Table of Context"
-msgstr "點擊此按鈕前往目錄錶格中的前一頁"
-
-#. i18n: file ./window_main.ui line 458
-#: rc.cpp:387
-#, fuzzy, no-c-format
-msgid "Previous page in TOC"
-msgstr "目錄錶格的前一頁"
-
-#. i18n: file ./window_main.ui line 461
-#: rc.cpp:390
-#, fuzzy, no-c-format
-msgid "Go to the previous page in the Table of Contents"
-msgstr "點擊此按鈕前往目錄錶格中的前一頁"
-
-#. i18n: file ./window_main.ui line 464
-#: rc.cpp:393
-#, no-c-format
-msgid ""
-"Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
-"Ctrl+Left Arrow</i>"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 473
-#: rc.cpp:396
-#, fuzzy, no-c-format
-msgid "Next page in Table of Context"
-msgstr "目錄錶格的後一頁"
-
-#. i18n: file ./window_main.ui line 476
-#: rc.cpp:399
-#, no-c-format
-msgid "Next page in TOC"
-msgstr "目錄錶格的後一頁"
-
-#. i18n: file ./window_main.ui line 479
-#: rc.cpp:402
-#, fuzzy, no-c-format
-msgid "Go to the next page in the Table of Contents"
-msgstr "點擊此按鈕前往目錄錶格的後一頁"
-
-#. i18n: file ./window_main.ui line 482
-#: rc.cpp:405
-#, no-c-format
-msgid ""
-"Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: Ctrl"
-"+Right Arrow</i>"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 487
-#: rc.cpp:408
-#, fuzzy, no-c-format
-msgid "&Close window"
-msgstr "窗口(&W)"
-
-#. i18n: file ./window_main.ui line 490
-#: rc.cpp:411
-#, fuzzy, no-c-format
-msgid "Close current window"
-msgstr "顯示目錄窗口(&S)"
-
-#. i18n: file ./window_main.ui line 493
-#: rc.cpp:414
-#, no-c-format
-msgid "Closes currently opened window"
-msgstr ""
-
-#. i18n: file ./window_main.ui line 496
-#: rc.cpp:417
-#, no-c-format
-msgid "Ctrl+W"
-msgstr ""
-
-#: rc.cpp:418
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr ""
-
-#: rc.cpp:419
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr ""
+#~ msgid "Next page in TOC"
+#~ msgstr "目錄錶格的後一頁"
 
 #~ msgid "Qt version settings"
 #~ msgstr "QT 版本設置"
@@ -1211,14 +1299,8 @@ msgstr ""
 #~ "Your emails"
 #~ msgstr "demonlinjun@163.com"
 
-#~ msgid "&Add"
-#~ msgstr "添加(&A)"
-
 #~ msgid "Topics"
 #~ msgstr "主題"
-
-#~ msgid "Please select one of the topics below:"
-#~ msgstr "請在下面選取一個主題"
 
 #~ msgid "&Ok"
 #~ msgstr "确定(&O)"
@@ -1243,9 +1325,6 @@ msgstr ""
 #~ "在GNU GPL授權方式下發行。\n"
 #~ "\n"
 #~ "請嚐試我們的另一個項目，www.transientmail.com - 臨時 E-Mail地址。"
-
-#~ msgid "File Operations"
-#~ msgstr "檔案操作"
 
 #~ msgid "Click this button to open an existing chm file."
 #~ msgstr "點擊此按鈕打開存在的CHM檔案"
@@ -1302,9 +1381,6 @@ msgstr ""
 #~ msgid "Click this button to decrease the font size."
 #~ msgstr "點擊此按鈕縮小字體大小"
 
-#~ msgid "View HTML source"
-#~ msgstr "查看HTML源碼"
-
 #~ msgid ""
 #~ "Click this button to open a separate window with the page HTML source."
 #~ msgstr "點擊此按鈕在独立窗口查看當前頁面的HTML源碼"
@@ -1323,12 +1399,6 @@ msgstr ""
 
 #~ msgid "&Set language"
 #~ msgstr "設置語言(&S)"
-
-#~ msgid "Type in word(s) to search for:"
-#~ msgstr "輸入要搜索的詞"
-
-#~ msgid "Location"
-#~ msgstr "位置"
 
 #~ msgid "How to use search"
 #~ msgstr "如何使用搜索"
@@ -1357,10 +1427,6 @@ msgstr ""
 #~ "注意只有字母和數字被索引。\n"
 #~ "你不能搜索符號，这些符耗将在搜索查詢中被移除。\n"
 #~ "例如，搜索 'C' 和搜索 'C++' ，将返回同样的結果."
-
-#, fuzzy
-#~ msgid "Search is not available"
-#~ msgstr "搜索失敗"
 
 #~ msgid "Printing (page %1)..."
 #~ msgstr "正在列印 (第 %1 頁)"

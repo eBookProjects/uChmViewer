@@ -19,8 +19,13 @@
 #ifndef TAB_CONTENTS_H
 #define TAB_CONTENTS_H
 
-#include "kde-qt.h"
+#include <QPoint>
+#include <QString>
+#include <QTreeWidgetItem>
+#include <QWidget>
+
 #include "treeitem_toc.h"
+
 #include "ui_tab_contents.h"
 
 

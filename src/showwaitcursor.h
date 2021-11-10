@@ -16,33 +16,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DIALOG_CHOOSEURLFROMLIST_H
-#define DIALOG_CHOOSEURLFROMLIST_H
+#ifndef SHOWWAITCURSOR_H
+#define SHOWWAITCURSOR_H
 
-#include <QDialog>
-#include <QList>
-#include <QListWidgetItem>
-#include <QStringList>
-#include <QUrl>
-#include <QWidget>
+#include <QApplication>
+#include <QCursor>
 
-#include "ui_dialog_topicselector.h"
-
-
-class DialogChooseUrlFromList : public QDialog, public Ui::DialogTopicSelector
+class ShowWaitCursor
 {
-	Q_OBJECT
-	
 	public:
-		DialogChooseUrlFromList( QWidget* parent );
-		
-		// Shows the dialog with titles, and let the user to select the title.
-		// Obviously urls.size() == titles.size(). Returns the appropriate URL
-		// for the selected title, or empty string if no title selected, or dialog canceled.
-		QUrl getSelectedItemUrl( const QList<QUrl>& urls, const QStringList& titles );
+		ShowWaitCursor()
+		{
+			QApplication::setOverrideCursor( QCursor( Qt::WaitCursor ) );
+		}
 
-	private slots:
-		void onDoubleClicked( QListWidgetItem * item );
+		~ShowWaitCursor()
+		{
+			QApplication::restoreOverrideCursor();
+		}
 };
 
-#endif
+#endif // SHOWWAITCURSOR_H

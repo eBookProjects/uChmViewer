@@ -19,9 +19,19 @@
 #ifndef TAB_SEARCH_H
 #define TAB_SEARCH_H
 
-#include "kde-qt.h"
+#include <QList>
+#include <QMenu>
+#include <QPoint>
+#include <QProgressDialog>
+#include <QString>
+#include <QTreeWidgetItem>
+#include <QUrl>
+#include <QWidget>
+
 #include "settings.h"
+
 #include "ui_tab_search.h"
+
 
 class EBookSearch;
 

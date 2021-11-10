@@ -19,11 +19,19 @@
 #ifndef VIEWWINDOWMGR_H
 #define VIEWWINDOWMGR_H
 
-#include "kde-qt.h"
+#include <QAction>
+#include <QList>
+#include <QMenu>
+#include <QString>
+#include <QWidget>
+
 #include "settings.h"
+
 #include "ui_window_browser.h"
 
 
+class MainWindow;
+class ViewWindow;
 class ViewWindowTabWidget;
 
 class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser

@@ -20,6 +20,7 @@
 #include "treeitem_index.h"
 #include "tab_index.h"
 #include "config.h"
+#include "showwaitcursor.h"
 
 TabIndex::TabIndex ( QWidget * parent )
 	: QWidget( parent ), Ui::TabIndex()

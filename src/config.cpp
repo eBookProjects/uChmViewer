@@ -20,7 +20,6 @@
 #include <QFile>
 #include <QDir>
 
-#include "kde-qt.h"
 #include "config.h"
 #include "settings.h"
 #include "mainwindow.h"

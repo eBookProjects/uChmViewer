@@ -16,8 +16,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QApplication>
+#include <QEvent>
+#include <QTimer>
+
 #include "kchmviewerapp.h"
 #include "mainwindow.h"
+
 
 KchmviewerApp::KchmviewerApp(int &argc, char **argv, int version)
     : QApplication(argc, argv, version)
@@ -37,31 +42,38 @@ bool KchmviewerApp::event(QEvent* ev)
         onTimer();
         return true;
     }
+
     return QApplication::event(ev);
 }
 
 void KchmviewerApp::onTimer()
 {
     MainWindow *main;
+
     foreach (QWidget *widget, QApplication::topLevelWidgets())
     {
         main = dynamic_cast<MainWindow *>(widget);
+
         if (main != 0)
         {
             break;
         }
     }
+
     if (main == 0)
     {
         qWarning("resending %s", m_filePath.toStdString().c_str());
+
         if (m_nResend >= 30)
         {
             qWarning("aborting loading of %s", m_filePath.toStdString().c_str());
             return;
         }
+
         QTimer::singleShot(250, this, SLOT(onTimer()));
         ++m_nResend;
         return;
     }
+
     main->actionOpenRecentFile(m_filePath);
 }

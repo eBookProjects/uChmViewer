@@ -20,6 +20,7 @@
 #include "mainwindow.h"
 #include "treeitem_toc.h"
 
+
 TreeItem_TOC::TreeItem_TOC(QTreeWidgetItem *parent, QTreeWidgetItem *after, const QString &name, const QUrl &url, int image)
 	: QTreeWidgetItem( parent, after )
 {

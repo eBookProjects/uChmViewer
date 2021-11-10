@@ -21,8 +21,8 @@
 
 #include <QWebEngineView>
 
-#include "../kde-qt.h"
 #include "dataprovider.h"
+
 
 class ViewWindow : public QWebEngineView
 {
