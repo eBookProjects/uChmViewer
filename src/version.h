@@ -20,6 +20,6 @@
 #define INCLUDE_VERSION_H
 
 #define APP_VERSION_MAJOR	8
-#define APP_VERSION_MINOR	0
+#define APP_VERSION_MINOR	1
 
 #endif /* INCLUDE_VERSION_H */

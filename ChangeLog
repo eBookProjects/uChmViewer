@@ -1,3 +1,18 @@
+2021-11-10 u-235 <nicegorov@yandex.com>
+    - Version 8.1 released
+    - Added KDE-independent UI translation support using GNU Gettext.
+    - Updated translation into Russian.
+    - Minor fixes for KDE.
+
+2021-10-04 u-235 <nicegorov@yandex.com>
+    - Fixed a file filter in the Open File dialog box for KDE.
+
+2021-10-03 u-235 <nicegorov@yandex.com>
+    - Fixed installation directories for KDE4.
+
+2021-09-22 u-235 <nicegorov@yandex.com>
+    - Fixed a bug in showing pages of some EPUB files.
+
 2021-09-20 u-235 <nicegorov@yandex.com>
     - Version 8.0 released
     - Full support for QtWebEngine since Qt 5.9.
