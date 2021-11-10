@@ -13,23 +13,23 @@ This is a fork of the [kchmviewer](http://www.ulduzsoft.com/linux/kchmviewer) wi
 
 ## Overview
 
-KchmViewer is a chm (MS HTML help file format) and epub viewer, written in C++. Unlike most existing CHM viewers for Unix, it uses Trolltech Qt widget library, and does not depend on KDE or GNOME. It has full KDE4 support.
+KchmViewer is a chm (MS HTML help file format) and epub viewer, written in C++. Unlike most existing CHM viewers for Unix, it uses Trolltech Qt widget library, and does not depend on KDE or GNOME. It has full KDE 4 support.
 
 The main advantage of KchmViewer is extended support for non-English languages. Unlike others, KchmViewer in most cases correctly detects chm file encoding, correctly shows tables of context of Russian, Korean, Chinese and Japanese help files. It also correctly searches text in non-English help files, including Korean, Chinese and Japanese.
 
 KchmViewer is written by [Georgy Yunaev](https://github.com/gyunaev), and is licensed under GNU GPL license version 3.
 
 
-## What's new
+## What's New
 
-- Full support for QtWebEngine since Qt 5.9, including the ability to change page encoding.
-- When building an application, it is possible to choose HTML engine: QtWebKit or QtWebEngine.
+The 8.1 release is dedicated to the translation of the UI. Initially, translation worked only in an application which was built with KDE support. Now, this is possible with GNU Gettext for the target platform and is independent of KDE. However, the translation files are outdated and only Russian translation is up to date.
+Read more in the [release notes](NEWS.md).
 
 
 ## Features
 
-- Standalone viewer, depends on Qt4 or Qt5 only. Does not require KDE, GNOME or wxWidgets toolkit.
-- Could be optionally built with KDE4 or KDE5 support, using KDE dialogs.
+- Standalone viewer, depends on Qt 4 or Q t5 only. Does not require KDE, GNOME or wxWidgets toolkit.
+- Could be optionally built with KDE 4 or KDE 5 support, using KDE dialogs.
 - Completely safe and harmless. JavaScript can be disabled in the settings, optionally warns you before opening an external web page, or switching to another help file.
 - Correctly detects and shows encoding of any valid chm file.
 - Correctly shows non-English chm files, including Cyrillic, Chinese, Japanese and others.
@@ -49,7 +49,7 @@ KchmViewer is written by [Georgy Yunaev](https://github.com/gyunaev), and is lic
 
 The application is currently distributed in source code and you need to build it on your computer. This will not take long.
 
-Go to the [build instructions page](BUILD.md).
+Go to the [build instructions page](INSTALL.md).
 
 
 ## Usage
