@@ -28,7 +28,7 @@ Read more in the [release notes](NEWS.md).
 
 ## Features
 
-- Standalone viewer, depends on Qt 4 or Q t5 only. Does not require KDE, GNOME or wxWidgets toolkit.
+- Standalone viewer, depends on Qt 4 or Qt 5 only. Does not require KDE, GNOME or wxWidgets toolkit.
 - Could be optionally built with KDE 4 or KDE 5 support, using KDE dialogs.
 - Completely safe and harmless. JavaScript can be disabled in the settings, optionally warns you before opening an external web page, or switching to another help file.
 - Correctly detects and shows encoding of any valid chm file.

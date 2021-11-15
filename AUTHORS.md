@@ -13,6 +13,7 @@
 ## Patches
 
 - [Zhong Jianxin](https://github.com/azuwis).
+- [arzam16](https://github.com/arzam16).
 
 
 ## Translations

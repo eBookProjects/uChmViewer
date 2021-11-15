@@ -1,4 +1,9 @@
-## 2021-10-07 Release 8.1
+## 2021-11-15 v8.1-rc2
+
+* Fixed build failure with Qt WebKit. In some cases compilation of the src/qtwebkit/viewwindowmgr.cpp file failed with the message `error: invalid use of incomplete type 'class QTabBar'`.
+
+
+## 2021-11-10 v8.1-rc
 
 This release is dedicated to the translation of the UI. Initially, translation worked only in an application which was built with KDE support.
 
@@ -13,7 +18,7 @@ This release is dedicated to the translation of the UI. Initially, translation w
 * Fixed a bug of parsing command line arguments with non-Latin characters, occurring in KDE.
 
 
-## 2021-09-20 Release 8.0
+## 2021-09-20 v8.0-rc
 
 This release has two goals: the option to use QtWebEngine and the migration to cmake as the primary build system.
 

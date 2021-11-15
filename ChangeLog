@@ -1,5 +1,9 @@
+2021-11-15 u-235 <nicegorov@yandex.com>
+    - v8.1-rc2 published
+    - Fixed build failure in src/qtwebkit/viewwindowmgr.cpp.
+
 2021-11-10 u-235 <nicegorov@yandex.com>
-    - Version 8.1 released
+    - v8.1-rc published
     - Added KDE-independent UI translation support using GNU Gettext.
     - Updated translation into Russian.
     - Minor fixes for KDE.
@@ -14,7 +18,7 @@
     - Fixed a bug in showing pages of some EPUB files.
 
 2021-09-20 u-235 <nicegorov@yandex.com>
-    - Version 8.0 released
+    - v8.0-rc published
     - Full support for QtWebEngine since Qt 5.9.
 
 2021-06-04 u-235 <nicegorov@yandex.com>
