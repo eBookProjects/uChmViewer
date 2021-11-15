@@ -17,6 +17,7 @@
  */
 
 #include <QClipboard>
+#include <QTabBar>
 #include <QMouseEvent>
 
 #include "../i18n.h"
