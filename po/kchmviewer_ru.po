@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 21:31+0300\n"
+"POT-Creation-Date: 2021-11-16 19:05+0300\n"
 "PO-Revision-Date: 2006-02-04 15:29-0800\n"
 "Last-Translator: George Yunaev <gyunaev@ulduzsoft.com>\n"
 "Language-Team: <en@li.org>\n"
@@ -874,6 +874,10 @@ msgstr "Отмена"
 msgid "HTML source"
 msgstr "Исходный код HTML"
 
+#: ../src/mainwindow.cpp:1041
+msgid "Cannot start external editor"
+msgstr "Не могу запустить внешний редактор"
+
 #: ../src/mainwindow.cpp:1042
 #, qt-format
 msgid ""
@@ -886,6 +890,17 @@ msgstr ""
 #: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
 msgstr "Невозможно найти открытую станицу в содержании"
+
+#: ../src/mainwindow.cpp:1099
+#, qt-format
+msgid "<br>Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
+msgstr ""
+"<br>Сборка для архитектуры %1 используя ABI %2<br>Работает в %3, версия Qt %4"
+
+#: ../src/mainwindow.cpp:1105
+#, qt-format
+msgid "<br>Using Qt version %1"
+msgstr "Используется Qt версии %1"
 
 #: ../src/mainwindow.cpp:1108
 #, qt-format
@@ -936,6 +951,16 @@ msgstr ""
 #: ../src/mainwindow.cpp:1278
 msgid "Ctrl+I"
 msgstr ""
+
+#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/qtwebkit/viewwindow.cpp:129
+msgid "&Open this link in a new tab"
+msgstr "&Открыть ссылку в новой вкладке"
+
+#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/qtwebkit/viewwindow.cpp:131
+msgid "&Open this link in a new background tab"
+msgstr "&Открыть ссылку в новой фоновой вкладке"
 
 #: ../src/mainwindow.cpp:1362
 #, qt-format
@@ -1100,12 +1125,23 @@ msgid "Generating search index..."
 msgstr "Идет генерация индекса поиска..."
 
 #: ../src/tab_search.cpp:253
+msgid "Cannot save index"
+msgstr "Не могу сохранить индекс"
+
+#: ../src/tab_search.cpp:253
 #, qt-format
 msgid "The index cannot be saved into file %1"
 msgstr "Индекс не может быть сохранён в файл %1"
 
+#: ../src/tab_search.cpp:293
+msgid "No index present"
+msgstr "Индекс отсутствует"
+
+#: ../src/tab_search.cpp:293
+msgid "The index is not present"
+msgstr "Индекс не существует"
+
 #: ../src/window_browser.ui:36
-#, fuzzy
 msgid "TabbedBrowser"
 msgstr "Браузер"
 
@@ -1161,13 +1197,13 @@ msgstr "Открыть ссылку в новой вкладке\tShift+LMB"
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr "Открыть ссылку в новой вкладке не активируя ее\tCtrl+LMB"
 
-#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:73
+#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:74
 msgid "Add page"
 msgstr "Добавить вкладку"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:159
 #: ../src/qtwebengine/viewwindowmgr.cpp:237
-#: ../src/qtwebkit/viewwindowmgr.cpp:160 ../src/qtwebkit/viewwindowmgr.cpp:239
+#: ../src/qtwebkit/viewwindowmgr.cpp:161 ../src/qtwebkit/viewwindowmgr.cpp:240
 #, qt-format
 msgid "Alt+%1"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 21:31+0300\n"
+"POT-Creation-Date: 2021-11-16 19:05+0300\n"
 "PO-Revision-Date: 2006-04-11 13:44+0200\n"
 "Last-Translator: Csaba Zakarias <csaba.zakarias@gmail.hu>\n"
 "Language-Team:  <hu@li.org>\n"
@@ -891,6 +891,10 @@ msgstr "%1 névjegye"
 msgid "HTML source"
 msgstr "HTML forrás megtekintése"
 
+#: ../src/mainwindow.cpp:1041
+msgid "Cannot start external editor"
+msgstr ""
+
 #: ../src/mainwindow.cpp:1042
 #, qt-format
 msgid ""
@@ -901,6 +905,16 @@ msgstr ""
 #: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
 msgstr "Nem található a megnyitott téma a tartalom albakban"
+
+#: ../src/mainwindow.cpp:1099
+#, qt-format
+msgid "<br>Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1105
+#, qt-format
+msgid "<br>Using Qt version %1"
+msgstr ""
 
 #: ../src/mainwindow.cpp:1108
 #, qt-format
@@ -945,6 +959,16 @@ msgstr ""
 
 #: ../src/mainwindow.cpp:1278
 msgid "Ctrl+I"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/qtwebkit/viewwindow.cpp:129
+msgid "&Open this link in a new tab"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/qtwebkit/viewwindow.cpp:131
+msgid "&Open this link in a new background tab"
 msgstr ""
 
 #: ../src/mainwindow.cpp:1362
@@ -1100,8 +1124,20 @@ msgid "Generating search index..."
 msgstr ""
 
 #: ../src/tab_search.cpp:253
+msgid "Cannot save index"
+msgstr ""
+
+#: ../src/tab_search.cpp:253
 #, qt-format
 msgid "The index cannot be saved into file %1"
+msgstr ""
+
+#: ../src/tab_search.cpp:293
+msgid "No index present"
+msgstr ""
+
+#: ../src/tab_search.cpp:293
+msgid "The index is not present"
 msgstr ""
 
 #: ../src/window_browser.ui:36
@@ -1163,14 +1199,14 @@ msgstr ""
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr ""
 
-#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:73
+#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:74
 #, fuzzy
 msgid "Add page"
 msgstr "Keresés az oldalon"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:159
 #: ../src/qtwebengine/viewwindowmgr.cpp:237
-#: ../src/qtwebkit/viewwindowmgr.cpp:160 ../src/qtwebkit/viewwindowmgr.cpp:239
+#: ../src/qtwebkit/viewwindowmgr.cpp:161 ../src/qtwebkit/viewwindowmgr.cpp:240
 #, fuzzy, qt-format
 msgid "Alt+%1"
 msgstr "Alt+%1"

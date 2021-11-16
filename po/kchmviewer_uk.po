@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 21:31+0300\n"
+"POT-Creation-Date: 2021-11-16 19:05+0300\n"
 "PO-Revision-Date: 2010-06-23 19:03+0300\n"
 "Last-Translator: Yatsenko Alexandr <yatsenko.alexandr@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -857,6 +857,10 @@ msgstr "Перервати"
 msgid "HTML source"
 msgstr "&Переглянути джерело HTML"
 
+#: ../src/mainwindow.cpp:1041
+msgid "Cannot start external editor"
+msgstr ""
+
 #: ../src/mainwindow.cpp:1042
 #, qt-format
 msgid ""
@@ -867,6 +871,16 @@ msgstr ""
 #: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
 msgstr "Неможливо знайти відкриту тему у вікні змісту"
+
+#: ../src/mainwindow.cpp:1099
+#, qt-format
+msgid "<br>Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1105
+#, qt-format
+msgid "<br>Using Qt version %1"
+msgstr ""
 
 #: ../src/mainwindow.cpp:1108
 #, fuzzy, qt-format
@@ -917,6 +931,18 @@ msgstr "Ctrl+Стрілка вліво"
 #, fuzzy
 msgid "Ctrl+I"
 msgstr "Ctrl+"
+
+#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/qtwebkit/viewwindow.cpp:129
+#, fuzzy
+msgid "&Open this link in a new tab"
+msgstr "Відкрити посилання у новій вкладці\tShift+ЛКМ"
+
+#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/qtwebkit/viewwindow.cpp:131
+#, fuzzy
+msgid "&Open this link in a new background tab"
+msgstr "Відкрити посилання у фоновій вкладці\tCtrl+ЛКМ"
 
 #: ../src/mainwindow.cpp:1362
 #, qt-format
@@ -1081,8 +1107,20 @@ msgid "Generating search index..."
 msgstr "Створення пошукового індексу..."
 
 #: ../src/tab_search.cpp:253
+msgid "Cannot save index"
+msgstr ""
+
+#: ../src/tab_search.cpp:253
 #, qt-format
 msgid "The index cannot be saved into file %1"
+msgstr ""
+
+#: ../src/tab_search.cpp:293
+msgid "No index present"
+msgstr ""
+
+#: ../src/tab_search.cpp:293
+msgid "The index is not present"
 msgstr ""
 
 #: ../src/window_browser.ui:36
@@ -1142,13 +1180,13 @@ msgstr "Відкрити посилання у новій вкладці\tShift+
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr "Відкрити посилання у фоновій вкладці\tCtrl+ЛКМ"
 
-#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:73
+#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:74
 msgid "Add page"
 msgstr "Додати сторінку"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:159
 #: ../src/qtwebengine/viewwindowmgr.cpp:237
-#: ../src/qtwebkit/viewwindowmgr.cpp:160 ../src/qtwebkit/viewwindowmgr.cpp:239
+#: ../src/qtwebkit/viewwindowmgr.cpp:161 ../src/qtwebkit/viewwindowmgr.cpp:240
 #, qt-format
 msgid "Alt+%1"
 msgstr "Alt+%1"

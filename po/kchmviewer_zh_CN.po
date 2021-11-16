@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 21:31+0300\n"
+"POT-Creation-Date: 2021-11-16 19:05+0300\n"
 "PO-Revision-Date: 2013-01-12 04:27-0500\n"
 "Last-Translator: Henry Hu <henry.hu.sh@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-china@kde.org>\n"
@@ -873,6 +873,10 @@ msgstr "取消"
 msgid "HTML source"
 msgstr "查看HTML源码"
 
+#: ../src/mainwindow.cpp:1041
+msgid "Cannot start external editor"
+msgstr ""
+
 #: ../src/mainwindow.cpp:1042
 #, qt-format
 msgid ""
@@ -883,6 +887,16 @@ msgstr ""
 #: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
 msgstr "无法在目录窗口定位打开的主题"
+
+#: ../src/mainwindow.cpp:1099
+#, qt-format
+msgid "<br>Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
+msgstr ""
+
+#: ../src/mainwindow.cpp:1105
+#, qt-format
+msgid "<br>Using Qt version %1"
+msgstr ""
 
 #: ../src/mainwindow.cpp:1108
 #, fuzzy, qt-format
@@ -933,6 +947,18 @@ msgstr "Ctrl+左"
 #, fuzzy
 msgid "Ctrl+I"
 msgstr "Ctrl+1"
+
+#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/qtwebkit/viewwindow.cpp:129
+#, fuzzy
+msgid "&Open this link in a new tab"
+msgstr "在新的标签页打开此链接\tShift+左键"
+
+#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/qtwebkit/viewwindow.cpp:131
+#, fuzzy
+msgid "&Open this link in a new background tab"
+msgstr "在后台标签页打开此链接\tCtrl+左键"
 
 #: ../src/mainwindow.cpp:1362
 #, qt-format
@@ -1093,8 +1119,20 @@ msgid "Generating search index..."
 msgstr "生成搜索索引..."
 
 #: ../src/tab_search.cpp:253
+msgid "Cannot save index"
+msgstr ""
+
+#: ../src/tab_search.cpp:253
 #, qt-format
 msgid "The index cannot be saved into file %1"
+msgstr ""
+
+#: ../src/tab_search.cpp:293
+msgid "No index present"
+msgstr ""
+
+#: ../src/tab_search.cpp:293
+msgid "The index is not present"
 msgstr ""
 
 #: ../src/window_browser.ui:36
@@ -1153,13 +1191,13 @@ msgstr "在新的标签页打开此链接\tShift+左键"
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr "在后台标签页打开此链接\tCtrl+左键"
 
-#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:73
+#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:74
 msgid "Add page"
 msgstr "添加页面"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:159
 #: ../src/qtwebengine/viewwindowmgr.cpp:237
-#: ../src/qtwebkit/viewwindowmgr.cpp:160 ../src/qtwebkit/viewwindowmgr.cpp:239
+#: ../src/qtwebkit/viewwindowmgr.cpp:161 ../src/qtwebkit/viewwindowmgr.cpp:240
 #, qt-format
 msgid "Alt+%1"
 msgstr "Alt+%1"
