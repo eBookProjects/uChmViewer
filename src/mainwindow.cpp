@@ -1038,8 +1038,8 @@ void MainWindow::actionViewHTMLsource()
 		if ( !QProcess::startDetached( pConfig->m_advExternalEditorPath, arguments, "." ) )
 		{
 			QMessageBox::warning( 0,
-								  "Cannot start external editor", 
-								  tr("Cannot start external editor %1.\nMake sure the path is absolute!") .arg( pConfig->m_advExternalEditorPath ) );
+								  i18n("Cannot start external editor"), 
+								  i18n("Cannot start external editor %1.\nMake sure the path is absolute!") .arg( pConfig->m_advExternalEditorPath ) );
 			delete m_tempFileKeeper.takeLast();
 		}
 	}
@@ -1096,13 +1096,13 @@ void MainWindow::actionLocateInContentsTab()
 void MainWindow::actionAboutApp()
 {
 #if QT_VERSION >= 0x050000
-    QString info = QString( "<br>Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4" )
+    QString info = QString( i18n("<br>Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4") )
             .arg( QSysInfo::buildCpuArchitecture() )
             .arg( QSysInfo::buildAbi() )
             .arg( QSysInfo::prettyProductName() )
             .arg( qVersion() );
 #else
-    QString info = QString( "<br>Using Qt version %1") .arg( qVersion() );
+    QString info = QString( i18n("<br>Using Qt version %1") ) .arg( qVersion() );
 #endif
 
     QString abouttext = i18n( "<html><b>kchmviewer version %1.%2</b>%3<br><br>"
@@ -1284,12 +1284,12 @@ void MainWindow::setupActions()
 	// Context menu
 	m_contextMenu = new QMenu( this );
 	
-	m_contextMenu->addAction ( "&Open this link in a new tab",
+	m_contextMenu->addAction ( i18n("&Open this link in a new tab"),
 	                          this, 
 	                          SLOT( onOpenPageInNewTab() ), 
 	                          QKeySequence( "Shift+Enter" ) );
 	
-	m_contextMenu->addAction ( "&Open this link in a new background tab", 
+	m_contextMenu->addAction ( i18n("&Open this link in a new background tab"), 
 	                          this, 
 	                          SLOT( onOpenPageInNewBackgroundTab() ),
 	                          QKeySequence( "Ctrl+Enter" ) );
@@ -1461,7 +1461,7 @@ void MainWindow::updateActions()
 
 void MainWindow::newVerAvailError( int  )
 {
-	statusBar()->showMessage( tr("Unable to check whether a new version is available"), 2000 );
+	statusBar()->showMessage( i18n("Unable to check whether a new version is available"), 2000 );
 }
 
 void MainWindow::newVerAvailable( NewVersionMetaMap metadata )
@@ -1474,8 +1474,8 @@ void MainWindow::newVerAvailable( NewVersionMetaMap metadata )
     if ( metadata["Version"].toFloat() > current.toFloat() )
 	{
 		if ( QMessageBox::question( 0,
-				tr("New version available"),
-				tr("<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>"
+				i18n("New version available"),
+				i18n("<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>"
 				   "You are currently using version %3.<br>"
 				   "Do you want to visit the application web site %2?")
 						.arg( metadata["Version"] )
@@ -1488,7 +1488,7 @@ void MainWindow::newVerAvailable( NewVersionMetaMap metadata )
 		QDesktopServices::openUrl ( QUrl(metadata["URL"]) );
 	}
 	else
-		statusBar()->showMessage( tr("Checked for updates; you are using the latest version of kchmviewer"), 2000 );
+		statusBar()->showMessage( i18n("Checked for updates; you are using the latest version of kchmviewer"), 2000 );
 }
 
 void MainWindow::actionEditToolbars()
