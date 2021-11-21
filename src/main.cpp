@@ -51,7 +51,7 @@ int main( int argc, char ** argv )
                            ki18n("CHM file viewer"),
                            KAboutData::License_GPL,
                            ki18n("(c) 2004-2015 George Yunaev"),
-                           "",
+                           ki18n("Please report bugs to nicegorov@ya.com"),
                            "https://github.com/u-235/uchmviewer",
                            "");
 
