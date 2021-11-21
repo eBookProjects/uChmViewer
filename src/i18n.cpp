@@ -35,7 +35,7 @@ void initGettext();
 #if !defined APP_INSTALL_DIR_BIN || !defined APP_INSTALL_DIR_LOCALE
 void app_i18n::initGettext()
 {
-	textdomain ( "kchmviewer" );
+	textdomain ( "uchmviewer" );
 }
 #else
 void app_i18n::initGettext()
@@ -57,10 +57,10 @@ void app_i18n::initGettext()
 		// Getting the installation root folder and adding the translations path.
 		appDir.remove( QRegExp(binDir + "$") );
 		appDir.append( localeDir );
-		bindtextdomain ( "kchmviewer", appDir.toUtf8().data() );
+		bindtextdomain ( "uchmviewer", appDir.toUtf8().data() );
 	}
 
-	textdomain ( "kchmviewer" );
+	textdomain ( "uchmviewer" );
 }
 #endif //!defined APP_INSTALL_DIR_BIN || !defined APP_INSTALL_DIR_LOCALE
 

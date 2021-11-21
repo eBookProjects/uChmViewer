@@ -42,7 +42,7 @@ const char * EBook_CHM::URL_SCHEME_CHM = "ms-its";
 EBook_CHM::EBook_CHM()
     : EBook()
 {
-	m_envOptions = getenv("KCHMVIEWEROPTS");
+	m_envOptions = getenv("UCHMVIEWEROPTS");
 	m_chmFile = NULL;
 	m_filename = m_font = QString::null;
 

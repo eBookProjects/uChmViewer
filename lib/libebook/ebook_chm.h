@@ -335,7 +335,7 @@ class EBook_CHM : public EBook
 		//! Map url->topic
 		QMap< QUrl, QString >	m_url2topics;
 
-		//! KCHMViewer debug options from environment
+		//! uChmViewer debug options from environment
 		QString			m_envOptions;
 
 		//! HTML entity decoder

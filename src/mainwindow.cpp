@@ -115,7 +115,7 @@ MainWindow::MainWindow( const QStringList& arguments )
 
 	statusBar()->show();
 
-	qApp->setWindowIcon( QPixmap(":/images/kchmviewer.png") );
+	qApp->setWindowIcon( QPixmap(":/images/uchmviewer.png") );
 
 	if ( pConfig->m_numOfRecentFiles > 0 )
 	{
@@ -593,7 +593,7 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args , bool from_another_ap
             disable_vcheck = true;
         else if ( args[i] == "-v" || args[i] == "--version" )
         {
-            printf("kchmviewer version %d.%d built at %s %s\n", APP_VERSION_MAJOR, APP_VERSION_MINOR, __DATE__, __TIME__ );
+            printf("uChmViewer version %d.%d built at %s %s\n", APP_VERSION_MAJOR, APP_VERSION_MINOR, __DATE__, __TIME__ );
             exit( 0 );
         }
         else if ( args[i] == "--url" || args[i] == "-showPage" )
@@ -1105,16 +1105,14 @@ void MainWindow::actionAboutApp()
     QString info = QString( i18n("<br>Using Qt version %1") ) .arg( qVersion() );
 #endif
 
-    QString abouttext = i18n( "<html><b>kchmviewer version %1.%2</b>%3<br><br>"
-                              "Copyright (C) George Yunaev, 2004-2015<br>"
-							  "<a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</a><br>"
-							  "<a href=\"http://www.ulduzsoft.com/kchmviewer\">http://www.ulduzsoft.com/kchmviewer</a><br><br>"
+    QString abouttext = i18n( "<html><b>uChmViewer version %1.%2</b>%3<br><br>"
+                              "Copyright (C) George Yunaev, 2004-2015<br><br>"
 							  "Licensed under GNU GPL license version 3.</html>" )
                                 .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) .arg( info );
 
 	// It is quite funny that the argument order differs
 #if defined (USE_KDE)
-	KMessageBox::about( this, abouttext, i18n("About kchmviewer") );
+	KMessageBox::about( this, abouttext, i18n("About uChmViewer") );
 #else
 	QDialog dlg;
 	Ui::DialogAbout ui;
@@ -1475,7 +1473,7 @@ void MainWindow::newVerAvailable( NewVersionMetaMap metadata )
 	{
 		if ( QMessageBox::question( 0,
 				i18n("New version available"),
-				i18n("<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>"
+				i18n("<html>A new version <b>%1</b> of uChmViewer is available!<br><br>"
 				   "You are currently using version %3.<br>"
 				   "Do you want to visit the application web site %2?")
 						.arg( metadata["Version"] )
@@ -1488,7 +1486,7 @@ void MainWindow::newVerAvailable( NewVersionMetaMap metadata )
 		QDesktopServices::openUrl ( QUrl(metadata["URL"]) );
 	}
 	else
-		statusBar()->showMessage( i18n("Checked for updates; you are using the latest version of kchmviewer"), 2000 );
+		statusBar()->showMessage( i18n("Checked for updates; you are using the latest version of uChmViewer"), 2000 );
 }
 
 void MainWindow::actionEditToolbars()

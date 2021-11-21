@@ -33,9 +33,9 @@
 #endif
 
 #if defined (Q_OS_MAC)
-        #include "kchmviewerapp.h"
+        #include "uchmviewerapp.h"
 #else
-        typedef QApplication  KchmviewerApp;
+        typedef QApplication  UchmviewerApp;
 #endif
 
 MainWindow * mainWindow;
@@ -44,21 +44,21 @@ MainWindow * mainWindow;
 int main( int argc, char ** argv )
 {
 #if defined (USE_KDE)
-    KAboutData aboutdata ( "kchmviewer",
+    KAboutData aboutdata ( "uChmViewer",
                            QByteArray(),
-                           ki18n("kchmviewer"),
+                           ki18n("uChmViewer"),
                            qPrintable( QString("%1.%2") .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) ),
                            ki18n("CHM file viewer"),
                            KAboutData::License_GPL,
-                           ki18n("(c) 2004-2015 George Yunaev, gyunaev@ulduzsoft.com"),
-                           ki18n("Please report bugs to kchmviewer@ulduzsoft.com"),
-                           "http://www.ulduzsoft.com/kchmviewer",
-                           "kchmviewer@ulduzsoft.com");
+                           ki18n("(c) 2004-2015 George Yunaev"),
+                           "",
+                           "https://github.com/u-235/uchmviewer",
+                           "");
 
     KCmdLineArgs::init( &aboutdata );
     KApplication app;
 #else
-	KchmviewerApp app( argc, argv );
+	UchmviewerApp app( argc, argv );
 
 	app.addLibraryPath ( "qt-plugins" );
 #endif
@@ -66,9 +66,9 @@ int main( int argc, char ** argv )
 app_i18n::init();	
 
 	// Set data for QSettings
-	QCoreApplication::setOrganizationName("Ulduzsoft");
-	QCoreApplication::setOrganizationDomain("kchmviewer.net");
-	QCoreApplication::setApplicationName("kchmviewer");
+	QCoreApplication::setOrganizationName("uChmViewer");
+	QCoreApplication::setOrganizationDomain("uChmViewer.net");
+	QCoreApplication::setApplicationName("uchmviewer");
 
 	// Configuration
 	pConfig = new Config();

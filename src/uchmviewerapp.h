@@ -16,18 +16,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KCHMVIEWERAPP_H
-#define KCHMVIEWERAPP_H
+#ifndef UCHMVIEWERAPP_H
+#define UCHMVIEWERAPP_H
 
 #include <QApplication>
 #include <QFileOpenEvent>
 
-class KchmviewerApp : public QApplication
+class UchmviewerApp : public QApplication
 {
     Q_OBJECT
 	public:
-		KchmviewerApp(int &argc, char **argv, int version= QT_VERSION);
-		virtual ~KchmviewerApp();
+		UchmviewerApp(int &argc, char **argv, int version= QT_VERSION);
+		virtual ~UchmviewerApp();
 		bool event(QEvent*);
 
 	private slots:
@@ -38,4 +38,4 @@ class KchmviewerApp : public QApplication
 		int m_nResend;
 };
 
-#endif // KCHMVIEWERAPP_H
+#endif // UCHMVIEWERAPP_H

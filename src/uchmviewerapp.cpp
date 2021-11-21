@@ -20,20 +20,20 @@
 #include <QEvent>
 #include <QTimer>
 
-#include "kchmviewerapp.h"
+#include "uchmviewerapp.h"
 #include "mainwindow.h"
 
 
-KchmviewerApp::KchmviewerApp(int &argc, char **argv, int version)
+UchmviewerApp::UchmviewerApp(int &argc, char **argv, int version)
     : QApplication(argc, argv, version)
 {
 }
 
-KchmviewerApp::~KchmviewerApp()
+UchmviewerApp::~UchmviewerApp()
 {
 }
 
-bool KchmviewerApp::event(QEvent* ev)
+bool UchmviewerApp::event(QEvent* ev)
 {
     if (ev->type() == QEvent::FileOpen)
       {
@@ -46,7 +46,7 @@ bool KchmviewerApp::event(QEvent* ev)
     return QApplication::event(ev);
 }
 
-void KchmviewerApp::onTimer()
+void UchmviewerApp::onTimer()
 {
     MainWindow *main;
 

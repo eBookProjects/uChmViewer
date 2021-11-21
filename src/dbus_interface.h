@@ -24,12 +24,12 @@
 #include <QStringList>
 
 
-#define SERVICE_NAME            "net.kchmviewer.application"
+#define SERVICE_NAME            "net.uchmviewer.application"
 
 class DBusInterface : public QObject
 {
 	Q_OBJECT
-	Q_CLASSINFO("D-Bus Interface", "net.kchmviewer.application")
+	Q_CLASSINFO("D-Bus Interface", "net.uchmviewer.application")
 			
 	public:
 		DBusInterface( QObject *parent = 0 );

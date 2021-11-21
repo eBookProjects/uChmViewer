@@ -37,7 +37,7 @@ Config::Config()
 		m_datapath += QDir::separator() + QString("data");
 	}
 	else
-		m_datapath = QDir::homePath () + "/" + ".kchmviewer";
+		m_datapath = QDir::homePath () + "/" + ".uchmviewer";
 
 	QSettings settings;
 
@@ -109,7 +109,7 @@ QString Config::getEbookSettingFile(const QString &ebookfile ) const
 	QFileInfo finfo ( ebookfile );
 	QString prefix = pConfig->m_datapath + QDir::separator() + finfo.completeBaseName();
 
-	return prefix + ".kchmviewer";
+	return prefix + ".uchmviewer";
 }
 
 QString Config::getEbookIndexFile(const QString &ebookfile) const
