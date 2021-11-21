@@ -1,6 +1,6 @@
 
 TEMPLATE = app
-TARGET = ../bin/kchmviewer
+TARGET = ../bin/uchmviewer
 CONFIG *= c++11 warn_on threads
 
 QT += \
@@ -98,8 +98,8 @@ linux-g++-32: {
 
 # General per-platform settings
 macx:{
-    HEADERS += kchmviewerapp.h
-    SOURCES += kchmviewerapp.cpp
+    HEADERS += uchmviewerapp.h
+    SOURCES += uchmviewerapp.cpp
 }
 
 win32:{

@@ -1,4 +1,4 @@
-# kchmviewer build script with qmake
+# uChmViewer build script with qmake
 #
 #    Options:
 #

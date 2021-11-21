@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.1)
 
-set(CATALOG_NAME kchmviewer)
+set(CATALOG_NAME uchmviewer)
 # The languages.txt file contains a list of locales.
 file(READ languages.txt LANGUAGES)
 string(REGEX REPLACE "[\t ]+" ";" LANGUAGES ${LANGUAGES})

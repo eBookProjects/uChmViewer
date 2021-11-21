@@ -1,4 +1,4 @@
-# kchmviewer build script with cmake
+# uChmViewer build script with cmake
 #
 #       Common option:
 # FRAMEWORK=<Qt4 | Qt5 | KDE4>
@@ -19,11 +19,11 @@
 cmake_minimum_required(VERSION 3.9)
 
 # Project info
-project(kchmviewer)
+project(uchmviewer)
 include(cmake/get-version.cmake)
 set(CMAKE_PROJECT_VERSION ${PROJECT_VERSION})
 # Maybe upgrade the minimum version of CMake to 3.12?
-set(PROJECT_HOMEPAGE_URL "https://github.com/u-235/kchmviewer")
+set(PROJECT_HOMEPAGE_URL "https://github.com/u-235/uchmviewer")
 set(CMAKE_PROJECT_HOMEPAGE_URL ${PROJECT_HOMEPAGE_URL})
 
 option(USE_WEBENGINE      "Use Qt WebEngine"                                OFF)

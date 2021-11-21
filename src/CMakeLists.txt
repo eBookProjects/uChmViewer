@@ -81,8 +81,8 @@ endif ()
 
 # Mac OS specific
 if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Darwin")
-    set(CPP_SOURCES ${CPP_SOURCES} kchmviewerapp.cpp)
-    set(MOC_HEADERS ${MOC_HEADERS} kchmviewerapp.h)
+    set(CPP_SOURCES ${CPP_SOURCES} uchmviewerapp.cpp)
+    set(MOC_HEADERS ${MOC_HEADERS} uchmviewerapp.h)
 endif ()
 
 qt_add_resources(RSRCS resources/images.qrc)
@@ -93,8 +93,8 @@ if (${FRAMEWORK} STREQUAL KDE4)
     # kde4_add_executable always does automoc and this is can't disabled.
     # Therefore, an ugly solution is used here.
     qt_wrap_cpp(MOC_SOURCES viewwindowmgr.h)
-    kde4_add_executable(kchmviewer ${CPP_SOURCES} ${RSRCS} ${MOC_SOURCES})
-    target_link_libraries(kchmviewer
+    kde4_add_executable(uchmviewer ${CPP_SOURCES} ${RSRCS} ${MOC_SOURCES})
+    target_link_libraries(uchmviewer
         ebook
         chm
         ${KDE4_KDEUI_LIBS}
@@ -106,8 +106,8 @@ if (${FRAMEWORK} STREQUAL KDE4)
 else ()
     qt_wrap_ui(UI_SOURCES ${UIS})
     qt_wrap_cpp(MOC_SOURCES ${MOC_HEADERS})
-    add_executable(kchmviewer ${CPP_SOURCES} ${RSRCS} ${UI_SOURCES} ${MOC_SOURCES})
-    target_link_libraries(kchmviewer
+    add_executable(uchmviewer ${CPP_SOURCES} ${RSRCS} ${UI_SOURCES} ${MOC_SOURCES})
+    target_link_libraries(uchmviewer
         ebook
         chm
         Qt::Core
@@ -122,11 +122,11 @@ else ()
         )
 endif ()
 
-target_link_libraries(kchmviewer i18n)
+target_link_libraries(uchmviewer i18n)
 # For Gettext to work correctly, we tell the application the location
 # of the folders with binaries and translations.
-target_compile_definitions(kchmviewer PRIVATE
+target_compile_definitions(uchmviewer PRIVATE
         APP_INSTALL_DIR_BIN="${APP_BIN_INSTALL_DIR}"
         APP_INSTALL_DIR_LOCALE="${APP_LOCALE_INSTALL_DIR}")
 
-install(TARGETS kchmviewer DESTINATION ${APP_BIN_INSTALL_DIR})
+install(TARGETS uchmviewer DESTINATION ${APP_BIN_INSTALL_DIR})
