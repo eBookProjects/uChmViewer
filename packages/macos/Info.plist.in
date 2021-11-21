@@ -5,13 +5,13 @@
 	<key>CFBundleExecutable</key>
 	<string>@CMAKE_PROJECT_NAME@</string>
 	<key>CFBundleIconFile</key>
-	<string>kchmviewer.icns</string>
+	<string>uchmviewer.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>@CMAKE_PROJECT_HOMEPAGE_URL@</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>@CMAKE_PROJECT_VERSION@</string>
 	<key>CFBundleName</key>
-	<string>kchmviewer</string>
+	<string>uchmviewer</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
@@ -32,7 +32,7 @@
 				<string>EPUB</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>kchmviewer.icns</string>
+			<string>uchmviewer.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>CHM</string>
 			<key>CFBundleTypeOSTypes</key>

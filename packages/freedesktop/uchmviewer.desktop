@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=KchmViewer
+Name=uChmViewer
 Categories=Qt;KDE;Office;Viewer;
 Terminal=false
 Type=Application
-Exec=kchmviewer %f
-Icon=kchmviewer
+Exec=uchmviewer %f
+Icon=uchmviewer
 GenericName=CHM file viewer
 Comment=A viewer of CHM (MS-Help) files
 MimeType=application/chm;application/x-chm;application/vnd.ms-htmlhelp;application/epub+zip
