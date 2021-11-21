@@ -1,34 +1,37 @@
-# translation of kchmview.pot to Turkish
-# This file is put in the public domain.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 #
-# Furkan Duman <coderlord@gmail.com>, 2006.
-# Ozan Çağlayan <ozan@pardus.org.tr>, 2009.
+# Yatsenko Alexandr <yatsenko.alexandr@gmail.com>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: tr\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 19:05+0300\n"
-"PO-Revision-Date: 2009-02-11 11:03+0200\n"
-"Last-Translator: Ozan Çağlayan <ozan@pardus.org.tr>\n"
-"Language-Team: Turkish <tr@li.org>\n"
-"Language: tr\n"
+"POT-Creation-Date: 2021-11-21 11:32+0300\n"
+"PO-Revision-Date: 2010-06-23 19:03+0300\n"
+"Last-Translator: Yatsenko Alexandr <yatsenko.alexandr@gmail.com>\n"
+"Language-Team: Ukrainian <translation@linux.org.ua>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1117
-msgid "About kchmviewer"
-msgstr ""
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1115
+#, fuzzy
+msgid "About uChmViewer"
+msgstr "kchmviewer"
 
 #: ../src/dialog_about.ui:24
+#, fuzzy
 msgid "About appplication"
-msgstr ""
+msgstr "Закриває програму"
 
 #: ../src/dialog_about.ui:46
 #, fuzzy
 msgid "About text"
-msgstr "Q&t hakkında"
+msgstr "Про &Qt"
 
 #: ../src/dialog_about.ui:57
 msgid "Thanks"
@@ -75,7 +78,7 @@ msgstr ""
 
 #: ../src/dialog_about.ui:89
 msgid ""
-"<html><head/><body><p>kchmviewer uses the following 3rd party software:</"
+"<html><head/><body><p>uChmViewer uses the following 3rd party software:</"
 "p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
 "right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-"
 "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
@@ -92,11 +95,11 @@ msgstr ""
 
 #: ../src/dialog_setup.ui:20
 msgid "KchmViewer settings"
-msgstr ""
+msgstr "Налаштування KchmViewer"
 
 #: ../src/dialog_setup.ui:42
 msgid "General behavior"
-msgstr ""
+msgstr "Загальна поведінка"
 
 #: ../src/dialog_setup.ui:62
 msgid "If started with no arguments"
@@ -107,94 +110,91 @@ msgid "Start with nothing loaded"
 msgstr ""
 
 #: ../src/dialog_setup.ui:81
+#, fuzzy
 msgid "Pop up the \"open file\" dialog"
-msgstr ""
+msgstr "Показати вікно відкривання CHM файлів"
 
 #: ../src/dialog_setup.ui:88
 msgid "Open the &last used CHM file, if exist"
-msgstr ""
+msgstr "Відкрити &попередній файл CHM, якщо доступний."
 
 #: ../src/dialog_setup.ui:91
-#, fuzzy
 msgid "Alt+L"
-msgstr "Alt+%1"
+msgstr "Alt+L"
 
 #: ../src/dialog_setup.ui:101
 msgid "History"
-msgstr ""
+msgstr "Журнал"
 
 #: ../src/dialog_setup.ui:121
 msgid "Store history information for"
-msgstr ""
+msgstr "Зберегти історію про"
 
 #: ../src/dialog_setup.ui:141
 msgid "latest files"
-msgstr ""
+msgstr "останні файли"
 
 #: ../src/dialog_setup.ui:153
 msgid ""
 "Remembers the information about the files, which were opened. Remembers last "
 "opened page, search history, font size, bookmarks and so on."
 msgstr ""
+"Запам'ятовує інформацію про файли, що були відкриті. Запам'ятовує останню "
+"відкриту сторінку, історію пошуку, розмір шрифту, закладки та інше."
 
 #: ../src/dialog_setup.ui:156
 msgid "R&emember extra information for history files"
-msgstr ""
+msgstr "Зберігати додатков&у інформацію до файлів журналу"
 
 #: ../src/dialog_setup.ui:159
-#, fuzzy
 msgid "Alt+E"
-msgstr "Alt+%1"
+msgstr "Alt+E"
 
 #: ../src/dialog_setup.ui:171
 msgid "CHM security settings"
-msgstr ""
+msgstr "Налаштування безпеки CHM"
 
 #: ../src/dialog_setup.ui:183
-#, fuzzy
 msgid "When external link clicked"
-msgstr "%1 - uzak bağlantı tıklandı - %2"
+msgstr "Коли клацнуто зовнішнє посилання"
 
 #: ../src/dialog_setup.ui:195
 msgid "Alwa&ys open it in external browser"
-msgstr ""
+msgstr "Завжди відкривати в зов&нішньому браузері"
 
 #: ../src/dialog_setup.ui:198
-#, fuzzy
 msgid "Alt+Y"
-msgstr "Alt+%1"
+msgstr "Alt+Y"
 
 #: ../src/dialog_setup.ui:205 ../src/dialog_setup.ui:244
 msgid "Ask for confirmation"
-msgstr ""
+msgstr "Запитати підтвердження"
 
 #: ../src/dialog_setup.ui:212
-#, fuzzy
 msgid "Do not open the link"
-msgstr "%1 - tıklanan yeni bir CHM dosyasına bağlantı"
+msgstr "Не відкривати посилання"
 
 #: ../src/dialog_setup.ui:225
-#, fuzzy
 msgid "When link pointed to a new CHM file clicked"
-msgstr "%1 - tıklanan yeni bir CHM dosyasına bağlantı"
+msgstr "Коли обрано посилання на інший файл CHM"
 
 #: ../src/dialog_setup.ui:237
-#, fuzzy
 msgid "Always open a new CHM file"
-msgstr "Dosya Aç"
+msgstr "Завжди відкривати новий файл CHM"
 
 #: ../src/dialog_setup.ui:251
-#, fuzzy
 msgid "Do not open a new CHM file"
-msgstr "%1 - tıklanan yeni bir CHM dosyasına bağlantı"
+msgstr "Не відкривати новий файл CHM"
 
 #: ../src/dialog_setup.ui:278
+#, fuzzy
 msgid "Browser"
-msgstr ""
+msgstr "&Огляд"
 
 #: ../src/dialog_setup.ui:290
+#, fuzzy
 msgid "HTML browser settings"
-msgstr ""
+msgstr "Налаштування безпеки CHM"
 
 #: ../src/dialog_setup.ui:296
 msgid "Load the &images"
@@ -205,36 +205,32 @@ msgid "Enable browser &plugins (i.e. Flash)"
 msgstr ""
 
 #: ../src/dialog_setup.ui:306
-#, fuzzy
 msgid "Alt+P"
-msgstr "Alt+%1"
+msgstr "Alt+L"
 
 #: ../src/dialog_setup.ui:313
 msgid "Enable &Java"
-msgstr ""
+msgstr "Увімкнути &Java"
 
 #: ../src/dialog_setup.ui:316
-#, fuzzy
 msgid "Alt+J"
-msgstr "Alt+%1"
+msgstr "Alt+J"
 
 #: ../src/dialog_setup.ui:323
 msgid "Enable Java&Script"
-msgstr ""
+msgstr "Увімкнути Java&Script"
 
 #: ../src/dialog_setup.ui:326
-#, fuzzy
 msgid "Alt+S"
-msgstr "Alt+%1"
+msgstr "Alt+S"
 
 #: ../src/dialog_setup.ui:333
 msgid "Enable &offline storage (HTML5)"
 msgstr ""
 
 #: ../src/dialog_setup.ui:336
-#, fuzzy
 msgid "Alt+R"
-msgstr "Alt+%1"
+msgstr "Alt+Y"
 
 #: ../src/dialog_setup.ui:343
 msgid "Enable &local storage (HTML5)"
@@ -260,47 +256,48 @@ msgstr ""
 
 #: ../src/dialog_setup.ui:397
 msgid "Advanced"
-msgstr ""
+msgstr "Додатково"
 
 #: ../src/dialog_setup.ui:403
-#, fuzzy
 msgid "View HTML source command uses"
-msgstr "Şimdiki sayfayı kapat"
+msgstr "Переглядати використані команди HTML"
 
 #: ../src/dialog_setup.ui:415
 msgid "Built-in HTML source viewer"
-msgstr ""
+msgstr "Вбудований переглядач HTML коду"
 
 #: ../src/dialog_setup.ui:425
 msgid "E&xternal program, specified below"
-msgstr ""
+msgstr "&Зовнішня програма, вказана нижче"
 
 #: ../src/dialog_setup.ui:428
-#, fuzzy
 msgid "Alt+X"
-msgstr "Alt+%1"
+msgstr "Alt+P"
 
 #: ../src/dialog_setup.ui:443
 msgid "External program:"
-msgstr ""
+msgstr "Зовнішня програма:"
 
 #: ../src/dialog_setup.ui:456
 msgid "&Browse"
-msgstr ""
+msgstr "&Огляд"
 
 #: ../src/dialog_setup.ui:468
 msgid "Other"
-msgstr ""
+msgstr "Інше"
 
 #: ../src/dialog_setup.ui:474
+#, fuzzy
 msgid "Use right-to-left layout direction (Arabic and Hebrew layouts)"
-msgstr ""
+msgstr "Використовувати напрямок справа вліво (Арабська мова та Іврит)"
 
 #: ../src/dialog_setup.ui:481
 msgid ""
 "Automatically detect encoding for KHTMLPart and WebKit browsers (not "
 "recommended)"
 msgstr ""
+"Автоматично визначати кодування для браузерів KHTMLPart та WebKit (не "
+"рекомендується)"
 
 #: ../src/dialog_setup.ui:488
 msgid ""
@@ -316,8 +313,9 @@ msgid "Perform a check whether a new version is available (once a week)"
 msgstr ""
 
 #: ../src/dialog_setup.ui:501
+#, fuzzy
 msgid "Toolbars"
-msgstr ""
+msgstr "панель дій"
 
 #: ../src/dialog_setup.ui:507
 msgid "Small icons"
@@ -334,25 +332,24 @@ msgstr ""
 #: ../src/dialog_setup.ui:528
 #, fuzzy
 msgid "Just text"
-msgstr "Q&t hakkında"
+msgstr "Про &Qt"
 
 #: ../src/dialog_setup.cpp:209
 msgid ""
 "Changing those options requires restarting the application to take effect."
-msgstr ""
-"Değiştirilen ayarların etkin olması için uygulama yeniden başlatılmalıdır."
+msgstr "Щоб зміни набули чинності, слід перезапустити програму"
 
 #: ../src/dialog_setup.cpp:218
 msgid "*|Executables"
-msgstr "*|Çalıştırılabilir dosyalar"
+msgstr "*|Виконувані файли"
 
 #: ../src/dialog_setup.cpp:218 ../src/dialog_setup.cpp:221
 msgid "Choose an editor executable"
-msgstr "Bir metin düzenleyici seçin"
+msgstr "Оберіть виконуваний файл редактора"
 
 #: ../src/dialog_setup.cpp:223
 msgid "Executables (*)"
-msgstr "Çalıştırılabilir dosyalar (*)"
+msgstr "Виконувані файли (*)"
 
 #: ../src/dialog_topicselector.ui:13
 msgid "Multiple topics"
@@ -363,196 +360,188 @@ msgid "Please select the topic to open:"
 msgstr ""
 
 #: ../src/mainwindow.ui:14 ../src/main.cpp:49
-msgid "kchmviewer"
-msgstr ""
+#, fuzzy
+msgid "uChmViewer"
+msgstr "kchmviewer"
 
 #: ../src/mainwindow.ui:28
 msgid "&Settings"
-msgstr ""
+msgstr "&Налаштування"
 
 #: ../src/mainwindow.ui:37
-#, fuzzy
 msgid "&Bookmarks"
-msgstr "Yer imleri"
+msgstr "З&акладки"
 
 #: ../src/mainwindow.ui:44
 msgid "&File"
-msgstr ""
+msgstr "&Файл"
 
 #: ../src/mainwindow.ui:55
 msgid "&Edit"
-msgstr ""
+msgstr "&Редагування"
 
 #: ../src/mainwindow.ui:64
 msgid "&View"
-msgstr ""
+msgstr "Пе&регляд"
 
 #: ../src/mainwindow.ui:78
 msgid "&Windows"
-msgstr ""
+msgstr "&Вікно"
 
 #: ../src/mainwindow.ui:85
 #, fuzzy
 msgid "Help"
-msgstr "&Yardım"
+msgstr "&Довідка"
 
 #: ../src/mainwindow.ui:100
+#, fuzzy
 msgid "General toolbar"
-msgstr ""
+msgstr "загальна панель інструментів"
 
 #: ../src/mainwindow.ui:125
+#, fuzzy
 msgid "Navigation toolbar"
-msgstr ""
+msgstr "панель навігації"
 
 #: ../src/mainwindow.ui:151
+#, fuzzy
 msgid "View toolbar"
-msgstr ""
+msgstr "панель дій"
 
 #: ../src/mainwindow.ui:186
 msgid "&Print..."
-msgstr ""
+msgstr "&Друкувати..."
 
 #: ../src/mainwindow.ui:189
 msgid "Print"
-msgstr ""
+msgstr "Друкувати"
 
 #: ../src/mainwindow.ui:192
-#, fuzzy
 msgid "Print current page"
-msgstr "Şimdiki sayfayı kapat"
+msgstr "Друкувати поточну сторінку"
 
 #: ../src/mainwindow.ui:195
-#, fuzzy
 msgid "Prints currently opened page."
-msgstr "Şimdiki sayfayı kapat"
+msgstr "Друкує поточну відкриту сторінку."
 
 #: ../src/mainwindow.ui:198
-#, fuzzy
 msgid "Ctrl+P"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+P"
 
 #: ../src/mainwindow.ui:207
 msgid "&Quit"
-msgstr ""
+msgstr "В&ийти"
 
 #: ../src/mainwindow.ui:210
 msgid "Exit"
-msgstr ""
+msgstr "Вихід"
 
 #: ../src/mainwindow.ui:213
 msgid "Exits the application"
-msgstr ""
+msgstr "Закриває програму"
 
 #: ../src/mainwindow.ui:216
-#, fuzzy
 msgid "Ctrl+Q"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+Q"
 
 #: ../src/mainwindow.ui:225
 msgid "C&opy"
-msgstr ""
+msgstr "К&опіювати"
 
 #: ../src/mainwindow.ui:228
 msgid "Copy"
-msgstr ""
+msgstr "Копіювати"
 
 #: ../src/mainwindow.ui:231
 msgid "Copies selected content to clipboard"
-msgstr ""
+msgstr "Копіює виділений фрагмент до кишені"
 
 #: ../src/mainwindow.ui:234
-#, fuzzy
 msgid "Ctrl+C"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+C"
 
 #: ../src/mainwindow.ui:243
 msgid "&Select All"
-msgstr ""
+msgstr "В&иділити все"
 
 #: ../src/mainwindow.ui:246
 msgid "Paste"
-msgstr ""
+msgstr "Вставити"
 
 #: ../src/mainwindow.ui:249
 msgid "Selects everything in the document"
-msgstr ""
+msgstr "Виділяє весь вміст документа"
 
 #: ../src/mainwindow.ui:252
-#, fuzzy
 msgid "Ctrl+V"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+V"
 
 #: ../src/mainwindow.ui:261
 msgid "&Find..."
-msgstr ""
+msgstr "Зн&айти..."
 
 #: ../src/mainwindow.ui:264
-#, fuzzy
 msgid "Find text in currently opened page"
-msgstr "Şimdiki sayfayı kapat"
+msgstr "Шукати текст по поточній відкритій сторінці"
 
 #: ../src/mainwindow.ui:267
 msgid "Enters the Find in page mode"
-msgstr ""
+msgstr "Показувати знайдене у вигляді сторінки"
 
 #: ../src/mainwindow.ui:270
-#, fuzzy
 msgid "Ctrl+F"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+F"
 
 #: ../src/mainwindow.ui:279
-#, fuzzy
 msgid "E&xtract CHM content..."
-msgstr "CHM içeriği açılıyor"
+msgstr "&Витягти вміст CHM..."
 
 #: ../src/mainwindow.ui:282
-#, fuzzy
 msgid "Extract the CHM content to the directory"
-msgstr "CHM içeriği açılıyor"
+msgstr "Витягти вміст CHM до теки"
 
 #: ../src/mainwindow.ui:285
-#, fuzzy
 msgid ""
 "Exctracts the CHM archive content to the specified directory. All the files "
 "are extracted."
-msgstr "CHM içeriği açılıyor"
+msgstr "Витягує вміст CHM архіву до вказаної теки. Буде витягнуто всі файли."
 
 #: ../src/mainwindow.ui:294
 msgid "&Application settings..."
-msgstr ""
+msgstr "&Налаштування програми..."
 
 #: ../src/mainwindow.ui:297 ../src/mainwindow.ui:300
 msgid "Change the application settings"
-msgstr ""
+msgstr "Змінити налаштування програми"
 
 #: ../src/mainwindow.ui:309
-#, fuzzy
 msgid "&Add bookmark"
-msgstr "%1 - yer imi ekle"
+msgstr "&Додати закладку"
 
 #: ../src/mainwindow.ui:312
 #, fuzzy
 msgid "Bookmark"
-msgstr "Yer imleri"
+msgstr "Закладки"
 
 #: ../src/mainwindow.ui:315
 msgid "Adds a bookmark for currently opened page"
-msgstr ""
+msgstr "Додає закладку на поточну відкриту сторінку"
 
 #: ../src/mainwindow.ui:318
 msgid ""
 "Adds a bookmark for currently opened page. Remembers the opened page, and "
 "scroll position. Bookmarks are accessible through Bookmarks menu or tab."
 msgstr ""
+"Додає закладку на поточну відкриту сторінку. Запам'ятовує відкриту сторінку "
+"та позицію на екрані. Закладки доступні через меню закладок чи вкладку."
 
 #: ../src/mainwindow.ui:321
-#, fuzzy
 msgid "Ctrl+B"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+B"
 
 #: ../src/mainwindow.ui:330
 msgid "&Increase font size"
-msgstr ""
+msgstr "Збільшити розмір &шрифту"
 
 #: ../src/mainwindow.ui:333
 msgid "Larger"
@@ -560,20 +549,20 @@ msgstr ""
 
 #: ../src/mainwindow.ui:336
 msgid "Increase the font size"
-msgstr ""
+msgstr "Збільшити розмір шрифту"
 
 #: ../src/mainwindow.ui:339
 msgid "Increases the document font size. The new font size will be stored."
-msgstr ""
+msgstr "Збільшує розмір шрифту в документі. Новий розмір буде збережено."
 
 #: ../src/mainwindow.ui:342
 #, fuzzy
 msgid "Ctrl+="
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+"
 
 #: ../src/mainwindow.ui:351
 msgid "&Decrease font size"
-msgstr ""
+msgstr "&Зменшити розмір шрифту"
 
 #: ../src/mainwindow.ui:354
 msgid "Smaller"
@@ -581,47 +570,43 @@ msgstr ""
 
 #: ../src/mainwindow.ui:357
 msgid "Decrease the font size"
-msgstr ""
+msgstr "Зменшити розмір шрифту"
 
 #: ../src/mainwindow.ui:360
 msgid "Decreases the document font size. The new font size will be stored."
-msgstr ""
+msgstr "Зменшує розмір шрифту в документі. Новий розмір буде збережено."
 
 #: ../src/mainwindow.ui:363
-#, fuzzy
 msgid "Ctrl+-"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+-"
 
 #: ../src/mainwindow.ui:372
 msgid "See &HTML"
 msgstr ""
 
 #: ../src/mainwindow.ui:375
-#, fuzzy
 msgid "View HTML source of current page"
-msgstr "Şimdiki sayfayı kapat"
+msgstr "Переглянути джерело HTML для поточної сторінки"
 
 #: ../src/mainwindow.ui:378
-#, fuzzy
 msgid "Shows the HTML source of currently opened page"
-msgstr "Şimdiki sayfayı kapat"
+msgstr "Показує джерело HTML поточної відкритої сторінки"
 
 #: ../src/mainwindow.ui:381
-#, fuzzy
 msgid "Ctrl+U"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+U"
 
 #: ../src/mainwindow.ui:393
 msgid "Enable &full screen mode"
-msgstr ""
+msgstr "Увімкнути повноекр&анний режим"
 
 #: ../src/mainwindow.ui:396
 msgid "Enters or leaves the fullscreen mode"
-msgstr ""
+msgstr "Увімкнути чи вимкнути повноекранний режим"
 
 #: ../src/mainwindow.ui:399
 msgid "F11"
-msgstr ""
+msgstr "F11"
 
 #: ../src/mainwindow.ui:417
 msgid "Show &navigator window"
@@ -636,87 +621,85 @@ msgid ""
 "Shows or hides the size window (with Content, Index, Search and Bookmark "
 "tabs)"
 msgstr ""
+"Вмикає та вимикає бічне вікно (із змістом, індексом, пошуком та закладками)"
 
 #: ../src/mainwindow.ui:426
 msgid "F9"
-msgstr ""
+msgstr "F9"
 
 #: ../src/mainwindow.ui:438
 msgid "&Locate"
 msgstr ""
 
 #: ../src/mainwindow.ui:441
-#, fuzzy
 msgid "Locate the current page in contents window"
-msgstr "İçerik penceresinde açılan başlık bulunamadı"
+msgstr "Знаходить поточну сторінку у вікні змісту"
 
 #: ../src/mainwindow.ui:444
 msgid ""
 "If the current page is present in the Table of Contents, locate it there. "
-msgstr ""
+msgstr "Якщо поточна сторінка наявна у змісті, показує її там."
 
 #: ../src/mainwindow.ui:447
 #, fuzzy
 msgid "Ctrl+L"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+"
 
 #: ../src/mainwindow.ui:456
 msgid "Set &encoding"
-msgstr ""
+msgstr "Встановити код&ування"
 
 #: ../src/mainwindow.ui:459
 msgid "Changes the current document encoding. "
-msgstr ""
+msgstr "Змінює кодування відкритого документа."
 
 #: ../src/mainwindow.ui:468
 msgid "&Open..."
-msgstr ""
+msgstr "&Відкрити..."
 
 #: ../src/mainwindow.ui:471
-#, fuzzy
 msgid "Open a CHM file"
-msgstr "Dosya Aç"
+msgstr "Відкрити файл CHM"
 
 #: ../src/mainwindow.ui:474
-#, fuzzy
 msgid "Opens a new CHM file"
-msgstr "Dosya Aç"
+msgstr "Відкриває новий файл CHM"
 
 #: ../src/mainwindow.ui:483
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: ../src/mainwindow.ui:486
 msgid "Navigate back"
-msgstr ""
+msgstr "Перейти назад"
 
 #: ../src/mainwindow.ui:489
 msgid "Navigate back in navigation history"
-msgstr ""
+msgstr "Перейти назад згідно історії переходів"
 
 #: ../src/mainwindow.ui:498
 msgid "Forward"
-msgstr ""
+msgstr "Вперед"
 
 #: ../src/mainwindow.ui:501
 msgid "Navigate forward"
-msgstr ""
+msgstr "Перейти вперед"
 
 #: ../src/mainwindow.ui:504
 msgid "Navigate forward in navigation history"
-msgstr ""
+msgstr "Перейти вперед згідно історії переходів"
 
 #: ../src/mainwindow.ui:513
 msgid "Home"
-msgstr ""
+msgstr "Початок"
 
 #: ../src/mainwindow.ui:516
 msgid "Navigate home"
-msgstr ""
+msgstr "Перейти на початок"
 
 #: ../src/mainwindow.ui:519
 msgid "Navigate to the document Home page, as specified in the document."
-msgstr ""
+msgstr "Перейти на початкову сторінку, визначену у документі."
 
 #: ../src/mainwindow.ui:528 ../src/window_browser.ui:90
 msgid "Previous"
@@ -724,13 +707,15 @@ msgstr ""
 
 #: ../src/mainwindow.ui:531
 msgid "Go to the previous page in the Table of Contents"
-msgstr ""
+msgstr "Перейти на попередню сторінку із таблиці змісту"
 
 #: ../src/mainwindow.ui:534
 msgid ""
 "Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
 "Ctrl+Left Arrow</i>"
 msgstr ""
+"Перейти до попередньої сторінки із <b>таблиці змісту</"
+"b><br><br><i>Скорочення: Ctrl+Стрілка вліво</i>"
 
 #: ../src/mainwindow.ui:543 ../src/window_browser.ui:113
 msgid "Next"
@@ -738,50 +723,50 @@ msgstr ""
 
 #: ../src/mainwindow.ui:546
 msgid "Go to the next page in the Table of Contents"
-msgstr ""
+msgstr "Перейти на наступну сторінку із таблиці змісту"
 
 #: ../src/mainwindow.ui:549
 msgid ""
 "Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: Ctrl"
 "+Right Arrow</i>"
 msgstr ""
+"Перейти до наступної сторінки із <b>таблиці змісту</b><br><br><i>Скорочення: "
+"Ctrl+Стрілка вправо</i>"
 
 #: ../src/mainwindow.ui:558
-#, fuzzy
 msgid "&Close window"
-msgstr "Şimdiki sayfayı kapat"
+msgstr "&Закрити вікно"
 
 #: ../src/mainwindow.ui:561
-#, fuzzy
 msgid "Close current window"
-msgstr "Şimdiki sayfayı kapat"
+msgstr "Закрити поточне вікно"
 
 #: ../src/mainwindow.ui:564
-#, fuzzy
 msgid "Closes currently opened window"
-msgstr "Şimdiki sayfayı kapat"
+msgstr "Закриває поточне відкрите вікно"
 
 #: ../src/mainwindow.ui:567
-#, fuzzy
 msgid "Ctrl+W"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+W"
 
 #: ../src/mainwindow.ui:572
-msgid "About kchmviewer..."
-msgstr ""
+#, fuzzy
+msgid "About uChmViewer..."
+msgstr "kchmviewer"
 
 #: ../src/mainwindow.ui:577
 #, fuzzy
 msgid "About Qt"
-msgstr "Q&t hakkında"
+msgstr "Про &Qt"
 
 #: ../src/mainwindow.ui:586
 msgid "Check for updates"
 msgstr ""
 
 #: ../src/mainwindow.ui:595
+#, fuzzy
 msgid "Edit toolbars..."
-msgstr ""
+msgstr "панель дій"
 
 #: ../src/mainwindow.cpp:199
 msgid "Shared memory segment failed"
@@ -795,27 +780,27 @@ msgstr ""
 #: ../src/mainwindow.cpp:276
 #, qt-format
 msgid "Detected file encoding: %1 ( %2 )"
-msgstr "Tespit edilen dosya kodlaması: %1 ( %2 )"
+msgstr "Визначено кодування файлу: %1 ( %2 )"
 
 #: ../src/mainwindow.cpp:346
 #, qt-format
 msgid "%1 - failed to load the chm file"
-msgstr "%1 - chm dosyası yüklenemedi"
+msgstr "%1 — помилка при завантаженні файлу chm"
 
 #: ../src/mainwindow.cpp:347
 #, qt-format
 msgid "Unable to load the chm file %1"
-msgstr "chm dosyası %1 yüklenemiyor"
+msgstr "Неможливо завантажити файл chm %1"
 
 #: ../src/mainwindow.cpp:355
 #, qt-format
 msgid "Could not load file %1"
-msgstr "%1 dosyası yüklenemedi"
+msgstr "Не вдалося завантажити файл %1"
 
 #: ../src/mainwindow.cpp:413
 #, qt-format
 msgid "%1 - remote link clicked - %2"
-msgstr "%1 - uzak bağlantı tıklandı - %2"
+msgstr "%1 — вибрано зовнішнє посилання - %2"
 
 #: ../src/mainwindow.cpp:414
 #, qt-format
@@ -824,17 +809,17 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
-"%1 uzak bağlantısının açılması için harici uygulama başlatılacak.\n"
+"Зовнішнє посилання %1 буде відкрито у зовнішній програмі.\n"
 "\n"
-"Devam etmek istiyor musunuz?"
+"Бажаєте продовжити?"
 
 #: ../src/mainwindow.cpp:415
 msgid "&Yes"
-msgstr "&Evet"
+msgstr "&Так"
 
 #: ../src/mainwindow.cpp:415
 msgid "&No"
-msgstr "&Hayır"
+msgstr "&Ні"
 
 #: ../src/mainwindow.cpp:853
 #, fuzzy
@@ -842,11 +827,11 @@ msgid ""
 "*.chm *.epub|All electronic book\n"
 "*.chm|Compressed Help Manual\n"
 "*.epub|EPUB electronic book"
-msgstr "*.chm|Sıkıştırılmış Yardım El Kitabı (*.chm)"
+msgstr "*.chm|Стиснений файл довідки - Compressed Help Manual (*.chm)"
 
 #: ../src/mainwindow.cpp:856
 msgid "Open a chm file"
-msgstr "Dosya Aç"
+msgstr "Відкрити файл chm"
 
 #: ../src/mainwindow.cpp:858
 msgid "Electronic books (*.chm *.epub)"
@@ -854,23 +839,24 @@ msgstr ""
 
 #: ../src/mainwindow.cpp:903 ../src/mainwindow.cpp:907
 msgid "Choose a directory to store CHM content"
-msgstr "CHM içeriğini kaydetmek için bir dizin seç"
+msgstr "Оберіть теку для зберігання вмісту CHM"
 
 #: ../src/mainwindow.cpp:921
 msgid "Extracting CHM content"
-msgstr "CHM içeriği açılıyor"
+msgstr "Витягування вмісту CHM"
 
 #: ../src/mainwindow.cpp:922
 msgid "Extracting files..."
-msgstr "Dosyalar çıkarılıyor..."
+msgstr "Витягування файлів..."
 
 #: ../src/mainwindow.cpp:923
 msgid "Abort"
-msgstr "İptal et"
+msgstr "Перервати"
 
 #: ../src/mainwindow.cpp:1016
+#, fuzzy
 msgid "HTML source"
-msgstr ""
+msgstr "&Переглянути джерело HTML"
 
 #: ../src/mainwindow.cpp:1041
 msgid "Cannot start external editor"
@@ -885,7 +871,7 @@ msgstr ""
 
 #: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
-msgstr "İçerik penceresinde açılan başlık bulunamadı"
+msgstr "Неможливо знайти відкриту тему у вікні змісту"
 
 #: ../src/mainwindow.cpp:1099
 #, qt-format
@@ -900,113 +886,108 @@ msgstr ""
 #: ../src/mainwindow.cpp:1108
 #, fuzzy, qt-format
 msgid ""
-"<html><b>kchmviewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
-"2004-2015<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
-"a><br><a href=\"http://www.ulduzsoft.com/kchmviewer\">http://www.ulduzsoft."
-"com/kchmviewer</a><br><br>Licensed under GNU GPL license version 3.</html>"
+"<html><b>uChmViewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2015<br><br>Licensed under GNU GPL license version 3.</html>"
 msgstr ""
-"<html><b>%1 sürüm %2</b>%3<br><br>Copyright (C) George Yunaev, "
+"<html><b>%1 version %2</b>%3<br><br>Авторські права © George Yunaev, "
 "2004-2008<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
 "a><br><a href=\"http://www.kchmviewer.net\">http://www.kchmviewer.net</"
-"a><br><br>GNU GPL lisansıyla lisanslanmıştır.</html>"
+"a><br><br>Розповсюджується згідно ліцензії GNU GPL.</html>"
 
-#: ../src/mainwindow.cpp:1212
-#, fuzzy
+#: ../src/mainwindow.cpp:1210
 msgid "Ctrl+1"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+1"
 
-#: ../src/mainwindow.cpp:1218
-#, fuzzy
+#: ../src/mainwindow.cpp:1216
 msgid "Ctrl+2"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+2"
 
-#: ../src/mainwindow.cpp:1224
-#, fuzzy
+#: ../src/mainwindow.cpp:1222
 msgid "Ctrl+3"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+3"
 
-#: ../src/mainwindow.cpp:1230
-#, fuzzy
+#: ../src/mainwindow.cpp:1228
 msgid "Ctrl+4"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+4"
 
-#: ../src/mainwindow.cpp:1237
+#: ../src/mainwindow.cpp:1235
 msgid "/"
-msgstr ""
+msgstr "/"
 
-#: ../src/mainwindow.cpp:1244
+#: ../src/mainwindow.cpp:1242
 msgid "F3"
-msgstr ""
+msgstr "F3"
 
-#: ../src/mainwindow.cpp:1264
+#: ../src/mainwindow.cpp:1262
 msgid "Ctrl+Right"
-msgstr "Ctrl+Sağ"
+msgstr "Ctrl+Стрілка вправо"
 
-#: ../src/mainwindow.cpp:1271
+#: ../src/mainwindow.cpp:1269
 msgid "Ctrl+Left"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+Стрілка вліво"
 
-#: ../src/mainwindow.cpp:1278
+#: ../src/mainwindow.cpp:1276
 #, fuzzy
 msgid "Ctrl+I"
-msgstr "Ctrl+Sol"
+msgstr "Ctrl+"
 
-#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/mainwindow.cpp:1285 ../src/qtwebengine/viewwindow.cpp:116
 #: ../src/qtwebkit/viewwindow.cpp:129
 #, fuzzy
 msgid "&Open this link in a new tab"
-msgstr "Bağlantıyı yeni sekmede aç\tShift+LMB"
+msgstr "Відкрити посилання у новій вкладці\tShift+ЛКМ"
 
-#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/mainwindow.cpp:1290 ../src/qtwebengine/viewwindow.cpp:117
 #: ../src/qtwebkit/viewwindow.cpp:131
 #, fuzzy
 msgid "&Open this link in a new background tab"
-msgstr "Bağlantıyı yeni arkaplan sekmesinde aç\tCtrl+LMB"
+msgstr "Відкрити посилання у фоновій вкладці\tCtrl+ЛКМ"
 
-#: ../src/mainwindow.cpp:1362
+#: ../src/mainwindow.cpp:1360
 #, qt-format
 msgid "%1 ( %2 )"
-msgstr ""
+msgstr "%1 ( %2 )"
 
-#: ../src/mainwindow.cpp:1464
+#: ../src/mainwindow.cpp:1462
 msgid "Unable to check whether a new version is available"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1477
+#: ../src/mainwindow.cpp:1475
 msgid "New version available"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1478
+#: ../src/mainwindow.cpp:1476
 #, qt-format
 msgid ""
-"<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>You are "
+"<html>A new version <b>%1</b> of uChmViewer is available!<br><br>You are "
 "currently using version %3.<br>Do you want to visit the application web site "
 "%2?"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1491
-msgid "Checked for updates; you are using the latest version of kchmviewer"
+#: ../src/mainwindow.cpp:1489
+msgid "Checked for updates; you are using the latest version of uChmViewer"
 msgstr ""
 
 #: ../src/navigationpanel.cpp:40
 msgid "Search"
-msgstr "Arama"
+msgstr "Пошук"
 
 #: ../src/navigationpanel.cpp:43
 msgid "Bookmarks"
-msgstr "Yer imleri"
+msgstr "Закладки"
 
 #: ../src/navigationpanel.cpp:83
 msgid "Index"
-msgstr "İndeks"
+msgstr "Індекс"
 
 #: ../src/navigationpanel.cpp:89
 msgid "Contents"
-msgstr "İçerik"
+msgstr "Зміст"
 
 #: ../src/navigatorpanel.ui:17
+#, fuzzy
 msgid "Navigator panel"
-msgstr ""
+msgstr "Перейти вперед"
 
 #: ../src/navigatorpanel.ui:28
 msgid "Tab 1"
@@ -1032,16 +1013,16 @@ msgstr ""
 #: ../src/tab_bookmarks.cpp:133
 #, qt-format
 msgid "%1 - add a bookmark"
-msgstr "%1 - yer imi ekle"
+msgstr "%1 - додати закладку"
 
 #: ../src/tab_bookmarks.cpp:134 ../src/tab_bookmarks.cpp:176
 msgid "Enter the name for this bookmark:"
-msgstr "Bu yer imi için isim girin:"
+msgstr "Уведіть назву для цієї закладки:"
 
 #: ../src/tab_bookmarks.cpp:175
 #, qt-format
 msgid "%1 - edit the bookmark name"
-msgstr "%1 - yer imi adını düzenle"
+msgstr "%1 — зміна назви закладки"
 
 #: ../src/tab_contents.ui:13 ../src/tab_index.ui:14 ../src/tab_search.ui:13
 msgid "Form1"
@@ -1066,7 +1047,7 @@ msgstr ""
 #: ../src/tab_search.ui:86
 #, fuzzy
 msgid "&Go"
-msgstr "&Hayır"
+msgstr "&Ні"
 
 #: ../src/tab_search.ui:111
 msgid "Title"
@@ -1079,17 +1060,18 @@ msgstr ""
 #: ../src/tab_search.cpp:166
 #, qt-format
 msgid "Search returned %1 result(s)"
-msgstr "Arama %1 sonuç döndürdü"
+msgstr "Знайдено %1 результат(ів)"
 
 #: ../src/tab_search.cpp:170
 msgid "Search returned no results"
-msgstr "Arama sonuç döndürmedi"
+msgstr "Нічого не знайдено"
 
 #: ../src/tab_search.cpp:173
 msgid "Search failed"
-msgstr "Arama başarısız"
+msgstr "Помилка пошуку"
 
 #: ../src/tab_search.cpp:206
+#, fuzzy
 msgid ""
 "<html><p>The improved search engine allows you to search for a word, symbol "
 "or phrase, which is set of words and symbols included in quotes. Only the "
@@ -1103,22 +1085,25 @@ msgid ""
 "quotation mark as the same symbol, which allows to use them in phrases.</"
 "html>"
 msgstr ""
-"<html><p>Geliştirilmiş arama motoru size bir kelimeyi, sembolü ya da cümleyi "
-"arama olanağı verir. Sadece arama sorgusunda belirtilen tüm terimleri içeren "
-"belgeler görüntülenir.<p>MS CHM arama indeksinin tersine, bu arama motoru "
-"özel sembolleri de kapsayan bir indeks oluşturur. Böylece, <i>$q = new "
-"ChmFile();</i> gibi ifadeler de aranabilir. Arama motoru tam Unicode "
-"desteğiyle, İngilizce olmayan dillerde de arama yapmanızı sağlar. <p>Bir "
-"alıntı sembolünü aramak istiyorsanız tırnak işareti kullanın.</html>"
+"<html><p>Покращений механізм пошуку дозволяє вам шукати слово, символ чи "
+"фразу, що є набором слів, поміщених в лапки. Буде показано лише ті "
+"документи, що відповідають усім умовам пошуку. Префікси не потрібні. <p>На "
+"відміну від пошуку MS CHM, мій покращений пошуковий рушій індексує все, "
+"навіть спеціальні символи. Тому стало можливим знаходити щось на зразок <i>"
+"$q = new ChmFile();</i>.Також повністю підтримується Unicode, що означає "
+"можливість пошуку в документах різними мовами.<p> Якщо ви хочете знайти "
+"лапки, використайте позначення лапок замість них. Рушій розпізнає лапки та "
+"позначення лапок як один символ, що дозволяє використовувати їх у пошукових "
+"фразах.</html>"
 
 #: ../src/tab_search.cpp:223
 msgid "Reading dictionary..."
-msgstr "Sözlük okunuyor..."
+msgstr "Читання словника..."
 
 #: ../src/tab_search.cpp:237 ../src/tab_search.cpp:238
 #: ../src/tab_search.cpp:243
 msgid "Generating search index..."
-msgstr "Arama indeksi oluşturuluyor..."
+msgstr "Створення пошукового індексу..."
 
 #: ../src/tab_search.cpp:253
 msgid "Cannot save index"
@@ -1138,8 +1123,9 @@ msgid "The index is not present"
 msgstr ""
 
 #: ../src/window_browser.ui:36
+#, fuzzy
 msgid "TabbedBrowser"
-msgstr ""
+msgstr "&Огляд"
 
 #: ../src/window_browser.ui:133
 msgid "Case Sensitive"
@@ -1154,12 +1140,14 @@ msgid "Dialog"
 msgstr ""
 
 #: ../src/toolbareditor.ui:20
+#, fuzzy
 msgid "Select a toolbar"
-msgstr ""
+msgstr "загальна панель інструментів"
 
 #: ../src/toolbareditor.ui:26
+#, fuzzy
 msgid "Editing the toolbar "
-msgstr ""
+msgstr "панель дій"
 
 #: ../src/toolbareditor.ui:46
 msgid ""
@@ -1177,23 +1165,23 @@ msgstr ""
 
 #: ../src/qtwebengine/viewwindow.cpp:162 ../src/qtwebkit/viewwindow.cpp:178
 msgid "Printing aborted"
-msgstr "Yazdırma iptal edildi"
+msgstr "Друк перервано"
 
 #: ../src/qtwebengine/viewwindow.cpp:167 ../src/qtwebkit/viewwindow.cpp:183
 msgid "Printing finished"
-msgstr "Yazdırma sona erdi"
+msgstr "Друк завершено"
 
 #: ../src/qtwebengine/viewwindow.cpp:245 ../src/qtwebkit/viewwindow.cpp:277
 msgid "Open Link in a new tab\tShift+LMB"
-msgstr "Bağlantıyı yeni sekmede aç\tShift+LMB"
+msgstr "Відкрити посилання у новій вкладці\tShift+ЛКМ"
 
 #: ../src/qtwebengine/viewwindow.cpp:246 ../src/qtwebkit/viewwindow.cpp:278
 msgid "Open Link in a new background tab\tCtrl+LMB"
-msgstr "Bağlantıyı yeni arkaplan sekmesinde aç\tCtrl+LMB"
+msgstr "Відкрити посилання у фоновій вкладці\tCtrl+ЛКМ"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:74
 msgid "Add page"
-msgstr "Sayfa ekle"
+msgstr "Додати сторінку"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:159
 #: ../src/qtwebengine/viewwindowmgr.cpp:237
@@ -1204,30 +1192,29 @@ msgstr "Alt+%1"
 
 #: ../src/main.cpp:51
 msgid "CHM file viewer"
-msgstr "CHM dosya görüntüleyici"
+msgstr "Переглядач файлів довідки CHM"
 
 #: ../src/main.cpp:53
-msgid "(c) 2004-2015 George Yunaev, gyunaev@ulduzsoft.com"
-msgstr ""
+#, fuzzy
+msgid "(c) 2004-2015 George Yunaev"
+msgstr "© George Yunaev, gyunaev@ulduzsoft.com, 2004—2008"
 
-#: ../src/main.cpp:54
-msgid "Please report bugs to kchmviewer@ulduzsoft.com"
-msgstr "Lütfen hataları kchmviewer@ulduzsoft.com adresine bildirin"
+#~ msgid "Please report bugs to kchmviewer@ulduzsoft.com"
+#~ msgstr "Будь ласка, повідомляйте про помилки на kchmviewer@ulduzsoft.com"
 
 #~ msgid "%1 - JavsScript link clicked"
-#~ msgstr "%1 - JavaScript bağlantısı tıklandı"
+#~ msgstr "%1 - обране посилання запустить JavsScript"
 
 #~ msgid ""
 #~ "You have clicked a JavaScript link.\n"
 #~ "To prevent security-related issues JavaScript URLs are disabled in CHM "
 #~ "files."
 #~ msgstr ""
-#~ "Bir JavaScript bağlantısına tıkladınız.\n"
-#~ "Güvenlik sorunlarını önlemek için CHM dosyalarındaki JavaScript bağları "
-#~ "etkisizleştirilmiştir."
+#~ "Ви клацнули посилання на JavaScript \n"
+#~ "Для запобігання виникненню загроз JavaScript URL заборонено у файлах CHM."
 
 #~ msgid "%1 - link to a new CHM file clicked"
-#~ msgstr "%1 - tıklanan yeni bir CHM dosyasına bağlantı"
+#~ msgstr "%1 - натиснене посилання на інший файл CHM."
 
 #~ msgid ""
 #~ "You have clicked a link, which leads to a new CHM file %1.\n"
@@ -1235,68 +1222,120 @@ msgstr "Lütfen hataları kchmviewer@ulduzsoft.com adresine bildirin"
 #~ "\n"
 #~ "Do you want to continue?"
 #~ msgstr ""
-#~ "%1 dosyasını gösteren bir bağlantıya tıkladınız.\n"
-#~ "Şimdiki dosya kapatılacaktır.\n"
+#~ "Ви натиснули на посилання, що відкриває інший файл CHM %1.\n"
+#~ "Поточний файл буде закрито.\n"
 #~ "\n"
-#~ "Devam etmek istiyor musunuz?"
+#~ "Бажаєте продовжити?"
 
 #~ msgid "Compressed Help Manual (*.chm)"
-#~ msgstr "Sıkıştırılmış Yardım El Kitabı (*.chm)"
+#~ msgstr "Стиснений файл довідки - Compressed Help Manual (*.chm)"
 
 #~ msgid "Loading aborted"
-#~ msgstr "Yükleme iptal edildi"
+#~ msgstr "Завантаження перервано"
 
 #~ msgid "About %1"
-#~ msgstr "%1 hakkında"
+#~ msgstr "Про %1"
 
 #~ msgid "&About"
-#~ msgstr "&Hakkında"
+#~ msgstr "&Про програму"
 
 #~ msgid "Close current page"
-#~ msgstr "Şimdiki sayfayı kapat"
+#~ msgstr "Закрити поточну сторінку"
 
 #~ msgid "Perform auto testing"
-#~ msgstr "Otomatik testi etkinleştir"
+#~ msgstr "Виконати автоматичне тестування"
 
 #~ msgid "Perform short auto testing"
-#~ msgstr "Kısa otomatik testi etkinleştir"
+#~ msgstr "Виконати швидке автоматичне тестування"
 
 #~ msgid "A CHM file to show"
-#~ msgstr "Görüntülenebilecek bir CHM dosyası"
+#~ msgstr "Файл CHM для показу"
 
 #~ msgid ""
 #~ "'--search <query>' specifies the search query to search, and activate the "
 #~ "first entry if found"
 #~ msgstr ""
-#~ "'--search <sorgu>' gerçekleştirilecek arama sorgusunu belirtir ve ilk "
-#~ "bulunan girdiyi etkinleştirir"
+#~ "'--search <запит>'  задає запит для пошуку та обирає перший знайдений "
+#~ "результат"
 
 #~ msgid ""
 #~ "'--sindex <word>' specifies the word to find in index, and activate if "
 #~ "found"
 #~ msgstr ""
-#~ "'--sindex <kelime>' indekste aranacak kelimeyi belirtir ve bulunursa "
-#~ "etkinleştirir"
+#~ "'--sindex <слово>' задає слово для пошуку в індексі та показує, якщо "
+#~ "знайде"
 
 #~ msgid ""
 #~ "'--stoc <word(s)>' specifies the word(s) to find in TOC, and activate if "
 #~ "found. Wildcards allowed."
 #~ msgstr ""
-#~ "'--stoc <kelime(ler)>' İçindekiler bölümünde aranacak kelimeleri belirtir "
-#~ "ve bulunursa etkinleştirir. Wildcard karakterleri kullanılabilir."
+#~ "'--stoc <word(s)>' задає слово(а) для пошуку в таблиці змісту, та показує "
+#~ "якщо є знайдені. Допускаються маски."
 
-#, fuzzy
+#~ msgid "If no arguments given on load"
+#~ msgstr "Якщо не задано параметрів при завантаженні"
+
+#~ msgid "Version-specific settings"
+#~ msgstr "Налаштування даної версії"
+
+#~ msgid "KDE version settings"
+#~ msgstr "Налаштування даної версії KDE"
+
+#~ msgid "To show HTML content, use"
+#~ msgstr "Використовувати для показу вмісту HTML"
+
+#~ msgid "&QTextBrowser-based widget"
+#~ msgstr "віджет з &QTextBrowser"
+
 #~ msgid "Alt+Q"
-#~ msgstr "Alt+%1"
+#~ msgstr "Alt+Q"
 
-#, fuzzy
+#~ msgid "&KHTMLPart-based widget"
+#~ msgstr "віджет з &KHTMLPart"
+
 #~ msgid "Alt+K"
-#~ msgstr "Alt+%1"
+#~ msgstr "Alt+K"
 
-#, fuzzy
+#~ msgid "Qt &Webkit (requires Qt 4.4 or higher)"
+#~ msgstr "Qt &Webkit (потребує Qt 4.4 або вище)"
+
+#~ msgid "KHTMLPart security"
+#~ msgstr "безпека KHTMLPart"
+
+#~ msgid "Enable &refresh"
+#~ msgstr "Дозволити о&новлення"
+
+#~ msgid "Enable &plugins"
+#~ msgstr "Увімкнути &додатки"
+
+#~ msgid "Find"
+#~ msgstr "Знайти"
+
 #~ msgid "Ctrl++"
-#~ msgstr "Ctrl+Sol"
+#~ msgstr "Ctrl++"
 
-#, fuzzy
+#~ msgid "Enable &side window"
+#~ msgstr "Увімкнути бічне в&ікно"
+
 #~ msgid "&Locate in contents window"
-#~ msgstr "İçerik penceresinde açılan başlık bulunamadı"
+#~ msgstr "&Знайти у вікні змісту"
+
+#~ msgid "Previous page in Table of Context"
+#~ msgstr "Попередня сторінку із змісту"
+
+#~ msgid "Previous page in TOC"
+#~ msgstr "Попередня сторінку із таблиці змісту"
+
+#~ msgid "Next page in Table of Context"
+#~ msgstr "Наступна сторінка із таблиці змісту"
+
+#~ msgid "Next page in TOC"
+#~ msgstr "Наступна сторінка із таблиці змісту"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Олександр Яценко"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "yatsenko.alexandr@gmail.com"

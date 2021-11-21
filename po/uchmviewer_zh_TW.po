@@ -1,26 +1,24 @@
-# translation of hu1.po to
-# translation of hu.po to
+# translation of zh_CN.po to
 # translation of kchmviewer.po to
 # This file is put in the public domain.
 #
-# Csaba Zakarias <csaba.zakarias@gmail.hu>, 2006.
+# 林俊 <demonlinjun@163.com>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: hu1\n"
+"Project-Id-Version: zh_TW\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 19:05+0300\n"
-"PO-Revision-Date: 2006-04-11 13:44+0200\n"
-"Last-Translator: Csaba Zakarias <csaba.zakarias@gmail.hu>\n"
-"Language-Team:  <hu@li.org>\n"
-"Language: hu\n"
+"POT-Creation-Date: 2021-11-21 11:32+0300\n"
+"PO-Revision-Date: 2006-05-07 20:30-0400\n"
+"Last-Translator: 呂健 <oldwolf.mick@gmail.com>\n"
+"Language-Team:  <zh@li.org>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.1\n"
-"Plural-Forms:  nplurals=1; plural=0;\n"
+"X-Generator: KBabel 1.11.2\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1117
-msgid "About kchmviewer"
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1115
+msgid "About uChmViewer"
 msgstr ""
 
 #: ../src/dialog_about.ui:24
@@ -30,7 +28,7 @@ msgstr ""
 #: ../src/dialog_about.ui:46
 #, fuzzy
 msgid "About text"
-msgstr "&Qt névjegye"
+msgstr "關於QT(&Q)"
 
 #: ../src/dialog_about.ui:57
 msgid "Thanks"
@@ -77,7 +75,7 @@ msgstr ""
 
 #: ../src/dialog_about.ui:89
 msgid ""
-"<html><head/><body><p>kchmviewer uses the following 3rd party software:</"
+"<html><head/><body><p>uChmViewer uses the following 3rd party software:</"
 "p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
 "right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-"
 "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
@@ -94,11 +92,11 @@ msgstr ""
 
 #: ../src/dialog_setup.ui:20
 msgid "KchmViewer settings"
-msgstr "KchmViewer beállítások"
+msgstr "KchmViewer設置"
 
 #: ../src/dialog_setup.ui:42
 msgid "General behavior"
-msgstr "Általános beállítások"
+msgstr "通用行為"
 
 #: ../src/dialog_setup.ui:62
 msgid "If started with no arguments"
@@ -111,11 +109,11 @@ msgstr ""
 #: ../src/dialog_setup.ui:81
 #, fuzzy
 msgid "Pop up the \"open file\" dialog"
-msgstr "A 'CHM fájl megnyitása' dialógus ablak megnyitása"
+msgstr "打開'打開CHM檔案'對話框"
 
 #: ../src/dialog_setup.ui:88
 msgid "Open the &last used CHM file, if exist"
-msgstr "&Legutóbbi CHM fájl megnyitása, ha létezik"
+msgstr "如果存在,打開最後使用的CHM檔案(&L)"
 
 #: ../src/dialog_setup.ui:91
 #, fuzzy
@@ -124,28 +122,27 @@ msgstr "Alt+E"
 
 #: ../src/dialog_setup.ui:101
 msgid "History"
-msgstr "Előzmények"
+msgstr "歷史"
 
 #: ../src/dialog_setup.ui:121
 msgid "Store history information for"
-msgstr "Előzmény információ tárolása"
+msgstr "保存歷史信息"
 
 #: ../src/dialog_setup.ui:141
 msgid "latest files"
-msgstr "legutóbbi fájlok"
+msgstr "最近使用的檔案"
 
 #: ../src/dialog_setup.ui:153
 msgid ""
 "Remembers the information about the files, which were opened. Remembers last "
 "opened page, search history, font size, bookmarks and so on."
 msgstr ""
-"Emlékezzen a megnyitott fájlok információira. Emlékezzen az utoljára "
-"megnyitott oldalra, keresési előzményekre, betűméretre, könyvjelzőkre és így "
-"tovább."
+"記錄已經打開的檔案的相關信息。 記錄最後打開的頁面，搜索記錄，字體大小，書籤等"
+"信息。"
 
 #: ../src/dialog_setup.ui:156
 msgid "R&emember extra information for history files"
-msgstr "&Emlékezzen az előzmények fájlok különleges információira"
+msgstr "記錄歷史檔案額外信息(&E)"
 
 #: ../src/dialog_setup.ui:159
 msgid "Alt+E"
@@ -153,15 +150,15 @@ msgstr "Alt+E"
 
 #: ../src/dialog_setup.ui:171
 msgid "CHM security settings"
-msgstr "CHM biztonsági beállítások"
+msgstr "CHM 安全設置"
 
 #: ../src/dialog_setup.ui:183
 msgid "When external link clicked"
-msgstr "Külső kapcsolatra kattintáskor"
+msgstr "當點擊外部鏈接時"
 
 #: ../src/dialog_setup.ui:195
 msgid "Alwa&ys open it in external browser"
-msgstr "&Mindig külső böngészőben nyissa meg"
+msgstr "總在外部瀏覽器中打開(&Y)"
 
 #: ../src/dialog_setup.ui:198
 msgid "Alt+Y"
@@ -169,24 +166,23 @@ msgstr "Alt+Y"
 
 #: ../src/dialog_setup.ui:205 ../src/dialog_setup.ui:244
 msgid "Ask for confirmation"
-msgstr "Megerősítés kérése"
+msgstr "請求确認"
 
 #: ../src/dialog_setup.ui:212
 msgid "Do not open the link"
-msgstr "Kapcsolatot ne nyissa meg"
+msgstr "不打開鏈接"
 
 #: ../src/dialog_setup.ui:225
-#, fuzzy
 msgid "When link pointed to a new CHM file clicked"
-msgstr "%1 - új CHM fájlra mutató kapcsolatra kattintás"
+msgstr "當點擊指向新的CHM檔案的鏈接時"
 
 #: ../src/dialog_setup.ui:237
 msgid "Always open a new CHM file"
-msgstr "Mindig nyissa meg azúj CHM fájlt"
+msgstr "總打開新的CHM檔案"
 
 #: ../src/dialog_setup.ui:251
 msgid "Do not open a new CHM file"
-msgstr "Ne nyissa meg az új CHM fájlt"
+msgstr "不打開新的CHM檔案"
 
 #: ../src/dialog_setup.ui:278
 msgid "Browser"
@@ -195,7 +191,7 @@ msgstr ""
 #: ../src/dialog_setup.ui:290
 #, fuzzy
 msgid "HTML browser settings"
-msgstr "CHM biztonsági beállítások"
+msgstr "CHM 安全設置"
 
 #: ../src/dialog_setup.ui:296
 msgid "Load the &images"
@@ -211,7 +207,7 @@ msgstr "Alt+P"
 
 #: ../src/dialog_setup.ui:313
 msgid "Enable &Java"
-msgstr "&Java engedélyezése"
+msgstr "啟用Java(&J)"
 
 #: ../src/dialog_setup.ui:316
 msgid "Alt+J"
@@ -219,7 +215,7 @@ msgstr "Alt+J"
 
 #: ../src/dialog_setup.ui:323
 msgid "Enable Java&Script"
-msgstr "Java&Szkript engedélyezése"
+msgstr "啟用JavaScript(&S)"
 
 #: ../src/dialog_setup.ui:326
 msgid "Alt+S"
@@ -257,27 +253,27 @@ msgstr ""
 
 #: ../src/dialog_setup.ui:397
 msgid "Advanced"
-msgstr "További"
+msgstr "高級"
 
 #: ../src/dialog_setup.ui:403
 msgid "View HTML source command uses"
-msgstr "HTML forrás parancsok megtekintése"
+msgstr "查看HTML源碼使用"
 
 #: ../src/dialog_setup.ui:415
 msgid "Built-in HTML source viewer"
-msgstr "Beépített HTML forrás megjelenítő"
+msgstr "內建HTML源碼查看器"
 
 #: ../src/dialog_setup.ui:425
 msgid "E&xternal program, specified below"
-msgstr "&Külső program, alább adaj meg"
+msgstr "外部程式，在下面特別指定(&X)"
 
 #: ../src/dialog_setup.ui:428
 msgid "Alt+X"
-msgstr "Alt+X"
+msgstr "Alt+x"
 
 #: ../src/dialog_setup.ui:443
 msgid "External program:"
-msgstr "Külső program:"
+msgstr "外部程式"
 
 #: ../src/dialog_setup.ui:456
 msgid "&Browse"
@@ -313,7 +309,7 @@ msgstr ""
 #: ../src/dialog_setup.ui:501
 #, fuzzy
 msgid "Toolbars"
-msgstr "Általános beállítások"
+msgstr "通用行為"
 
 #: ../src/dialog_setup.ui:507
 msgid "Small icons"
@@ -330,7 +326,7 @@ msgstr ""
 #: ../src/dialog_setup.ui:528
 #, fuzzy
 msgid "Just text"
-msgstr "&Qt névjegye"
+msgstr "關於QT(&Q)"
 
 #: ../src/dialog_setup.cpp:209
 msgid ""
@@ -356,10 +352,10 @@ msgstr ""
 #: ../src/dialog_topicselector.ui:25
 #, fuzzy
 msgid "Please select the topic to open:"
-msgstr "Jelölje ki az egyik alábbi témát:"
+msgstr "請在下面選取一個主題"
 
 #: ../src/mainwindow.ui:14 ../src/main.cpp:49
-msgid "kchmviewer"
+msgid "uChmViewer"
 msgstr ""
 
 #: ../src/mainwindow.ui:28
@@ -369,55 +365,55 @@ msgstr ""
 #: ../src/mainwindow.ui:37
 #, fuzzy
 msgid "&Bookmarks"
-msgstr "&Oldal berakása a könyvjelzőbe"
+msgstr "添加當前頁面為書籤(&B)"
 
 #: ../src/mainwindow.ui:44
 #, fuzzy
 msgid "&File"
-msgstr "Cím"
+msgstr "標題"
 
 #: ../src/mainwindow.ui:55
-#, fuzzy
 msgid "&Edit"
-msgstr "Szerkesztő"
+msgstr ""
 
 #: ../src/mainwindow.ui:64
 msgid "&View"
 msgstr ""
 
 #: ../src/mainwindow.ui:78
+#, fuzzy
 msgid "&Windows"
-msgstr ""
+msgstr "窗口(&W)"
 
 #: ../src/mainwindow.ui:85
 #, fuzzy
 msgid "Help"
-msgstr "&Törlés"
+msgstr "刪除(&D)"
 
 #: ../src/mainwindow.ui:100
 #, fuzzy
 msgid "General toolbar"
-msgstr "Általános beállítások"
+msgstr "通用行為"
 
 #: ../src/mainwindow.ui:125
 #, fuzzy
 msgid "Navigation toolbar"
-msgstr "Navigáció"
+msgstr "導航"
 
 #: ../src/mainwindow.ui:151
 #, fuzzy
 msgid "View toolbar"
-msgstr "Általános beállítások"
+msgstr "通用行為"
 
 #: ../src/mainwindow.ui:186
 #, fuzzy
 msgid "&Print..."
-msgstr "Fájl nyomtatása"
+msgstr "列印檔案"
 
 #: ../src/mainwindow.ui:189
 #, fuzzy
 msgid "Print"
-msgstr "Fájl nyomtatása"
+msgstr "列印檔案"
 
 #: ../src/mainwindow.ui:192
 msgid "Print current page"
@@ -436,14 +432,13 @@ msgid "&Quit"
 msgstr ""
 
 #: ../src/mainwindow.ui:210
-#, fuzzy
 msgid "Exit"
-msgstr "Szerkesztő"
+msgstr ""
 
 #: ../src/mainwindow.ui:213
 #, fuzzy
 msgid "Exits the application"
-msgstr "&Beállítások megváltoztatása"
+msgstr "更改設置(&C)"
 
 #: ../src/mainwindow.ui:216
 msgid "Ctrl+Q"
@@ -468,7 +463,7 @@ msgstr ""
 #: ../src/mainwindow.ui:243
 #, fuzzy
 msgid "&Select All"
-msgstr "&Minden kijelölése"
+msgstr "選擇全部(&S)"
 
 #: ../src/mainwindow.ui:246
 msgid "Paste"
@@ -500,37 +495,38 @@ msgstr ""
 
 #: ../src/mainwindow.ui:279
 msgid "E&xtract CHM content..."
-msgstr ""
+msgstr "提取CHM目錄(&X)"
 
 #: ../src/mainwindow.ui:282
+#, fuzzy
 msgid "Extract the CHM content to the directory"
-msgstr ""
+msgstr "提取CHM目錄"
 
 #: ../src/mainwindow.ui:285
+#, fuzzy
 msgid ""
 "Exctracts the CHM archive content to the specified directory. All the files "
 "are extracted."
-msgstr ""
+msgstr "提取CHM目錄"
 
 #: ../src/mainwindow.ui:294
 #, fuzzy
 msgid "&Application settings..."
-msgstr "&Beállítások megváltoztatása"
+msgstr "更改設置(&C)"
 
 #: ../src/mainwindow.ui:297 ../src/mainwindow.ui:300
 #, fuzzy
 msgid "Change the application settings"
-msgstr "&Beállítások megváltoztatása"
+msgstr "更改設置(&C)"
 
 #: ../src/mainwindow.ui:309
-#, fuzzy
 msgid "&Add bookmark"
-msgstr "Hozzáadás a könyvjelzőhöz"
+msgstr "添加書籤(&A)"
 
 #: ../src/mainwindow.ui:312
 #, fuzzy
 msgid "Bookmark"
-msgstr "&Oldal berakása a könyvjelzőbe"
+msgstr "添加當前頁面為書籤(&B)"
 
 #: ../src/mainwindow.ui:315
 msgid "Adds a bookmark for currently opened page"
@@ -549,7 +545,7 @@ msgstr ""
 #: ../src/mainwindow.ui:330
 #, fuzzy
 msgid "&Increase font size"
-msgstr "Betűméret növelése"
+msgstr "增大字體大小"
 
 #: ../src/mainwindow.ui:333
 msgid "Larger"
@@ -558,7 +554,7 @@ msgstr ""
 #: ../src/mainwindow.ui:336
 #, fuzzy
 msgid "Increase the font size"
-msgstr "Betűméret növelése"
+msgstr "增大字體大小"
 
 #: ../src/mainwindow.ui:339
 msgid "Increases the document font size. The new font size will be stored."
@@ -571,7 +567,7 @@ msgstr ""
 #: ../src/mainwindow.ui:351
 #, fuzzy
 msgid "&Decrease font size"
-msgstr "Betűméret csökkentése"
+msgstr "縮小字體大小"
 
 #: ../src/mainwindow.ui:354
 msgid "Smaller"
@@ -580,7 +576,7 @@ msgstr ""
 #: ../src/mainwindow.ui:357
 #, fuzzy
 msgid "Decrease the font size"
-msgstr "Betűméret csökkentése"
+msgstr "縮小字體大小"
 
 #: ../src/mainwindow.ui:360
 msgid "Decreases the document font size. The new font size will be stored."
@@ -597,12 +593,12 @@ msgstr ""
 #: ../src/mainwindow.ui:375
 #, fuzzy
 msgid "View HTML source of current page"
-msgstr "HTML forrás parancsok megtekintése"
+msgstr "查看HTML源碼使用"
 
 #: ../src/mainwindow.ui:378
 #, fuzzy
 msgid "Shows the HTML source of currently opened page"
-msgstr "HTML forrás parancsok megtekintése"
+msgstr "查看HTML源碼使用"
 
 #: ../src/mainwindow.ui:381
 msgid "Ctrl+U"
@@ -611,12 +607,12 @@ msgstr ""
 #: ../src/mainwindow.ui:393
 #, fuzzy
 msgid "Enable &full screen mode"
-msgstr "&Teljes képernyő"
+msgstr "全屏(&F)"
 
 #: ../src/mainwindow.ui:396
 #, fuzzy
 msgid "Enters or leaves the fullscreen mode"
-msgstr "&Teljes képernyő"
+msgstr "全屏(&F)"
 
 #: ../src/mainwindow.ui:399
 #, fuzzy
@@ -644,19 +640,18 @@ msgstr ""
 #: ../src/mainwindow.ui:438
 #, fuzzy
 msgid "&Locate"
-msgstr "Hely"
+msgstr "位置"
 
 #: ../src/mainwindow.ui:441
 #, fuzzy
 msgid "Locate the current page in contents window"
-msgstr "Nem található a megnyitott téma a tartalom albakban"
+msgstr "在錄窗口定位主題"
 
 #: ../src/mainwindow.ui:444
 #, fuzzy
 msgid ""
 "If the current page is present in the Table of Contents, locate it there. "
-msgstr ""
-"A tartalomjegyzékben a következő oldalra ugráshoz kattintson erre a gombra."
+msgstr "點擊此按鈕前往目錄錶格的後一頁"
 
 #: ../src/mainwindow.ui:447
 msgid "Ctrl+L"
@@ -665,7 +660,7 @@ msgstr ""
 #: ../src/mainwindow.ui:456
 #, fuzzy
 msgid "Set &encoding"
-msgstr "&Kódlap beállítása"
+msgstr "設置編碼(&S)"
 
 #: ../src/mainwindow.ui:459
 msgid "Changes the current document encoding. "
@@ -678,12 +673,12 @@ msgstr ""
 #: ../src/mainwindow.ui:471
 #, fuzzy
 msgid "Open a CHM file"
-msgstr "Fájl megnyitása"
+msgstr "打開檔案"
 
 #: ../src/mainwindow.ui:474
 #, fuzzy
 msgid "Opens a new CHM file"
-msgstr "Mindig nyissa meg azúj CHM fájlt"
+msgstr "總打開新的CHM檔案"
 
 #: ../src/mainwindow.ui:483
 msgid "Back"
@@ -692,12 +687,12 @@ msgstr ""
 #: ../src/mainwindow.ui:486
 #, fuzzy
 msgid "Navigate back"
-msgstr "Navigáció"
+msgstr "導航"
 
 #: ../src/mainwindow.ui:489
 #, fuzzy
 msgid "Navigate back in navigation history"
-msgstr "Az előzményekben hátrébb mozgatása"
+msgstr "在歷史中後退"
 
 #: ../src/mainwindow.ui:498
 msgid "Forward"
@@ -706,12 +701,12 @@ msgstr ""
 #: ../src/mainwindow.ui:501
 #, fuzzy
 msgid "Navigate forward"
-msgstr "Navigáció"
+msgstr "導航"
 
 #: ../src/mainwindow.ui:504
 #, fuzzy
 msgid "Navigate forward in navigation history"
-msgstr "Az előzményekben előrébb mozgatása"
+msgstr "在歷史中前進"
 
 #: ../src/mainwindow.ui:513
 msgid "Home"
@@ -720,7 +715,7 @@ msgstr ""
 #: ../src/mainwindow.ui:516
 #, fuzzy
 msgid "Navigate home"
-msgstr "Navigáció"
+msgstr "導航"
 
 #: ../src/mainwindow.ui:519
 msgid "Navigate to the document Home page, as specified in the document."
@@ -733,16 +728,14 @@ msgstr ""
 #: ../src/mainwindow.ui:531
 #, fuzzy
 msgid "Go to the previous page in the Table of Contents"
-msgstr ""
-"A tartalomjegyzékben az előző oldalra ugráshoz kattintson erre a gombra."
+msgstr "點擊此按鈕前往目錄錶格中的前一頁"
 
 #: ../src/mainwindow.ui:534
 #, fuzzy
 msgid ""
 "Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
 "Ctrl+Left Arrow</i>"
-msgstr ""
-"A tartalomjegyzékben az előző oldalra ugráshoz kattintson erre a gombra."
+msgstr "點擊此按鈕前往目錄錶格中的前一頁"
 
 #: ../src/mainwindow.ui:543 ../src/window_browser.ui:113
 msgid "Next"
@@ -751,44 +744,42 @@ msgstr ""
 #: ../src/mainwindow.ui:546
 #, fuzzy
 msgid "Go to the next page in the Table of Contents"
-msgstr ""
-"A tartalomjegyzékben a következő oldalra ugráshoz kattintson erre a gombra."
+msgstr "點擊此按鈕前往目錄錶格的後一頁"
 
 #: ../src/mainwindow.ui:549
 #, fuzzy
 msgid ""
 "Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: Ctrl"
 "+Right Arrow</i>"
-msgstr ""
-"A tartalomjegyzékben a következő oldalra ugráshoz kattintson erre a gombra."
+msgstr "點擊此按鈕前往目錄錶格的後一頁"
 
 #: ../src/mainwindow.ui:558
 #, fuzzy
 msgid "&Close window"
-msgstr "&Tartalom ablak mutatása"
+msgstr "窗口(&W)"
 
 #: ../src/mainwindow.ui:561
 #, fuzzy
 msgid "Close current window"
-msgstr "&Tartalom ablak mutatása"
+msgstr "顯示目錄窗口(&S)"
 
 #: ../src/mainwindow.ui:564
 #, fuzzy
 msgid "Closes currently opened window"
-msgstr "&Tartalom ablak mutatása"
+msgstr "顯示目錄窗口(&S)"
 
 #: ../src/mainwindow.ui:567
 msgid "Ctrl+W"
 msgstr ""
 
 #: ../src/mainwindow.ui:572
-msgid "About kchmviewer..."
+msgid "About uChmViewer..."
 msgstr ""
 
 #: ../src/mainwindow.ui:577
 #, fuzzy
 msgid "About Qt"
-msgstr "&Qt névjegye"
+msgstr "關於QT(&Q)"
 
 #: ../src/mainwindow.ui:586
 msgid "Check for updates"
@@ -797,7 +788,7 @@ msgstr ""
 #: ../src/mainwindow.ui:595
 #, fuzzy
 msgid "Edit toolbars..."
-msgstr "Navigáció"
+msgstr "導航"
 
 #: ../src/mainwindow.cpp:199
 msgid "Shared memory segment failed"
@@ -816,22 +807,22 @@ msgstr ""
 #: ../src/mainwindow.cpp:346
 #, qt-format
 msgid "%1 - failed to load the chm file"
-msgstr "%1 - hiba a chm fájl betöltésekor"
+msgstr "%1 - 載入CHM檔案失敗"
 
 #: ../src/mainwindow.cpp:347
 #, qt-format
 msgid "Unable to load the chm file %1"
-msgstr "%1 chm fájl nem tölthető be"
+msgstr "無法載入CHM檔案%1"
 
 #: ../src/mainwindow.cpp:355
 #, qt-format
 msgid "Could not load file %1"
-msgstr "%1 fájl nem tölthető be"
+msgstr "無法載入檔案%1"
 
 #: ../src/mainwindow.cpp:413
 #, qt-format
 msgid "%1 - remote link clicked - %2"
-msgstr "%1 - távoli kapcsolatra kattintás - %2"
+msgstr "%1 - 點擊遠程鏈接 - %2"
 
 #: ../src/mainwindow.cpp:414
 #, qt-format
@@ -840,17 +831,17 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
-"%1 távoli kapcsolat megnyitásához külső programot indít.\n"
+"%1將使用外部程式來打開遠程鏈接。 \n"
 "\n"
-"Akarja folytatni?"
+"你要繼續嗎？"
 
 #: ../src/mainwindow.cpp:415
 msgid "&Yes"
-msgstr "&Igen"
+msgstr "是(&Y)"
 
 #: ../src/mainwindow.cpp:415
 msgid "&No"
-msgstr "&Nem"
+msgstr "否(&N)"
 
 #: ../src/mainwindow.cpp:853
 #, fuzzy
@@ -858,12 +849,12 @@ msgid ""
 "*.chm *.epub|All electronic book\n"
 "*.chm|Compressed Help Manual\n"
 "*.epub|EPUB electronic book"
-msgstr "Tömörített Súgó Kézikönyv (*.chm)"
+msgstr "*.chm|壓縮的幫助手冊 (*.chm)"
 
 #: ../src/mainwindow.cpp:856
 #, fuzzy
 msgid "Open a chm file"
-msgstr "Fájl megnyitása"
+msgstr "打開檔案"
 
 #: ../src/mainwindow.cpp:858
 msgid "Electronic books (*.chm *.epub)"
@@ -871,25 +862,24 @@ msgstr ""
 
 #: ../src/mainwindow.cpp:903 ../src/mainwindow.cpp:907
 msgid "Choose a directory to store CHM content"
-msgstr ""
+msgstr "選擇目錄來保存CHM目錄"
 
 #: ../src/mainwindow.cpp:921
 msgid "Extracting CHM content"
-msgstr ""
+msgstr "提取CHM目錄"
 
 #: ../src/mainwindow.cpp:922
 msgid "Extracting files..."
-msgstr ""
+msgstr "提取檔案..."
 
 #: ../src/mainwindow.cpp:923
-#, fuzzy
 msgid "Abort"
-msgstr "%1 névjegye"
+msgstr "取消"
 
 #: ../src/mainwindow.cpp:1016
 #, fuzzy
 msgid "HTML source"
-msgstr "HTML forrás megtekintése"
+msgstr "查看HTML源碼"
 
 #: ../src/mainwindow.cpp:1041
 msgid "Cannot start external editor"
@@ -904,7 +894,7 @@ msgstr ""
 
 #: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
-msgstr "Nem található a megnyitott téma a tartalom albakban"
+msgstr "無法在目錄窗口定位打開的主題"
 
 #: ../src/mainwindow.cpp:1099
 #, qt-format
@@ -919,95 +909,96 @@ msgstr ""
 #: ../src/mainwindow.cpp:1108
 #, qt-format
 msgid ""
-"<html><b>kchmviewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
-"2004-2015<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
-"a><br><a href=\"http://www.ulduzsoft.com/kchmviewer\">http://www.ulduzsoft."
-"com/kchmviewer</a><br><br>Licensed under GNU GPL license version 3.</html>"
+"<html><b>uChmViewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2015<br><br>Licensed under GNU GPL license version 3.</html>"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1212
+#: ../src/mainwindow.cpp:1210
 msgid "Ctrl+1"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1218
+#: ../src/mainwindow.cpp:1216
 msgid "Ctrl+2"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1224
+#: ../src/mainwindow.cpp:1222
 msgid "Ctrl+3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1230
+#: ../src/mainwindow.cpp:1228
 msgid "Ctrl+4"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1237
+#: ../src/mainwindow.cpp:1235
 msgid "/"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1244
+#: ../src/mainwindow.cpp:1242
 msgid "F3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1264
+#: ../src/mainwindow.cpp:1262
 msgid "Ctrl+Right"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1271
+#: ../src/mainwindow.cpp:1269
 msgid "Ctrl+Left"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1278
+#: ../src/mainwindow.cpp:1276
 msgid "Ctrl+I"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/mainwindow.cpp:1285 ../src/qtwebengine/viewwindow.cpp:116
 #: ../src/qtwebkit/viewwindow.cpp:129
+#, fuzzy
 msgid "&Open this link in a new tab"
-msgstr ""
+msgstr "在新的書籤頁打開此鏈接(&O)"
 
-#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/mainwindow.cpp:1290 ../src/qtwebengine/viewwindow.cpp:117
 #: ../src/qtwebkit/viewwindow.cpp:131
+#, fuzzy
 msgid "&Open this link in a new background tab"
-msgstr ""
+msgstr "在後臺書籤也打開此鏈接(&O)"
 
-#: ../src/mainwindow.cpp:1362
+#: ../src/mainwindow.cpp:1360
 #, qt-format
 msgid "%1 ( %2 )"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1464
+#: ../src/mainwindow.cpp:1462
 msgid "Unable to check whether a new version is available"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1477
+#: ../src/mainwindow.cpp:1475
+#, fuzzy
 msgid "New version available"
-msgstr ""
+msgstr "搜索失敗"
 
-#: ../src/mainwindow.cpp:1478
+#: ../src/mainwindow.cpp:1476
 #, qt-format
 msgid ""
-"<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>You are "
+"<html>A new version <b>%1</b> of uChmViewer is available!<br><br>You are "
 "currently using version %3.<br>Do you want to visit the application web site "
 "%2?"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1491
-msgid "Checked for updates; you are using the latest version of kchmviewer"
+#: ../src/mainwindow.cpp:1489
+msgid "Checked for updates; you are using the latest version of uChmViewer"
 msgstr ""
 
 #: ../src/navigationpanel.cpp:40
 msgid "Search"
-msgstr "Keresés"
+msgstr "搜索"
 
 #: ../src/navigationpanel.cpp:43
 #, fuzzy
 msgid "Bookmarks"
-msgstr "&Oldal berakása a könyvjelzőbe"
+msgstr "添加當前頁面為書籤(&B)"
 
 #: ../src/navigationpanel.cpp:83
 msgid "Index"
-msgstr "Index"
+msgstr "索引"
 
 #: ../src/navigationpanel.cpp:89
 msgid "Contents"
@@ -1016,7 +1007,7 @@ msgstr ""
 #: ../src/navigatorpanel.ui:17
 #, fuzzy
 msgid "Navigator panel"
-msgstr "Navigáció"
+msgstr "導航"
 
 #: ../src/navigatorpanel.ui:28
 msgid "Tab 1"
@@ -1029,7 +1020,7 @@ msgstr ""
 
 #: ../src/tab_bookmarks.ui:36
 msgid "&Add"
-msgstr "&Hozzáadás"
+msgstr "添加(&A)"
 
 #: ../src/tab_bookmarks.ui:43
 msgid "Edi&t"
@@ -1042,16 +1033,16 @@ msgstr ""
 #: ../src/tab_bookmarks.cpp:133
 #, qt-format
 msgid "%1 - add a bookmark"
-msgstr "%1 - hozzáadás a könyvjelzőhöz"
+msgstr "%1 - 添加書籤"
 
 #: ../src/tab_bookmarks.cpp:134 ../src/tab_bookmarks.cpp:176
 msgid "Enter the name for this bookmark:"
-msgstr "Adja meg a könyvjelző nevét:"
+msgstr "輸入書籤的名稱"
 
 #: ../src/tab_bookmarks.cpp:175
 #, qt-format
 msgid "%1 - edit the bookmark name"
-msgstr "%1 - könyvjelző név szerkesztése"
+msgstr "%1 - 編輯書籤名稱"
 
 #: ../src/tab_contents.ui:13 ../src/tab_index.ui:14 ../src/tab_search.ui:13
 msgid "Form1"
@@ -1067,7 +1058,7 @@ msgstr ""
 
 #: ../src/tab_search.ui:33
 msgid "Type in word(s) to search for:"
-msgstr "Adja meg a keresendő szavakat:"
+msgstr "輸入要搜索的詞"
 
 #: ../src/tab_search.ui:48
 msgid "<a href=\"help\">Help</a>"
@@ -1076,7 +1067,7 @@ msgstr ""
 #: ../src/tab_search.ui:86
 #, fuzzy
 msgid "&Go"
-msgstr "&Nem"
+msgstr "否(&N)"
 
 #: ../src/tab_search.ui:111
 msgid "Title"
@@ -1084,20 +1075,20 @@ msgstr ""
 
 #: ../src/tab_search.ui:116
 msgid "Location"
-msgstr "Hely"
+msgstr "位置"
 
 #: ../src/tab_search.cpp:166
 #, qt-format
 msgid "Search returned %1 result(s)"
-msgstr "Keresés %1 eredményt adott"
+msgstr "搜索返回 %1 個結果"
 
 #: ../src/tab_search.cpp:170
 msgid "Search returned no results"
-msgstr "Keresés nem adott vissza eredményt"
+msgstr "搜索沒有返回結果"
 
 #: ../src/tab_search.cpp:173
 msgid "Search failed"
-msgstr "Keresés érvénytelen"
+msgstr "搜索失敗"
 
 #: ../src/tab_search.cpp:206
 msgid ""
@@ -1159,12 +1150,12 @@ msgstr ""
 #: ../src/toolbareditor.ui:20
 #, fuzzy
 msgid "Select a toolbar"
-msgstr "Általános beállítások"
+msgstr "通用行為"
 
 #: ../src/toolbareditor.ui:26
 #, fuzzy
 msgid "Editing the toolbar "
-msgstr "Navigáció"
+msgstr "導航"
 
 #: ../src/toolbareditor.ui:46
 msgid ""
@@ -1175,34 +1166,36 @@ msgstr ""
 #: ../src/toolbareditor.ui:65
 #, fuzzy
 msgid "Available actions"
-msgstr "Fájl műveletek"
+msgstr "檔案操作"
 
 #: ../src/toolbareditor.ui:90
 #, fuzzy
 msgid "Toolbar actions"
-msgstr "Fájl műveletek"
+msgstr "檔案操作"
 
 #: ../src/qtwebengine/viewwindow.cpp:162 ../src/qtwebkit/viewwindow.cpp:178
 msgid "Printing aborted"
-msgstr "Nyomtatás megszakítva"
+msgstr "列印被取消"
 
 #: ../src/qtwebengine/viewwindow.cpp:167 ../src/qtwebkit/viewwindow.cpp:183
 #, fuzzy
 msgid "Printing finished"
-msgstr "Nyomtatás megszakítva"
+msgstr "列印被取消"
 
 #: ../src/qtwebengine/viewwindow.cpp:245 ../src/qtwebkit/viewwindow.cpp:277
+#, fuzzy
 msgid "Open Link in a new tab\tShift+LMB"
-msgstr ""
+msgstr "在新的書籤頁打開此鏈接(&O)"
 
 #: ../src/qtwebengine/viewwindow.cpp:246 ../src/qtwebkit/viewwindow.cpp:278
+#, fuzzy
 msgid "Open Link in a new background tab\tCtrl+LMB"
-msgstr ""
+msgstr "在後臺書籤也打開此鏈接(&O)"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:74
 #, fuzzy
 msgid "Add page"
-msgstr "Keresés az oldalon"
+msgstr "在頁面中搜索"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:159
 #: ../src/qtwebengine/viewwindowmgr.cpp:237
@@ -1213,29 +1206,25 @@ msgstr "Alt+%1"
 
 #: ../src/main.cpp:51
 msgid "CHM file viewer"
-msgstr "CHM fájl megjelenítő"
+msgstr "CHM檔案查看器"
 
 #: ../src/main.cpp:53
-msgid "(c) 2004-2015 George Yunaev, gyunaev@ulduzsoft.com"
-msgstr ""
-
-#: ../src/main.cpp:54
-msgid "Please report bugs to kchmviewer@ulduzsoft.com"
+msgid "(c) 2004-2015 George Yunaev"
 msgstr ""
 
 #~ msgid "%1 - JavsScript link clicked"
-#~ msgstr "%1 - JavaSzkriptre kattintás"
+#~ msgstr "%1 - 點擊JavaScript鏈接"
 
 #~ msgid ""
 #~ "You have clicked a JavaScript link.\n"
 #~ "To prevent security-related issues JavaScript URLs are disabled in CHM "
 #~ "files."
 #~ msgstr ""
-#~ "JavaSzkriptet akart elindítani.\n"
-#~ "Biztonsági okoból a JavaSzkript le van tiltva a CHM fájlokban."
+#~ "你點擊了JavaScript鏈接。\n"
+#~ "為了了避免安全問題，在CHM檔案中不啟用JavaScript URLs支持。"
 
 #~ msgid "%1 - link to a new CHM file clicked"
-#~ msgstr "%1 - új CHM fájlra mutató kapcsolatra kattintás"
+#~ msgstr "%1 - 點擊指向新的CHM檔案的鏈接。"
 
 #~ msgid ""
 #~ "You have clicked a link, which leads to a new CHM file %1.\n"
@@ -1243,230 +1232,249 @@ msgstr ""
 #~ "\n"
 #~ "Do you want to continue?"
 #~ msgstr ""
-#~ "A %1 új CHM fájlra mutató kapcsolatra kattintott.\n"
-#~ "A jelenlegi fájl bezárul.\n"
+#~ "你點擊了指向新的CHM檔案的鏈接%1。\n"
+#~ "現在打開的檔案將被關閉。\n"
 #~ "\n"
-#~ "Akarja folytatni?"
+#~ "你要繼續嗎？"
 
 #~ msgid "Compressed Help Manual (*.chm)"
-#~ msgstr "Tömörített Súgó Kézikönyv (*.chm)"
+#~ msgstr "壓縮的幫助手冊 (*.chm)"
 
 #~ msgid "Loading aborted"
-#~ msgstr "Betöltés sikertelen"
+#~ msgstr "取消載入"
 
 #~ msgid "About %1"
-#~ msgstr "%1 névjegye"
+#~ msgstr "關於%1"
 
 #, fuzzy
 #~ msgid "&About"
-#~ msgstr "%1 névjegye"
+#~ msgstr "取消"
 
 #, fuzzy
 #~ msgid "A CHM file to show"
-#~ msgstr "CHM fájl megjelenítő"
+#~ msgstr "CHM檔案查看器"
 
 #~ msgid "If no arguments given on load"
-#~ msgstr "Ha nem ad meg jellemzőt a betöltéskor"
+#~ msgstr "如果載入時沒有參數"
 
 #~ msgid "Version-specific settings"
-#~ msgstr "Verzió függő beállítások"
+#~ msgstr "版本指定設置"
 
 #~ msgid "KDE version settings"
-#~ msgstr "KDE verzió beállítások"
+#~ msgstr "KDE 版本設置"
 
 #~ msgid "To show HTML content, use"
-#~ msgstr "HTML tartalom megjelenítéséhez használja"
+#~ msgstr "要顯示HTML目錄，使用"
 
 #~ msgid "&QTextBrowser-based widget"
-#~ msgstr "&QTextBrowser-alapú widget"
+#~ msgstr "基於QTextBrowser的組件(&Q)"
 
 #~ msgid "Alt+Q"
 #~ msgstr "Alt+Q"
 
 #~ msgid "&KHTMLPart-based widget"
-#~ msgstr "&KHTMLPart-alapú widget"
+#~ msgstr "基於KHTMLPart的組件(&K)"
 
 #~ msgid "Alt+K"
 #~ msgstr "Alt+K"
 
 #~ msgid "KHTMLPart security"
-#~ msgstr "KHTMLPart biztonság"
+#~ msgstr "KHTMLPart 安全性"
 
 #~ msgid "Enable &refresh"
-#~ msgstr "&Frissítés engedélyezése"
+#~ msgstr "啟用刷新(&R)"
 
 #~ msgid "Enable &plugins"
-#~ msgstr "&Beépülő modulok engedélyezése"
+#~ msgstr "啟用插件(&P)"
 
 #~ msgid "&View HTML source"
-#~ msgstr "&HTML forrás megtekintése"
+#~ msgstr "查看HTML源碼(&V)"
 
-#, fuzzy
 #~ msgid "&Locate in contents window"
-#~ msgstr "&Tartalom ablak mutatása"
+#~ msgstr "目錄窗口&定位(&L)"
 
 #, fuzzy
 #~ msgid "Previous page in Table of Context"
-#~ msgstr ""
-#~ "A tartalomjegyzékben az előző oldalra ugráshoz kattintson erre a gombra."
+#~ msgstr "點擊此按鈕前往目錄錶格中的前一頁"
 
 #, fuzzy
 #~ msgid "Previous page in TOC"
-#~ msgstr "Előző oldal a tartalomjegyzékben"
+#~ msgstr "目錄錶格的前一頁"
 
 #, fuzzy
 #~ msgid "Next page in Table of Context"
-#~ msgstr "Következő oldal a tartalomjegyzékben"
+#~ msgstr "目錄錶格的後一頁"
 
 #~ msgid "Next page in TOC"
-#~ msgstr "Következő oldal a tartalomjegyzékben"
+#~ msgstr "目錄錶格的後一頁"
 
 #~ msgid "Qt version settings"
-#~ msgstr "Qt verzió beállítások"
+#~ msgstr "QT 版本設置"
 
 #~ msgid ""
 #~ "Enter the path to the program, which will be used as a browser for "
 #~ "external links.  A <i>%s</i> symbol will be replaced by the URL clicked."
 #~ msgstr ""
-#~ "Adja meg a program elérési útját a belső linkek megnyitásához egy "
-#~ "böngésző ablakban. <i>%s</i> szimbólumot lecseréljük az URL-re "
-#~ "kattintáskor."
+#~ "輸入打開外部鏈接的瀏覽器程式的路徑。<i>%s</i> 符號將被點擊的URL替換。"
+
+#, fuzzy
+#~ msgid "Search engine to use"
+#~ msgstr "搜索没有返回結果"
 
 #~ msgid ""
 #~ "_: NAME OF TRANSLATORS\n"
 #~ "Your names"
-#~ msgstr "Zakariás Csaba"
+#~ msgstr "呂健"
 
 #~ msgid ""
 #~ "_: EMAIL OF TRANSLATORS\n"
 #~ "Your emails"
-#~ msgstr "csaba.zakarias@gmail.com"
+#~ msgstr "demonlinjun@163.com"
 
 #~ msgid "Topics"
-#~ msgstr "Témák"
+#~ msgstr "主題"
 
 #~ msgid "&Ok"
-#~ msgstr "&OK"
+#~ msgstr "确定(&O)"
 
+#, fuzzy
 #~ msgid ""
 #~ "%1 version %2\n"
 #~ "\n"
-#~ "Copyright (C) George Yunaev,gyunaev@ulduzsoft.com, 2005-2006\n"
-#~ "www.kchmviewer.net\n"
+#~ "Copyright (C) George Yunaev,gyunaev@ulduzsoft.com, 2004-2007\n"
+#~ "http://www.kchmviewer.net\n"
 #~ "\n"
 #~ "Licensed under GNU GPL license.\n"
 #~ "\n"
-#~ "Please try our another project, www.transientmail.com - temporary e-mail "
-#~ "address, which expires automatically."
+#~ "Please check my another project, http://www.transientmail.com - temporary "
+#~ "e-mail address, which expires automatically."
 #~ msgstr ""
-#~ "%1 verzió %2\n"
+#~ "%1 版本 %2\n"
 #~ "\n"
-#~ "Copyright (C) George Yunaev,gyunaev@ulduzsoft.com, 2005-2006\n"
+#~ "版權所有 (C) George Yunaev,gyunaev@ulduzsoft.com, 2005-2006\n"
 #~ "www.kchmviewer.net\n"
 #~ "\n"
-#~ "GNU GPL licensz.\n"
+#~ "在GNU GPL授權方式下發行。\n"
 #~ "\n"
-#~ "Kérem, próbálja ki más projektünket is, ww.transientmail.com."
+#~ "請嚐試我們的另一個項目，www.transientmail.com - 臨時 E-Mail地址。"
 
 #~ msgid "Click this button to open an existing chm file."
-#~ msgstr "Létező chm fájl megnyitásához kattintson erre a gombra."
+#~ msgstr "點擊此按鈕打開存在的CHM檔案"
 
 #~ msgid "Click this button to print the current page"
-#~ msgstr "Az aktuális oldal kinyomtatásához kattintson erre a gombra."
+#~ msgstr "點擊此按鈕列印當前頁面"
 
-#~ msgid "Click this button to move backward in browser history"
-#~ msgstr ""
-#~ "A böngésző előzmények közötti visszafelé mozgáshoz kattintson erre a "
-#~ "gombra."
-
-#~ msgid "Click this button to move forward in browser history"
-#~ msgstr ""
-#~ "A böngésző előzmények közötti előrefelé mozgáshoz kattintson erre a "
-#~ "gombra."
-
-#~ msgid "Go to the home page"
-#~ msgstr "Alapoldalra ugrás"
-
-#~ msgid "Click this button to move to the home page"
-#~ msgstr "Az alapoldalra ugráshoz kattintson erre a gombra."
+#~ msgid ""
+#~ "Click this button to extract the whole CHM file content into a specific "
+#~ "directory"
+#~ msgstr "點擊此按鈕提取整個CHM檔案的目錄到指定的目錄。"
 
 #~ msgid "&Recent files"
-#~ msgstr "&Legutóbbi fájlok"
-
-#~ msgid "&Setup"
-#~ msgstr "&Beállítás"
+#~ msgstr "最近打開的檔案(&R)"
 
 #~ msgid "What's &This"
-#~ msgstr "&Mi ez?"
+#~ msgstr "這是什麼(&T)"
+
+#~ msgid "Click this button to move backward in browser history"
+#~ msgstr "點擊此按鈕在瀏覽歷史中後退"
+
+#~ msgid "Click this button to move forward in browser history"
+#~ msgstr "點擊此按鈕在瀏覽歷史中前進"
+
+#~ msgid "Go to the home page"
+#~ msgstr "回到首頁"
+
+#~ msgid "Click this button to move to the home page"
+#~ msgstr "點擊此按钮回到主頁"
 
 #~ msgid "Enter here the text to search in the current page."
-#~ msgstr "Adja meg az aktuális oldalon keresendő szöveget."
+#~ msgstr "輸入要在當前頁面搜索的内容"
 
 #~ msgid "Previous search result"
-#~ msgstr "Előző keresési eredmény"
+#~ msgstr "前一個搜索的結果"
 
 #~ msgid "Click this button to find previous search result."
-#~ msgstr ""
-#~ "Az előző keresési eredmény megjelenítéséhez kattintson erre a gombra."
+#~ msgstr "點擊此按钮查看前一個搜索的結果"
 
 #~ msgid "Next search result"
-#~ msgstr "Következő keresési eredmény"
+#~ msgstr "下一個搜索的結果"
 
 #~ msgid "Click this button to find next search result."
-#~ msgstr ""
-#~ "A következő keresési eredmény megjelenítéséhez kattintson erre a gombra."
+#~ msgstr "點擊此按钮查看下一個搜索的結果"
 
 #~ msgid ""
 #~ "Click this button to find current topic in the content window, and open "
 #~ "it."
-#~ msgstr ""
-#~ "Kattintson a gombra a jelenlegi témának a tartalom ablakban történő "
-#~ "megkereséséhez és megnyitásához."
+#~ msgstr "點擊此按鈕在目錄窗口定位當前主題"
 
 #~ msgid "Click this button to increase the font size."
-#~ msgstr "A betűméret növeléséhez kattinson erre a gombra."
+#~ msgstr "點擊此按鈕增加字體大小"
 
 #~ msgid "Click this button to decrease the font size."
-#~ msgstr "A betűméret csökkentéséhez kattinson erre a gombra."
+#~ msgstr "點擊此按鈕縮小字體大小"
 
 #~ msgid ""
 #~ "Click this button to open a separate window with the page HTML source."
-#~ msgstr ""
-#~ "Az oldal HTML forrásának külön ablakban történő megnyitásához kattintson "
-#~ "erre a gombra."
+#~ msgstr "點擊此按鈕在独立窗口查看當前頁面的HTML源碼"
+
+#~ msgid "Add to bookmarks"
+#~ msgstr "添加到書籤"
 
 #~ msgid "Click this button to add the current page to the bookmarks list."
-#~ msgstr ""
-#~ "Kattintson a gomba az aktuális oldal könyvjelző listához való "
-#~ "hozzáadására."
+#~ msgstr "點擊此按鈕添加當前頁面到書籤列錶"
 
 #~ msgid "&Increase font"
-#~ msgstr "&Betűméret növelése"
+#~ msgstr "增大字體(&I)"
 
 #~ msgid "&Decrease font"
-#~ msgstr "&Betűméret csökkentése"
+#~ msgstr "縮小字體(&D)"
 
 #~ msgid "&Set language"
-#~ msgstr "&Nyelv beállítása"
-
-#~ msgid "Match similar words"
-#~ msgstr "Hasonló szavak keresése"
+#~ msgstr "設置語言(&S)"
 
 #~ msgid "How to use search"
-#~ msgstr "Hogyan használja a keresőt"
+#~ msgstr "如何使用搜索"
+
+#, fuzzy
+#~ msgid ""
+#~ "The search query can contain a few prefixes.\n"
+#~ "A set of words inside the quote marks mean that you are searching for "
+#~ "exact phrase.\n"
+#~ "A word with minus sign means that it should be absent in the search "
+#~ "result.\n"
+#~ "A word with plus mark or without any mark means that it must be present "
+#~ "in the search result.\n"
+#~ "\n"
+#~ "Note that only letters and digits are indexed.\n"
+#~ "You cannot search for non-character symbols other than underscope, and "
+#~ "those symbols will be removed from the search query.\n"
+#~ "For example, search for 'C' will give the same result as searching for 'C+"
+#~ "+'."
+#~ msgstr ""
+#~ "搜索查詢可以包含一些技巧。\n"
+#~ "在引號中包含的内容意味着你要精确的搜索。\n"
+#~ "带有減小的字錶示在搜索結果中不應包含这個内容。\n"
+#~ "带有加號或什麼也不带錶示在搜索結果中應當包含这個内容。\n"
+#~ "\n"
+#~ "注意只有字母和數字被索引。\n"
+#~ "你不能搜索符號，这些符耗将在搜索查詢中被移除。\n"
+#~ "例如，搜索 'C' 和搜索 'C++' ，将返回同样的結果."
 
 #~ msgid "Printing (page %1)..."
-#~ msgstr "Nyomtatás (%1 oldal)..."
+#~ msgstr "正在列印 (第 %1 頁)"
 
 #~ msgid "Printing completed"
-#~ msgstr "Nyomtatás kész"
+#~ msgstr "列印成功"
 
 #~ msgid "%1 - could not print"
-#~ msgstr "%1 - nem nyomtatható"
+#~ msgstr "%1 - 不能列印"
 
 #~ msgid ""
 #~ "Could not print.\n"
 #~ "Your Qt library has been compiled without printing support"
 #~ msgstr ""
-#~ "Nem nyomtatható.\n"
-#~ "A Qt könyvtár nyomtatás támogatás nélkül lett lefordítva."
+#~ "不能列印。\n"
+#~ "你編譯QT没有加入列印支持"
+
+#~ msgid "Match similar words"
+#~ msgstr "匹配相似詞"

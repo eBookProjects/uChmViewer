@@ -1,39 +1,41 @@
-# translation of kchmviewer.po to Fr_fr
+# translation of rus.po to
 # This file is put in the public domain.
 #
-# Stephan Bellegy <stephan@bellegy.org>, 2006.
-# Sun Wukong <sun.wukong@rx3.net>, 2006.
+# Ivan Bobrov <ibobrik@gmail.com>, 2006.
+# George Yunaev <gyunaev@ulduzsoft.com>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: kchmviewer\n"
+"Project-Id-Version: rus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 19:05+0300\n"
-"PO-Revision-Date: 2006-08-18 00:31+0200\n"
-"Last-Translator: Sun Wukong <sun.wukong@rx3.net>\n"
-"Language-Team: Fr_fr <kde-francophone@kde.org>\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-11-21 11:32+0300\n"
+"PO-Revision-Date: 2006-02-04 15:29-0800\n"
+"Last-Translator: George Yunaev <gyunaev@ulduzsoft.com>\n"
+"Language-Team: <en@li.org>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
+"X-Generator: KBabel 1.11.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Language: ru_RU\n"
+"X-Source-Language: C\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1117
-msgid "About kchmviewer"
-msgstr ""
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1115
+msgid "About uChmViewer"
+msgstr "О uChmViewer"
 
 #: ../src/dialog_about.ui:24
 msgid "About appplication"
-msgstr ""
+msgstr "О приложении"
 
 #: ../src/dialog_about.ui:46
-#, fuzzy
 msgid "About text"
-msgstr "A propos de &Qt"
+msgstr "Текст о приложении"
 
 #: ../src/dialog_about.ui:57
 msgid "Thanks"
-msgstr ""
+msgstr "Благодарности"
 
 #: ../src/dialog_about.ui:63
 msgid ""
@@ -69,14 +71,22 @@ msgid ""
 "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
 "family:'Liberation Sans'; font-size:10pt;\"><br /></p></body></html>"
 msgstr ""
+"<html><head></head><body\">\n"
+"<p>Я выражаю благодарность:</p>\n"
+"<ul>\n"
+"<li>Razvan Cojocaru, автору xchm.</li>\n"
+"<li>Peter Volkov за деятельное QA (более чем 20 найденых ошибок!)</li>\n"
+"<li>И конечно же <b>всем</b>, кто сообщал об ошибках и предлагал улучшения.</"
+"li>\n"
+"</ul></body></html>"
 
 #: ../src/dialog_about.ui:83
 msgid "3rd party software"
-msgstr ""
+msgstr "Стороннее ПО"
 
 #: ../src/dialog_about.ui:89
 msgid ""
-"<html><head/><body><p>kchmviewer uses the following 3rd party software:</"
+"<html><head/><body><p>uChmViewer uses the following 3rd party software:</"
 "p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
 "right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-"
 "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
@@ -90,210 +100,221 @@ msgid ""
 "indent:0; text-indent:0px;\">Icons from DryIcons, http://dryicons.com</li></"
 "ul></body></html>"
 msgstr ""
+"<html><head/><body><p>uChmViewer использует следующее стороннее ПО:</p>\n"
+"<ul>\n"
+"<li>Библиотеки Qt от Digia, http://qt-project.org </li>\n"
+"<li>CHMLib от Jed Wing для разбора файлов CHM </li>\n"
+"<li>libzip от Dieter Baron и Thomas Klausner для распаковки файлов EPUB </"
+"li>\n"
+"<li>Значки от DryIcons, <a href=\"https://dryicons.com\">https://dryicons."
+"com</a></li>\n"
+"</ul></body></html>"
 
 #: ../src/dialog_setup.ui:20
 msgid "KchmViewer settings"
-msgstr "Paramétrage de KchmViewer"
+msgstr "Настройки KchmViewer"
 
 #: ../src/dialog_setup.ui:42
 msgid "General behavior"
-msgstr "Comportement général"
+msgstr "Общее поведение"
 
 #: ../src/dialog_setup.ui:62
 msgid "If started with no arguments"
-msgstr ""
+msgstr "Если запущен без аргументов"
 
 #: ../src/dialog_setup.ui:74
 msgid "Start with nothing loaded"
-msgstr ""
+msgstr "Ничего не загружать"
 
 #: ../src/dialog_setup.ui:81
-#, fuzzy
 msgid "Pop up the \"open file\" dialog"
-msgstr "Ouvrir la boîte de dialogue «Ouvrir un fichier CHM»"
+msgstr "Показать диалог \"открыть файл\""
 
 #: ../src/dialog_setup.ui:88
 msgid "Open the &last used CHM file, if exist"
-msgstr "Ouvrir le &dernier fichier CHM s'il existe"
+msgstr "Открыть &последний файл, если он есть"
 
 #: ../src/dialog_setup.ui:91
-#, fuzzy
 msgid "Alt+L"
-msgstr "Alt+E"
+msgstr ""
 
 #: ../src/dialog_setup.ui:101
 msgid "History"
-msgstr "Historique"
+msgstr "История"
 
 #: ../src/dialog_setup.ui:121
 msgid "Store history information for"
-msgstr "Mémoriser l'historique pour"
+msgstr "Хранить историю для"
 
 #: ../src/dialog_setup.ui:141
 msgid "latest files"
-msgstr "les derniers fichiers"
+msgstr "последних файлов"
 
 #: ../src/dialog_setup.ui:153
 msgid ""
 "Remembers the information about the files, which were opened. Remembers last "
 "opened page, search history, font size, bookmarks and so on."
 msgstr ""
-"Se rappelle les informations concernant les fichiers précédemment ouverts. "
-"Se rappelle la dernière page consultée, la dernière recherche effectuée, la "
-"taille de la police, les marque-pages, etc."
+"Запоминает информацию о файлах, которые были открыты. Запоминает последнюю "
+"открытую страницу, историю поиска, размер шрифта, закладки и так далее."
 
 #: ../src/dialog_setup.ui:156
 msgid "R&emember extra information for history files"
-msgstr "Se rapp&eler les informations complémentaires pour l'historique"
+msgstr "&Хранить дополнительную информцию для истории файлов"
 
 #: ../src/dialog_setup.ui:159
 msgid "Alt+E"
-msgstr "Alt+E"
+msgstr ""
 
 #: ../src/dialog_setup.ui:171
 msgid "CHM security settings"
-msgstr "Paramètres de sécurité CHM"
+msgstr "Настройки безопасности CHM"
 
 #: ../src/dialog_setup.ui:183
 msgid "When external link clicked"
-msgstr "Quand un lien externe est cliqué"
+msgstr "Когда нажата внешняя ссылка"
 
 #: ../src/dialog_setup.ui:195
 msgid "Alwa&ys open it in external browser"
-msgstr "Toujours l'ouvrir dans un navigateur e&xterne"
+msgstr "&Всегда открывать во внешнем браузере"
 
 #: ../src/dialog_setup.ui:198
 msgid "Alt+Y"
-msgstr "Alt+X"
+msgstr ""
 
 #: ../src/dialog_setup.ui:205 ../src/dialog_setup.ui:244
 msgid "Ask for confirmation"
-msgstr "Demander la confirmation"
+msgstr "Запросить подтверждение"
 
 #: ../src/dialog_setup.ui:212
 msgid "Do not open the link"
-msgstr "Ne pas ouvrir le lien"
+msgstr "Не открывать ссылку"
 
 #: ../src/dialog_setup.ui:225
 msgid "When link pointed to a new CHM file clicked"
-msgstr "Lorsqu'un lien sur un fichier externe est cliqué "
+msgstr "Когда нажата ссылка на другой CHM файл"
 
 #: ../src/dialog_setup.ui:237
 msgid "Always open a new CHM file"
-msgstr "Toujours ouvrir un nouveau fichier CHM"
+msgstr "Всегда открывать новый файл CHM"
 
 #: ../src/dialog_setup.ui:251
 msgid "Do not open a new CHM file"
-msgstr "Ne pas ouvrir un nouveau fichier CHM"
+msgstr "Не открывать новый CHM файл"
 
 #: ../src/dialog_setup.ui:278
 msgid "Browser"
-msgstr ""
+msgstr "Браузер"
 
 #: ../src/dialog_setup.ui:290
-#, fuzzy
 msgid "HTML browser settings"
-msgstr "Paramètres de sécurité CHM"
+msgstr "Настройки браузера HTML"
 
 #: ../src/dialog_setup.ui:296
 msgid "Load the &images"
-msgstr ""
+msgstr "Загружать &изображения"
 
 #: ../src/dialog_setup.ui:303
 msgid "Enable browser &plugins (i.e. Flash)"
-msgstr ""
+msgstr "Разрешить &плагины браузера (напимер, Flash)"
 
 #: ../src/dialog_setup.ui:306
 msgid "Alt+P"
-msgstr "Alt+G"
+msgstr ""
 
 #: ../src/dialog_setup.ui:313
 msgid "Enable &Java"
-msgstr "Activer le support &Java"
+msgstr "Разрешить &Java"
 
 #: ../src/dialog_setup.ui:316
 msgid "Alt+J"
-msgstr "Alt+J"
+msgstr ""
 
 #: ../src/dialog_setup.ui:323
 msgid "Enable Java&Script"
-msgstr "Activer le support Java&Script"
+msgstr "Разрешить Java&Script"
 
 #: ../src/dialog_setup.ui:326
 msgid "Alt+S"
-msgstr "Alt+S"
+msgstr ""
 
 #: ../src/dialog_setup.ui:333
 msgid "Enable &offline storage (HTML5)"
-msgstr ""
+msgstr "Разрешить &офлайн хранилище (HTML5)"
 
 #: ../src/dialog_setup.ui:336
 msgid "Alt+R"
-msgstr "Alt+R"
+msgstr ""
 
 #: ../src/dialog_setup.ui:343
 msgid "Enable &local storage (HTML5)"
-msgstr ""
+msgstr "Разрешить &локальное хранилище (HTML5)"
 
 #: ../src/dialog_setup.ui:350
 msgid "Highlight search results during in-page search"
-msgstr ""
+msgstr "Подсвечивать результаты поиска при поиске на странице"
 
 #: ../src/dialog_setup.ui:360
 msgid "Table of Contents and other windows"
-msgstr ""
+msgstr "Содержание и другие панели"
 
 #: ../src/dialog_setup.ui:366
 msgid "Open all Table of Contents entries automatically"
-msgstr ""
+msgstr "Автоматически раскрывать все пункты содержания"
 
 #: ../src/dialog_setup.ui:373
 msgid ""
 "Always use a single click to open the elements instead of OS-specific "
 "activation"
 msgstr ""
+"Всегда использовать для открытия одиночный клик вместо системно-зависимой "
+"активации"
 
 #: ../src/dialog_setup.ui:397
 msgid "Advanced"
-msgstr "Paramétrage avancé"
+msgstr "Дополнительно"
 
 #: ../src/dialog_setup.ui:403
 msgid "View HTML source command uses"
-msgstr "Pour voir le source code HTML, utiliser : "
+msgstr "Команда, используемая для показа исходного кода HTML"
 
 #: ../src/dialog_setup.ui:415
 msgid "Built-in HTML source viewer"
-msgstr "le visionneur intégré de code source HTML"
+msgstr "Встроенный просмотрщик HTML кода"
 
 #: ../src/dialog_setup.ui:425
 msgid "E&xternal program, specified below"
-msgstr "Un programme e&xterne, spécifié ci-dessous"
+msgstr "В&нешняя программа, заданная ниже"
 
 #: ../src/dialog_setup.ui:428
 msgid "Alt+X"
-msgstr "Alt+X"
+msgstr ""
 
 #: ../src/dialog_setup.ui:443
 msgid "External program:"
-msgstr "Programme externe :"
+msgstr "Внешняя программа:"
 
 #: ../src/dialog_setup.ui:456
 msgid "&Browse"
-msgstr ""
+msgstr "&Обзор"
 
 #: ../src/dialog_setup.ui:468
 msgid "Other"
-msgstr ""
+msgstr "Разное"
 
 #: ../src/dialog_setup.ui:474
 msgid "Use right-to-left layout direction (Arabic and Hebrew layouts)"
 msgstr ""
+"Использовать направление раскладки справа налево (арабская и ивритская "
+"раскладки)"
 
 #: ../src/dialog_setup.ui:481
 msgid ""
 "Automatically detect encoding for KHTMLPart and WebKit browsers (not "
 "recommended)"
 msgstr ""
+"Автоматическое определение кодировки для браузеров KHTMLPart и WebKit (не "
+"рекомендуется)"
 
 #: ../src/dialog_setup.ui:488
 msgid ""
@@ -303,546 +324,498 @@ msgid ""
 "check will only performed once in 24 hours. No user information is requested "
 "or transmitted from your computer during this check."
 msgstr ""
+"Если эта опция включена, программа будет проверять наличие обновлений (когда "
+"выходит новая версия приложения). Если новая версия доступна, программа "
+"покажет диалоговое окно, информирующее о новой версии. Эта проверка будет "
+"выполняться только один раз в 24 часа. Никакая пользовательская информация "
+"не запрашивается и не передается с вашего компьютера во время этой проверки."
 
 #: ../src/dialog_setup.ui:491
 msgid "Perform a check whether a new version is available (once a week)"
-msgstr ""
+msgstr "Выполнять проверку наличия новой версии (раз в неделю)"
 
 #: ../src/dialog_setup.ui:501
-#, fuzzy
 msgid "Toolbars"
-msgstr "Comportement général"
+msgstr "Панель инструментов"
 
 #: ../src/dialog_setup.ui:507
 msgid "Small icons"
-msgstr ""
+msgstr "Маленькие значки"
 
 #: ../src/dialog_setup.ui:514
 msgid "Large icons"
-msgstr ""
+msgstr "Большие значки"
 
 #: ../src/dialog_setup.ui:521
 msgid "Large icons and text"
-msgstr ""
+msgstr "Большие значки и текст"
 
 #: ../src/dialog_setup.ui:528
-#, fuzzy
 msgid "Just text"
-msgstr "A propos de &Qt"
+msgstr "Просто текст"
 
 #: ../src/dialog_setup.cpp:209
 msgid ""
 "Changing those options requires restarting the application to take effect."
 msgstr ""
+"Чтобы сделанные изменения вступили в силу, приложение необходимо "
+"перезапустить."
 
 #: ../src/dialog_setup.cpp:218
 msgid "*|Executables"
-msgstr ""
+msgstr "*|Программы"
 
 #: ../src/dialog_setup.cpp:218 ../src/dialog_setup.cpp:221
 msgid "Choose an editor executable"
-msgstr ""
+msgstr "Выберите программу редактора"
 
 #: ../src/dialog_setup.cpp:223
 msgid "Executables (*)"
-msgstr ""
+msgstr "*|Программы"
 
 #: ../src/dialog_topicselector.ui:13
 msgid "Multiple topics"
-msgstr ""
+msgstr "Несколько страниц"
 
 #: ../src/dialog_topicselector.ui:25
-#, fuzzy
 msgid "Please select the topic to open:"
-msgstr "Choisissez l'un des thèmes suivants :"
+msgstr "Пожалуйста, выберите страницу для открытия:"
 
 #: ../src/mainwindow.ui:14 ../src/main.cpp:49
-msgid "kchmviewer"
+msgid "uChmViewer"
 msgstr ""
 
 #: ../src/mainwindow.ui:28
 msgid "&Settings"
-msgstr ""
+msgstr "&Настройки"
 
 #: ../src/mainwindow.ui:37
-#, fuzzy
 msgid "&Bookmarks"
-msgstr "Ajouter un Marque-&Page"
+msgstr "&Закладки"
 
 #: ../src/mainwindow.ui:44
-#, fuzzy
 msgid "&File"
-msgstr "Titre"
+msgstr "&Файл"
 
 #: ../src/mainwindow.ui:55
 msgid "&Edit"
-msgstr ""
+msgstr "&Правка"
 
 #: ../src/mainwindow.ui:64
 msgid "&View"
-msgstr ""
+msgstr "&Вид"
 
 #: ../src/mainwindow.ui:78
-#, fuzzy
 msgid "&Windows"
-msgstr "&Fenêtre"
+msgstr "&Окна"
 
 #: ../src/mainwindow.ui:85
-#, fuzzy
 msgid "Help"
-msgstr "&Supprimer"
+msgstr "Помощь"
 
 #: ../src/mainwindow.ui:100
-#, fuzzy
 msgid "General toolbar"
-msgstr "Comportement général"
+msgstr "Общая панель инструментов"
 
 #: ../src/mainwindow.ui:125
-#, fuzzy
 msgid "Navigation toolbar"
-msgstr "Navigation"
+msgstr "Панель навигации"
 
 #: ../src/mainwindow.ui:151
-#, fuzzy
 msgid "View toolbar"
-msgstr "Comportement général"
+msgstr "Панель показа"
 
 #: ../src/mainwindow.ui:186
-#, fuzzy
 msgid "&Print..."
-msgstr "Imprimer un fichier"
+msgstr "&Печать..."
 
 #: ../src/mainwindow.ui:189
-#, fuzzy
 msgid "Print"
-msgstr "Imprimer un fichier"
+msgstr "Печать"
 
 #: ../src/mainwindow.ui:192
 msgid "Print current page"
-msgstr ""
+msgstr "Распечатать текущую страницу"
 
 #: ../src/mainwindow.ui:195
 msgid "Prints currently opened page."
-msgstr ""
+msgstr "Печатает текущую открытую страницу."
 
 #: ../src/mainwindow.ui:198
-#, fuzzy
 msgid "Ctrl+P"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:207
 msgid "&Quit"
-msgstr ""
+msgstr "&Выход"
 
 #: ../src/mainwindow.ui:210
 msgid "Exit"
-msgstr ""
+msgstr "Выход"
 
 #: ../src/mainwindow.ui:213
-#, fuzzy
 msgid "Exits the application"
-msgstr "&Modifier les paramètres..."
+msgstr "Выйти из приложения"
 
 #: ../src/mainwindow.ui:216
-#, fuzzy
 msgid "Ctrl+Q"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:225
 msgid "C&opy"
-msgstr ""
+msgstr "&Копировать"
 
 #: ../src/mainwindow.ui:228
 msgid "Copy"
-msgstr ""
+msgstr "Копировать"
 
 #: ../src/mainwindow.ui:231
 msgid "Copies selected content to clipboard"
-msgstr ""
+msgstr "Копирует выбранный контент в буфер обмена"
 
 #: ../src/mainwindow.ui:234
-#, fuzzy
 msgid "Ctrl+C"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:243
-#, fuzzy
 msgid "&Select All"
-msgstr "Tout &Sélectionner"
+msgstr "&Выбрать всё"
 
 #: ../src/mainwindow.ui:246
 msgid "Paste"
-msgstr ""
+msgstr "Вставить"
 
 #: ../src/mainwindow.ui:249
 msgid "Selects everything in the document"
-msgstr ""
+msgstr "Выбирает всё в документе"
 
 #: ../src/mainwindow.ui:252
-#, fuzzy
 msgid "Ctrl+V"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:261
 msgid "&Find..."
-msgstr ""
+msgstr "&Искать..."
 
 #: ../src/mainwindow.ui:264
 msgid "Find text in currently opened page"
-msgstr ""
+msgstr "Ищет текст в текущей открытой странице"
 
 #: ../src/mainwindow.ui:267
 msgid "Enters the Find in page mode"
-msgstr ""
+msgstr "Вызывает режим поиска на странице"
 
 #: ../src/mainwindow.ui:270
-#, fuzzy
 msgid "Ctrl+F"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:279
 msgid "E&xtract CHM content..."
-msgstr "E&xtraire le contenu du fichier CHM..."
+msgstr "&Распаковать CHM файл..."
 
 #: ../src/mainwindow.ui:282
-#, fuzzy
 msgid "Extract the CHM content to the directory"
-msgstr "Extraction du contenu du fichier CHM"
+msgstr "Распаковать содержимое CHM файла в папку"
 
 #: ../src/mainwindow.ui:285
-#, fuzzy
 msgid ""
 "Exctracts the CHM archive content to the specified directory. All the files "
 "are extracted."
-msgstr "Extraction du contenu du fichier CHM"
+msgstr "Извлекает содержимое CHM в заданную папку. Извлекаются все файлы."
 
 #: ../src/mainwindow.ui:294
-#, fuzzy
 msgid "&Application settings..."
-msgstr "&Modifier les paramètres..."
+msgstr "&Настройки приложения..."
 
 #: ../src/mainwindow.ui:297 ../src/mainwindow.ui:300
-#, fuzzy
 msgid "Change the application settings"
-msgstr "&Modifier les paramètres..."
+msgstr "Изменяет настройки приложения"
 
 #: ../src/mainwindow.ui:309
 msgid "&Add bookmark"
-msgstr "&Ajouter un marque-page"
+msgstr "&Добавить закладку"
 
 #: ../src/mainwindow.ui:312
-#, fuzzy
 msgid "Bookmark"
-msgstr "Ajouter un Marque-&Page"
+msgstr "Закладка"
 
 #: ../src/mainwindow.ui:315
 msgid "Adds a bookmark for currently opened page"
-msgstr ""
+msgstr "Делает закладку для текущей открытой страницы"
 
 #: ../src/mainwindow.ui:318
 msgid ""
 "Adds a bookmark for currently opened page. Remembers the opened page, and "
 "scroll position. Bookmarks are accessible through Bookmarks menu or tab."
 msgstr ""
+"Добавляет закладку для текущей открытой страницы. Запоминается открытая "
+"страница и положение прокрутки. Закладки доступны в меню Закладки или во "
+"вкладке."
 
 #: ../src/mainwindow.ui:321
-#, fuzzy
 msgid "Ctrl+B"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:330
-#, fuzzy
 msgid "&Increase font size"
-msgstr "Augmenter la taille de la police de caractères"
+msgstr "У&величить размер шрифта"
 
 #: ../src/mainwindow.ui:333
 msgid "Larger"
-msgstr ""
+msgstr "Больше"
 
 #: ../src/mainwindow.ui:336
-#, fuzzy
 msgid "Increase the font size"
-msgstr "Augmenter la taille de la police de caractères"
+msgstr "Увеличить размер шрифта"
 
 #: ../src/mainwindow.ui:339
 msgid "Increases the document font size. The new font size will be stored."
-msgstr ""
+msgstr "Увеличить размер шрифта документа. Новый размер шрифта будет сохранён."
 
 #: ../src/mainwindow.ui:342
-#, fuzzy
 msgid "Ctrl+="
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:351
-#, fuzzy
 msgid "&Decrease font size"
-msgstr "Diminuer la taille de la police de caractères"
+msgstr "У&меньшить размер шрифта"
 
 #: ../src/mainwindow.ui:354
 msgid "Smaller"
-msgstr ""
+msgstr "Меньше"
 
 #: ../src/mainwindow.ui:357
-#, fuzzy
 msgid "Decrease the font size"
-msgstr "Diminuer la taille de la police de caractères"
+msgstr "Уменьшить размер шрифта"
 
 #: ../src/mainwindow.ui:360
 msgid "Decreases the document font size. The new font size will be stored."
-msgstr ""
+msgstr "Уменьшить размер шрифта документа. Новый размер шрифта будет сохранён."
 
 #: ../src/mainwindow.ui:363
-#, fuzzy
 msgid "Ctrl+-"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:372
 msgid "See &HTML"
-msgstr ""
+msgstr "Смотреть &HTML"
 
 #: ../src/mainwindow.ui:375
-#, fuzzy
 msgid "View HTML source of current page"
-msgstr "Pour voir le source code HTML, utiliser : "
+msgstr "Показать исходный HTML код страницы"
 
 #: ../src/mainwindow.ui:378
-#, fuzzy
 msgid "Shows the HTML source of currently opened page"
-msgstr "Pour voir le source code HTML, utiliser : "
+msgstr "Показывает исходный код HTML текущей открытой страницы"
 
 #: ../src/mainwindow.ui:381
-#, fuzzy
 msgid "Ctrl+U"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:393
-#, fuzzy
 msgid "Enable &full screen mode"
-msgstr "Pl&ein Écran"
+msgstr "Во весь &экран"
 
 #: ../src/mainwindow.ui:396
-#, fuzzy
 msgid "Enters or leaves the fullscreen mode"
-msgstr "Pl&ein Écran"
+msgstr "Включить или выключить режим во весь экран"
 
 #: ../src/mainwindow.ui:399
-#, fuzzy
 msgid "F11"
-msgstr "F1"
+msgstr ""
 
 #: ../src/mainwindow.ui:417
 msgid "Show &navigator window"
-msgstr ""
+msgstr "Показывать панель &навигации"
 
 #: ../src/mainwindow.ui:420
 msgid "Show navigator dock window"
-msgstr ""
+msgstr "Показать док-панель навигации"
 
 #: ../src/mainwindow.ui:423
 msgid ""
 "Shows or hides the size window (with Content, Index, Search and Bookmark "
 "tabs)"
 msgstr ""
+"Показывает или скрывает панель навигации с вкладками Содержание, Индекс, "
+"Поиск и Закладки"
 
 #: ../src/mainwindow.ui:426
 msgid "F9"
 msgstr ""
 
 #: ../src/mainwindow.ui:438
-#, fuzzy
 msgid "&Locate"
-msgstr "Position"
+msgstr "В о&главлении"
 
 #: ../src/mainwindow.ui:441
-#, fuzzy
 msgid "Locate the current page in contents window"
-msgstr "Chercher ce sujet dans le contenu de la fenêtre"
+msgstr "Показать текущую станицу во вкладке Содержание"
 
 #: ../src/mainwindow.ui:444
-#, fuzzy
 msgid ""
 "If the current page is present in the Table of Contents, locate it there. "
 msgstr ""
-"Cliquer sur ce bouton pour aller à la page suivante de la Table des Matières."
+"Если текущая станица присутствует в оглавлении книги, она будет показана в "
+"нём."
 
 #: ../src/mainwindow.ui:447
-#, fuzzy
 msgid "Ctrl+L"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
 #: ../src/mainwindow.ui:456
-#, fuzzy
 msgid "Set &encoding"
-msgstr "Définir le &Codepage"
+msgstr "&Кодировка"
 
 #: ../src/mainwindow.ui:459
 msgid "Changes the current document encoding. "
-msgstr ""
+msgstr "Меняет текущую кодировку документа."
 
 #: ../src/mainwindow.ui:468
 msgid "&Open..."
-msgstr ""
+msgstr "&Открыть..."
 
 #: ../src/mainwindow.ui:471
-#, fuzzy
 msgid "Open a CHM file"
-msgstr "Ouvrir un fichier "
+msgstr "Открыть файл"
 
 #: ../src/mainwindow.ui:474
-#, fuzzy
 msgid "Opens a new CHM file"
-msgstr "Toujours ouvrir un nouveau fichier CHM"
+msgstr "Открывает новый файл"
 
 #: ../src/mainwindow.ui:483
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: ../src/mainwindow.ui:486
-#, fuzzy
 msgid "Navigate back"
-msgstr "Navigation"
+msgstr "Навигация назад"
 
 #: ../src/mainwindow.ui:489
-#, fuzzy
 msgid "Navigate back in navigation history"
-msgstr "Revenir en arrière dans l'historique"
+msgstr "Вернуться назад по истории навигации"
 
 #: ../src/mainwindow.ui:498
 msgid "Forward"
-msgstr ""
+msgstr "Вперёд"
 
 #: ../src/mainwindow.ui:501
-#, fuzzy
 msgid "Navigate forward"
-msgstr "Navigation"
+msgstr "Навигация вперёд"
 
 #: ../src/mainwindow.ui:504
-#, fuzzy
 msgid "Navigate forward in navigation history"
-msgstr "Avancer dans l'historique"
+msgstr "Перейти вперёд по истории навигации"
 
 #: ../src/mainwindow.ui:513
 msgid "Home"
-msgstr ""
+msgstr "Домой"
 
 #: ../src/mainwindow.ui:516
-#, fuzzy
 msgid "Navigate home"
-msgstr "Navigation"
+msgstr "Перейти домой"
 
 #: ../src/mainwindow.ui:519
 msgid "Navigate to the document Home page, as specified in the document."
-msgstr ""
+msgstr "Перейти на домашнюю страницу документа, как это задано в документе."
 
 #: ../src/mainwindow.ui:528 ../src/window_browser.ui:90
 msgid "Previous"
-msgstr ""
+msgstr "Предыдущий"
 
 #: ../src/mainwindow.ui:531
-#, fuzzy
 msgid "Go to the previous page in the Table of Contents"
-msgstr ""
-"Cliquer sur ce bouton pour aller à la page précédente de la Table des "
-"Matières."
+msgstr "Перейти на предыдущую страницу в оглавлении"
 
 #: ../src/mainwindow.ui:534
-#, fuzzy
 msgid ""
 "Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
 "Ctrl+Left Arrow</i>"
 msgstr ""
-"Cliquer sur ce bouton pour aller à la page précédente de la Table des "
-"Matières."
+"Перейти на предыдущую страницу в <b>оглавлении</b><br><br><i>Клавиатура: Ctrl"
+"+левая стрелка</i>"
 
 #: ../src/mainwindow.ui:543 ../src/window_browser.ui:113
 msgid "Next"
-msgstr ""
+msgstr "Следующий"
 
 #: ../src/mainwindow.ui:546
-#, fuzzy
 msgid "Go to the next page in the Table of Contents"
-msgstr ""
-"Cliquer sur ce bouton pour aller à la page suivante de la Table des Matières."
+msgstr "Перейти на следующую страницу в оглавлении"
 
 #: ../src/mainwindow.ui:549
-#, fuzzy
 msgid ""
 "Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: Ctrl"
 "+Right Arrow</i>"
 msgstr ""
-"Cliquer sur ce bouton pour aller à la page suivante de la Table des Matières."
+"Перейти на следующую страницу в <b>оглавлении</b><br><br><i>Клавиатура: Ctrl"
+"+правая стрелка</i>"
 
 #: ../src/mainwindow.ui:558
-#, fuzzy
 msgid "&Close window"
-msgstr "&Fenêtre"
+msgstr "&Закрыть вкладку"
 
 #: ../src/mainwindow.ui:561
-#, fuzzy
 msgid "Close current window"
-msgstr "A&fficher la fenêtre des contenus"
+msgstr "Закрыть активную вкладку"
 
 #: ../src/mainwindow.ui:564
-#, fuzzy
 msgid "Closes currently opened window"
-msgstr "A&fficher la fenêtre des contenus"
+msgstr "Закрывает текущую открытую вкладку"
 
 #: ../src/mainwindow.ui:567
-#, fuzzy
 msgid "Ctrl+W"
-msgstr "Contrôle+Entrée"
-
-#: ../src/mainwindow.ui:572
-msgid "About kchmviewer..."
 msgstr ""
 
+#: ../src/mainwindow.ui:572
+msgid "About uChmViewer..."
+msgstr "О uChmViewer..."
+
 #: ../src/mainwindow.ui:577
-#, fuzzy
 msgid "About Qt"
-msgstr "A propos de &Qt"
+msgstr "О библиотеке Qt"
 
 #: ../src/mainwindow.ui:586
 msgid "Check for updates"
-msgstr ""
+msgstr "Проверить обновления"
 
 #: ../src/mainwindow.ui:595
-#, fuzzy
 msgid "Edit toolbars..."
-msgstr "Navigation"
+msgstr "Изменить панели инструментов..."
 
 #: ../src/mainwindow.cpp:199
 msgid "Shared memory segment failed"
-msgstr ""
+msgstr "Сбой сегмента общей памяти"
 
 #: ../src/mainwindow.cpp:200
 #, qt-format
 msgid "Failed to create a shared memory segment: %1"
-msgstr ""
+msgstr "Сбой при создании сегмента общей памяти: %1"
 
 #: ../src/mainwindow.cpp:276
 #, qt-format
 msgid "Detected file encoding: %1 ( %2 )"
-msgstr ""
+msgstr "Кодировка файла определена автоматически: %1 ( %2 )"
 
 #: ../src/mainwindow.cpp:346
 #, qt-format
 msgid "%1 - failed to load the chm file"
-msgstr "%1 - Échec lors de la lecture du fichier chm %1"
+msgstr "%1 - невозможно открыть CHM файл"
 
 #: ../src/mainwindow.cpp:347
 #, qt-format
 msgid "Unable to load the chm file %1"
-msgstr "Impossible de lire le fichier chm %1"
+msgstr "Невозможно загрузить CHM файл %1"
 
 #: ../src/mainwindow.cpp:355
 #, qt-format
 msgid "Could not load file %1"
-msgstr "Impossible de lire le fichier chm %1 "
+msgstr "Нельзя открыть CHM файл %1"
 
 #: ../src/mainwindow.cpp:413
 #, qt-format
 msgid "%1 - remote link clicked - %2"
-msgstr "%1 - un lien externe a été cliqué - %2"
+msgstr "%1 - нажата внешняя ссылка - %2"
 
 #: ../src/mainwindow.cpp:414
 #, qt-format
@@ -851,59 +824,59 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
-"Un clic sur un lien externe %1 lancera l'ouverture du navigateur externe.\n"
+"Для показа ссылки %1 будет запущена внешняя программа.\n"
 "\n"
-"Voulez-vous continuer ?"
+"Продолжить?"
 
 #: ../src/mainwindow.cpp:415
 msgid "&Yes"
-msgstr "&Oui"
+msgstr "&Да"
 
 #: ../src/mainwindow.cpp:415
 msgid "&No"
-msgstr "&Non"
+msgstr "&Нет"
 
 #: ../src/mainwindow.cpp:853
-#, fuzzy
 msgid ""
 "*.chm *.epub|All electronic book\n"
 "*.chm|Compressed Help Manual\n"
 "*.epub|EPUB electronic book"
-msgstr "*.chm|Manuel d'aide compressé (*.chm)"
+msgstr ""
+"*.chm *.epub|Все книги\n"
+"*.chm|Compressed Help Manual\n"
+"*.epub|Электронная книга EPUB"
 
 #: ../src/mainwindow.cpp:856
-#, fuzzy
 msgid "Open a chm file"
-msgstr "Ouvrir un fichier "
+msgstr "Открыть файл"
 
 #: ../src/mainwindow.cpp:858
 msgid "Electronic books (*.chm *.epub)"
-msgstr ""
+msgstr "Электронные книги (*.chm *.epub)"
 
 #: ../src/mainwindow.cpp:903 ../src/mainwindow.cpp:907
 msgid "Choose a directory to store CHM content"
-msgstr "Choisir un dossier pour y sauvegarder le contenu du fichier CHM"
+msgstr "Выберите директорию для сохранения распакованного содержимого"
 
 #: ../src/mainwindow.cpp:921
 msgid "Extracting CHM content"
-msgstr "Extraction du contenu du fichier CHM"
+msgstr "Распаковываем содержимое CHM файла"
 
 #: ../src/mainwindow.cpp:922
 msgid "Extracting files..."
-msgstr "Extraction des fichiers..."
+msgstr "Распаковываем файлы..."
 
 #: ../src/mainwindow.cpp:923
 msgid "Abort"
-msgstr "Annuler"
+msgstr "Отмена"
 
 #: ../src/mainwindow.cpp:1016
-#, fuzzy
 msgid "HTML source"
-msgstr "Visualiser le code source HTML"
+msgstr "Исходный код HTML"
 
 #: ../src/mainwindow.cpp:1041
 msgid "Cannot start external editor"
-msgstr ""
+msgstr "Не могу запустить внешний редактор"
 
 #: ../src/mainwindow.cpp:1042
 #, qt-format
@@ -911,131 +884,128 @@ msgid ""
 "Cannot start external editor %1.\n"
 "Make sure the path is absolute!"
 msgstr ""
+"Не могу запустить внешний редактор %1.\n"
+"Убедитесь, что путь является абсолютным!"
 
 #: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
-msgstr ""
-"Impossible de trouver le sujet sélectionné dans le contenu de la fenêtre"
+msgstr "Невозможно найти открытую станицу в содержании"
 
 #: ../src/mainwindow.cpp:1099
 #, qt-format
 msgid "<br>Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
 msgstr ""
+"<br>Сборка для архитектуры %1 используя ABI %2<br>Работает в %3, версия Qt %4"
 
 #: ../src/mainwindow.cpp:1105
 #, qt-format
 msgid "<br>Using Qt version %1"
-msgstr ""
+msgstr "Используется Qt версии %1"
 
 #: ../src/mainwindow.cpp:1108
 #, qt-format
 msgid ""
-"<html><b>kchmviewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
-"2004-2015<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
-"a><br><a href=\"http://www.ulduzsoft.com/kchmviewer\">http://www.ulduzsoft."
-"com/kchmviewer</a><br><br>Licensed under GNU GPL license version 3.</html>"
+"<html><b>uChmViewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2015<br><br>Licensed under GNU GPL license version 3.</html>"
+msgstr ""
+"<html><b>Это форк KchmViewer, версия %1.%2</b>%3<br><br>Copyright (C) George "
+"Yunaev, 2004-2015<br><a href=\"mailto:gyunaev@ulduzsoft.com"
+"\">gyunaev@ulduzsoft.com</a><br><a href=\"http://www.ulduzsoft.com/kchmviewer"
+"\">http://www.ulduzsoft.com/kchmviewer</a><br><br>Licensed under GNU GPL "
+"license version 3.</html>"
+
+#: ../src/mainwindow.cpp:1210
+msgid "Ctrl+1"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1212
-#, fuzzy
-msgid "Ctrl+1"
-msgstr "Contrôle+Entrée"
-
-#: ../src/mainwindow.cpp:1218
-#, fuzzy
+#: ../src/mainwindow.cpp:1216
 msgid "Ctrl+2"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
-#: ../src/mainwindow.cpp:1224
-#, fuzzy
+#: ../src/mainwindow.cpp:1222
 msgid "Ctrl+3"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
-#: ../src/mainwindow.cpp:1230
-#, fuzzy
+#: ../src/mainwindow.cpp:1228
 msgid "Ctrl+4"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
-#: ../src/mainwindow.cpp:1237
+#: ../src/mainwindow.cpp:1235
 msgid "/"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1244
+#: ../src/mainwindow.cpp:1242
 msgid "F3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1264
-#, fuzzy
+#: ../src/mainwindow.cpp:1262
 msgid "Ctrl+Right"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
-#: ../src/mainwindow.cpp:1271
-#, fuzzy
+#: ../src/mainwindow.cpp:1269
 msgid "Ctrl+Left"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
-#: ../src/mainwindow.cpp:1278
-#, fuzzy
+#: ../src/mainwindow.cpp:1276
 msgid "Ctrl+I"
-msgstr "Contrôle+Entrée"
+msgstr ""
 
-#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/mainwindow.cpp:1285 ../src/qtwebengine/viewwindow.cpp:116
 #: ../src/qtwebkit/viewwindow.cpp:129
 msgid "&Open this link in a new tab"
-msgstr ""
+msgstr "&Открыть ссылку в новой вкладке"
 
-#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/mainwindow.cpp:1290 ../src/qtwebengine/viewwindow.cpp:117
 #: ../src/qtwebkit/viewwindow.cpp:131
 msgid "&Open this link in a new background tab"
-msgstr ""
+msgstr "&Открыть ссылку в новой фоновой вкладке"
 
-#: ../src/mainwindow.cpp:1362
+#: ../src/mainwindow.cpp:1360
 #, qt-format
 msgid "%1 ( %2 )"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1464
+#: ../src/mainwindow.cpp:1462
 msgid "Unable to check whether a new version is available"
-msgstr ""
+msgstr "Невозможно проверить наличие новой версии"
 
-#: ../src/mainwindow.cpp:1477
-#, fuzzy
+#: ../src/mainwindow.cpp:1475
 msgid "New version available"
-msgstr "La recherche  a échoué"
+msgstr "Доступна новая версия"
 
-#: ../src/mainwindow.cpp:1478
+#: ../src/mainwindow.cpp:1476
 #, qt-format
 msgid ""
-"<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>You are "
+"<html>A new version <b>%1</b> of uChmViewer is available!<br><br>You are "
 "currently using version %3.<br>Do you want to visit the application web site "
 "%2?"
 msgstr ""
+"<html>Доступен uChmViewer версии <b>%1</b> !<br><br>Ваша текущая версия %3."
+"<br>Желаете перейти на сайт приложения %2?"
 
-#: ../src/mainwindow.cpp:1491
-msgid "Checked for updates; you are using the latest version of kchmviewer"
-msgstr ""
+#: ../src/mainwindow.cpp:1489
+msgid "Checked for updates; you are using the latest version of uChmViewer"
+msgstr "Проверены обновления, Вы используете последнюю версию uChmViewer"
 
 #: ../src/navigationpanel.cpp:40
 msgid "Search"
-msgstr "Chercher"
+msgstr "Поиск"
 
 #: ../src/navigationpanel.cpp:43
-#, fuzzy
 msgid "Bookmarks"
-msgstr "Ajouter un Marque-&Page"
+msgstr "Закладки"
 
 #: ../src/navigationpanel.cpp:83
 msgid "Index"
-msgstr "Index"
+msgstr "Индекс"
 
 #: ../src/navigationpanel.cpp:89
 msgid "Contents"
-msgstr ""
+msgstr "Оглавление"
 
 #: ../src/navigatorpanel.ui:17
-#, fuzzy
 msgid "Navigator panel"
-msgstr "Navigation"
+msgstr "Панель навигации"
 
 #: ../src/navigatorpanel.ui:28
 msgid "Tab 1"
@@ -1048,29 +1018,29 @@ msgstr ""
 
 #: ../src/tab_bookmarks.ui:36
 msgid "&Add"
-msgstr "&Ajouter"
+msgstr "&Новая"
 
 #: ../src/tab_bookmarks.ui:43
 msgid "Edi&t"
-msgstr ""
+msgstr "&Править"
 
 #: ../src/tab_bookmarks.ui:50
 msgid "&Del"
-msgstr ""
+msgstr "&Удалить"
 
 #: ../src/tab_bookmarks.cpp:133
 #, qt-format
 msgid "%1 - add a bookmark"
-msgstr "%1 - ajouter un marque-page"
+msgstr "%1 - добавить закладку"
 
 #: ../src/tab_bookmarks.cpp:134 ../src/tab_bookmarks.cpp:176
 msgid "Enter the name for this bookmark:"
-msgstr "Entrer le nom du marque-page :"
+msgstr "Введите имя для этой закладки:"
 
 #: ../src/tab_bookmarks.cpp:175
 #, qt-format
 msgid "%1 - edit the bookmark name"
-msgstr "%1 - modifier le nom du marque-page"
+msgstr "%1 - редактировать имя закладки"
 
 #: ../src/tab_contents.ui:13 ../src/tab_index.ui:14 ../src/tab_search.ui:13
 msgid "Form1"
@@ -1078,7 +1048,7 @@ msgstr ""
 
 #: ../src/tab_index.ui:22
 msgid "F&ind:"
-msgstr ""
+msgstr "&Искать:"
 
 #: ../src/tab_index.ui:50
 msgid "1"
@@ -1086,37 +1056,36 @@ msgstr ""
 
 #: ../src/tab_search.ui:33
 msgid "Type in word(s) to search for:"
-msgstr "Entrer un/des mot(s) à rechercher :"
+msgstr "Наберите слова для поиска:"
 
 #: ../src/tab_search.ui:48
 msgid "<a href=\"help\">Help</a>"
-msgstr ""
+msgstr "<a href=\"help\">Помощь</a>"
 
 #: ../src/tab_search.ui:86
-#, fuzzy
 msgid "&Go"
-msgstr "&Non"
+msgstr "&Пуск"
 
 #: ../src/tab_search.ui:111
 msgid "Title"
-msgstr ""
+msgstr "Заголовок"
 
 #: ../src/tab_search.ui:116
 msgid "Location"
-msgstr "Position"
+msgstr "Расположение"
 
 #: ../src/tab_search.cpp:166
 #, qt-format
 msgid "Search returned %1 result(s)"
-msgstr "La recherche renvoie %1 occurrence(s)"
+msgstr "Поиск вернул %1 результат(ов)"
 
 #: ../src/tab_search.cpp:170
 msgid "Search returned no results"
-msgstr "La recherche ne renvoie pas de résultat"
+msgstr "Поиск не нашел ничего"
 
 #: ../src/tab_search.cpp:173
 msgid "Search failed"
-msgstr "La recherche  a échoué"
+msgstr "Поиск не удался"
 
 #: ../src/tab_search.cpp:206
 msgid ""
@@ -1132,131 +1101,132 @@ msgid ""
 "quotation mark as the same symbol, which allows to use them in phrases.</"
 "html>"
 msgstr ""
+"<html><p>Улучшенный поиск позволяет искать слова, символы или фразу (которая "
+"представляет собой набор слов в кавычках). Найдены будут только те "
+"документы, которые содержат ВСЕ что указано в строке поиска, префиксы типа + "
+"или AND не нужны.<p>По сравнению со стандартным индексом для поиска, "
+"интегрированным в CHM файл, индекс встроенный в приложение индексирует все "
+"включая специальные символы. Это делает возможным искать и найти строки вида "
+"<i>$q = new ChmFile();</i>. Также новый поиск полностью поддерживает Юникод, "
+"позволяя успешно искать текст в документах на языках отличных от "
+"английского. <p>Поскольку кавычки используются поиском для обозначения фраз, "
+"используйте апостроф если вам нужно искать кавычку. Поиск интерпретирует "
+"апостроф и кавычку как одинаковый символ.</html>"
 
 #: ../src/tab_search.cpp:223
 msgid "Reading dictionary..."
-msgstr ""
+msgstr "Считываем индекс поиска..."
 
 #: ../src/tab_search.cpp:237 ../src/tab_search.cpp:238
 #: ../src/tab_search.cpp:243
 msgid "Generating search index..."
-msgstr ""
+msgstr "Идет генерация индекса поиска..."
 
 #: ../src/tab_search.cpp:253
 msgid "Cannot save index"
-msgstr ""
+msgstr "Не могу сохранить индекс"
 
 #: ../src/tab_search.cpp:253
 #, qt-format
 msgid "The index cannot be saved into file %1"
-msgstr ""
+msgstr "Индекс не может быть сохранён в файл %1"
 
 #: ../src/tab_search.cpp:293
 msgid "No index present"
-msgstr ""
+msgstr "Индекс отсутствует"
 
 #: ../src/tab_search.cpp:293
 msgid "The index is not present"
-msgstr ""
+msgstr "Индекс не существует"
 
 #: ../src/window_browser.ui:36
 msgid "TabbedBrowser"
-msgstr ""
+msgstr "Браузер"
 
 #: ../src/window_browser.ui:133
 msgid "Case Sensitive"
-msgstr ""
+msgstr "С учётом регистра"
 
 #: ../src/window_browser.ui:152
 msgid "<img src=\":/images/find_wrap.png\">&nbsp;Search wrapped"
-msgstr ""
+msgstr "<img src=\":/images/find_wrap.png\">&nbsp;Поиск прерван"
 
 #: ../src/toolbareditor.ui:14
 msgid "Dialog"
 msgstr ""
 
 #: ../src/toolbareditor.ui:20
-#, fuzzy
 msgid "Select a toolbar"
-msgstr "Comportement général"
+msgstr "Выбор панели инструментов"
 
 #: ../src/toolbareditor.ui:26
-#, fuzzy
 msgid "Editing the toolbar "
-msgstr "Navigation"
+msgstr "Изменяемая панель"
 
 #: ../src/toolbareditor.ui:46
 msgid ""
 "Drag the actions to the toolbar list to add them to the toolbar. \n"
 "Drag them from toolbar list to remove them from the toolbar."
 msgstr ""
+"Перетащите действия в список панели инструментов, чтобы их добавить.\n"
+"Перетащите их из списка панели инструментов, чтобы их удалить."
 
 #: ../src/toolbareditor.ui:65
-#, fuzzy
 msgid "Available actions"
-msgstr "Opérations sur les fichiers"
+msgstr "Доступные действия"
 
 #: ../src/toolbareditor.ui:90
-#, fuzzy
 msgid "Toolbar actions"
-msgstr "Opérations sur les fichiers"
+msgstr "Действия на панели"
 
 #: ../src/qtwebengine/viewwindow.cpp:162 ../src/qtwebkit/viewwindow.cpp:178
 msgid "Printing aborted"
-msgstr "Impression interrompue"
+msgstr "Печать отменена"
 
 #: ../src/qtwebengine/viewwindow.cpp:167 ../src/qtwebkit/viewwindow.cpp:183
-#, fuzzy
 msgid "Printing finished"
-msgstr "Impression interrompue"
+msgstr "Печать завершена"
 
 #: ../src/qtwebengine/viewwindow.cpp:245 ../src/qtwebkit/viewwindow.cpp:277
 msgid "Open Link in a new tab\tShift+LMB"
-msgstr ""
+msgstr "Открыть ссылку в новой вкладке\tShift+LMB"
 
 #: ../src/qtwebengine/viewwindow.cpp:246 ../src/qtwebkit/viewwindow.cpp:278
 msgid "Open Link in a new background tab\tCtrl+LMB"
-msgstr ""
+msgstr "Открыть ссылку в новой вкладке не активируя ее\tCtrl+LMB"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:74
-#, fuzzy
 msgid "Add page"
-msgstr "Chercher dans la page"
+msgstr "Добавить вкладку"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:159
 #: ../src/qtwebengine/viewwindowmgr.cpp:237
 #: ../src/qtwebkit/viewwindowmgr.cpp:161 ../src/qtwebkit/viewwindowmgr.cpp:240
-#, fuzzy, qt-format
+#, qt-format
 msgid "Alt+%1"
-msgstr "Alt+%1"
+msgstr ""
 
 #: ../src/main.cpp:51
 msgid "CHM file viewer"
-msgstr "Visionneur de fichiers CHM"
+msgstr "Просмотрщик CHM файлов"
 
 #: ../src/main.cpp:53
-msgid "(c) 2004-2015 George Yunaev, gyunaev@ulduzsoft.com"
+msgid "(c) 2004-2015 George Yunaev"
 msgstr ""
 
-#: ../src/main.cpp:54
-msgid "Please report bugs to kchmviewer@ulduzsoft.com"
-msgstr ""
-
-# Stéphan Bellegy : wrong spelling for JavaScript
 #~ msgid "%1 - JavsScript link clicked"
-#~ msgstr "%1 - un lien sur un JavaScript a été cliqué"
+#~ msgstr "%1 - нажата ссылка на JavaScript"
 
 #~ msgid ""
 #~ "You have clicked a JavaScript link.\n"
 #~ "To prevent security-related issues JavaScript URLs are disabled in CHM "
 #~ "files."
 #~ msgstr ""
-#~ "Vous avez cliqué sur un lien JavaScript.\n"
-#~ "Pour des raisons de sécurité, les URL JavaScript sont désactivées dans "
-#~ "les fichiers CHM."
+#~ "Вы нажали ссылку, которая вызывает JavaScript.\n"
+#~ "Для обеспечения безопасности все ссылки на JavaScript отключены."
 
 #~ msgid "%1 - link to a new CHM file clicked"
-#~ msgstr "%1 - un lien sur un nouveau fichier CHM a été cliqué"
+#~ msgstr "%1 - нажата ссылка на новый CHM файл"
 
 #~ msgid ""
 #~ "You have clicked a link, which leads to a new CHM file %1.\n"
@@ -1264,281 +1234,40 @@ msgstr ""
 #~ "\n"
 #~ "Do you want to continue?"
 #~ msgstr ""
-#~ "Vous avez cliqué sur un lien pointant sur un nouveau fichier CHM %1.\n"
-#~ "Le fichier actuel sera fermé.\n"
+#~ "Вы нажали на ссылку, которая ведет в другой CHM файл %1.\n"
+#~ "Он будет открыт, а текущий файл будет закрыт.\n"
 #~ "\n"
-#~ "Voulez-vous continuer ?"
+#~ "Продолжить??"
 
 #~ msgid "Compressed Help Manual (*.chm)"
-#~ msgstr "Manuel d'aide compressé (*.chm)"
+#~ msgstr "Compressed Help Manual (*.chm)"
 
 #~ msgid "Loading aborted"
-#~ msgstr "Chargement interrompu"
+#~ msgstr "Загрузка отменена"
 
 #~ msgid "About %1"
-#~ msgstr "A propos de %1"
+#~ msgstr "О программе %1"
 
 #, fuzzy
 #~ msgid "&About"
-#~ msgstr "Annuler"
+#~ msgstr "О программе %1"
+
+#~ msgid "Close current page"
+#~ msgstr "Закрыть активную вкладку"
+
+#~ msgid "Perform auto testing"
+#~ msgstr "Включить режим автотестирования"
+
+#~ msgid "Perform short auto testing"
+#~ msgstr "Включить режим автотестирования"
 
 #, fuzzy
 #~ msgid "A CHM file to show"
-#~ msgstr "Visionneur de fichiers CHM"
-
-#~ msgid "If no arguments given on load"
-#~ msgstr "Si aucun argument n'a été spécifié au démarrage"
-
-#~ msgid "Version-specific settings"
-#~ msgstr "Paramètres spécifiques à la version"
-
-#~ msgid "KDE version settings"
-#~ msgstr "Paramètres spécifiques à la version de KDE"
-
-#~ msgid "To show HTML content, use"
-#~ msgstr "Pour afficher le contenu HTML, utiliser"
-
-#~ msgid "&QTextBrowser-based widget"
-#~ msgstr "un widget basé sur &QTtextBrowser"
-
-#~ msgid "Alt+Q"
-#~ msgstr "Alt+Q"
-
-#~ msgid "&KHTMLPart-based widget"
-#~ msgstr "un widget basé sur &KHTMLPart"
-
-#~ msgid "Alt+K"
-#~ msgstr "Alt+K"
-
-#~ msgid "KHTMLPart security"
-#~ msgstr "Sécurité pour KHTMLPart"
-
-#~ msgid "Enable &refresh"
-#~ msgstr "Permettre le &rafraîchissement"
-
-#~ msgid "Enable &plugins"
-#~ msgstr "Activer les &greffons"
+#~ msgstr "Просмотрщик CHM файлов"
 
 #, fuzzy
-#~ msgid "Ctrl++"
-#~ msgstr "Contrôle+Entrée"
-
-#~ msgid "&View HTML source"
-#~ msgstr "&Visionner le code source HTML"
-
 #~ msgid "&Locate in contents window"
-#~ msgstr "&Chercher dans la fenêtre des contenus"
+#~ msgstr "Невозможно найти открытую тему в окне содержания"
 
-#, fuzzy
-#~ msgid "Previous page in Table of Context"
-#~ msgstr ""
-#~ "Cliquer sur ce bouton pour aller à la page précédente de la Table des "
-#~ "Matières."
-
-#, fuzzy
-#~ msgid "Previous page in TOC"
-#~ msgstr "Page précédente de la TdM"
-
-#, fuzzy
-#~ msgid "Next page in Table of Context"
-#~ msgstr "Page suivante de la TdM"
-
-#~ msgid "Next page in TOC"
-#~ msgstr "Page suivante de la TdM"
-
-#~ msgid "Qt version settings"
-#~ msgstr "Paramètres spécifiques à la version de Qt"
-
-#~ msgid ""
-#~ "Enter the path to the program, which will be used as a browser for "
-#~ "external links.  A <i>%s</i> symbol will be replaced by the URL clicked."
-#~ msgstr ""
-#~ "Entrer le chemin du navigateur qui sera utilisé pour afficher les liens "
-#~ "externes.  Un symbole <i>%s</i> sera remplacé par l'URL cliquée."
-
-#, fuzzy
-#~ msgid "Search engine to use"
-#~ msgstr "La recherche ne renvoie pas de résultat"
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Stéphan BELLEGY"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "stephan@bellegy.org"
-
-#~ msgid "Topics"
-#~ msgstr "Thèmes"
-
-#~ msgid "&Ok"
-#~ msgstr "&Ok"
-
-#, fuzzy
-#~ msgid ""
-#~ "%1 version %2\n"
-#~ "\n"
-#~ "Copyright (C) George Yunaev,gyunaev@ulduzsoft.com, 2004-2007\n"
-#~ "http://www.kchmviewer.net\n"
-#~ "\n"
-#~ "Licensed under GNU GPL license.\n"
-#~ "\n"
-#~ "Please check my another project, http://www.transientmail.com - temporary "
-#~ "e-mail address, which expires automatically."
-#~ msgstr ""
-#~ "%1 version %2\n"
-#~ "\n"
-#~ "Copyright (C) George Yunaev,gyunaev@ulduzsoft.com, 2005-2006\n"
-#~ "www.kchmviewer.net\n"
-#~ "\n"
-#~ "Ce programme est distribué selon les termes de la licence GNU GPL.\n"
-#~ "\n"
-#~ "Essayez notre autre projet, www.transientmail.com - un distributeur "
-#~ "d'adresses électroniques temporaires qui expirent automatiquement."
-
-#~ msgid "Click this button to open an existing chm file."
-#~ msgstr "Cliquer sur ce bouton pour ouvrir un fichier CHM existant."
-
-#~ msgid "Click this button to print the current page"
-#~ msgstr "Cliquer sur ce bouton pour imprimer la page courante"
-
-#~ msgid ""
-#~ "Click this button to extract the whole CHM file content into a specific "
-#~ "directory"
-#~ msgstr ""
-#~ "Cliquer sur ce bouton pour extraire le contenu entier du fichier CHM dans "
-#~ "un dossier"
-
-#~ msgid "&Recent files"
-#~ msgstr "Fichiers &récents"
-
-#~ msgid "What's &This"
-#~ msgstr "Qu'es&t-ce que c'est"
-
-#~ msgid "Click this button to move backward in browser history"
-#~ msgstr "Cliquer sur ce bouton pour revenir en arrière dans l'historique"
-
-#~ msgid "Click this button to move forward in browser history"
-#~ msgstr "Cliquer sur ce bouton pour avancer dans l'historique"
-
-#~ msgid "Go to the home page"
-#~ msgstr "Aller à la page d'accueil"
-
-#~ msgid "Click this button to move to the home page"
-#~ msgstr "Cliquer sur ce bouton pour aller à la page d'accueil"
-
-#~ msgid "Enter here the text to search in the current page."
-#~ msgstr "Saisir ici le texte à rechercher dans la page courante."
-
-#~ msgid "Previous search result"
-#~ msgstr "Résultats de la recherche antérieure"
-
-#~ msgid "Click this button to find previous search result."
-#~ msgstr ""
-#~ "Cliquer sur ce bouton pour trouver les résultats de la recherche "
-#~ "antérieure."
-
-#~ msgid "Next search result"
-#~ msgstr "Résultats de la recherche suivante"
-
-#~ msgid "Click this button to find next search result."
-#~ msgstr ""
-#~ "Cliquer sur ce bouton pour trouver les résultats de la recherche suivante."
-
-#~ msgid ""
-#~ "Click this button to find current topic in the content window, and open "
-#~ "it."
-#~ msgstr ""
-#~ "Cliquer sur ce bouton pour trouver le sujet actuel dans le contenu de la "
-#~ "fenêtre et l'ouvrir."
-
-#~ msgid "Click this button to increase the font size."
-#~ msgstr ""
-#~ "Cliquer sur ce bouton pour augmenter la taille de la police de caractères."
-
-#~ msgid "Click this button to decrease the font size."
-#~ msgstr ""
-#~ "Cliquer sur ce bouton pour diminuer la taille de la police de caractères."
-
-#~ msgid ""
-#~ "Click this button to open a separate window with the page HTML source."
-#~ msgstr ""
-#~ "Cliquer sur ce bouton pour ouvrir une nouvelle fenêtre contenant le code "
-#~ "source HTML de la page."
-
-#~ msgid "Add to bookmarks"
-#~ msgstr "Ajouter aux marque-pages"
-
-#~ msgid "Click this button to add the current page to the bookmarks list."
-#~ msgstr "Cliquer sur ce bouton pour ajouter un marque-page."
-
-#~ msgid "&Increase font"
-#~ msgstr "&Augmenter la taille de la police"
-
-#~ msgid "&Decrease font"
-#~ msgstr "&Diminuer la taille de la police"
-
-#~ msgid "&Set language"
-#~ msgstr "Définir le &Langage"
-
-#~ msgid "How to use search"
-#~ msgstr "Comment effectuer une recherche"
-
-#~ msgid ""
-#~ "The search query can contain a few prefixes.\n"
-#~ "A set of words inside the quote marks mean that you are searching for "
-#~ "exact phrase.\n"
-#~ "A word with minus sign means that it should be absent in the search "
-#~ "result.\n"
-#~ "A word with plus mark or without any mark means that it must be present "
-#~ "in the search result.\n"
-#~ "\n"
-#~ "Note that only letters and digits are indexed.\n"
-#~ "You cannot search for non-character symbols other than underscope, and "
-#~ "those symbols will be removed from the search query.\n"
-#~ "For example, search for 'C' will give the same result as searching for 'C+"
-#~ "+'."
-#~ msgstr ""
-#~ "L'interrogation peut contenir quelques préfixes.\n"
-#~ "Un ensemble de mots entre côtes signifie que l'on recherche une phrase "
-#~ "exacte.\n"
-#~ "Un mot précédé du signe moins (-) indique que ce mot doit être absent du "
-#~ "résultat.\n"
-#~ "Un mot précédé du signe plus (+) ou précédé d'aucun signe indique qu'il "
-#~ "doit être présent dans le résultat.\n"
-#~ "\n"
-#~ "Seuls les chiffres et les lettres sont indexés pour la recherche.\n"
-#~ "Il est impossible de rechercher d'autres caractères que les chiffres, les "
-#~ "lettres et le souligné (_).  Les autres caractères seront exclus de la "
-#~ "recherche.\n"
-#~ "Par exemple, une recherche sur 'C' donnera les mêmes résultats qu'une "
-#~ "recherche sur 'C++'."
-
-#~ msgid "Printing (page %1)..."
-#~ msgstr "Impression (page %1)..."
-
-#~ msgid "Printing completed"
-#~ msgstr "Impression terminée"
-
-#~ msgid "%1 - could not print"
-#~ msgstr "%1 - impossible d'imprimer"
-
-#~ msgid ""
-#~ "Could not print.\n"
-#~ "Your Qt library has been compiled without printing support"
-#~ msgstr ""
-#~ "Impossible d'imprimer.\n"
-#~ "La librairie Qt de votre système a été compilée sans la capacité à "
-#~ "imprimer"
-
-#~ msgid "Match similar words"
-#~ msgstr "Ressemble aux mots "
-
-#~ msgid "Shift+Enter"
-#~ msgstr "Majuscule+Entrée"
+#~ msgid "Your names"
+#~ msgstr "Georgy Yunaev"

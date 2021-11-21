@@ -33,7 +33,7 @@ cd `dirname $0`
 
 # The languages.txt file contains a list of locales.
 read LANGUAGES < languages.txt
-CAT_NAME=kchmviewer
+CAT_NAME=uchmviewer
 POT_FILE=${CAT_NAME}.pot
 TS_FILE=tmp.ts
 POT_TMP=tmp.pot
@@ -58,7 +58,7 @@ for LANG in ${LANGUAGES}; do
 	if [ -e  ${CAT} ]
 	then
 		echo Update ${CAT}
-		msgmerge -v --lang=${LANG} --update ${CAT} ${POT_FILE} # -o ${CAT}
+		msgmerge -v -o ${CAT} ${CAT} ${POT_FILE}
 	else
 		msginit --no-translator --locale=${LANG} -o ${CAT} -i ${POT_FILE}
 	fi

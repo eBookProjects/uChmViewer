@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kchmviewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 19:05+0300\n"
+"POT-Creation-Date: 2021-11-21 11:32+0300\n"
 "PO-Revision-Date: 2007-09-09 23:11+0100\n"
 "Last-Translator: Emilio Scalise <emisca(at)email.it>\n"
 "Language-Team: <kde-i18n-doc@lists.kde.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1117
-msgid "About kchmviewer"
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1115
+msgid "About uChmViewer"
 msgstr ""
 
 #: ../src/dialog_about.ui:24
@@ -73,7 +73,7 @@ msgstr ""
 
 #: ../src/dialog_about.ui:89
 msgid ""
-"<html><head/><body><p>kchmviewer uses the following 3rd party software:</"
+"<html><head/><body><p>uChmViewer uses the following 3rd party software:</"
 "p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
 "right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-"
 "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
@@ -362,7 +362,7 @@ msgid "Please select the topic to open:"
 msgstr "Per favore scegli uno degli argomenti seguenti:"
 
 #: ../src/mainwindow.ui:14 ../src/main.cpp:49
-msgid "kchmviewer"
+msgid "uChmViewer"
 msgstr ""
 
 #: ../src/mainwindow.ui:28
@@ -781,7 +781,7 @@ msgid "Ctrl+W"
 msgstr ""
 
 #: ../src/mainwindow.ui:572
-msgid "About kchmviewer..."
+msgid "About uChmViewer..."
 msgstr ""
 
 #: ../src/mainwindow.ui:577
@@ -918,82 +918,80 @@ msgstr ""
 #: ../src/mainwindow.cpp:1108
 #, qt-format
 msgid ""
-"<html><b>kchmviewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
-"2004-2015<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
-"a><br><a href=\"http://www.ulduzsoft.com/kchmviewer\">http://www.ulduzsoft."
-"com/kchmviewer</a><br><br>Licensed under GNU GPL license version 3.</html>"
+"<html><b>uChmViewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2015<br><br>Licensed under GNU GPL license version 3.</html>"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1212
+#: ../src/mainwindow.cpp:1210
 msgid "Ctrl+1"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1218
+#: ../src/mainwindow.cpp:1216
 msgid "Ctrl+2"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1224
+#: ../src/mainwindow.cpp:1222
 msgid "Ctrl+3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1230
+#: ../src/mainwindow.cpp:1228
 msgid "Ctrl+4"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1237
+#: ../src/mainwindow.cpp:1235
 msgid "/"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1244
+#: ../src/mainwindow.cpp:1242
 msgid "F3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1264
+#: ../src/mainwindow.cpp:1262
 msgid "Ctrl+Right"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1271
+#: ../src/mainwindow.cpp:1269
 msgid "Ctrl+Left"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1278
+#: ../src/mainwindow.cpp:1276
 msgid "Ctrl+I"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/mainwindow.cpp:1285 ../src/qtwebengine/viewwindow.cpp:116
 #: ../src/qtwebkit/viewwindow.cpp:129
 msgid "&Open this link in a new tab"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/mainwindow.cpp:1290 ../src/qtwebengine/viewwindow.cpp:117
 #: ../src/qtwebkit/viewwindow.cpp:131
 msgid "&Open this link in a new background tab"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1362
+#: ../src/mainwindow.cpp:1360
 #, qt-format
 msgid "%1 ( %2 )"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1464
+#: ../src/mainwindow.cpp:1462
 msgid "Unable to check whether a new version is available"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1477
+#: ../src/mainwindow.cpp:1475
 #, fuzzy
 msgid "New version available"
 msgstr "La ricerca non è disponibile"
 
-#: ../src/mainwindow.cpp:1478
+#: ../src/mainwindow.cpp:1476
 #, qt-format
 msgid ""
-"<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>You are "
+"<html>A new version <b>%1</b> of uChmViewer is available!<br><br>You are "
 "currently using version %3.<br>Do you want to visit the application web site "
 "%2?"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1491
-msgid "Checked for updates; you are using the latest version of kchmviewer"
+#: ../src/mainwindow.cpp:1489
+msgid "Checked for updates; you are using the latest version of uChmViewer"
 msgstr ""
 
 #: ../src/navigationpanel.cpp:40
@@ -1217,11 +1215,7 @@ msgid "CHM file viewer"
 msgstr "visualizzatore di file CHM"
 
 #: ../src/main.cpp:53
-msgid "(c) 2004-2015 George Yunaev, gyunaev@ulduzsoft.com"
-msgstr ""
-
-#: ../src/main.cpp:54
-msgid "Please report bugs to kchmviewer@ulduzsoft.com"
+msgid "(c) 2004-2015 George Yunaev"
 msgstr ""
 
 #~ msgid "%1 - JavsScript link clicked"

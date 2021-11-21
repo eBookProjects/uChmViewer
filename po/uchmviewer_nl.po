@@ -1,32 +1,36 @@
-# Swedish translation for kchmviewer.
-# This file is put in the public domain.
-# Daniel Nylander <po@danielnylander.se>, 2008.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 #
+# Sander Pientka <cumulus0007@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: kchmviewer 4.0 beta2\n"
+"Project-Id-Version: kchmviewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 19:05+0300\n"
-"PO-Revision-Date: 2008-09-16 22:18+0100\n"
-"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
-"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
-"Language: sv\n"
+"POT-Creation-Date: 2021-11-21 11:32+0300\n"
+"PO-Revision-Date: 2009-02-01 16:35+0100\n"
+"Last-Translator: Sander Pientka <cumulus0007@gmail.com>\n"
+"Language-Team: Dutch <kde-i18n-doc@lists.kde.org>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1117
-msgid "About kchmviewer"
-msgstr ""
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1115
+#, fuzzy
+msgid "About uChmViewer"
+msgstr "KchmViewer"
 
 #: ../src/dialog_about.ui:24
+#, fuzzy
 msgid "About appplication"
-msgstr ""
+msgstr "Sluit het programma af."
 
 #: ../src/dialog_about.ui:46
 #, fuzzy
 msgid "About text"
-msgstr "Om &Qt"
+msgstr "Over &Qt"
 
 #: ../src/dialog_about.ui:57
 msgid "Thanks"
@@ -73,7 +77,7 @@ msgstr ""
 
 #: ../src/dialog_about.ui:89
 msgid ""
-"<html><head/><body><p>kchmviewer uses the following 3rd party software:</"
+"<html><head/><body><p>uChmViewer uses the following 3rd party software:</"
 "p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
 "right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-"
 "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
@@ -90,11 +94,11 @@ msgstr ""
 
 #: ../src/dialog_setup.ui:20
 msgid "KchmViewer settings"
-msgstr "Inställningar för KchmViewer"
+msgstr "Instellingen voor KchmViewer "
 
 #: ../src/dialog_setup.ui:42
 msgid "General behavior"
-msgstr "Allmänt beteende"
+msgstr "Algemeen gedrag"
 
 #: ../src/dialog_setup.ui:62
 msgid "If started with no arguments"
@@ -107,89 +111,89 @@ msgstr ""
 #: ../src/dialog_setup.ui:81
 #, fuzzy
 msgid "Pop up the \"open file\" dialog"
-msgstr "Öppna dialogrutan \"Öppna CHM-fil\""
+msgstr "Open vensterdialoog 'CHM-bestand openen'"
 
 #: ../src/dialog_setup.ui:88
 msgid "Open the &last used CHM file, if exist"
-msgstr "Öppna s&enaste använda CHM-fil, om den finns"
+msgstr "Open het &laatst geopende CHM-bestand, wanneer aanwezig"
 
 #: ../src/dialog_setup.ui:91
-#, fuzzy
 msgid "Alt+L"
-msgstr "Alt+O"
+msgstr "Alt+L"
 
 #: ../src/dialog_setup.ui:101
 msgid "History"
-msgstr "Historik"
+msgstr "Geschiedenis"
 
 #: ../src/dialog_setup.ui:121
 msgid "Store history information for"
-msgstr "Lagra historikinformation för"
+msgstr "Bewaar geschiedenis voor"
 
 #: ../src/dialog_setup.ui:141
 msgid "latest files"
-msgstr "senast filer"
+msgstr "laatste bestanden"
 
 #: ../src/dialog_setup.ui:153
 msgid ""
 "Remembers the information about the files, which were opened. Remembers last "
 "opened page, search history, font size, bookmarks and so on."
 msgstr ""
-"Kommer ihåg informationen om filerna, vilka som öppnades. Kommer ihåg "
-"senaste öppnade sida, sökhistorik, typsnittsstorlek, bokmärken och så vidare."
+"Bewaart informatie over geopende bestanden. Bewaart laatst geopende pagina, "
+"zoekgeschiedenis, lettergrootte, bladwijzers, enzovoorts."
 
 #: ../src/dialog_setup.ui:156
 msgid "R&emember extra information for history files"
-msgstr "K&om ihåg extra information för historikfiler"
+msgstr "&Onthoud extra informatie voor geschiedenis"
 
 #: ../src/dialog_setup.ui:159
 msgid "Alt+E"
-msgstr "Alt+O"
+msgstr "Alt+E"
 
 #: ../src/dialog_setup.ui:171
 msgid "CHM security settings"
-msgstr "CHM-säkerhetsinställningar"
+msgstr "CHM-veiligheidsinstellingen"
 
 #: ../src/dialog_setup.ui:183
 msgid "When external link clicked"
-msgstr "När en extern länk klickas på"
+msgstr "Wanneer extrne koppeling geopend"
 
 #: ../src/dialog_setup.ui:195
 msgid "Alwa&ys open it in external browser"
-msgstr "Öppna alltid den i e&xtern webbläsare"
+msgstr "&Altijd in externe browser openen"
 
 #: ../src/dialog_setup.ui:198
 msgid "Alt+Y"
-msgstr "Alt+X"
+msgstr "Alt+Y"
 
 #: ../src/dialog_setup.ui:205 ../src/dialog_setup.ui:244
 msgid "Ask for confirmation"
-msgstr "Fråga efter bekräftelse"
+msgstr "Voor bevestiging vragen"
 
 #: ../src/dialog_setup.ui:212
 msgid "Do not open the link"
-msgstr "Öppna inte länken"
+msgstr "Koppeling niet openen"
 
 #: ../src/dialog_setup.ui:225
 msgid "When link pointed to a new CHM file clicked"
-msgstr "När en länk som pekar till en ny CHM-fil klickas på"
+msgstr "Wanneer koppeling naar een nieuw CHM-bestand aangeklikt"
 
 #: ../src/dialog_setup.ui:237
 msgid "Always open a new CHM file"
-msgstr "Öppna alltid en ny CHM-fil"
+msgstr "Nieuw CHM-bestand altijd openen"
 
 #: ../src/dialog_setup.ui:251
 msgid "Do not open a new CHM file"
-msgstr "Öppna inte en ny CHM-fil"
+msgstr "Nieuw CHM-bestand niet openen"
 
 #: ../src/dialog_setup.ui:278
+#, fuzzy
 msgid "Browser"
-msgstr ""
+msgstr "&Bladeren"
 
 #: ../src/dialog_setup.ui:290
 #, fuzzy
 msgid "HTML browser settings"
-msgstr "CHM-säkerhetsinställningar"
+msgstr "CHM-veiligheidsinstellingen"
 
 #: ../src/dialog_setup.ui:296
 msgid "Load the &images"
@@ -201,11 +205,11 @@ msgstr ""
 
 #: ../src/dialog_setup.ui:306
 msgid "Alt+P"
-msgstr "Alt+T"
+msgstr "Alt+P"
 
 #: ../src/dialog_setup.ui:313
 msgid "Enable &Java"
-msgstr "Aktivera &Java"
+msgstr "&Java inschakelen"
 
 #: ../src/dialog_setup.ui:316
 msgid "Alt+J"
@@ -213,7 +217,7 @@ msgstr "Alt+J"
 
 #: ../src/dialog_setup.ui:323
 msgid "Enable Java&Script"
-msgstr "Aktivera Java&Script"
+msgstr "Java&Script inschakelen"
 
 #: ../src/dialog_setup.ui:326
 msgid "Alt+S"
@@ -225,7 +229,7 @@ msgstr ""
 
 #: ../src/dialog_setup.ui:336
 msgid "Alt+R"
-msgstr "Alt+U"
+msgstr "Alt+R"
 
 #: ../src/dialog_setup.ui:343
 msgid "Enable &local storage (HTML5)"
@@ -251,19 +255,19 @@ msgstr ""
 
 #: ../src/dialog_setup.ui:397
 msgid "Advanced"
-msgstr "Avancerat"
+msgstr "Geavanceerd"
 
 #: ../src/dialog_setup.ui:403
 msgid "View HTML source command uses"
-msgstr "Visa användning av HTML-källkommandon"
+msgstr "Mogelijkheid om HTML-broncode te weergeven, gebruikt"
 
 #: ../src/dialog_setup.ui:415
 msgid "Built-in HTML source viewer"
-msgstr "Inbyggd HTML-källvisare"
+msgstr "Ingebouwde HTML-broncodeweergave"
 
 #: ../src/dialog_setup.ui:425
 msgid "E&xternal program, specified below"
-msgstr "E&xterna program, ange nedan"
+msgstr "E&xtern programma, hieronder opgegeven"
 
 #: ../src/dialog_setup.ui:428
 msgid "Alt+X"
@@ -271,25 +275,28 @@ msgstr "Alt+X"
 
 #: ../src/dialog_setup.ui:443
 msgid "External program:"
-msgstr "Externa program:"
+msgstr "Extern programma:"
 
 #: ../src/dialog_setup.ui:456
 msgid "&Browse"
-msgstr ""
+msgstr "&Bladeren"
 
 #: ../src/dialog_setup.ui:468
 msgid "Other"
-msgstr ""
+msgstr "Overig"
 
 #: ../src/dialog_setup.ui:474
+#, fuzzy
 msgid "Use right-to-left layout direction (Arabic and Hebrew layouts)"
 msgstr ""
+"Gebruik recht-naar-links tekstvolgorde (Arabische en Hebreeuwse opmaak)"
 
 #: ../src/dialog_setup.ui:481
+#, fuzzy
 msgid ""
 "Automatically detect encoding for KHTMLPart and WebKit browsers (not "
 "recommended)"
-msgstr ""
+msgstr "Decodering voor KHTMLPart- en WebKitbrowsers automatisch detecteren"
 
 #: ../src/dialog_setup.ui:488
 msgid ""
@@ -307,7 +314,7 @@ msgstr ""
 #: ../src/dialog_setup.ui:501
 #, fuzzy
 msgid "Toolbars"
-msgstr "Allmänt beteende"
+msgstr "actiewerkbalk"
 
 #: ../src/dialog_setup.ui:507
 msgid "Small icons"
@@ -324,301 +331,289 @@ msgstr ""
 #: ../src/dialog_setup.ui:528
 #, fuzzy
 msgid "Just text"
-msgstr "Om &Qt"
+msgstr "Over &Qt"
 
 #: ../src/dialog_setup.cpp:209
-#, fuzzy
 msgid ""
 "Changing those options requires restarting the application to take effect."
 msgstr ""
-"Ändring av visningsalternativ för webbläsare eller användning\n"
-"av sökmotor kräver att programmet startas om."
+"Een wijziging van deze opties wordt pas actief, nadat het programma is "
+"herstart."
 
 #: ../src/dialog_setup.cpp:218
 msgid "*|Executables"
-msgstr ""
+msgstr "*|Uitvoerbare bestanden"
 
 #: ../src/dialog_setup.cpp:218 ../src/dialog_setup.cpp:221
 msgid "Choose an editor executable"
-msgstr ""
+msgstr "Kies een uitvoerbaar bestand van een editor"
 
 #: ../src/dialog_setup.cpp:223
 msgid "Executables (*)"
-msgstr ""
+msgstr "Uitvoerbare bestanden (*)"
 
 #: ../src/dialog_topicselector.ui:13
 msgid "Multiple topics"
-msgstr ""
+msgstr "Meerdere onderwerpen"
 
 #: ../src/dialog_topicselector.ui:25
-#, fuzzy
 msgid "Please select the topic to open:"
-msgstr "Välj en av nedanstående ämnen:"
+msgstr "Kies een te openen onderwerp:"
 
 #: ../src/mainwindow.ui:14 ../src/main.cpp:49
-msgid "kchmviewer"
-msgstr ""
+#, fuzzy
+msgid "uChmViewer"
+msgstr "KchmViewer"
 
 #: ../src/mainwindow.ui:28
 msgid "&Settings"
-msgstr ""
+msgstr "&Instellingen"
 
 #: ../src/mainwindow.ui:37
-#, fuzzy
 msgid "&Bookmarks"
-msgstr "&Bokmärk denna sida"
+msgstr "&Bladwijzers"
 
 #: ../src/mainwindow.ui:44
-#, fuzzy
 msgid "&File"
-msgstr "Titel"
+msgstr "B&estand"
 
 #: ../src/mainwindow.ui:55
 msgid "&Edit"
-msgstr ""
+msgstr "Be&werken"
 
 #: ../src/mainwindow.ui:64
 msgid "&View"
-msgstr ""
+msgstr "&Beeld"
 
 #: ../src/mainwindow.ui:78
-#, fuzzy
 msgid "&Windows"
-msgstr "&Fönster"
+msgstr "&Vensters"
 
 #: ../src/mainwindow.ui:85
 #, fuzzy
 msgid "Help"
-msgstr "&Ta bort"
+msgstr "&Help"
 
 #: ../src/mainwindow.ui:100
 #, fuzzy
 msgid "General toolbar"
-msgstr "Allmänt beteende"
+msgstr "hoofdwerkbalk"
 
 #: ../src/mainwindow.ui:125
 #, fuzzy
 msgid "Navigation toolbar"
-msgstr "Navigering"
+msgstr "navigatiewerkbalk"
 
 #: ../src/mainwindow.ui:151
 #, fuzzy
 msgid "View toolbar"
-msgstr "Allmänt beteende"
+msgstr "actiewerkbalk"
 
 #: ../src/mainwindow.ui:186
-#, fuzzy
 msgid "&Print..."
-msgstr "Skriv ut fil"
+msgstr "&Afdrukken..."
 
 #: ../src/mainwindow.ui:189
-#, fuzzy
 msgid "Print"
-msgstr "Skriv ut fil"
+msgstr "Afdrukken"
 
 #: ../src/mainwindow.ui:192
 msgid "Print current page"
-msgstr ""
+msgstr "Huidige pagina afdrukken"
 
 #: ../src/mainwindow.ui:195
 msgid "Prints currently opened page."
-msgstr ""
+msgstr "Drukt de momenteel geopnde pagina af."
 
 #: ../src/mainwindow.ui:198
 msgid "Ctrl+P"
-msgstr ""
+msgstr "Ctrl+P"
 
 #: ../src/mainwindow.ui:207
 msgid "&Quit"
-msgstr ""
+msgstr "A&fsluiten"
 
 #: ../src/mainwindow.ui:210
 msgid "Exit"
-msgstr ""
+msgstr "Afsluiten"
 
 #: ../src/mainwindow.ui:213
-#, fuzzy
 msgid "Exits the application"
-msgstr "&Ändra inställningar..."
+msgstr "Sluit het programma af."
 
 #: ../src/mainwindow.ui:216
 msgid "Ctrl+Q"
-msgstr ""
+msgstr "Ctrl+Q"
 
 #: ../src/mainwindow.ui:225
 msgid "C&opy"
-msgstr ""
+msgstr "K&opiren"
 
 #: ../src/mainwindow.ui:228
 msgid "Copy"
-msgstr ""
+msgstr "Kopiëren"
 
 #: ../src/mainwindow.ui:231
 msgid "Copies selected content to clipboard"
-msgstr ""
+msgstr "Kopieert geselecteerde inhoud naar het klembord"
 
 #: ../src/mainwindow.ui:234
 msgid "Ctrl+C"
-msgstr ""
+msgstr "Ctrl+C"
 
 #: ../src/mainwindow.ui:243
-#, fuzzy
 msgid "&Select All"
-msgstr "&Markera allt"
+msgstr "&Alles selecteren"
 
 #: ../src/mainwindow.ui:246
 msgid "Paste"
-msgstr ""
+msgstr "Plakken"
 
 #: ../src/mainwindow.ui:249
 msgid "Selects everything in the document"
-msgstr ""
+msgstr "Selecteert alle inhoud van het document"
 
 #: ../src/mainwindow.ui:252
 msgid "Ctrl+V"
-msgstr ""
+msgstr "Ctrl+V"
 
 #: ../src/mainwindow.ui:261
 msgid "&Find..."
-msgstr ""
+msgstr "&Zoeken..."
 
 #: ../src/mainwindow.ui:264
 msgid "Find text in currently opened page"
-msgstr ""
+msgstr "Tekst zoeken in de momenteel geopende pagina"
 
 #: ../src/mainwindow.ui:267
 msgid "Enters the Find in page mode"
-msgstr ""
+msgstr "Schakelt de 'In pagina zoeken'-modus in"
 
 #: ../src/mainwindow.ui:270
 msgid "Ctrl+F"
-msgstr ""
+msgstr "Ctrl+F"
 
 #: ../src/mainwindow.ui:279
 msgid "E&xtract CHM content..."
-msgstr "E&xtrahera CHM-innehåll..."
+msgstr "CHM-inhoud &uitpakken..."
 
 #: ../src/mainwindow.ui:282
-#, fuzzy
 msgid "Extract the CHM content to the directory"
-msgstr "Extrahering av CHM-innehåll"
+msgstr "Pakt de CHM-inhoud uit naar een map"
 
 #: ../src/mainwindow.ui:285
-#, fuzzy
 msgid ""
 "Exctracts the CHM archive content to the specified directory. All the files "
 "are extracted."
-msgstr "Extrahering av CHM-innehåll"
+msgstr ""
+"Pakt de CHM-archiefinhoud uit naar een map. Alle bestanden worden uitgepakt."
 
 #: ../src/mainwindow.ui:294
-#, fuzzy
 msgid "&Application settings..."
-msgstr "&Ändra inställningar..."
+msgstr "&Programmainstellingen..."
 
 #: ../src/mainwindow.ui:297 ../src/mainwindow.ui:300
-#, fuzzy
 msgid "Change the application settings"
-msgstr "&Ändra inställningar..."
+msgstr "De programmainstellingen wijzigen"
 
 #: ../src/mainwindow.ui:309
 msgid "&Add bookmark"
-msgstr "&Lägg till bokmärke"
+msgstr "&Bladwijzer toevoegen"
 
 #: ../src/mainwindow.ui:312
 #, fuzzy
 msgid "Bookmark"
-msgstr "&Bokmärk denna sida"
+msgstr "Bladwijzers"
 
 #: ../src/mainwindow.ui:315
 msgid "Adds a bookmark for currently opened page"
-msgstr ""
+msgstr "Voegt een bladwijzer voor de momenteel geopende pagina toe"
 
 #: ../src/mainwindow.ui:318
 msgid ""
 "Adds a bookmark for currently opened page. Remembers the opened page, and "
 "scroll position. Bookmarks are accessible through Bookmarks menu or tab."
 msgstr ""
+"Voegt een bladwijzer voor de momenteel geopende pagina toe. Onthoudt de "
+"geopende pagina en scrollpositie. Bladwijzers zijn beschikbaar via het "
+"Bladwijzers-menu of -tabblad."
 
 #: ../src/mainwindow.ui:321
 msgid "Ctrl+B"
-msgstr ""
+msgstr "Ctrl+B"
 
 #: ../src/mainwindow.ui:330
-#, fuzzy
 msgid "&Increase font size"
-msgstr "Öka typsnittsstorleken"
+msgstr "Lettergrootte ver&groten"
 
 #: ../src/mainwindow.ui:333
 msgid "Larger"
 msgstr ""
 
 #: ../src/mainwindow.ui:336
-#, fuzzy
 msgid "Increase the font size"
-msgstr "Öka typsnittsstorleken"
+msgstr "Vergroot de lettergrootte"
 
 #: ../src/mainwindow.ui:339
 msgid "Increases the document font size. The new font size will be stored."
 msgstr ""
+"Vergroot de lettergrootte van het document. De nieuwe lettergrootte wordt "
+"opgeslagen."
 
 #: ../src/mainwindow.ui:342
+#, fuzzy
 msgid "Ctrl+="
-msgstr ""
+msgstr "Ctrl+"
 
 #: ../src/mainwindow.ui:351
-#, fuzzy
 msgid "&Decrease font size"
-msgstr "Minska typsnittsstorleken"
+msgstr "Lettergrootte ver&kleinen"
 
 #: ../src/mainwindow.ui:354
 msgid "Smaller"
 msgstr ""
 
 #: ../src/mainwindow.ui:357
-#, fuzzy
 msgid "Decrease the font size"
-msgstr "Minska typsnittsstorleken"
+msgstr "Verkleint de lettergrootte"
 
 #: ../src/mainwindow.ui:360
 msgid "Decreases the document font size. The new font size will be stored."
 msgstr ""
+"Verkleint de lettergrootte van het document. De nieuwe lettergrootte wordt "
+"opgeslagen."
 
 #: ../src/mainwindow.ui:363
 msgid "Ctrl+-"
-msgstr ""
+msgstr "Ctrl+-"
 
 #: ../src/mainwindow.ui:372
 msgid "See &HTML"
 msgstr ""
 
 #: ../src/mainwindow.ui:375
-#, fuzzy
 msgid "View HTML source of current page"
-msgstr "Visa användning av HTML-källkommandon"
+msgstr "Weergeef de HTML-bron van de huidige pagina"
 
 #: ../src/mainwindow.ui:378
-#, fuzzy
 msgid "Shows the HTML source of currently opened page"
-msgstr "Visa användning av HTML-källkommandon"
+msgstr "Weergeeft de HTML-bron van de momenteel geopende pagina"
 
 #: ../src/mainwindow.ui:381
 msgid "Ctrl+U"
-msgstr ""
+msgstr "Ctrl+U"
 
 #: ../src/mainwindow.ui:393
-#, fuzzy
 msgid "Enable &full screen mode"
-msgstr "&Helskärm"
+msgstr "Volledig &scherm inschakelen"
 
 #: ../src/mainwindow.ui:396
-#, fuzzy
 msgid "Enters or leaves the fullscreen mode"
-msgstr "&Helskärm"
+msgstr "Schakelt volledig scherm in of uit"
 
 #: ../src/mainwindow.ui:399
-#, fuzzy
 msgid "F11"
-msgstr "F1"
+msgstr "F11"
 
 #: ../src/mainwindow.ui:417
 msgid "Show &navigator window"
@@ -633,161 +628,147 @@ msgid ""
 "Shows or hides the size window (with Content, Index, Search and Bookmark "
 "tabs)"
 msgstr ""
+"Weergeeft of verbergt zijvenster (met de tabs Inhoudsopgave, Index, Zoeken "
+"en Bladwijzers)"
 
 #: ../src/mainwindow.ui:426
 msgid "F9"
-msgstr ""
+msgstr "F9"
 
 #: ../src/mainwindow.ui:438
 #, fuzzy
 msgid "&Locate"
-msgstr "Plats"
+msgstr "Locatie"
 
 #: ../src/mainwindow.ui:441
-#, fuzzy
 msgid "Locate the current page in contents window"
-msgstr "Hitta detta ämne i innehållsfönstret"
+msgstr "Zoek de momenteel geopende pagina op in de inhoudsopgave"
 
 #: ../src/mainwindow.ui:444
-#, fuzzy
 msgid ""
 "If the current page is present in the Table of Contents, locate it there. "
 msgstr ""
-"Klicka på denna knapp för att gå till nästa sida i innehållsförteckningen."
+"Als de momenteel geopende pagina aanwezig is in de inhoudsopgave, zoek hem "
+"dan daar op."
 
 #: ../src/mainwindow.ui:447
+#, fuzzy
 msgid "Ctrl+L"
-msgstr ""
+msgstr "Ctrl+"
 
 #: ../src/mainwindow.ui:456
-#, fuzzy
 msgid "Set &encoding"
-msgstr "An&ge codepage"
+msgstr "De&codering instellen"
 
 #: ../src/mainwindow.ui:459
 msgid "Changes the current document encoding. "
-msgstr ""
+msgstr "Wijzigt de huidige documentdecodering"
 
 #: ../src/mainwindow.ui:468
 msgid "&Open..."
-msgstr ""
+msgstr "&Openen..."
 
 #: ../src/mainwindow.ui:471
-#, fuzzy
 msgid "Open a CHM file"
-msgstr "Öppna fil"
+msgstr "Een CHM-bestand openen"
 
 #: ../src/mainwindow.ui:474
-#, fuzzy
 msgid "Opens a new CHM file"
-msgstr "Öppna alltid en ny CHM-fil"
+msgstr "Opent een nieuw CHM-bestand"
 
 #: ../src/mainwindow.ui:483
 msgid "Back"
-msgstr ""
+msgstr "Terug"
 
 #: ../src/mainwindow.ui:486
-#, fuzzy
 msgid "Navigate back"
-msgstr "Navigering"
+msgstr "Terug bladeren"
 
 #: ../src/mainwindow.ui:489
-#, fuzzy
 msgid "Navigate back in navigation history"
-msgstr "Flytta bakåt i historiken"
+msgstr "Blader terug in de bladergeschiedenis"
 
 #: ../src/mainwindow.ui:498
 msgid "Forward"
-msgstr ""
+msgstr "Vooruit"
 
 #: ../src/mainwindow.ui:501
-#, fuzzy
 msgid "Navigate forward"
-msgstr "Navigering"
+msgstr "Vooruit bladeren"
 
 #: ../src/mainwindow.ui:504
-#, fuzzy
 msgid "Navigate forward in navigation history"
-msgstr "Flytta framåt i historiken"
+msgstr "Blader vooruit in de bladergeschiedenis"
 
 #: ../src/mainwindow.ui:513
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: ../src/mainwindow.ui:516
-#, fuzzy
 msgid "Navigate home"
-msgstr "Navigering"
+msgstr "Ga naar de homepage"
 
 #: ../src/mainwindow.ui:519
 msgid "Navigate to the document Home page, as specified in the document."
-msgstr ""
+msgstr "ga naar de homepage, die opgegeven is in het document."
 
 #: ../src/mainwindow.ui:528 ../src/window_browser.ui:90
 msgid "Previous"
-msgstr ""
+msgstr "Vorige"
 
 #: ../src/mainwindow.ui:531
-#, fuzzy
 msgid "Go to the previous page in the Table of Contents"
-msgstr ""
-"Klicka på denna knapp för att gå till föregående sida i "
-"innehållsförteckningen."
+msgstr "Ga naar de vorige pagina van de Inhoudsopgave"
 
 #: ../src/mainwindow.ui:534
-#, fuzzy
 msgid ""
 "Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
 "Ctrl+Left Arrow</i>"
 msgstr ""
-"Klicka på denna knapp för att gå till föregående sida i "
-"innehållsförteckningen."
+"Ga naar de vorige pagina in de <b>Inhoudsopgave</b><br><br><i>Sneltoets: Ctrl"
+"+Linker pijltoets</i>"
 
 #: ../src/mainwindow.ui:543 ../src/window_browser.ui:113
 msgid "Next"
-msgstr ""
+msgstr "Volgende"
 
 #: ../src/mainwindow.ui:546
-#, fuzzy
 msgid "Go to the next page in the Table of Contents"
-msgstr ""
-"Klicka på denna knapp för att gå till nästa sida i innehållsförteckningen."
+msgstr "Ga naar de vorige pagina van de Inhoudsopgave"
 
 #: ../src/mainwindow.ui:549
-#, fuzzy
 msgid ""
 "Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: Ctrl"
 "+Right Arrow</i>"
 msgstr ""
-"Klicka på denna knapp för att gå till nästa sida i innehållsförteckningen."
+"Ga naar de volgende pagina in de <b>Inhoudsopgave</b><br><br><i>Sneltoets: "
+"Ctrl+Rechter pijltoets</i>"
 
 #: ../src/mainwindow.ui:558
-#, fuzzy
 msgid "&Close window"
-msgstr "&Fönster"
+msgstr "Venster &sluiten"
 
 #: ../src/mainwindow.ui:561
-#, fuzzy
 msgid "Close current window"
-msgstr "&Visa innehållsfönstret"
+msgstr "Sluit het huidige venster"
 
 #: ../src/mainwindow.ui:564
-#, fuzzy
 msgid "Closes currently opened window"
-msgstr "&Visa innehållsfönstret"
+msgstr "Sluit het momenteel geopende venster"
 
 #: ../src/mainwindow.ui:567
 msgid "Ctrl+W"
-msgstr ""
+msgstr "Ctrl+W"
 
 #: ../src/mainwindow.ui:572
-msgid "About kchmviewer..."
-msgstr ""
+#, fuzzy
+msgid "About uChmViewer..."
+msgstr "KchmViewer"
 
 #: ../src/mainwindow.ui:577
 #, fuzzy
 msgid "About Qt"
-msgstr "Om &Qt"
+msgstr "Over &Qt"
 
 #: ../src/mainwindow.ui:586
 msgid "Check for updates"
@@ -796,7 +777,7 @@ msgstr ""
 #: ../src/mainwindow.ui:595
 #, fuzzy
 msgid "Edit toolbars..."
-msgstr "Navigering"
+msgstr "actiewerkbalk"
 
 #: ../src/mainwindow.cpp:199
 msgid "Shared memory segment failed"
@@ -810,27 +791,27 @@ msgstr ""
 #: ../src/mainwindow.cpp:276
 #, qt-format
 msgid "Detected file encoding: %1 ( %2 )"
-msgstr ""
+msgstr "Gevonden bestandsdecodering: %1 ( %2 )"
 
 #: ../src/mainwindow.cpp:346
 #, qt-format
 msgid "%1 - failed to load the chm file"
-msgstr "%1 - misslyckades med att läsa in chm-filen"
+msgstr "%1 - chm-bestand laden mislukt"
 
 #: ../src/mainwindow.cpp:347
 #, qt-format
 msgid "Unable to load the chm file %1"
-msgstr "Kunde inte läsa in chm-filen %1"
+msgstr "Kan het chm-bestand %1 niet laden"
 
 #: ../src/mainwindow.cpp:355
 #, qt-format
 msgid "Could not load file %1"
-msgstr "Kunde inte läsa in filen %1"
+msgstr "Kon het bestand %1 niet laden"
 
 #: ../src/mainwindow.cpp:413
 #, qt-format
 msgid "%1 - remote link clicked - %2"
-msgstr "%1 - fjärrlänk klickad på - %2"
+msgstr "%1 - externe koppeling geopend - %2"
 
 #: ../src/mainwindow.cpp:414
 #, qt-format
@@ -839,9 +820,9 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
-"En fjärrlänk %1 kommer att öppnas i det externa programmet.\n"
+"De externe koppeling %1 wordt in het betreffende programma geopend.\n"
 "\n"
-"Vill du fortsätta?"
+"Wilt u doorgaan?"
 
 #: ../src/mainwindow.cpp:415
 msgid "&Yes"
@@ -849,7 +830,7 @@ msgstr "&Ja"
 
 #: ../src/mainwindow.cpp:415
 msgid "&No"
-msgstr "&Nej"
+msgstr "&Nee"
 
 #: ../src/mainwindow.cpp:853
 #, fuzzy
@@ -857,12 +838,11 @@ msgid ""
 "*.chm *.epub|All electronic book\n"
 "*.chm|Compressed Help Manual\n"
 "*.epub|EPUB electronic book"
-msgstr "*.chm|Komprimerad hjälpmanual (*.chm)"
+msgstr "*.chm|Gecomprimeerde gebruikershandleiding (*.chm)"
 
 #: ../src/mainwindow.cpp:856
-#, fuzzy
 msgid "Open a chm file"
-msgstr "Öppna fil"
+msgstr "Een chm-bestand openen"
 
 #: ../src/mainwindow.cpp:858
 msgid "Electronic books (*.chm *.epub)"
@@ -870,24 +850,24 @@ msgstr ""
 
 #: ../src/mainwindow.cpp:903 ../src/mainwindow.cpp:907
 msgid "Choose a directory to store CHM content"
-msgstr "Välj en katalog att lagra CHM-innehåll i"
+msgstr "kies een map om de CHM-inhoud op te slaan"
 
 #: ../src/mainwindow.cpp:921
 msgid "Extracting CHM content"
-msgstr "Extrahering av CHM-innehåll"
+msgstr "CHM-inhoud uitpakken"
 
 #: ../src/mainwindow.cpp:922
 msgid "Extracting files..."
-msgstr "Extraherar filer..."
+msgstr "Bestanden uitpakken..."
 
 #: ../src/mainwindow.cpp:923
 msgid "Abort"
-msgstr "Avbryt"
+msgstr "Afbreken"
 
 #: ../src/mainwindow.cpp:1016
 #, fuzzy
 msgid "HTML source"
-msgstr "Visa HTML-källa"
+msgstr "HTML-bron &weergeven"
 
 #: ../src/mainwindow.cpp:1041
 msgid "Cannot start external editor"
@@ -902,7 +882,7 @@ msgstr ""
 
 #: ../src/mainwindow.cpp:1092
 msgid "Could not locate opened topic in content window"
-msgstr "Kunde inte hitta öppnat ämne i innehållsfönstret"
+msgstr "Kon geopend onderwerp niet vinden in inhoudsopgave"
 
 #: ../src/mainwindow.cpp:1099
 #, qt-format
@@ -915,94 +895,98 @@ msgid "<br>Using Qt version %1"
 msgstr ""
 
 #: ../src/mainwindow.cpp:1108
-#, qt-format
+#, fuzzy, qt-format
 msgid ""
-"<html><b>kchmviewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
-"2004-2015<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
-"a><br><a href=\"http://www.ulduzsoft.com/kchmviewer\">http://www.ulduzsoft."
-"com/kchmviewer</a><br><br>Licensed under GNU GPL license version 3.</html>"
+"<html><b>uChmViewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2015<br><br>Licensed under GNU GPL license version 3.</html>"
 msgstr ""
+"<html><b>%1 versie %2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2008<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
+"a><br><a href=\"http://www.kchmviewer.net\">http://www.kchmviewer.net</"
+"a><br><br>Gelicenseerd onder de GNU GPL-licentie.</html>"
 
-#: ../src/mainwindow.cpp:1212
+#: ../src/mainwindow.cpp:1210
 msgid "Ctrl+1"
-msgstr ""
+msgstr "Ctrl+1"
 
-#: ../src/mainwindow.cpp:1218
+#: ../src/mainwindow.cpp:1216
 msgid "Ctrl+2"
-msgstr ""
+msgstr "Ctrl+2"
 
-#: ../src/mainwindow.cpp:1224
+#: ../src/mainwindow.cpp:1222
 msgid "Ctrl+3"
-msgstr ""
+msgstr "Ctrl+3"
 
-#: ../src/mainwindow.cpp:1230
+#: ../src/mainwindow.cpp:1228
 msgid "Ctrl+4"
-msgstr ""
+msgstr "Ctrl+4"
 
-#: ../src/mainwindow.cpp:1237
+#: ../src/mainwindow.cpp:1235
 msgid "/"
-msgstr ""
+msgstr "/"
 
-#: ../src/mainwindow.cpp:1244
+#: ../src/mainwindow.cpp:1242
 msgid "F3"
-msgstr ""
+msgstr "F3"
 
-#: ../src/mainwindow.cpp:1264
+#: ../src/mainwindow.cpp:1262
 msgid "Ctrl+Right"
-msgstr ""
+msgstr "Ctrl+Rechts"
 
-#: ../src/mainwindow.cpp:1271
+#: ../src/mainwindow.cpp:1269
 msgid "Ctrl+Left"
-msgstr ""
+msgstr "Ctrl+Links"
 
-#: ../src/mainwindow.cpp:1278
+#: ../src/mainwindow.cpp:1276
+#, fuzzy
 msgid "Ctrl+I"
-msgstr ""
+msgstr "Ctrl+"
 
-#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/mainwindow.cpp:1285 ../src/qtwebengine/viewwindow.cpp:116
 #: ../src/qtwebkit/viewwindow.cpp:129
+#, fuzzy
 msgid "&Open this link in a new tab"
-msgstr ""
+msgstr "Een koppeling in een nieuw tabblad openen\tShift+Linker muisknop"
 
-#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/mainwindow.cpp:1290 ../src/qtwebengine/viewwindow.cpp:117
 #: ../src/qtwebkit/viewwindow.cpp:131
+#, fuzzy
 msgid "&Open this link in a new background tab"
 msgstr ""
+"Een koppeling in een nieuw achtergrondtabblad openen\tCtrl+Linker muisknop"
 
-#: ../src/mainwindow.cpp:1362
+#: ../src/mainwindow.cpp:1360
 #, qt-format
 msgid "%1 ( %2 )"
-msgstr ""
+msgstr "%1 ( %2 )"
 
-#: ../src/mainwindow.cpp:1464
+#: ../src/mainwindow.cpp:1462
 msgid "Unable to check whether a new version is available"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1477
-#, fuzzy
+#: ../src/mainwindow.cpp:1475
 msgid "New version available"
-msgstr "Sökning är inte tillgänglig"
+msgstr ""
 
-#: ../src/mainwindow.cpp:1478
+#: ../src/mainwindow.cpp:1476
 #, qt-format
 msgid ""
-"<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>You are "
+"<html>A new version <b>%1</b> of uChmViewer is available!<br><br>You are "
 "currently using version %3.<br>Do you want to visit the application web site "
 "%2?"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1491
-msgid "Checked for updates; you are using the latest version of kchmviewer"
+#: ../src/mainwindow.cpp:1489
+msgid "Checked for updates; you are using the latest version of uChmViewer"
 msgstr ""
 
 #: ../src/navigationpanel.cpp:40
 msgid "Search"
-msgstr "Sök"
+msgstr "Zoeken"
 
 #: ../src/navigationpanel.cpp:43
-#, fuzzy
 msgid "Bookmarks"
-msgstr "&Bokmärk denna sida"
+msgstr "Bladwijzers"
 
 #: ../src/navigationpanel.cpp:83
 msgid "Index"
@@ -1010,12 +994,12 @@ msgstr "Index"
 
 #: ../src/navigationpanel.cpp:89
 msgid "Contents"
-msgstr ""
+msgstr "Inhoudsopgave"
 
 #: ../src/navigatorpanel.ui:17
 #, fuzzy
 msgid "Navigator panel"
-msgstr "Navigering"
+msgstr "Vooruit bladeren"
 
 #: ../src/navigatorpanel.ui:28
 msgid "Tab 1"
@@ -1028,33 +1012,33 @@ msgstr ""
 
 #: ../src/tab_bookmarks.ui:36
 msgid "&Add"
-msgstr "&Lägg till"
+msgstr "&Toevoegen"
 
 #: ../src/tab_bookmarks.ui:43
 msgid "Edi&t"
-msgstr ""
+msgstr "&Bewerken"
 
 #: ../src/tab_bookmarks.ui:50
 msgid "&Del"
-msgstr ""
+msgstr "&Verwijderen"
 
 #: ../src/tab_bookmarks.cpp:133
 #, qt-format
 msgid "%1 - add a bookmark"
-msgstr "%1 - lägg till ett bokmärke"
+msgstr "%1 - een bladwijzer toevoegen"
 
 #: ../src/tab_bookmarks.cpp:134 ../src/tab_bookmarks.cpp:176
 msgid "Enter the name for this bookmark:"
-msgstr "Ange ett namn för detta bokmärke:"
+msgstr "Voer de naam in voor deze bladwijzer:"
 
 #: ../src/tab_bookmarks.cpp:175
 #, qt-format
 msgid "%1 - edit the bookmark name"
-msgstr "%1 - redigera bokmärkets namn"
+msgstr "%1 - de bladwijzernaam bewerken"
 
 #: ../src/tab_contents.ui:13 ../src/tab_index.ui:14 ../src/tab_search.ui:13
 msgid "Form1"
-msgstr ""
+msgstr "Form1"
 
 #: ../src/tab_index.ui:22
 msgid "F&ind:"
@@ -1062,42 +1046,40 @@ msgstr ""
 
 #: ../src/tab_index.ui:50
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: ../src/tab_search.ui:33
 msgid "Type in word(s) to search for:"
-msgstr "Skriv in ord att söka efter:"
+msgstr "Voer te zoeken woorden in:"
 
 #: ../src/tab_search.ui:48
-#, fuzzy
 msgid "<a href=\"help\">Help</a>"
-msgstr "<a href=\"q\"><b>Hjälp</b></a>"
+msgstr "<a href=\"help\">Help</a>"
 
 #: ../src/tab_search.ui:86
-#, fuzzy
 msgid "&Go"
-msgstr "Gå"
+msgstr "&Zoeken"
 
 #: ../src/tab_search.ui:111
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: ../src/tab_search.ui:116
 msgid "Location"
-msgstr "Plats"
+msgstr "Locatie"
 
 #: ../src/tab_search.cpp:166
 #, qt-format
 msgid "Search returned %1 result(s)"
-msgstr "Sökningen returnerade %1 sökträff(ar)"
+msgstr "Zoekopdracht heeft %1 resultaten gevonden"
 
 #: ../src/tab_search.cpp:170
 msgid "Search returned no results"
-msgstr "Sökningen returnerade inga träffar"
+msgstr "Zoekopdracht heeft geen resultaten gevonden"
 
 #: ../src/tab_search.cpp:173
 msgid "Search failed"
-msgstr "Sökning misslyckades"
+msgstr "Zoekopdracht mislukt"
 
 #: ../src/tab_search.cpp:206
 msgid ""
@@ -1113,26 +1095,26 @@ msgid ""
 "quotation mark as the same symbol, which allows to use them in phrases.</"
 "html>"
 msgstr ""
-"<html><p>Den förbättrade sökmotorn låter dig söka efter ett ord, symbol "
-"eller fras, som är en uppsättning ord och symboler inkluderade inom "
-"citattecken. Endast dokumenten som inkluderar alla söktermer i sökfältet "
-"kommer att visas; inga prefix behövs.<p>Till skillnad mot MS CHM interna "
-"sökindex indexerar min förbättrade sökmotor allting, inklusive "
-"specialsymboler. Därför är det möjligt att söka efter (och hitta!) någonting "
-"liknande <i>$q = new ChmFile();</i>. Denna sökning har även fullständigt "
-"stöd för Unicode, vilket betyder att du kan söka i icke-engelska dokument."
-"<p>Om du vill söka efter ett citattecken, använd citationstecken istället. "
-"Motorn behandlar ett citattecken och ett citationstecken som samma symbol, "
-"vilket innebär att de kan användas i fraser.</html>"
+"<html><p>Met de verbeterde zoekmachine kunt u woorden, symbolen of zinnen "
+"zoeken, die is ingesteld met woorden en symbolen, opgenomen in "
+"aanhalingstekens. Alleen de documenten die alle ingevoerde zoektermen "
+"bevatten, worden weergeven; er zijn geen voorvoegsels nodig.<p>In "
+"tegenstelling tot de interne zoekindex van MS CHM, indexeert deze "
+"zoekmachine letterlijk alles, inclusief symbolen. Zo is het mogelijk om "
+"tekst als <i>$q = new ChmFile();</i> te vinden. Deze zoekmachine ondersteunt "
+"tevens de volledige Unicode-tekenset, zodat u kunt zoeken in niet-Westerse "
+"documenten.<p>Als u een citaatteken wilt zoeken, gebruik dan een "
+"aanhalingsteken. De zoekmachine behandelt deze hetzelfde, zodat u ze in "
+"zinnen kunt gebruiken.</html>"
 
 #: ../src/tab_search.cpp:223
 msgid "Reading dictionary..."
-msgstr ""
+msgstr "Woordenboek lezen..."
 
 #: ../src/tab_search.cpp:237 ../src/tab_search.cpp:238
 #: ../src/tab_search.cpp:243
 msgid "Generating search index..."
-msgstr ""
+msgstr "Zoekindex opbouwen..."
 
 #: ../src/tab_search.cpp:253
 msgid "Cannot save index"
@@ -1153,15 +1135,16 @@ msgstr ""
 
 #: ../src/window_browser.ui:36
 msgid "TabbedBrowser"
-msgstr ""
+msgstr "TabbedBrowser"
 
 #: ../src/window_browser.ui:133
 msgid "Case Sensitive"
-msgstr ""
+msgstr "Hoofdlettergevoelig"
 
 #: ../src/window_browser.ui:152
+#, fuzzy
 msgid "<img src=\":/images/find_wrap.png\">&nbsp;Search wrapped"
-msgstr ""
+msgstr "<img src=\":/images/find_wrap.png\">&nbsp;Search wrapped"
 
 #: ../src/toolbareditor.ui:14
 msgid "Dialog"
@@ -1170,12 +1153,12 @@ msgstr ""
 #: ../src/toolbareditor.ui:20
 #, fuzzy
 msgid "Select a toolbar"
-msgstr "Allmänt beteende"
+msgstr "hoofdwerkbalk"
 
 #: ../src/toolbareditor.ui:26
 #, fuzzy
 msgid "Editing the toolbar "
-msgstr "Navigering"
+msgstr "actiewerkbalk"
 
 #: ../src/toolbareditor.ui:46
 msgid ""
@@ -1184,70 +1167,67 @@ msgid ""
 msgstr ""
 
 #: ../src/toolbareditor.ui:65
-#, fuzzy
 msgid "Available actions"
-msgstr "Filåtgärder"
+msgstr ""
 
 #: ../src/toolbareditor.ui:90
-#, fuzzy
 msgid "Toolbar actions"
-msgstr "Filåtgärder"
+msgstr ""
 
 #: ../src/qtwebengine/viewwindow.cpp:162 ../src/qtwebkit/viewwindow.cpp:178
 msgid "Printing aborted"
-msgstr "Utskriften avbröts"
+msgstr "Afdrukken afgebroken"
 
 #: ../src/qtwebengine/viewwindow.cpp:167 ../src/qtwebkit/viewwindow.cpp:183
-#, fuzzy
 msgid "Printing finished"
-msgstr "Utskriften avbröts"
+msgstr "Afdrukken voltooid"
 
 #: ../src/qtwebengine/viewwindow.cpp:245 ../src/qtwebkit/viewwindow.cpp:277
 msgid "Open Link in a new tab\tShift+LMB"
-msgstr ""
+msgstr "Een koppeling in een nieuw tabblad openen\tShift+Linker muisknop"
 
 #: ../src/qtwebengine/viewwindow.cpp:246 ../src/qtwebkit/viewwindow.cpp:278
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr ""
+"Een koppeling in een nieuw achtergrondtabblad openen\tCtrl+Linker muisknop"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:74
-#, fuzzy
 msgid "Add page"
-msgstr "Sök i sida"
+msgstr "Pagina toevoegen"
 
 #: ../src/qtwebengine/viewwindowmgr.cpp:159
 #: ../src/qtwebengine/viewwindowmgr.cpp:237
 #: ../src/qtwebkit/viewwindowmgr.cpp:161 ../src/qtwebkit/viewwindowmgr.cpp:240
-#, fuzzy, qt-format
+#, qt-format
 msgid "Alt+%1"
 msgstr "Alt+%1"
 
 #: ../src/main.cpp:51
 msgid "CHM file viewer"
-msgstr "CHM-filvisare"
+msgstr "Weergaveprogramma voor CHM-bestanden"
 
 #: ../src/main.cpp:53
-msgid "(c) 2004-2015 George Yunaev, gyunaev@ulduzsoft.com"
-msgstr ""
+#, fuzzy
+msgid "(c) 2004-2015 George Yunaev"
+msgstr "(c) 2004-2008 George Yunaev, gyunaev@ulduzsoft.com"
 
-#: ../src/main.cpp:54
-msgid "Please report bugs to kchmviewer@ulduzsoft.com"
-msgstr ""
+#~ msgid "Please report bugs to kchmviewer@ulduzsoft.com"
+#~ msgstr "Meld bugs aan kchmviewer@ulduzsoft.com"
 
 #~ msgid "%1 - JavsScript link clicked"
-#~ msgstr "%1 - JavsScript-länk klickad på"
+#~ msgstr "%1 - JavaScript-koppeling geopend"
 
 #~ msgid ""
 #~ "You have clicked a JavaScript link.\n"
 #~ "To prevent security-related issues JavaScript URLs are disabled in CHM "
 #~ "files."
 #~ msgstr ""
-#~ "Du har klickat på en JavaScript-länk.\n"
-#~ "JavaScript-URLer är inaktiverade i CHM-filer för att förhindra "
-#~ "säkerhetsrelaterade problem."
+#~ "U hebt een JavaScript-koppeling geopend.\n"
+#~ "Wegens veiligheidsredenen zijn javaScript-URL's uitgeschakeld in CHM-"
+#~ "bestanden."
 
 #~ msgid "%1 - link to a new CHM file clicked"
-#~ msgstr "%1 - länk till en ny CHM-fil klickades på"
+#~ msgstr "%1 - koppeling naar een nieuw CHM-bestand aangeklikt"
 
 #~ msgid ""
 #~ "You have clicked a link, which leads to a new CHM file %1.\n"
@@ -1255,321 +1235,126 @@ msgstr ""
 #~ "\n"
 #~ "Do you want to continue?"
 #~ msgstr ""
-#~ "Du har klicka på en länk som leder till en ny CHM-fil, %1.\n"
-#~ "Den aktuella filen kommer att stängas.\n"
+#~ "U hebt een koppeling geopend, die naar het nieuwe CHM-bestand %1 leidt.\n"
+#~ "Het huidige bestand wordt gesloten.\n"
 #~ "\n"
-#~ "Vill du fortsätta?"
+#~ "Wilt u doorgaan?"
 
 #~ msgid "Compressed Help Manual (*.chm)"
-#~ msgstr "Komprimerad hjälpmanual (*.chm)"
+#~ msgstr "Gecomprimeerde gebruikershandleiding (*.chm)"
 
 #~ msgid "Loading aborted"
-#~ msgstr "Inläsning avbröts"
+#~ msgstr "Laden afgebroken"
 
 #~ msgid "About %1"
-#~ msgstr "Om %1"
+#~ msgstr "Over"
 
-#, fuzzy
 #~ msgid "&About"
-#~ msgstr "Avbryt"
+#~ msgstr "&Over"
 
-#, fuzzy
+#~ msgid "Close current page"
+#~ msgstr "Huidige pagina sluiten"
+
+#~ msgid "Perform auto testing"
+#~ msgstr "Automatisch testen uitvoeren"
+
+#~ msgid "Perform short auto testing"
+#~ msgstr "Verkort automatisch testen uitvoeren"
+
 #~ msgid "A CHM file to show"
-#~ msgstr "CHM-filvisare"
+#~ msgstr "Een te weergeven CHM-bestand"
 
 #~ msgid ""
 #~ "'--search <query>' specifies the search query to search, and activate the "
 #~ "first entry if found"
 #~ msgstr ""
-#~ "'--search <fråga>' anger sökfrågan att söka efter och aktiverar den "
-#~ "första sökträffar, om hittad"
+#~ "'--search <query>' geeft de te zoeken zoekopdracht, en activeert het "
+#~ "eerste resultaat wanneer gevonden"
 
 #~ msgid ""
 #~ "'--sindex <word>' specifies the word to find in index, and activate if "
 #~ "found"
 #~ msgstr ""
-#~ "'--sindex <ord>' anger ordet att söka efter i indexet och aktiverar det, "
-#~ "om hittat"
+#~ "'--sindex <query>' geeft het te zoeken woord in de index, en activeert "
+#~ "het eerste resultaat wanneer gevonden"
 
-#, fuzzy
 #~ msgid ""
 #~ "'--stoc <word(s)>' specifies the word(s) to find in TOC, and activate if "
 #~ "found. Wildcards allowed."
 #~ msgstr ""
-#~ "'--sindex <ord>' anger ordet att söka efter i indexet och aktiverar det, "
-#~ "om hittat"
+#~ "'--stoc <word(s)>' geeft de te zoeken woorden in de TOC, en activeert het "
+#~ "eerste resultaat wanneer gevonden. Wildcards zijn toegestaan."
 
 #~ msgid "If no arguments given on load"
-#~ msgstr "Om inga argument anges vid inläsning"
+#~ msgstr "Wanneer geen argumenten zijn meegegeven bij starten"
 
 #~ msgid "Version-specific settings"
-#~ msgstr "Versionsspecifika inställningar"
+#~ msgstr "Versiespecifieke instellingen"
 
 #~ msgid "KDE version settings"
-#~ msgstr "KDE versionsinställningar"
+#~ msgstr "KDE-versie-instellingen"
 
 #~ msgid "To show HTML content, use"
-#~ msgstr "För att visa HTML-innehåll, använd"
+#~ msgstr "Om HTML-inhoud te weergeven, gebruik"
 
 #~ msgid "&QTextBrowser-based widget"
-#~ msgstr "&QTextBrowser-baserad widget"
+#~ msgstr "&QTextBrowser-gebaseerde widget"
 
 #~ msgid "Alt+Q"
 #~ msgstr "Alt+Q"
 
 #~ msgid "&KHTMLPart-based widget"
-#~ msgstr "&KHTMLPart-baserad widget"
+#~ msgstr "&KHTMLPart-gebaseerde widget"
 
 #~ msgid "Alt+K"
 #~ msgstr "Alt+K"
 
+#~ msgid "Qt &Webkit (requires Qt 4.4 or higher)"
+#~ msgstr "Qt &Webkit (vereist Qt 4.4 of hoger)"
+
 #~ msgid "KHTMLPart security"
-#~ msgstr "KHTMLPart-säkerhet"
+#~ msgstr "Beveiliging voor KHTMLPart"
 
 #~ msgid "Enable &refresh"
-#~ msgstr "Aktivera &uppdatering"
+#~ msgstr "&Verversen inschakelen"
 
 #~ msgid "Enable &plugins"
-#~ msgstr "Aktivera ins&ticksmoduler"
+#~ msgstr "&Plugins inschakelen"
 
-#~ msgid "&View HTML source"
-#~ msgstr "&Visa HTML-källa"
+#~ msgid "Find"
+#~ msgstr "Zoeken"
+
+#~ msgid "Ctrl++"
+#~ msgstr "Ctrl++"
+
+#~ msgid "Enable &side window"
+#~ msgstr "&Zijvenster inschakelen"
 
 #~ msgid "&Locate in contents window"
-#~ msgstr "&Hitta i innehållsfönstret"
+#~ msgstr "In &inhoudsopgave opzoeken"
 
-#, fuzzy
 #~ msgid "Previous page in Table of Context"
-#~ msgstr ""
-#~ "Klicka på denna knapp för att gå till föregående sida i "
-#~ "innehållsförteckningen."
+#~ msgstr "Vorige pagina van Inhoudsopgave"
 
-#, fuzzy
 #~ msgid "Previous page in TOC"
-#~ msgstr "Föreg sida i TOC"
+#~ msgstr "Vorige pagina van TOC"
 
-#, fuzzy
 #~ msgid "Next page in Table of Context"
-#~ msgstr "Nästa sida i TOC"
+#~ msgstr "Volgende pagina van Inhoudsopgave"
 
 #~ msgid "Next page in TOC"
-#~ msgstr "Nästa sida i TOC"
+#~ msgstr "Volgende pagina van TOC"
 
-#~ msgid "Qt version settings"
-#~ msgstr "Qt versionsinställningar"
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Sander Pientka"
 
-#~ msgid ""
-#~ "Enter the path to the program, which will be used as a browser for "
-#~ "external links.  A <i>%s</i> symbol will be replaced by the URL clicked."
-#~ msgstr ""
-#~ "Ange sökvägen till programmet som kommer att användas som en webbläsare "
-#~ "för externa länkar.  En <i>%s</i>-symbol kommer att ersättas av den URL "
-#~ "som klickas på."
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "cumulus0007@gmail.com"
 
-#~ msgid "Search engine to use"
-#~ msgstr "Sökmotor att använda"
+#~ msgid "Untitled"
+#~ msgstr "Naamloos"
 
-#~ msgid ""
-#~ "Use the search based on internal CHM index. This engine cannot search for "
-#~ "any symbols except underscode, does not support multibyte languages, and "
-#~ "is not always available."
-#~ msgstr ""
-#~ "Använd sökningen baserade på interna CHM-indexet. Denna motor kan inte "
-#~ "söka efter några symboler förutom understreck, saknar stöd för multibyte-"
-#~ "språk och är inte alltid tillgänglig."
-
-#~ msgid ""
-#~ "Use new kchmviewer internal  search engine (recommended). This engine "
-#~ "indexes symbols, so it is possible to search for special symbols (like \"C"
-#~ "++\"). All languages are supported. The index will be generated before "
-#~ "the first search."
-#~ msgstr ""
-#~ "Använd den nya interna sökmotorn i kchmviewer (rekommenderas). Denna "
-#~ "motor indexerar symboler så det är möjligt att söka efter specialsymboler "
-#~ "(som \"C++\"). Alla språk stöds. Indexet kommer att genereras innan "
-#~ "första sökningen."
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Daniel Nylander"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "po@danielnylander.se"
-
-#~ msgid "Topics"
-#~ msgstr "Ämnen"
-
-#~ msgid "&Ok"
-#~ msgstr "&OK"
-
-#~ msgid ""
-#~ "%1 version %2\n"
-#~ "\n"
-#~ "Copyright (C) George Yunaev,gyunaev@ulduzsoft.com, 2004-2007\n"
-#~ "http://www.kchmviewer.net\n"
-#~ "\n"
-#~ "Licensed under GNU GPL license.\n"
-#~ "\n"
-#~ "Please check my another project, http://www.transientmail.com - temporary "
-#~ "e-mail address, which expires automatically."
-#~ msgstr ""
-#~ "%1 version %2\n"
-#~ "\n"
-#~ "Copyright (C) George Yunaev,gyunaev@ulduzsoft.com, 2004-2007\n"
-#~ "http://www.kchmviewer.net\n"
-#~ "\n"
-#~ "Licensierad under licensen GNU GPL.\n"
-#~ "\n"
-#~ "Se även mitt andra projekt, http://www.transientmail.com - temporära e-"
-#~ "postadresser som går ut automatiskt."
-
-#~ msgid "Click this button to open an existing chm file."
-#~ msgstr "Klicka på denna knapp för att öppna en befintlig chm-fil."
-
-#~ msgid "Click this button to print the current page"
-#~ msgstr "Klicka på denna knapp för att skriva ut den aktuella sidan"
-
-#~ msgid ""
-#~ "Click this button to extract the whole CHM file content into a specific "
-#~ "directory"
-#~ msgstr ""
-#~ "Klicka på denna knapp för att extrahera hela CHM-filens innehåll till en "
-#~ "specifik katalog"
-
-#~ msgid "&Recent files"
-#~ msgstr "&Tidigare filer"
-
-#~ msgid "What's &This"
-#~ msgstr "Vad är det &här"
-
-#~ msgid "Click this button to move backward in browser history"
-#~ msgstr "Klicka på denna knapp för att flytta bakåt i webbläsarens historik"
-
-#~ msgid "Click this button to move forward in browser history"
-#~ msgstr "Klicka på denna knapp för att flytta framåt i webbläsarens historik"
-
-#~ msgid "Go to the home page"
-#~ msgstr "Gå till hemsidan"
-
-#~ msgid "Click this button to move to the home page"
-#~ msgstr "Klicka på denna knapp för att flytta till hemsidan"
-
-#~ msgid "A closing quote character is missing."
-#~ msgstr "Ett avslutande citattecken saknas. "
-
-#~ msgid "Enter here the text to search in the current page."
-#~ msgstr "Ange text att söka efter i den aktuella sidan."
-
-#~ msgid "Previous search result"
-#~ msgstr "Föregående sökträff"
-
-#~ msgid "Click this button to find previous search result."
-#~ msgstr "Klicka på denna knapp för att hitta föregående sökträff."
-
-#~ msgid "Next search result"
-#~ msgstr "Nästa sökträff"
-
-#~ msgid "Click this button to find next search result."
-#~ msgstr "Klicka på denna knapp för att hitta nästa sökträff."
-
-#~ msgid ""
-#~ "Click this button to find current topic in the content window, and open "
-#~ "it."
-#~ msgstr ""
-#~ "Klicka på denna knapp för att hitta aktuellt ämne i innehållsfönstret och "
-#~ "öppna det."
-
-#~ msgid "Click this button to increase the font size."
-#~ msgstr "Klicka på denna knapp för att öka typsnittets storlek."
-
-#~ msgid "Click this button to decrease the font size."
-#~ msgstr "Klicka på denna knapp för att minska typsnittets storlek."
-
-#~ msgid ""
-#~ "Click this button to open a separate window with the page HTML source."
-#~ msgstr ""
-#~ "Klicka på denna knapp för att öppna ett separat fönster med sidans HTML-"
-#~ "källa."
-
-#~ msgid "Add to bookmarks"
-#~ msgstr "Lägg till bokmärken"
-
-#~ msgid "Click this button to add the current page to the bookmarks list."
-#~ msgstr ""
-#~ "Klicka på denna knapp för att lägga till aktuell sida till "
-#~ "bokmärkeslistan."
-
-#~ msgid "&Increase font"
-#~ msgstr "S&törre typsnitt"
-
-#~ msgid "&Decrease font"
-#~ msgstr "&Mindre typsnitt"
-
-#~ msgid "&Set language"
-#~ msgstr "&Ange språk"
-
-#~ msgid "How to use search"
-#~ msgstr "Hur man använder sökning"
-
-#~ msgid ""
-#~ "The search query can contain a few prefixes.\n"
-#~ "A set of words inside the quote marks mean that you are searching for "
-#~ "exact phrase.\n"
-#~ "A word with minus sign means that it should be absent in the search "
-#~ "result.\n"
-#~ "A word with plus mark or without any mark means that it must be present "
-#~ "in the search result.\n"
-#~ "\n"
-#~ "Note that only letters and digits are indexed.\n"
-#~ "You cannot search for non-character symbols other than underscope, and "
-#~ "those symbols will be removed from the search query.\n"
-#~ "For example, search for 'C' will give the same result as searching for 'C+"
-#~ "+'."
-#~ msgstr ""
-#~ "Sökfrågan kan innehålla ett par prefix.\n"
-#~ "En uppsättning ord inom citattecken betyder att du söker efter en exakt "
-#~ "fras.\n"
-#~ "Ett ord med minustecken betyder att det inte ska tas med i "
-#~ "sökresultatet.\n"
-#~ "Ett ord med plustecken eller utan betyder att det måste finnas i "
-#~ "sökresultatet.\n"
-#~ "\n"
-#~ "Observera att endast bokstäver och siffror indexeras.\n"
-#~ "Du kan inte söka efter icke-tecken-symboler andra än understreck och "
-#~ "dessa symboler kommer att tas bort från sökfrågan.\n"
-#~ "Till exempel kommer en sökning efter 'C' att ge samma resultat som en "
-#~ "sökning efter 'C++'."
-
-#~ msgid ""
-#~ "<p>The search feature is not avaiable for this chm file.<p>The old search "
-#~ "engine depends on indexes present in chm files itself. Not every chm file "
-#~ "has an index; it is set up during chm file creation. Therefore if the "
-#~ "search index was not created during chm file creation, this makes search "
-#~ "impossible.<p>Solution: use new search engine (menu Settings/Advanced), "
-#~ "which generates its own index."
-#~ msgstr ""
-#~ "<p>Sökfunktionen är inte tillgänglig för denna chm-fil.<p>Den äldra "
-#~ "sökmotorn är beroende av index som finns i själva chm-filerna. Inte alla "
-#~ "chm-filer har ett index; det konfigureras under skapandet av chm-filen. "
-#~ "Om sökindexet inte skapades samtidigt med chm-filen gör detta att en "
-#~ "sökning blir omöjlig..<p>Lösning: använd den nya sökmotorn (under "
-#~ "Inställningar/Avancerat) som genererar sina egna index."
-
-#~ msgid "Printing (page %1)..."
-#~ msgstr "Skriver ut (sida %1)..."
-
-#~ msgid "Printing completed"
-#~ msgstr "Utskriften färdigställdes"
-
-#~ msgid "%1 - could not print"
-#~ msgstr "%1 - kunde inte skriva ut"
-
-#~ msgid ""
-#~ "Could not print.\n"
-#~ "Your Qt library has been compiled without printing support"
-#~ msgstr ""
-#~ "Kunde inte skriva ut.\n"
-#~ "Ditt Qt-bibliotek har kompilerats utan stöd för utskrifter"
+#~ msgid "Whole words"
+#~ msgstr "Hele woorden"

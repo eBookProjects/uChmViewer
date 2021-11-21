@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 19:05+0300\n"
+"POT-Creation-Date: 2021-11-21 11:32+0300\n"
 "PO-Revision-Date: 2013-01-12 04:27-0500\n"
 "Last-Translator: Henry Hu <henry.hu.sh@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-china@kde.org>\n"
@@ -19,8 +19,9 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1117
-msgid "About kchmviewer"
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1115
+#, fuzzy
+msgid "About uChmViewer"
 msgstr "关于kchmviewer"
 
 #: ../src/dialog_about.ui:24
@@ -114,7 +115,7 @@ msgstr ""
 
 #: ../src/dialog_about.ui:89
 msgid ""
-"<html><head/><body><p>kchmviewer uses the following 3rd party software:</"
+"<html><head/><body><p>uChmViewer uses the following 3rd party software:</"
 "p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
 "right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-"
 "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
@@ -391,7 +392,8 @@ msgid "Please select the topic to open:"
 msgstr "请选取要打开的主题："
 
 #: ../src/mainwindow.ui:14 ../src/main.cpp:49
-msgid "kchmviewer"
+#, fuzzy
+msgid "uChmViewer"
 msgstr "kchmviewer"
 
 #: ../src/mainwindow.ui:28
@@ -768,7 +770,8 @@ msgid "Ctrl+W"
 msgstr "Ctrl+W"
 
 #: ../src/mainwindow.ui:572
-msgid "About kchmviewer..."
+#, fuzzy
+msgid "About uChmViewer..."
 msgstr "关于 kchmviewer..."
 
 #: ../src/mainwindow.ui:577
@@ -901,90 +904,88 @@ msgstr ""
 #: ../src/mainwindow.cpp:1108
 #, fuzzy, qt-format
 msgid ""
-"<html><b>kchmviewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
-"2004-2015<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
-"a><br><a href=\"http://www.ulduzsoft.com/kchmviewer\">http://www.ulduzsoft."
-"com/kchmviewer</a><br><br>Licensed under GNU GPL license version 3.</html>"
+"<html><b>uChmViewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
+"2004-2015<br><br>Licensed under GNU GPL license version 3.</html>"
 msgstr ""
 "<html><b>kchmviewer 版本 %1.%2</b%3><br><br>版权所有 (C) George Yunaev, "
 "2004-2010<br><a href=\"mailto:gyunaev@ulduzsoft.com\">gyunaev@ulduzsoft.com</"
 "a><br><a href=\"http://www.kchmviewer.net\">http://www.kchmviewer.net</"
 "a><br><br>以 GNU GPL 版本3授权。</html>"
 
-#: ../src/mainwindow.cpp:1212
+#: ../src/mainwindow.cpp:1210
 msgid "Ctrl+1"
 msgstr "Ctrl+1"
 
-#: ../src/mainwindow.cpp:1218
+#: ../src/mainwindow.cpp:1216
 msgid "Ctrl+2"
 msgstr "Ctrl+2"
 
-#: ../src/mainwindow.cpp:1224
+#: ../src/mainwindow.cpp:1222
 msgid "Ctrl+3"
 msgstr "Ctrl+3"
 
-#: ../src/mainwindow.cpp:1230
+#: ../src/mainwindow.cpp:1228
 msgid "Ctrl+4"
 msgstr "Ctrl+4"
 
-#: ../src/mainwindow.cpp:1237
+#: ../src/mainwindow.cpp:1235
 msgid "/"
 msgstr "/"
 
-#: ../src/mainwindow.cpp:1244
+#: ../src/mainwindow.cpp:1242
 msgid "F3"
 msgstr "F3"
 
-#: ../src/mainwindow.cpp:1264
+#: ../src/mainwindow.cpp:1262
 msgid "Ctrl+Right"
 msgstr "Ctrl+右"
 
-#: ../src/mainwindow.cpp:1271
+#: ../src/mainwindow.cpp:1269
 msgid "Ctrl+Left"
 msgstr "Ctrl+左"
 
-#: ../src/mainwindow.cpp:1278
+#: ../src/mainwindow.cpp:1276
 #, fuzzy
 msgid "Ctrl+I"
 msgstr "Ctrl+1"
 
-#: ../src/mainwindow.cpp:1287 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/mainwindow.cpp:1285 ../src/qtwebengine/viewwindow.cpp:116
 #: ../src/qtwebkit/viewwindow.cpp:129
 #, fuzzy
 msgid "&Open this link in a new tab"
 msgstr "在新的标签页打开此链接\tShift+左键"
 
-#: ../src/mainwindow.cpp:1292 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/mainwindow.cpp:1290 ../src/qtwebengine/viewwindow.cpp:117
 #: ../src/qtwebkit/viewwindow.cpp:131
 #, fuzzy
 msgid "&Open this link in a new background tab"
 msgstr "在后台标签页打开此链接\tCtrl+左键"
 
-#: ../src/mainwindow.cpp:1362
+#: ../src/mainwindow.cpp:1360
 #, qt-format
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: ../src/mainwindow.cpp:1464
+#: ../src/mainwindow.cpp:1462
 #, fuzzy
 msgid "Unable to check whether a new version is available"
 msgstr "检查是否有新版本可用(每周一次)"
 
-#: ../src/mainwindow.cpp:1477
+#: ../src/mainwindow.cpp:1475
 #, fuzzy
 msgid "New version available"
 msgstr "搜索失败"
 
-#: ../src/mainwindow.cpp:1478
+#: ../src/mainwindow.cpp:1476
 #, qt-format
 msgid ""
-"<html>A new version <b>%1</b> of Kchmviewer is available!<br><br>You are "
+"<html>A new version <b>%1</b> of uChmViewer is available!<br><br>You are "
 "currently using version %3.<br>Do you want to visit the application web site "
 "%2?"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1491
-msgid "Checked for updates; you are using the latest version of kchmviewer"
+#: ../src/mainwindow.cpp:1489
+msgid "Checked for updates; you are using the latest version of uChmViewer"
 msgstr ""
 
 #: ../src/navigationpanel.cpp:40
@@ -1208,12 +1209,11 @@ msgstr "CHM文件查看器"
 
 #: ../src/main.cpp:53
 #, fuzzy
-msgid "(c) 2004-2015 George Yunaev, gyunaev@ulduzsoft.com"
+msgid "(c) 2004-2015 George Yunaev"
 msgstr "(c) 2004-2008 George Yunaev, gyunaev@ulduzsoft.com"
 
-#: ../src/main.cpp:54
-msgid "Please report bugs to kchmviewer@ulduzsoft.com"
-msgstr "请将问题汇报到 kchmviewer@ulduzsoft.com"
+#~ msgid "Please report bugs to kchmviewer@ulduzsoft.com"
+#~ msgstr "请将问题汇报到 kchmviewer@ulduzsoft.com"
 
 #~ msgid "Perform auto testing"
 #~ msgstr "运行自动测试"
