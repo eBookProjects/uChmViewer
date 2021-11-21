@@ -1,4 +1,4 @@
-# Building KchmViewer
+# Building uChmViewer
 
 - [Dependencies and Tools](#dependencies-and-tools)
 - [Getting sources](#getting-sources)
@@ -33,7 +33,7 @@ Use the `git clone` command to retrieve the sources. The `-b release` option all
 ```sh
 # Getting the repository together with the submodule
 # and switching to the release branch
-git clone -b release --recursive https://github.com/u-235/kchmviewer
+git clone -b release --recursive https://github.com/u-235/uchmviewer
 ```
 
 
@@ -54,7 +54,7 @@ cmake --install . [<options>]
 ### Options of build system generation
 
 * `-G` - specifies a build system generator. This option is not necessary when using the default toolkit.
-* `--install-prefix <prefix>` - specifies a root folder for install application. By defaults to `/usr/local` on UNIX and `c:/Program Files/kchmviewer` on Windows. Note, that the installation prefix can be overridden when CMake is run in installation mode (`cmake --install`) with the `--prefix` option. Cpack ignores the installation prefix.
+* `--install-prefix <prefix>` - specifies a root folder for install application. By defaults to `/usr/local` on UNIX and `c:/Program Files/uchmviewer` on Windows. Note, that the installation prefix can be overridden when CMake is run in installation mode (`cmake --install`) with the `--prefix` option. Cpack ignores the installation prefix.
 * `-D <var>=<value>` - specifies the initial value of the CMake script variable.
 
     **Project-specific variables**
@@ -107,9 +107,9 @@ The table lists the required additional packages and CMake options for varios  b
 ```sh
 apt install build-essential cmake git libzip-dev libchm-dev\
  gettext qt5-default libqt5webkit5-dev
-git clone -b release --recursive https://github.com/u-235/kchmviewer
-mkdir kchmviewer/build
-cd kchmviewer/build
+git clone -b release --recursive https://github.com/u-235/uchmviewer
+mkdir uchmviewer/build
+cd uchmviewer/build
 cmake -DCMAKE_BUILD_TYPE=Release ../
 cmake --build . --config Release
 # Optional generate package
@@ -122,9 +122,9 @@ cpack -G DEB -DCPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON
 ```sh
 apt install build-essential cmake git libzip-dev libchm-dev\
  gettext qt5-default qtwebengine5-dev
-git clone -b release --recursive https://github.com/u-235/kchmviewer
-mkdir kchmviewer/build
-cd kchmviewer/build
+git clone -b release --recursive https://github.com/u-235/uchmviewer
+mkdir uchmviewer/build
+cd uchmviewer/build
 cmake -DCMAKE_BUILD_TYPE=Release -DUSE_WEBENGINE=ON ../
 cmake --build . --config Release
 # Optional generate package
@@ -137,9 +137,9 @@ cpack -G DEB -DCPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON
 ```sh
 apt install build-essential cmake git libzip-dev libchm-dev\
  gettext qt4-default libqtwebkit-dev kdelibs5-dev
-git clone -b release --recursive https://github.com/u-235/kchmviewer
-mkdir kchmviewer/build
-cd kchmviewer/build
+git clone -b release --recursive https://github.com/u-235/uchmviewer
+mkdir uchmviewer/build
+cd uchmviewer/build
 cmake -DCMAKE_BUILD_TYPE=Release -DFRAMEWORK=KDE4 ../
 cmake --build . --config Release
 # Optional generate package

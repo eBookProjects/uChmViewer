@@ -1,6 +1,6 @@
-kchmviewer supports the following DBUS bindings:
+uChmViewer supports the following DBUS bindings:
 
-Interface path: net.kchmviewer.application
+Interface path: net.uchmviewer.application
 
 Bingings:
 

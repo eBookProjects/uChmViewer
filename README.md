@@ -1,11 +1,11 @@
-# KchmViewer
+# uChmViewer
 
 This is a fork of the [kchmviewer](http://www.ulduzsoft.com/linux/kchmviewer) with some improvements.
 
 - [Overview](#overview)
 - [What's new](#whats-new)
 - [Features](#features)
-- [Getting KchmViewer](#getting-kchmviewer)
+- [Getting uChmViewer](#getting-uchmviewer)
 - [Usage](#usage)
 - [Thanks](#thanks)
 - [License](#license)
@@ -45,7 +45,7 @@ Read more in the [release notes](NEWS.md).
 - Has complex search query support. You can use search queries like "lazy people" +learn -not.
 
 
-## Getting KchmViewer
+## Getting uChmViewer
 
 The application is currently distributed in source code and you need to build it on your computer. This will not take long.
 
@@ -54,13 +54,13 @@ Go to the [build instructions page](INSTALL.md).
 
 ## Usage
 
-Usage of KchmViewer is simple:
+Usage of uChmViewer is simple:
 
 ```
-kchmviewer mychmfile.chm
+uchmviewer mychmfile.chm
 ```
 
-for the rest of command-line options, see kchmviewer --help
+for the rest of command-line options, see uchmviewer --help
 
 
 ## Thanks
@@ -74,4 +74,4 @@ Thanks to:
 
 ## License
 
-KchmViewer is distributed under GNU GPL license version 3.
+uChmViewer is distributed under GNU GPL license version 3.

@@ -1,3 +1,9 @@
+2021-11-21 u-235 <nicegorov@yandex.com>
+    - Renamed fork Kchmviewer => uChmViewer.
+
+2021-11-16 u-235 <nicegorov@yandex.com>
+    - Fixed marking translatable strings and updated translation.
+
 2021-11-15 u-235 <nicegorov@yandex.com>
     - v8.1-rc2 published
     - Fixed build failure in src/qtwebkit/viewwindowmgr.cpp.
