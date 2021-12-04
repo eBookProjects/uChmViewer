@@ -1066,18 +1066,26 @@ void MainWindow::actionLocateInContentsTab()
 void MainWindow::actionAboutApp()
 {
 #if QT_VERSION >= 0x050000
-    QString info = QString( i18n("<br>Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4") )
+    QString info = QString( i18n("Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4") )
             .arg( QSysInfo::buildCpuArchitecture() )
             .arg( QSysInfo::buildAbi() )
             .arg( QSysInfo::prettyProductName() )
             .arg( qVersion() );
 #else
-    QString info = QString( i18n("<br>Using Qt version %1") ) .arg( qVersion() );
+    QString info = QString( i18n("Using Qt version %1") ) .arg( qVersion() );
 #endif
 
-    QString abouttext = i18n( "<html><b>uChmViewer version %1.%2</b>%3<br><br>"
-                              "Copyright (C) George Yunaev, 2004-2015<br><br>"
-							  "Licensed under GNU GPL license version 3.</html>" )
+    QString abouttext = i18n( "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
+                              "<html><head><meta name=\"qrichtext\" content=\"1\" /></head>"
+                              "<body>"
+                              "<p>This is a fork of KchmViewer, a chm and epub file viewer.<br>"
+                              "KchmViewer is written by Georgy Yunaev.<br>"
+                              "uChmViewer version <b>%1.%2</b></p>"
+                              "<p>%3</p>"
+                              "<p>Copyright (C) George Yunaev, 2004-2015<br>"
+                              "Copyright (C) Nick Egorrov, 2021</p>"
+							  "<p>Licensed under GNU GPL license version 3.</p>"
+							  "</body></html>" )
                                 .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) .arg( info );
 
 	// It is quite funny that the argument order differs
