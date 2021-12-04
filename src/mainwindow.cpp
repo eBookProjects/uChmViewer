@@ -236,19 +236,6 @@ void MainWindow::checkForSharedMemoryMessage()
         parseCmdLineArgs( args, true );
 }
 
-void MainWindow::checkNewVersionAvailable()
-{
-	// Create a New version available object if necessary. This object will auto-delete itself
-	CheckNewVersion * pNewVer = new CheckNewVersion();
-
-	connect( pNewVer, SIGNAL(error(int)), this, SLOT(newVerAvailError(int)) );
-	connect( pNewVer, SIGNAL(newVersionAvailable( NewVersionMetaMap )), this, SLOT(newVerAvailable(NewVersionMetaMap)) );
-
-	pNewVer->setUrl( "http://www.kchmviewer.net/latestversion.txt" );
-	pNewVer->start();
-}
-
-
 bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
 {
 	QString fileName = loadFileName;
@@ -561,7 +548,6 @@ void MainWindow::printHelpAndExit()
             "  -search <query>   searches for query in the Search tab, and activate the first entry if found\n"
             "  -token <token>    specifies the application token; see the integration reference\n"
             "  -background       start minimized\n"
-            "  -novcheck         disable check for new version even if enabled in configuration\n"
              , qPrintable( m_arguments[0] ) );
 
     exit (1);
@@ -570,7 +556,7 @@ void MainWindow::printHelpAndExit()
 bool MainWindow::parseCmdLineArgs(const QStringList& args , bool from_another_app )
 {
     QString filename, search_query, search_index, open_url, search_toc;
-    bool do_autotest = false, disable_vcheck = false, force_background = false;
+    bool do_autotest = false, force_background = false;
 
 	// argv[0] in Qt is still a program name
     for ( int i = 1; i < args.size(); i++  )
@@ -589,8 +575,6 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args , bool from_another_ap
             i++; // ignore
         else if ( args[i] == "-background" )
             force_background = true;
-        else if ( args[i] == "-novcheck" )
-            disable_vcheck = true;
         else if ( args[i] == "-v" || args[i] == "--version" )
         {
             printf("uChmViewer version %d.%d built at %s %s\n", APP_VERSION_MAJOR, APP_VERSION_MINOR, __DATE__, __TIME__ );
@@ -615,20 +599,6 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args , bool from_another_ap
             }
         }
 	}
-
-    // Check for a new version if needed
-    if ( pConfig->m_advCheckNewVersion && !disable_vcheck )
-    {
-        QSettings settings;
-
-        if ( settings.contains( "advanced/lastupdate" ) )
-        {
-            QDateTime lastupdate = settings.value( "advanced/lastupdate" ).toDateTime();
-
-            if ( lastupdate.secsTo( QDateTime::currentDateTime() ) >= 86400 * 7 ) // seven days
-                checkNewVersionAvailable();
-        }
-    }
 
     // Opening the file?
 	if ( !filename.isEmpty() )
@@ -1176,7 +1146,6 @@ void MainWindow::setupActions()
 	// Settings
 	connect( settings_SettingsAction, SIGNAL( triggered() ), this, SLOT( actionChangeSettings() ) );
 	connect( actionEdit_toolbars, SIGNAL( triggered() ), this, SLOT( actionEditToolbars() ) );
-	connect( actionCheck_for_updates, SIGNAL(triggered()), this, SLOT(checkNewVersionAvailable()) );
 
 	// Help menu
 	connect( actionAbout_kchmviewer, SIGNAL(triggered()), this, SLOT(actionAboutApp()) );
@@ -1455,38 +1424,6 @@ void MainWindow::updateActions()
 	nav_actionPreviousPage->setEnabled( enabled );
 	nav_actionNextPageToc->setEnabled( enabled );
 	m_navPanel->setEnabled( enabled );
-}
-
-void MainWindow::newVerAvailError( int  )
-{
-	statusBar()->showMessage( i18n("Unable to check whether a new version is available"), 2000 );
-}
-
-void MainWindow::newVerAvailable( NewVersionMetaMap metadata )
-{
-	QSettings().setValue( "advanced/lastupdate", QDateTime::currentDateTime() );
-
-	// What is the latest version?
-	QString current = QString("%1.%2") .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR);
-
-    if ( metadata["Version"].toFloat() > current.toFloat() )
-	{
-		if ( QMessageBox::question( 0,
-				i18n("New version available"),
-				i18n("<html>A new version <b>%1</b> of uChmViewer is available!<br><br>"
-				   "You are currently using version %3.<br>"
-				   "Do you want to visit the application web site %2?")
-						.arg( metadata["Version"] )
-						.arg( metadata["URL"] )
-						.arg( current ),
-					QMessageBox::Yes | QMessageBox::No,
-					QMessageBox::Yes ) == QMessageBox::No )
-				return;
-
-		QDesktopServices::openUrl ( QUrl(metadata["URL"]) );
-	}
-	else
-		statusBar()->showMessage( i18n("Checked for updates; you are using the latest version of uChmViewer"), 2000 );
 }
 
 void MainWindow::actionEditToolbars()

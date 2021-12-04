@@ -19,7 +19,6 @@ set(CPP_SOURCES
     tab_index.cpp
     tab_search.cpp
     navigationpanel.cpp
-    checknewversion.cpp
     toolbarmanager.cpp
     toolbareditor.cpp
     textencodings.cpp
@@ -41,7 +40,6 @@ set(MOC_HEADERS
     tab_search.h
     viewwindowmgr.h
     navigationpanel.h
-    checknewversion.h
     toolbarmanager.h
     toolbareditor.h
     )

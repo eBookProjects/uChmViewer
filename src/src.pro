@@ -25,7 +25,6 @@ HEADERS += \
     viewwindow.h \
     viewwindowmgr.h \
     navigationpanel.h \
-    checknewversion.h \
     toolbarmanager.h \
     toolbareditor.h \
     textencodings.h \
@@ -49,7 +48,6 @@ SOURCES += \
     tab_index.cpp \
     tab_search.cpp \
     navigationpanel.cpp \
-    checknewversion.cpp \
     toolbarmanager.cpp \
     toolbareditor.cpp \
     textencodings.cpp \

@@ -24,7 +24,6 @@
 
 #include "ebook.h"
 #include "viewwindow.h"
-#include "checknewversion.h"
 
 #include "ui_mainwindow.h"
 
@@ -146,15 +145,9 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		void		updateToolbars();
 		void		updateActions();
 
-		void		checkNewVersionAvailable();
-
 	protected slots:
 		// Called from the timer in main constructor
 		void 		firstShow();
-
-		// checknewversion
-		void		newVerAvailError( int  );
-		void		newVerAvailable( NewVersionMetaMap metadata );
 		
         // single app mode
         void        checkForSharedMemoryMessage();

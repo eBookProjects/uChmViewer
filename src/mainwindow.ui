@@ -29,8 +29,6 @@
     </property>
     <addaction name="settings_SettingsAction"/>
     <addaction name="actionEdit_toolbars"/>
-    <addaction name="separator"/>
-    <addaction name="actionCheck_for_updates"/>
    </widget>
    <widget class="QMenu" name="menu_Bookmarks">
     <property name="title">
@@ -575,15 +573,6 @@
   <action name="actionAbout_Qt">
    <property name="text">
     <string>About Qt</string>
-   </property>
-  </action>
-  <action name="actionCheck_for_updates">
-   <property name="icon">
-    <iconset resource="resources/images.qrc">
-     <normaloff>:/images/find_wrap.png</normaloff>:/images/find_wrap.png</iconset>
-   </property>
-   <property name="text">
-    <string>Check for updates</string>
    </property>
   </action>
   <action name="actionEdit_toolbars">

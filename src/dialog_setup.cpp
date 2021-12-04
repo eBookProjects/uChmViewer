@@ -107,8 +107,6 @@ DialogSetup::DialogSetup(QWidget *parent)
 			rbToolbarText->setChecked( true );
 			break;
 	}
-
-	cbCheckForUpdates->setChecked( pConfig->m_advCheckNewVersion );
 }
 
 DialogSetup::~DialogSetup()
@@ -190,7 +188,6 @@ void DialogSetup::accept()
 	
 	// Autodetect encoding
 	Check_Need_Restart( boxAutodetectEncoding, &pConfig->m_advAutodetectEncoding, &need_restart );
-	pConfig->m_advCheckNewVersion = cbCheckForUpdates->isChecked();
 
 	// Layout direction management
 	bool layout_rl = boxLayoutDirectionRL->isChecked();

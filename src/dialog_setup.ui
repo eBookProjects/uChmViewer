@@ -482,16 +482,6 @@
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QCheckBox" name="cbCheckForUpdates">
-            <property name="whatsThis">
-             <string>If this option is enabled, the application will check for updates (when new version of application is released). If a new version is available, the program will show a messagebox dialog informing you about new version. This check will only performed once in 24 hours. No user information is requested or transmitted from your computer during this check.</string>
-            </property>
-            <property name="text">
-             <string>Perform a check whether a new version is available (once a week)</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
