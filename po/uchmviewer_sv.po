@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kchmviewer 4.0 beta2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-21 11:32+0300\n"
+"POT-Creation-Date: 2021-12-04 21:29+0300\n"
 "PO-Revision-Date: 2008-09-16 22:18+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1115
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1093
 msgid "About uChmViewer"
 msgstr ""
 
@@ -36,56 +36,39 @@ msgstr ""
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Liberation Sans'; font-size:10pt; font-weight:600;\">I would like to "
-"thank:</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
-"family:'Liberation Sans'; font-size:10pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Liberation Sans'; font-size:10pt;\">- Razvan Cojocaru, the author of "
-"xchm.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Liberation Sans'; font-size:10pt;\">- Peter Volkov for significant "
-"QA (more than 20 reported bugs!)</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Liberation Sans'; font-size:10pt;\">- And of course </span><span "
-"style=\" font-family:'Liberation Sans'; font-size:10pt; font-weight:600;"
-"\">everyone</span><span style=\" font-family:'Liberation Sans'; font-"
-"size:10pt;\">, who report bugs,  and suggest features.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
-"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-"
-"family:'Liberation Sans'; font-size:10pt;\"><br /></p></body></html>"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /></head>\n"
+"<body>\n"
+"<p>I would like to thank:</p>\n"
+"<ul>\n"
+"<li>George Yunaev, the author of KchmViewer.</li>\n"
+"<li>Razvan Cojocaru, the author of xchm.</li>\n"
+"<li>Peter Volkov for significant QA (more than 20 reported bugs!).</li>\n"
+"<li>And of course <b>everyone</b>, who report bugs, and suggest features.</"
+"li>\n"
+"</ul>\n"
+"</body></html>"
 msgstr ""
 
-#: ../src/dialog_about.ui:83
+#: ../src/dialog_about.ui:84
 msgid "3rd party software"
 msgstr ""
 
-#: ../src/dialog_about.ui:89
+#: ../src/dialog_about.ui:90
 msgid ""
-"<html><head/><body><p>uChmViewer uses the following 3rd party software:</"
-"p><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-"
-"right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-"
-"bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
-"indent:0px;\">Qt library from http://qt-project.org by Digia; </li><li style="
-"\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -"
-"qt-block-indent:0; text-indent:0px;\">libchm for parsing CHM files by Jed "
-"Wing; </li><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; "
-"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">libzip for handling "
-"EPUB files by Dieter Baron and Thomas Klausner</li><li style=\" margin-"
-"top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-"indent:0; text-indent:0px;\">Icons from DryIcons, http://dryicons.com</li></"
-"ul></body></html>"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /></head>\n"
+"<body>\n"
+"<p>uChmViewer uses the following 3rd party software:</p>\n"
+"<ul>\n"
+"<li>Qt library from http://qt-project.org by Digia.</li>\n"
+"<li>CHMLib for parsing CHM files by Jed Wing.</li>\n"
+"<li>libzip for handling EPUB files by Dieter Baron and Thomas Klausner.</"
+"li>\n"
+"<li>Icons from DryIcons, <a href='https://dryicons.com'>https://dryicons."
+"com</a>.</li>\n"
+"</ul>\n"
+"</body></html>"
 msgstr ""
 
 #: ../src/dialog_setup.ui:20
@@ -291,42 +274,29 @@ msgid ""
 "recommended)"
 msgstr ""
 
-#: ../src/dialog_setup.ui:488
-msgid ""
-"If this option is enabled, the application will check for updates (when new "
-"version of application is released). If a new version is available, the "
-"program will show a messagebox dialog informing you about new version. This "
-"check will only performed once in 24 hours. No user information is requested "
-"or transmitted from your computer during this check."
-msgstr ""
-
 #: ../src/dialog_setup.ui:491
-msgid "Perform a check whether a new version is available (once a week)"
-msgstr ""
-
-#: ../src/dialog_setup.ui:501
 #, fuzzy
 msgid "Toolbars"
 msgstr "Allmänt beteende"
 
-#: ../src/dialog_setup.ui:507
+#: ../src/dialog_setup.ui:497
 msgid "Small icons"
 msgstr ""
 
-#: ../src/dialog_setup.ui:514
+#: ../src/dialog_setup.ui:504
 msgid "Large icons"
 msgstr ""
 
-#: ../src/dialog_setup.ui:521
+#: ../src/dialog_setup.ui:511
 msgid "Large icons and text"
 msgstr ""
 
-#: ../src/dialog_setup.ui:528
+#: ../src/dialog_setup.ui:518
 #, fuzzy
 msgid "Just text"
 msgstr "Om &Qt"
 
-#: ../src/dialog_setup.cpp:209
+#: ../src/dialog_setup.cpp:206
 #, fuzzy
 msgid ""
 "Changing those options requires restarting the application to take effect."
@@ -334,15 +304,15 @@ msgstr ""
 "Ändring av visningsalternativ för webbläsare eller användning\n"
 "av sökmotor kräver att programmet startas om."
 
-#: ../src/dialog_setup.cpp:218
+#: ../src/dialog_setup.cpp:215
 msgid "*|Executables"
 msgstr ""
 
-#: ../src/dialog_setup.cpp:218 ../src/dialog_setup.cpp:221
+#: ../src/dialog_setup.cpp:215 ../src/dialog_setup.cpp:218
 msgid "Choose an editor executable"
 msgstr ""
 
-#: ../src/dialog_setup.cpp:223
+#: ../src/dialog_setup.cpp:220
 msgid "Executables (*)"
 msgstr ""
 
@@ -363,378 +333,378 @@ msgstr ""
 msgid "&Settings"
 msgstr ""
 
-#: ../src/mainwindow.ui:37
+#: ../src/mainwindow.ui:35
 #, fuzzy
 msgid "&Bookmarks"
 msgstr "&Bokmärk denna sida"
 
-#: ../src/mainwindow.ui:44
+#: ../src/mainwindow.ui:42
 #, fuzzy
 msgid "&File"
 msgstr "Titel"
 
-#: ../src/mainwindow.ui:55
+#: ../src/mainwindow.ui:53
 msgid "&Edit"
 msgstr ""
 
-#: ../src/mainwindow.ui:64
+#: ../src/mainwindow.ui:62
 msgid "&View"
 msgstr ""
 
-#: ../src/mainwindow.ui:78
+#: ../src/mainwindow.ui:76
 #, fuzzy
 msgid "&Windows"
 msgstr "&Fönster"
 
-#: ../src/mainwindow.ui:85
+#: ../src/mainwindow.ui:83
 #, fuzzy
 msgid "Help"
 msgstr "&Ta bort"
 
-#: ../src/mainwindow.ui:100
+#: ../src/mainwindow.ui:98
 #, fuzzy
 msgid "General toolbar"
 msgstr "Allmänt beteende"
 
-#: ../src/mainwindow.ui:125
+#: ../src/mainwindow.ui:123
 #, fuzzy
 msgid "Navigation toolbar"
 msgstr "Navigering"
 
-#: ../src/mainwindow.ui:151
+#: ../src/mainwindow.ui:149
 #, fuzzy
 msgid "View toolbar"
 msgstr "Allmänt beteende"
 
-#: ../src/mainwindow.ui:186
+#: ../src/mainwindow.ui:184
 #, fuzzy
 msgid "&Print..."
 msgstr "Skriv ut fil"
 
-#: ../src/mainwindow.ui:189
+#: ../src/mainwindow.ui:187
 #, fuzzy
 msgid "Print"
 msgstr "Skriv ut fil"
 
-#: ../src/mainwindow.ui:192
+#: ../src/mainwindow.ui:190
 msgid "Print current page"
 msgstr ""
 
-#: ../src/mainwindow.ui:195
+#: ../src/mainwindow.ui:193
 msgid "Prints currently opened page."
 msgstr ""
 
-#: ../src/mainwindow.ui:198
+#: ../src/mainwindow.ui:196
 msgid "Ctrl+P"
 msgstr ""
 
-#: ../src/mainwindow.ui:207
+#: ../src/mainwindow.ui:205
 msgid "&Quit"
 msgstr ""
 
-#: ../src/mainwindow.ui:210
+#: ../src/mainwindow.ui:208
 msgid "Exit"
 msgstr ""
 
-#: ../src/mainwindow.ui:213
+#: ../src/mainwindow.ui:211
 #, fuzzy
 msgid "Exits the application"
 msgstr "&Ändra inställningar..."
 
-#: ../src/mainwindow.ui:216
+#: ../src/mainwindow.ui:214
 msgid "Ctrl+Q"
 msgstr ""
 
-#: ../src/mainwindow.ui:225
+#: ../src/mainwindow.ui:223
 msgid "C&opy"
 msgstr ""
 
-#: ../src/mainwindow.ui:228
+#: ../src/mainwindow.ui:226
 msgid "Copy"
 msgstr ""
 
-#: ../src/mainwindow.ui:231
+#: ../src/mainwindow.ui:229
 msgid "Copies selected content to clipboard"
 msgstr ""
 
-#: ../src/mainwindow.ui:234
+#: ../src/mainwindow.ui:232
 msgid "Ctrl+C"
 msgstr ""
 
-#: ../src/mainwindow.ui:243
+#: ../src/mainwindow.ui:241
 #, fuzzy
 msgid "&Select All"
 msgstr "&Markera allt"
 
-#: ../src/mainwindow.ui:246
+#: ../src/mainwindow.ui:244
 msgid "Paste"
 msgstr ""
 
-#: ../src/mainwindow.ui:249
+#: ../src/mainwindow.ui:247
 msgid "Selects everything in the document"
 msgstr ""
 
-#: ../src/mainwindow.ui:252
+#: ../src/mainwindow.ui:250
 msgid "Ctrl+V"
 msgstr ""
 
-#: ../src/mainwindow.ui:261
+#: ../src/mainwindow.ui:259
 msgid "&Find..."
 msgstr ""
 
-#: ../src/mainwindow.ui:264
+#: ../src/mainwindow.ui:262
 msgid "Find text in currently opened page"
 msgstr ""
 
-#: ../src/mainwindow.ui:267
+#: ../src/mainwindow.ui:265
 msgid "Enters the Find in page mode"
 msgstr ""
 
-#: ../src/mainwindow.ui:270
+#: ../src/mainwindow.ui:268
 msgid "Ctrl+F"
 msgstr ""
 
-#: ../src/mainwindow.ui:279
+#: ../src/mainwindow.ui:277
 msgid "E&xtract CHM content..."
 msgstr "E&xtrahera CHM-innehåll..."
 
-#: ../src/mainwindow.ui:282
+#: ../src/mainwindow.ui:280
 #, fuzzy
 msgid "Extract the CHM content to the directory"
 msgstr "Extrahering av CHM-innehåll"
 
-#: ../src/mainwindow.ui:285
+#: ../src/mainwindow.ui:283
 #, fuzzy
 msgid ""
 "Exctracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr "Extrahering av CHM-innehåll"
 
-#: ../src/mainwindow.ui:294
+#: ../src/mainwindow.ui:292
 #, fuzzy
 msgid "&Application settings..."
 msgstr "&Ändra inställningar..."
 
-#: ../src/mainwindow.ui:297 ../src/mainwindow.ui:300
+#: ../src/mainwindow.ui:295 ../src/mainwindow.ui:298
 #, fuzzy
 msgid "Change the application settings"
 msgstr "&Ändra inställningar..."
 
-#: ../src/mainwindow.ui:309
+#: ../src/mainwindow.ui:307
 msgid "&Add bookmark"
 msgstr "&Lägg till bokmärke"
 
-#: ../src/mainwindow.ui:312
+#: ../src/mainwindow.ui:310
 #, fuzzy
 msgid "Bookmark"
 msgstr "&Bokmärk denna sida"
 
-#: ../src/mainwindow.ui:315
+#: ../src/mainwindow.ui:313
 msgid "Adds a bookmark for currently opened page"
 msgstr ""
 
-#: ../src/mainwindow.ui:318
+#: ../src/mainwindow.ui:316
 msgid ""
 "Adds a bookmark for currently opened page. Remembers the opened page, and "
 "scroll position. Bookmarks are accessible through Bookmarks menu or tab."
 msgstr ""
 
-#: ../src/mainwindow.ui:321
+#: ../src/mainwindow.ui:319
 msgid "Ctrl+B"
 msgstr ""
 
-#: ../src/mainwindow.ui:330
+#: ../src/mainwindow.ui:328
 #, fuzzy
 msgid "&Increase font size"
 msgstr "Öka typsnittsstorleken"
 
-#: ../src/mainwindow.ui:333
+#: ../src/mainwindow.ui:331
 msgid "Larger"
 msgstr ""
 
-#: ../src/mainwindow.ui:336
+#: ../src/mainwindow.ui:334
 #, fuzzy
 msgid "Increase the font size"
 msgstr "Öka typsnittsstorleken"
 
-#: ../src/mainwindow.ui:339
+#: ../src/mainwindow.ui:337
 msgid "Increases the document font size. The new font size will be stored."
 msgstr ""
 
-#: ../src/mainwindow.ui:342
+#: ../src/mainwindow.ui:340
 msgid "Ctrl+="
 msgstr ""
 
-#: ../src/mainwindow.ui:351
+#: ../src/mainwindow.ui:349
 #, fuzzy
 msgid "&Decrease font size"
 msgstr "Minska typsnittsstorleken"
 
-#: ../src/mainwindow.ui:354
+#: ../src/mainwindow.ui:352
 msgid "Smaller"
 msgstr ""
 
-#: ../src/mainwindow.ui:357
+#: ../src/mainwindow.ui:355
 #, fuzzy
 msgid "Decrease the font size"
 msgstr "Minska typsnittsstorleken"
 
-#: ../src/mainwindow.ui:360
+#: ../src/mainwindow.ui:358
 msgid "Decreases the document font size. The new font size will be stored."
 msgstr ""
 
-#: ../src/mainwindow.ui:363
+#: ../src/mainwindow.ui:361
 msgid "Ctrl+-"
 msgstr ""
 
-#: ../src/mainwindow.ui:372
+#: ../src/mainwindow.ui:370
 msgid "See &HTML"
 msgstr ""
 
-#: ../src/mainwindow.ui:375
+#: ../src/mainwindow.ui:373
 #, fuzzy
 msgid "View HTML source of current page"
 msgstr "Visa användning av HTML-källkommandon"
 
-#: ../src/mainwindow.ui:378
+#: ../src/mainwindow.ui:376
 #, fuzzy
 msgid "Shows the HTML source of currently opened page"
 msgstr "Visa användning av HTML-källkommandon"
 
-#: ../src/mainwindow.ui:381
+#: ../src/mainwindow.ui:379
 msgid "Ctrl+U"
 msgstr ""
 
-#: ../src/mainwindow.ui:393
+#: ../src/mainwindow.ui:391
 #, fuzzy
 msgid "Enable &full screen mode"
 msgstr "&Helskärm"
 
-#: ../src/mainwindow.ui:396
+#: ../src/mainwindow.ui:394
 #, fuzzy
 msgid "Enters or leaves the fullscreen mode"
 msgstr "&Helskärm"
 
-#: ../src/mainwindow.ui:399
+#: ../src/mainwindow.ui:397
 #, fuzzy
 msgid "F11"
 msgstr "F1"
 
-#: ../src/mainwindow.ui:417
+#: ../src/mainwindow.ui:415
 msgid "Show &navigator window"
 msgstr ""
 
-#: ../src/mainwindow.ui:420
+#: ../src/mainwindow.ui:418
 msgid "Show navigator dock window"
 msgstr ""
 
-#: ../src/mainwindow.ui:423
+#: ../src/mainwindow.ui:421
 msgid ""
 "Shows or hides the size window (with Content, Index, Search and Bookmark "
 "tabs)"
 msgstr ""
 
-#: ../src/mainwindow.ui:426
+#: ../src/mainwindow.ui:424
 msgid "F9"
 msgstr ""
 
-#: ../src/mainwindow.ui:438
+#: ../src/mainwindow.ui:436
 #, fuzzy
 msgid "&Locate"
 msgstr "Plats"
 
-#: ../src/mainwindow.ui:441
+#: ../src/mainwindow.ui:439
 #, fuzzy
 msgid "Locate the current page in contents window"
 msgstr "Hitta detta ämne i innehållsfönstret"
 
-#: ../src/mainwindow.ui:444
+#: ../src/mainwindow.ui:442
 #, fuzzy
 msgid ""
 "If the current page is present in the Table of Contents, locate it there. "
 msgstr ""
 "Klicka på denna knapp för att gå till nästa sida i innehållsförteckningen."
 
-#: ../src/mainwindow.ui:447
+#: ../src/mainwindow.ui:445
 msgid "Ctrl+L"
 msgstr ""
 
-#: ../src/mainwindow.ui:456
+#: ../src/mainwindow.ui:454
 #, fuzzy
 msgid "Set &encoding"
 msgstr "An&ge codepage"
 
-#: ../src/mainwindow.ui:459
+#: ../src/mainwindow.ui:457
 msgid "Changes the current document encoding. "
 msgstr ""
 
-#: ../src/mainwindow.ui:468
+#: ../src/mainwindow.ui:466
 msgid "&Open..."
 msgstr ""
 
-#: ../src/mainwindow.ui:471
+#: ../src/mainwindow.ui:469
 #, fuzzy
 msgid "Open a CHM file"
 msgstr "Öppna fil"
 
-#: ../src/mainwindow.ui:474
+#: ../src/mainwindow.ui:472
 #, fuzzy
 msgid "Opens a new CHM file"
 msgstr "Öppna alltid en ny CHM-fil"
 
-#: ../src/mainwindow.ui:483
+#: ../src/mainwindow.ui:481
 msgid "Back"
 msgstr ""
 
-#: ../src/mainwindow.ui:486
+#: ../src/mainwindow.ui:484
 #, fuzzy
 msgid "Navigate back"
 msgstr "Navigering"
 
-#: ../src/mainwindow.ui:489
+#: ../src/mainwindow.ui:487
 #, fuzzy
 msgid "Navigate back in navigation history"
 msgstr "Flytta bakåt i historiken"
 
-#: ../src/mainwindow.ui:498
+#: ../src/mainwindow.ui:496
 msgid "Forward"
 msgstr ""
 
-#: ../src/mainwindow.ui:501
+#: ../src/mainwindow.ui:499
 #, fuzzy
 msgid "Navigate forward"
 msgstr "Navigering"
 
-#: ../src/mainwindow.ui:504
+#: ../src/mainwindow.ui:502
 #, fuzzy
 msgid "Navigate forward in navigation history"
 msgstr "Flytta framåt i historiken"
 
-#: ../src/mainwindow.ui:513
+#: ../src/mainwindow.ui:511
 msgid "Home"
 msgstr ""
 
-#: ../src/mainwindow.ui:516
+#: ../src/mainwindow.ui:514
 #, fuzzy
 msgid "Navigate home"
 msgstr "Navigering"
 
-#: ../src/mainwindow.ui:519
+#: ../src/mainwindow.ui:517
 msgid "Navigate to the document Home page, as specified in the document."
 msgstr ""
 
-#: ../src/mainwindow.ui:528 ../src/window_browser.ui:90
+#: ../src/mainwindow.ui:526 ../src/window_browser.ui:90
 msgid "Previous"
 msgstr ""
 
-#: ../src/mainwindow.ui:531
+#: ../src/mainwindow.ui:529
 #, fuzzy
 msgid "Go to the previous page in the Table of Contents"
 msgstr ""
 "Klicka på denna knapp för att gå till föregående sida i "
 "innehållsförteckningen."
 
-#: ../src/mainwindow.ui:534
+#: ../src/mainwindow.ui:532
 #, fuzzy
 msgid ""
 "Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
@@ -743,17 +713,17 @@ msgstr ""
 "Klicka på denna knapp för att gå till föregående sida i "
 "innehållsförteckningen."
 
-#: ../src/mainwindow.ui:543 ../src/window_browser.ui:113
+#: ../src/mainwindow.ui:541 ../src/window_browser.ui:113
 msgid "Next"
 msgstr ""
 
-#: ../src/mainwindow.ui:546
+#: ../src/mainwindow.ui:544
 #, fuzzy
 msgid "Go to the next page in the Table of Contents"
 msgstr ""
 "Klicka på denna knapp för att gå till nästa sida i innehållsförteckningen."
 
-#: ../src/mainwindow.ui:549
+#: ../src/mainwindow.ui:547
 #, fuzzy
 msgid ""
 "Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: Ctrl"
@@ -761,39 +731,35 @@ msgid ""
 msgstr ""
 "Klicka på denna knapp för att gå till nästa sida i innehållsförteckningen."
 
-#: ../src/mainwindow.ui:558
+#: ../src/mainwindow.ui:556
 #, fuzzy
 msgid "&Close window"
 msgstr "&Fönster"
 
-#: ../src/mainwindow.ui:561
+#: ../src/mainwindow.ui:559
 #, fuzzy
 msgid "Close current window"
 msgstr "&Visa innehållsfönstret"
 
-#: ../src/mainwindow.ui:564
+#: ../src/mainwindow.ui:562
 #, fuzzy
 msgid "Closes currently opened window"
 msgstr "&Visa innehållsfönstret"
 
-#: ../src/mainwindow.ui:567
+#: ../src/mainwindow.ui:565
 msgid "Ctrl+W"
 msgstr ""
 
-#: ../src/mainwindow.ui:572
+#: ../src/mainwindow.ui:570
 msgid "About uChmViewer..."
 msgstr ""
 
-#: ../src/mainwindow.ui:577
+#: ../src/mainwindow.ui:575
 #, fuzzy
 msgid "About Qt"
 msgstr "Om &Qt"
 
-#: ../src/mainwindow.ui:586
-msgid "Check for updates"
-msgstr ""
-
-#: ../src/mainwindow.ui:595
+#: ../src/mainwindow.ui:584
 #, fuzzy
 msgid "Edit toolbars..."
 msgstr "Navigering"
@@ -807,32 +773,32 @@ msgstr ""
 msgid "Failed to create a shared memory segment: %1"
 msgstr ""
 
-#: ../src/mainwindow.cpp:276
+#: ../src/mainwindow.cpp:263
 #, qt-format
 msgid "Detected file encoding: %1 ( %2 )"
 msgstr ""
 
-#: ../src/mainwindow.cpp:346
+#: ../src/mainwindow.cpp:333
 #, qt-format
 msgid "%1 - failed to load the chm file"
 msgstr "%1 - misslyckades med att läsa in chm-filen"
 
-#: ../src/mainwindow.cpp:347
+#: ../src/mainwindow.cpp:334
 #, qt-format
 msgid "Unable to load the chm file %1"
 msgstr "Kunde inte läsa in chm-filen %1"
 
-#: ../src/mainwindow.cpp:355
+#: ../src/mainwindow.cpp:342
 #, qt-format
 msgid "Could not load file %1"
 msgstr "Kunde inte läsa in filen %1"
 
-#: ../src/mainwindow.cpp:413
+#: ../src/mainwindow.cpp:400
 #, qt-format
 msgid "%1 - remote link clicked - %2"
 msgstr "%1 - fjärrlänk klickad på - %2"
 
-#: ../src/mainwindow.cpp:414
+#: ../src/mainwindow.cpp:401
 #, qt-format
 msgid ""
 "A remote link %1 will start the external program to open it.\n"
@@ -843,15 +809,15 @@ msgstr ""
 "\n"
 "Vill du fortsätta?"
 
-#: ../src/mainwindow.cpp:415
+#: ../src/mainwindow.cpp:402
 msgid "&Yes"
 msgstr "&Ja"
 
-#: ../src/mainwindow.cpp:415
+#: ../src/mainwindow.cpp:402
 msgid "&No"
 msgstr "&Nej"
 
-#: ../src/mainwindow.cpp:853
+#: ../src/mainwindow.cpp:823
 #, fuzzy
 msgid ""
 "*.chm *.epub|All electronic book\n"
@@ -859,138 +825,122 @@ msgid ""
 "*.epub|EPUB electronic book"
 msgstr "*.chm|Komprimerad hjälpmanual (*.chm)"
 
-#: ../src/mainwindow.cpp:856
+#: ../src/mainwindow.cpp:826
 #, fuzzy
 msgid "Open a chm file"
 msgstr "Öppna fil"
 
-#: ../src/mainwindow.cpp:858
+#: ../src/mainwindow.cpp:828
 msgid "Electronic books (*.chm *.epub)"
 msgstr ""
 
-#: ../src/mainwindow.cpp:903 ../src/mainwindow.cpp:907
+#: ../src/mainwindow.cpp:873 ../src/mainwindow.cpp:877
 msgid "Choose a directory to store CHM content"
 msgstr "Välj en katalog att lagra CHM-innehåll i"
 
-#: ../src/mainwindow.cpp:921
+#: ../src/mainwindow.cpp:891
 msgid "Extracting CHM content"
 msgstr "Extrahering av CHM-innehåll"
 
-#: ../src/mainwindow.cpp:922
+#: ../src/mainwindow.cpp:892
 msgid "Extracting files..."
 msgstr "Extraherar filer..."
 
-#: ../src/mainwindow.cpp:923
+#: ../src/mainwindow.cpp:893
 msgid "Abort"
 msgstr "Avbryt"
 
-#: ../src/mainwindow.cpp:1016
+#: ../src/mainwindow.cpp:986
 #, fuzzy
 msgid "HTML source"
 msgstr "Visa HTML-källa"
 
-#: ../src/mainwindow.cpp:1041
+#: ../src/mainwindow.cpp:1011
 msgid "Cannot start external editor"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1042
+#: ../src/mainwindow.cpp:1012
 #, qt-format
 msgid ""
 "Cannot start external editor %1.\n"
 "Make sure the path is absolute!"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1092
+#: ../src/mainwindow.cpp:1062
 msgid "Could not locate opened topic in content window"
 msgstr "Kunde inte hitta öppnat ämne i innehållsfönstret"
 
-#: ../src/mainwindow.cpp:1099
+#: ../src/mainwindow.cpp:1069
 #, qt-format
-msgid "<br>Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
+msgid "Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1105
+#: ../src/mainwindow.cpp:1075
 #, qt-format
-msgid "<br>Using Qt version %1"
+msgid "Using Qt version %1"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1108
+#: ../src/mainwindow.cpp:1078
 #, qt-format
 msgid ""
-"<html><b>uChmViewer version %1.%2</b>%3<br><br>Copyright (C) George Yunaev, "
-"2004-2015<br><br>Licensed under GNU GPL license version 3.</html>"
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /"
+"></head><body><p>This is a fork of KchmViewer, a chm and epub file viewer."
+"<br>KchmViewer is written by Georgy Yunaev.<br>uChmViewer version <b>%1.%2</"
+"b></p><p>%3</p><p>Copyright (C) George Yunaev, 2004-2015<br>Copyright (C) "
+"Nick Egorrov, 2021</p><p>Licensed under GNU GPL license version 3.</p></"
+"body></html>"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1210
+#: ../src/mainwindow.cpp:1187
 msgid "Ctrl+1"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1216
+#: ../src/mainwindow.cpp:1193
 msgid "Ctrl+2"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1222
+#: ../src/mainwindow.cpp:1199
 msgid "Ctrl+3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1228
+#: ../src/mainwindow.cpp:1205
 msgid "Ctrl+4"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1235
+#: ../src/mainwindow.cpp:1212
 msgid "/"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1242
+#: ../src/mainwindow.cpp:1219
 msgid "F3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1262
+#: ../src/mainwindow.cpp:1239
 msgid "Ctrl+Right"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1269
+#: ../src/mainwindow.cpp:1246
 msgid "Ctrl+Left"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1276
+#: ../src/mainwindow.cpp:1253
 msgid "Ctrl+I"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1285 ../src/qtwebengine/viewwindow.cpp:116
+#: ../src/mainwindow.cpp:1262 ../src/qtwebengine/viewwindow.cpp:116
 #: ../src/qtwebkit/viewwindow.cpp:129
 msgid "&Open this link in a new tab"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1290 ../src/qtwebengine/viewwindow.cpp:117
+#: ../src/mainwindow.cpp:1267 ../src/qtwebengine/viewwindow.cpp:117
 #: ../src/qtwebkit/viewwindow.cpp:131
 msgid "&Open this link in a new background tab"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1360
+#: ../src/mainwindow.cpp:1337
 #, qt-format
 msgid "%1 ( %2 )"
-msgstr ""
-
-#: ../src/mainwindow.cpp:1462
-msgid "Unable to check whether a new version is available"
-msgstr ""
-
-#: ../src/mainwindow.cpp:1475
-#, fuzzy
-msgid "New version available"
-msgstr "Sökning är inte tillgänglig"
-
-#: ../src/mainwindow.cpp:1476
-#, qt-format
-msgid ""
-"<html>A new version <b>%1</b> of uChmViewer is available!<br><br>You are "
-"currently using version %3.<br>Do you want to visit the application web site "
-"%2?"
-msgstr ""
-
-#: ../src/mainwindow.cpp:1489
-msgid "Checked for updates; you are using the latest version of uChmViewer"
 msgstr ""
 
 #: ../src/navigationpanel.cpp:40
@@ -1227,6 +1177,14 @@ msgstr "CHM-filvisare"
 #: ../src/main.cpp:53
 msgid "(c) 2004-2015 George Yunaev"
 msgstr ""
+
+#: ../src/main.cpp:54
+msgid "Please report bugs to nicegorov@ya.com"
+msgstr ""
+
+#, fuzzy
+#~ msgid "New version available"
+#~ msgstr "Sökning är inte tillgänglig"
 
 #~ msgid "%1 - JavsScript link clicked"
 #~ msgstr "%1 - JavsScript-länk klickad på"
