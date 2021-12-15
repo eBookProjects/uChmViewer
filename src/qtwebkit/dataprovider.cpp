@@ -76,9 +76,16 @@ QByteArray KCHMNetworkReply::loadResource( const QUrl &url )
 		qWarning( "Could not resolve file %s\n", qPrintable( url.toString() ) );
 
 	}
+	
+	QString mime = MimeHelper::mimeType( url, buf );
 
-    if ( MimeHelper::mimeType( url, buf ) == "text/html" )
-        setHeader( QNetworkRequest::ContentTypeHeader, QString( "text/html; charset=%1" ) .arg( ::mainWindow->chmFile()->currentEncoding() ) );
+    if ( mime == "text/html" || mime == "text/xhtml" || mime == "text/xml" )
+    {
+        QString header = QString( "%1; charset=%2")
+                .arg( mime )
+                .arg( ::mainWindow->chmFile()->currentEncoding() );
+        setHeader( QNetworkRequest::ContentTypeHeader, header );
+    }
 
 	return buf;
 }
