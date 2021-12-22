@@ -31,6 +31,7 @@
 #
 ################################################################################
 
+cmake_minimum_required(VERSION 3.13)
 
 ############################
 #  Core macros             #
@@ -45,7 +46,7 @@ if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
             qt5_wrap_cpp(${ARGV})
         endif ()
     endmacro()
-endif()
+endif ()
 
 # qt_add_resources(outfiles)
 if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
@@ -56,7 +57,7 @@ if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
             qt5_add_resources(${ARGV})
         endif ()
     endmacro()
-endif()
+endif ()
 
 # qt_generate_moc()
 if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
@@ -83,7 +84,7 @@ if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
             qt5_wrap_ui(${ARGV})
         endif ()
     endmacro()
-endif()
+endif ()
 
 
 ############################
@@ -99,7 +100,7 @@ if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
             qt5_add_dbus_interface(${ARGV})
         endif ()
     endmacro()
-endif()
+endif ()
 
 # qt_add_dbus_interfaces(outfiles)
 if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
@@ -121,7 +122,7 @@ if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
             qt5_add_dbus_adaptor(${ARGV})
         endif ()
     endmacro()
-endif()
+endif ()
 
 # qt_generate_dbus_interface()
 if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
@@ -132,7 +133,7 @@ if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
             qt5_generate_dbus_interface(${ARGV})
         endif ()
     endmacro()
-endif()
+endif ()
 
 
 ############################
@@ -148,7 +149,7 @@ if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
             qt5_create_translation(${ARGV})
         endif ()
     endmacro()
-endif()
+endif ()
 
 # qt_add_translation(qm_files)
 if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
@@ -159,7 +160,7 @@ if (NOT QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
             qt5_add_translation(${ARGV})
         endif ()
     endmacro()
-endif()
+endif ()
 
 
 ############################
@@ -168,12 +169,12 @@ endif()
 
 macro(qt_aliase)
     if(NOT TARGET Qt::${ARGV0})
-	add_library(Qt::${ARGV0} INTERFACE IMPORTED)
-	if (QT4_FOUND)
-	    target_link_libraries(Qt::${ARGV0} INTERFACE Qt4::${ARGV1})
-	else ()
-	    target_link_libraries(Qt::${ARGV0} INTERFACE Qt5::${ARGV0})
-	endif ()
+		add_library(Qt::${ARGV0} INTERFACE IMPORTED)
+		if (QT4_FOUND)
+			target_link_libraries(Qt::${ARGV0} INTERFACE Qt4::${ARGV1})
+		else ()
+			target_link_libraries(Qt::${ARGV0} INTERFACE Qt5::${ARGV0})
+		endif ()
     endif()
 endmacro()
 

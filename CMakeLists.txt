@@ -16,15 +16,12 @@
 #     The default is ON.
 ################################################
 
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.13)
 
 # Project info
-project(uchmviewer)
+project(uchmviewer HOMEPAGE_URL "https://github.com/u-235/uchmviewer")
 include(cmake/get-version.cmake)
 set(CMAKE_PROJECT_VERSION ${PROJECT_VERSION})
-# Maybe upgrade the minimum version of CMake to 3.12?
-set(PROJECT_HOMEPAGE_URL "https://github.com/u-235/uchmviewer")
-set(CMAKE_PROJECT_HOMEPAGE_URL ${PROJECT_HOMEPAGE_URL})
 
 option(USE_WEBENGINE      "Use Qt WebEngine"                                OFF)
 option(USE_STATIC_CHMLIB  "Use static link with chm library"                OFF)
@@ -48,6 +45,7 @@ if (${FRAMEWORK} STREQUAL Qt4)
     find_package(Qt4 REQUIRED QtCore QtDBus QtNetwork QtWebKit QtGui QtXml)
 elseif (${FRAMEWORK} STREQUAL Qt5)
     find_package(Qt5 REQUIRED Core DBus Network PrintSupport Widgets Xml)
+
     if (${USE_WEBENGINE})
         find_package(Qt5 5.9 REQUIRED WebEngine WebEngineWidgets)
     else ()
@@ -74,8 +72,8 @@ add_compile_options(
     $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall>
     $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wextra>)
 
-# For old G++
-add_compile_options($<$<CXX_COMPILER_ID:GNU>:-std=gnu++11>)
+set(CMAKE_CXX_EXTENSIONS ON)
+set(CMAKE_CXX_STANDARD 11)
 
 # Run in those subdirectories
 add_subdirectory(lib)

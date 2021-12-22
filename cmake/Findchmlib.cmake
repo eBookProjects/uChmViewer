@@ -9,7 +9,7 @@ find_library(chmlib_LIBRARY NAMES chm
     PATH_SUFFIXES chmlib/lib lib)
 
 if (chmlib_INCLUDE_DIR AND chmlib_LIBRARY)
-   SET(chmlib_FOUND TRUE)
+   set(chmlib_FOUND TRUE)
 endif ()
 
 
