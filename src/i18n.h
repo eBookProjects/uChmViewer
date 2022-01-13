@@ -20,7 +20,6 @@
 #define I18N_H
 
 #if defined USE_KDE
-	//klocalizedstring.h
 	#include <klocale.h>
 #else
 	#define i18n(str)	tr(str)

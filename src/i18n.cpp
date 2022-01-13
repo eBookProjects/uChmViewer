@@ -19,6 +19,8 @@
 #include <QCoreApplication>
 #include <QLibraryInfo>
 #include <QLocale>
+#include <QRegExp>
+#include <QString>
 #include <QTranslator>
 
 #include "i18n.h"
