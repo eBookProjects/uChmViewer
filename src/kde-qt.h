@@ -20,54 +20,19 @@
 #define KDE_QT_H
 
 #if defined (USE_KDE)
-	
-	#define KQ_CLASSNAME(name)			K##name
-	#define KQ_DECLARECLASS(name)		class KQ##name : public K##name
 
-	#include <kapplication.h>
+	#include <k4aboutdata.h>
+	#include <kapplication.h>	// KDELibs4Support
 	#include <kmainwindow.h>
-	#include <kstatusbar.h>
-	#include <kmenubar.h>
-	#include <kcmdlineargs.h>
-	#include <klocale.h>
-	#include <kfiledialog.h>
-	#include <khtml_part.h>
-	#include <ktabwidget.h>
-	#include <kmenu.h>
+	#include <kcmdlineargs.h>	// KDELibs4Support
+	#include <kfiledialog.h>	// KDELibs4Support
 	#include <kmessagebox.h>
-	#include <kprogressdialog.h>
 	#include <krun.h>
 
-	#include <QProgressDialog>
-
-#else /* !USE_KDE */
-
-	#define KQ_CLASSNAME(name)			Q##name
-
-	#include <QTabWidget>
-	#include <QProgressDialog>
-
-#endif /* USE_KDE */
-
-class KQProgressModalDialog : public KQ_CLASSNAME(ProgressDialog)
-{
-	public:
-		KQProgressModalDialog ( const QString & captionText, const QString & labelText, const QString & cancelButtonText, int totalSteps, QWidget * creator = 0 );
-		
-		// Seems like people have fun making classes incompatible
-#if defined (USE_KDE)		
-		void   setValue( int value ) { progressBar()->setValue( value ); }
 #else
-		bool   wasCancelled() { return wasCanceled(); }
+
+	#include <QApplication>
+
 #endif
-
-};
-
-class KQTabWidget : public KQ_CLASSNAME(TabWidget)
-{
-public:
-	KQTabWidget (QWidget *parent = 0 )
-		: KQ_CLASSNAME(TabWidget) (parent) {}
-};
 
 #endif /* KDE_QT_H */

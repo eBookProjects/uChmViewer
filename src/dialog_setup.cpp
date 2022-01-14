@@ -18,6 +18,7 @@
 
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QUrl>
 
 #include "kde-qt.h"
 #include "i18n.h"
@@ -212,7 +213,7 @@ void DialogSetup::accept()
 void DialogSetup::browseExternalEditor()
 {
 #if defined (USE_KDE)
-        QString exec = KFileDialog::getOpenFileName( KUrl(), i18n("*|Executables"), this, i18n("Choose an editor executable"));
+	QString exec = KFileDialog::getOpenFileName( QUrl(), i18n("*|Executables"), this, i18n("Choose an editor executable"));
 #else
 	QString exec = QFileDialog::getOpenFileName(this,
 								i18n("Choose an editor executable"), 

@@ -28,10 +28,6 @@
 	#include <QtDBus/QtDBus>
 #endif
 
-#if defined (USE_KDE)
-	#include <kaboutdata.h>
-#endif
-
 #if defined (Q_OS_MAC)
         #include "uchmviewerapp.h"
 #else
@@ -44,12 +40,12 @@ MainWindow * mainWindow;
 int main( int argc, char ** argv )
 {
 #if defined (USE_KDE)
-    KAboutData aboutdata ( "uChmViewer",
+    K4AboutData aboutdata ( "uChmViewer",
                            QByteArray(),
                            ki18n("uChmViewer"),
                            qPrintable( QString("%1.%2") .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) ),
                            ki18n("CHM file viewer"),
-                           KAboutData::License_GPL,
+                           K4AboutData::License_GPL,
                            ki18n("(c) 2004-2015 George Yunaev"),
                            ki18n("Please report bugs to nicegorov@ya.com"),
                            "https://github.com/u-235/uchmviewer",
@@ -63,7 +59,7 @@ int main( int argc, char ** argv )
 	app.addLibraryPath ( "qt-plugins" );
 #endif
 
-app_i18n::init();	
+	app_i18n::init();	
 
 	// Set data for QSettings
 	QCoreApplication::setOrganizationName("uChmViewer");

@@ -19,11 +19,7 @@
 #ifndef I18N_H
 #define I18N_H
 
-#if defined USE_KDE
-	#include <klocale.h>
-#else
-	#define i18n(str)	tr(str)
-#endif
+#define i18n(str)	tr(str)
 
 namespace app_i18n
 {
