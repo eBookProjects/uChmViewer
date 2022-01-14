@@ -9,7 +9,6 @@ set(CPP_SOURCES
     dbus_interface.cpp
     dialog_chooseurlfromlist.cpp
     dialog_setup.cpp
-    kde-qt.cpp
     main.cpp
     mainwindow.cpp
     recentfiles.cpp
@@ -85,21 +84,16 @@ endif ()
 
 qt_add_resources(RSRCS resources/images.qrc)
 
-if (${FRAMEWORK} STREQUAL KDE4)
-    kde4_add_ui_files(CPP_SOURCES ${UIS})
-    # automoc in some cases cannot find a suitable header file, at the same time
-    # kde4_add_executable always does automoc and this is can't disabled.
-    # Therefore, an ugly solution is used here.
-    qt_wrap_cpp(MOC_SOURCES viewwindowmgr.h)
-    kde4_add_executable(uchmviewer ${CPP_SOURCES} ${RSRCS} ${MOC_SOURCES})
+if (${USE_KF5})
+    qt_wrap_ui(UI_SOURCES ${UIS})
+    qt_wrap_cpp(MOC_SOURCES ${MOC_HEADERS})
+    add_executable(uchmviewer ${CPP_SOURCES} ${RSRCS} ${UI_SOURCES} ${MOC_SOURCES})
     target_link_libraries(uchmviewer
         ebook
         chm
         ${KDE4_KDEUI_LIBS}
-        ${QT_QTWEBKIT_LIBRARY}
+        ${QT_WEB_PACKAGE}
         ${KDE4_KFILE_LIBS}
-        $<$<BOOL:UNIX>:X11>
-        $<$<PLATFORM_ID:Windows>:wsock32>
         )
 else ()
     qt_wrap_ui(UI_SOURCES ${UIS})
@@ -115,8 +109,6 @@ else ()
         ${QT_WEB_PACKAGE}
         Qt::Widgets
         Qt::Xml
-        $<$<PLATFORM_ID:Linux>:X11>
-        $<$<PLATFORM_ID:Windows>:wsock32>
         )
 endif ()
 

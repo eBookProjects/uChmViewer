@@ -38,7 +38,6 @@ SOURCES += \
     config.cpp \
     dialog_chooseurlfromlist.cpp \
     dialog_setup.cpp \
-    kde-qt.cpp \
     main.cpp \
     mainwindow.cpp \
     recentfiles.cpp \
@@ -85,10 +84,6 @@ LIBS *= -L"../lib/libebook"
 
 LIBS *= -lebook -lchm -lzip
 
-linux-g++*:{
-    LIBS *= -lX11
-}
-
 # This is used by cross-build on 64-bit when building a 32-bit version
 linux-g++-32: {
        LIBS *= -L.
@@ -107,7 +102,7 @@ win32:{
             LIBS *= -L"../lib/libebook/release" -L"../lib/release"
     }
 
-    LIBS += -lwsock32 -loleaut32
+    LIBS += -loleaut32
 }
 
 unix:!macx: {

@@ -23,6 +23,7 @@ project(uchmviewer HOMEPAGE_URL "https://github.com/u-235/uchmviewer")
 include(cmake/get-version.cmake)
 set(CMAKE_PROJECT_VERSION ${PROJECT_VERSION})
 
+option(USE_KF5            "Use KDE Framework 5"                             OFF)
 option(USE_WEBENGINE      "Use Qt WebEngine"                                OFF)
 option(USE_STATIC_CHMLIB  "Use static link with chm library"                OFF)
 option(USE_DEPLOY_RUNTIME "Copying runtime dependencies for deployment"     OFF)
@@ -32,36 +33,32 @@ option(USE_MACOS_BUNDLE   "Install as macOS bundle"                          ON)
 # Init cmake
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
-if (NOT DEFINED FRAMEWORK)
-    set(FRAMEWORK Qt5)
-    message(STATUS "Choice <${FRAMEWORK}> as default framework.")
-endif ()
-
 # Necessary packages
 # libzip
 find_package(libzip REQUIRED)
 
-if (${FRAMEWORK} STREQUAL Qt4)
-    find_package(Qt4 REQUIRED QtCore QtDBus QtNetwork QtWebKit QtGui QtXml)
-elseif (${FRAMEWORK} STREQUAL Qt5)
-    find_package(Qt5 REQUIRED Core DBus Network PrintSupport Widgets Xml)
-
-    if (${USE_WEBENGINE})
-        find_package(Qt5 5.9 REQUIRED WebEngine WebEngineWidgets)
-    else ()
-        find_package(Qt5 REQUIRED WebKit WebKitWidgets)
-    endif ()
-elseif (${FRAMEWORK} STREQUAL KDE4)
-    find_package(KDE4 REQUIRED)
-    add_definitions(${KDE4_DEFINITIONS})
-    add_definitions(-DUSE_KDE)
-    include_directories(${KDE4_INCLUDES})
-else ()
-    message(SEND_ERROR "Unknown framework <${FRAMEWORK}>")
-endif ()
+set(APP_QT_VERSION 5.0)
+set(APP_QT_PACKAGES Core DBus Network PrintSupport Widgets Xml)
 
 if (${USE_WEBENGINE})
+    set(APP_QT_VERSION 5.9)
+    list(APPEND APP_QT_PACKAGES WebEngine WebEngineWidgets)
     add_definitions(-DUSE_WEBENGINE)
+else ()
+    list(APPEND APP_QT_PACKAGES WebKit WebKitWidgets)
+endif ()
+
+find_package(Qt5 ${APP_QT_VERSION} REQUIRED ${APP_QT_PACKAGES})
+
+if (${USE_KF5})
+    # Needed by find_package(KF5) below.
+    find_package(ECM REQUIRED)
+    list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+    find_package(KF5 COMPONENTS KDELibs4Support)
+    
+    add_definitions(-DUSE_KDE)
+    add_definitions(${KDE4_DEFINITIONS})
+    include_directories(${KDE4_INCLUDES})
 endif ()
 
 include(cmake/qt-aliases.cmake)

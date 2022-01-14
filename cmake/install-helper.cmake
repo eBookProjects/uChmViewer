@@ -24,14 +24,7 @@ set(APP_LOCALE_INSTALL_DIR ${CMAKE_INSTALL_LOCALEDIR})
 # preferable to use relative paths throughout. In particular, there is no need
 # to make paths absolute by prepending CMAKE_INSTALL_PREFIX; this prefix is
 # used by default if the DESTINATION is a relative path.
-#
-# But in FindKDE4Internal.cmake for unix uses absolute paths.
-if (${FRAMEWORK} MATCHES KDE)
-    string(REPLACE "${CMAKE_INSTALL_PREFIX}/" "" APP_BIN_INSTALL_DIR    ${BIN_INSTALL_DIR})
-    string(REPLACE "${CMAKE_INSTALL_PREFIX}/" "" APP_DEF_INSTALL_DIR    ${XDG_APPS_INSTALL_DIR})
-    string(REPLACE "${CMAKE_INSTALL_PREFIX}/" "" APP_ICONS_INSTALL_DIR  ${ICON_INSTALL_DIR})
-    string(REPLACE "${CMAKE_INSTALL_PREFIX}/" "" APP_LOCALE_INSTALL_DIR ${LOCALE_INSTALL_DIR})
-elseif (${CMAKE_SYSTEM_NAME}  MATCHES "Windows")
+if (${CMAKE_SYSTEM_NAME}  MATCHES "Windows")
     set(APP_BIN_INSTALL_DIR    bin)
     set(APP_LOCALE_INSTALL_DIR locale)
     set(APP_ICONS_INSTALL_DIR  icons)

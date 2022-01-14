@@ -6,6 +6,8 @@ on:
       - master
       - release
       - gha
+      - qt4
+      - Qt4
     tags-ignore:
   pull_request:
 
@@ -26,21 +28,21 @@ jobs:
         - {
             name:  "Win x64 :: Qt5 :: cmake",
             os:    windows-latest,
-            setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
+            setup: "cmake -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
             build: "cmake --build . --config Release",
             install: "cmake --install . --config Release"
           }
         - {
             name:  "Linux x64 :: Qt5 :: cmake",
             os:    ubuntu-latest,
-            setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
+            setup: "cmake -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
             build: "cmake --build . --config Release",
             install: "sudo cmake --install . --config Release"
           }
         - {
             name:  "macOS x64 :: Qt5 :: cmake",
             os:    macos-latest,
-            setup: "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
+            setup: "cmake -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
             build: "cmake --build . --config Release",
             install: "sudo cmake --install . --config Release"
           }

@@ -6,6 +6,8 @@ on:
       - master
       - release
       - gha
+      - qt4
+      - Qt4
     tags-ignore:
   pull_request:
 
@@ -22,22 +24,10 @@ jobs:
       matrix:
         config:
         - {
-            name:     "Test :: KDE",
+            name:     "Test :: KF5",
             os:       ubuntu-18.04,
-            packages: qt4-default libqtwebkit-dev kdelibs5-dev,
-            xmake:    "cmake -DFRAMEWORK=KDE4 -DUSE_STATIC_CHMLIB=ON ."
-          }
-        - {
-            name:     "Test :: Qt4 qmake",
-            os:       ubuntu-18.04,
-            packages: qt4-default libqtwebkit-dev,
-            xmake:    'qmake -r "USE_STATIC_CHMLIB=1"'
-          }
-        - {
-            name:     "Test :: Qt4 cmake",
-            os:       ubuntu-18.04,
-            packages: qt4-default libqtwebkit-dev,
-            xmake:    "cmake -DFRAMEWORK=Qt4 -DUSE_STATIC_CHMLIB=ON ."
+            packages: qt5-default libqt5webkit5-dev extra-cmake-modules libkf5kdelibs4support-dev,
+            xmake:    "cmake -DUSE_KF5=ON -DUSE_STATIC_CHMLIB=ON ."
           }
         - {
             name:     "Test :: Qt5 qmake",
@@ -49,7 +39,7 @@ jobs:
             name:     "Test :: Qt5 cmake",
             os:       ubuntu-18.04,
             packages: qt5-default libqt5webkit5-dev,
-            xmake:    "cmake -DFRAMEWORK=Qt5 -DUSE_STATIC_CHMLIB=ON ."
+            xmake:    "cmake -DUSE_STATIC_CHMLIB=ON ."
           }
 
     steps:
