@@ -1,19 +1,18 @@
 # uChmViewer build script with cmake
 #
 #       Common option:
-# FRAMEWORK=<Qt4 | Qt5 | KDE4>
-# USE_STATIC_CHMLIB=ON - if defined, static linkage to the chm library is used
-# USE_WEBENGINE=ON - if defined, WebEngine is used, otherwise WebKit is used
-# USE_GETTEXT=ON - if defined, then GNU Gettext will be used for translation.
-#     The default is ON.
+# USE_KF5            - if defined, build with KDE Framework 5.
+# USE_STATIC_CHMLIB  - if defined, static linkage to the chm library is used.
+# USE_WEBENGINE      - if defined, WebEngine is used, otherwise WebKit is used.
+# USE_GETTEXT        - if defined, then GNU Gettext will be used for translation.
+#                      The default is ON.
 #
 #       System-specific option:
-#
-# USE_DEPLOY_RUNTIME=ON - if defined, the runtime dependencies will be copied to
-#     the folder with the executable. This option is applicable for Windows and
-#     macOS.
-# USE_MACOS_BUNDLE=ON - if defined, configure installation for macOS as a bundle.
-#     The default is ON.
+# USE_DEPLOY_RUNTIME - if defined, the runtime dependencies will be copied to the
+#                      folder with the executable. This option is applicable for
+#                      Windows and macOS.
+# USE_MACOS_BUNDLE   - if defined, configure installation for macOS as a bundle.
+#                      The default is ON.
 ################################################
 
 cmake_minimum_required(VERSION 3.13)
@@ -31,34 +30,46 @@ option(USE_GETTEXT        "Use GNU Gettext for translation"                  ON)
 option(USE_MACOS_BUNDLE   "Install as macOS bundle"                          ON)
 
 # Init cmake
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+
+# Interface library to collect additional dependencies.
+add_library(extra INTERFACE)
 
 # Necessary packages
 # libzip
 find_package(libzip REQUIRED)
 
+# Prepare to find Qt modules.
 set(APP_QT_VERSION 5.0)
-set(APP_QT_PACKAGES Core DBus Network PrintSupport Widgets Xml)
-
+set(APP_QT_MODULES Core DBus Network PrintSupport Widgets Xml)
+# Modules for WebKit or WebEngine.
 if (${USE_WEBENGINE})
     set(APP_QT_VERSION 5.9)
-    list(APPEND APP_QT_PACKAGES WebEngine WebEngineWidgets)
-    add_definitions(-DUSE_WEBENGINE)
+    list(APPEND APP_QT_MODULES WebEngine WebEngineWidgets)
+    target_link_libraries(extra INTERFACE Qt::WebEngine Qt::WebEngineWidgets)
+    target_compile_definitions(extra INTERFACE USE_WEBENGINE)
 else ()
-    list(APPEND APP_QT_PACKAGES WebKit WebKitWidgets)
+    list(APPEND APP_QT_MODULES WebKit WebKitWidgets)
+    target_link_libraries(extra INTERFACE Qt::WebKit Qt::WebKitWidgets)
 endif ()
-
-find_package(Qt5 ${APP_QT_VERSION} REQUIRED ${APP_QT_PACKAGES})
+# What version of Qt are we working with?
+find_package(QT ${APP_QT_VERSION} NAMES Qt5 Qt6 REQUIRED)
+set(QT Qt${QT_VERSION_MAJOR})
+# Since Qt 6 QTextCodec moved in the Qt 5 Core Compat module.
+if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    list(APPEND APP_QT_MODULES Core5Compat)
+    target_link_libraries(extra INTERFACE ${QT}::Core5Compat)
+endif ()
+# Now we know all the required Qt modules.
+find_package(${QT} REQUIRED ${APP_QT_MODULES})
 
 if (${USE_KF5})
     # Needed by find_package(KF5) below.
     find_package(ECM REQUIRED)
     list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
-    find_package(KF5 COMPONENTS KDELibs4Support)
-    
-    add_definitions(-DUSE_KDE)
-    add_definitions(${KDE4_DEFINITIONS})
-    include_directories(${KDE4_INCLUDES})
+    find_package(KF5 REQUIRED KDELibs4Support)
+    target_link_libraries(extra INTERFACE KF5::KDELibs4Support)
+    target_compile_definitions(extra INTERFACE USE_KDE)
 endif ()
 
 include(cmake/qt-aliases.cmake)

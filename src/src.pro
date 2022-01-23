@@ -125,3 +125,5 @@ unix:!macx: {
     SOURCES += qtwebkit/viewwindow.cpp qtwebkit/dataprovider.cpp qtwebkit/viewwindowmgr.cpp
     HEADERS += qtwebkit/dataprovider.h qtwebkit/viewwindow.h
 }
+
+ greaterThan(QT_MAJOR_VERSION, 5): QT += core5compat

@@ -9,7 +9,6 @@ if (${USE_STATIC_CHMLIB})
             ${CHMLIB_SRC_DIR}/chm_lib.c
             ${CHMLIB_SRC_DIR}/lzx.c)
         target_include_directories(chm PUBLIC ${CHMLIB_SRC_DIR})
-        set_target_properties(chm PROPERTIES POSITION_INDEPENDENT_CODE ON)
         #The PPC_BSTR macro is required when building on Windows.
         #The ffs = __ builtin_ffs macro is required when using MSYS.
         target_compile_definitions(chm PRIVATE
