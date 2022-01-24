@@ -129,8 +129,8 @@ bool Settings::loadSettings( const QString & filename )
 
 	QFileInfo finfo ( filename );
 
-	m_settingsFile = QString::null;
-	m_searchIndex = QString::null;
+	m_settingsFile = QString();
+	m_searchIndex = QString();
 	
 	if ( !finfo.size() )
 		return false;

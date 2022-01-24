@@ -53,7 +53,7 @@ QUrl TreeItem_Index::getUrl() const
 		if ( title.isEmpty() )
 		{
 			qWarning( "Could not get item name for url '%s'", qPrintable( m_urls[i].toString() ) );
-			titles.push_back(QString::null);
+			titles.push_back(QString());
 		}
 		else
 			titles.push_back(title);

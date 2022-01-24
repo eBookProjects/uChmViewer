@@ -19,7 +19,7 @@
 #include <QCoreApplication>
 #include <QLibraryInfo>
 #include <QLocale>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QString>
 #include <QTranslator>
 
@@ -46,8 +46,8 @@ void app_i18n::initGettext()
 	QString localeDir = QLatin1String( APP_INSTALL_DIR_LOCALE );
 	QString appDir = QCoreApplication::applicationDirPath();
 	// Clearing leading and trailing slashes, just in case.
-	QRegExp leadingSlash = QRegExp( "^[/\\\\]*" );
-	QRegExp trailingSlash = QRegExp( "[/\\\\]*$" );
+	QRegularExpression leadingSlash = QRegularExpression( "^[/\\\\]*" );
+	QRegularExpression trailingSlash = QRegularExpression( "[/\\\\]*$" );
 	binDir.remove( leadingSlash );
 	binDir.remove( trailingSlash );
 	localeDir.remove( leadingSlash );
@@ -57,7 +57,7 @@ void app_i18n::initGettext()
 	if (appDir.endsWith( binDir ))
 	{
 		// Getting the installation root folder and adding the translations path.
-		appDir.remove( QRegExp(binDir + "$") );
+		appDir.remove( QRegularExpression(binDir + "$") );
 		appDir.append( localeDir );
 		bindtextdomain ( "uchmviewer", appDir.toUtf8().data() );
 	}

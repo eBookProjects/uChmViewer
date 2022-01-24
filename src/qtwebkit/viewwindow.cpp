@@ -19,7 +19,6 @@
 #include <QContextMenuEvent>
 #include <QPrinter>
 #include <QPrintDialog>
-#include <QRegExp>
 #include <QString>
 #include <QWebHistory>
 #include <QWebFrame>
@@ -65,7 +64,7 @@ ViewWindow::~ViewWindow()
 
 void ViewWindow::invalidate( )
 {
-	m_newTabLinkKeeper = QString::null;
+	m_newTabLinkKeeper = QString();
 	m_storedScrollbarPosition = 0;
 	reload();
 }

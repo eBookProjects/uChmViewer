@@ -401,7 +401,7 @@ bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 				 i18n("%1 - remote link clicked - %2") . arg(QCoreApplication::applicationName()) . arg(otherlink),
 				 i18n("A remote link %1 will start the external program to open it.\n\nDo you want to continue?").arg( url.toString() ),
 				 i18n("&Yes"), i18n("&No"),
-				 QString::null, 0, 1 ) )
+				 QString(), 0, 1 ) )
 					return false;
 				
 			// no break! should continue to open.
@@ -876,7 +876,7 @@ void MainWindow::actionExtractCHM()
 	QString outdir = QFileDialog::getExistingDirectory (
 		this,
 		i18n("Choose a directory to store CHM content"),
-		QString::null,
+		QString(),
 		QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
 #endif
 	
@@ -1333,7 +1333,7 @@ void MainWindow::setupLangEncodingMenu()
 		
 		QString text = i18n("%1 ( %2 )") .arg( languages[idx] ) .arg( qencodings[idx] );
 		action->setText( text );
-		action->setData( qVariantFromValue( qencodings[idx] ) );
+		action->setData( QVariant::fromValue( qencodings[idx] ) );
 		action->setCheckable( true );
 		
 		// Add to the action group, so only one is checkable

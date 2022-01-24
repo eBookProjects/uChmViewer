@@ -217,7 +217,7 @@ void DialogSetup::browseExternalEditor()
 #else
 	QString exec = QFileDialog::getOpenFileName(this,
 								i18n("Choose an editor executable"), 
-			   					QString::null, 
+			   					QString(), 
 	  							i18n( "Executables (*)") );
 #endif
 

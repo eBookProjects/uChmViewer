@@ -37,7 +37,7 @@ class BookmarkItem : public QListWidgetItem
 			m_url = url;
 			m_scroll_y = pos;
 			m_action = new QAction( name, widget );
-			m_action->setData( qVariantFromValue( (void*) this ) );
+			m_action->setData( QVariant::fromValue( (void*) this ) );
 			
 			QObject::connect( m_action,
 			         SIGNAL( triggered() ),

@@ -111,7 +111,7 @@ QString	RecentFiles::latestFile()
 	QStringList files = loadRecentFiles();
 
 	if ( files.isEmpty() )
-		return QString::null;
+		return QString();
 	else
 		return files[0];
 }

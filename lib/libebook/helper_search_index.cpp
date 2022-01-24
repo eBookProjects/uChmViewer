@@ -16,6 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <algorithm>
+
 #include <QApplication>
 #include <QTextCodec>
 
@@ -260,7 +262,7 @@ bool Index::parseDocumentToStringlist(EBook *chmFile, const QUrl& filename, QStr
 		if ( ch == '&' )
 		{
 			state = STATE_IN_HTML_ENTITY;
-			parseentity = QString::null;
+			parseentity = QString();
 			continue;
 		}
 		
@@ -283,7 +285,7 @@ bool Index::parseDocumentToStringlist(EBook *chmFile, const QUrl& filename, QStr
 				tokenlist.push_back( parsedbuf.toLower() );
 			
 			tokenlist.push_back( ch.toLower() );
-			parsedbuf = QString::null;
+			parsedbuf = QString();
 			continue;
 		}
 		
@@ -292,7 +294,7 @@ tokenize_buf:
 		if ( !parsedbuf.isEmpty() )
 		{
 			tokenlist.push_back( parsedbuf.toLower() );
-			parsedbuf = QString::null;
+			parsedbuf = QString();
 		}
 	}
 	
@@ -380,7 +382,7 @@ QList< QUrl > Index::query(const QStringList &terms, const QStringList &termSeq,
 	if ( !termList.count() )
 		return QList< QUrl >();
 	
-	qSort( termList );
+	std::sort( termList.begin(), termList.end() );
 
 	QVector<Document> minDocs = termList.takeFirst().documents;
 	for(QList<Term>::Iterator it = termList.begin(); it != termList.end(); ++it) {
@@ -403,7 +405,8 @@ QList< QUrl > Index::query(const QStringList &terms, const QStringList &termSeq,
 	}
 
 	QList< QUrl > results;
-	qSort( minDocs );
+	std::sort( minDocs.begin(), minDocs.end() );
+
 	if ( termSeq.isEmpty() ) {
 		for(QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it)
 			results << docList.at((int)(*it).docNumber);
