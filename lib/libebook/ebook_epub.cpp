@@ -18,6 +18,7 @@
 
 #if defined (WIN32)
     #include <io.h>     // dup
+    #define dup _dup
 #else
     #include <unistd.h>
 #endif
@@ -271,7 +272,9 @@ bool EBook_EPUB::parseBookinfo()
 
     // EPub with an empty TOC is not valid
     if ( m_tocEntries.isEmpty() )
+    {
         return false;
+    }
 
 	return true;
 }

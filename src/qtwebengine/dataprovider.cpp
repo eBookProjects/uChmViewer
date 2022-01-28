@@ -26,7 +26,10 @@
 #include "ebook_chm.h"
 #include "ebook_epub.h"
 
-#define PRINT_DEBUG ( defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEDATAPROVIDER )
+
+#if defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEDATAPROVIDER
+    #define PRINT_DEBUG 1
+#endif
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
 

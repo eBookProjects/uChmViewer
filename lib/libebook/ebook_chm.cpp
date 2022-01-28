@@ -604,7 +604,7 @@ bool EBook_CHM::getInfoFromWindows()
 	unsigned char buffer[BUF_SIZE];
 	unsigned int factor;
 	chmUnitInfo ui;
-	long size = 0;
+	size_t size = 0;
 
 	if ( ResolveObject("/#WINDOWS", &ui) )
 	{
@@ -678,10 +678,10 @@ bool EBook_CHM::getInfoFromSystem()
 	unsigned char buffer[BUF_SIZE];
 	chmUnitInfo ui;
 
-	int index = 0;
+	size_t index = 0;
 	unsigned char* cursor = NULL, *p;
 	unsigned short value = 0;
-	long size = 0;
+	size_t size = 0;
 
 	// Run the first loop to detect the encoding. We need this, because title could be
 	// already encoded in user encoding. Same for file names
@@ -695,7 +695,7 @@ bool EBook_CHM::getInfoFromSystem()
 	buffer[size - 1] = 0;
 
 	// First loop to detect the encoding
-	for ( index = 0; index < (size - 1 - (long)sizeof(unsigned short)) ;)
+	for ( index = 0; index + 1 + sizeof(unsigned short) < size;)
 	{
 		cursor = buffer + index;
 		value = UINT16ARRAY(cursor);

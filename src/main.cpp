@@ -100,7 +100,9 @@ int main( int argc, char ** argv )
 
     // If we already have the duplicate instance, the data has been already sent to it - quit now
     if ( mainWindow->hasSameTokenInstance() )
+    {
         return 0;
+    }
 
 	mainWindow->show();
     mainWindow->launch();

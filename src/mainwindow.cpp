@@ -405,7 +405,7 @@ bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 					return false;
 				
 			// no break! should continue to open.
-
+			//-fallthrough
 		case Config::ACTION_ALWAYS_OPEN:
 #if defined (USE_KDE)
 			new KRun ( url, 0 );
@@ -606,8 +606,10 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args , bool from_another_ap
 	{
         // If we have already opened the same file, no need to reopen it again
         if ( !m_ebookFile || QDir(m_ebookFilename) != QDir(filename) )
+        {
             if ( !loadFile( filename ) )
                 return true; // skip the latest checks, but do not exit from the program
+        }
 
 		if ( !open_url.isEmpty() )
 		{
