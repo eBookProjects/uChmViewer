@@ -286,7 +286,11 @@ bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
 		navSetForwardEnabled( false );
 
 		m_viewWindowMgr->invalidate();
-		refreshCurrentBrowser();
+
+        // If the e-book supports encodings, below will be a call to setTextEncoding,
+        // which in turn will call refreshCurrentBrowser.
+        if ( !m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
+            refreshCurrentBrowser();
 
 		if ( m_currentSettings->loadSettings (fileName) )
 		{

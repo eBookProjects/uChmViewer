@@ -55,9 +55,6 @@ TabContents::TabContents( QWidget *parent )
 	         this, 
 	         SLOT( onContextMenuRequested( const QPoint & ) ) );
 
-	if ( ::mainWindow->chmFile() )
-		refillTableOfContents();
-
 	focus();
 }
 
