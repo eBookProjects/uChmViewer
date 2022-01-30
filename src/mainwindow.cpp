@@ -981,13 +981,20 @@ void MainWindow::actionFontSizeDecrease()
 
 void MainWindow::actionViewHTMLsource()
 {
-	QString text;
-
-	if ( !m_ebookFile->getFileContentAsString( text, currentBrowser()->getOpenedPage() ) || text.isEmpty() )
+	if ( !m_ebookFile )
+	{
 		return;
+	}
+
+	QUrl page = currentBrowser()->getOpenedPage();
 
 	if ( pConfig->m_advUseInternalEditor )
 	{
+		QString text;
+
+		if ( !m_ebookFile->getFileContentAsString( text, page ) || text.isEmpty() )
+			return;
+
 		QTextEdit * editor = new QTextEdit ( 0 );
 		editor->setPlainText( text );
 		editor->setWindowTitle( i18n("HTML source") );
@@ -996,6 +1003,11 @@ void MainWindow::actionViewHTMLsource()
 	}
 	else
 	{
+		QByteArray rawText;
+
+		if ( !m_ebookFile->getFileContentAsBinary( rawText, page ) || rawText.isEmpty() )
+			return;
+
 		QTemporaryFile * tf = new QTemporaryFile();
 		m_tempFileKeeper.append( tf );
 
@@ -1004,14 +1016,14 @@ void MainWindow::actionViewHTMLsource()
 			qWarning("Cannot open created QTemporaryFile: something is wrong with your system");
 			return;
 		}
-		
-		tf->write( text.toUtf8() );
+
+		tf->write( rawText );
 		tf->seek( 0 );
-		
+
 		// Run the external editor
 		QStringList arguments;
 		arguments.push_back( tf->fileName() );
-		
+
 		if ( !QProcess::startDetached( pConfig->m_advExternalEditorPath, arguments, "." ) )
 		{
 			QMessageBox::warning( 0,
