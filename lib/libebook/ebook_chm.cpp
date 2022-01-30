@@ -51,6 +51,7 @@ EBook_CHM::EBook_CHM()
 	m_detectedLCID = 0;
 	m_currentEncoding = "UTF-8";
 	m_htmlEntityDecoder = 0;
+	m_lookupTablesValid = false;
 }
 
 EBook_CHM::~EBook_CHM()
@@ -76,6 +77,7 @@ void EBook_CHM::close()
 	m_textCodecForSpecialFiles = 0;
 	m_detectedLCID = 0;
 	m_currentEncoding = "UTF-8";
+	m_lookupTablesValid = false;
 }
 
 QString EBook_CHM::title() const
@@ -295,8 +297,6 @@ bool EBook_CHM::load(const QString &archiveName)
 		m_lookupTablesValid = true;
 		fillTopicsUrlMap();
 	}
-	else
-		m_lookupTablesValid = false;
 
 	// Some CHM files have toc and index files, but do not set the name properly.
 	// Some heuristics here.
