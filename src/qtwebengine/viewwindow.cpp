@@ -28,7 +28,11 @@
 #include <QtGlobal>							// QT_VERSION, QT_VERSION_CHECK
 #include <QUrl>
 #include <QVariant>
-#include <QWebEngineContextMenuData>
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 2, 0))
+    #include <QWebEngineContextMenuRequest>
+#else
+    #include <QWebEngineContextMenuData>
+#endif
 #include <QWebEngineHistory>
 #include <QWebEnginePage>
 #include <QWebEngineProfile>
@@ -172,11 +176,16 @@ bool ViewWindow::printCurrentPage()
         return false;
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
     page()->print( printer, [printer](bool result){
         Q_UNUSED(result);
         ::mainWindow->showInStatusBar( i18n( "Printing finished") );
         delete printer;
     });
+#else
+    // TODO make slot onPrintFinished()
+    print( printer );
+#endif
 
     return true;
 }
@@ -248,7 +257,12 @@ void ViewWindow::updateHistoryIcons()
 void ViewWindow::contextMenuEvent(QContextMenuEvent *e)
 {
     QMenu *m = new QMenu(0);
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+    QUrl link = lastContextMenuRequest()->linkUrl();
+#else
     QUrl link = page()->contextMenuData().linkUrl();
+#endif
 
     if ( !link.isEmpty() )
     {
@@ -284,10 +298,13 @@ void ViewWindow::onLinkClicked(const QUrl &url)
 
 void ViewWindow::applySettings()
 {
+    // TODO make apply settings in Qt6 again
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
     QWebEngineSettings * setup = QWebEngineSettings::globalSettings();
 
     setup->setAttribute( QWebEngineSettings::AutoLoadImages, pConfig->m_browserEnableImages );
     setup->setAttribute( QWebEngineSettings::JavascriptEnabled, pConfig->m_browserEnableJS );
     setup->setAttribute( QWebEngineSettings::PluginsEnabled, pConfig->m_browserEnablePlugins );
     setup->setAttribute( QWebEngineSettings::LocalStorageEnabled, pConfig->m_browserEnableLocalStorage );
+#endif
 }

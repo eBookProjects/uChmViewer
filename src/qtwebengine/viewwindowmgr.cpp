@@ -53,7 +53,7 @@ class ViewWindowTabWidget : public QTabWidget
     protected:
         void mouseReleaseEvent ( QMouseEvent * event )
         {
-            if ( event->button() == Qt::MidButton)
+            if ( event->button() == Qt::MiddleButton)
             {
                 int tab = tabBar()->tabAt( event->pos() );
 
@@ -362,6 +362,8 @@ void ViewWindowMgr::onActivateFind()
 
 void ViewWindowMgr::find( bool backward )
 {
+    // TODO make find text in Qt6 again
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
     QWebEnginePage::FindFlags webkitflags = 0;
 
     if ( checkCase->isChecked() )
@@ -386,6 +388,7 @@ void ViewWindowMgr::find( bool backward )
 
         editFind->setPalette( p );
     });
+#endif
 }
 
 void ViewWindowMgr::editTextEdited(const QString &)
@@ -419,10 +422,13 @@ void ViewWindowMgr::copyUrlToClipboard()
 
 void ViewWindowMgr::applyBrowserSettings()
 {
+    // TODO make apply settings in Qt6 again
+#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
     QWebEngineSettings * setup = QWebEngineSettings::globalSettings();
 
     setup->setAttribute( QWebEngineSettings::AutoLoadImages, pConfig->m_browserEnableImages );
     setup->setAttribute( QWebEngineSettings::JavascriptEnabled, pConfig->m_browserEnableJS );
     setup->setAttribute( QWebEngineSettings::PluginsEnabled, pConfig->m_browserEnablePlugins );
     setup->setAttribute( QWebEngineSettings::LocalStorageEnabled, pConfig->m_browserEnableLocalStorage );
+#endif
 }
