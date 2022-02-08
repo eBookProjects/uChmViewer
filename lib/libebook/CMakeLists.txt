@@ -22,5 +22,9 @@ set(MOC_HEADERS
 
 qt_wrap_cpp(MOC_SOURCES ${MOC_HEADERS})
 add_library(ebook STATIC ${CPP_SOURCES} ${MOC_SOURCES})
-target_link_libraries(ebook chm libzip::zip Qt::Core Qt::Widgets)
+target_link_libraries(ebook PRIVATE chm libzip::zip Qt::Xml Qt::Core Qt::Widgets)
 target_include_directories(ebook PUBLIC  "./")
+
+if (TARGET ${QT}::Core5Compat)
+    target_link_libraries(ebook PRIVATE ${QT}::Core5Compat)
+endif ()

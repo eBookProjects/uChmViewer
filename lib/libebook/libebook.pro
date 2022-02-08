@@ -2,7 +2,7 @@
 TEMPLATE = lib
 TARGET = ebook
 CONFIG *= c++11 warn_on staticlib
-QT += widgets
+QT += widgets xml
 
 HEADERS += \
     bitfiddle.h \
@@ -36,3 +36,5 @@ SOURCES += \
 }
 
 !isEmpty(LIBZIP_ROOT): INCLUDEPATH *= "$$LIBZIP_ROOT/include"
+
+greaterThan(QT_MAJOR_VERSION, 5): QT += core5compat

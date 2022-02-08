@@ -115,7 +115,7 @@ unix:!macx: {
 !isEmpty(USE_WEBENGINE) {
     isEqual(QT_MAJOR_VERSION, 5):lessThan(QT_MINOR_VERSION, 9):error("QtWebEnginew requires at least Qt5.9")
 
-    QT += webengine webenginewidgets
+    QT += webenginewidgets
     DEFINES += USE_WEBENGINE
     SOURCES += qtwebengine/viewwindow.cpp qtwebengine/dataprovider.cpp qtwebengine/viewwindowmgr.cpp
     HEADERS += qtwebengine/dataprovider.h qtwebengine/viewwindow.h qtwebengine/webenginepage.h
@@ -126,4 +126,4 @@ unix:!macx: {
     HEADERS += qtwebkit/dataprovider.h qtwebkit/viewwindow.h
 }
 
- greaterThan(QT_MAJOR_VERSION, 5): QT += core5compat
+greaterThan(QT_MAJOR_VERSION, 5): QT += core5compat

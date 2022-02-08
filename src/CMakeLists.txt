@@ -75,7 +75,7 @@ else ()
 endif ()
 
 # Mac OS specific
-if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Darwin")
+if (${CMAKE_SYSTEM_NAME}  MATCHES "Darwin")
     list(APPEND CPP_SOURCES uchmviewerapp.cpp)
     list(APPEND MOC_HEADERS uchmviewerapp.h)
 endif ()
