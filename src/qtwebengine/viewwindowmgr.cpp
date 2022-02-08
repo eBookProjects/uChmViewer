@@ -370,41 +370,10 @@ void ViewWindowMgr::find( bool backward )
     if ( backward )
         webkitflags |= QWebEnginePage::FindBackward;
 
-    if ( pConfig->m_browserHighlightSearchResults )
-    {
-        // From the doc:
-        // If the HighlightAllOccurrences flag is passed, the
-        // function will highlight all occurrences that exist
-        // in the page. All subsequent calls will extend the
-        // highlight, rather than replace it, with occurrences
-        // of the new string.
-
-        // If the search text is different, we run the empty string search
-        // to discard old highlighting
-        if ( m_lastSearchedWord != editFind->text() )
-            current()->findText( "", webkitflags );// FIXME | QWebEnginePage::HighlightAllOccurrences
-
-        m_lastSearchedWord = editFind->text();
-
-        // Now we call search with highlighting enabled, while the main search below will have
-        // it disabled. This leads in both having the highlighting results AND working forward/
-        // backward buttons.
-        current()->findText( editFind->text(), webkitflags );// FIXME  | QWebEnginePage::HighlightAllOccurrences
-    }
-
     // Pre-hide the wrapper
     labelWrapped->hide();
 
     current()->findText( editFind->text(), webkitflags, [=](bool found){
-        // If we didn't find anything, enable the wrap and try again
-        if ( !found )
-        {
-            current()->findText( editFind->text(), webkitflags, [=](bool found){
-                if ( found )
-                    labelWrapped->show();
-            } );
-        }
-
         if ( !frameFind->isVisible() )
             frameFind->show();
 
