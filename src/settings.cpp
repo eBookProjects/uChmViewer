@@ -141,7 +141,7 @@ bool Settings::loadSettings( const QString & filename )
 	
 	// Init those params, as they'll be used during save the first time even if the file is not here
 	m_currentfilesize = finfo.size();
-	m_currentfiledate = finfo.lastModified().toTime_t();
+	m_currentfiledate = finfo.lastModified().toMSecsSinceEpoch() / 1000;
 	m_settingsFile = pConfig->getEbookSettingFile( filename );
 	m_searchIndex = pConfig->getEbookIndexFile( filename );
 	
@@ -183,19 +183,19 @@ bool Settings::loadSettings( const QString & filename )
 		switch (data)
 		{
 		case MARKER_FILESIZE:
-			stream >> m_currentfilesize;
-			if ( m_currentfilesize != finfo.size() )
+			unsigned int sizestamp;
+			stream >> sizestamp;
+			if ( m_currentfilesize != sizestamp )
 			{
-				m_currentfilesize = finfo.size();
 				return false;
 			}
 			break;
 			
 		case MARKER_FILETIME:
-			stream >> m_currentfiledate;
-			if ( m_currentfiledate != finfo.lastModified().toTime_t() )
+			unsigned int timestamp;
+			stream >> timestamp;
+			if ( m_currentfiledate != timestamp )
 			{
-				m_currentfiledate = finfo.lastModified().toTime_t();
 				return false;
 			}
 			break;
