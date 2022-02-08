@@ -16,16 +16,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QAction>
 #include <QClipboard>
+#include <QIcon>
+#include <QKeySequence>
+#include <QMenu>
+#include <QObject>            // QObject::connect
+#include <QPalette>
+#include <QString>
+#include <Qt>                 // Qt::MiddleButton and things
 #include <QTabBar>
+#include <QTabWidget>
+#include <QtGlobal>			  // QT_VERSION, QT_VERSION_CHECK
+#include <QToolButton>
 #include <QMouseEvent>
+#include <QUrl>
+#include <QWebEnginePage>     // QWebEnginePage::{ FindFlag, FindBackward, FindCaseSensitively }
 #include <QWebEngineSettings>
+#include <QWidget>
 
 #include "../i18n.h"
 
-#include "../config.h"
-#include "../mainwindow.h"
-#include "../viewwindow.h"
+#include "../config.h"        // ::pConfig
+#include "../mainwindow.h"    // MainWindow, ::mainWindow
+#include "../settings.h"      // Settings
+#include "../viewwindow.h"    // ViewWindow
 #include "../viewwindowmgr.h"
 
 

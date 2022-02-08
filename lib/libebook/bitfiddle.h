@@ -21,6 +21,10 @@
 
 */
 
+#include <cstddef>	// size_t
+
+#include <Qt> 		// quint64
+
 
 inline unsigned short UINT16ARRAY( const void * x )
 {

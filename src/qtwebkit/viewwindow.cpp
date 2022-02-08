@@ -16,21 +16,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QApplication>
 #include <QContextMenuEvent>
+#include <QDialog>           // QDialog::Accepted
+#include <QKeySequence>
+#include <QMenu>
+#include <QMouseEvent>
+#include <QPalette>
+#include <QPoint>
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QString>
-#include <QWebHistory>
+#include <Qt>                // Qt::Vertical, Qt::MidButton
+#include <QtGlobal>			 // qreal, qPrintable, qDebug
+#include <QUrl>
 #include <QWebFrame>
-#include <QWebView>
+#include <QWebHistory>
+#include <QWebSettings>
+#include <QWidget>
 
 #include "../i18n.h"
 
-#include "../config.h"
-#include "../viewwindow.h"
-#include "../mainwindow.h"
-#include "../viewwindowmgr.h"
-#include "dataprovider.h"
+#include "../config.h"        // pConfig
+#include "../mainwindow.h"    // ::mainWindow
+#include "../viewwindow.h"    // ViewWindow, QWebView
+#include "../viewwindowmgr.h" // ViewWindowMgr
+#include "dataprovider.h"     // KCHMNetworkAccessManager
 
 
 static const qreal ZOOM_FACTOR_CHANGE = 0.1;

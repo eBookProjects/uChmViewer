@@ -16,13 +16,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QFile>
-#include <QFileInfo>
 #include <QDataStream>
 #include <QDateTime>
- 
+#include <QFile>
+#include <QFileInfo>
+#include <QIODevice>		// QIODevice::ReadOnly, QIODevice::WriteOnly
+#include <QString>
+#include <QtGlobal>			// qint32, qPrintable, qWarning
+
+#include "config.h"   // pConfig
 #include "settings.h"
-#include "config.h"
+
 
 static qint32 SETTINGS_MAGIC = 0xD8AB4E76;
 static qint32 SETTINGS_VERSION = 4;

@@ -21,6 +21,9 @@
 
 #include <QStringList>
 
+class QString;
+
+
 class TextEncodings
 {
 	public:

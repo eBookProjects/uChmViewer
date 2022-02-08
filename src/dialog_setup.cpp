@@ -16,17 +16,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QFileDialog>
+#include <QCheckBox>
 #include <QMessageBox>
+#include <QObject>		// QObject::connect
+#include <QString>
 #include <QUrl>
+#include <QWidget>
 
-#include "kde-qt.h"
+#include "kde-qt.h" // KFileDialog or QFileDialog
+
 #include "i18n.h"
 
-#include "config.h"
-#include "dialog_setup.h"
-#include "mainwindow.h"
-#include "version.h"
+#include "config.h"		  // Config, pConfig
+#include "dialog_setup.h" // DialogSetup, QDialog
+#include "mainwindow.h"	  // :mainWindow
 
 
 DialogSetup::DialogSetup(QWidget *parent)

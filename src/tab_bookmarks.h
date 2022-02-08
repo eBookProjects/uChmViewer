@@ -19,13 +19,16 @@
 #ifndef TAB_BOOKMARK_H
 #define TAB_BOOKMARK_H
 
-#include <QMenu>
 #include <QString>
 #include <QWidget>
 
-#include "settings.h"
+#include "settings.h" // Settings::bookmark_saved_settings_t
 
 #include "ui_tab_bookmarks.h"
+
+class QListWidgetItem;
+class QMenu;
+class QPoint;
 
 
 class TabBookmarks : public QWidget, public Ui::TabBookmarks

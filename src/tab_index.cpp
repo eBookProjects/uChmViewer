@@ -16,11 +16,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mainwindow.h"
-#include "treeitem_index.h"
-#include "tab_index.h"
-#include "config.h"
-#include "showwaitcursor.h"
+#include <QList>
+#include <QObject>			// QObject::connect
+#include <QPoint>
+#include <QShowEvent>
+#include <QString>
+#include <Qt>				// Qt::CustomContextMenu, Qt::MatchFixedString, Qt::MatchStartsWith
+#include <QtGlobal>			// qFatal, qWarning
+#include <QTreeWidgetItem>
+#include <QUrl>
+#include <QVector>
+
+#include "config.h"			// pConfig
+#include "ebook.h"			// EBookIndexEntry
+#include "mainwindow.h"		// :mainWindow
+#include "showwaitcursor.h"	// ShowWaitCursor
+#include "tab_index.h"		// TabIndex, QWidget
+#include "treeitem_index.h"	// TreeItem_Index
+#include "viewwindow.h"		// ViewWindow
+
 
 TabIndex::TabIndex ( QWidget * parent )
 	: QWidget( parent ), Ui::TabIndex()

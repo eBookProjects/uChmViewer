@@ -19,8 +19,15 @@
 #ifndef HELPERXMLHANDLER_EPUBTOC_H
 #define HELPERXMLHANDLER_EPUBTOC_H
 
-#include <QtXml/QXmlDefaultHandler>
-#include "ebook_epub.h"
+#include <QList>
+#include <QString>
+#include <QXmlDefaultHandler>
+
+#include "ebook_epub.h"	// ebook.h -> EBookTocEntry
+						// EBook_EPUB
+
+class QXmlAttributes;
+
 
 class HelperXmlHandler_EpubTOC : public QXmlDefaultHandler
 {

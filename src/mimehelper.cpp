@@ -17,8 +17,8 @@
  */
 
 #include <QBuffer>
-#include <QUrl>
 #include <QString>
+#include <QUrl>
 
 #include "mimehelper.h"
 

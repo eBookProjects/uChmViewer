@@ -19,21 +19,22 @@
 #ifndef TAB_SEARCH_H
 #define TAB_SEARCH_H
 
-#include <QList>
-#include <QMenu>
-#include <QPoint>
-#include <QProgressDialog>
-#include <QString>
-#include <QTreeWidgetItem>
-#include <QUrl>
 #include <QWidget>
 
-#include "settings.h"
+#include "settings.h" // Settings::search_saved_settings_t
 
 #include "ui_tab_search.h"
 
+template <typename T> class QList;
+class QMenu;
+class QPoint;
+class QProgressDialog;
+class QString;
+class QTreeWidgetItem;
+class QUrl;
 
 class EBookSearch;
+
 
 class TabSearch : public QWidget, public Ui::TabSearch
 {

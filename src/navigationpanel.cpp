@@ -16,15 +16,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QDockWidget>
+#include <QList>
+#include <QMenu>
+#include <QString>
+#include <QStringList>
+#include <QTreeWidgetItemIterator>
+#include <QUrl>
+
 #include "i18n.h"
 
-#include "navigationpanel.h"
-#include "tab_contents.h"
-#include "tab_index.h"
-#include "tab_search.h"
-#include "tab_bookmarks.h"
-#include "settings.h"
-#include "mainwindow.h"
+#include "ebook.h"			 // EBook
+#include "mainwindow.h"		 // ::mainWindow
+#include "navigationpanel.h" // NavigationPanel, QWidget
+#include "settings.h"		 // Settings
+#include "tab_bookmarks.h"	 // TabBookmarks
+#include "tab_contents.h"	 // TabContents
+#include "tab_index.h"		 // TabIndex
+#include "tab_search.h"		 // TabSearch
+#include "treeitem_toc.h"	 // TreeItem_TOC
+#include "viewwindow.h"		 // ViewWindow
 
 
 NavigationPanel::NavigationPanel( QWidget * parent )

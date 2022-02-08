@@ -19,7 +19,13 @@
 #ifndef TREEITEM_INDEX_H
 #define TREEITEM_INDEX_H
 
+#include <QList>
+#include <QString>
 #include <QTreeWidgetItem>
+#include <QUrl>
+
+class QVariant;
+
 
 class TreeItem_Index : public QTreeWidgetItem
 {

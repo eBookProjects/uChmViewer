@@ -22,6 +22,7 @@
 class QByteArray;
 class QUrl;
 
+
 // Since Qt 5.0 there is a QMimeDatabase class in Qt which does more detailed content analysis.
 // But uchmviewer hasn't given up building with Qt 4 yet.
 class MimeHelper

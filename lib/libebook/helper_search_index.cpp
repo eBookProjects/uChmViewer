@@ -19,11 +19,20 @@
 #include <algorithm>
 
 #include <QApplication>
+#include <QChar>
+#include <QDataStream>
+#include <QEventLoop>
+#include <QList>
+#include <QString>
+#include <QStringList>
 #include <QTextCodec>
+#include <QtGlobal>		// qPrintable, qDebug, qWarning
+#include <QUrl>
+#include <QVector>
 
-#include "ebook.h"
-#include "ebook_search.h"
-#include "helper_search_index.h"
+#include "ebook.h"					// EBook
+#include "helper_search_index.h"	// Document, Entry, Index, PosEntry
+
 
 static const int DICT_VERSION = 4;
 
@@ -493,4 +502,4 @@ bool Index::searchForPhrases( const QStringList &phrases, const QStringList &wor
 }
 
 
-};
+}

@@ -20,12 +20,32 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QSharedMemory>
-
-#include "ebook.h"
-#include "viewwindow.h"
+#include <QEvent>
+#include <QList>
+#include <QMainWindow>
+#include <QObject>		// Q_OBJECT
+#include <QPixmap>
+#include <QString>
+#include <QStringList>
 
 #include "ui_mainwindow.h"
+
+#include <ebook.h>	// EBook, EBookTocEntry::Icon
+
+class QAction;
+class QActionGroup;
+class QCloseEvent;
+class QMenu;
+class QSharedMemory;
+class QTemporaryFile;
+class QUrl;
+
+class NavigationPanel;
+class RecentFiles;
+class Settings;
+class ToolbarManager;
+class ViewWindow;
+class ViewWindowMgr;
 
 
 //! Those events could be sent to main window to do useful things. See handleUserEvents()
@@ -40,14 +60,6 @@ class UserEvent : public QEvent
 		QString			m_action;
 		QStringList		m_args;
 };
-
-class QTemporaryFile;
-
-class Settings;
-class RecentFiles;
-class ToolbarManager;
-class NavigationPanel;
-class ViewWindowMgr;
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {

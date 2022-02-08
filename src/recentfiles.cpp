@@ -16,11 +16,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QAction>
 #include <QFileInfo>
+#include <QMenu>
 #include <QSettings>
+#include <QString>
 #include <QStringList>
+#include <QtGlobal>		// qFatal
 
 #include "recentfiles.h"
+
 
 RecentFiles::RecentFiles( QMenu * menu, QAction * before, int maxfiles, const QString& settingsname )
 {

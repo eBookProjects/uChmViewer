@@ -19,9 +19,12 @@
 #ifndef INCLUDE_EBOOK_H
 #define INCLUDE_EBOOK_H
 
-#include <QString>
 #include <QList>
+#include <QString>
 #include <QUrl>
+
+class QByteArray;
+
 
 //! Stores a single table of content entry
 class EBookTocEntry

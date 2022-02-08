@@ -19,11 +19,14 @@
 #ifndef TOOLBARMANAGER_H
 #define TOOLBARMANAGER_H
 
-#include <QMap>
 #include <QList>
 #include <QObject>
-#include <QAction>
-#include <QToolBar>
+#include <QString>
+#include <QStringList>
+
+class QAction;
+class QToolBar;
+
 
 // This class manages application toolbars, including the following:
 // - Stores and restores the toolbars, including their position and content;

@@ -17,6 +17,7 @@
  */
 
 #include <QCoreApplication>
+#include <QLatin1String>
 #include <QLibraryInfo>
 #include <QLocale>
 #include <QRegularExpression>

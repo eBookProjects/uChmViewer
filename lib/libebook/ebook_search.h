@@ -19,10 +19,18 @@
 #ifndef EBookSearch_H
 #define EBookSearch_H
 
-#include <QDataStream>
-#include "helper_search_index.h"
+#include <QStringList>
+#include <QObject>
+
+class QDataStream;
+template<typename T> class QList;
+class QUrl;
 
 class EBook;
+namespace QtAs {
+class Index;
+}
+
 
 class EBookSearch : public QObject
 {
@@ -78,7 +86,6 @@ class EBookSearch : public QObject
 	private:
 		QStringList 				m_keywordDocuments;
 		QtAs::Index 			*	m_Index;
-
 };
 
 #endif

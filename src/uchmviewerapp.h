@@ -20,7 +20,11 @@
 #define UCHMVIEWERAPP_H
 
 #include <QApplication>
-#include <QFileOpenEvent>
+#include <QtGlobal>		// QT_VERSION, Q_OS_DARWIN
+#include <QString>
+
+class QEvent;
+
 
 class UchmviewerApp : public QApplication
 {

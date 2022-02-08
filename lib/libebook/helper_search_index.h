@@ -19,16 +19,18 @@
 #ifndef EBOOK_SEARCH_INDEX_H
 #define EBOOK_SEARCH_INDEX_H
 
-#include <QUrl>
-#include <QHash>
-#include <QVector>
 #include <QDataStream>
+#include <QHash>
+#include <QObject>
 #include <QStringList>
+#include <QtGlobal>		// qint16
+#include <QUrl>
+#include <QVector>
 
-#include "helper_entitydecoder.h"
-
+#include "helper_entitydecoder.h"	// HelperEntityDecoder
 
 class EBook;
+
 
 // This code is based on some pretty old version of Qt Assistant
 namespace QtAs

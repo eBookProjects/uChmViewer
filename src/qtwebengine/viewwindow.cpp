@@ -16,25 +16,33 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QApplication>
 #include <QContextMenuEvent>
+#include <QDialog>							// QDialog::Accepted
+#include <QKeySequence>
+#include <QMenu>
+#include <QPalette>
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QString>
+#include <QtGlobal>							// QT_VERSION, QT_VERSION_CHECK
+#include <QUrl>
+#include <QVariant>
 #include <QWebEngineContextMenuData>
 #include <QWebEngineHistory>
 #include <QWebEnginePage>
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
 #include <QWebEngineScript>
-#include <QWebEngineView>
+#include <QWidget>
 
 #include "../i18n.h"
 
-#include "../config.h"
-#include "../viewwindow.h"
-#include "../mainwindow.h"
-#include "../viewwindowmgr.h"
-#include "webenginepage.h"
+#include "../config.h"        // pConfig
+#include "../mainwindow.h"    // ::mainWindow
+#include "../viewwindow.h"    // ViewWindow, QWebEngineView
+#include "../viewwindowmgr.h" // ViewWindowMgr
+#include "webenginepage.h"    // WebEnginePage
 
 
 #if defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEVIEWWINDOW

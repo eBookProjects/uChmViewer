@@ -16,13 +16,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QDir>
+#include <QByteArray>
+#include <QIODevice>
+#include <QNetworkRequest>
+#include <QObject>
+#include <Qt>              // Qt::QueuedConnection
+#include <QtGlobal>		   // qint64, qPrintable, qDebug, qWarning
+#include <QUrl>
 
+#include "../config.h"     // ::pConfig
+#include "../mainwindow.h" // ::mainWindow
+#include "../mimehelper.h" // MimeHelper::mimeType
 #include "dataprovider.h"
-#include "../viewwindow.h"
-#include "../config.h"
-#include "../mainwindow.h"
-#include "../mimehelper.h"
 
 
 KCHMNetworkReply::KCHMNetworkReply( const QNetworkRequest &request, const QUrl &url )

@@ -22,6 +22,10 @@
 
 #include <QWebEngineUrlSchemeHandler>
 
+class QObject;
+class QWebEngineUrlRequestJob;
+
+
 class DataProvider : public QWebEngineUrlSchemeHandler
 {
     public:

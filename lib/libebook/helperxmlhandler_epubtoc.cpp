@@ -16,8 +16,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtDebug>
-#include "helperxmlhandler_epubtoc.h"
+#include <QtDebug>			// qDebug() <<
+#include <QString>
+#include <QXmlAttributes>
+
+#include "helperxmlhandler_epubtoc.h"	// ebook.h -> EBookTocEntry
+										// ebook_epub.h -> EBook_EPUB
 
 HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC(EBook_EPUB *epub)
 {

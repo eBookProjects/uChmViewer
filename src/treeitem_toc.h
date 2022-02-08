@@ -21,8 +21,9 @@
 
 #include <QTreeWidgetItem>
 #include <QString>
-#include <QVariant>
 #include <QUrl>
+
+class QVariant;
 
 
 class TreeItem_TOC : public QTreeWidgetItem

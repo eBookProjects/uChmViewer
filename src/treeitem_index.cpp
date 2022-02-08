@@ -16,10 +16,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ebook.h"
-#include "mainwindow.h"
-#include "dialog_chooseurlfromlist.h"
-#include "treeitem_index.h"
+#include <QBrush>
+#include <QColor>
+#include <QList>
+#include <QString>
+#include <QStringList>
+#include <Qt>		   // Qt::DisplayRole, Qt::ForegroundRole, Qt::ToolTipRole, Qt::WhatsThisRole
+					   // Qt::red, Qt::lightGray
+#include <QtGlobal>	   // qPrintable, qWarning
+#include <QUrl>
+#include <QVariant>
+
+#include "ebook.h"					  // EBook
+#include "dialog_chooseurlfromlist.h" // DialogChooseUrlFromList
+#include "mainwindow.h"				  // ::mainWindow
+#include "treeitem_index.h"			  // TreeItem_Index, QTreeWidgetItem
+
 
 TreeItem_Index::TreeItem_Index(QTreeWidgetItem *parent, QTreeWidgetItem *after, const QString &name, const QList<QUrl> &urls, const QString& seealso)
 	: QTreeWidgetItem( parent, after )

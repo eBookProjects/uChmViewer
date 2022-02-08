@@ -23,15 +23,24 @@
     #include <unistd.h>
 #endif
 
+#include <QByteArray>
+#include <QIODevice>
+#include <QList>
 #include <QMessageBox>
-#include <QtXml/QXmlSimpleReader>
+#include <QString>
+#include <QtGlobal>				// qPrintable, qDebug, qWarning
+#include <QUrl>
+#include <QXmlDefaultHandler>
+#include <QXmlSimpleReader>
+#include <QXmlInputSource>
 
 #include "zip.h"
 
-#include "ebook_epub.h"
-#include "helperxmlhandler_epubcontainer.h"
-#include "helperxmlhandler_epubcontent.h"
-#include "helperxmlhandler_epubtoc.h"
+#include "ebook_epub.h"						// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry
+											// EBook_EPUB
+#include "helperxmlhandler_epubcontainer.h"	// HelperXmlHandler_EpubContainer
+#include "helperxmlhandler_epubcontent.h"	// HelperXmlHandler_EpubContent
+#include "helperxmlhandler_epubtoc.h"		// HelperXmlHandler_EpubTOC
 
 const char * EBook_EPUB::URL_SCHEME_EPUB = "epub";
 

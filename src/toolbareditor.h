@@ -22,11 +22,15 @@
 #include <QDialog>
 #include <QList>
 #include <QMap>
-#include <QToolBar>
-#include <QAction>
 #include <QStringList>
 
 #include "ui_toolbareditor.h"
+
+class QAction;
+class QToolBar;
+class QString;
+class QWidget;
+
 
 class ToolbarEditor : public QDialog, public Ui::ToolbarEditor
 {

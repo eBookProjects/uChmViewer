@@ -20,7 +20,10 @@
 #define DIALOG_SETUP_H
 
 #include <QDialog>
+
 #include <ui_dialog_setup.h>
+
+class QWidget;
 
 
 class DialogSetup : public QDialog, public Ui::DialogSetup

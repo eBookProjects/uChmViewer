@@ -20,13 +20,14 @@
 #define DIALOG_CHOOSEURLFROMLIST_H
 
 #include <QDialog>
-#include <QList>
-#include <QListWidgetItem>
 #include <QStringList>
-#include <QUrl>
-#include <QWidget>
 
 #include "ui_dialog_topicselector.h"
+
+template<typename T> class QList;
+class QListWidgetItem;
+class QUrl;
+class QWidget;
 
 
 class DialogChooseUrlFromList : public QDialog, public Ui::DialogTopicSelector

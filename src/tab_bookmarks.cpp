@@ -16,16 +16,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QAction>
+#include <QCoreApplication>
 #include <QInputDialog>
-#include <QLineEdit>
+#include <QLineEdit>		// QLineEdit::Normal
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QMenu>
+#include <QObject>			// QObject::connect
+#include <QPoint>
+#include <QString>
+#include <Qt>				// Qt::CustomContextMenu, Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
+#include <QVariant>
 
 #include "i18n.h"
 
-#include "mainwindow.h"
-#include "viewwindow.h"
-#include "version.h"
-#include "config.h"
-#include "tab_bookmarks.h"
+#include "config.h"			// pConfig
+#include "mainwindow.h"		// ::mainWindow
+#include "settings.h"		// Settings::bookmark_saved_settings_t, Settings::SavedBookmark
+#include "tab_bookmarks.h"	// TabBookmarks, QWidget
+#include "viewwindow.h"		// ViewWindow
 
 class BookmarkItem : public QListWidgetItem
 {

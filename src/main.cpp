@@ -16,16 +16,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "kde-qt.h"
-#include "i18n.h"
+#include <QtGlobal>	    // qPrintable, qWarning, Q_OS_DARWIN
+#include <QStringList>
 
-#include "mainwindow.h"
-#include "config.h"
-#include "dbus_interface.h"
-#include "version.h"
+#include "kde-qt.h"	    // KApplication or QApplication
+
+#include "i18n.h"	    // app_i18n::init, ki18n
+
+#include "config.h"			// Config, pConfig
+#include "mainwindow.h"		// MainWindow ::mainWindow
+#include "version.h"		// APP_VERSION_MAJOR, APP_VERSION_MINOR
 
 #if !defined (WIN32)
-	#include <QtDBus/QtDBus>
+	#include <QDBusConnection>
+    #include "dbus_interface.h"	// SERVICE_NAME
 #endif
 
 #if defined (Q_OS_MAC)

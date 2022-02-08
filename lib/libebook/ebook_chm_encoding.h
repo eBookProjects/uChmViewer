@@ -19,7 +19,8 @@
 #ifndef EBOOK_CHM_ENCODING_H
 #define EBOOK_CHM_ENCODING_H
 
-#include <QString>
+class QString;
+
 
 class Ebook_CHM_Encoding
 {

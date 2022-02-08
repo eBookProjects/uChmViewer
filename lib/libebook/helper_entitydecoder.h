@@ -22,6 +22,9 @@
 #include <QMap>
 #include <QString>
 
+class QTextCodec;
+
+
 //
 // This helper class decodes the Unicode HTML entities into the Unicode characters
 //

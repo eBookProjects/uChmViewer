@@ -32,6 +32,8 @@
 #else
 
 	#include <QApplication>
+	#include <QFileDialog>
+	#include <QDesktopServices>
 
 #endif
 

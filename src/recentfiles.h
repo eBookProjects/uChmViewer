@@ -21,8 +21,11 @@
 
 #include <QObject>
 #include <QString>
+#include <QStringList>
 #include <QVector>
-#include <QMenu>
+
+class QAction;
+class QMenu;
 
 
 // This class assumes QSettings object can be created using default constructor, i.e.

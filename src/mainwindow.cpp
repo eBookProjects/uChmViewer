@@ -16,37 +16,63 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <cstdio>			// fprintf, stderr
+#include <cstdlib>			// exit
+
+#include <QApplication>		// aApp
+#include <QAction>
+#include <QActionGroup>
+#include <QByteArray>
+#include <QCloseEvent>
 #include <QDateTime>
 #include <QDesktopServices>
+#include <QDialog>
 #include <QDir>
-#include <QFileDialog>
+#include <QEvent>
+#include <QFile>
 #include <QFileInfo>
+#include <QIODevice>		// QIODevice::WriteOnly
+#include <QKeySequence>
+#include <QList>
 #include <QMessageBox>
+#include <QObject>			// QObject::connect
+#include <QPixmap>
 #include <QProcess>
 #include <QProgressDialog>
-#include <QShortcut>
 #include <QSettings>
+#include <QSharedMemory>
+#include <QSize>
+#include <QShortcut>
+#include <QString>
+#include <QStringList>
+#include <QSysInfo>
+#include <Qt>				// Qt::LeftToRight, Qt::RightToLeft, Qt::Vertical, Qt::WA_DeleteOnClose
+#include <QtGlobal>			// qreal, qPrintable, qDebug, qFatal, qWarning
 #include <QTemporaryFile>
 #include <QTextEdit>
 #include <QTextStream>
 #include <QTimer>
+#include <QUrl>
+#include <QVariant>
 #include <QWhatsThis>
 
-#include "kde-qt.h"
+#include "kde-qt.h"	// KRun or QDesktopServices, KFileDialog or QFileDialog
+
 #include "i18n.h"
 
-#include "mainwindow.h"
-#include "config.h"
-#include "settings.h"
-#include "viewwindow.h"
-#include "viewwindowmgr.h"
-#include "dialog_setup.h"
-#include "recentfiles.h"
-#include "navigationpanel.h"
-#include "toolbarmanager.h"
-#include "version.h"
-#include "textencodings.h"
-#include "ui_dialog_about.h"
+#include "config.h"				// pConfig
+#include "dialog_setup.h"		// DialogSetup
+#include "ebook.h"				// EBook
+#include "mainwindow.h"			// MainWindow, QMainWindow
+#include "navigationpanel.h"	// NavigationPanel
+#include "recentfiles.h"		// RecentFiles
+#include "settings.h"			// Settings
+#include "textencodings.h"		// TextEncodings
+#include "toolbarmanager.h"		// ToolbarManager
+#include "ui_dialog_about.h"	// Ui::DialogAbout
+#include "version.h"			// APP_VERSION_MAJOR, APP_VERSION_MINOR
+#include "viewwindow.h"			// ViewWindow
+#include "viewwindowmgr.h"		// ViewWindowMgr
 
 #ifdef Q_WS_X11
     #include <QX11Info>

@@ -16,15 +16,33 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <cstdlib>		// abort
+
+#include <QAction>
 #include <QClipboard>
+#include <QIcon>
+#include <QKeySequence>
+#include <QMenu>
+#include <QObject>      // QObject::connect
+#include <QPalette>
+#include <QString>
+#include <Qt>           // Qt::MidButton and things
 #include <QTabBar>
+#include <QTabWidget>
+#include <QtGlobal>		// qFatal
+#include <QToolButton>
 #include <QMouseEvent>
+#include <QUrl>
+#include <QWebPage>     // QWebPage::{ FindFlag, FindBackward, FindCaseSensitively, HighlightAllOccurrences }
+#include <QWebSettings>
+#include <QWidget>
 
 #include "../i18n.h"
 
-#include "../config.h"
-#include "../mainwindow.h"
-#include "../viewwindow.h"
+#include "../config.h"        // ::pConfig
+#include "../mainwindow.h"    // MainWindow, ::mainWindow
+#include "../settings.h"      // Settings
+#include "../viewwindow.h"    // ViewWindow
 #include "../viewwindowmgr.h"
 
 

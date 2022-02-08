@@ -16,7 +16,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "textencodings.h"
+#include <QString>
+#include <QStringList>
+
+#include "textencodings.h" // TextEncodings
+
 
 typedef struct
 {

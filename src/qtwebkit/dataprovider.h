@@ -19,8 +19,16 @@
 #ifndef QWEBVIEWNETWORK_H
 #define QWEBVIEWNETWORK_H
 
+#include <QByteArray>
+#include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QNetworkRequest>
+#include <QtGlobal>					// qint64
+
+class QObject;
+class QIODevice;
+class QNetworkRequest;
+class QUrl;
+
 
 //
 // A network reply to emulate data transfer from CHM file

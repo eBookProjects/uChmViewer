@@ -16,19 +16,37 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QApplication>		// qApp
+#include <QDataStream>
+#include <QEventLoop>		// QEventLoop::ExcludeUserInputEvents
 #include <QFile>
 #include <QHeaderView>
+#include <QIODevice>		// QIODevice::ReadOnly, QIODevice::WriteOnly
 #include <QLineEdit>
+#include <QList>
+#include <QMenu>
 #include <QMessageBox>
+#include <QObject>			// QObject::connect
+#include <QPoint>
+#include <QProgressDialog>
+#include <QString>
+#include <Qt>				// Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
+							// Qt::CustomContextMenu
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QUrl>
+#include <QVariant>
 #include <QWhatsThis>
 
 #include "i18n.h"
 
-#include "mainwindow.h"
-#include "config.h"
-#include "tab_search.h"
-#include "ebook_search.h"
-#include "showwaitcursor.h"
+#include "config.h"			// pConfig
+#include "ebook_search.h"	// EBookSearch
+#include "mainwindow.h"		// ::mainWindow
+#include "settings.h"		// Settings::search_saved_settings_t
+#include "showwaitcursor.h"	// ShowWaitCursor
+#include "tab_search.h"		// TabSearch, QWidget
+#include "viewwindow.h"		// ViewWindow
 
 
 class SearchTreeViewItem : public QTreeWidgetItem

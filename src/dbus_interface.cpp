@@ -16,12 +16,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtDBus/QtDBus>
+#include <QApplication>		// qApp
+#include <QDBusConnection>
+#include <QString>
+#include <QStringList>
 
-#include "dbus_interface.h"
-#include "mainwindow.h"
-#include "navigationpanel.h"
-#include "tab_search.h"
+#include "dbus_interface.h"	 // DBusInterface
+#include "mainwindow.h"		 // ::mainWindow, UserEvent
+#include "navigationpanel.h" // NavigationPanel
 
 
 DBusInterface::DBusInterface( QObject *parent )

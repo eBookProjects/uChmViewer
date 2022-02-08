@@ -16,9 +16,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ebook.h"
-#include "ebook_chm.h"
-#include "ebook_epub.h"
+#include <QString>
+
+#include "ebook.h"		// EBook
+#include "ebook_chm.h"	// EBook_CHM
+#include "ebook_epub.h"	// EBook_EPUB
 
 
 EBook::EBook()

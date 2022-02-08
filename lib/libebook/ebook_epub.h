@@ -19,14 +19,16 @@
 #ifndef EBOOK_EPUB_H
 #define EBOOK_EPUB_H
 
-#include <QString>
-#include <QStringList>
 #include <QFile>
+#include <QList>
+#include <QMap>
+#include <QString>
 #include <QUrl>
 
 #include "ebook.h"
 
 class QXmlDefaultHandler;
+struct zip;
 
 
 class EBook_EPUB : public EBook

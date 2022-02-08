@@ -16,7 +16,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QChar>
+#include <QByteArray>
+#include <QString>
 #include <QTextCodec>
+#include <QtGlobal>		// qPrintable, qWarning
 
 #include "helper_entitydecoder.h"
 
@@ -24,7 +28,6 @@
 HelperEntityDecoder::HelperEntityDecoder(QTextCodec *encoder)
 {
 	changeEncoding( encoder );
-
 }
 
 static inline QString encodeWithCodec( QTextCodec *encoder, const QByteArray& str )

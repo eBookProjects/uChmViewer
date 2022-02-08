@@ -19,17 +19,24 @@
 #ifndef EBOOK_CHM_H
 #define EBOOK_CHM_H
 
+#include <cstddef>	// size_t
+
+#include <QByteArray>
+#include <QList>
 #include <QMap>
+#include <QString>
 #include <QTextCodec>
+#include <QtGlobal>		// qPrintable
+#include <QUrl>
 
 // Enable Unicode use in libchm
 #if defined (WIN32)
     #define PPC_BSTR
 #endif
-#include <chm_lib.h>
 
-#include "ebook.h"
-#include "helper_entitydecoder.h"
+#include "ebook.h"					// EBook
+#include <chm_lib.h>				// chmUnitInfo, LONGUINT64
+#include "helper_entitydecoder.h"	// HelperEntityDecoder
 
 
 class EBook_CHM : public EBook

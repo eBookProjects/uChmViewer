@@ -18,10 +18,12 @@
 
 #include <QApplication>
 #include <QEvent>
+#include <QFileOpenEvent>
 #include <QTimer>
+#include <QtGlobal>        // qWarning
 
+#include "mainwindow.h"    // MainWindow
 #include "uchmviewerapp.h"
-#include "mainwindow.h"
 
 
 UchmviewerApp::UchmviewerApp(int &argc, char **argv, int version)

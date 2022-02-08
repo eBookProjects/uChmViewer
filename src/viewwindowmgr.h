@@ -19,9 +19,7 @@
 #ifndef VIEWWINDOWMGR_H
 #define VIEWWINDOWMGR_H
 
-#include <QAction>
 #include <QList>
-#include <QMenu>
 #include <QString>
 #include <QWidget>
 
@@ -29,10 +27,13 @@
 
 #include "ui_window_browser.h"
 
+class QAction;
+class QMenu;
 
 class MainWindow;
 class ViewWindow;
 class ViewWindowTabWidget;
+
 
 class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 {

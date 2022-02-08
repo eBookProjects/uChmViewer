@@ -19,9 +19,14 @@
 #ifndef QTWEBENGINE_VIEWWINDOW_H
 #define QTWEBENGINE_VIEWWINDOW_H
 
+#include <QtGlobal>			// qreal
+#include <QUrl>
 #include <QWebEngineView>
 
-#include "dataprovider.h"
+class QContextMenuEvent;
+class QMenu;
+class QString;
+class QWidget;
 
 
 class ViewWindow : public QWebEngineView

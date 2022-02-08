@@ -19,7 +19,11 @@
 #ifndef HELPERXMLHANDLER_EPUBCONTAINER_H
 #define HELPERXMLHANDLER_EPUBCONTAINER_H
 
-#include <QtXml/QXmlDefaultHandler>
+#include <QString>
+#include <QXmlDefaultHandler>
+
+class QXmlAttributes;
+
 
 class HelperXmlHandler_EpubContainer : public QXmlDefaultHandler
 {

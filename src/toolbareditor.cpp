@@ -16,12 +16,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtDebug>
-#include <QMimeData>
 #include <QAbstractListModel>
+#include <QAction>
+#include <QByteArray>
+#include <QList>
+#include <QMap>
+#include <QMimeData>
+#include <QModelIndex>
+#include <QObject>			  // QObject::connect
+#include <QString>
+#include <QStringList>
+#include <Qt>				  // Qt::DecorationRole, Qt::DisplayRole, Qt::ToolTipRole
+							  // Qt::ItemIsDropEnabled,	Qt::ItemIsDragEnabled, Qt::ItemIsEnabled
+							  // Qt::ItemIsSelectable, Qt::DropAction, Qt::MoveAction, Qt::IgnoreAction
+#include <QtGlobal>			  // qFatal
+#include <QToolBar>
+#include <QVariant>
+#include <QWidget>
 
-#include "toolbarmanager.h"
-#include "toolbareditor.h"
+#include "toolbareditor.h"	// ToolbarEditor, QDialog
+#include "toolbarmanager.h"	// ToolbarManager
 
 
 static const char *ACTION_MIME_FORMAT = "application/vnd.action.list";

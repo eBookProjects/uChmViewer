@@ -16,7 +16,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "dialog_chooseurlfromlist.h"
+#include <QList>
+#include <QListWidgetItem>
+#include <QStringList>
+#include <QUrl>
+#include <QWidget>
+
+#include "dialog_chooseurlfromlist.h"	// DialogChooseUrlFromList, QDialog
 
 
 DialogChooseUrlFromList::DialogChooseUrlFromList( QWidget* parent )
