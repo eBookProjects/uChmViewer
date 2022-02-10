@@ -93,6 +93,7 @@ linux-g++-32: {
 macx:{
     HEADERS += uchmviewerapp.h
     SOURCES += uchmviewerapp.cpp
+    DEFINES += USE_MAC_APP
 }
 
 win32:{
@@ -110,6 +111,7 @@ unix:!macx: {
     HEADERS += dbus_interface.h
     SOURCES += dbus_interface.cpp
     CONFIG += dbus
+    DEFINES += USE_DBUS
 }
 
 !isEmpty(USE_WEBENGINE) {

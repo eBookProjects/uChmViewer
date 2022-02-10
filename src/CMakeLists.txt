@@ -6,7 +6,6 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Project files
 set(CPP_SOURCES
     config.cpp
-    dbus_interface.cpp
     dialog_chooseurlfromlist.cpp
     dialog_setup.cpp
     main.cpp
@@ -28,7 +27,6 @@ set(CPP_SOURCES
     )
 
 set(MOC_HEADERS
-    dbus_interface.h
     dialog_chooseurlfromlist.h
     dialog_setup.h
     mainwindow.h
@@ -74,8 +72,13 @@ else ()
     list(APPEND MOC_HEADERS qtwebkit/viewwindow.h)
 endif ()
 
+if (${USE_DBUS})
+    list(APPEND CPP_SOURCES dbus_interface.cpp)
+    list(APPEND MOC_HEADERS dbus_interface.h)
+endif ()
+
 # Mac OS specific
-if (${CMAKE_SYSTEM_NAME}  MATCHES "Darwin")
+if (${USE_MAC_APP})
     list(APPEND CPP_SOURCES uchmviewerapp.cpp)
     list(APPEND MOC_HEADERS uchmviewerapp.h)
 endif ()
@@ -90,7 +93,6 @@ target_link_libraries(uchmviewer
     chm
     extra
     Qt::Core
-    Qt::DBus
     Qt::Network
     Qt::PrintSupport
     Qt::Widgets

@@ -6,6 +6,10 @@
 # USE_WEBENGINE      - if defined, WebEngine is used, otherwise WebKit is used.
 # USE_GETTEXT        - if defined, then GNU Gettext will be used for translation.
 #                      The default is ON.
+# USE_DBUS           - if defined, build with D-Bus integration.
+#                      The default is ON for Linux.
+# USE_MAC_APP        - if defined, build with  derived QApplication.
+#                      The default is ON for macOs.
 #
 #       System-specific option:
 # USE_DEPLOY_RUNTIME - if defined, the runtime dependencies will be copied to the
@@ -22,12 +26,15 @@ project(uchmviewer HOMEPAGE_URL "https://github.com/u-235/uchmviewer")
 include(cmake/get-version.cmake)
 set(CMAKE_PROJECT_VERSION ${PROJECT_VERSION})
 
+include(cmake/use-in.cmake)
 option(USE_KF5            "Use KDE Framework 5"                             OFF)
 option(USE_WEBENGINE      "Use Qt WebEngine"                                OFF)
 option(USE_STATIC_CHMLIB  "Use static link with chm library"                OFF)
-option(USE_DEPLOY_RUNTIME "Copying runtime dependencies for deployment"     OFF)
+option(USE_DEPLOY_RUNTIME "Copy runtime dependencies for deployment"        OFF)
 option(USE_GETTEXT        "Use GNU Gettext for translation"                  ON)
 option(USE_MACOS_BUNDLE   "Install as macOS bundle"                          ON)
+use_in(USE_DBUS           "Use D-Bus integration"                       "Linux")
+use_in(USE_MAC_APP        "Use derived QApplication"                   "Darvin")
 
 # Init cmake
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
@@ -41,7 +48,7 @@ find_package(libzip REQUIRED)
 
 # Prepare to find Qt modules.
 set(APP_QT_VERSION 5.0)
-set(APP_QT_MODULES Core DBus Network PrintSupport Widgets Xml)
+set(APP_QT_MODULES Core Network PrintSupport Widgets Xml)
 # Modules for WebKit or WebEngine.
 if (${USE_WEBENGINE})
     set(APP_QT_VERSION 5.9)
@@ -60,6 +67,17 @@ if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     list(APPEND APP_QT_MODULES Core5Compat)
     target_link_libraries(extra INTERFACE ${QT}::Core5Compat)
 endif ()
+
+if (${USE_DBUS})
+    list(APPEND APP_QT_MODULES DBus)
+    target_link_libraries(extra INTERFACE Qt::DBus)
+    target_compile_definitions(extra INTERFACE USE_DBUS)
+endif ()
+
+if (${USE_MAC_APP})
+    target_compile_definitions(extra INTERFACE USE_MAC_APP)
+endif ()
+
 # Now we know all the required Qt modules.
 find_package(${QT} REQUIRED ${APP_QT_MODULES})
 
