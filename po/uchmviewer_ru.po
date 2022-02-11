@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-04 21:29+0300\n"
+"POT-Creation-Date: 2022-02-11 16:10+0300\n"
 "PO-Revision-Date: 2006-02-04 15:29-0800\n"
 "Last-Translator: George Yunaev <gyunaev@ulduzsoft.com>\n"
 "Language-Team: <en@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Language: ru_RU\n"
 "X-Source-Language: C\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1093
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1110
 msgid "About uChmViewer"
 msgstr "О uChmViewer"
 
@@ -329,22 +329,22 @@ msgstr "Большие значки и текст"
 msgid "Just text"
 msgstr "Просто текст"
 
-#: ../src/dialog_setup.cpp:206
+#: ../src/dialog_setup.cpp:210
 msgid ""
 "Changing those options requires restarting the application to take effect."
 msgstr ""
 "Чтобы сделанные изменения вступили в силу, приложение необходимо "
 "перезапустить."
 
-#: ../src/dialog_setup.cpp:215
+#: ../src/dialog_setup.cpp:219
 msgid "*|Executables"
 msgstr "*|Программы"
 
-#: ../src/dialog_setup.cpp:215 ../src/dialog_setup.cpp:218
+#: ../src/dialog_setup.cpp:219 ../src/dialog_setup.cpp:222
 msgid "Choose an editor executable"
 msgstr "Выберите программу редактора"
 
-#: ../src/dialog_setup.cpp:220
+#: ../src/dialog_setup.cpp:224
 msgid "Executables (*)"
 msgstr "*|Программы"
 
@@ -754,41 +754,41 @@ msgstr "О библиотеке Qt"
 msgid "Edit toolbars..."
 msgstr "Изменить панели инструментов..."
 
-#: ../src/mainwindow.cpp:199
+#: ../src/mainwindow.cpp:222
 msgid "Shared memory segment failed"
 msgstr "Сбой сегмента общей памяти"
 
-#: ../src/mainwindow.cpp:200
+#: ../src/mainwindow.cpp:223
 #, qt-format
 msgid "Failed to create a shared memory segment: %1"
 msgstr "Сбой при создании сегмента общей памяти: %1"
 
-#: ../src/mainwindow.cpp:263
+#: ../src/mainwindow.cpp:286
 #, qt-format
 msgid "Detected file encoding: %1 ( %2 )"
 msgstr "Кодировка файла определена автоматически: %1 ( %2 )"
 
-#: ../src/mainwindow.cpp:333
+#: ../src/mainwindow.cpp:360
 #, qt-format
 msgid "%1 - failed to load the chm file"
 msgstr "%1 - невозможно открыть CHM файл"
 
-#: ../src/mainwindow.cpp:334
+#: ../src/mainwindow.cpp:361
 #, qt-format
 msgid "Unable to load the chm file %1"
 msgstr "Невозможно загрузить CHM файл %1"
 
-#: ../src/mainwindow.cpp:342
+#: ../src/mainwindow.cpp:369
 #, qt-format
 msgid "Could not load file %1"
 msgstr "Нельзя открыть CHM файл %1"
 
-#: ../src/mainwindow.cpp:400
+#: ../src/mainwindow.cpp:427
 #, qt-format
 msgid "%1 - remote link clicked - %2"
 msgstr "%1 - нажата внешняя ссылка - %2"
 
-#: ../src/mainwindow.cpp:401
+#: ../src/mainwindow.cpp:428
 #, qt-format
 msgid ""
 "A remote link %1 will start the external program to open it.\n"
@@ -799,15 +799,15 @@ msgstr ""
 "\n"
 "Продолжить?"
 
-#: ../src/mainwindow.cpp:402
+#: ../src/mainwindow.cpp:429
 msgid "&Yes"
 msgstr "&Да"
 
-#: ../src/mainwindow.cpp:402
+#: ../src/mainwindow.cpp:429
 msgid "&No"
 msgstr "&Нет"
 
-#: ../src/mainwindow.cpp:823
+#: ../src/mainwindow.cpp:832
 msgid ""
 "*.chm *.epub|All electronic book\n"
 "*.chm|Compressed Help Manual\n"
@@ -817,39 +817,35 @@ msgstr ""
 "*.chm|Compressed Help Manual\n"
 "*.epub|Электронная книга EPUB"
 
-#: ../src/mainwindow.cpp:826
+#: ../src/mainwindow.cpp:835
 msgid "Open a chm file"
 msgstr "Открыть файл"
 
-#: ../src/mainwindow.cpp:828
+#: ../src/mainwindow.cpp:837
 msgid "Electronic books (*.chm *.epub)"
 msgstr "Электронные книги (*.chm *.epub)"
 
-#: ../src/mainwindow.cpp:873 ../src/mainwindow.cpp:877
+#: ../src/mainwindow.cpp:882 ../src/mainwindow.cpp:886
 msgid "Choose a directory to store CHM content"
 msgstr "Выберите директорию для сохранения распакованного содержимого"
 
-#: ../src/mainwindow.cpp:891
+#: ../src/mainwindow.cpp:900
 msgid "Extracting CHM content"
 msgstr "Распаковываем содержимое CHM файла"
 
-#: ../src/mainwindow.cpp:892
+#: ../src/mainwindow.cpp:901
 msgid "Extracting files..."
 msgstr "Распаковываем файлы..."
 
-#: ../src/mainwindow.cpp:893
-msgid "Abort"
-msgstr "Отмена"
-
-#: ../src/mainwindow.cpp:986
+#: ../src/mainwindow.cpp:1002
 msgid "HTML source"
 msgstr "Исходный код HTML"
 
-#: ../src/mainwindow.cpp:1011
+#: ../src/mainwindow.cpp:1032
 msgid "Cannot start external editor"
 msgstr "Не могу запустить внешний редактор"
 
-#: ../src/mainwindow.cpp:1012
+#: ../src/mainwindow.cpp:1033
 #, qt-format
 msgid ""
 "Cannot start external editor %1.\n"
@@ -858,22 +854,17 @@ msgstr ""
 "Не могу запустить внешний редактор %1.\n"
 "Убедитесь, что путь является абсолютным!"
 
-#: ../src/mainwindow.cpp:1062
+#: ../src/mainwindow.cpp:1083
 msgid "Could not locate opened topic in content window"
 msgstr "Невозможно найти открытую станицу в содержании"
 
-#: ../src/mainwindow.cpp:1069
+#: ../src/mainwindow.cpp:1089
 #, qt-format
 msgid "Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
 msgstr ""
 "<br>Сборка для архитектуры %1 используя ABI %2<br>Работает в %3, версия Qt %4"
 
-#: ../src/mainwindow.cpp:1075
-#, qt-format
-msgid "Using Qt version %1"
-msgstr "Используется Qt версии %1"
-
-#: ../src/mainwindow.cpp:1078
+#: ../src/mainwindow.cpp:1095
 #, qt-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
@@ -892,70 +883,70 @@ msgstr ""
 "Yunaev, 2004-2015<br>Copyright (C) Nick Egorrov, 2021</p><p>Лицензировано "
 "GNU GPL license version 3.</p></body></html>"
 
-#: ../src/mainwindow.cpp:1187
+#: ../src/mainwindow.cpp:1204
 msgid "Ctrl+1"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1193
+#: ../src/mainwindow.cpp:1210
 msgid "Ctrl+2"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1199
+#: ../src/mainwindow.cpp:1216
 msgid "Ctrl+3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1205
+#: ../src/mainwindow.cpp:1222
 msgid "Ctrl+4"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1212
+#: ../src/mainwindow.cpp:1229
 msgid "/"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1219
+#: ../src/mainwindow.cpp:1236
 msgid "F3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1239
+#: ../src/mainwindow.cpp:1256
 msgid "Ctrl+Right"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1246
+#: ../src/mainwindow.cpp:1263
 msgid "Ctrl+Left"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1253
+#: ../src/mainwindow.cpp:1270
 msgid "Ctrl+I"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1262 ../src/qtwebengine/viewwindow.cpp:116
-#: ../src/qtwebkit/viewwindow.cpp:129
+#: ../src/mainwindow.cpp:1279 ../src/qtwebengine/viewwindow.cpp:129
+#: ../src/qtwebkit/viewwindow.cpp:139
 msgid "&Open this link in a new tab"
 msgstr "&Открыть ссылку в новой вкладке"
 
-#: ../src/mainwindow.cpp:1267 ../src/qtwebengine/viewwindow.cpp:117
-#: ../src/qtwebkit/viewwindow.cpp:131
+#: ../src/mainwindow.cpp:1284 ../src/qtwebengine/viewwindow.cpp:130
+#: ../src/qtwebkit/viewwindow.cpp:141
 msgid "&Open this link in a new background tab"
 msgstr "&Открыть ссылку в новой фоновой вкладке"
 
-#: ../src/mainwindow.cpp:1337
+#: ../src/mainwindow.cpp:1354
 #, qt-format
 msgid "%1 ( %2 )"
 msgstr ""
 
-#: ../src/navigationpanel.cpp:40
+#: ../src/navigationpanel.cpp:51
 msgid "Search"
 msgstr "Поиск"
 
-#: ../src/navigationpanel.cpp:43
+#: ../src/navigationpanel.cpp:54
 msgid "Bookmarks"
 msgstr "Закладки"
 
-#: ../src/navigationpanel.cpp:83
+#: ../src/navigationpanel.cpp:94
 msgid "Index"
 msgstr "Индекс"
 
-#: ../src/navigationpanel.cpp:89
+#: ../src/navigationpanel.cpp:100
 msgid "Contents"
 msgstr "Оглавление"
 
@@ -967,7 +958,7 @@ msgstr "Панель навигации"
 msgid "Tab 1"
 msgstr ""
 
-#: ../src/recentfiles.cpp:96
+#: ../src/recentfiles.cpp:101
 #, qt-format
 msgid "&%1 %2"
 msgstr ""
@@ -984,16 +975,16 @@ msgstr "&Править"
 msgid "&Del"
 msgstr "&Удалить"
 
-#: ../src/tab_bookmarks.cpp:133
+#: ../src/tab_bookmarks.cpp:143
 #, qt-format
 msgid "%1 - add a bookmark"
 msgstr "%1 - добавить закладку"
 
-#: ../src/tab_bookmarks.cpp:134 ../src/tab_bookmarks.cpp:176
+#: ../src/tab_bookmarks.cpp:144 ../src/tab_bookmarks.cpp:186
 msgid "Enter the name for this bookmark:"
 msgstr "Введите имя для этой закладки:"
 
-#: ../src/tab_bookmarks.cpp:175
+#: ../src/tab_bookmarks.cpp:185
 #, qt-format
 msgid "%1 - edit the bookmark name"
 msgstr "%1 - редактировать имя закладки"
@@ -1030,20 +1021,20 @@ msgstr "Заголовок"
 msgid "Location"
 msgstr "Расположение"
 
-#: ../src/tab_search.cpp:166
+#: ../src/tab_search.cpp:184
 #, qt-format
 msgid "Search returned %1 result(s)"
 msgstr "Поиск вернул %1 результат(ов)"
 
-#: ../src/tab_search.cpp:170
+#: ../src/tab_search.cpp:188
 msgid "Search returned no results"
 msgstr "Поиск не нашел ничего"
 
-#: ../src/tab_search.cpp:173
+#: ../src/tab_search.cpp:191
 msgid "Search failed"
 msgstr "Поиск не удался"
 
-#: ../src/tab_search.cpp:206
+#: ../src/tab_search.cpp:224
 msgid ""
 "<html><p>The improved search engine allows you to search for a word, symbol "
 "or phrase, which is set of words and symbols included in quotes. Only the "
@@ -1069,29 +1060,29 @@ msgstr ""
 "используйте апостроф если вам нужно искать кавычку. Поиск интерпретирует "
 "апостроф и кавычку как одинаковый символ.</html>"
 
-#: ../src/tab_search.cpp:223
+#: ../src/tab_search.cpp:241
 msgid "Reading dictionary..."
 msgstr "Считываем индекс поиска..."
 
-#: ../src/tab_search.cpp:237 ../src/tab_search.cpp:238
-#: ../src/tab_search.cpp:243
+#: ../src/tab_search.cpp:255 ../src/tab_search.cpp:256
+#: ../src/tab_search.cpp:261
 msgid "Generating search index..."
 msgstr "Идет генерация индекса поиска..."
 
-#: ../src/tab_search.cpp:253
+#: ../src/tab_search.cpp:271
 msgid "Cannot save index"
 msgstr "Не могу сохранить индекс"
 
-#: ../src/tab_search.cpp:253
+#: ../src/tab_search.cpp:271
 #, qt-format
 msgid "The index cannot be saved into file %1"
 msgstr "Индекс не может быть сохранён в файл %1"
 
-#: ../src/tab_search.cpp:293
+#: ../src/tab_search.cpp:311
 msgid "No index present"
 msgstr "Индекс отсутствует"
 
-#: ../src/tab_search.cpp:293
+#: ../src/tab_search.cpp:311
 msgid "The index is not present"
 msgstr "Индекс не существует"
 
@@ -1135,29 +1126,29 @@ msgstr "Доступные действия"
 msgid "Toolbar actions"
 msgstr "Действия на панели"
 
-#: ../src/qtwebengine/viewwindow.cpp:162 ../src/qtwebkit/viewwindow.cpp:178
+#: ../src/qtwebengine/viewwindow.cpp:175 ../src/qtwebkit/viewwindow.cpp:188
 msgid "Printing aborted"
 msgstr "Печать отменена"
 
-#: ../src/qtwebengine/viewwindow.cpp:167 ../src/qtwebkit/viewwindow.cpp:183
+#: ../src/qtwebengine/viewwindow.cpp:182 ../src/qtwebkit/viewwindow.cpp:193
 msgid "Printing finished"
 msgstr "Печать завершена"
 
-#: ../src/qtwebengine/viewwindow.cpp:245 ../src/qtwebkit/viewwindow.cpp:277
+#: ../src/qtwebengine/viewwindow.cpp:269 ../src/qtwebkit/viewwindow.cpp:287
 msgid "Open Link in a new tab\tShift+LMB"
 msgstr "Открыть ссылку в новой вкладке\tShift+LMB"
 
-#: ../src/qtwebengine/viewwindow.cpp:246 ../src/qtwebkit/viewwindow.cpp:278
+#: ../src/qtwebengine/viewwindow.cpp:270 ../src/qtwebkit/viewwindow.cpp:288
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr "Открыть ссылку в новой вкладке не активируя ее\tCtrl+LMB"
 
-#: ../src/qtwebengine/viewwindowmgr.cpp:73 ../src/qtwebkit/viewwindowmgr.cpp:74
+#: ../src/qtwebengine/viewwindowmgr.cpp:88 ../src/qtwebkit/viewwindowmgr.cpp:92
 msgid "Add page"
 msgstr "Добавить вкладку"
 
-#: ../src/qtwebengine/viewwindowmgr.cpp:159
-#: ../src/qtwebengine/viewwindowmgr.cpp:237
-#: ../src/qtwebkit/viewwindowmgr.cpp:161 ../src/qtwebkit/viewwindowmgr.cpp:240
+#: ../src/qtwebengine/viewwindowmgr.cpp:174
+#: ../src/qtwebengine/viewwindowmgr.cpp:252
+#: ../src/qtwebkit/viewwindowmgr.cpp:179 ../src/qtwebkit/viewwindowmgr.cpp:258
 #, qt-format
 msgid "Alt+%1"
 msgstr ""
@@ -1173,6 +1164,12 @@ msgstr ""
 #: ../src/main.cpp:54
 msgid "Please report bugs to nicegorov@ya.com"
 msgstr ""
+
+#~ msgid "Abort"
+#~ msgstr "Отмена"
+
+#~ msgid "Using Qt version %1"
+#~ msgstr "Используется Qt версии %1"
 
 #~ msgid "%1 - JavsScript link clicked"
 #~ msgstr "%1 - нажата ссылка на JavaScript"
