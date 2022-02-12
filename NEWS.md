@@ -1,3 +1,14 @@
+## 2022-02-12 v8.2-rc
+
+The release adds support for KDE Framework 5 instead of KDE4 and initial support for Qt6 instead of Qt4.
+
+* Fork renamed to uChmViewer. Also removed the code checking for updates.
+* Ended support for Qt4 and KDE4 on the master branch. Qt4 specific code has been removed.
+* Added support for the KDE Framework 5 with KDELibs4Support.
+* Added limited support for Qt6. The application is built with Qt6.2, but had to disable printing and rely on default settings when browsing pages.
+* Added USE_DBUS option to the CMake build script. The option allows you to enable/disable building with D-Bus on any platform where this technology is available. Previously, building with D-Bus was supported only on Linux.
+
+
 ## 2021-11-15 v8.1-rc2
 
 * Fixed build failure with Qt WebKit. In some cases compilation of the src/qtwebkit/viewwindowmgr.cpp file failed with the message `error: invalid use of incomplete type 'class QTabBar'`.
