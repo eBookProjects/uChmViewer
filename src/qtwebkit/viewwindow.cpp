@@ -37,11 +37,11 @@
 
 #include "../i18n.h"
 
-#include "../config.h"        // pConfig
-#include "../mainwindow.h"    // ::mainWindow
-#include "../viewwindow.h"    // ViewWindow, QWebView
-#include "../viewwindowmgr.h" // ViewWindowMgr
-#include "dataprovider.h"     // KCHMNetworkAccessManager
+#include "../browser-settings.hpp"  // BrowserSettings
+#include "../mainwindow.h"          // ::mainWindow
+#include "../viewwindow.h"          // ViewWindow, QWebView
+#include "../viewwindowmgr.h"       // ViewWindowMgr
+#include "dataprovider.h"           // KCHMNetworkAccessManager
 
 
 static const qreal ZOOM_FACTOR_CHANGE = 0.1;
@@ -93,17 +93,17 @@ bool ViewWindow::openUrl ( const QUrl& url )
     return true;
 }
 
-void ViewWindow::applySettings()
+void ViewWindow::applySettings(BrowserSettings &settings)
 {
     QWebSettings * setup = QWebSettings::globalSettings();
 
-    setup->setAttribute( QWebSettings::AutoLoadImages, pConfig->m_browserEnableImages );
-    setup->setAttribute( QWebSettings::JavascriptEnabled, pConfig->m_browserEnableJS );
-    setup->setAttribute( QWebSettings::JavaEnabled, pConfig->m_browserEnableJava );
-    setup->setAttribute( QWebSettings::PluginsEnabled, pConfig->m_browserEnablePlugins );
-    setup->setAttribute( QWebSettings::OfflineStorageDatabaseEnabled, pConfig->m_browserEnableOfflineStorage );
-    setup->setAttribute( QWebSettings::LocalStorageDatabaseEnabled, pConfig->m_browserEnableLocalStorage );
-    setup->setAttribute( QWebSettings::LocalStorageEnabled, pConfig->m_browserEnableLocalStorage );
+    setup->setAttribute( QWebSettings::AutoLoadImages, settings.enableImages );
+    setup->setAttribute( QWebSettings::JavascriptEnabled, settings.enableJS );
+    setup->setAttribute( QWebSettings::JavaEnabled, settings.enableJava );
+    setup->setAttribute( QWebSettings::PluginsEnabled, settings.enablePlugins );
+    setup->setAttribute( QWebSettings::OfflineStorageDatabaseEnabled, settings.enableOfflineStorage );
+    setup->setAttribute( QWebSettings::LocalStorageDatabaseEnabled, settings.enableLocalStorage );
+    setup->setAttribute( QWebSettings::LocalStorageEnabled, settings.enableLocalStorage );
 }
 
 QMenu * ViewWindow::createStandardContextMenu( QWidget * parent )

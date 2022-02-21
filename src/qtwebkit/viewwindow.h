@@ -30,6 +30,8 @@ class QPoint;
 class QString;
 class QWidget;
 
+class BrowserSettings;
+
 
 class ViewWindow : public QWebView
 {
@@ -50,7 +52,7 @@ class ViewWindow : public QWebView
 
     public:
         // Apply the configuration settings (JS enabled etc) to the web renderer
-        static  void    applySettings();
+        static  void    applySettings(BrowserSettings& settings);
 
 		//! Invalidate current view, doing all the cleanups etc.
 		void	invalidate();

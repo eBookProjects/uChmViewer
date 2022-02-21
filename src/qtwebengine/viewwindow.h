@@ -28,6 +28,8 @@ class QMenu;
 class QString;
 class QWidget;
 
+class BrowserSettings;
+
 
 class ViewWindow : public QWebEngineView
 {
@@ -51,7 +53,7 @@ class ViewWindow : public QWebEngineView
 
     public:
         // Apply the configuration settings (JS enabled etc) to the web renderer
-        static  void    applySettings();
+        static  void    applySettings(BrowserSettings &settings);
 
         //! Invalidate current view, doing all the cleanups etc.
         void	invalidate();

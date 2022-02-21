@@ -42,11 +42,11 @@
 
 #include "../i18n.h"
 
-#include "../config.h"        // pConfig
-#include "../mainwindow.h"    // ::mainWindow
-#include "../viewwindow.h"    // ViewWindow, QWebEngineView
-#include "../viewwindowmgr.h" // ViewWindowMgr
-#include "webenginepage.h"    // WebEnginePage
+#include "../browser-settings.hpp"  // BrowserSettings
+#include "../mainwindow.h"          // ::mainWindow
+#include "../viewwindow.h"          // ViewWindow, QWebEngineView
+#include "../viewwindowmgr.h"       // ViewWindowMgr
+#include "webenginepage.h"          // WebEnginePage
 
 
 #if defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEVIEWWINDOW
@@ -296,15 +296,15 @@ void ViewWindow::onLinkClicked(const QUrl &url)
     emit linkClicked( url );
 }
 
-void ViewWindow::applySettings()
+void ViewWindow::applySettings(BrowserSettings &settings)
 {
     // TODO make apply settings in Qt6 again
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
     QWebEngineSettings * setup = QWebEngineSettings::globalSettings();
 
-    setup->setAttribute( QWebEngineSettings::AutoLoadImages, pConfig->m_browserEnableImages );
-    setup->setAttribute( QWebEngineSettings::JavascriptEnabled, pConfig->m_browserEnableJS );
-    setup->setAttribute( QWebEngineSettings::PluginsEnabled, pConfig->m_browserEnablePlugins );
-    setup->setAttribute( QWebEngineSettings::LocalStorageEnabled, pConfig->m_browserEnableLocalStorage );
+    setup->setAttribute( QWebEngineSettings::AutoLoadImages, settings.enableImages );
+    setup->setAttribute( QWebEngineSettings::JavascriptEnabled, settings.enableJS );
+    setup->setAttribute( QWebEngineSettings::PluginsEnabled, settings.enablePlugins );
+    setup->setAttribute( QWebEngineSettings::LocalStorageEnabled, settings.enableLocalStorage );
 #endif
 }
