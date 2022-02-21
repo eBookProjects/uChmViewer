@@ -298,13 +298,10 @@ void ViewWindow::onLinkClicked(const QUrl &url)
 
 void ViewWindow::applySettings(BrowserSettings &settings)
 {
-    // TODO make apply settings in Qt6 again
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-    QWebEngineSettings * setup = QWebEngineSettings::globalSettings();
+    QWebEngineSettings * setup = QWebEngineProfile::defaultProfile()->settings();
 
     setup->setAttribute( QWebEngineSettings::AutoLoadImages, settings.enableImages );
     setup->setAttribute( QWebEngineSettings::JavascriptEnabled, settings.enableJS );
     setup->setAttribute( QWebEngineSettings::PluginsEnabled, settings.enablePlugins );
     setup->setAttribute( QWebEngineSettings::LocalStorageEnabled, settings.enableLocalStorage );
-#endif
 }
