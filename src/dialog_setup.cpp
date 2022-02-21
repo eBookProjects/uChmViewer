@@ -61,7 +61,7 @@ DialogSetup::DialogSetup(QWidget *parent)
 	m_radioExtLinkOpenAlways->setChecked ( pConfig->m_onExternalLinkClick == Config::ACTION_ALWAYS_OPEN );
 	m_radioExtLinkAsk->setChecked ( pConfig->m_onExternalLinkClick == Config::ACTION_ASK_USER );
 	m_radioExtLinkOpenNever->setChecked ( pConfig->m_onExternalLinkClick == Config::ACTION_DONT_OPEN );
-    m_highlightSearchResults->setChecked( pConfig->m_browserHighlightSearchResults );
+    m_highlightSearchResults->setChecked( pConfig->browser.highlightSearchResults );
 	
 	m_radioNewChmOpenAlways->setChecked ( pConfig->m_onNewChmClick == Config::ACTION_ALWAYS_OPEN );
 	m_radioNewChmAsk->setChecked ( pConfig->m_onNewChmClick == Config::ACTION_ASK_USER );
@@ -77,12 +77,12 @@ DialogSetup::DialogSetup(QWidget *parent)
 	boxLayoutDirectionRL->setChecked( pConfig->m_advLayoutDirectionRL );
 
 	// Browser settings
-	m_enableImages->setChecked( pConfig->m_browserEnableImages );
-	m_enableJS->setChecked( pConfig->m_browserEnableJS );
-	m_enableJava->setChecked( pConfig->m_browserEnableJava );
-	m_enablePlugins->setChecked( pConfig->m_browserEnablePlugins );
-	m_enableOfflineStorage->setChecked( pConfig->m_browserEnableOfflineStorage );
-	m_enableLocalStorage->setChecked( pConfig->m_browserEnableLocalStorage );
+	m_enableImages->setChecked( pConfig->browser.enableImages );
+	m_enableJS->setChecked( pConfig->browser.enableJS );
+	m_enableJava->setChecked( pConfig->browser.enableJava );
+	m_enablePlugins->setChecked( pConfig->browser.enablePlugins );
+	m_enableOfflineStorage->setChecked( pConfig->browser.enableOfflineStorage );
+	m_enableLocalStorage->setChecked( pConfig->browser.enableLocalStorage );
     m_openAllTOCEntries->setChecked( pConfig->m_tocOpenAllEntries );
     boxUseSingleClick->setChecked( pConfig->m_tabUseSingleClick );
 
@@ -138,7 +138,7 @@ void DialogSetup::accept()
 
 	pConfig->m_numOfRecentFiles = m_historySize->value();
 	pConfig->m_HistoryStoreExtra = m_rememberHistoryInfo->isChecked();
-    pConfig->m_browserHighlightSearchResults = m_highlightSearchResults->isChecked();
+    pConfig->browser.highlightSearchResults = m_highlightSearchResults->isChecked();
     pConfig->m_tocOpenAllEntries = m_openAllTOCEntries->isChecked();
 
 	if ( m_radioExtLinkOpenAlways->isChecked () )
@@ -158,12 +158,12 @@ void DialogSetup::accept()
 		// Check the changes
 	bool need_restart = false;
 
-	Check_Need_Restart( m_enableImages, &pConfig->m_browserEnableImages, &need_restart );
-	Check_Need_Restart( m_enableJS, &pConfig->m_browserEnableJS, &need_restart );
-	Check_Need_Restart( m_enableJava, &pConfig->m_browserEnableJava, &need_restart );
-	Check_Need_Restart( m_enablePlugins, &pConfig->m_browserEnablePlugins, &need_restart );
-	Check_Need_Restart( m_enableOfflineStorage, &pConfig->m_browserEnableOfflineStorage, &need_restart );
-	Check_Need_Restart( m_enableLocalStorage, &pConfig->m_browserEnableLocalStorage, &need_restart );
+	Check_Need_Restart( m_enableImages, &pConfig->browser.enableImages, &need_restart );
+	Check_Need_Restart( m_enableJS, &pConfig->browser.enableJS, &need_restart );
+	Check_Need_Restart( m_enableJava, &pConfig->browser.enableJava, &need_restart );
+	Check_Need_Restart( m_enablePlugins, &pConfig->browser.enablePlugins, &need_restart );
+	Check_Need_Restart( m_enableOfflineStorage, &pConfig->browser.enableOfflineStorage, &need_restart );
+	Check_Need_Restart( m_enableLocalStorage, &pConfig->browser.enableLocalStorage, &need_restart );
     Check_Need_Restart( boxUseSingleClick, &pConfig->m_tabUseSingleClick, &need_restart );
 
 	Config::ToolbarMode newmode;

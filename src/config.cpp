@@ -57,14 +57,14 @@ Config::Config()
 	m_toolbarMode = (Config::ToolbarMode) settings.value( "advanced/toolbarmode", TOOLBAR_LARGEICONSTEXT ).toInt();
 	m_lastOpenedDir = settings.value( "advanced/lastopendir", "." ).toString();
 
-	m_browserEnableJS = settings.value( "browser/enablejs", true ).toBool();
-	m_browserEnableJava = settings.value( "browser/enablejava", false ).toBool();
-	m_browserEnablePlugins = settings.value( "browser/enableplugins", true ).toBool();
-	m_browserEnableImages  = settings.value( "browser/enableimages", true ).toBool();
-	m_browserEnableOfflineStorage = settings.value( "browser/enableofflinestorage", false ).toBool();
-	m_browserEnableLocalStorage = settings.value( "browser/enablelocalstorage", false ).toBool();
+	browser.enableJS = settings.value( "browser/enablejs", true ).toBool();
+	browser.enableJava = settings.value( "browser/enablejava", false ).toBool();
+	browser.enablePlugins = settings.value( "browser/enableplugins", true ).toBool();
+	browser.enableImages  = settings.value( "browser/enableimages", true ).toBool();
+	browser.enableOfflineStorage = settings.value( "browser/enableofflinestorage", false ).toBool();
+	browser.enableLocalStorage = settings.value( "browser/enablelocalstorage", false ).toBool();
 	m_browserEnableRemoteContent = settings.value( "browser/enableremotecontent", false ).toBool();
-    m_browserHighlightSearchResults = settings.value( "browser/highlightsearchresults", true ).toBool();
+	browser.highlightSearchResults = settings.value( "browser/highlightsearchresults", true ).toBool();
 
     m_tocOpenAllEntries = settings.value( "browser/tocopenallentries", true ).toBool();
     m_tabUseSingleClick = settings.value( "browser/tabusesingleclick", true ).toBool();
@@ -93,14 +93,14 @@ void Config::save( )
 	settings.setValue( "advanced/toolbarmode", m_toolbarMode );
 	settings.setValue( "advanced/lastopendir", m_lastOpenedDir );
 
-	settings.setValue( "browser/enablejs", m_browserEnableJS );
-	settings.setValue( "browser/enablejava", m_browserEnableJava );
-	settings.setValue( "browser/enableplugins", m_browserEnablePlugins );
-	settings.setValue( "browser/enableimages", m_browserEnableImages );
-	settings.setValue( "browser/enableofflinestorage", m_browserEnableOfflineStorage );
-	settings.setValue( "browser/enablelocalstorage", m_browserEnableLocalStorage );
+	settings.setValue( "browser/enablejs", browser.enableJS );
+	settings.setValue( "browser/enablejava", browser.enableJava );
+	settings.setValue( "browser/enableplugins", browser.enablePlugins );
+	settings.setValue( "browser/enableimages", browser.enableImages );
+	settings.setValue( "browser/enableofflinestorage", browser.enableOfflineStorage );
+	settings.setValue( "browser/enablelocalstorage", browser.enableLocalStorage );
 	settings.setValue( "browser/enableremotecontent", m_browserEnableRemoteContent );
-    settings.setValue( "browser/highlightsearchresults", m_browserHighlightSearchResults );
+    settings.setValue( "browser/highlightsearchresults", browser.highlightSearchResults );
 
     settings.setValue( "browser/tocopenallentries", m_tocOpenAllEntries );
     settings.setValue( "browser/tabusesingleclick", m_tabUseSingleClick );

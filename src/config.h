@@ -21,6 +21,8 @@
 
 #include <QString>
 
+#include "browser-settings.hpp"
+
 
 class Config
 {
@@ -66,14 +68,9 @@ class Config
 		bool				m_HistoryStoreExtra;
 		ToolbarMode			m_toolbarMode;
 		
-		bool				m_browserEnableJS;
-		bool				m_browserEnableJava;
-		bool				m_browserEnablePlugins;
-		bool				m_browserEnableImages;
-		bool				m_browserEnableOfflineStorage;
-		bool				m_browserEnableLocalStorage;
+		BrowserSettings		browser;
 		bool				m_browserEnableRemoteContent;
-        bool                m_browserHighlightSearchResults;
+
         bool                m_tocOpenAllEntries;
         bool                m_tabUseSingleClick;
 		
