@@ -32,7 +32,6 @@
 #include <QMouseEvent>
 #include <QUrl>
 #include <QWebEnginePage>     // QWebEnginePage::{ FindFlag, FindBackward, FindCaseSensitively }
-#include <QWebEngineSettings>
 #include <QWidget>
 
 #include "../i18n.h"
@@ -422,13 +421,5 @@ void ViewWindowMgr::copyUrlToClipboard()
 
 void ViewWindowMgr::applyBrowserSettings()
 {
-    // TODO make apply settings in Qt6 again
-#if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-    QWebEngineSettings * setup = QWebEngineSettings::globalSettings();
-
-    setup->setAttribute( QWebEngineSettings::AutoLoadImages, pConfig->m_browserEnableImages );
-    setup->setAttribute( QWebEngineSettings::JavascriptEnabled, pConfig->m_browserEnableJS );
-    setup->setAttribute( QWebEngineSettings::PluginsEnabled, pConfig->m_browserEnablePlugins );
-    setup->setAttribute( QWebEngineSettings::LocalStorageEnabled, pConfig->m_browserEnableLocalStorage );
-#endif
+    ViewWindow::applySettings(pConfig->browser);
 }

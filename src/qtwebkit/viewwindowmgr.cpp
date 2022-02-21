@@ -34,7 +34,6 @@
 #include <QMouseEvent>
 #include <QUrl>
 #include <QWebPage>     // QWebPage::{ FindFlag, FindBackward, FindCaseSensitively, HighlightAllOccurrences }
-#include <QWebSettings>
 #include <QWidget>
 
 #include "../i18n.h"
@@ -379,7 +378,7 @@ void ViewWindowMgr::find( bool backward )
 	if ( backward )
         webkitflags |= QWebPage::FindBackward;
 
-    if ( pConfig->m_browserHighlightSearchResults )
+    if ( pConfig->browser.highlightSearchResults )
     {
         // From the doc:
         // If the HighlightAllOccurrences flag is passed, the
@@ -460,13 +459,5 @@ void ViewWindowMgr::copyUrlToClipboard()
 
 void ViewWindowMgr::applyBrowserSettings()
 {
-	QWebSettings * setup = QWebSettings::globalSettings();
-
-	setup->setAttribute( QWebSettings::AutoLoadImages, pConfig->m_browserEnableImages );
-	setup->setAttribute( QWebSettings::JavascriptEnabled, pConfig->m_browserEnableJS );
-	setup->setAttribute( QWebSettings::JavaEnabled, pConfig->m_browserEnableJava );
-	setup->setAttribute( QWebSettings::PluginsEnabled, pConfig->m_browserEnablePlugins );
-	setup->setAttribute( QWebSettings::OfflineStorageDatabaseEnabled, pConfig->m_browserEnableOfflineStorage );
-	setup->setAttribute( QWebSettings::LocalStorageDatabaseEnabled, pConfig->m_browserEnableLocalStorage );
-	setup->setAttribute( QWebSettings::LocalStorageEnabled, pConfig->m_browserEnableLocalStorage );
+    ViewWindow::applySettings(pConfig->browser);
 }
