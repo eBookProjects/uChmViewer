@@ -33,7 +33,6 @@
 #include "showwaitcursor.h" // ShowWaitCursor
 #include "tab_index.h"      // TabIndex, QWidget
 #include "treeitem_index.h" // TreeItem_Index
-#include "viewwindow.h"     // ViewWindow
 
 
 TabIndex::TabIndex ( QWidget* parent )
@@ -262,7 +261,7 @@ void TabIndex::onContextMenuRequested(const QPoint& point)
 
 	if ( treeitem )
 	{
-		::mainWindow->currentBrowser()->setTabKeeper( treeitem->getUrl() );
+		::mainWindow->setNewTabLink( treeitem->getUrl() );
 		::mainWindow->tabItemsContextMenu()->popup( tree->viewport()->mapToGlobal( point ) );
 	}
 }

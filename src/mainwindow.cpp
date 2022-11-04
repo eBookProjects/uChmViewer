@@ -691,14 +691,24 @@ ViewWindow* MainWindow::currentBrowser( ) const
 	return m_viewWindowMgr->current();
 }
 
+void MainWindow::setNewTabLink(const QUrl& link)
+{
+	m_newTabLink = link;
+}
+
+QUrl MainWindow::getNewTabLink() const
+{
+	return m_newTabLink;
+}
+
 void MainWindow::onOpenPageInNewTab( )
 {
-	openPage( currentBrowser()->getNewTabLink(), OPF_NEW_TAB | OPF_CONTENT_TREE );
+	openPage( getNewTabLink(), OPF_NEW_TAB | OPF_CONTENT_TREE );
 }
 
 void MainWindow::onOpenPageInNewBackgroundTab( )
 {
-	openPage( currentBrowser()->getNewTabLink(), OPF_NEW_TAB | OPF_BACKGROUND );
+	openPage( getNewTabLink(), OPF_NEW_TAB | OPF_BACKGROUND );
 }
 
 void MainWindow::browserChanged(ViewWindow* newbrowser )

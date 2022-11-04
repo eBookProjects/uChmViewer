@@ -268,7 +268,7 @@ void TabBookmarks::onContextMenuRequested(const QPoint& point)
 
 	if ( item )
 	{
-		::mainWindow->currentBrowser()->setTabKeeper( item->m_url );
+		::mainWindow->setNewTabLink( item->m_url );
 		::mainWindow->tabItemsContextMenu()->popup( list->viewport()->mapToGlobal( point ) );
 	}
 }

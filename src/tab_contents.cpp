@@ -31,7 +31,6 @@
 #include "showwaitcursor.h" // ShowWaitCursor
 #include "tab_contents.h"   // TabContents, QWidget
 #include "treeitem_toc.h"   // TreeItem_TOC
-#include "viewwindow.h"     // ViewWindow
 
 
 TabContents::TabContents( QWidget* parent )
@@ -215,7 +214,7 @@ void TabContents::onContextMenuRequested(const QPoint& point)
 
 	if ( treeitem )
 	{
-		::mainWindow->currentBrowser()->setTabKeeper( treeitem->getUrl() );
+		::mainWindow->setNewTabLink( treeitem->getUrl() );
 		::mainWindow->tabItemsContextMenu()->popup( tree->viewport()->mapToGlobal( point ) );
 	}
 }

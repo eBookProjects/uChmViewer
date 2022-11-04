@@ -47,7 +47,6 @@
 #include "settings.h"       // Settings::search_saved_settings_t
 #include "showwaitcursor.h" // ShowWaitCursor
 #include "tab_search.h"     // TabSearch, QWidget
-#include "viewwindow.h"     // ViewWindow
 
 
 class SearchTreeViewItem : public QTreeWidgetItem
@@ -196,7 +195,7 @@ void TabSearch::onItemActivated( QTreeWidgetItem* item, int )
 		return;
 
 	SearchTreeViewItem* treeitem = (SearchTreeViewItem*) item;
-	::mainWindow->currentBrowser()->openUrl( treeitem->getUrl() );
+	::mainWindow->openPage( treeitem->getUrl() );
 }
 
 void TabSearch::restoreSettings( const Settings::search_saved_settings_t& settings )
@@ -326,7 +325,7 @@ void TabSearch::onContextMenuRequested( const QPoint& point )
 
 	if ( treeitem )
 	{
-		::mainWindow->currentBrowser()->setTabKeeper( treeitem->getUrl() );
+		::mainWindow->setNewTabLink( treeitem->getUrl() );
 		::mainWindow->tabItemsContextMenu()->popup( tree->viewport()->mapToGlobal( point ) );
 	}
 }

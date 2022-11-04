@@ -92,7 +92,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 
 		void        showInStatusBar (const QString& text);
 		void        setTextEncoding (const QString& enc);
-		QMenu*  tabItemsContextMenu();
+		QMenu*      tabItemsContextMenu();
 		void        launch();
 
 		// Returns true if there's another instance running with the same token (assuming there's token);
@@ -117,6 +117,8 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		void        navSetBackEnabled( bool enabled );
 		void        navSetForwardEnabled( bool enabled );
 
+		void        setNewTabLink(const QUrl& link);
+		QUrl        getNewTabLink() const;
 		void        onOpenPageInNewTab();
 		void        onOpenPageInNewBackgroundTab();
 
@@ -194,10 +196,14 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		QActionGroup*           m_encodingActions;
 		QMenu*                  m_contextMenu;
 
-		RecentFiles*                m_recentFiles;
+		// This member keeps a "open new tab" link between getContextMenu()
+		// call and appropriate slot call
+		QUrl                    m_newTabLink;
+
+		RecentFiles*            m_recentFiles;
 
 		ViewWindowMgr*          m_viewWindowMgr;
-		NavigationPanel*            m_navPanel;
+		NavigationPanel*        m_navPanel;
 		ToolbarManager*         m_toolbarMgr;
 
 		// For a single instance mode
