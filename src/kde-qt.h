@@ -22,10 +22,10 @@
 #if defined (USE_KDE)
 
 	#include <k4aboutdata.h>
-	#include <kapplication.h>	// KDELibs4Support
+	#include <kapplication.h>   // KDELibs4Support
 	#include <kmainwindow.h>
-	#include <kcmdlineargs.h>	// KDELibs4Support
-	#include <kfiledialog.h>	// KDELibs4Support
+	#include <kcmdlineargs.h>   // KDELibs4Support
+	#include <kfiledialog.h>    // KDELibs4Support
 	#include <kmessagebox.h>
 	#include <krun.h>
 

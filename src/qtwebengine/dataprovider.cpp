@@ -21,7 +21,7 @@
 #include <QByteArray>
 #include <QObject>
 #include <QString>
-#include <QtGlobal>					// QT_VERSION, QT_VERSION_CHECK
+#include <QtGlobal>                 // QT_VERSION, QT_VERSION_CHECK
 #include <QUrl>
 #include <QWebEngineUrlRequestJob>
 

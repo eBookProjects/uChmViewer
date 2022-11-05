@@ -41,7 +41,7 @@ class EBookSearch : public QObject
 
 		//! Loads the search index from the data stream \param stream.
 		//! The index should be previously saved with generateIndex().
-		bool	loadIndex( QDataStream& stream );
+		bool    loadIndex( QDataStream& stream );
 
 		//! Generates the search index from the opened CHM file \param chmFile,
 		//! and saves it to the data stream \param stream which should be writeable.
@@ -55,7 +55,7 @@ class EBookSearch : public QObject
 		//! If \param progressDls is not null, it will be used to display progress.
 		//! Returns true if the index has been generated and saved, or false if internal
 		//! error occurs, or (most likely) the cancelIndexGeneration() slot has been called.
-		bool	generateIndex( EBook* ebook, QDataStream& stream );
+		bool    generateIndex( EBook* ebook, QDataStream& stream );
 
 		//! Executes the search query. The \param query is a string like <i>"C++ language" class</i>,
 		//! \param results is a pointer to QStringList, and \param limit limits the number of
@@ -67,24 +67,24 @@ class EBookSearch : public QObject
 		//!
 		//! Note that the function does not clear \param results before adding search results, so if you are
 		//! not merging search results, make sure it's empty.
-		bool	searchQuery ( const QString& query, QList< QUrl >* results, EBook* chmFile, unsigned int limit = 100 );
+		bool    searchQuery ( const QString& query, QList< QUrl >* results, EBook* chmFile, unsigned int limit = 100 );
 
 		//! Returns true if a valid search index is present, and therefore search could be executed
-		bool	hasIndex() const;
+		bool    hasIndex() const;
 
 	signals:
-		void	progressStep( int value, const QString& stepName );
+		void    progressStep( int value, const QString& stepName );
 
 	public slots:
-		void	cancelIndexGeneration();
+		void    cancelIndexGeneration();
 
 	private slots:
-		void	updateProgress( int value, const QString& stepName );
-		void	processEvents();
+		void    updateProgress( int value, const QString& stepName );
+		void    processEvents();
 
 	private:
-		QStringList 				m_keywordDocuments;
-		QtAs::Index* 				m_Index;
+		QStringList                 m_keywordDocuments;
+		QtAs::Index*                m_Index;
 };
 
 #endif

@@ -19,17 +19,17 @@
 #include <cstring> // strcmp
 
 #include <QAction>
-#include <QDialog>	   // QDialog::Rejected
+#include <QDialog>     // QDialog::Rejected
 #include <QList>
 #include <QObjectList>
 #include <QSettings>
 #include <QString>
 #include <QStringList>
-#include <QtGlobal>	   // qWarning
+#include <QtGlobal>    // qWarning
 #include <QToolBar>
 
-#include "toolbareditor.h"	// ToolbarEditor
-#include "toolbarmanager.h"	// ToolbarManager, QObject
+#include "toolbareditor.h"  // ToolbarEditor
+#include "toolbarmanager.h" // ToolbarManager, QObject
 
 
 QString ToolbarManager::separatorName()
@@ -37,7 +37,7 @@ QString ToolbarManager::separatorName()
 	return ".separator.";
 }
 
-QString	ToolbarManager::actionName( QAction* action )
+QString ToolbarManager::actionName( QAction* action )
 {
 	if ( action->isSeparator() )
 		return ToolbarManager::separatorName();

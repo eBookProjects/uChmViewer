@@ -28,7 +28,7 @@
 #include <QPrintDialog>
 #include <QString>
 #include <Qt>                // Qt::Vertical, Qt::MidButton
-#include <QtGlobal>			 // qreal, qPrintable, qDebug
+#include <QtGlobal>          // qreal, qPrintable, qDebug
 #include <QUrl>
 #include <QWebFrame>
 #include <QWebHistory>

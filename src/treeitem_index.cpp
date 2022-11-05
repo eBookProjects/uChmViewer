@@ -24,14 +24,14 @@
 // Qt::DisplayRole, Qt::ForegroundRole, Qt::ToolTipRole
 // Qt::WhatsThisRole, Qt::red, Qt::lightGray
 #include <Qt>
-#include <QtGlobal>	   // qPrintable, qWarning
+#include <QtGlobal>    // qPrintable, qWarning
 #include <QUrl>
 #include <QVariant>
 
-#include "ebook.h"					  // EBook
+#include "ebook.h"                    // EBook
 #include "dialog_chooseurlfromlist.h" // DialogChooseUrlFromList
-#include "mainwindow.h"				  // ::mainWindow
-#include "treeitem_index.h"			  // TreeItem_Index, QTreeWidgetItem
+#include "mainwindow.h"               // ::mainWindow
+#include "treeitem_index.h"           // TreeItem_Index, QTreeWidgetItem
 
 
 TreeItem_Index::TreeItem_Index(QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, const QString& seealso)

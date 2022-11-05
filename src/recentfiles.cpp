@@ -22,7 +22,7 @@
 #include <QSettings>
 #include <QString>
 #include <QStringList>
-#include <QtGlobal>		// qFatal
+#include <QtGlobal>     // qFatal
 
 #include "recentfiles.h"
 
@@ -111,7 +111,7 @@ void RecentFiles::updateMenu()
 	m_separator->setVisible( numRecentFiles > 0 );
 }
 
-QString	RecentFiles::latestFile()
+QString RecentFiles::latestFile()
 {
 	QStringList files = loadRecentFiles();
 
@@ -121,7 +121,7 @@ QString	RecentFiles::latestFile()
 		return files[0];
 }
 
-QStringList	RecentFiles::loadRecentFiles()
+QStringList RecentFiles::loadRecentFiles()
 {
 	QSettings settings;
 	return settings.value( m_settingsName ).toStringList();

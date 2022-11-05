@@ -19,23 +19,23 @@
 #include <QAction>
 #include <QCoreApplication>
 #include <QInputDialog>
-#include <QLineEdit>		// QLineEdit::Normal
+#include <QLineEdit>        // QLineEdit::Normal
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QMenu>
-#include <QObject>			// QObject::connect
+#include <QObject>          // QObject::connect
 #include <QPoint>
 #include <QString>
-#include <Qt>				// Qt::CustomContextMenu, Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
+#include <Qt>               // Qt::CustomContextMenu, Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
 #include <QVariant>
 
 #include "i18n.h"
 
-#include "config.h"			// pConfig
-#include "mainwindow.h"		// ::mainWindow
-#include "settings.h"		// Settings::bookmark_saved_settings_t, Settings::SavedBookmark
-#include "tab_bookmarks.h"	// TabBookmarks, QWidget
-#include "viewwindow.h"		// ViewWindow
+#include "config.h"         // pConfig
+#include "mainwindow.h"     // ::mainWindow
+#include "settings.h"       // Settings::bookmark_saved_settings_t, Settings::SavedBookmark
+#include "tab_bookmarks.h"  // TabBookmarks, QWidget
+#include "viewwindow.h"     // ViewWindow
 
 class BookmarkItem : public QListWidgetItem
 {
@@ -74,10 +74,10 @@ class BookmarkItem : public QListWidgetItem
 			return QVariant();
 		}
 
-		QString		m_name;
-		QString		m_url;
-		int			m_scroll_y;
-		QAction* 	m_action;
+		QString     m_name;
+		QString     m_url;
+		int         m_scroll_y;
+		QAction*    m_action;
 };
 
 

@@ -22,7 +22,7 @@
 #include <QByteArray>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QtGlobal>					// qint64
+#include <QtGlobal>                 // qint64
 
 class QObject;
 class QIODevice;
@@ -45,8 +45,8 @@ class KCHMNetworkReply : public QNetworkReply
 		QByteArray loadResource( const QUrl& url );
 
 	private:
-		QByteArray	m_data;
-		qint64 		m_length;
+		QByteArray  m_data;
+		qint64      m_length;
 };
 
 

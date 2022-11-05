@@ -33,16 +33,16 @@ class HelperXmlHandler_EpubContent : public QXmlDefaultHandler
 		HelperXmlHandler_EpubContent();
 
 		// Keep the tag-associated metadata
-		QMap< QString, QString >	metadata;
+		QMap< QString, QString >    metadata;
 
 		// Manifest storage, id -> href
-		QMap< QString, QString >	manifest;
+		QMap< QString, QString >    manifest;
 
 		// Spline storage
-		QList< QString >			spine;
+		QList< QString >            spine;
 
 		// TOC (NCX) filename
-		QString						tocname;
+		QString                     tocname;
 
 	private:
 		enum State
@@ -58,8 +58,8 @@ class HelperXmlHandler_EpubContent : public QXmlDefaultHandler
 		bool endElement(const QString& namespaceURI, const QString& localName, const QString& qName);
 
 		// Tracking
-		State		m_state;
-		QString		m_tagname;
+		State       m_state;
+		QString     m_tagname;
 };
 
 #endif // HELPERXMLHANDLER_EPUBCONTENT_H

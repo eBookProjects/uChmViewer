@@ -37,28 +37,28 @@ class TabBookmarks : public QWidget, public Ui::TabBookmarks
 	public:
 		TabBookmarks( QWidget* parent );
 
-		void 	createMenu( QMenu* menuBookmarks );
+		void    createMenu( QMenu* menuBookmarks );
 
-		void	restoreSettings ( const Settings::bookmark_saved_settings_t& settings );
-		void	saveSettings ( Settings::bookmark_saved_settings_t& settings );
-		void	invalidate();
-		void	focus();
+		void    restoreSettings ( const Settings::bookmark_saved_settings_t& settings );
+		void    saveSettings ( Settings::bookmark_saved_settings_t& settings );
+		void    invalidate();
+		void    focus();
 
 	public slots:
-		void 	onAddBookmarkPressed ();
+		void    onAddBookmarkPressed ();
 
 	private slots:
-		void	actionBookmarkActivated();
-		void	onDelBookmarkPressed( );
-		void	onEditBookmarkPressed( );
-		void	onItemActivated ( QListWidgetItem* );
-		void	onContextMenuRequested ( const QPoint& point );
+		void    actionBookmarkActivated();
+		void    onDelBookmarkPressed( );
+		void    onEditBookmarkPressed( );
+		void    onItemActivated ( QListWidgetItem* );
+		void    onContextMenuRequested ( const QPoint& point );
 
 	private:
-		QMenu* 			m_menuBookmarks;
-		QMenu* 		 	m_contextMenu;
-		QString			m_bookmarkFileName;
-		bool			m_listChanged;
+		QMenu*          m_menuBookmarks;
+		QMenu*          m_contextMenu;
+		QString         m_bookmarkFileName;
+		bool            m_listChanged;
 };
 
 #endif

@@ -26,12 +26,12 @@
 #include <QString>
 #include <QStringList>
 #include <QTextCodec>
-#include <QtGlobal>		// qPrintable, qDebug, qWarning
+#include <QtGlobal>     // qPrintable, qDebug, qWarning
 #include <QUrl>
 #include <QVector>
 
-#include "ebook.h"					// EBook
-#include "helper_search_index.h"	// Document, Entry, Index, PosEntry
+#include "ebook.h"                  // EBook
+#include "helper_search_index.h"    // Document, Entry, Index, PosEntry
 
 
 static const int DICT_VERSION = 4;
@@ -166,10 +166,10 @@ bool Index::parseDocumentToStringlist(EBook* chmFile, const QUrl& filename, QStr
 	// State machine states
 	enum state_t
 	{
-		STATE_OUTSIDE_TAGS,		// outside HTML tags; parse text
-		STATE_IN_HTML_TAG,		// inside HTML tags; wait for end tag
-		STATE_IN_QUOTES,		// inside HTML tags and inside quotes; wait for end quote (in var QuoteChar)
-		STATE_IN_HTML_ENTITY	// inside HTML entity; parse the entity
+		STATE_OUTSIDE_TAGS,     // outside HTML tags; parse text
+		STATE_IN_HTML_TAG,      // inside HTML tags; wait for end tag
+		STATE_IN_QUOTES,        // inside HTML tags and inside quotes; wait for end quote (in var QuoteChar)
+		STATE_IN_HTML_ENTITY    // inside HTML entity; parse the entity
 	};
 
 	state_t state = STATE_OUTSIDE_TAGS;
@@ -454,12 +454,12 @@ bool Index::searchForPhrases( const QStringList& phrases, const QStringList& wor
 	QDictIterator<PosEntry> it( miniDict );
 	for( ; it.current(); ++it )
 	{
-		QString text( it.currentKey() );
-		QValueList<uint> pos = miniDict[text]->positions;
-		for ( unsigned int i = 1; i < pos.size(); i++ )
-			text += " " + QString::number( pos[i] );
+	    QString text( it.currentKey() );
+	    QValueList<uint> pos = miniDict[text]->positions;
+	    for ( unsigned int i = 1; i < pos.size(); i++ )
+	        text += " " + QString::number( pos[i] );
 
-		qDebug( "%s", text.ascii());
+	    qDebug( "%s", text.ascii());
 	}
 	*/
 

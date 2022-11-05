@@ -28,7 +28,7 @@
 #include <QList>
 #include <QMessageBox>
 #include <QString>
-#include <QtGlobal>				// qPrintable, qDebug, qWarning
+#include <QtGlobal>             // qPrintable, qDebug, qWarning
 #include <QUrl>
 #include <QXmlDefaultHandler>
 #include <QXmlSimpleReader>
@@ -38,9 +38,9 @@
 
 // ebook.h -> EBook, EBookIndexEntry, EBookTocEntry, EBook_EPUB
 #include "ebook_epub.h"
-#include "helperxmlhandler_epubcontainer.h"	// HelperXmlHandler_EpubContainer
-#include "helperxmlhandler_epubcontent.h"	// HelperXmlHandler_EpubContent
-#include "helperxmlhandler_epubtoc.h"		// HelperXmlHandler_EpubTOC
+#include "helperxmlhandler_epubcontainer.h" // HelperXmlHandler_EpubContainer
+#include "helperxmlhandler_epubcontent.h"   // HelperXmlHandler_EpubContent
+#include "helperxmlhandler_epubtoc.h"       // HelperXmlHandler_EpubTOC
 
 const char* EBook_EPUB::URL_SCHEME_EPUB = "epub";
 
@@ -104,7 +104,7 @@ void EBook_EPUB::close()
 	}
 
 	//if ( m_epubFile.isOpen() )
-	//	m_epubFile.close();
+	//  m_epubFile.close();
 
 
 }
@@ -232,7 +232,7 @@ bool EBook_EPUB::parseBookinfo()
 	int sep = container_parser.contentPath.lastIndexOf( '/' );
 
 	if ( sep != -1 )
-		m_documentRoot = container_parser.contentPath.left( sep + 1 );	// Keep the trailing slash
+		m_documentRoot = container_parser.contentPath.left( sep + 1 );  // Keep the trailing slash
 
 	// Parse the TOC
 	HelperXmlHandler_EpubTOC toc_parser( this );

@@ -19,17 +19,17 @@
 #include <QApplication>
 #include <QChar>
 #include <QDataStream>
-#include <QEventLoop>	// QEventLoop::ExcludeUserInputEvents
+#include <QEventLoop>   // QEventLoop::ExcludeUserInputEvents
 #include <QList>
-#include <QObject>		// QObject::connect
-#include <Qt>			// Qt::CaseInsensitive
+#include <QObject>      // QObject::connect
+#include <Qt>           // Qt::CaseInsensitive
 #include <QString>
 #include <QStringList>
 #include <QUrl>
 
-#include "ebook.h"					// EBook
+#include "ebook.h"                  // EBook
 #include "ebook_search.h"
-#include "helper_search_index.h"	// QtAs::Index
+#include "helper_search_index.h"    // QtAs::Index
 
 
 // Helper class to simplity state management and data keeping
@@ -74,7 +74,7 @@ class SearchDataKeeper
 		QStringList phrasewords;
 
 	private:
-		bool		m_inPhrase;
+		bool        m_inPhrase;
 		QStringList phrase_terms;
 };
 

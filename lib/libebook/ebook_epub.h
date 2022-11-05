@@ -47,7 +47,7 @@ class EBook_EPUB : public EBook
 		 * Loads a epub file.
 		 * \ingroup init
 		 */
-		bool	load( const QString& archiveName );
+		bool    load( const QString& archiveName );
 
 		/*!
 		 * \brief Closes all the files, and frees the appropriate data.
@@ -146,7 +146,7 @@ class EBook_EPUB : public EBook
 		 *
 		 * \ingroup dataretrieve
 		 */
-		virtual QString	getTopicByUrl ( const QUrl& url );
+		virtual QString getTopicByUrl ( const QUrl& url );
 
 		/*!
 		 * \brief Gets the current ebook encoding (set or autodetected) as qtcodec
@@ -154,7 +154,7 @@ class EBook_EPUB : public EBook
 		 *
 		 * \ingroup encoding
 		 */
-		virtual QString	currentEncoding() const;
+		virtual QString currentEncoding() const;
 
 		/*!
 		 * \brief Sets the ebook encoding to use for TOC and content
@@ -178,31 +178,31 @@ class EBook_EPUB : public EBook
 
 	private:
 		// Parses the XML file using a specified parser
-		bool	parseXML( const QString& uri, QXmlDefaultHandler* reader );
+		bool    parseXML( const QString& uri, QXmlDefaultHandler* reader );
 
 		// Parses the book description file. Fills up the ebook info
-		bool	parseBookinfo();
+		bool    parseBookinfo();
 
 		// Get file content from path
-		bool	getFileAsString( QString& str, const QString& path ) const;
-		bool	getFileAsBinary( QByteArray& data, const QString& path ) const;
+		bool    getFileAsString( QString& str, const QString& path ) const;
+		bool    getFileAsBinary( QByteArray& data, const QString& path ) const;
 
 		// ZIP archive fd and structs
-		QFile			m_epubFile;
-		struct zip* 	m_zipFile;
+		QFile           m_epubFile;
+		struct zip*     m_zipFile;
 
 		// Ebook info
-		QString			m_title;
-		QString			m_documentRoot;
+		QString         m_title;
+		QString         m_documentRoot;
 
 		// List of files in the ebook
-		QList<QUrl>		m_ebookManifest;
+		QList<QUrl>     m_ebookManifest;
 
 		// Table of contents
-		QList< EBookTocEntry >	m_tocEntries;
+		QList< EBookTocEntry >  m_tocEntries;
 
 		// Map of URL-Title
-		QMap< QUrl, QString>	m_urlTitleMap;
+		QMap< QUrl, QString>    m_urlTitleMap;
 };
 
 #endif // EBOOK_EPUB_H

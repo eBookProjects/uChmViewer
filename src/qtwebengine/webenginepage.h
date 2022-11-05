@@ -20,7 +20,7 @@
 #define QTWEBENGINE_WEBENGINEPAGE_H
 
 #include <QApplication>
-#include <QtDebug>			 // qDebug()
+#include <QtDebug>           // qDebug()
 #include <QObject>
 #include <Qt>                // Qt::KeyboardModifiers, Qt::ControlModifier, Qt::ShiftModifier
 #include <QWebEnginePage>
@@ -111,7 +111,7 @@ class WebEnginePage : public QWebEnginePage
 		}
 
 	protected slots:
-		void 	onLinkHovered( const QString& url )
+		void    onLinkHovered( const QString& url )
 		{
 #if PRINT_DEBUG
 			qDebug() << "[DEBUG] WebEnginePage::linkHovered";

@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtDebug>			// qDebug() <<
+#include <QtDebug>          // qDebug() <<
 #include <QString>
 #include <QXmlAttributes>
 
@@ -71,7 +71,7 @@ bool HelperXmlHandler_EpubTOC::startElement(const QString&, const QString& local
 
 bool HelperXmlHandler_EpubTOC::characters(const QString& ch)
 {
-	//	qDebug() << "characters" << " " << ch;
+	//  qDebug() << "characters" << " " << ch;
 	if ( m_inText )
 		m_lastTitle = ch;
 

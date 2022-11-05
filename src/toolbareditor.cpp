@@ -23,20 +23,20 @@
 #include <QMap>
 #include <QMimeData>
 #include <QModelIndex>
-#include <QObject>			  // QObject::connect
+#include <QObject>            // QObject::connect
 #include <QString>
 #include <QStringList>
 // Qt::DecorationRole, Qt::DisplayRole, Qt::ToolTipRole
-// Qt::ItemIsDropEnabled,	Qt::ItemIsDragEnabled, Qt::ItemIsEnabled
+// Qt::ItemIsDropEnabled,   Qt::ItemIsDragEnabled, Qt::ItemIsEnabled
 // Qt::ItemIsSelectable, Qt::DropAction, Qt::MoveAction, Qt::IgnoreAction
 #include <Qt>
-#include <QtGlobal>			  // qFatal
+#include <QtGlobal>           // qFatal
 #include <QToolBar>
 #include <QVariant>
 #include <QWidget>
 
-#include "toolbareditor.h"	// ToolbarEditor, QDialog
-#include "toolbarmanager.h"	// ToolbarManager
+#include "toolbareditor.h"  // ToolbarEditor, QDialog
+#include "toolbarmanager.h" // ToolbarManager
 
 
 static const char* ACTION_MIME_FORMAT = "application/vnd.action.list";
@@ -95,7 +95,7 @@ class ActionListModel : public QAbstractListModel
 		Qt::ItemFlags flags ( const QModelIndex& index ) const
 		{
 			if ( index.isValid() )
-				return Qt::ItemIsSelectable	| Qt::ItemIsDragEnabled | Qt::ItemIsEnabled;
+				return Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled;
 			else
 				return Qt::ItemIsDropEnabled;
 		}
@@ -195,15 +195,15 @@ class ActionListModel : public QAbstractListModel
 			return true;
 		}
 
-		QStringList	actions() const
+		QStringList actions() const
 		{
 			return m_actions;
 		}
 
 	private:
-		ToolbarEditor*			m_editor;
-		QStringList				m_actions;
-		bool					m_actionSource;
+		ToolbarEditor*          m_editor;
+		QStringList             m_actions;
+		bool                    m_actionSource;
 };
 
 
@@ -351,7 +351,7 @@ void ToolbarEditor::updateToolbarActions( QToolBar* toolbar )
 	m_selected[ toolbar ] = model->actions();
 }
 
-QStringList	ToolbarEditor::actionsForToolbar( QToolBar* toolbar )
+QStringList ToolbarEditor::actionsForToolbar( QToolBar* toolbar )
 {
 	if ( !m_selected.contains( toolbar ) )
 		return QStringList();

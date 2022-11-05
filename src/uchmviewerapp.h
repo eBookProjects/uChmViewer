@@ -20,7 +20,7 @@
 #define UCHMVIEWERAPP_H
 
 #include <QApplication>
-#include <QtGlobal>		// QT_VERSION, Q_OS_DARWIN
+#include <QtGlobal>     // QT_VERSION, Q_OS_DARWIN
 #include <QString>
 
 class QEvent;

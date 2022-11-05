@@ -50,37 +50,37 @@ class Config
 		};
 
 		Config();
-		void	save();
+		void    save();
 
 		// Returns the setting filename for this ebook
-		QString	getEbookSettingFile( const QString& ebookfile ) const;
+		QString getEbookSettingFile( const QString& ebookfile ) const;
 
 		// Returns the index filename for this ebook
-		QString	getEbookIndexFile( const QString& ebookfile )  const;
+		QString getEbookIndexFile( const QString& ebookfile )  const;
 
 	public:
-		QString				m_lastOpenedDir;
+		QString             m_lastOpenedDir;
 
-		StartupMode			m_startupMode;
-		choose_action_t		m_onNewChmClick;
-		choose_action_t		m_onExternalLinkClick;
-		int					m_numOfRecentFiles;
-		bool				m_HistoryStoreExtra;
-		ToolbarMode			m_toolbarMode;
+		StartupMode         m_startupMode;
+		choose_action_t     m_onNewChmClick;
+		choose_action_t     m_onExternalLinkClick;
+		int                 m_numOfRecentFiles;
+		bool                m_HistoryStoreExtra;
+		ToolbarMode         m_toolbarMode;
 
-		BrowserSettings		browser;
-		bool				m_browserEnableRemoteContent;
+		BrowserSettings     browser;
+		bool                m_browserEnableRemoteContent;
 
 		bool                m_tocOpenAllEntries;
 		bool                m_tabUseSingleClick;
 
-		bool				m_advUseInternalEditor;
-		QString				m_advExternalEditorPath;
-		bool				m_advLayoutDirectionRL;
-		bool				m_advAutodetectEncoding;
+		bool                m_advUseInternalEditor;
+		QString             m_advExternalEditorPath;
+		bool                m_advLayoutDirectionRL;
+		bool                m_advAutodetectEncoding;
 
 	private:
-		QString				m_datapath;
+		QString             m_datapath;
 };
 
 extern Config* pConfig;

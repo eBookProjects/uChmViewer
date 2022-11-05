@@ -19,7 +19,7 @@
 #ifndef I18N_H
 #define I18N_H
 
-#define i18n(str)	tr(str)
+#define i18n(str)   tr(str)
 
 namespace app_i18n
 {

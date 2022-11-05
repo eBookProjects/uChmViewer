@@ -53,51 +53,51 @@ class NavigationPanel : public QDockWidget, public Ui::NavigatorPanel
 		NavigationPanel( QWidget* parent );
 
 		// Sets the bookmark menu (maintained by bookmark tab)
-		void	setBookmarkMenu( QMenu* menu );
+		void    setBookmarkMenu( QMenu* menu );
 
 		// Invalidate data in all tabs
-		void	invalidate();
+		void    invalidate();
 
 		// Update tabs content from CHM file data
-		void	updateTabs(EBook* file );
+		void    updateTabs(EBook* file );
 
 		// Save/load current file settings
-		void	applySettings( Settings* settings );
-		void	getSettings( Settings* settings );
+		void    applySettings( Settings* settings );
+		void    getSettings( Settings* settings );
 
 		// Active tab get/set
-		int		active() const;
-		void	setActive( int index );
+		int     active() const;
+		void    setActive( int index );
 
 		// Refresh content and index tab contents
-		void	refresh();
+		void    refresh();
 
 		// Locate URL or text in the contents tab
-		bool	findUrlInContents( const QUrl& url );
-		void	findTextInContents( const QString& text );
+		bool    findUrlInContents( const QUrl& url );
+		void    findTextInContents( const QString& text );
 
 		// Find text in index tab
-		void	findInIndex( const QString& text );
+		void    findInIndex( const QString& text );
 
 		// Find text in search tab
-		void	executeQueryInSearch( const QString& text );
+		void    executeQueryInSearch( const QString& text );
 
 		// Just find text without using search tab
-		QStringList	searchQuery( const QString& text );
+		QStringList searchQuery( const QString& text );
 
 	public slots:
 		// Add a new bookmark
-		void	addBookmark();
+		void    addBookmark();
 
 		// Show previous/next page in table of contents
-		void	showPrevInToc();
-		void	showNextInToc();
+		void    showPrevInToc();
+		void    showNextInToc();
 
 	private:
-		TabContents*				m_contentsTab;
-		TabIndex*				m_indexTab;
-		TabSearch*				m_searchTab;
-		TabBookmarks*			m_bookmarksTab;
+		TabContents*                m_contentsTab;
+		TabIndex*               m_indexTab;
+		TabSearch*              m_searchTab;
+		TabBookmarks*           m_bookmarksTab;
 };
 
 #endif // NAVIGATIONPANEL_H

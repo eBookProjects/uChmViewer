@@ -29,11 +29,11 @@ class Settings
 	public:
 		Settings();
 
-		bool	loadSettings (const QString& filename);
-		bool	saveSettings ( );
-		void 	removeSettings ( const QString& filename );
+		bool    loadSettings (const QString& filename);
+		bool    saveSettings ( );
+		void    removeSettings ( const QString& filename );
 
-		QString	searchIndexFile() const	{ return m_searchIndex; }
+		QString searchIndexFile() const { return m_searchIndex; }
 
 		class SavedBookmark
 		{
@@ -41,9 +41,9 @@ class Settings
 				SavedBookmark() { scroll_y = 0; }
 				SavedBookmark ( const QString& n, const QString& u, int y) : name(n), url(u), scroll_y(y) {};
 
-				QString		name;
-				QString		url;
-				int			scroll_y;
+				QString     name;
+				QString     url;
+				int         scroll_y;
 		};
 
 		class SavedViewWindow
@@ -52,30 +52,30 @@ class Settings
 				SavedViewWindow() { scroll_y = 0; zoom = 0.0; }
 				SavedViewWindow ( const QString& u, int y, qreal z) : url(u), scroll_y(y), zoom(z) {};
 
-				QString		url;
-				int			scroll_y;
-				qreal		zoom;
+				QString     url;
+				int         scroll_y;
+				qreal       zoom;
 		};
 
-		typedef QList<QString>			search_saved_settings_t;
-		typedef QList<SavedBookmark>	bookmark_saved_settings_t;
-		typedef QList<SavedViewWindow>	viewindow_saved_settings_t;
+		typedef QList<QString>          search_saved_settings_t;
+		typedef QList<SavedBookmark>    bookmark_saved_settings_t;
+		typedef QList<SavedViewWindow>  viewindow_saved_settings_t;
 
-		int							m_window_size_x;
-		int							m_window_size_y;
-		int							m_window_size_splitter;
-		int							m_activetabsystem;
-		int							m_activetabwindow;
-		QString						m_activeEncoding;
-		search_saved_settings_t		m_searchhistory;
-		bookmark_saved_settings_t	m_bookmarks;
-		viewindow_saved_settings_t	m_viewwindows;
+		int                         m_window_size_x;
+		int                         m_window_size_y;
+		int                         m_window_size_splitter;
+		int                         m_activetabsystem;
+		int                         m_activetabwindow;
+		QString                     m_activeEncoding;
+		search_saved_settings_t     m_searchhistory;
+		bookmark_saved_settings_t   m_bookmarks;
+		viewindow_saved_settings_t  m_viewwindows;
 
 	private:
-		unsigned int				m_currentfilesize;
-		unsigned int				m_currentfiledate;
-		QString						m_settingsFile;
-		QString						m_searchIndex;
+		unsigned int                m_currentfilesize;
+		unsigned int                m_currentfiledate;
+		QString                     m_settingsFile;
+		QString                     m_searchIndex;
 };
 
 #endif

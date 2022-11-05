@@ -16,10 +16,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstdio>			// fprintf, stderr
-#include <cstdlib>			// exit
+#include <cstdio>           // fprintf, stderr
+#include <cstdlib>          // exit
 
-#include <QApplication>		// aApp
+#include <QApplication>     // aApp
 #include <QAction>
 #include <QActionGroup>
 #include <QByteArray>
@@ -31,11 +31,11 @@
 #include <QEvent>
 #include <QFile>
 #include <QFileInfo>
-#include <QIODevice>		// QIODevice::WriteOnly
+#include <QIODevice>        // QIODevice::WriteOnly
 #include <QKeySequence>
 #include <QList>
 #include <QMessageBox>
-#include <QObject>			// QObject::connect
+#include <QObject>          // QObject::connect
 #include <QPixmap>
 #include <QProcess>
 #include <QProgressDialog>
@@ -46,8 +46,8 @@
 #include <QString>
 #include <QStringList>
 #include <QSysInfo>
-#include <Qt>				// Qt::LeftToRight, Qt::RightToLeft, Qt::Vertical, Qt::WA_DeleteOnClose
-#include <QtGlobal>			// qreal, qPrintable, qDebug, qFatal, qWarning
+#include <Qt>               // Qt::LeftToRight, Qt::RightToLeft, Qt::Vertical, Qt::WA_DeleteOnClose
+#include <QtGlobal>         // qreal, qPrintable, qDebug, qFatal, qWarning
 #include <QTemporaryFile>
 #include <QTextEdit>
 #include <QTextStream>
@@ -56,23 +56,23 @@
 #include <QVariant>
 #include <QWhatsThis>
 
-#include "kde-qt.h"	// KRun or QDesktopServices, KFileDialog or QFileDialog
+#include "kde-qt.h" // KRun or QDesktopServices, KFileDialog or QFileDialog
 
 #include "i18n.h"
 
-#include "config.h"				// pConfig
-#include "dialog_setup.h"		// DialogSetup
-#include "ebook.h"				// EBook
-#include "mainwindow.h"			// MainWindow, QMainWindow
-#include "navigationpanel.h"	// NavigationPanel
-#include "recentfiles.h"		// RecentFiles
-#include "settings.h"			// Settings
-#include "textencodings.h"		// TextEncodings
-#include "toolbarmanager.h"		// ToolbarManager
-#include "ui_dialog_about.h"	// Ui::DialogAbout
-#include "version.h"			// APP_VERSION_MAJOR, APP_VERSION_MINOR
-#include "viewwindow.h"			// ViewWindow
-#include "viewwindowmgr.h"		// ViewWindowMgr
+#include "config.h"             // pConfig
+#include "dialog_setup.h"       // DialogSetup
+#include "ebook.h"              // EBook
+#include "mainwindow.h"         // MainWindow, QMainWindow
+#include "navigationpanel.h"    // NavigationPanel
+#include "recentfiles.h"        // RecentFiles
+#include "settings.h"           // Settings
+#include "textencodings.h"      // TextEncodings
+#include "toolbarmanager.h"     // ToolbarManager
+#include "ui_dialog_about.h"    // Ui::DialogAbout
+#include "version.h"            // APP_VERSION_MAJOR, APP_VERSION_MINOR
+#include "viewwindow.h"         // ViewWindow
+#include "viewwindowmgr.h"      // ViewWindowMgr
 
 
 // Maximum memory size for inter-application communication

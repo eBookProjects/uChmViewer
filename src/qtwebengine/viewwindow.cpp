@@ -18,14 +18,14 @@
 
 #include <QApplication>
 #include <QContextMenuEvent>
-#include <QDialog>							// QDialog::Accepted
+#include <QDialog>                          // QDialog::Accepted
 #include <QKeySequence>
 #include <QMenu>
 #include <QPalette>
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QString>
-#include <QtGlobal>							// QT_VERSION, QT_VERSION_CHECK
+#include <QtGlobal>                         // QT_VERSION, QT_VERSION_CHECK
 #include <QUrl>
 #include <QVariant>
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 2, 0))

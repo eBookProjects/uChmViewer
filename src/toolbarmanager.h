@@ -38,45 +38,45 @@ class ToolbarManager : public QObject
 	public:
 		// Returns the name of the separator object which should be used in place
 		// of separators where needed.
-		static QString	separatorName();
-		static QString	actionName( QAction* action );
-		static bool		hasAction( const QList<QAction*>& actions, QAction* action );
+		static QString  separatorName();
+		static QString  actionName( QAction* action );
+		static bool     hasAction( const QList<QAction*>& actions, QAction* action );
 
 		ToolbarManager( QObject* parent = 0, const QString& settingpath = "/tooolbars" );
 		virtual ~ToolbarManager();
 
 		// Set the actions available in all toolbars. Actions which are stored for toolbars
 		// must be present in this list, or they will be ignored.
-		void	setAvailableActions( QList<QAction*> availableActions );
+		void    setAvailableActions( QList<QAction*> availableActions );
 
 		// Query the actions available to set in toolbar from the provided QObject as children
 		// of this object. Typically (always for UIC-generated files) all actions have application
 		// MainWindow as their parent.
-		void	queryAvailableActions( QObject* source );
+		void    queryAvailableActions( QObject* source );
 
 		// Adds a toolbar to the list of managed toolbars
-		void	addManaged( QToolBar* toolbar );
+		void    addManaged( QToolBar* toolbar );
 
 		// Loads the managed toolbars actions; keeps toolbars intact if nothing is loaded
-		void	load();
+		void    load();
 
 		// Saves the managed toolbars actions
-		void	save();
+		void    save();
 
 		// Shows the edit toolbars dialog
-		void	editDialog();
+		void    editDialog();
 
 	private:
-		void	applyActions( QToolBar* toolbar, const QStringList& actions );
+		void    applyActions( QToolBar* toolbar, const QStringList& actions );
 
 		// Keeps available actions
-		QList<QAction*>			m_availableActions;
+		QList<QAction*>         m_availableActions;
 
 		// Keeps the managed toolbars
-		QList< QToolBar*>		m_toolbars;
+		QList< QToolBar*>       m_toolbars;
 
 		// Setting name
-		QString					m_settingsRoot;
+		QString                 m_settingsRoot;
 };
 
 #endif // TOOLBARMANAGER_H

@@ -23,8 +23,8 @@
 
 typedef struct
 {
-	const char*  	qtcodec;
-	const short*		lcids;
+	const char*     qtcodec;
+	const short*    lcids;
 } EbookChmTextEncodingEntry;
 
 
@@ -32,19 +32,19 @@ typedef struct
 static short lcid_arabic[] =
 {
 	0x1401, 0x3C01, 0x0C01, 0x0801, 0x2C01, 0x3401, 0x3001, 0x1001,
-	0x1801, 0x2001,	0x4001, 0x0401, 0x2801, 0x1C01,	0x3801,	0x2401,
+	0x1801, 0x2001, 0x4001, 0x0401, 0x2801, 0x1C01, 0x3801, 0x2401,
 	0x0429, 0x0420,
 	0,
 };
 
 static short lcid_baltic[] =
 {
-	0x0425,	0x0426,	0x0427, 0
+	0x0425, 0x0426, 0x0427, 0
 };
 
 static short lcid_centralEuropean[] =
 {
-	0x041C,	0x041A,	0x0405,	0x040E,	0x0415,	0x0418,	0x081A, 0x041B,	0x0424, 0
+	0x041C, 0x041A, 0x0405, 0x040E, 0x0415, 0x0418, 0x081A, 0x041B, 0x0424, 0
 };
 
 static short lcid_ChineseSimplifiedGB18030[] =
@@ -66,17 +66,17 @@ static short lcid_ChineseSimplifiedGB2313[] =
 
 static short lcid_ChineseTraditionalBig5[] =
 {
-	0x0404, 0x1404,	0
+	0x0404, 0x1404, 0
 };
 
 static short lcid_ChineseTraditionalBigHKSCS[] =
 {
-	0x0C04,	0
+	0x0C04, 0
 };
 
 static short lcid_CyrillicCP1251[] =
 {
-	0x082C, 0x0423, 0x0402, 0x042F, 0x0419, 0x0C1A, 0x0444, 0x0422, 0x0843,	0
+	0x082C, 0x0423, 0x0402, 0x042F, 0x0419, 0x0C1A, 0x0444, 0x0422, 0x0843, 0
 };
 
 static short lcid_CyrillicKOI8R[] =
@@ -88,58 +88,58 @@ static short lcid_CyrillicKOI8R[] =
 
 static short lcid_Greek[] =
 {
-	0x0408,	0
+	0x0408, 0
 };
 
 static short lcid_Hebrew[] =
 {
-	0x040D,	0
+	0x040D, 0
 };
 
 static short lcid_Japanese_eucJP[] =
 {
-	0x0411,	0
+	0x0411, 0
 };
 
 
 static short lcid_Japanese_JIS7[] =
 {
-	0x0411,	0
+	0x0411, 0
 };
 
 static short lcid_Japanese_ShiftJIS[] =
 {
-	0x0411,	0
+	0x0411, 0
 };
 
 static short lcid_Korean_eucKR[] =
 {
-	0x0412,	0
+	0x0412, 0
 };
 
 static short lcid_TamilTSCII[] =
 {
-	0x0449,	0
+	0x0449, 0
 };
 
 static short lcid_ThaiTIS[] =
 {
-	0x041E,	0
+	0x041E, 0
 };
 
 static short lcid_UkrainianKOI[] =
 {
-	0x7006,	0
+	0x7006, 0
 };
 
 static short lcid_Turkish[] =
 {
-	0x042C, 0x041F, 0x0443,	0
+	0x042C, 0x041F, 0x0443, 0
 };
 
 static short lcid_Vietnamese[] =
 {
-	0x042A,	0
+	0x042A, 0
 };
 
 static short lcid_UnicodeUTF8[] =
@@ -291,7 +291,7 @@ static const EbookChmTextEncodingEntry text_encoding_table [] =
 		lcid_Western
 	},
 
-	{	0,	0	}
+	{   0,  0   }
 };
 
 QString Ebook_CHM_Encoding::guessByLCID(unsigned short lcid)

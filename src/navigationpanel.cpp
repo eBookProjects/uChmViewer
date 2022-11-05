@@ -26,16 +26,16 @@
 
 #include "i18n.h"
 
-#include "ebook.h"			 // EBook
-#include "mainwindow.h"		 // ::mainWindow
+#include "ebook.h"           // EBook
+#include "mainwindow.h"      // ::mainWindow
 #include "navigationpanel.h" // NavigationPanel, QWidget
-#include "settings.h"		 // Settings
-#include "tab_bookmarks.h"	 // TabBookmarks
-#include "tab_contents.h"	 // TabContents
-#include "tab_index.h"		 // TabIndex
-#include "tab_search.h"		 // TabSearch
-#include "treeitem_toc.h"	 // TreeItem_TOC
-#include "viewwindow.h"		 // ViewWindow
+#include "settings.h"        // Settings
+#include "tab_bookmarks.h"   // TabBookmarks
+#include "tab_contents.h"    // TabContents
+#include "tab_index.h"       // TabIndex
+#include "tab_search.h"      // TabSearch
+#include "treeitem_toc.h"    // TreeItem_TOC
+#include "viewwindow.h"      // ViewWindow
 
 
 NavigationPanel::NavigationPanel( QWidget* parent )
@@ -180,7 +180,7 @@ void NavigationPanel::showNextInToc()
 		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl(), MainWindow::OPF_CONTENT_TREE );
 }
 
-int	NavigationPanel::active() const
+int NavigationPanel::active() const
 {
 	QWidget* cur = m_tabWidget->currentWidget();
 

@@ -22,7 +22,7 @@
 #include <QUrl>
 #include <QWidget>
 
-#include "dialog_chooseurlfromlist.h"	// DialogChooseUrlFromList, QDialog
+#include "dialog_chooseurlfromlist.h"   // DialogChooseUrlFromList, QDialog
 
 
 DialogChooseUrlFromList::DialogChooseUrlFromList( QWidget* parent )

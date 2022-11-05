@@ -20,9 +20,9 @@
 #include <QDateTime>
 #include <QFile>
 #include <QFileInfo>
-#include <QIODevice>		// QIODevice::ReadOnly, QIODevice::WriteOnly
+#include <QIODevice>        // QIODevice::ReadOnly, QIODevice::WriteOnly
 #include <QString>
-#include <QtGlobal>			// qint32, qPrintable, qWarning
+#include <QtGlobal>         // qint32, qPrintable, qWarning
 
 #include "config.h"   // pConfig
 #include "settings.h"

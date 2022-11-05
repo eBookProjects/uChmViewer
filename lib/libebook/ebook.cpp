@@ -18,9 +18,9 @@
 
 #include <QString>
 
-#include "ebook.h"		// EBook
-#include "ebook_chm.h"	// EBook_CHM
-#include "ebook_epub.h"	// EBook_EPUB
+#include "ebook.h"      // EBook
+#include "ebook_chm.h"  // EBook_CHM
+#include "ebook_epub.h" // EBook_EPUB
 
 
 EBook::EBook()

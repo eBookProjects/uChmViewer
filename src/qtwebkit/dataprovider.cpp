@@ -21,7 +21,7 @@
 #include <QNetworkRequest>
 #include <QObject>
 #include <Qt>              // Qt::QueuedConnection
-#include <QtGlobal>		   // qint64, qPrintable, qDebug, qWarning
+#include <QtGlobal>        // qint64, qPrintable, qDebug, qWarning
 #include <QUrl>
 
 #include "../config.h"     // ::pConfig

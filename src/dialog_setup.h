@@ -35,11 +35,11 @@ class DialogSetup : public QDialog, public Ui::DialogSetup
 		~DialogSetup();
 
 	public slots:
-		void	browseExternalEditor();
-		void	accept();
+		void    browseExternalEditor();
+		void    accept();
 
 	private:
-		int		m_numOfRecentFiles;
+		int     m_numOfRecentFiles;
 };
 
 #endif

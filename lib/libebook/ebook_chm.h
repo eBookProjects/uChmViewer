@@ -19,14 +19,14 @@
 #ifndef EBOOK_CHM_H
 #define EBOOK_CHM_H
 
-#include <cstddef>	// size_t
+#include <cstddef>  // size_t
 
 #include <QByteArray>
 #include <QList>
 #include <QMap>
 #include <QString>
 #include <QTextCodec>
-#include <QtGlobal>		// qPrintable
+#include <QtGlobal>     // qPrintable
 #include <QUrl>
 
 // Enable Unicode use in libchm
@@ -34,9 +34,9 @@
 	#define PPC_BSTR
 #endif
 
-#include "ebook.h"					// EBook
-#include <chm_lib.h>				// chmUnitInfo, LONGUINT64
-#include "helper_entitydecoder.h"	// HelperEntityDecoder
+#include "ebook.h"                  // EBook
+#include <chm_lib.h>                // chmUnitInfo, LONGUINT64
+#include "helper_entitydecoder.h"   // HelperEntityDecoder
 
 
 class EBook_CHM : public EBook
@@ -56,7 +56,7 @@ class EBook_CHM : public EBook
 		 * if files linked to this one are present locally (like MSDN).
 		 * \ingroup init
 		 */
-		bool	load( const QString& archiveName );
+		bool    load( const QString& archiveName );
 
 		/*!
 		 * \brief Closes all the files, and frees the appropriate data.
@@ -164,7 +164,7 @@ class EBook_CHM : public EBook
 		 *
 		 * \ingroup dataretrieve
 		 */
-		virtual QString		getTopicByUrl ( const QUrl& url );
+		virtual QString     getTopicByUrl ( const QUrl& url );
 
 		/*!
 		 * \brief Gets the current ebook encoding (set or autodetected) as qtcodec
@@ -172,7 +172,7 @@ class EBook_CHM : public EBook
 		 *
 		 * \ingroup encoding
 		 */
-		virtual QString	currentEncoding() const;
+		virtual QString currentEncoding() const;
 
 		/*!
 		 * \brief Sets the ebook encoding to use for TOC and content
@@ -201,11 +201,11 @@ class EBook_CHM : public EBook
 			public:
 				ParsedEntry();
 
-				QString		name;
-				QList<QUrl>	urls;
-				int			iconid;
-				int			indent;
-				QString		seealso;
+				QString     name;
+				QList<QUrl> urls;
+				int         iconid;
+				int         indent;
+				QString     seealso;
 		};
 
 		//! Looks up fileName in the archive.
@@ -247,10 +247,10 @@ class EBook_CHM : public EBook
 		const char* GetFontEncFromCharSet (const QString& font) const;
 
 		//! Parse the HHC or HHS file, and fill the context (asIndex is false) or index (asIndex is true) array.
-		bool  		parseFileAndFillArray (const QString& file, QList< ParsedEntry >& data, bool asIndex ) const;
+		bool        parseFileAndFillArray (const QString& file, QList< ParsedEntry >& data, bool asIndex ) const;
 
-		bool		getBinaryContent( QByteArray& data, const QString& url ) const;
-		bool		getTextContent( QString& str, const QString& url, bool internal_encoding = false ) const;
+		bool        getBinaryContent( QByteArray& data, const QString& url ) const;
+		bool        getTextContent( QString& str, const QString& url, bool internal_encoding = false ) const;
 
 		/*!
 		 * Parse binary TOC
@@ -287,66 +287,66 @@ class EBook_CHM : public EBook
 		// Members
 
 		//! Pointer to the chmlib structure
-		chmFile*		m_chmFile;
+		chmFile*    m_chmFile;
 
 		//! Opened file name
-		QString  	m_filename;
+		QString     m_filename;
 
 		//! Home url, got from CHM file
 		QByteArray  m_home;
 
 		//! Context tree filename. Got from CHM file
-		QByteArray 	m_topicsFile;
+		QByteArray  m_topicsFile;
 
 		//! Index filename. Got from CHM file
-		QByteArray	m_indexFile;
+		QByteArray  m_indexFile;
 
 		//! Chm Title. Got from CHM file
-		QByteArray	m_title;
+		QByteArray  m_title;
 
 		// Localization stuff
 		//! LCID from CHM file, used in encoding detection
-		short			m_detectedLCID;
+		short       m_detectedLCID;
 
 		//! font charset from CHM file, used in encoding detection
-		QString 		m_font;
+		QString     m_font;
 
 		//! Chosen text codec
-		QTextCodec*		m_textCodec;
-		QTextCodec*		m_textCodecForSpecialFiles;
+		QTextCodec* m_textCodec;
+		QTextCodec* m_textCodecForSpecialFiles;
 
 		//! Current encoding
-		QString			m_currentEncoding;
+		QString     m_currentEncoding;
 
 		//! TRUE if /#TOPICS, /#STRINGS, /#URLTBL and  /#URLSTR are resolved, and the members below are valid
-		bool		m_lookupTablesValid;
+		bool        m_lookupTablesValid;
 
 		//! pointer to /#TOPICS
-		chmUnitInfo	m_chmTOPICS;
+		chmUnitInfo m_chmTOPICS;
 
 		//! pointer to /#STRINGS
-		chmUnitInfo	m_chmSTRINGS;
+		chmUnitInfo m_chmSTRINGS;
 
 		//! pointer to /#URLTBL
-		chmUnitInfo	m_chmURLTBL;
+		chmUnitInfo m_chmURLTBL;
 
 		//! pointer to /#URLSTR
-		chmUnitInfo	m_chmURLSTR;
+		chmUnitInfo m_chmURLSTR;
 
 		//! Indicates whether TOC, either binary or text, is available.
-		bool			m_tocAvailable;
+		bool        m_tocAvailable;
 
 		//! Indicates whether index, either binary or text, is available.
-		bool			m_indexAvailable;
+		bool        m_indexAvailable;
 
 		//! Map url->topic
-		QMap< QUrl, QString >	m_url2topics;
+		QMap< QUrl, QString >   m_url2topics;
 
 		//! uChmViewer debug options from environment
-		QString			m_envOptions;
+		QString     m_envOptions;
 
 		//! HTML entity decoder
-		HelperEntityDecoder		m_htmlEntityDecoder;
+		HelperEntityDecoder     m_htmlEntityDecoder;
 };
 
 #endif // EBOOK_CHM_H

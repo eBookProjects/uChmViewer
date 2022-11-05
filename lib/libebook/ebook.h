@@ -40,17 +40,17 @@ class EBookTocEntry
 		};
 
 		//! Entry name
-		QString		name;
+		QString     name;
 
 		//! Entry URL.
-		QUrl		url;
+		QUrl        url;
 
 		//! Associated image number. Used for TOC only; indexes does not have the image.
 		//! If IMAGE_NONE, no icon is associated. Otherwise use getBookIconPixmap() to get associated pixmap icon.
-		Icon		iconid;
+		Icon        iconid;
 
 		//! Indentation level for this entry.
-		int			indent;
+		int         indent;
 };
 
 
@@ -59,16 +59,16 @@ class EBookIndexEntry
 {
 	public:
 		//! Entry name
-		QString		name;
+		QString     name;
 
 		//! Entry URLs. The index entry could have several URLs
 		QList<QUrl> urls;
 
 		//! Whether this is a 'see also' index type, and its value
-		QString		seealso;
+		QString     seealso;
 
 		//! Indentation level for this entry.
-		int			indent;
+		int         indent;
 };
 
 
@@ -195,7 +195,7 @@ class EBook
 		 *
 		 * \ingroup dataretrieve
 		 */
-		virtual QString		getTopicByUrl ( const QUrl& url ) = 0;
+		virtual QString     getTopicByUrl ( const QUrl& url ) = 0;
 
 		/*!
 		 * \brief Gets the current ebook encoding (set or autodetected) as qtcodec name. Must be implemented,
@@ -204,7 +204,7 @@ class EBook
 		 *
 		 * \ingroup encoding
 		 */
-		virtual QString	currentEncoding() const = 0;
+		virtual QString currentEncoding() const = 0;
 
 		/*!
 		 * \brief Sets the ebook encoding to use for TOC and content
@@ -229,7 +229,7 @@ class EBook
 
 	protected:
 		// Loads the file; returns true if loaded, false otherwise
-		virtual bool	load( const QString& archiveName ) = 0;
+		virtual bool    load( const QString& archiveName ) = 0;
 };
 
 

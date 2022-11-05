@@ -23,11 +23,11 @@
 #include <QHash>
 #include <QObject>
 #include <QStringList>
-#include <QtGlobal>		// qint16
+#include <QtGlobal>     // qint16
 #include <QUrl>
 #include <QVector>
 
-#include "helper_entitydecoder.h"	// HelperEntityDecoder
+#include "helper_entitydecoder.h"   // HelperEntityDecoder
 
 class EBook;
 
@@ -60,8 +60,8 @@ struct Document
 		return frequency < doc.frequency;
 	}
 
-	qint16	docNumber;
-	qint16	frequency;
+	qint16  docNumber;
+	qint16  frequency;
 };
 
 QDataStream& operator>>( QDataStream& s, Document& l );
@@ -74,12 +74,12 @@ class Index : public QObject
 
 		Index();
 
-		void 		writeDict( QDataStream& stream );
-		bool 		readDict( QDataStream& stream );
-		bool 		makeIndex(const QList<QUrl>& docs, EBook* chmFile );
-		QList<QUrl>	query( const QStringList&, const QStringList&, const QStringList&, EBook* chmFile );
-		QString 	getCharsSplit() const { return m_charssplit; }
-		QString 	getCharsPartOfWord() const { return m_charsword; }
+		void        writeDict( QDataStream& stream );
+		bool        readDict( QDataStream& stream );
+		bool        makeIndex(const QList<QUrl>& docs, EBook* chmFile );
+		QList<QUrl> query( const QStringList&, const QStringList&, const QStringList&, EBook* chmFile );
+		QString     getCharsSplit() const { return m_charssplit; }
+		QString     getCharsPartOfWord() const { return m_charsword; }
 
 	signals:
 		void indexingProgress( int, const QString& );
@@ -101,27 +101,27 @@ class Index : public QObject
 			QList<uint> positions;
 		};
 
-		bool	parseDocumentToStringlist( EBook* chmFile, const QUrl& filename, QStringList& tokenlist );
-		void	insertInDict( const QString&, int );
+		bool    parseDocumentToStringlist( EBook* chmFile, const QUrl& filename, QStringList& tokenlist );
+		void    insertInDict( const QString&, int );
 
-		QStringList				getWildcardTerms( const QString& );
-		QStringList				split( const QString& );
-		QList<Document> 		setupDummyTerm( const QStringList& );
-		bool 					searchForPhrases(const QStringList& phrases, const QStringList& words, const QUrl& filename, EBook* chmFile );
+		QStringList             getWildcardTerms( const QString& );
+		QStringList             split( const QString& );
+		QList<Document>         setupDummyTerm( const QStringList& );
+		bool                    searchForPhrases(const QStringList& phrases, const QStringList& words, const QUrl& filename, EBook* chmFile );
 
-		QList< QUrl > 			docList;
-		QHash<QString, Entry*> 	dict;
+		QList< QUrl >           docList;
+		QHash<QString, Entry*>  dict;
 		QHash<QString, PosEntry*>miniDict;
-		bool 					lastWindowClosed;
-		HelperEntityDecoder		entityDecoder;
+		bool                    lastWindowClosed;
+		HelperEntityDecoder     entityDecoder;
 
 		// Those characters are splitters (i.e. split the word), but added themselves into dictionary too.
 		// This makes the dictionary MUCH larger, but ensure that for the piece of "window->print" both
 		// search for "print" and "->print" will find it.
-		QString 				m_charssplit;
+		QString                 m_charssplit;
 
 		// Those characters are parts of word - for example, '_' is here, and search for _debug will find only _debug.
-		QString 				m_charsword;
+		QString                 m_charsword;
 };
 
 };

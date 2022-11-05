@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstdlib>		// abort
+#include <cstdlib>      // abort
 
 #include <QAction>
 #include <QClipboard>
@@ -29,7 +29,7 @@
 #include <Qt>           // Qt::MidButton and things
 #include <QTabBar>
 #include <QTabWidget>
-#include <QtGlobal>		// qFatal
+#include <QtGlobal>     // qFatal
 #include <QToolButton>
 #include <QMouseEvent>
 #include <QUrl>

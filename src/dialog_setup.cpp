@@ -18,7 +18,7 @@
 
 #include <QCheckBox>
 #include <QMessageBox>
-#include <QObject>		// QObject::connect
+#include <QObject>      // QObject::connect
 #include <QString>
 #include <QUrl>
 #include <QWidget>
@@ -27,9 +27,9 @@
 
 #include "i18n.h"
 
-#include "config.h"		  // Config, pConfig
+#include "config.h"       // Config, pConfig
 #include "dialog_setup.h" // DialogSetup, QDialog
-#include "mainwindow.h"	  // :mainWindow
+#include "mainwindow.h"   // :mainWindow
 
 
 DialogSetup::DialogSetup(QWidget* parent)
@@ -206,7 +206,7 @@ void DialogSetup::accept()
 	if ( need_restart )
 		QMessageBox::information( this,
 		                          QCoreApplication::applicationName(),
-		                          i18n( "Changing those options requires restarting the application to take effect." )	);
+		                          i18n( "Changing those options requires restarting the application to take effect." )  );
 
 	QDialog::accept();
 }

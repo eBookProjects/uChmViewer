@@ -23,7 +23,7 @@
 #include <QString>
 #include <QXmlDefaultHandler>
 
-#include "ebook_epub.h"	// EBook_EPUB, ebook.h -> EBookTocEntry
+#include "ebook_epub.h" // EBook_EPUB, ebook.h -> EBookTocEntry
 
 class QXmlAttributes;
 
@@ -33,7 +33,7 @@ class HelperXmlHandler_EpubTOC : public QXmlDefaultHandler
 	public:
 		HelperXmlHandler_EpubTOC( EBook_EPUB* epub );
 
-		QList< EBookTocEntry >	entries;
+		QList< EBookTocEntry >  entries;
 
 	private:
 		// Overridden members
@@ -42,12 +42,12 @@ class HelperXmlHandler_EpubTOC : public QXmlDefaultHandler
 		bool endElement(const QString& namespaceURI, const QString& localName, const QString& qName);
 		void checkNewTocEntry();
 
-		bool			m_inNavMap;
-		bool			m_inText;
-		unsigned int	m_indent;
-		QString			m_lastId;
-		QString			m_lastTitle;
-		EBook_EPUB*		m_epub;
+		bool            m_inNavMap;
+		bool            m_inText;
+		unsigned int    m_indent;
+		QString         m_lastId;
+		QString         m_lastTitle;
+		EBook_EPUB*     m_epub;
 };
 
 #endif // HELPERXMLHANDLER_EPUBTOC_H

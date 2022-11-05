@@ -32,7 +32,7 @@ class HelperXmlHandler_EpubContainer : public QXmlDefaultHandler
 		bool startElement ( const QString& namespaceURI, const QString& localName, const QString& qName, const QXmlAttributes& atts );
 
 		// The content path
-		QString	contentPath;
+		QString contentPath;
 };
 
 #endif // HELPERXMLHANDLER_EPUBCONTAINER_H

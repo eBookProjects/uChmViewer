@@ -16,25 +16,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstddef>	// size_t
-#include <cstdio>	// fprintf
+#include <cstddef>  // size_t
+#include <cstdio>   // fprintf
 
 #include <QByteArray>
 #include <QFile>
 #include <QList>
 #include <QString>
-#include <Qt>			// CaseInsensitive
-#include <QtGlobal>		// qPrintable, qDebug, qFatal, qWarning
+#include <Qt>           // CaseInsensitive
+#include <QtGlobal>     // qPrintable, qDebug, qFatal, qWarning
 #include <QTextCodec>
 #include <QVector>
 #include <QUrl>
 
-#include "bitfiddle.h"				// UINT16ARRAY, UINT32ARRAY, get_int32_le
+#include "bitfiddle.h"              // UINT16ARRAY, UINT32ARRAY, get_int32_le
 // ebook.h -> EBook, EBookIndexEntry, EBookTocEntry
 // chm_lib.h -> chmUnitInfo, LONGUINT64, EBook_CHM, ParsedEntry
 #include "ebook_chm.h"
-#include "ebook_chm_encoding.h"		// Ebook_CHM_Encoding
-#include "helper_entitydecoder.h"	// HelperEntityDecoder
+#include "ebook_chm_encoding.h"     // Ebook_CHM_Encoding
+#include "helper_entitydecoder.h"   // HelperEntityDecoder
 
 
 // Big-enough buffer size for use with various routines.
@@ -44,7 +44,7 @@
 #define TOPICS_ENTRY_LEN 16
 #define URLTBL_ENTRY_LEN 12
 
-//#define DEBUGPARSER(A)	qDebug A
+//#define DEBUGPARSER(A)    qDebug A
 #define DEBUGPARSER(A)
 
 const char* EBook_CHM::URL_SCHEME_CHM = "ms-its";
@@ -398,9 +398,9 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 
 	if ( outfile.open( QIODevice::WriteOnly ) )
 	{
-		QTextStream textstream( &outfile );
-		textstream << src;
-		outfile.close();
+	    QTextStream textstream( &outfile );
+	    textstream << src;
+	    outfile.close();
 	}
 	*/
 
@@ -425,7 +425,7 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 			{
 				// find where quote ends, either by another quote, or by '>' symbol (some people don't know HTML)
 				int nextpos = src.indexOf (src[i], i + 1);
-				if ( nextpos == -1 	&& (nextpos = src.indexOf ('>', i + 1)) == -1 )
+				if ( nextpos == -1  && (nextpos = src.indexOf ('>', i + 1)) == -1 )
 				{
 					qWarning ("EBook_CHMImpl::ParseHhcAndFillTree: corrupted TOC: %s", qPrintable( src.mid(i) ));
 					return false;

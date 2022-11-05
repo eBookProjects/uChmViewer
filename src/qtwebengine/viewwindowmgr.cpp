@@ -27,7 +27,7 @@
 #include <Qt>                 // Qt::MiddleButton and things
 #include <QTabBar>
 #include <QTabWidget>
-#include <QtGlobal>			  // QT_VERSION, QT_VERSION_CHECK
+#include <QtGlobal>           // QT_VERSION, QT_VERSION_CHECK
 #include <QToolButton>
 #include <QMouseEvent>
 #include <QUrl>

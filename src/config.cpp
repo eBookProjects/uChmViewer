@@ -22,10 +22,10 @@
 #include <QFileInfo>
 #include <QSettings>
 #include <QString>
-#include <QtGlobal>			// qPrintable, qWarning
+#include <QtGlobal>         // qPrintable, qWarning
 
 #include "config.h"
-#include "settings.h"	// QSettings
+#include "settings.h"   // QSettings
 #include "mainwindow.h"
 
 Config* pConfig;

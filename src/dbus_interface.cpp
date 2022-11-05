@@ -16,13 +16,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>		// qApp
+#include <QApplication>     // qApp
 #include <QDBusConnection>
 #include <QString>
 #include <QStringList>
 
-#include "dbus_interface.h"	 // DBusInterface
-#include "mainwindow.h"		 // ::mainWindow, UserEvent
+#include "dbus_interface.h"  // DBusInterface
+#include "mainwindow.h"      // ::mainWindow, UserEvent
 #include "navigationpanel.h" // NavigationPanel
 
 
