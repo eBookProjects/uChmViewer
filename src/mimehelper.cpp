@@ -26,7 +26,7 @@
 // Yes, I know about std::isspace(), but it may depend on the locale.
 #define isspace(c) (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\f' || c == '\v')
 
-QByteArray MimeHelper::mimeType(const QUrl &url, const QByteArray &buf)
+QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
 {
 	QString path = url.path().toLower();
 

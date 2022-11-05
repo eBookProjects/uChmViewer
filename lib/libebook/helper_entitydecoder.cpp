@@ -25,17 +25,17 @@
 #include "helper_entitydecoder.h"
 
 
-HelperEntityDecoder::HelperEntityDecoder(QTextCodec *encoder)
+HelperEntityDecoder::HelperEntityDecoder(QTextCodec* encoder)
 {
 	changeEncoding( encoder );
 }
 
-static inline QString encodeWithCodec( QTextCodec *encoder, const QByteArray& str )
+static inline QString encodeWithCodec( QTextCodec* encoder, const QByteArray& str )
 {
 	return (encoder ? encoder->toUnicode( str.constData () ) : str);
 }
 
-void HelperEntityDecoder::changeEncoding(QTextCodec *encoder)
+void HelperEntityDecoder::changeEncoding(QTextCodec* encoder)
 {
 	// Set up m_entityDecodeMap characters according to current textCodec
 	m_entityDecodeMap.clear();
@@ -199,7 +199,7 @@ void HelperEntityDecoder::changeEncoding(QTextCodec *encoder)
 	m_entityDecodeMap["Prime"] = "\"";
 }
 
-QString HelperEntityDecoder::decode( const QString &entity ) const
+QString HelperEntityDecoder::decode( const QString& entity ) const
 {
 	// If entity is an ASCII code like &#12349; - just decode it
 	if ( entity.isEmpty() )

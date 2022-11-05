@@ -40,20 +40,20 @@ class TabSearch : public QWidget, public Ui::TabSearch
 {
 		Q_OBJECT
 	public:
-		TabSearch( QWidget * parent = 0 );
+		TabSearch( QWidget* parent = 0 );
 
 		void	invalidate();
 		void	restoreSettings (const Settings::search_saved_settings_t& settings);
 		void	saveSettings( Settings::search_saved_settings_t& settings );
 		void	execSearchQueryInGui( const QString& query );
-		bool	searchQuery(const QString& query, QList<QUrl> *results );
+		bool	searchQuery(const QString& query, QList<QUrl>* results );
 		void	focus();
 
 	private slots:
-		void	onContextMenuRequested ( const QPoint &point );
-		void	onHelpClicked( const QString & );
+		void	onContextMenuRequested ( const QPoint& point );
+		void	onHelpClicked( const QString& );
 		void 	onReturnPressed ();
-		void	onItemActivated( QTreeWidgetItem * item, int );
+		void	onItemActivated( QTreeWidgetItem* item, int );
 
 		// For index generation
 		void	onProgressStep( int value, const QString& stepName );
@@ -62,12 +62,12 @@ class TabSearch : public QWidget, public Ui::TabSearch
 		bool	initSearchEngine();
 
 	private:
-		QMenu			* 	m_contextMenu;
-		EBookSearch		*	m_searchEngine;
+		QMenu*			 	m_contextMenu;
+		EBookSearch*			m_searchEngine;
 		bool				m_searchEngineInitDone;
 
 		// For index generation
-		QProgressDialog *	m_genIndexProgress;
+		QProgressDialog* 	m_genIndexProgress;
 };
 
 #endif

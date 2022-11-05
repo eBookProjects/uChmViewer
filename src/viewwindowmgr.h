@@ -39,15 +39,15 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 {
 		Q_OBJECT
 	public:
-		ViewWindowMgr( QWidget *parent );
+		ViewWindowMgr( QWidget* parent );
 		~ViewWindowMgr( );
 
 		// Returns a handle to a currently viewed window.
 		// Guaranteeed to return a valid handle, or aborts.
-		ViewWindow	* 	current();
+		ViewWindow*	 	current();
 
 		// Adds a new tab, creating a new browser window
-		ViewWindow	*	addNewTab( bool set_active );
+		ViewWindow*		addNewTab( bool set_active );
 
 		// Sets the tab name and updates Windows menu
 		void	setTabName( ViewWindow* window );
@@ -55,7 +55,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void 	invalidate();
 
 		// Creates a Window menu
-		void 	createMenu( MainWindow * parent, QMenu * menuWindow, QAction * actionCloseWindow );
+		void 	createMenu( MainWindow* parent, QMenu* menuWindow, QAction* actionCloseWindow );
 
 		// Saves and restores current settings between sessions
 		void	restoreSettings( const Settings::viewindow_saved_settings_t& settings );
@@ -76,7 +76,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void	onActivateFind();
 		void	onFindNext();
 		void	onFindPrevious();
-		void    onWindowContentChanged(ViewWindow *window );
+		void    onWindowContentChanged(ViewWindow* window );
 		void	copyUrlToClipboard();
 
 	protected slots:
@@ -86,28 +86,28 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void	activateWindow();
 		void	closeSearch();
 
-		void	editTextEdited( const QString & text );
+		void	editTextEdited( const QString& text );
 
 	private:
 		void	find( bool backward = false );
 
 		typedef struct
 		{
-			QWidget			*	widget;
-			ViewWindow		*	window;
-			QAction			*	action;
+			QWidget*				widget;
+			ViewWindow*			window;
+			QAction*				action;
 		} TabData;
 
 		void	closeAllWindows();
-		void	closeWindow( QWidget * widget );
-		TabData * findTab( QWidget * widget );
+		void	closeWindow( QWidget* widget );
+		TabData* findTab( QWidget* widget );
 
 		// Storage of all available windows
 		QList< TabData >	m_Windows;
 		typedef QList< TabData >::iterator WindowsIterator;
 
-		QMenu 				*	m_menuWindow;
-		QAction				*	m_actionCloseWindow;
+		QMenu* 					m_menuWindow;
+		QAction*					m_actionCloseWindow;
 
 		// Window menu actions. Contains one action per window. They are not
 		// linked permanently - if a middle window is deleted, all the following
@@ -117,7 +117,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		// Last word searched
 		QString                 m_lastSearchedWord;
 
-		ViewWindowTabWidget	*	m_tabWidget;
+		ViewWindowTabWidget*		m_tabWidget;
 };
 
 #endif /* INCLUDE_KCHMVIEWWINDOWMGR_H */

@@ -47,10 +47,10 @@
 class ViewWindowTabWidget : public QTabWidget
 {
 	public:
-		ViewWindowTabWidget( QWidget * parent ) : QTabWidget( parent ) {}
+		ViewWindowTabWidget( QWidget* parent ) : QTabWidget( parent ) {}
 
 	protected:
-		void mouseReleaseEvent ( QMouseEvent * event )
+		void mouseReleaseEvent ( QMouseEvent* event )
 		{
 			if ( event->button() == Qt::MiddleButton)
 			{
@@ -63,7 +63,7 @@ class ViewWindowTabWidget : public QTabWidget
 };
 
 
-ViewWindowMgr::ViewWindowMgr( QWidget *parent )
+ViewWindowMgr::ViewWindowMgr( QWidget* parent )
 	: QWidget( parent ), Ui::TabbedBrowser()
 {
 	// UIC
@@ -81,7 +81,7 @@ ViewWindowMgr::ViewWindowMgr( QWidget *parent )
 	connect( m_tabWidget, SIGNAL( tabCloseRequested(int) ), this, SLOT( onCloseWindow(int) ) );
 
 	// Create a "new tab" button
-	QToolButton * newButton = new QToolButton( this );
+	QToolButton* newButton = new QToolButton( this );
 	newButton->setCursor( Qt::ArrowCursor );
 	newButton->setAutoRaise( true );
 	newButton->setIcon( QIcon( ":/images/addtab.png" ) );
@@ -96,9 +96,9 @@ ViewWindowMgr::ViewWindowMgr( QWidget *parent )
 
 	// Search Line edit
 	connect( editFind,
-	         SIGNAL( textEdited ( const QString & ) ),
+	         SIGNAL( textEdited ( const QString& ) ),
 	         this,
-	         SLOT( editTextEdited( const QString & ) ) );
+	         SLOT( editTextEdited( const QString& ) ) );
 
 	connect( editFind, SIGNAL(returnPressed()), this, SLOT(onFindNext()) );
 
@@ -114,7 +114,7 @@ ViewWindowMgr::~ViewWindowMgr( )
 {
 }
 
-void ViewWindowMgr::createMenu( MainWindow *, QMenu * menuWindow, QAction * actionCloseWindow )
+void ViewWindowMgr::createMenu( MainWindow*, QMenu* menuWindow, QAction* actionCloseWindow )
 {
 	m_menuWindow = menuWindow;
 	m_actionCloseWindow = actionCloseWindow;
@@ -126,9 +126,9 @@ void ViewWindowMgr::invalidate()
 	addNewTab( true );
 }
 
-ViewWindow * ViewWindowMgr::current()
+ViewWindow* ViewWindowMgr::current()
 {
-	TabData * tab = findTab( m_tabWidget->currentWidget() );
+	TabData* tab = findTab( m_tabWidget->currentWidget() );
 
 	if ( !tab )
 		abort();
@@ -136,9 +136,9 @@ ViewWindow * ViewWindowMgr::current()
 	return tab->window;
 }
 
-ViewWindow * ViewWindowMgr::addNewTab( bool set_active )
+ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 {
-	ViewWindow * viewvnd = new ViewWindow( m_tabWidget );
+	ViewWindow* viewvnd = new ViewWindow( m_tabWidget );
 
 	editFind->installEventFilter( this );
 
@@ -185,9 +185,9 @@ void ViewWindowMgr::closeAllWindows( )
 		closeWindow( m_Windows.first().widget );
 }
 
-void ViewWindowMgr::setTabName( ViewWindow * window )
+void ViewWindowMgr::setTabName( ViewWindow* window )
 {
-	TabData * tab = findTab( window );
+	TabData* tab = findTab( window );
 
 	if ( tab )
 	{
@@ -210,7 +210,7 @@ void ViewWindowMgr::onCloseCurrentWindow( )
 	if ( m_Windows.size() == 1 )
 		return;
 
-	TabData * tab = findTab( m_tabWidget->currentWidget() );
+	TabData* tab = findTab( m_tabWidget->currentWidget() );
 	closeWindow( tab->widget );
 }
 
@@ -220,13 +220,13 @@ void ViewWindowMgr::onCloseWindow( int num )
 	if ( m_Windows.size() == 1 )
 		return;
 
-	TabData * tab = findTab( m_tabWidget->widget( num ));
+	TabData* tab = findTab( m_tabWidget->widget( num ));
 
 	if ( tab )
 		closeWindow( tab->widget );
 }
 
-void ViewWindowMgr::closeWindow( QWidget * widget )
+void ViewWindowMgr::closeWindow( QWidget* widget )
 {
 	WindowsIterator it;
 
@@ -252,28 +252,28 @@ void ViewWindowMgr::closeWindow( QWidget * widget )
 		(*it).action->setShortcut( QKeySequence( i18n("Alt+%1").arg( count ) ) );
 }
 
-void ViewWindowMgr::restoreSettings( const Settings::viewindow_saved_settings_t & settings )
+void ViewWindowMgr::restoreSettings( const Settings::viewindow_saved_settings_t& settings )
 {
 	// Destroy automatically created tab
 	closeWindow( m_Windows.first().widget );
 
 	for ( int i = 0; i < settings.size(); i++ )
 	{
-		ViewWindow * window = addNewTab( false );
+		ViewWindow* window = addNewTab( false );
 		window->openUrl( settings[i].url ); // will call setTabName()
 		window->setScrollbarPosition( settings[i].scroll_y );
 		window->setZoomFactor( settings[i].zoom );
 	}
 }
 
-void ViewWindowMgr::saveSettings( Settings::viewindow_saved_settings_t & settings )
+void ViewWindowMgr::saveSettings( Settings::viewindow_saved_settings_t& settings )
 {
 	settings.clear();
 
 	for ( int i = 0; i < m_tabWidget->count(); i++ )
 	{
-		QWidget * p = m_tabWidget->widget( i );
-		TabData * tab = findTab( p );
+		QWidget* p = m_tabWidget->widget( i );
+		TabData* tab = findTab( p );
 
 		if ( !tab )
 			abort();
@@ -297,7 +297,7 @@ void ViewWindowMgr::onTabChanged( int newtabIndex )
 	if ( newtabIndex == -1 )
 		return;
 
-	TabData * tab = findTab( m_tabWidget->widget( newtabIndex ) );
+	TabData* tab = findTab( m_tabWidget->widget( newtabIndex ) );
 
 	if ( tab )
 	{
@@ -314,14 +314,14 @@ void ViewWindowMgr::openNewTab()
 
 void ViewWindowMgr::activateWindow()
 {
-	QAction *action = qobject_cast< QAction * >(sender());
+	QAction* action = qobject_cast< QAction* >(sender());
 
 	for ( WindowsIterator it = m_Windows.begin(); it != m_Windows.end(); ++it )
 	{
 		if ( it->action != action )
 			continue;
 
-		QWidget *widget = it->widget;
+		QWidget* widget = it->widget;
 		m_tabWidget->setCurrentWidget(widget);
 		break;
 	}
@@ -333,7 +333,7 @@ void ViewWindowMgr::closeSearch()
 	m_tabWidget->currentWidget()->setFocus();
 }
 
-ViewWindowMgr::TabData * ViewWindowMgr::findTab(QWidget * widget)
+ViewWindowMgr::TabData* ViewWindowMgr::findTab(QWidget* widget)
 {
 	for ( WindowsIterator it = m_Windows.begin(); it != m_Windows.end(); ++it )
 		if ( it->widget == widget )
@@ -391,7 +391,7 @@ void ViewWindowMgr::find( bool backward )
 #endif
 }
 
-void ViewWindowMgr::editTextEdited(const QString &)
+void ViewWindowMgr::editTextEdited(const QString&)
 {
 	find();
 }
@@ -406,7 +406,7 @@ void ViewWindowMgr::onFindPrevious()
 	find( true );
 }
 
-void ViewWindowMgr::onWindowContentChanged(ViewWindow *window)
+void ViewWindowMgr::onWindowContentChanged(ViewWindow* window)
 {
 	setTabName( (ViewWindow*) window );
 }

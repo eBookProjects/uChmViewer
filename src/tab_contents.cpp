@@ -34,7 +34,7 @@
 #include "viewwindow.h"		// ViewWindow
 
 
-TabContents::TabContents( QWidget *parent )
+TabContents::TabContents( QWidget* parent )
 	: QWidget( parent ), Ui::TabContents()
 {
 	setupUi( this );
@@ -49,22 +49,22 @@ TabContents::TabContents( QWidget *parent )
 		connect( tree,
 		         SIGNAL( itemClicked(QTreeWidgetItem*,int)),
 		         this,
-		         SLOT( onClicked ( QTreeWidgetItem *, int ) ) );
+		         SLOT( onClicked ( QTreeWidgetItem*, int ) ) );
 	}
 	else
 	{
 		connect( tree,
-		         SIGNAL( itemActivated ( QTreeWidgetItem *, int ) ),
+		         SIGNAL( itemActivated ( QTreeWidgetItem*, int ) ),
 		         this,
-		         SLOT( onClicked ( QTreeWidgetItem *, int ) ) );
+		         SLOT( onClicked ( QTreeWidgetItem*, int ) ) );
 	}
 
 	// Activate custom context menu, and connect it
 	tree->setContextMenuPolicy( Qt::CustomContextMenu );
 	connect( tree,
-	         SIGNAL( customContextMenuRequested ( const QPoint & ) ),
+	         SIGNAL( customContextMenuRequested ( const QPoint& ) ),
 	         this,
-	         SLOT( onContextMenuRequested( const QPoint & ) ) );
+	         SLOT( onContextMenuRequested( const QPoint& ) ) );
 
 	focus();
 }
@@ -86,8 +86,8 @@ void TabContents::refillTableOfContents( )
 	}
 
 	// Fill up the tree; we use a pretty complex routine to handle buggy CHMs
-	QVector< TreeItem_TOC *> lastchild;
-	QVector< TreeItem_TOC *> rootentry;
+	QVector< TreeItem_TOC*> lastchild;
+	QVector< TreeItem_TOC*> rootentry;
 	bool warning_shown = false;
 
 	tree->clear();
@@ -129,7 +129,7 @@ void TabContents::refillTableOfContents( )
 		}
 
 		// Create the node
-		TreeItem_TOC * item;
+		TreeItem_TOC* item;
 
 		if ( indent == 0 )
 			item = new TreeItem_TOC( tree, lastchild[indent], data[i].name, data[i].url, data[i].iconid );
@@ -153,14 +153,14 @@ void TabContents::refillTableOfContents( )
 	tree->update();
 }
 
-static TreeItem_TOC * findTreeItem( TreeItem_TOC *item, const QUrl& url, bool ignorefragment )
+static TreeItem_TOC* findTreeItem( TreeItem_TOC* item, const QUrl& url, bool ignorefragment )
 {
 	if ( item->containstUrl( url, ignorefragment ) )
 		return item;
 
 	for ( int i = 0; i < item->childCount(); ++i )
 	{
-		TreeItem_TOC * bitem = findTreeItem( (TreeItem_TOC *) item->child( i ), url, ignorefragment );
+		TreeItem_TOC* bitem = findTreeItem( (TreeItem_TOC*) item->child( i ), url, ignorefragment );
 
 		if ( bitem )
 			return bitem;
@@ -169,13 +169,13 @@ static TreeItem_TOC * findTreeItem( TreeItem_TOC *item, const QUrl& url, bool ig
 	return 0;
 }
 
-TreeItem_TOC * TabContents::getTreeItem( const QUrl& url )
+TreeItem_TOC* TabContents::getTreeItem( const QUrl& url )
 {
 	// During the first iteraction we check for the fragment as well, so the URLs
 	// like ch05.htm#app1 and ch05.htm#app2 could be handled as different TOC entries
 	for ( int i = 0; i < tree->topLevelItemCount(); i++ )
 	{
-		TreeItem_TOC * item = findTreeItem( (TreeItem_TOC*) tree->topLevelItem(i), url, false );
+		TreeItem_TOC* item = findTreeItem( (TreeItem_TOC*) tree->topLevelItem(i), url, false );
 
 		if ( item )
 			return item;
@@ -185,7 +185,7 @@ TreeItem_TOC * TabContents::getTreeItem( const QUrl& url )
 	// but there is ch05.htm, we just use it
 	for ( int i = 0; i < tree->topLevelItemCount(); i++ )
 	{
-		TreeItem_TOC * item = findTreeItem( (TreeItem_TOC*) tree->topLevelItem(i), url, true );
+		TreeItem_TOC* item = findTreeItem( (TreeItem_TOC*) tree->topLevelItem(i), url, true );
 
 		if ( item )
 			return item;
@@ -194,24 +194,24 @@ TreeItem_TOC * TabContents::getTreeItem( const QUrl& url )
 	return 0;
 }
 
-void TabContents::showItem( TreeItem_TOC * item )
+void TabContents::showItem( TreeItem_TOC* item )
 {
 	tree->setCurrentItem( item );
 	tree->scrollToItem( item );
 }
 
-void TabContents::onClicked(QTreeWidgetItem * item, int)
+void TabContents::onClicked(QTreeWidgetItem* item, int)
 {
 	if ( !item )
 		return;
 
-	TreeItem_TOC * treeitem = (TreeItem_TOC*) item;
+	TreeItem_TOC* treeitem = (TreeItem_TOC*) item;
 	::mainWindow->activateUrl( treeitem->getUrl() );
 }
 
-void TabContents::onContextMenuRequested(const QPoint & point)
+void TabContents::onContextMenuRequested(const QPoint& point)
 {
-	TreeItem_TOC * treeitem = (TreeItem_TOC *) tree->itemAt( point );
+	TreeItem_TOC* treeitem = (TreeItem_TOC*) tree->itemAt( point );
 
 	if( treeitem )
 	{
@@ -220,14 +220,14 @@ void TabContents::onContextMenuRequested(const QPoint & point)
 	}
 }
 
-void TabContents::search( const QString & text )
+void TabContents::search( const QString& text )
 {
 	QList<QTreeWidgetItem*> items = tree->findItems( text, Qt::MatchWildcard | Qt::MatchRecursive );
 
 	if ( items.isEmpty() )
 		return;
 
-	TreeItem_TOC * treeitem = (TreeItem_TOC *) items.first();
+	TreeItem_TOC* treeitem = (TreeItem_TOC*) items.first();
 	::mainWindow->activateUrl( treeitem->getUrl() );
 }
 

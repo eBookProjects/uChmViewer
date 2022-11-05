@@ -83,6 +83,6 @@ class Config
 		QString				m_datapath;
 };
 
-extern Config * pConfig;
+extern Config* pConfig;
 
 #endif

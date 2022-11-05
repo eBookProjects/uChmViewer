@@ -38,10 +38,10 @@
 	typedef QApplication  UchmviewerApp;
 #endif
 
-MainWindow * mainWindow;
+MainWindow* mainWindow;
 
 
-int main( int argc, char ** argv )
+int main( int argc, char** argv )
 {
 #if defined (USE_KDE)
 	K4AboutData aboutdata ( "uChmViewer",
@@ -78,7 +78,7 @@ int main( int argc, char ** argv )
 	{
 		if ( QDBusConnection::sessionBus().registerService(SERVICE_NAME) )
 		{
-			DBusInterface * dbusiface = new DBusInterface();
+			DBusInterface* dbusiface = new DBusInterface();
 			QDBusConnection::sessionBus().registerObject( "/", dbusiface, QDBusConnection::ExportAllSlots );
 		}
 		else

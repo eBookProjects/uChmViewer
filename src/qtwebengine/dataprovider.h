@@ -29,9 +29,9 @@ class QWebEngineUrlRequestJob;
 class DataProvider : public QWebEngineUrlSchemeHandler
 {
 	public:
-		DataProvider( QObject *parent );
+		DataProvider( QObject* parent );
 
-		void requestStarted( QWebEngineUrlRequestJob *request );
+		void requestStarted( QWebEngineUrlRequestJob* request );
 };
 
 #endif // QTWEBENGINE_DATAPROVIDER_H

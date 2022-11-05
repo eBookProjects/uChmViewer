@@ -30,7 +30,7 @@ class UchmviewerApp : public QApplication
 {
 		Q_OBJECT
 	public:
-		UchmviewerApp(int &argc, char **argv, int version= QT_VERSION);
+		UchmviewerApp(int& argc, char** argv, int version= QT_VERSION);
 		virtual ~UchmviewerApp();
 		bool event(QEvent*);
 

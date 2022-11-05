@@ -43,7 +43,7 @@ class DialogChooseUrlFromList : public QDialog, public Ui::DialogTopicSelector
 		QUrl getSelectedItemUrl( const QList<QUrl>& urls, const QStringList& titles );
 
 	private slots:
-		void onDoubleClicked( QListWidgetItem * item );
+		void onDoubleClicked( QListWidgetItem* item );
 };
 
 #endif

@@ -42,7 +42,7 @@
 #include "helperxmlhandler_epubcontent.h"	// HelperXmlHandler_EpubContent
 #include "helperxmlhandler_epubtoc.h"		// HelperXmlHandler_EpubTOC
 
-const char * EBook_EPUB::URL_SCHEME_EPUB = "epub";
+const char* EBook_EPUB::URL_SCHEME_EPUB = "epub";
 
 EBook_EPUB::EBook_EPUB()
 	: EBook()
@@ -55,7 +55,7 @@ EBook_EPUB::~EBook_EPUB()
 	close();
 }
 
-bool EBook_EPUB::load(const QString &archiveName)
+bool EBook_EPUB::load(const QString& archiveName)
 {
 	close();
 
@@ -109,17 +109,17 @@ void EBook_EPUB::close()
 
 }
 
-bool EBook_EPUB::getFileContentAsString(QString &str, const QUrl &url) const
+bool EBook_EPUB::getFileContentAsString(QString& str, const QUrl& url) const
 {
 	return getFileAsString( str, urlToPath( url ) );
 }
 
-bool EBook_EPUB::getFileContentAsBinary(QByteArray &data, const QUrl &url) const
+bool EBook_EPUB::getFileContentAsBinary(QByteArray& data, const QUrl& url) const
 {
 	return getFileAsBinary( data, urlToPath( url ) );
 }
 
-bool EBook_EPUB::enumerateFiles(QList<QUrl> &files)
+bool EBook_EPUB::enumerateFiles(QList<QUrl>& files)
 {
 	files = m_ebookManifest;
 	return true;
@@ -152,13 +152,13 @@ bool EBook_EPUB::hasFeature(EBook::Feature code) const
 	return false;
 }
 
-bool EBook_EPUB::getTableOfContents( QList<EBookTocEntry> &toc ) const
+bool EBook_EPUB::getTableOfContents( QList<EBookTocEntry>& toc ) const
 {
 	toc = m_tocEntries;
 	return true;
 }
 
-bool EBook_EPUB::getIndex(QList<EBookIndexEntry> &) const
+bool EBook_EPUB::getIndex(QList<EBookIndexEntry>&) const
 {
 	return false;
 }
@@ -176,17 +176,17 @@ QString EBook_EPUB::currentEncoding() const
 	return "UTF-8";
 }
 
-bool EBook_EPUB::setCurrentEncoding(const char *)
+bool EBook_EPUB::setCurrentEncoding(const char*)
 {
 	return false;
 }
 
-bool EBook_EPUB::isSupportedUrl(const QUrl &url)
+bool EBook_EPUB::isSupportedUrl(const QUrl& url)
 {
 	return url.scheme() == URL_SCHEME_EPUB;
 }
 
-bool EBook_EPUB::parseXML(const QString &uri, QXmlDefaultHandler * parser)
+bool EBook_EPUB::parseXML(const QString& uri, QXmlDefaultHandler* parser)
 {
 	QByteArray container;
 
@@ -288,7 +288,7 @@ bool EBook_EPUB::parseBookinfo()
 	return true;
 }
 
-QUrl EBook_EPUB::pathToUrl(const QString &link) const
+QUrl EBook_EPUB::pathToUrl(const QString& link) const
 {
 	QUrl url;
 	url.setScheme( URL_SCHEME_EPUB );
@@ -314,7 +314,7 @@ QUrl EBook_EPUB::pathToUrl(const QString &link) const
 	return url;
 }
 
-QString EBook_EPUB::urlToPath(const QUrl &link) const
+QString EBook_EPUB::urlToPath(const QUrl& link) const
 {
 	if ( link.scheme() == URL_SCHEME_EPUB )
 		return link.path();
@@ -322,7 +322,7 @@ QString EBook_EPUB::urlToPath(const QUrl &link) const
 	return "";
 }
 
-bool EBook_EPUB::getFileAsString(QString &str, const QString &path) const
+bool EBook_EPUB::getFileAsString(QString& str, const QString& path) const
 {
 	QByteArray data;
 
@@ -348,7 +348,7 @@ bool EBook_EPUB::getFileAsString(QString &str, const QString &path) const
 	return true;
 }
 
-bool EBook_EPUB::getFileAsBinary(QByteArray &data, const QString &path) const
+bool EBook_EPUB::getFileAsBinary(QByteArray& data, const QString& path) const
 {
 	// Retrieve the file size
 	struct zip_stat fileinfo;
@@ -373,7 +373,7 @@ bool EBook_EPUB::getFileAsBinary(QByteArray &data, const QString &path) const
 		return false;
 
 	// Open the file
-	struct zip_file * file = zip_fopen_index( m_zipFile, fileinfo.index, 0 );
+	struct zip_file* file = zip_fopen_index( m_zipFile, fileinfo.index, 0 );
 
 	if ( !file )
 		return false;

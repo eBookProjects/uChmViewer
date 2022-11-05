@@ -33,7 +33,7 @@ class DBusInterface : public QObject
 		Q_CLASSINFO("D-Bus Interface", "net.uchmviewer.application")
 
 	public:
-		DBusInterface( QObject *parent = 0 );
+		DBusInterface( QObject* parent = 0 );
 		~DBusInterface();
 
 	public Q_SLOTS:

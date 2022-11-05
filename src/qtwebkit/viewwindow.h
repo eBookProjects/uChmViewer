@@ -38,7 +38,7 @@ class ViewWindow : public QWebView
 		Q_OBJECT
 
 	public:
-		ViewWindow( QWidget * parent );
+		ViewWindow( QWidget* parent );
 		virtual ~ViewWindow();
 
 		//! Open a page from current chm archive
@@ -48,7 +48,7 @@ class ViewWindow : public QWebView
 		QUrl	getNewTabLink() const	{ return m_newTabLinkKeeper; }
 
 	signals:
-		void    dataLoaded( ViewWindow * window );
+		void    dataLoaded( ViewWindow* window );
 
 	public:
 		// Apply the configuration settings (JS enabled etc) to the web renderer
@@ -104,24 +104,24 @@ class ViewWindow : public QWebView
 		bool			openPage ( const QUrl& url );
 		void			handleStartPageAsImage( QUrl& link );
 
-		QMenu * 		getContextMenu( const QUrl& link, QWidget * parent );
-		QMenu * 		createStandardContextMenu( QWidget * parent );
+		QMenu* 		getContextMenu( const QUrl& link, QWidget* parent );
+		QMenu* 		createStandardContextMenu( QWidget* parent );
 
 		// Overriden to change the source
-		void			setSource ( const QUrl & name );
-		QUrl			anchorAt( const QPoint & pos );
+		void			setSource ( const QUrl& name );
+		QUrl			anchorAt( const QPoint& pos );
 
 		// Overloaded to provide custom context menu
-		void 			contextMenuEvent( QContextMenuEvent *e );
-		void			mouseReleaseEvent ( QMouseEvent * event );
+		void 			contextMenuEvent( QContextMenuEvent* e );
+		void			mouseReleaseEvent ( QMouseEvent* event );
 
 	private slots:
 		// Used to restore the scrollbar position and the navigation button status
 		void			onLoadFinished ( bool ok );
 
 	private:
-		QMenu 				*	m_contextMenu;
-		QMenu 				*	m_contextMenuLink;
+		QMenu* 					m_contextMenu;
+		QMenu* 					m_contextMenuLink;
 
 		// This member keeps a "open new tab" link between getContextMenu()
 		// call and appropriate slot call

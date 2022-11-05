@@ -36,7 +36,7 @@ class ViewWindow : public QWebEngineView
 		Q_OBJECT
 
 	public:
-		ViewWindow( QWidget * parent );
+		ViewWindow( QWidget* parent );
 		virtual ~ViewWindow();
 
 		//! Open a page from current chm archive
@@ -46,14 +46,14 @@ class ViewWindow : public QWebEngineView
 		QUrl	getNewTabLink() const	{ return m_newTabLinkKeeper; }
 
 	signals:
-		void    dataLoaded( ViewWindow * window );
+		void    dataLoaded( ViewWindow* window );
 
 		// This signal is emitted whenever the user clicks on a link.
-		void linkClicked(const QUrl &url);
+		void linkClicked(const QUrl& url);
 
 	public:
 		// Apply the configuration settings (JS enabled etc) to the web renderer
-		static  void    applySettings(BrowserSettings &settings);
+		static  void    applySettings(BrowserSettings& settings);
 
 		//! Invalidate current view, doing all the cleanups etc.
 		void	invalidate();
@@ -105,24 +105,24 @@ class ViewWindow : public QWebEngineView
 		bool			openPage ( const QUrl& url );
 		void			handleStartPageAsImage( QUrl& link );
 
-		QMenu * 		getContextMenu( const QUrl& link, QWidget * parent );
-		QMenu * 		createStandardContextMenu( QWidget * parent );
+		QMenu* 		getContextMenu( const QUrl& link, QWidget* parent );
+		QMenu* 		createStandardContextMenu( QWidget* parent );
 
 		// Overriden to change the source
-		void			setSource ( const QUrl & name );
+		void			setSource ( const QUrl& name );
 
 		// Overloaded to provide custom context menu
-		void 			contextMenuEvent( QContextMenuEvent *e );
+		void 			contextMenuEvent( QContextMenuEvent* e );
 		//void			mouseReleaseEvent ( QMouseEvent * event );
 
 	private slots:
 		// Used to restore the scrollbar position and the navigation button status
 		void			onLoadFinished ( bool ok );
-		void            onLinkClicked(const QUrl &url);
+		void            onLinkClicked(const QUrl& url);
 
 	private:
-		QMenu 				*	m_contextMenu;
-		QMenu 				*	m_contextMenuLink;
+		QMenu* 					m_contextMenu;
+		QMenu* 					m_contextMenuLink;
 
 		// This member keeps a "open new tab" link between getContextMenu()
 		// call and appropriate slot call

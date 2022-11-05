@@ -40,22 +40,22 @@ struct Document
 {
 	Document( int d, int f ) : docNumber( d ), frequency( f ) {}
 	Document() : docNumber( -1 ), frequency( 0 ) {}
-	bool operator==( const Document &doc ) const
+	bool operator==( const Document& doc ) const
 	{
 		return docNumber == doc.docNumber;
 	}
 
-	bool operator<( const Document &doc ) const
+	bool operator<( const Document& doc ) const
 	{
 		return frequency > doc.frequency;
 	}
 
-	bool operator<=( const Document &doc ) const
+	bool operator<=( const Document& doc ) const
 	{
 		return frequency >= doc.frequency;
 	}
 
-	bool operator>( const Document &doc ) const
+	bool operator>( const Document& doc ) const
 	{
 		return frequency < doc.frequency;
 	}
@@ -64,8 +64,8 @@ struct Document
 	qint16	frequency;
 };
 
-QDataStream &operator>>( QDataStream &s, Document &l );
-QDataStream &operator<<( QDataStream &s, const Document &l );
+QDataStream& operator>>( QDataStream& s, Document& l );
+QDataStream& operator<<( QDataStream& s, const Document& l );
 
 class Index : public QObject
 {
@@ -76,8 +76,8 @@ class Index : public QObject
 
 		void 		writeDict( QDataStream& stream );
 		bool 		readDict( QDataStream& stream );
-		bool 		makeIndex(const QList<QUrl> &docs, EBook * chmFile );
-		QList<QUrl>	query( const QStringList&, const QStringList&, const QStringList&, EBook * chmFile );
+		bool 		makeIndex(const QList<QUrl>& docs, EBook* chmFile );
+		QList<QUrl>	query( const QStringList&, const QStringList&, const QStringList&, EBook* chmFile );
 		QString 	getCharsSplit() const { return m_charssplit; }
 		QString 	getCharsPartOfWord() const { return m_charsword; }
 
@@ -101,13 +101,13 @@ class Index : public QObject
 			QList<uint> positions;
 		};
 
-		bool	parseDocumentToStringlist( EBook * chmFile, const QUrl& filename, QStringList& tokenlist );
+		bool	parseDocumentToStringlist( EBook* chmFile, const QUrl& filename, QStringList& tokenlist );
 		void	insertInDict( const QString&, int );
 
 		QStringList				getWildcardTerms( const QString& );
 		QStringList				split( const QString& );
 		QList<Document> 		setupDummyTerm( const QStringList& );
-		bool 					searchForPhrases(const QStringList &phrases, const QStringList &words, const QUrl &filename, EBook * chmFile );
+		bool 					searchForPhrases(const QStringList& phrases, const QStringList& words, const QUrl& filename, EBook* chmFile );
 
 		QList< QUrl > 			docList;
 		QHash<QString, Entry*> 	dict;

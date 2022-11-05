@@ -40,7 +40,7 @@
 class BookmarkItem : public QListWidgetItem
 {
 	public:
-		BookmarkItem( TabBookmarks * widget, QListWidget* parent, const QString& name, const QString& url, int pos )
+		BookmarkItem( TabBookmarks* widget, QListWidget* parent, const QString& name, const QString& url, int pos )
 			: QListWidgetItem( parent )
 		{
 			m_name = name;
@@ -77,12 +77,12 @@ class BookmarkItem : public QListWidgetItem
 		QString		m_name;
 		QString		m_url;
 		int			m_scroll_y;
-		QAction *	m_action;
+		QAction* 	m_action;
 };
 
 
 
-TabBookmarks::TabBookmarks( QWidget *parent )
+TabBookmarks::TabBookmarks( QWidget* parent )
 	: QWidget( parent ), Ui::TabBookmarks()
 {
 	// UIC code
@@ -126,9 +126,9 @@ TabBookmarks::TabBookmarks( QWidget *parent )
 	list->setContextMenuPolicy( Qt::CustomContextMenu );
 
 	connect( list,
-	         SIGNAL( customContextMenuRequested ( const QPoint & ) ),
+	         SIGNAL( customContextMenuRequested ( const QPoint& ) ),
 	         this,
-	         SLOT( onContextMenuRequested( const QPoint & ) ) );
+	         SLOT( onContextMenuRequested( const QPoint& ) ) );
 
 	focus();
 }
@@ -149,11 +149,11 @@ void TabBookmarks::onAddBookmarkPressed( )
 	if ( !ok || name.isEmpty() )
 		return;
 
-	BookmarkItem * item = new BookmarkItem ( this,
-	                                         list,
-	                                         name,
-	                                         url,
-	                                         ::mainWindow->currentBrowser()->getScrollbarPosition() );
+	BookmarkItem* item = new BookmarkItem ( this,
+	                                        list,
+	                                        name,
+	                                        url,
+	                                        ::mainWindow->currentBrowser()->getScrollbarPosition() );
 
 	m_menuBookmarks->addAction( item->m_action );
 	m_listChanged = true;
@@ -161,7 +161,7 @@ void TabBookmarks::onAddBookmarkPressed( )
 
 void TabBookmarks::onDelBookmarkPressed( )
 {
-	BookmarkItem * item = (BookmarkItem *) list->currentItem();
+	BookmarkItem* item = (BookmarkItem*) list->currentItem();
 
 	if ( item )
 	{
@@ -173,7 +173,7 @@ void TabBookmarks::onDelBookmarkPressed( )
 
 void TabBookmarks::onEditBookmarkPressed( )
 {
-	BookmarkItem * item = (BookmarkItem *) list->currentItem();
+	BookmarkItem* item = (BookmarkItem*) list->currentItem();
 
 	if ( item )
 	{
@@ -196,22 +196,22 @@ void TabBookmarks::onEditBookmarkPressed( )
 	}
 }
 
-void TabBookmarks::restoreSettings( const Settings::bookmark_saved_settings_t & settings )
+void TabBookmarks::restoreSettings( const Settings::bookmark_saved_settings_t& settings )
 {
 	for ( int i = 0; i < settings.size(); i++ )
 	{
-		BookmarkItem * item = new BookmarkItem( this, list, settings[i].name, settings[i].url, settings[i].scroll_y );
+		BookmarkItem* item = new BookmarkItem( this, list, settings[i].name, settings[i].url, settings[i].scroll_y );
 		m_menuBookmarks->addAction( item->m_action );
 	}
 }
 
-void TabBookmarks::saveSettings( Settings::bookmark_saved_settings_t & settings )
+void TabBookmarks::saveSettings( Settings::bookmark_saved_settings_t& settings )
 {
 	settings.clear();
 
 	for ( int i = 0; i < list->count(); i++ )
 	{
-		BookmarkItem * treeitem = (BookmarkItem *) list->item( i );
+		BookmarkItem* treeitem = (BookmarkItem*) list->item( i );
 		settings.push_back( Settings::SavedBookmark( treeitem->m_name, treeitem->m_url, treeitem->m_scroll_y) );
 	}
 }
@@ -219,7 +219,7 @@ void TabBookmarks::saveSettings( Settings::bookmark_saved_settings_t & settings 
 void TabBookmarks::invalidate( )
 {
 	for ( int i = 0; i < list->count(); i++ )
-		m_menuBookmarks->removeAction( ((BookmarkItem *) list->item( i ))->m_action );
+		m_menuBookmarks->removeAction( ((BookmarkItem*) list->item( i ))->m_action );
 
 	list->clear();
 }
@@ -230,17 +230,17 @@ void TabBookmarks::focus()
 		list->setFocus();
 }
 
-void TabBookmarks::createMenu( QMenu * menuBookmarks )
+void TabBookmarks::createMenu( QMenu* menuBookmarks )
 {
 	m_menuBookmarks = menuBookmarks;
 }
 
-void TabBookmarks::onItemActivated(QListWidgetItem * item)
+void TabBookmarks::onItemActivated(QListWidgetItem* item)
 {
 	if ( !item )
 		return;
 
-	BookmarkItem * treeitem = (BookmarkItem *) item;
+	BookmarkItem* treeitem = (BookmarkItem*) item;
 
 	if ( ::mainWindow->currentBrowser()->getOpenedPage().toString() != treeitem->m_url )
 	{
@@ -256,15 +256,15 @@ void TabBookmarks::onItemActivated(QListWidgetItem * item)
 
 void TabBookmarks::actionBookmarkActivated()
 {
-	QAction *action = qobject_cast< QAction * >(sender());
+	QAction* action = qobject_cast< QAction* >(sender());
 
-	BookmarkItem * item = (BookmarkItem *) action->data().value< void* > ();
+	BookmarkItem* item = (BookmarkItem*) action->data().value< void* > ();
 	onItemActivated( item );
 }
 
-void TabBookmarks::onContextMenuRequested(const QPoint & point)
+void TabBookmarks::onContextMenuRequested(const QPoint& point)
 {
-	BookmarkItem * item = (BookmarkItem *) list->itemAt( point );
+	BookmarkItem* item = (BookmarkItem*) list->itemAt( point );
 
 	if( item )
 	{

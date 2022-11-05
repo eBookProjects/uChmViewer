@@ -55,7 +55,7 @@ class EBookSearch : public QObject
 		//! If \param progressDls is not null, it will be used to display progress.
 		//! Returns true if the index has been generated and saved, or false if internal
 		//! error occurs, or (most likely) the cancelIndexGeneration() slot has been called.
-		bool	generateIndex( EBook * ebook, QDataStream& stream );
+		bool	generateIndex( EBook* ebook, QDataStream& stream );
 
 		//! Executes the search query. The \param query is a string like <i>"C++ language" class</i>,
 		//! \param results is a pointer to QStringList, and \param limit limits the number of
@@ -67,7 +67,7 @@ class EBookSearch : public QObject
 		//!
 		//! Note that the function does not clear \param results before adding search results, so if you are
 		//! not merging search results, make sure it's empty.
-		bool	searchQuery ( const QString& query, QList< QUrl > * results, EBook * chmFile, unsigned int limit = 100 );
+		bool	searchQuery ( const QString& query, QList< QUrl >* results, EBook* chmFile, unsigned int limit = 100 );
 
 		//! Returns true if a valid search index is present, and therefore search could be executed
 		bool	hasIndex() const;
@@ -84,7 +84,7 @@ class EBookSearch : public QObject
 
 	private:
 		QStringList 				m_keywordDocuments;
-		QtAs::Index 			*	m_Index;
+		QtAs::Index* 				m_Index;
 };
 
 #endif

@@ -50,22 +50,22 @@ static const char WORD_CHARACTERS[] = "$_";
 struct Term
 {
 	Term() : frequency(-1) {}
-	Term( const QString &t, int f, QVector<Document> l ) : term( t ), frequency( f ), documents( l ) {}
+	Term( const QString& t, int f, QVector<Document> l ) : term( t ), frequency( f ), documents( l ) {}
 	QString term;
 	int frequency;
 	QVector<Document>documents;
-	bool operator<( const Term &i2 ) const { return frequency < i2.frequency; }
+	bool operator<( const Term& i2 ) const { return frequency < i2.frequency; }
 };
 
 
-QDataStream &operator>>( QDataStream &s, Document &l )
+QDataStream& operator>>( QDataStream& s, Document& l )
 {
 	s >> l.docNumber;
 	s >> l.frequency;
 	return s;
 }
 
-QDataStream &operator<<( QDataStream &s, const Document &l )
+QDataStream& operator<<( QDataStream& s, const Document& l )
 {
 	s << (short)l.docNumber;
 	s << (short)l.frequency;
@@ -84,7 +84,7 @@ void Index::setLastWinClosed()
 	lastWindowClosed = true;
 }
 
-bool Index::makeIndex(const QList< QUrl >& docs, EBook *chmFile )
+bool Index::makeIndex(const QList< QUrl >& docs, EBook* chmFile )
 {
 	if ( docs.isEmpty() )
 		return false;
@@ -128,9 +128,9 @@ bool Index::makeIndex(const QList< QUrl >& docs, EBook *chmFile )
 	return true;
 }
 
-void Index::insertInDict( const QString &str, int docNum )
+void Index::insertInDict( const QString& str, int docNum )
 {
-	Entry *e = 0;
+	Entry* e = 0;
 	if ( dict.count() )
 		e = dict[ str ];
 
@@ -147,7 +147,7 @@ void Index::insertInDict( const QString &str, int docNum )
 	}
 }
 
-bool Index::parseDocumentToStringlist(EBook *chmFile, const QUrl& filename, QStringList& tokenlist )
+bool Index::parseDocumentToStringlist(EBook* chmFile, const QUrl& filename, QStringList& tokenlist )
 {
 	QString parsedbuf, parseentity, text;
 
@@ -321,7 +321,7 @@ void Index::writeDict( QDataStream& stream )
 	stream << docList;
 
 	// Dictionary
-	for( QHash<QString, Entry *>::ConstIterator it = dict.begin(); it != dict.end(); ++it )
+	for( QHash<QString, Entry*>::ConstIterator it = dict.begin(); it != dict.end(); ++it )
 	{
 		stream << it.key();
 		stream << (int) it.value()->documents.count();
@@ -362,14 +362,14 @@ bool Index::readDict( QDataStream& stream )
 	return dict.size() > 0;
 }
 
-QList< QUrl > Index::query(const QStringList &terms, const QStringList &termSeq, const QStringList &seqWords, EBook *chmFile )
+QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq, const QStringList& seqWords, EBook* chmFile )
 {
 	QList<Term> termList;
 
 	QStringList::ConstIterator it = terms.begin();
 	for ( it = terms.begin(); it != terms.end(); ++it )
 	{
-		Entry *e = 0;
+		Entry* e = 0;
 
 		if ( dict[ *it ] )
 		{
@@ -389,7 +389,7 @@ QList< QUrl > Index::query(const QStringList &terms, const QStringList &termSeq,
 
 	QVector<Document> minDocs = termList.takeFirst().documents;
 	for(QList<Term>::Iterator it = termList.begin(); it != termList.end(); ++it) {
-		Term *t = &(*it);
+		Term* t = &(*it);
 		QVector<Document> docs = t->documents;
 		for(QVector<Document>::Iterator minDoc_it = minDocs.begin(); minDoc_it != minDocs.end(); ) {
 			bool found = false;
@@ -426,7 +426,7 @@ QList< QUrl > Index::query(const QStringList &terms, const QStringList &termSeq,
 	return results;
 }
 
-bool Index::searchForPhrases( const QStringList &phrases, const QStringList &words, const QUrl &filename, EBook * chmFile )
+bool Index::searchForPhrases( const QStringList& phrases, const QStringList& words, const QUrl& filename, EBook* chmFile )
 {
 	QStringList parsed_document;
 
@@ -443,7 +443,7 @@ bool Index::searchForPhrases( const QStringList &phrases, const QStringList &wor
 	unsigned int word_offset = 3;
 	for ( QStringList::ConstIterator it = parsed_document.begin(); it != parsed_document.end(); it++, word_offset++ )
 	{
-		PosEntry * entry = miniDict[ *it ];
+		PosEntry* entry = miniDict[ *it ];
 
 		if ( entry )
 			entry->positions.append( word_offset );

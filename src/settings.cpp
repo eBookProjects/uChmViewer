@@ -119,7 +119,7 @@ Settings::Settings()
 	m_window_size_splitter = 200;
 }
 
-bool Settings::loadSettings( const QString & filename )
+bool Settings::loadSettings( const QString& filename )
 {
 	m_activetabsystem = 0;
 	m_activetabwindow = 0;
@@ -292,7 +292,7 @@ bool Settings::saveSettings( )
 	return true;
 }
 
-void Settings::removeSettings( const QString & filename )
+void Settings::removeSettings( const QString& filename )
 {
 	QString settingsfile = pConfig->getEbookSettingFile( filename );
 	QString idxfile = pConfig->getEbookIndexFile( filename );

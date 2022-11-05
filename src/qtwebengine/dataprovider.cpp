@@ -58,12 +58,12 @@ static struct RegistrationHelper
 
 #endif // (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
 
-DataProvider::DataProvider( QObject *parent )
+DataProvider::DataProvider( QObject* parent )
 	: QWebEngineUrlSchemeHandler( parent )
 {
 }
 
-void DataProvider::requestStarted( QWebEngineUrlRequestJob *request )
+void DataProvider::requestStarted( QWebEngineUrlRequestJob* request )
 {
 	QUrl url = request->requestUrl();
 #if PRINT_DEBUG
@@ -96,7 +96,7 @@ void DataProvider::requestStarted( QWebEngineUrlRequestJob *request )
 
 	// We will use the buffer because reply() requires the QIODevice.
 	// This buffer must be valid until the request is deleted.
-	QBuffer * outbuf = new QBuffer;
+	QBuffer* outbuf = new QBuffer;
 	outbuf->setData( buf );
 	outbuf->close();
 

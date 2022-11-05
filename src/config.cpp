@@ -28,7 +28,7 @@
 #include "settings.h"	// QSettings
 #include "mainwindow.h"
 
-Config * pConfig;
+Config* pConfig;
 
 Config::Config()
 {
@@ -105,7 +105,7 @@ void Config::save( )
 	settings.setValue( "browser/tabusesingleclick", m_tabUseSingleClick );
 }
 
-QString Config::getEbookSettingFile(const QString &ebookfile ) const
+QString Config::getEbookSettingFile(const QString& ebookfile ) const
 {
 	QFileInfo finfo ( ebookfile );
 	QString prefix = pConfig->m_datapath + QDir::separator() + finfo.completeBaseName();
@@ -113,7 +113,7 @@ QString Config::getEbookSettingFile(const QString &ebookfile ) const
 	return prefix + ".uchmviewer";
 }
 
-QString Config::getEbookIndexFile(const QString &ebookfile) const
+QString Config::getEbookIndexFile(const QString& ebookfile) const
 {
 	QFileInfo finfo ( ebookfile );
 	QString prefix = pConfig->m_datapath + "/" + finfo.completeBaseName();

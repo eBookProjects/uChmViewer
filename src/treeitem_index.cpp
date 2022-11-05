@@ -34,7 +34,7 @@
 #include "treeitem_index.h"			  // TreeItem_Index, QTreeWidgetItem
 
 
-TreeItem_Index::TreeItem_Index(QTreeWidgetItem *parent, QTreeWidgetItem *after, const QString &name, const QList<QUrl> &urls, const QString& seealso)
+TreeItem_Index::TreeItem_Index(QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, const QString& seealso)
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
@@ -42,7 +42,7 @@ TreeItem_Index::TreeItem_Index(QTreeWidgetItem *parent, QTreeWidgetItem *after, 
 	m_seealso = seealso;
 }
 
-TreeItem_Index::TreeItem_Index(QTreeWidget *parent, QTreeWidgetItem *after, const QString &name, const QList<QUrl> &urls, const QString &seealso)
+TreeItem_Index::TreeItem_Index(QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, const QString& seealso)
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
@@ -57,7 +57,7 @@ QUrl TreeItem_Index::getUrl() const
 
 	// Create a dialog with URLs, and show it, so user can select an URL he/she wants.
 	QStringList titles;
-	EBook * xchm = ::mainWindow->chmFile();
+	EBook* xchm = ::mainWindow->chmFile();
 
 	for ( int i = 0; i < m_urls.size(); i++ )
 	{
@@ -76,7 +76,7 @@ QUrl TreeItem_Index::getUrl() const
 	return dlg.getSelectedItemUrl( m_urls, titles );
 }
 
-bool TreeItem_Index::containstUrl(const QUrl &url) const
+bool TreeItem_Index::containstUrl(const QUrl& url) const
 {
 	for ( int i = 0; i < m_urls.size(); i++ )
 	{

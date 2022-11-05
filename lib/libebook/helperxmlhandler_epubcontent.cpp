@@ -28,7 +28,7 @@ HelperXmlHandler_EpubContent::HelperXmlHandler_EpubContent()
 	m_state = STATE_NONE;
 }
 
-bool HelperXmlHandler_EpubContent::startElement(const QString &, const QString &localName, const QString &, const QXmlAttributes &atts)
+bool HelperXmlHandler_EpubContent::startElement(const QString&, const QString& localName, const QString&, const QXmlAttributes& atts)
 {
 	// <metadata> tag contains the medatada which goes into m_metadata
 	if ( localName == "metadata" )
@@ -70,7 +70,7 @@ bool HelperXmlHandler_EpubContent::startElement(const QString &, const QString &
 	return true;
 }
 
-bool HelperXmlHandler_EpubContent::characters(const QString &ch)
+bool HelperXmlHandler_EpubContent::characters(const QString& ch)
 {
 	if ( m_state == STATE_IN_METADATA && !m_tagname.isEmpty() && !ch.trimmed().isEmpty() )
 	{
@@ -89,7 +89,7 @@ bool HelperXmlHandler_EpubContent::characters(const QString &ch)
 	return true;
 }
 
-bool HelperXmlHandler_EpubContent::endElement(const QString &, const QString &, const QString &qName)
+bool HelperXmlHandler_EpubContent::endElement(const QString&, const QString&, const QString& qName)
 {
 	if ( qName == "manifest" || qName == "metadata" || qName == "spine" )
 		m_state = STATE_NONE;

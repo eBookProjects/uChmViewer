@@ -32,7 +32,7 @@
 #include "mainwindow.h"	  // :mainWindow
 
 
-DialogSetup::DialogSetup(QWidget *parent)
+DialogSetup::DialogSetup(QWidget* parent)
 	: QDialog(parent), Ui::DialogSetup()
 {
 	setupUi( this );
@@ -117,7 +117,7 @@ DialogSetup::~DialogSetup()
 {
 }
 
-static void inline Check_Need_Restart( QCheckBox * box, bool * confsetting, bool * need_restart )
+static void inline Check_Need_Restart( QCheckBox* box, bool* confsetting, bool* need_restart )
 {
 	if ( *confsetting != box->isChecked() )
 	{

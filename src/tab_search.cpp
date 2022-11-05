@@ -53,7 +53,7 @@
 class SearchTreeViewItem : public QTreeWidgetItem
 {
 	public:
-		SearchTreeViewItem( QTreeWidget * tree, const QString& name, const QUrl& url )
+		SearchTreeViewItem( QTreeWidget* tree, const QString& name, const QUrl& url )
 			:	QTreeWidgetItem( tree ), m_name( name ), m_url( url ) {}
 
 		QUrl	getUrl() const { return m_url; }
@@ -87,7 +87,7 @@ class SearchTreeViewItem : public QTreeWidgetItem
 
 
 
-TabSearch::TabSearch( QWidget * parent )
+TabSearch::TabSearch( QWidget* parent )
 	: QWidget( parent ), Ui::TabSearch()
 {
 	// UIC stuff
@@ -95,9 +95,9 @@ TabSearch::TabSearch( QWidget * parent )
 
 	// Clickable Help label
 	connect( lblHelp,
-	         SIGNAL( linkActivated( const QString & ) ),
+	         SIGNAL( linkActivated( const QString& ) ),
 	         this,
-	         SLOT( onHelpClicked(const QString & ) ) );
+	         SLOT( onHelpClicked(const QString& ) ) );
 
 	// Go Button
 	connect( btnGo,
@@ -117,22 +117,22 @@ TabSearch::TabSearch( QWidget * parent )
 		connect( tree,
 		         SIGNAL( itemClicked(QTreeWidgetItem*,int)),
 		         this,
-		         SLOT( onItemActivated( QTreeWidgetItem *, int ) ) );
+		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
 	else
 	{
 		connect( tree,
-		         SIGNAL( itemActivated ( QTreeWidgetItem *, int ) ),
+		         SIGNAL( itemActivated ( QTreeWidgetItem*, int ) ),
 		         this,
-		         SLOT( onItemActivated( QTreeWidgetItem *, int ) ) );
+		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
 
 	// Activate custom context menu, and connect it
 	tree->setContextMenuPolicy( Qt::CustomContextMenu );
 	connect( tree,
-	         SIGNAL( customContextMenuRequested ( const QPoint & ) ),
+	         SIGNAL( customContextMenuRequested ( const QPoint& ) ),
 	         this,
-	         SLOT( onContextMenuRequested( const QPoint & ) ) );
+	         SLOT( onContextMenuRequested( const QPoint& ) ) );
 
 	focus();
 
@@ -172,9 +172,9 @@ void TabSearch::onReturnPressed( )
 		{
 			for ( int i = 0; i < results.size(); i++ )
 			{
-				SearchTreeViewItem * item = new SearchTreeViewItem ( tree,
-				                                                     ::mainWindow->chmFile()->getTopicByUrl( results[i] ),
-				                                                     results[i] );
+				SearchTreeViewItem* item = new SearchTreeViewItem ( tree,
+				                                                    ::mainWindow->chmFile()->getTopicByUrl( results[i] ),
+				                                                    results[i] );
 
 				if ( i == 0 )
 					tree->setCurrentItem( item );
@@ -190,22 +190,22 @@ void TabSearch::onReturnPressed( )
 		::mainWindow->showInStatusBar( i18n( "Search failed") );
 }
 
-void TabSearch::onItemActivated( QTreeWidgetItem * item, int )
+void TabSearch::onItemActivated( QTreeWidgetItem* item, int )
 {
 	if ( !item )
 		return;
 
-	SearchTreeViewItem * treeitem = (SearchTreeViewItem *) item;
+	SearchTreeViewItem* treeitem = (SearchTreeViewItem*) item;
 	::mainWindow->currentBrowser()->openUrl( treeitem->getUrl() );
 }
 
-void TabSearch::restoreSettings( const Settings::search_saved_settings_t & settings )
+void TabSearch::restoreSettings( const Settings::search_saved_settings_t& settings )
 {
 	for ( int i = 0; i < settings.size(); i++ )
 		searchBox->addItem (settings[i]);
 }
 
-void TabSearch::saveSettings( Settings::search_saved_settings_t & settings )
+void TabSearch::saveSettings( Settings::search_saved_settings_t& settings )
 {
 	settings.clear();
 
@@ -213,7 +213,7 @@ void TabSearch::saveSettings( Settings::search_saved_settings_t & settings )
 		settings.push_back( searchBox->itemText(i) );
 }
 
-void TabSearch::onHelpClicked( const QString & )
+void TabSearch::onHelpClicked( const QString& )
 {
 	QWhatsThis::showText ( mapToGlobal( lblHelp->pos() ),
 	                       i18n( "<html><p>The improved search engine allows you to search for a word, symbol or phrase, which is set of words and symbols included in quotes. Only the documents which include all the terms specified in th search query are shown; no prefixes needed.<p>Unlike MS CHM internal search index, my improved search engine indexes everything, including special symbols. Therefore it is possible to search (and find!) for something like <i>$q = new ChmFile();</i>. This search also fully supports Unicode, which means that you can search in non-English documents.<p>If you want to search for a quote symbol, use quotation mark instead. The engine treats a quote and a quotation mark as the same symbol, which allows to use them in phrases.</html>") );
@@ -284,13 +284,13 @@ bool TabSearch::initSearchEngine( )
 	return false;
 }
 
-void TabSearch::execSearchQueryInGui( const QString & query )
+void TabSearch::execSearchQueryInGui( const QString& query )
 {
 	searchBox->lineEdit()->setText( query );
 	onReturnPressed();
 }
 
-bool TabSearch::searchQuery( const QString & query, QList< QUrl > * results )
+bool TabSearch::searchQuery( const QString& query, QList< QUrl >* results )
 {
 	if ( !m_searchEngineInitDone )
 	{
@@ -320,9 +320,9 @@ void TabSearch::focus()
 		searchBox->setFocus();
 }
 
-void TabSearch::onContextMenuRequested( const QPoint & point )
+void TabSearch::onContextMenuRequested( const QPoint& point )
 {
-	SearchTreeViewItem * treeitem = (SearchTreeViewItem *) tree->itemAt( point );
+	SearchTreeViewItem* treeitem = (SearchTreeViewItem*) tree->itemAt( point );
 
 	if( treeitem )
 	{
@@ -331,7 +331,7 @@ void TabSearch::onContextMenuRequested( const QPoint & point )
 	}
 }
 
-void TabSearch::onProgressStep(int value, const QString & stepName)
+void TabSearch::onProgressStep(int value, const QString& stepName)
 {
 	if ( m_genIndexProgress )
 	{

@@ -30,7 +30,7 @@
 #include "dataprovider.h"
 
 
-KCHMNetworkReply::KCHMNetworkReply( const QNetworkRequest &request, const QUrl &url )
+KCHMNetworkReply::KCHMNetworkReply( const QNetworkRequest& request, const QUrl& url )
 {
 	setRequest( request );
 	setOpenMode( QIODevice::ReadOnly );
@@ -56,7 +56,7 @@ void KCHMNetworkReply::abort()
 {
 }
 
-qint64 KCHMNetworkReply::readData(char *buffer, qint64 maxlen)
+qint64 KCHMNetworkReply::readData(char* buffer, qint64 maxlen)
 {
 	qint64 len = qMin(qint64(m_data.length()), maxlen);
 
@@ -69,7 +69,7 @@ qint64 KCHMNetworkReply::readData(char *buffer, qint64 maxlen)
 	return len;
 }
 
-QByteArray KCHMNetworkReply::loadResource( const QUrl &url )
+QByteArray KCHMNetworkReply::loadResource( const QUrl& url )
 {
 	//qDebug("loadResource %s", qPrintable(url.toString()) );
 
@@ -95,12 +95,12 @@ QByteArray KCHMNetworkReply::loadResource( const QUrl &url )
 	return buf;
 }
 
-KCHMNetworkAccessManager::KCHMNetworkAccessManager( QObject *parent )
+KCHMNetworkAccessManager::KCHMNetworkAccessManager( QObject* parent )
 	: QNetworkAccessManager(parent)
 {
 }
 
-QNetworkReply * KCHMNetworkAccessManager::createRequest( Operation op, const QNetworkRequest &request, QIODevice *outgoingData )
+QNetworkReply* KCHMNetworkAccessManager::createRequest( Operation op, const QNetworkRequest& request, QIODevice* outgoingData )
 {
 	//qDebug("KCHMNetworkAccessManager::createRequest %s", qPrintable( request.url().toString()) );
 

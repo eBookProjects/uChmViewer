@@ -36,7 +36,7 @@
 #include "viewwindow.h"		// ViewWindow
 
 
-TabIndex::TabIndex ( QWidget * parent )
+TabIndex::TabIndex ( QWidget* parent )
 	: QWidget( parent ), Ui::TabIndex()
 {
 	// UIC stuff
@@ -45,9 +45,9 @@ TabIndex::TabIndex ( QWidget * parent )
 	tree->headerItem()->setHidden( true );
 
 	connect( text,
-	         SIGNAL( textChanged (const QString &) ),
+	         SIGNAL( textChanged (const QString&) ),
 	         this,
-	         SLOT( onTextChanged(const QString &) ) );
+	         SLOT( onTextChanged(const QString&) ) );
 
 	connect( text,
 	         SIGNAL( returnPressed() ),
@@ -59,22 +59,22 @@ TabIndex::TabIndex ( QWidget * parent )
 		connect( tree,
 		         SIGNAL( itemClicked(QTreeWidgetItem*,int)),
 		         this,
-		         SLOT( onItemActivated( QTreeWidgetItem *, int ) ) );
+		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
 	else
 	{
 		connect( tree,
-		         SIGNAL( itemActivated ( QTreeWidgetItem *, int ) ),
+		         SIGNAL( itemActivated ( QTreeWidgetItem*, int ) ),
 		         this,
-		         SLOT( onItemActivated( QTreeWidgetItem *, int ) ) );
+		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
 
 	// Activate custom context menu, and connect it
 	tree->setContextMenuPolicy( Qt::CustomContextMenu );
 	connect( tree,
-	         SIGNAL( customContextMenuRequested ( const QPoint & ) ),
+	         SIGNAL( customContextMenuRequested ( const QPoint& ) ),
 	         this,
-	         SLOT( onContextMenuRequested( const QPoint & ) ) );
+	         SLOT( onContextMenuRequested( const QPoint& ) ) );
 
 	m_indexListFilled = false;
 	m_lastSelectedItem = 0;
@@ -83,9 +83,9 @@ TabIndex::TabIndex ( QWidget * parent )
 	focus();
 }
 
-void TabIndex::onTextChanged ( const QString & newvalue)
+void TabIndex::onTextChanged ( const QString& newvalue)
 {
-	QList<QTreeWidgetItem *> items = tree->findItems( newvalue, Qt::MatchStartsWith );
+	QList<QTreeWidgetItem*> items = tree->findItems( newvalue, Qt::MatchStartsWith );
 
 	if ( !items.isEmpty() )
 	{
@@ -97,7 +97,7 @@ void TabIndex::onTextChanged ( const QString & newvalue)
 		m_lastSelectedItem = 0;
 }
 
-void TabIndex::showEvent( QShowEvent * )
+void TabIndex::showEvent( QShowEvent* )
 {
 	if ( !::mainWindow->chmFile() || m_indexListFilled )
 		return;
@@ -111,7 +111,7 @@ void TabIndex::onReturnPressed( )
 	if ( !m_lastSelectedItem )
 		return;
 
-	TreeItem_Index * treeitem = (TreeItem_Index*) m_lastSelectedItem;
+	TreeItem_Index* treeitem = (TreeItem_Index*) m_lastSelectedItem;
 	::mainWindow->activateUrl( treeitem->getUrl() );
 }
 
@@ -122,12 +122,12 @@ void TabIndex::invalidate( )
 	m_lastSelectedItem = 0;
 }
 
-void TabIndex::onItemActivated ( QTreeWidgetItem * item, int )
+void TabIndex::onItemActivated ( QTreeWidgetItem* item, int )
 {
 	if ( !item )
 		return;
 
-	TreeItem_Index * treeitem = (TreeItem_Index*) item;
+	TreeItem_Index* treeitem = (TreeItem_Index*) item;
 
 	// Prevent opened index tree item from closing; because the tree open/close
 	// procedure will be triggered after the slots are called, we change the tree
@@ -142,7 +142,7 @@ void TabIndex::onItemActivated ( QTreeWidgetItem * item, int )
 
 	if ( treeitem->isSeeAlso() ) // 'see also' link
 	{
-		QList<QTreeWidgetItem *> items = tree->findItems( treeitem->seeAlso(), Qt::MatchFixedString );
+		QList<QTreeWidgetItem*> items = tree->findItems( treeitem->seeAlso(), Qt::MatchFixedString );
 
 		if ( !items.isEmpty() )
 		{
@@ -168,8 +168,8 @@ void TabIndex::refillIndex( )
 		return;
 	}
 
-	QVector< TreeItem_Index *> lastchild;
-	QVector< TreeItem_Index *> rootentry;
+	QVector< TreeItem_Index*> lastchild;
+	QVector< TreeItem_Index*> rootentry;
 	bool warning_shown = false;
 
 	tree->clear();
@@ -211,7 +211,7 @@ void TabIndex::refillIndex( )
 		}
 
 		// Create the node
-		TreeItem_Index * item;
+		TreeItem_Index* item;
 
 		if ( indent == 0 )
 			item = new TreeItem_Index( tree, lastchild[indent], data[i].name, data[i].urls, data[i].seealso );
@@ -235,7 +235,7 @@ void TabIndex::refillIndex( )
 	tree->update();
 }
 
-void TabIndex::search( const QString & index )
+void TabIndex::search( const QString& index )
 {
 	if ( !::mainWindow->chmFile() )
 		return;
@@ -256,9 +256,9 @@ void TabIndex::focus()
 		tree->setFocus();
 }
 
-void TabIndex::onContextMenuRequested(const QPoint & point)
+void TabIndex::onContextMenuRequested(const QPoint& point)
 {
-	TreeItem_Index * treeitem = (TreeItem_Index *) tree->itemAt( point );
+	TreeItem_Index* treeitem = (TreeItem_Index*) tree->itemAt( point );
 
 	if( treeitem )
 	{

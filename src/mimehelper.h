@@ -34,7 +34,7 @@ class MimeHelper
 		 * @param buf File contents.
 		 * @return "text/css", "text/html", "text/js" or "application/octet-stream".
 		 */
-		static QByteArray mimeType( const QUrl &url, const QByteArray &buf );
+		static QByteArray mimeType( const QUrl& url, const QByteArray& buf );
 };
 
 #endif // MIMEHELPER_H

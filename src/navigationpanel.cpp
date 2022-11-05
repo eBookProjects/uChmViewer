@@ -38,7 +38,7 @@
 #include "viewwindow.h"		 // ViewWindow
 
 
-NavigationPanel::NavigationPanel( QWidget * parent )
+NavigationPanel::NavigationPanel( QWidget* parent )
 	: QDockWidget( parent ), Ui::NavigatorPanel()
 {
 	setupUi( this );
@@ -58,7 +58,7 @@ NavigationPanel::NavigationPanel( QWidget * parent )
 	m_indexTab = 0;
 }
 
-void NavigationPanel::setBookmarkMenu( QMenu * menu )
+void NavigationPanel::setBookmarkMenu( QMenu* menu )
 {
 	m_bookmarksTab->createMenu( menu );
 }
@@ -83,7 +83,7 @@ void NavigationPanel::invalidate()
 	m_bookmarksTab->invalidate();
 }
 
-void NavigationPanel::updateTabs( EBook * file )
+void NavigationPanel::updateTabs( EBook* file )
 {
 	invalidate();
 
@@ -101,13 +101,13 @@ void NavigationPanel::updateTabs( EBook * file )
 	}
 }
 
-void NavigationPanel::applySettings( Settings * settings )
+void NavigationPanel::applySettings( Settings* settings )
 {
 	m_searchTab->restoreSettings( settings->m_searchhistory );
 	m_bookmarksTab->restoreSettings( settings->m_bookmarks );
 }
 
-void NavigationPanel::getSettings( Settings * settings )
+void NavigationPanel::getSettings( Settings* settings )
 {
 	m_searchTab->saveSettings( settings->m_searchhistory );
 	m_bookmarksTab->saveSettings( settings->m_bookmarks );
@@ -124,11 +124,11 @@ bool NavigationPanel::findUrlInContents( const QUrl& url )
 	if ( !m_contentsTab )
 		return false;
 
-	TreeItem_TOC * treeitem = m_contentsTab->getTreeItem( url );
+	TreeItem_TOC* treeitem = m_contentsTab->getTreeItem( url );
 
 	if ( treeitem )
 	{
-		TreeItem_TOC * itemparent = treeitem;
+		TreeItem_TOC* itemparent = treeitem;
 		while ( (itemparent = (TreeItem_TOC*) itemparent->parent()) != 0 )
 			itemparent->setExpanded(true);
 
@@ -150,7 +150,7 @@ void NavigationPanel::showPrevInToc()
 		return;
 
 	// Try to find current list item
-	TreeItem_TOC * current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->getOpenedPage() );
+	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->getOpenedPage() );
 
 	if ( !current )
 		return;
@@ -159,7 +159,7 @@ void NavigationPanel::showPrevInToc()
 	lit--;
 
 	if ( *lit )
-		::mainWindow->openPage( ((TreeItem_TOC *) (*lit) )->getUrl(), MainWindow::OPF_CONTENT_TREE );
+		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl(), MainWindow::OPF_CONTENT_TREE );
 }
 
 void NavigationPanel::showNextInToc()
@@ -168,7 +168,7 @@ void NavigationPanel::showNextInToc()
 		return;
 
 	// Try to find current list item
-	TreeItem_TOC * current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->getOpenedPage() );
+	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->getOpenedPage() );
 
 	if ( !current )
 		return;
@@ -177,12 +177,12 @@ void NavigationPanel::showNextInToc()
 	lit++;
 
 	if ( *lit )
-		::mainWindow->openPage( ((TreeItem_TOC *) (*lit) )->getUrl(),MainWindow::OPF_CONTENT_TREE );
+		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl(),MainWindow::OPF_CONTENT_TREE );
 }
 
 int	NavigationPanel::active() const
 {
-	QWidget * cur = m_tabWidget->currentWidget();
+	QWidget* cur = m_tabWidget->currentWidget();
 
 	if ( cur == m_bookmarksTab )
 		return TAB_BOOKMARK;
@@ -227,7 +227,7 @@ void NavigationPanel::setActive( int index )
 	}
 }
 
-void NavigationPanel::findTextInContents( const QString & text )
+void NavigationPanel::findTextInContents( const QString& text )
 {
 	if ( m_contentsTab )
 		m_contentsTab->search( text );

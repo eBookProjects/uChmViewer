@@ -25,7 +25,7 @@
 #include "helperxmlhandler_epubtoc.h"
 
 
-HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC(EBook_EPUB *epub)
+HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC(EBook_EPUB* epub)
 {
 	m_epub = epub;
 	m_inNavMap = false;
@@ -33,7 +33,7 @@ HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC(EBook_EPUB *epub)
 	m_indent = 0;
 }
 
-bool HelperXmlHandler_EpubTOC::startElement(const QString &, const QString &localName, const QString &, const QXmlAttributes &atts)
+bool HelperXmlHandler_EpubTOC::startElement(const QString&, const QString& localName, const QString&, const QXmlAttributes& atts)
 {
 //	qDebug() << "startElement " << " " << localName;
 
@@ -69,7 +69,7 @@ bool HelperXmlHandler_EpubTOC::startElement(const QString &, const QString &loca
 	return true;
 }
 
-bool HelperXmlHandler_EpubTOC::characters(const QString &ch)
+bool HelperXmlHandler_EpubTOC::characters(const QString& ch)
 {
 	//	qDebug() << "characters" << " " << ch;
 	if ( m_inText )
@@ -79,7 +79,7 @@ bool HelperXmlHandler_EpubTOC::characters(const QString &ch)
 	return true;
 }
 
-bool HelperXmlHandler_EpubTOC::endElement(const QString&, const QString &localName, const QString &)
+bool HelperXmlHandler_EpubTOC::endElement(const QString&, const QString& localName, const QString&)
 {
 //	qDebug() << "endElement" << " " << qName;
 

@@ -96,7 +96,7 @@ class EBook
 		 * if files linked to this one are present locally (like MSDN).
 		 * \ingroup init
 		 */
-		static EBook * loadFile( const QString& archiveName );
+		static EBook* loadFile( const QString& archiveName );
 
 		/*!
 		 * \brief Closes all the files, and frees the appropriate data.
@@ -212,7 +212,7 @@ class EBook
 		 *
 		 * \ingroup encoding
 		 */
-		virtual bool setCurrentEncoding ( const char * encoding ) = 0;
+		virtual bool setCurrentEncoding ( const char* encoding ) = 0;
 
 		/*!
 		 * \brief Checks if this kind of URL is supported by the ebook format (i.e. could be passed to ebook functions)
@@ -221,7 +221,7 @@ class EBook
 		virtual bool isSupportedUrl( const QUrl& url ) = 0;
 
 		// Converts the string to the ebook-specific URL format
-		virtual QUrl pathToUrl( const QString & link ) const = 0;
+		virtual QUrl pathToUrl( const QString& link ) const = 0;
 
 		// Extracts the path component from the URL
 		virtual QString urlToPath( const QUrl& link ) const = 0;

@@ -55,7 +55,7 @@
 
 static const qreal ZOOM_FACTOR_CHANGE = 0.1;
 
-ViewWindow::ViewWindow( QWidget * parent )
+ViewWindow::ViewWindow( QWidget* parent )
 	: QWebEngineView ( parent )
 {
 	invalidate();
@@ -63,7 +63,7 @@ ViewWindow::ViewWindow( QWidget * parent )
 	m_contextMenuLink = 0;
 	m_storedScrollbarPosition = 0;
 
-	WebEnginePage * page = new WebEnginePage( this );
+	WebEnginePage* page = new WebEnginePage( this );
 	connect( page, SIGNAL( linkClicked ( const QUrl& ) ), this, SLOT( onLinkClicked( const QUrl& ) ) );
 	setPage( page );
 
@@ -98,9 +98,9 @@ bool ViewWindow::openUrl ( const QUrl& url )
 	return true;
 }
 
-QMenu * ViewWindow::createStandardContextMenu( QWidget * parent )
+QMenu* ViewWindow::createStandardContextMenu( QWidget* parent )
 {
-	QMenu * contextMenu = new QMenu( parent );
+	QMenu* contextMenu = new QMenu( parent );
 
 	contextMenu->addAction( "&Copy", ::mainWindow, SLOT(slotBrowserCopy()) );
 	contextMenu->addAction( "&Select all", ::mainWindow, SLOT(slotBrowserSelectAll()) );
@@ -108,7 +108,7 @@ QMenu * ViewWindow::createStandardContextMenu( QWidget * parent )
 	return contextMenu;
 }
 
-QMenu * ViewWindow::getContextMenu( const QUrl & link, QWidget * parent )
+QMenu* ViewWindow::getContextMenu( const QUrl& link, QWidget* parent )
 {
 	if ( link.isEmpty() )
 	{
@@ -168,7 +168,7 @@ void ViewWindow::setTabKeeper( const QUrl& link )
 
 bool ViewWindow::printCurrentPage()
 {
-	QPrinter *printer = new QPrinter( QPrinter::HighResolution );
+	QPrinter* printer = new QPrinter( QPrinter::HighResolution );
 	QPrintDialog dlg( printer, this );
 	if ( dlg.exec() != QDialog::Accepted )
 	{
@@ -254,9 +254,9 @@ void ViewWindow::updateHistoryIcons()
 	}
 }
 
-void ViewWindow::contextMenuEvent(QContextMenuEvent *e)
+void ViewWindow::contextMenuEvent(QContextMenuEvent* e)
 {
-	QMenu *m = new QMenu(0);
+	QMenu* m = new QMenu(0);
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
 	QUrl link = lastContextMenuRequest()->linkUrl();
@@ -291,14 +291,14 @@ void ViewWindow::onLoadFinished ( bool )
 	emit dataLoaded( this );
 }
 
-void ViewWindow::onLinkClicked(const QUrl &url)
+void ViewWindow::onLinkClicked(const QUrl& url)
 {
 	emit linkClicked( url );
 }
 
-void ViewWindow::applySettings(BrowserSettings &settings)
+void ViewWindow::applySettings(BrowserSettings& settings)
 {
-	QWebEngineSettings * setup = QWebEngineProfile::defaultProfile()->settings();
+	QWebEngineSettings* setup = QWebEngineProfile::defaultProfile()->settings();
 
 	setup->setAttribute( QWebEngineSettings::AutoLoadImages, settings.enableImages );
 	setup->setAttribute( QWebEngineSettings::JavascriptEnabled, settings.enableJS );

@@ -39,7 +39,7 @@
 #include "toolbarmanager.h"	// ToolbarManager
 
 
-static const char *ACTION_MIME_FORMAT = "application/vnd.action.list";
+static const char* ACTION_MIME_FORMAT = "application/vnd.action.list";
 
 
 //
@@ -48,7 +48,7 @@ static const char *ACTION_MIME_FORMAT = "application/vnd.action.list";
 class ActionListModel : public QAbstractListModel
 {
 	public:
-		ActionListModel( ToolbarEditor * editor, const QStringList& actions, bool actionSource )
+		ActionListModel( ToolbarEditor* editor, const QStringList& actions, bool actionSource )
 			: QAbstractListModel( editor )
 		{
 			m_editor = editor;
@@ -56,12 +56,12 @@ class ActionListModel : public QAbstractListModel
 			m_actionSource = actionSource;
 		}
 
-		int rowCount ( const QModelIndex & ) const
+		int rowCount ( const QModelIndex& ) const
 		{
 			return m_actions.size();
 		}
 
-		QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const
+		QVariant data ( const QModelIndex& index, int role = Qt::DisplayRole ) const
 		{
 			if ( !index.isValid() || index.row() < 0 || index.row() >= m_actions.size()  )
 				return QVariant();
@@ -74,7 +74,7 @@ class ActionListModel : public QAbstractListModel
 				return QVariant();
 			}
 
-			QAction * action = m_editor->findAction( m_actions[ index.row() ] );
+			QAction* action = m_editor->findAction( m_actions[ index.row() ] );
 
 			if ( !action )
 				return QVariant();
@@ -106,7 +106,7 @@ class ActionListModel : public QAbstractListModel
 		}
 
 		// Required for drag and drop
-		bool insertRows ( int row, int count, const QModelIndex & parent = QModelIndex() )
+		bool insertRows ( int row, int count, const QModelIndex& parent = QModelIndex() )
 		{
 			int start = row;
 			int end = row + count - 1;
@@ -120,7 +120,7 @@ class ActionListModel : public QAbstractListModel
 		}
 
 		// Required for drag and drop
-		bool removeRows ( int row, int count, const QModelIndex & parent = QModelIndex() )
+		bool removeRows ( int row, int count, const QModelIndex& parent = QModelIndex() )
 		{
 			// Do not remove a row with separator
 			if ( m_actionSource && m_actions[row ] == ToolbarManager::separatorName() )
@@ -145,17 +145,17 @@ class ActionListModel : public QAbstractListModel
 			return types;
 		}
 
-		QMimeData * mimeData( const QModelIndexList &indexes ) const
+		QMimeData* mimeData( const QModelIndexList& indexes ) const
 		{
 			if ( indexes.size() != 1 || !indexes[0].isValid() )
 				return 0;
 
-			QMimeData *mimeData = new QMimeData();
+			QMimeData* mimeData = new QMimeData();
 			mimeData->setData( ACTION_MIME_FORMAT, m_actions[ indexes[0].row() ].toUtf8() );
 			return mimeData;
 		}
 
-		bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
+		bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent)
 		{
 			if (action == Qt::IgnoreAction)
 				return true;
@@ -201,13 +201,13 @@ class ActionListModel : public QAbstractListModel
 		}
 
 	private:
-		ToolbarEditor		*	m_editor;
+		ToolbarEditor*			m_editor;
 		QStringList				m_actions;
 		bool					m_actionSource;
 };
 
 
-ToolbarEditor::ToolbarEditor( QWidget *parent )
+ToolbarEditor::ToolbarEditor( QWidget* parent )
 	: QDialog(parent), Ui::ToolbarEditor()
 {
 	setupUi( this );
@@ -222,14 +222,14 @@ ToolbarEditor::~ToolbarEditor()
 {
 }
 
-void ToolbarEditor::addToolbar( QToolBar * toolbar )
+void ToolbarEditor::addToolbar( QToolBar* toolbar )
 {
 	m_toolbars.push_back( toolbar );
 }
 
 void ToolbarEditor::addToolbars( QList<QToolBar*> toolbars )
 {
-	foreach( QToolBar * t, toolbars )
+	foreach( QToolBar* t, toolbars )
 		m_toolbars.push_back( t );
 }
 
@@ -263,7 +263,7 @@ int ToolbarEditor::exec()
 	return QDialog::exec();
 }
 
-QAction * ToolbarEditor::findAction( const QString& objectname ) const
+QAction* ToolbarEditor::findAction( const QString& objectname ) const
 {
 	foreach ( QAction* action, m_availableActions )
 		if ( ToolbarManager::actionName( action ) == objectname )
@@ -272,7 +272,7 @@ QAction * ToolbarEditor::findAction( const QString& objectname ) const
 	return 0;
 }
 
-void ToolbarEditor::initToolbarActions( QToolBar * toolbar )
+void ToolbarEditor::initToolbarActions( QToolBar* toolbar )
 {
 	QStringList selected;
 
@@ -287,7 +287,7 @@ void ToolbarEditor::initToolbarActions( QToolBar * toolbar )
 	m_selected[ toolbar ] = selected;
 }
 
-void ToolbarEditor::setupViews( QToolBar * toolbar )
+void ToolbarEditor::setupViews( QToolBar* toolbar )
 {
 	if ( !m_selected.contains( toolbar ) )
 		qFatal("ToolbarEditor::setupViews: invalid toolbar");
@@ -310,12 +310,12 @@ void ToolbarEditor::setupViews( QToolBar * toolbar )
 		available.push_back( ToolbarManager::separatorName() );
 
 	// Init models for available and selected actions
-	ActionListModel * newModelAvailable = new ActionListModel( this, available, true );
-	ActionListModel * newModelSelected = new ActionListModel( this, actions, false );
+	ActionListModel* newModelAvailable = new ActionListModel( this, available, true );
+	ActionListModel* newModelSelected = new ActionListModel( this, actions, false );
 
 	// Set them, and get the old models
-	ActionListModel * oldModelAvailable = (ActionListModel*) listAvailable->model();
-	ActionListModel * oldModelSelected = (ActionListModel*) listActions->model();
+	ActionListModel* oldModelAvailable = (ActionListModel*) listAvailable->model();
+	ActionListModel* oldModelSelected = (ActionListModel*) listActions->model();
 
 	listActions->setModel( newModelSelected );
 	listAvailable->setModel( newModelAvailable );
@@ -332,7 +332,7 @@ void ToolbarEditor::toolbarSelected( int index )
 	if ( index == -1 )
 		return;
 
-	QToolBar * selected = m_toolbars[ index ];
+	QToolBar* selected = m_toolbars[ index ];
 
 	if ( selected == m_activeToolbar )
 		return;
@@ -342,16 +342,16 @@ void ToolbarEditor::toolbarSelected( int index )
 	setupViews( selected );
 }
 
-void ToolbarEditor::updateToolbarActions( QToolBar * toolbar )
+void ToolbarEditor::updateToolbarActions( QToolBar* toolbar )
 {
 	if ( !m_selected.contains( toolbar ) )
 		qFatal("ToolbarEditor::updateToolbarActions: invalid toolbar");
 
-	ActionListModel * model = (ActionListModel*) listActions->model();
+	ActionListModel* model = (ActionListModel*) listActions->model();
 	m_selected[ toolbar ] = model->actions();
 }
 
-QStringList	ToolbarEditor::actionsForToolbar( QToolBar * toolbar )
+QStringList	ToolbarEditor::actionsForToolbar( QToolBar* toolbar )
 {
 	if ( !m_selected.contains( toolbar ) )
 		return QStringList();

@@ -47,7 +47,7 @@
 //#define DEBUGPARSER(A)	qDebug A
 #define DEBUGPARSER(A)
 
-const char * EBook_CHM::URL_SCHEME_CHM = "ms-its";
+const char* EBook_CHM::URL_SCHEME_CHM = "ms-its";
 
 
 EBook_CHM::EBook_CHM()
@@ -118,7 +118,7 @@ bool EBook_CHM::hasFeature(EBook::Feature code) const
 	return false;
 }
 
-bool EBook_CHM::getTableOfContents( QList<EBookTocEntry> &toc ) const
+bool EBook_CHM::getTableOfContents( QList<EBookTocEntry>& toc ) const
 {
 	if ( parseBinaryTOC( toc ) )
 		return true;
@@ -154,7 +154,7 @@ bool EBook_CHM::getTableOfContents( QList<EBookTocEntry> &toc ) const
 	return true;
 }
 
-bool EBook_CHM::getIndex(QList<EBookIndexEntry> &index) const
+bool EBook_CHM::getIndex(QList<EBookIndexEntry>& index) const
 {
 	// Parse the plain text index
 	QList< ParsedEntry > parsed;
@@ -202,17 +202,17 @@ bool EBook_CHM::getIndex(QList<EBookIndexEntry> &index) const
 	return true;
 }
 
-bool EBook_CHM::getFileContentAsString( QString &str, const QUrl &url ) const
+bool EBook_CHM::getFileContentAsString( QString& str, const QUrl& url ) const
 {
 	return getTextContent( str, urlToPath( url ) );
 }
 
-bool EBook_CHM::getFileContentAsBinary( QByteArray &data, const QUrl &url ) const
+bool EBook_CHM::getFileContentAsBinary( QByteArray& data, const QUrl& url ) const
 {
 	return getBinaryContent( data, urlToPath(url) );
 }
 
-bool EBook_CHM::getBinaryContent( QByteArray &data, const QString &url ) const
+bool EBook_CHM::getBinaryContent( QByteArray& data, const QString& url ) const
 {
 	chmUnitInfo ui;
 
@@ -248,7 +248,7 @@ bool EBook_CHM::getTextContent( QString& str, const QString& url, bool internal_
 	return false;
 }
 
-int EBook_CHM::getContentSize(const QString &url)
+int EBook_CHM::getContentSize(const QString& url)
 {
 	chmUnitInfo ui;
 
@@ -258,7 +258,7 @@ int EBook_CHM::getContentSize(const QString &url)
 	return ui.length;
 }
 
-bool EBook_CHM::load(const QString &archiveName)
+bool EBook_CHM::load(const QString& archiveName)
 {
 	QString filename;
 
@@ -583,14 +583,14 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 	return true;
 }
 
-bool EBook_CHM::ResolveObject(const QString& fileName, chmUnitInfo *ui) const
+bool EBook_CHM::ResolveObject(const QString& fileName, chmUnitInfo* ui) const
 {
 	return m_chmFile != NULL
 	       && ::chm_resolve_object(m_chmFile, qPrintable( fileName ), ui) ==
 	       CHM_RESOLVE_SUCCESS;
 }
 
-bool EBook_CHM::hasFile(const QString & fileName) const
+bool EBook_CHM::hasFile(const QString& fileName) const
 {
 	chmUnitInfo ui;
 
@@ -599,7 +599,7 @@ bool EBook_CHM::hasFile(const QString & fileName) const
 	       CHM_RESOLVE_SUCCESS;
 }
 
-size_t EBook_CHM::RetrieveObject(const chmUnitInfo *ui, unsigned char *buffer,
+size_t EBook_CHM::RetrieveObject(const chmUnitInfo* ui, unsigned char* buffer,
                                  LONGUINT64 fileOffset, LONGINT64 bufferSize) const
 {
 	return ::chm_retrieve_object(m_chmFile, const_cast<chmUnitInfo*>(ui),
@@ -619,8 +619,8 @@ bool EBook_CHM::getInfoFromWindows()
 		if ( !RetrieveObject(&ui, buffer, 0, WIN_HEADER_LEN) )
 			return false;
 
-		unsigned int entries = get_int32_le( (unsigned int *)(buffer) );
-		unsigned int entry_size = get_int32_le( (unsigned int *)(buffer + 0x04) );
+		unsigned int entries = get_int32_le( (unsigned int*)(buffer) );
+		unsigned int entry_size = get_int32_le( (unsigned int*)(buffer + 0x04) );
 
 		QVector<unsigned char> uptr(entries * entry_size);
 		unsigned char* raw = (unsigned char*) uptr.data();
@@ -635,10 +635,10 @@ bool EBook_CHM::getInfoFromWindows()
 		{
 			unsigned int offset = i * entry_size;
 
-			unsigned int off_title = get_int32_le( (unsigned int *)(raw + offset + 0x14) );
-			unsigned int off_home = get_int32_le( (unsigned int *)(raw + offset + 0x68) );
-			unsigned int off_hhc = get_int32_le( (unsigned int *)(raw + offset + 0x60) );
-			unsigned int off_hhk = get_int32_le( (unsigned int *)(raw + offset + 0x64) );
+			unsigned int off_title = get_int32_le( (unsigned int*)(raw + offset + 0x14) );
+			unsigned int off_home = get_int32_le( (unsigned int*)(raw + offset + 0x68) );
+			unsigned int off_hhc = get_int32_le( (unsigned int*)(raw + offset + 0x60) );
+			unsigned int off_hhk = get_int32_le( (unsigned int*)(raw + offset + 0x64) );
 
 			factor = off_title / 4096;
 
@@ -798,14 +798,14 @@ QString EBook_CHM::getTopicByUrl( const QUrl& url )
 	return it.value();
 }
 
-static int chm_enumerator_callback( struct chmFile*, struct chmUnitInfo *ui, void *context )
+static int chm_enumerator_callback( struct chmFile*, struct chmUnitInfo* ui, void* context )
 {
 	EBook_CHM tmp;
-	((QList<QUrl> *) context)->push_back( tmp.pathToUrl( ui->path ) );
+	((QList<QUrl>*) context)->push_back( tmp.pathToUrl( ui->path ) );
 	return CHM_ENUMERATOR_CONTINUE;
 }
 
-bool EBook_CHM::enumerateFiles(QList<QUrl> &files )
+bool EBook_CHM::enumerateFiles(QList<QUrl>& files )
 {
 	files.clear();
 	return chm_enumerate( m_chmFile, CHM_ENUMERATE_ALL, chm_enumerator_callback, &files );
@@ -816,13 +816,13 @@ QString EBook_CHM::currentEncoding() const
 	return m_currentEncoding;
 }
 
-bool EBook_CHM::setCurrentEncoding( const char * encoding )
+bool EBook_CHM::setCurrentEncoding( const char* encoding )
 {
 	m_currentEncoding = encoding;
 	return changeFileEncoding( encoding );
 }
 
-bool EBook_CHM::isSupportedUrl(const QUrl &url)
+bool EBook_CHM::isSupportedUrl(const QUrl& url)
 {
 	return url.scheme() == URL_SCHEME_CHM;
 }
@@ -906,9 +906,9 @@ void EBook_CHM::fillTopicsUrlMap()
 
 	for ( unsigned int i = 0; i < m_chmTOPICS.length; i += TOPICS_ENTRY_LEN )
 	{
-		unsigned int off_title = get_int32_le( (unsigned int *)(topics.data() + i + 4) );
-		unsigned int off_url = get_int32_le( (unsigned int *)(topics.data() + i + 8) );
-		off_url = get_int32_le( (unsigned int *)( urltbl.data() + off_url + 8) ) + 8;
+		unsigned int off_title = get_int32_le( (unsigned int*)(topics.data() + i + 4) );
+		unsigned int off_url = get_int32_le( (unsigned int*)(topics.data() + i + 8) );
+		off_url = get_int32_le( (unsigned int*)( urltbl.data() + off_url + 8) ) + 8;
 
 		QUrl url = pathToUrl( (const char*) urlstr.data() + off_url );
 
@@ -1059,7 +1059,7 @@ bool EBook_CHM::RecurseLoadBTOC( const QByteArray& tocidx,
 	return true;
 }
 
-bool EBook_CHM::hasOption(const QString & name) const
+bool EBook_CHM::hasOption(const QString& name) const
 {
 	if ( !m_envOptions.isEmpty() && m_envOptions.contains( name ) )
 		return true;
@@ -1067,7 +1067,7 @@ bool EBook_CHM::hasOption(const QString & name) const
 	return false;
 }
 
-QUrl EBook_CHM::pathToUrl(const QString &link) const
+QUrl EBook_CHM::pathToUrl(const QString& link) const
 {
 	if ( link.startsWith( "http://" ) || link.startsWith( "https://" ) )
 		return QUrl( link );
@@ -1095,7 +1095,7 @@ QUrl EBook_CHM::pathToUrl(const QString &link) const
 	return url;
 }
 
-QString EBook_CHM::urlToPath(const QUrl &link) const
+QString EBook_CHM::urlToPath(const QUrl& link) const
 {
 	if ( link.scheme() == URL_SCHEME_CHM )
 	{

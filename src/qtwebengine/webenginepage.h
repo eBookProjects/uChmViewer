@@ -40,13 +40,13 @@ class WebEnginePage : public QWebEnginePage
 
 	signals:
 		// This signal is emitted whenever the user clicks on a link.
-		void linkClicked( const QUrl &url );
+		void linkClicked( const QUrl& url );
 
 	public:
-		WebEnginePage(QObject *parent)
+		WebEnginePage(QObject* parent)
 			: QWebEnginePage( parent )
 		{
-			QWebEngineProfile *pf = profile();
+			QWebEngineProfile* pf = profile();
 			if ( pf->urlSchemeHandler( EBook_CHM::URL_SCHEME_CHM ) == NULL ) {
 				pf->installUrlSchemeHandler( EBook_CHM::URL_SCHEME_CHM, new DataProvider( pf ) );
 			}
@@ -55,7 +55,7 @@ class WebEnginePage : public QWebEnginePage
 				pf->installUrlSchemeHandler( EBook_EPUB::URL_SCHEME_EPUB, new DataProvider( pf ) );
 			}
 
-			connect( this, SIGNAL( linkHovered( const QString & ) ), this, SLOT( onLinkHovered( const QString & ) ) );
+			connect( this, SIGNAL( linkHovered( const QString& ) ), this, SLOT( onLinkHovered( const QString& ) ) );
 		}
 
 		~WebEnginePage()
@@ -63,7 +63,7 @@ class WebEnginePage : public QWebEnginePage
 		}
 
 		// Link click capture. This does not work for the right mouse button.
-		virtual bool acceptNavigationRequest( const QUrl &url, NavigationType type, bool isMainFrame ) override
+		virtual bool acceptNavigationRequest( const QUrl& url, NavigationType type, bool isMainFrame ) override
 		{
 #if PRINT_DEBUG
 			qDebug() << "[DEBUG] WebEnginePage::acceptNavigationRequest";
@@ -91,7 +91,7 @@ class WebEnginePage : public QWebEnginePage
 		 * The createWindow function is also used from JavaScript to create a new page, but this
 		 * does not work in this implementation.
 		 */
-		QWebEnginePage *createWindow( QWebEnginePage::WebWindowType type ) override
+		QWebEnginePage* createWindow( QWebEnginePage::WebWindowType type ) override
 		{
 #if PRINT_DEBUG
 			qDebug() << "[DEBUG] WebEnginePage::createWindow";
@@ -111,7 +111,7 @@ class WebEnginePage : public QWebEnginePage
 		}
 
 	protected slots:
-		void 	onLinkHovered( const QString &url )
+		void 	onLinkHovered( const QString& url )
 		{
 #if PRINT_DEBUG
 			qDebug() << "[DEBUG] WebEnginePage::linkHovered";

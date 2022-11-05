@@ -41,11 +41,11 @@ class ToolbarEditor : public QDialog, public Ui::ToolbarEditor
 		static bool	isSeparatorName( const QString& name );
 
 	public:
-		ToolbarEditor( QWidget *parent = 0 );
+		ToolbarEditor( QWidget* parent = 0 );
 		~ToolbarEditor();
 
 		// Add a toolbar to the list of toolbars to be editer
-		void	addToolbar( QToolBar * toolbar );
+		void	addToolbar( QToolBar* toolbar );
 
 		// Add toolbars to the list of toolbars to be editer
 		void	addToolbars( QList<QToolBar*> toolbars );
@@ -59,7 +59,7 @@ class ToolbarEditor : public QDialog, public Ui::ToolbarEditor
 		void	setAllowActionsWithoutIcons( bool allow );
 
 		// Returns a list of selected actions for a specific toolbar
-		QStringList	actionsForToolbar( QToolBar * toolbar );
+		QStringList	actionsForToolbar( QToolBar* toolbar );
 
 	public slots:
 		void	toolbarSelected( int index );
@@ -68,16 +68,16 @@ class ToolbarEditor : public QDialog, public Ui::ToolbarEditor
 
 	private:
 		friend class ActionListModel;
-		QAction * findAction( const QString& objectname ) const;
+		QAction* findAction( const QString& objectname ) const;
 
 		// Adds the existing toolbar actions into the internal storage
-		void	initToolbarActions( QToolBar * toolbar );
+		void	initToolbarActions( QToolBar* toolbar );
 
 		// Copies the changed toolbar actions from the list into the internal storage
-		void	updateToolbarActions( QToolBar * toolbar );
+		void	updateToolbarActions( QToolBar* toolbar );
 
 		// Shows the current toolbar actions in views
-		void	setupViews( QToolBar * toolbar );
+		void	setupViews( QToolBar* toolbar );
 
 	private:
 		// A list of all available actions
@@ -90,7 +90,7 @@ class ToolbarEditor : public QDialog, public Ui::ToolbarEditor
 		QMap< QToolBar*, QStringList >	m_selected;
 
 		// Currently shown actions for toolbar
-		QToolBar	*		m_activeToolbar;
+		QToolBar*			m_activeToolbar;
 
 		// Params
 		bool				m_allowActionsWithoutIcons;

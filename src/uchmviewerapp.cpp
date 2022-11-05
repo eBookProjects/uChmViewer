@@ -26,7 +26,7 @@
 #include "uchmviewerapp.h"
 
 
-UchmviewerApp::UchmviewerApp(int &argc, char **argv, int version)
+UchmviewerApp::UchmviewerApp(int& argc, char** argv, int version)
 	: QApplication(argc, argv, version)
 {
 }
@@ -50,11 +50,11 @@ bool UchmviewerApp::event(QEvent* ev)
 
 void UchmviewerApp::onTimer()
 {
-	MainWindow *main;
+	MainWindow* main;
 
-	foreach (QWidget *widget, QApplication::topLevelWidgets())
+	foreach (QWidget* widget, QApplication::topLevelWidgets())
 	{
-		main = dynamic_cast<MainWindow *>(widget);
+		main = dynamic_cast<MainWindow*>(widget);
 
 		if (main != 0)
 		{

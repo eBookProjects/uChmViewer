@@ -198,7 +198,7 @@ bool MainWindow::hasSameTokenInstance()
 			// Write the size first, then the string
 			if ( m_sharedMemory->lock() )
 			{
-				char * data = (char*) m_sharedMemory->data();
+				char* data = (char*) m_sharedMemory->data();
 				*((short*)data) = args.size();
 				memcpy( data + 2, args.data(), args.size() );
 
@@ -228,7 +228,7 @@ bool MainWindow::hasSameTokenInstance()
 	*((short*) m_sharedMemory->data()) = 0;
 
 	// Recheck every second
-	QTimer * timer = new QTimer( this );
+	QTimer* timer = new QTimer( this );
 	connect( timer, SIGNAL(timeout()), this, SLOT(checkForSharedMemoryMessage()));
 	timer->start(1000);
 	return false;
@@ -240,7 +240,7 @@ void MainWindow::checkForSharedMemoryMessage()
 	m_sharedMemory->lock();
 
 	// Is there any data?
-	char * data = (char*) m_sharedMemory->data();
+	char* data = (char*) m_sharedMemory->data();
 
 	if ( data[0] != 0 || data[1] != 0 )
 	{
@@ -259,7 +259,7 @@ void MainWindow::checkForSharedMemoryMessage()
 		parseCmdLineArgs( args, true );
 }
 
-bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
+bool MainWindow::loadFile ( const QString& loadFileName, bool call_open_page )
 {
 	QString fileName = loadFileName;
 
@@ -267,7 +267,7 @@ bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
 	if ( fileName.startsWith( "file://" ) )
 		fileName.remove( 0, 7 );
 
-	EBook * new_ebook = EBook::loadFile( fileName );
+	EBook* new_ebook = EBook::loadFile( fileName );
 
 	if ( new_ebook )
 	{
@@ -392,7 +392,7 @@ void MainWindow::refreshCurrentBrowser( )
 	m_navPanel->refresh();
 }
 
-void MainWindow::activateUrl( const QUrl & link )
+void MainWindow::activateUrl( const QUrl& link )
 {
 	if ( link.isEmpty() )
 		return;
@@ -441,7 +441,7 @@ bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 		return false; // do not change the current page.
 	}
 
-	ViewWindow * vwnd = currentBrowser();
+	ViewWindow* vwnd = currentBrowser();
 
 	if ( flags & OPF_NEW_TAB )
 	{
@@ -484,9 +484,9 @@ void MainWindow::setTextEncoding( const QString& encoding )
 	m_ebookFile->setCurrentEncoding( qPrintable( encoding ) );
 
 	// Find the appropriate encoding item in "Set encodings" menu
-	const QList<QAction *> encodings = m_encodingActions->actions();
+	const QList<QAction*> encodings = m_encodingActions->actions();
 
-	for ( QList<QAction *>::const_iterator it = encodings.begin();
+	for ( QList<QAction*>::const_iterator it = encodings.begin();
 	        it != encodings.end();
 	        ++it )
 	{
@@ -544,7 +544,7 @@ void MainWindow::closeFile( )
 	pConfig->save();
 }
 
-void MainWindow::closeEvent ( QCloseEvent * e )
+void MainWindow::closeEvent ( QCloseEvent* e )
 {
 	// Save the settings if we have something opened
 	if ( m_ebookFile )
@@ -686,7 +686,7 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args, bool from_another_app
 	return false;
 }
 
-ViewWindow *MainWindow::currentBrowser( ) const
+ViewWindow* MainWindow::currentBrowser( ) const
 {
 	return m_viewWindowMgr->current();
 }
@@ -701,12 +701,12 @@ void MainWindow::onOpenPageInNewBackgroundTab( )
 	openPage( currentBrowser()->getNewTabLink(), OPF_NEW_TAB | OPF_BACKGROUND );
 }
 
-void MainWindow::browserChanged(ViewWindow *newbrowser )
+void MainWindow::browserChanged(ViewWindow* newbrowser )
 {
 	m_navPanel->findUrlInContents( newbrowser->getOpenedPage() );
 }
 
-bool MainWindow::event( QEvent * e )
+bool MainWindow::event( QEvent* e )
 {
 	if ( e->type() == QEvent::User )
 		return handleUserEvent( (UserEvent*) e );
@@ -714,7 +714,7 @@ bool MainWindow::event( QEvent * e )
 	return QMainWindow::event( e );
 }
 
-bool MainWindow::handleUserEvent( const UserEvent * event )
+bool MainWindow::handleUserEvent( const UserEvent* event )
 {
 	if ( event->m_action == "loadAndOpen" )
 	{
@@ -799,7 +799,7 @@ void MainWindow::runAutoTest()
 	}
 }
 
-void MainWindow::showInStatusBar(const QString & text)
+void MainWindow::showInStatusBar(const QString& text)
 {
 	statusBar()->showMessage( text, 2000 );
 }
@@ -989,7 +989,7 @@ void MainWindow::actionViewHTMLsource()
 		if ( !m_ebookFile->getFileContentAsString( text, page ) || text.isEmpty() )
 			return;
 
-		QTextEdit * editor = new QTextEdit ( 0 );
+		QTextEdit* editor = new QTextEdit ( 0 );
 		editor->setPlainText( text );
 		editor->setWindowTitle( i18n("HTML source") );
 		editor->resize( 800, 600 );
@@ -1002,7 +1002,7 @@ void MainWindow::actionViewHTMLsource()
 		if ( !m_ebookFile->getFileContentAsBinary( rawText, page ) || rawText.isEmpty() )
 			return;
 
-		QTemporaryFile * tf = new QTemporaryFile();
+		QTemporaryFile* tf = new QTemporaryFile();
 		m_tempFileKeeper.append( tf );
 
 		if ( !tf->open() )
@@ -1186,7 +1186,7 @@ void MainWindow::setupActions()
 	connect( m_navPanel, SIGNAL(visibilityChanged(bool)), this, SLOT( navigatorVisibilityChanged(bool) ) );
 
 	// "What's this" action
-	QAction * whatsthis = QWhatsThis::createAction( this );
+	QAction* whatsthis = QWhatsThis::createAction( this );
 	menuHelp->addAction( whatsthis );
 	viewToolbar->addAction( whatsthis );
 
@@ -1327,7 +1327,7 @@ void MainWindow::actionOpenRecentFile( const QString& file )
 void MainWindow::setupLangEncodingMenu()
 {
 	// Create the language selection menu.
-	QMenu * encodings = new QMenu( this );
+	QMenu* encodings = new QMenu( this );
 
 	// Create the action group
 	m_encodingActions = new QActionGroup( this );
@@ -1338,7 +1338,7 @@ void MainWindow::setupLangEncodingMenu()
 
 	for ( int idx = 0; idx < qencodings.size(); idx++ )
 	{
-		QAction * action = new QAction( this );
+		QAction* action = new QAction( this );
 
 		QString text = i18n("%1 ( %2 )") .arg( languages[idx] ) .arg( qencodings[idx] );
 		action->setText( text );
@@ -1357,23 +1357,23 @@ void MainWindow::setupLangEncodingMenu()
 
 	// Connect the action group signal
 	connect( m_encodingActions,
-	         SIGNAL( triggered ( QAction * ) ),
+	         SIGNAL( triggered ( QAction* ) ),
 	         this,
-	         SLOT( actionEncodingChanged( QAction * ) ) );
+	         SLOT( actionEncodingChanged( QAction* ) ) );
 }
 
-void MainWindow::actionEncodingChanged( QAction * action )
+void MainWindow::actionEncodingChanged( QAction* action )
 {
 	QString encoding = action->data().toString();
 	setTextEncoding( encoding );
 }
 
-QMenu * MainWindow::tabItemsContextMenu()
+QMenu* MainWindow::tabItemsContextMenu()
 {
 	return m_contextMenu;
 }
 
-void MainWindow::setupPopupMenu( QMenu * menu )
+void MainWindow::setupPopupMenu( QMenu* menu )
 {
 	menu->addAction( action_Close_window );
 	menu->addSeparator();
@@ -1401,7 +1401,7 @@ bool MainWindow::hasIndex() const
 	return m_ebookFile && m_ebookFile->hasFeature( EBook::FEATURE_INDEX );
 }
 
-const QPixmap *MainWindow::getEBookIconPixmap(EBookTocEntry::Icon imagenum)
+const QPixmap* MainWindow::getEBookIconPixmap(EBookTocEntry::Icon imagenum)
 {
 	if ( m_builtinIcons[imagenum].isNull() )
 	{

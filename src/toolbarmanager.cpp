@@ -37,7 +37,7 @@ QString ToolbarManager::separatorName()
 	return ".separator.";
 }
 
-QString	ToolbarManager::actionName( QAction * action )
+QString	ToolbarManager::actionName( QAction* action )
 {
 	if ( action->isSeparator() )
 		return ToolbarManager::separatorName();
@@ -54,7 +54,7 @@ bool ToolbarManager::hasAction( const QList<QAction*>& actions, QAction* action 
 	return false;
 }
 
-ToolbarManager::ToolbarManager( QObject * parent, const QString& settingpath )
+ToolbarManager::ToolbarManager( QObject* parent, const QString& settingpath )
 	: QObject( parent )
 {
 	m_settingsRoot = settingpath;
@@ -69,7 +69,7 @@ void ToolbarManager::setAvailableActions( QList<QAction*> availableActions )
 	m_availableActions = availableActions;
 }
 
-void ToolbarManager::queryAvailableActions( QObject * source )
+void ToolbarManager::queryAvailableActions( QObject* source )
 {
 	m_availableActions.clear();
 
@@ -81,12 +81,12 @@ void ToolbarManager::queryAvailableActions( QObject * source )
 			m_availableActions.push_back( (QAction*) *it );
 }
 
-void ToolbarManager::addManaged( QToolBar * toolbar )
+void ToolbarManager::addManaged( QToolBar* toolbar )
 {
 	m_toolbars.push_back( toolbar );
 }
 
-void ToolbarManager::applyActions( QToolBar * toolbar, const QStringList& actions )
+void ToolbarManager::applyActions( QToolBar* toolbar, const QStringList& actions )
 {
 	// Apply the actions to the toolbar
 	toolbar->clear();
@@ -117,7 +117,7 @@ void ToolbarManager::load()
 
 	QSettings settings;
 
-	foreach( QToolBar * toolbar, m_toolbars )
+	foreach( QToolBar* toolbar, m_toolbars )
 	{
 		QString settingName = m_settingsRoot + toolbar->objectName();
 
@@ -133,7 +133,7 @@ void ToolbarManager::save()
 {
 	QSettings settings;
 
-	foreach( QToolBar * toolbar, m_toolbars )
+	foreach( QToolBar* toolbar, m_toolbars )
 	{
 		QString settingName = m_settingsRoot + toolbar->objectName();
 		QStringList names;
@@ -159,6 +159,6 @@ void ToolbarManager::editDialog()
 	if ( dlg.exec() == QDialog::Rejected )
 		return;
 
-	foreach( QToolBar * toolbar, m_toolbars )
+	foreach( QToolBar* toolbar, m_toolbars )
 		applyActions( toolbar, dlg.actionsForToolbar( toolbar ) );
 }

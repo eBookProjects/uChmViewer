@@ -27,7 +27,7 @@
 #include "recentfiles.h"
 
 
-RecentFiles::RecentFiles( QMenu * menu, QAction * before, int maxfiles, const QString& settingsname )
+RecentFiles::RecentFiles( QMenu* menu, QAction* before, int maxfiles, const QString& settingsname )
 {
 	if ( maxfiles < 1 )
 		qFatal( "RecentFiles::RecentFiles: maxfiles (%d) is < 1 ", maxfiles );
@@ -83,7 +83,7 @@ void RecentFiles::removeRecentFile( const QString& file )
 
 void RecentFiles::actionRecent()
 {
-	QAction *action = qobject_cast<QAction *>(sender());
+	QAction* action = qobject_cast<QAction*>(sender());
 
 	if ( action )
 		emit openRecentFile( action->data().toString() );

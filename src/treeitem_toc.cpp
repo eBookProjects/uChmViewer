@@ -29,7 +29,7 @@
 #include "mainwindow.h"	  // ::mainWindow
 
 
-TreeItem_TOC::TreeItem_TOC(QTreeWidgetItem *parent, QTreeWidgetItem *after, const QString &name, const QUrl &url, int image)
+TreeItem_TOC::TreeItem_TOC(QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image)
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
@@ -37,7 +37,7 @@ TreeItem_TOC::TreeItem_TOC(QTreeWidgetItem *parent, QTreeWidgetItem *after, cons
 	m_image = image;
 }
 
-TreeItem_TOC::TreeItem_TOC(QTreeWidget *parent, QTreeWidgetItem *after, const QString &name, const QUrl &url, int image)
+TreeItem_TOC::TreeItem_TOC(QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image)
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
@@ -50,7 +50,7 @@ QUrl TreeItem_TOC::getUrl() const
 	return m_url;
 }
 
-bool TreeItem_TOC::containstUrl(const QUrl &url, bool ignorefragment ) const
+bool TreeItem_TOC::containstUrl(const QUrl& url, bool ignorefragment ) const
 {
 	if ( ignorefragment )
 	{
@@ -108,7 +108,7 @@ QVariant TreeItem_TOC::data(int column, int role) const
 			else
 				imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 10 : m_image;
 
-			const QPixmap *pix = ::mainWindow->getEBookIconPixmap( (EBookTocEntry::Icon) imagenum );
+			const QPixmap* pix = ::mainWindow->getEBookIconPixmap( (EBookTocEntry::Icon) imagenum );
 
 			if ( !pix || pix->isNull() )
 				abort();

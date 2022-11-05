@@ -89,7 +89,7 @@ EBookSearch::~ EBookSearch()
 	delete m_Index;
 }
 
-bool EBookSearch::loadIndex( QDataStream & stream )
+bool EBookSearch::loadIndex( QDataStream& stream )
 {
 	delete m_Index;
 
@@ -97,7 +97,7 @@ bool EBookSearch::loadIndex( QDataStream & stream )
 	return m_Index->readDict( stream );
 }
 
-bool EBookSearch::generateIndex( EBook * ebookFile, QDataStream & stream )
+bool EBookSearch::generateIndex( EBook* ebookFile, QDataStream& stream )
 {
 	QList< QUrl > documents;
 	QList< QUrl > alldocuments;
@@ -144,7 +144,7 @@ void EBookSearch::cancelIndexGeneration()
 	m_Index->setLastWinClosed();
 }
 
-void EBookSearch::updateProgress(int value, const QString & stepName)
+void EBookSearch::updateProgress(int value, const QString& stepName)
 {
 	emit progressStep( value, stepName );
 }
@@ -156,7 +156,7 @@ void EBookSearch::processEvents()
 		qApp->processEvents( QEventLoop::ExcludeUserInputEvents );
 }
 
-bool EBookSearch::searchQuery(const QString & query, QList< QUrl > * results, EBook *ebookFile, unsigned int limit)
+bool EBookSearch::searchQuery(const QString& query, QList< QUrl >* results, EBook* ebookFile, unsigned int limit)
 {
 	// We should have index
 	if ( !m_Index )

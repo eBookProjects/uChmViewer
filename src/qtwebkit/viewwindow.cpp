@@ -46,7 +46,7 @@
 
 static const qreal ZOOM_FACTOR_CHANGE = 0.1;
 
-ViewWindow::ViewWindow( QWidget * parent )
+ViewWindow::ViewWindow( QWidget* parent )
 	: QWebView ( parent )
 {
 	invalidate();
@@ -93,9 +93,9 @@ bool ViewWindow::openUrl ( const QUrl& url )
 	return true;
 }
 
-void ViewWindow::applySettings(BrowserSettings &settings)
+void ViewWindow::applySettings(BrowserSettings& settings)
 {
-	QWebSettings * setup = QWebSettings::globalSettings();
+	QWebSettings* setup = QWebSettings::globalSettings();
 
 	setup->setAttribute( QWebSettings::AutoLoadImages, settings.enableImages );
 	setup->setAttribute( QWebSettings::JavascriptEnabled, settings.enableJS );
@@ -106,9 +106,9 @@ void ViewWindow::applySettings(BrowserSettings &settings)
 	setup->setAttribute( QWebSettings::LocalStorageEnabled, settings.enableLocalStorage );
 }
 
-QMenu * ViewWindow::createStandardContextMenu( QWidget * parent )
+QMenu* ViewWindow::createStandardContextMenu( QWidget* parent )
 {
-	QMenu * contextMenu = new QMenu( parent );
+	QMenu* contextMenu = new QMenu( parent );
 
 	contextMenu->addAction( "&Copy", ::mainWindow, SLOT(slotBrowserCopy()) );
 	contextMenu->addAction( "&Select all", ::mainWindow, SLOT(slotBrowserSelectAll()) );
@@ -116,7 +116,7 @@ QMenu * ViewWindow::createStandardContextMenu( QWidget * parent )
 	return contextMenu;
 }
 
-QMenu * ViewWindow::getContextMenu( const QUrl & link, QWidget * parent )
+QMenu* ViewWindow::getContextMenu( const QUrl& link, QWidget* parent )
 {
 	if ( link.isEmpty() )
 	{
@@ -245,7 +245,7 @@ void ViewWindow::updateHistoryIcons()
 	}
 }
 
-QUrl ViewWindow::anchorAt(const QPoint & pos)
+QUrl ViewWindow::anchorAt(const QPoint& pos)
 {
 	QWebHitTestResult res = page()->currentFrame()->hitTestContent( pos );
 
@@ -255,7 +255,7 @@ QUrl ViewWindow::anchorAt(const QPoint & pos)
 	return  res.linkUrl();
 }
 
-void ViewWindow::mouseReleaseEvent ( QMouseEvent * event )
+void ViewWindow::mouseReleaseEvent ( QMouseEvent* event )
 {
 	if ( event->button() == Qt::MidButton )
 	{
@@ -272,10 +272,10 @@ void ViewWindow::mouseReleaseEvent ( QMouseEvent * event )
 	QWebView::mouseReleaseEvent( event );
 }
 
-void ViewWindow::contextMenuEvent(QContextMenuEvent *e)
+void ViewWindow::contextMenuEvent(QContextMenuEvent* e)
 {
 	// From Qt Assistant
-	QMenu *m = new QMenu(0);
+	QMenu* m = new QMenu(0);
 	QUrl link = anchorAt( e->pos() );
 
 	if ( !link.isEmpty() )

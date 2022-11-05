@@ -31,7 +31,7 @@ class DialogSetup : public QDialog, public Ui::DialogSetup
 		Q_OBJECT
 
 	public:
-		DialogSetup( QWidget *parent = 0 );
+		DialogSetup( QWidget* parent = 0 );
 		~DialogSetup();
 
 	public slots:
