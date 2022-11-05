@@ -30,9 +30,11 @@
 - Sun Wukong, French.
 - Csaba Zakarias, Hungarian.
 - Emilio Scalise, Italian.
+- [Manuele Grueff](https://github.com/ShoresOfNowhere), Italian.
 - Ivan Bobrov, Russian.
 - George Yunaev, Russian.
 - [Daniel Nylander](https://github.com/yeager), Swedish.
 - [Furkan Duman](https://github.com/fduman), Turkish.
 - Ozan Çağlayan, Turkish.
 - Yatsenko Alexandr, Ukrainian.
+

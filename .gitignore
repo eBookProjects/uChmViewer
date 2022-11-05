@@ -1,0 +1,10 @@
+
+build/
+
+# Qt project files
+CMakeLists.txt.user*
+*.pro.user
+
+# KDev project files
+.kdev4
+*.kdev4
