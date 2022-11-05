@@ -146,21 +146,6 @@ QString ViewWindow::title() const
 	return title;
 }
 
-void ViewWindow::navigateForward()
-{
-	forward();
-}
-
-void ViewWindow::navigateBack( )
-{
-	back();
-}
-
-void ViewWindow::navigateHome( )
-{
-	::mainWindow->openPage( ::mainWindow->chmFile()->homeUrl() );
-}
-
 void ViewWindow::setTabKeeper( const QUrl& link )
 {
 	m_newTabLinkKeeper = link;

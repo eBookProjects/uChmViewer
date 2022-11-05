@@ -816,17 +816,18 @@ void MainWindow::showInStatusBar(const QString& text)
 
 void MainWindow::actionNavigateBack()
 {
-	currentBrowser()->navigateBack();
+	currentBrowser()->back();
 }
 
 void MainWindow::actionNavigateForward()
 {
-	currentBrowser()->navigateForward();
+	currentBrowser()->forward();
 }
 
 void MainWindow::actionNavigateHome()
 {
-	currentBrowser()->navigateHome();
+	if ( chmFile() )
+		openPage( chmFile()->homeUrl() );
 }
 
 void MainWindow::actionOpenFile()

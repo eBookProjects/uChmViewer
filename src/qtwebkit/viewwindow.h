@@ -88,11 +88,6 @@ class ViewWindow : public QWebView
 		//! Returns the window title
 		QString title() const;
 
-		//! Navigation stuff
-		void    navigateBack();
-		void    navigateHome();
-		void    navigateForward();
-
 		//! Keeps the tab URL between link following
 		void    setTabKeeper ( const QUrl& link );
 
