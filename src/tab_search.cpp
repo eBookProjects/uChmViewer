@@ -30,8 +30,9 @@
 #include <QPoint>
 #include <QProgressDialog>
 #include <QString>
-#include <Qt>				// Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
-                            // Qt::CustomContextMenu
+// Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
+// Qt::CustomContextMenu
+#include <Qt>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QUrl>

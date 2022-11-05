@@ -21,8 +21,9 @@
 #include <QList>
 #include <QString>
 #include <QStringList>
-#include <Qt>		   // Qt::DisplayRole, Qt::ForegroundRole, Qt::ToolTipRole, Qt::WhatsThisRole
-                       // Qt::red, Qt::lightGray
+// Qt::DisplayRole, Qt::ForegroundRole, Qt::ToolTipRole
+// Qt::WhatsThisRole, Qt::red, Qt::lightGray
+#include <Qt>
 #include <QtGlobal>	   // qPrintable, qWarning
 #include <QUrl>
 #include <QVariant>

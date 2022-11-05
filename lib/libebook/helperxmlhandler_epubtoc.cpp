@@ -20,8 +20,10 @@
 #include <QString>
 #include <QXmlAttributes>
 
-#include "helperxmlhandler_epubtoc.h"	// ebook.h -> EBookTocEntry
-                                        // ebook_epub.h -> EBook_EPUB
+// ebook.h -> EBookTocEntry
+// ebook_epub.h -> EBook_EPUB
+#include "helperxmlhandler_epubtoc.h"
+
 
 HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC(EBook_EPUB *epub)
 {

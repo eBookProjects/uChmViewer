@@ -23,8 +23,7 @@
 #include <QString>
 #include <QXmlDefaultHandler>
 
-#include "ebook_epub.h"	// ebook.h -> EBookTocEntry
-                        // EBook_EPUB
+#include "ebook_epub.h"	// EBook_EPUB, ebook.h -> EBookTocEntry
 
 class QXmlAttributes;
 

@@ -30,9 +30,9 @@
 #include <QUrl>
 
 #include "bitfiddle.h"				// UINT16ARRAY, UINT32ARRAY, get_int32_le
-#include "ebook_chm.h"				// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry
-                                    // chm_lib.h -> chmUnitInfo, LONGUINT64
-                                    // EBook_CHM, ParsedEntry
+// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry
+// chm_lib.h -> chmUnitInfo, LONGUINT64, EBook_CHM, ParsedEntry
+#include "ebook_chm.h"
 #include "ebook_chm_encoding.h"		// Ebook_CHM_Encoding
 #include "helper_entitydecoder.h"	// HelperEntityDecoder
 

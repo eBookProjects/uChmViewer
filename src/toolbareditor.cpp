@@ -26,9 +26,10 @@
 #include <QObject>			  // QObject::connect
 #include <QString>
 #include <QStringList>
-#include <Qt>				  // Qt::DecorationRole, Qt::DisplayRole, Qt::ToolTipRole
-                              // Qt::ItemIsDropEnabled,	Qt::ItemIsDragEnabled, Qt::ItemIsEnabled
-                              // Qt::ItemIsSelectable, Qt::DropAction, Qt::MoveAction, Qt::IgnoreAction
+// Qt::DecorationRole, Qt::DisplayRole, Qt::ToolTipRole
+// Qt::ItemIsDropEnabled,	Qt::ItemIsDragEnabled, Qt::ItemIsEnabled
+// Qt::ItemIsSelectable, Qt::DropAction, Qt::MoveAction, Qt::IgnoreAction
+#include <Qt>
 #include <QtGlobal>			  // qFatal
 #include <QToolBar>
 #include <QVariant>

@@ -36,8 +36,8 @@
 
 #include "zip.h"
 
-#include "ebook_epub.h"						// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry
-                                            // EBook_EPUB
+// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry, EBook_EPUB
+#include "ebook_epub.h"
 #include "helperxmlhandler_epubcontainer.h"	// HelperXmlHandler_EpubContainer
 #include "helperxmlhandler_epubcontent.h"	// HelperXmlHandler_EpubContent
 #include "helperxmlhandler_epubtoc.h"		// HelperXmlHandler_EpubTOC
