@@ -36,33 +36,33 @@ DialogSetup::DialogSetup(QWidget *parent)
 	: QDialog(parent), Ui::DialogSetup()
 {
 	setupUi( this );
-	
+
 	connect( btnBrowse, SIGNAL( clicked() ), this, SLOT( browseExternalEditor() ) );
-	
+
 	// Set up the parameters
 	switch ( pConfig->m_startupMode )
 	{
-		case Config::STARTUP_DO_NOTHING:
-			rbStartWithNothing->setChecked( true );
-			break;
+	case Config::STARTUP_DO_NOTHING:
+		rbStartWithNothing->setChecked( true );
+		break;
 
-		case Config::STARTUP_LOAD_LAST_FILE:
-			m_radioOnBeginOpenLast->setChecked( true );
-			break;
+	case Config::STARTUP_LOAD_LAST_FILE:
+		m_radioOnBeginOpenLast->setChecked( true );
+		break;
 
-		case Config::STARTUP_POPUP_OPENFILE:
-			m_radioOnBeginOpenDialog->setChecked( true );
-			break;
+	case Config::STARTUP_POPUP_OPENFILE:
+		m_radioOnBeginOpenDialog->setChecked( true );
+		break;
 	}
 
 	m_historySize->setValue ( pConfig->m_numOfRecentFiles );
 	m_rememberHistoryInfo->setChecked ( pConfig->m_HistoryStoreExtra );
-	
+
 	m_radioExtLinkOpenAlways->setChecked ( pConfig->m_onExternalLinkClick == Config::ACTION_ALWAYS_OPEN );
 	m_radioExtLinkAsk->setChecked ( pConfig->m_onExternalLinkClick == Config::ACTION_ASK_USER );
 	m_radioExtLinkOpenNever->setChecked ( pConfig->m_onExternalLinkClick == Config::ACTION_DONT_OPEN );
-    m_highlightSearchResults->setChecked( pConfig->browser.highlightSearchResults );
-	
+	m_highlightSearchResults->setChecked( pConfig->browser.highlightSearchResults );
+
 	m_radioNewChmOpenAlways->setChecked ( pConfig->m_onNewChmClick == Config::ACTION_ALWAYS_OPEN );
 	m_radioNewChmAsk->setChecked ( pConfig->m_onNewChmClick == Config::ACTION_ASK_USER );
 	m_radioNewChmOpenNever->setChecked ( pConfig->m_onNewChmClick == Config::ACTION_DONT_OPEN );
@@ -70,7 +70,7 @@ DialogSetup::DialogSetup(QWidget *parent)
 	m_advExternalProgramName->setText( pConfig->m_advExternalEditorPath );
 	m_advViewSourceExternal->setChecked ( !pConfig->m_advUseInternalEditor );
 	m_advViewSourceInternal->setChecked ( pConfig->m_advUseInternalEditor );
-	
+
 	m_numOfRecentFiles = pConfig->m_numOfRecentFiles;
 
 	boxAutodetectEncoding->setChecked( pConfig->m_advAutodetectEncoding );
@@ -83,40 +83,39 @@ DialogSetup::DialogSetup(QWidget *parent)
 	m_enablePlugins->setChecked( pConfig->browser.enablePlugins );
 	m_enableOfflineStorage->setChecked( pConfig->browser.enableOfflineStorage );
 	m_enableLocalStorage->setChecked( pConfig->browser.enableLocalStorage );
-    m_openAllTOCEntries->setChecked( pConfig->m_tocOpenAllEntries );
-    boxUseSingleClick->setChecked( pConfig->m_tabUseSingleClick );
+	m_openAllTOCEntries->setChecked( pConfig->m_tocOpenAllEntries );
+	boxUseSingleClick->setChecked( pConfig->m_tabUseSingleClick );
 
 #if defined (USE_WEBENGINE)
-    m_enableOfflineStorage->setChecked( false );
-    m_enableOfflineStorage->setEnabled( false );
-    m_enableJava->setChecked( false );
-    m_enableJava->setEnabled( false );
+	m_enableOfflineStorage->setChecked( false );
+	m_enableOfflineStorage->setEnabled( false );
+	m_enableJava->setChecked( false );
+	m_enableJava->setEnabled( false );
 #endif
 
 	switch ( pConfig->m_toolbarMode )
 	{
-		case Config::TOOLBAR_SMALLICONS:
-			rbToolbarSmall->setChecked( true );
-			break;
+	case Config::TOOLBAR_SMALLICONS:
+		rbToolbarSmall->setChecked( true );
+		break;
 
-		case Config::TOOLBAR_LARGEICONS:
-			rbToolbarLarge->setChecked( true );
-			break;
+	case Config::TOOLBAR_LARGEICONS:
+		rbToolbarLarge->setChecked( true );
+		break;
 
-		case Config::TOOLBAR_LARGEICONSTEXT:
-			rbToolbarLargeText->setChecked( true );
-			break;
+	case Config::TOOLBAR_LARGEICONSTEXT:
+		rbToolbarLargeText->setChecked( true );
+		break;
 
-		case Config::TOOLBAR_TEXTONLY:
-			rbToolbarText->setChecked( true );
-			break;
+	case Config::TOOLBAR_TEXTONLY:
+		rbToolbarText->setChecked( true );
+		break;
 	}
 }
 
 DialogSetup::~DialogSetup()
 {
 }
-
 
 static void inline Check_Need_Restart( QCheckBox * box, bool * confsetting, bool * need_restart )
 {
@@ -138,8 +137,8 @@ void DialogSetup::accept()
 
 	pConfig->m_numOfRecentFiles = m_historySize->value();
 	pConfig->m_HistoryStoreExtra = m_rememberHistoryInfo->isChecked();
-    pConfig->browser.highlightSearchResults = m_highlightSearchResults->isChecked();
-    pConfig->m_tocOpenAllEntries = m_openAllTOCEntries->isChecked();
+	pConfig->browser.highlightSearchResults = m_highlightSearchResults->isChecked();
+	pConfig->m_tocOpenAllEntries = m_openAllTOCEntries->isChecked();
 
 	if ( m_radioExtLinkOpenAlways->isChecked () )
 		pConfig->m_onExternalLinkClick = Config::ACTION_ALWAYS_OPEN;
@@ -155,7 +154,7 @@ void DialogSetup::accept()
 	else
 		pConfig->m_onNewChmClick = Config::ACTION_DONT_OPEN;
 
-		// Check the changes
+	// Check the changes
 	bool need_restart = false;
 
 	Check_Need_Restart( m_enableImages, &pConfig->browser.enableImages, &need_restart );
@@ -164,7 +163,7 @@ void DialogSetup::accept()
 	Check_Need_Restart( m_enablePlugins, &pConfig->browser.enablePlugins, &need_restart );
 	Check_Need_Restart( m_enableOfflineStorage, &pConfig->browser.enableOfflineStorage, &need_restart );
 	Check_Need_Restart( m_enableLocalStorage, &pConfig->browser.enableLocalStorage, &need_restart );
-    Check_Need_Restart( boxUseSingleClick, &pConfig->m_tabUseSingleClick, &need_restart );
+	Check_Need_Restart( boxUseSingleClick, &pConfig->m_tabUseSingleClick, &need_restart );
 
 	Config::ToolbarMode newmode;
 
@@ -186,32 +185,31 @@ void DialogSetup::accept()
 	pConfig->m_advExternalEditorPath = m_advExternalProgramName->text();
 	pConfig->m_advUseInternalEditor = m_advViewSourceExternal->isChecked();
 	pConfig->m_advUseInternalEditor = m_advViewSourceInternal->isChecked();
-		
+
 	if ( pConfig->m_numOfRecentFiles != m_numOfRecentFiles )
 		need_restart = true;
-	
+
 	// Autodetect encoding
 	Check_Need_Restart( boxAutodetectEncoding, &pConfig->m_advAutodetectEncoding, &need_restart );
 
 	// Layout direction management
 	bool layout_rl = boxLayoutDirectionRL->isChecked();
-	
+
 	if ( layout_rl != pConfig->m_advLayoutDirectionRL )
 	{
 		pConfig->m_advLayoutDirectionRL = layout_rl;
 		need_restart = true;
 	}
-		
+
 	pConfig->save();
-		
+
 	if ( need_restart )
 		QMessageBox::information( this,
-								  QCoreApplication::applicationName(),
-   								  i18n( "Changing those options requires restarting the application to take effect." )	);
+		                          QCoreApplication::applicationName(),
+		                          i18n( "Changing those options requires restarting the application to take effect." )	);
 
 	QDialog::accept();
 }
-
 
 void DialogSetup::browseExternalEditor()
 {
@@ -219,9 +217,9 @@ void DialogSetup::browseExternalEditor()
 	QString exec = KFileDialog::getOpenFileName( QUrl(), i18n("*|Executables"), this, i18n("Choose an editor executable"));
 #else
 	QString exec = QFileDialog::getOpenFileName(this,
-								i18n("Choose an editor executable"), 
-			   					QString(), 
-	  							i18n( "Executables (*)") );
+	                                            i18n("Choose an editor executable"),
+	                                            QString(),
+	                                            i18n( "Executables (*)") );
 #endif
 
 	if ( !exec.isEmpty() )

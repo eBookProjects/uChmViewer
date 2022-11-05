@@ -33,7 +33,7 @@ class Config
 			ACTION_ASK_USER,
 			ACTION_DONT_OPEN
 		};
-		
+
 		enum ToolbarMode
 		{
 			TOOLBAR_SMALLICONS,
@@ -41,7 +41,7 @@ class Config
 			TOOLBAR_LARGEICONSTEXT,
 			TOOLBAR_TEXTONLY
 		};
-		
+
 		enum StartupMode
 		{
 			STARTUP_DO_NOTHING,
@@ -60,20 +60,20 @@ class Config
 
 	public:
 		QString				m_lastOpenedDir;
-		
+
 		StartupMode			m_startupMode;
 		choose_action_t		m_onNewChmClick;
 		choose_action_t		m_onExternalLinkClick;
 		int					m_numOfRecentFiles;
 		bool				m_HistoryStoreExtra;
 		ToolbarMode			m_toolbarMode;
-		
+
 		BrowserSettings		browser;
 		bool				m_browserEnableRemoteContent;
 
-        bool                m_tocOpenAllEntries;
-        bool                m_tabUseSingleClick;
-		
+		bool                m_tocOpenAllEntries;
+		bool                m_tabUseSingleClick;
+
 		bool				m_advUseInternalEditor;
 		QString				m_advExternalEditorPath;
 		bool				m_advLayoutDirectionRL;

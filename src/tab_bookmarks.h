@@ -33,20 +33,20 @@ class QPoint;
 
 class TabBookmarks : public QWidget, public Ui::TabBookmarks
 {
-	Q_OBJECT
+		Q_OBJECT
 	public:
 		TabBookmarks( QWidget *parent );
-	
+
 		void 	createMenu( QMenu * menuBookmarks );
-		
+
 		void	restoreSettings ( const Settings::bookmark_saved_settings_t& settings );
 		void	saveSettings ( Settings::bookmark_saved_settings_t& settings );
 		void	invalidate();
 		void	focus();
-		
+
 	public slots:
 		void 	onAddBookmarkPressed ();
-	
+
 	private slots:
 		void	actionBookmarkActivated();
 		void	onDelBookmarkPressed( );

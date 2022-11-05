@@ -29,26 +29,26 @@ class QString;
 
 class DBusInterface : public QObject
 {
-	Q_OBJECT
-	Q_CLASSINFO("D-Bus Interface", "net.uchmviewer.application")
-			
+		Q_OBJECT
+		Q_CLASSINFO("D-Bus Interface", "net.uchmviewer.application")
+
 	public:
 		DBusInterface( QObject *parent = 0 );
 		~DBusInterface();
-		
+
 	public Q_SLOTS:
 		//! Loads a CHM file \a filename , and opens the URL \a url. Use URL "/" to open default homepage
 		Q_SCRIPTABLE void loadHelpFile( const QString& filename, const QString& url );
-	
+
 		//! Opens a specific \a url inside the loaded CHM file
 		Q_SCRIPTABLE void openPage( const QString& url );
-		
+
 		//! Tries to find word in index, opening the index window and scrolling it there
 		Q_SCRIPTABLE void guiFindInIndex( const QString& word );
-		
+
 		//! Executes a search in GUI. \a query contains the complete search query.
 		Q_SCRIPTABLE void guiSearchQuery( const QString& query );
-		
+
 		//! Executes a search; GUI is not involved and user sees nothing.
 		//! \a query contains the complete search query.
 		//! Returns a list of URLs, or empty array if nothing os

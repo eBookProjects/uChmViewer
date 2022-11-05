@@ -72,11 +72,11 @@ class EBook_EPUB : public EBook
 		virtual QUrl homeUrl() const;
 
 		/*!
-         * \brief Checks whether the specific feature is present in this file.
-         * \return true if it is available; false otherwise.
-         * \ingroup information
-         */
-        virtual bool  hasFeature( Feature code ) const;
+		 * \brief Checks whether the specific feature is present in this file.
+		 * \return true if it is available; false otherwise.
+		 * \ingroup information
+		 */
+		virtual bool  hasFeature( Feature code ) const;
 
 		/*!
 		 * \brief Parses and fills up the Table of Contents (TOC)

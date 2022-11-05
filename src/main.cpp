@@ -29,13 +29,13 @@
 
 #if defined USE_DBUS
 	#include <QDBusConnection>
-    #include "dbus_interface.h"	// SERVICE_NAME
+	#include "dbus_interface.h"	// SERVICE_NAME
 #endif
 
 #if defined USE_MAC_APP
-    #include "uchmviewerapp.h"
+	#include "uchmviewerapp.h"
 #else
-        typedef QApplication  UchmviewerApp;
+	typedef QApplication  UchmviewerApp;
 #endif
 
 MainWindow * mainWindow;
@@ -44,26 +44,26 @@ MainWindow * mainWindow;
 int main( int argc, char ** argv )
 {
 #if defined (USE_KDE)
-    K4AboutData aboutdata ( "uChmViewer",
-                           QByteArray(),
-                           ki18n("uChmViewer"),
-                           qPrintable( QString("%1.%2") .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) ),
-                           ki18n("CHM file viewer"),
-                           K4AboutData::License_GPL,
-                           ki18n("(c) 2004-2015 George Yunaev"),
-                           ki18n("Please report bugs to nicegorov@ya.com"),
-                           "https://github.com/u-235/uchmviewer",
-                           "");
+	K4AboutData aboutdata ( "uChmViewer",
+	                        QByteArray(),
+	                        ki18n("uChmViewer"),
+	                        qPrintable( QString("%1.%2") .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) ),
+	                        ki18n("CHM file viewer"),
+	                        K4AboutData::License_GPL,
+	                        ki18n("(c) 2004-2015 George Yunaev"),
+	                        ki18n("Please report bugs to nicegorov@ya.com"),
+	                        "https://github.com/u-235/uchmviewer",
+	                        "");
 
-    KCmdLineArgs::init( &aboutdata );
-    KApplication app;
+	KCmdLineArgs::init( &aboutdata );
+	KApplication app;
 #else
 	UchmviewerApp app( argc, argv );
 
 	app.addLibraryPath ( "qt-plugins" );
 #endif
 
-	app_i18n::init();	
+	app_i18n::init();
 
 	// Set data for QSettings
 	QCoreApplication::setOrganizationName("uChmViewer");
@@ -89,27 +89,27 @@ int main( int argc, char ** argv )
 #endif
 
 #if defined (USE_KDE)
-    // Because KDE insists of using its KCmdLineArgs class for argument processing, and does not let you just
-    // to use QCoreApplication::arguments(), it forces us to write two different process functions. To avoid this,
-    // we convert command-line options to arguments ourselves here.
-    QStringList arguments;
+	// Because KDE insists of using its KCmdLineArgs class for argument processing, and does not let you just
+	// to use QCoreApplication::arguments(), it forces us to write two different process functions. To avoid this,
+	// we convert command-line options to arguments ourselves here.
+	QStringList arguments;
 
-    for ( int i = 0; i < argc; i++ )
-        arguments << QString::fromUtf8( argv[i] );
+	for ( int i = 0; i < argc; i++ )
+		arguments << QString::fromUtf8( argv[i] );
 
-    mainWindow = new MainWindow( arguments );
+	mainWindow = new MainWindow( arguments );
 #else
-    mainWindow = new MainWindow( QCoreApplication::arguments() );
+	mainWindow = new MainWindow( QCoreApplication::arguments() );
 #endif
 
-    // If we already have the duplicate instance, the data has been already sent to it - quit now
-    if ( mainWindow->hasSameTokenInstance() )
-    {
-        return 0;
-    }
+	// If we already have the duplicate instance, the data has been already sent to it - quit now
+	if ( mainWindow->hasSameTokenInstance() )
+	{
+		return 0;
+	}
 
 	mainWindow->show();
-    mainWindow->launch();
+	mainWindow->launch();
 
 	app.connect( &app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()) );
 	return app.exec();

@@ -62,7 +62,7 @@ qint64 KCHMNetworkReply::readData(char *buffer, qint64 maxlen)
 
 	if (len)
 	{
-        memcpy(buffer, m_data.constData(), len);
+		memcpy(buffer, m_data.constData(), len);
 		m_data.remove(0, len);
 	}
 
@@ -71,7 +71,7 @@ qint64 KCHMNetworkReply::readData(char *buffer, qint64 maxlen)
 
 QByteArray KCHMNetworkReply::loadResource( const QUrl &url )
 {
-    //qDebug("loadResource %s", qPrintable(url.toString()) );
+	//qDebug("loadResource %s", qPrintable(url.toString()) );
 
 	// Retreive the data from ebook file
 	QByteArray buf;
@@ -81,20 +81,19 @@ QByteArray KCHMNetworkReply::loadResource( const QUrl &url )
 		qWarning( "Could not resolve file %s\n", qPrintable( url.toString() ) );
 
 	}
-	
+
 	QString mime = MimeHelper::mimeType( url, buf );
 
-    if ( mime == "text/html" || mime == "text/xhtml" || mime == "text/xml" )
-    {
-        QString header = QString( "%1; charset=%2")
-                .arg( mime )
-                .arg( ::mainWindow->chmFile()->currentEncoding() );
-        setHeader( QNetworkRequest::ContentTypeHeader, header );
-    }
+	if ( mime == "text/html" || mime == "text/xhtml" || mime == "text/xml" )
+	{
+		QString header = QString( "%1; charset=%2")
+		                 .arg( mime )
+		                 .arg( ::mainWindow->chmFile()->currentEncoding() );
+		setHeader( QNetworkRequest::ContentTypeHeader, header );
+	}
 
 	return buf;
 }
-
 
 KCHMNetworkAccessManager::KCHMNetworkAccessManager( QObject *parent )
 	: QNetworkAccessManager(parent)
@@ -103,7 +102,7 @@ KCHMNetworkAccessManager::KCHMNetworkAccessManager( QObject *parent )
 
 QNetworkReply * KCHMNetworkAccessManager::createRequest( Operation op, const QNetworkRequest &request, QIODevice *outgoingData )
 {
-    //qDebug("KCHMNetworkAccessManager::createRequest %s", qPrintable( request.url().toString()) );
+	//qDebug("KCHMNetworkAccessManager::createRequest %s", qPrintable( request.url().toString()) );
 
 	if ( ::mainWindow->chmFile()->isSupportedUrl( request.url() ) )
 		return new KCHMNetworkReply( request, request.url() );

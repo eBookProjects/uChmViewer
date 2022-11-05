@@ -87,30 +87,30 @@ MainWindow::MainWindow( const QStringList& arguments )
 {
 	const unsigned int SPLT_X_SIZE = 300;
 
-    m_arguments = arguments;
+	m_arguments = arguments;
 
 	// Delete the pointer when the window is closed
 	setAttribute( Qt::WA_DeleteOnClose );
-	
+
 	// UIC stuff
 	setupUi( this );
-	
+
 	// Set up layout direction
 	if ( pConfig->m_advLayoutDirectionRL )
 		qApp->setLayoutDirection( Qt::RightToLeft );
 	else
 		qApp->setLayoutDirection( Qt::LeftToRight );
-	
+
 	m_ebookFile = 0;
 	m_autoteststate = STATE_OFF;
-    m_sharedMemory = 0;
+	m_sharedMemory = 0;
 
 	m_currentSettings = new Settings();
-		
+
 	// Create the view window, which is a central widget
 	m_viewWindowMgr = new ViewWindowMgr( this );
 	setCentralWidget( m_viewWindowMgr );
-	
+
 	// Create a navigation panel
 	m_navPanel = new NavigationPanel( this );
 
@@ -133,7 +133,7 @@ MainWindow::MainWindow( const QStringList& arguments )
 	setupLangEncodingMenu();
 
 	// Resize main window and dock
-    resize( WINDOW_DEFAULT_X_SIZE, WINDOW_DEFAULT_Y_SIZE );
+	resize( WINDOW_DEFAULT_X_SIZE, WINDOW_DEFAULT_Y_SIZE );
 	m_navPanel->resize( SPLT_X_SIZE, m_navPanel->height() );
 
 	statusBar()->show();
@@ -158,105 +158,105 @@ MainWindow::~MainWindow()
 	while ( !m_tempFileKeeper.isEmpty() )
 		delete m_tempFileKeeper.takeFirst();
 
-    delete m_sharedMemory;
+	delete m_sharedMemory;
 }
 
 void MainWindow::launch()
 {
-    QTimer::singleShot( 0, this, SLOT( firstShow()) );
+	QTimer::singleShot( 0, this, SLOT( firstShow()) );
 }
 
 bool MainWindow::hasSameTokenInstance()
 {
-    // Find out if token has been specified as this would mean we're running in a single instance mode
-    QString token;
+	// Find out if token has been specified as this would mean we're running in a single instance mode
+	QString token;
 
-    // argv[0] in Qt is still a program name
-    for ( int i = 1; i < m_arguments.size(); i++  )
-    {
-        // This is not bulletproof (think -showPage -token) but this is not likely to happen
-        if ( m_arguments[i] == "-token")
-        {
-            token = m_arguments[++i];
-            break;
-        }
-    }
+	// argv[0] in Qt is still a program name
+	for ( int i = 1; i < m_arguments.size(); i++  )
+	{
+		// This is not bulletproof (think -showPage -token) but this is not likely to happen
+		if ( m_arguments[i] == "-token")
+		{
+			token = m_arguments[++i];
+			break;
+		}
+	}
 
-    if ( token.isEmpty() )
-        return false;
+	if ( token.isEmpty() )
+		return false;
 
-    m_sharedMemory = new QSharedMemory( token );
+	m_sharedMemory = new QSharedMemory( token );
 
-    // If we can attach to it, the segment already exists
-    if ( m_sharedMemory->attach() )
-    {
-        // Another instance exists; send the command-line there
-        QByteArray args = m_arguments.join("|").toLocal8Bit();
+	// If we can attach to it, the segment already exists
+	if ( m_sharedMemory->attach() )
+	{
+		// Another instance exists; send the command-line there
+		QByteArray args = m_arguments.join("|").toLocal8Bit();
 
-        if ( args.size() < SHARED_MEMORY_SIZE - 2 )
-        {
-            // Write the size first, then the string
-            if ( m_sharedMemory->lock() )
-            {
-                char * data = (char*) m_sharedMemory->data();
-                *((short*)data) = args.size();
-                memcpy( data + 2, args.data(), args.size() );
+		if ( args.size() < SHARED_MEMORY_SIZE - 2 )
+		{
+			// Write the size first, then the string
+			if ( m_sharedMemory->lock() )
+			{
+				char * data = (char*) m_sharedMemory->data();
+				*((short*)data) = args.size();
+				memcpy( data + 2, args.data(), args.size() );
 
-                m_sharedMemory->unlock();
-            }
-            else
-                qDebug("failed to lock");
-        }
+				m_sharedMemory->unlock();
+			}
+			else
+				qDebug("failed to lock");
+		}
 
-        // Clean up
-        delete m_sharedMemory;
-        m_sharedMemory = 0;
+		// Clean up
+		delete m_sharedMemory;
+		m_sharedMemory = 0;
 
-        return true;
-    }
+		return true;
+	}
 
-    // Create a new segment
-    if ( !m_sharedMemory->create( SHARED_MEMORY_SIZE ) )
-    {
-        QMessageBox::critical( 0,
-                               i18n("Shared memory segment failed"),
-                               i18n("Failed to create a shared memory segment: %1").arg( m_sharedMemory->errorString()) );
-        return false;
-    }
+	// Create a new segment
+	if ( !m_sharedMemory->create( SHARED_MEMORY_SIZE ) )
+	{
+		QMessageBox::critical( 0,
+		                       i18n("Shared memory segment failed"),
+		                       i18n("Failed to create a shared memory segment: %1").arg( m_sharedMemory->errorString()) );
+		return false;
+	}
 
-    // Set it up so our checker knows there's no data yet
-    *((short*) m_sharedMemory->data()) = 0;
+	// Set it up so our checker knows there's no data yet
+	*((short*) m_sharedMemory->data()) = 0;
 
-    // Recheck every second
-    QTimer * timer = new QTimer( this );
-    connect( timer, SIGNAL(timeout()), this, SLOT(checkForSharedMemoryMessage()));
-    timer->start(1000);
-    return false;
+	// Recheck every second
+	QTimer * timer = new QTimer( this );
+	connect( timer, SIGNAL(timeout()), this, SLOT(checkForSharedMemoryMessage()));
+	timer->start(1000);
+	return false;
 }
 
 void MainWindow::checkForSharedMemoryMessage()
 {
-    QStringList args;
-    m_sharedMemory->lock();
+	QStringList args;
+	m_sharedMemory->lock();
 
-    // Is there any data?
-    char * data = (char*) m_sharedMemory->data();
+	// Is there any data?
+	char * data = (char*) m_sharedMemory->data();
 
-    if ( data[0] != 0 || data[1] != 0 )
-    {
-        // Get the message length and the message
-        short len = *((short*) data);
-        args = QString::fromLocal8Bit( data + 2, len ).split( "|" );
+	if ( data[0] != 0 || data[1] != 0 )
+	{
+		// Get the message length and the message
+		short len = *((short*) data);
+		args = QString::fromLocal8Bit( data + 2, len ).split( "|" );
 
-        // Clean up
-        *((short*) data) = 0;
-    }
+		// Clean up
+		*((short*) data) = 0;
+	}
 
-    m_sharedMemory->unlock();
+	m_sharedMemory->unlock();
 
-    // And process it if we find anything
-    if ( !args.isEmpty() )
-        parseCmdLineArgs( args, true );
+	// And process it if we find anything
+	if ( !args.isEmpty() )
+		parseCmdLineArgs( args, true );
 }
 
 bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
@@ -266,9 +266,9 @@ bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
 	// Strip file:// prefix if any
 	if ( fileName.startsWith( "file://" ) )
 		fileName.remove( 0, 7 );
-			
+
 	EBook * new_ebook = EBook::loadFile( fileName );
-	
+
 	if ( new_ebook )
 	{
 		// The new file is opened, so we can close the old one
@@ -277,21 +277,21 @@ bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
 			closeFile( );
 			delete m_ebookFile;
 		}
-	
+
 		m_ebookFile = new_ebook;
 		updateActions();
-		
+
 		// Show current encoding in status bar
 		if ( m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
 			showInStatusBar( i18n("Detected file encoding: %1 ( %2 )")
-							 .arg( TextEncodings::languageForCodec( m_ebookFile->currentEncoding() ))
-							 .arg( m_ebookFile->currentEncoding() ) );
+			                 .arg( TextEncodings::languageForCodec( m_ebookFile->currentEncoding() ))
+			                 .arg( m_ebookFile->currentEncoding() ) );
 
 		// Make the file name absolute; we'll need it later
 		QDir qd;
 		qd.setPath (fileName);
 		m_ebookFilename = qd.absolutePath();
-		
+
 		// Qt's 'dirname' does not work well
 		QFileInfo qf ( m_ebookFilename );
 		pConfig->m_lastOpenedDir = qf.dir().path();
@@ -309,10 +309,10 @@ bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
 
 		m_viewWindowMgr->invalidate();
 
-        // If the e-book supports encodings, below will be a call to setTextEncoding,
-        // which in turn will call refreshCurrentBrowser.
-        if ( !m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
-            refreshCurrentBrowser();
+		// If the e-book supports encodings, below will be a call to setTextEncoding,
+		// which in turn will call refreshCurrentBrowser.
+		if ( !m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
+			refreshCurrentBrowser();
 
 		if ( m_currentSettings->loadSettings (fileName) )
 		{
@@ -320,16 +320,16 @@ bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
 				setTextEncoding(m_currentSettings->m_activeEncoding );
 
 			m_navPanel->applySettings( m_currentSettings );
-			
+
 			if ( call_open_page )
 			{
 				m_viewWindowMgr->restoreSettings( m_currentSettings->m_viewwindows );
 				m_viewWindowMgr->setCurrentPage( m_currentSettings->m_activetabwindow );
-				
+
 				if ( m_ebookFile->hasFeature( EBook::FEATURE_TOC ) )
 					actionLocateInContentsTab();
 			}
-			
+
 			// Restore the main window size
 			resize( m_currentSettings->m_window_size_x, m_currentSettings->m_window_size_y );
 			m_navPanel->resize( m_currentSettings->m_window_size_splitter, m_navPanel->height() );
@@ -346,8 +346,8 @@ bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
 				openPage( m_ebookFile->homeUrl() );
 		}
 
-        // Disable the menu if ebook format doesn't support encoding changes
-        view_Set_encoding_action->setEnabled( m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) );
+		// Disable the menu if ebook format doesn't support encoding changes
+		view_Set_encoding_action->setEnabled( m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) );
 
 		if ( m_recentFiles )
 			m_recentFiles->setCurrentFile( m_ebookFilename );
@@ -357,42 +357,40 @@ bool MainWindow::loadFile ( const QString &loadFileName, bool call_open_page )
 	else
 	{
 		QMessageBox mbox(
-				i18n("%1 - failed to load the chm file") . arg(QCoreApplication::applicationName() ),
-				i18n("Unable to load the chm file %1") . arg(fileName), 
-				QMessageBox::Critical, 
-				QMessageBox::Ok, 
-				Qt::NoButton, 
-				Qt::NoButton);
+		    i18n("%1 - failed to load the chm file") . arg(QCoreApplication::applicationName() ),
+		    i18n("Unable to load the chm file %1") . arg(fileName),
+		    QMessageBox::Critical,
+		    QMessageBox::Ok,
+		    Qt::NoButton,
+		    Qt::NoButton);
 		mbox.exec();
-		
-		statusBar()->showMessage( 
-				i18n("Could not load file %1").arg(fileName),
-				2000 );
+
+		statusBar()->showMessage(
+		    i18n("Could not load file %1").arg(fileName),
+		    2000 );
 
 		return false;
 	}
 }
 
-
 void MainWindow::refreshCurrentBrowser( )
 {
 	QString title = m_ebookFile->title();
-	
+
 	if ( title.isEmpty() )
 		title = QCoreApplication::applicationName();
-	// KDE adds application name automatically, so we don't need it here	
+	// KDE adds application name automatically, so we don't need it here
 #if !defined (USE_KDE)
 	else
 		title = (QString) QCoreApplication::applicationName() + " - " + title;
-#endif	
-	
+#endif
+
 	setWindowTitle( title );
-	
+
 	currentBrowser()->invalidate();
-	
+
 	m_navPanel->refresh();
 }
-
 
 void MainWindow::activateUrl( const QUrl & link )
 {
@@ -409,11 +407,10 @@ void MainWindow::activateUrl( const QUrl & link )
 		openPage( link, OPF_CONTENT_TREE );
 }
 
-
 bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 {
 	QString otherlink;
-	
+
 	// Feed to the browser all non-internal URLs
 	if ( !m_ebookFile->isSupportedUrl( url  ) )
 	{
@@ -423,15 +420,15 @@ bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 			break;
 
 		case Config::ACTION_ASK_USER:
-	   		if ( QMessageBox::question(this,
-				 i18n("%1 - remote link clicked - %2") . arg(QCoreApplication::applicationName()) . arg(otherlink),
-				 i18n("A remote link %1 will start the external program to open it.\n\nDo you want to continue?").arg( url.toString() ),
-				 i18n("&Yes"), i18n("&No"),
-				 QString(), 0, 1 ) )
-					return false;
-				
-			// no break! should continue to open.
-			//-fallthrough
+			if ( QMessageBox::question(this,
+			                           i18n("%1 - remote link clicked - %2") . arg(QCoreApplication::applicationName()) . arg(otherlink),
+			                           i18n("A remote link %1 will start the external program to open it.\n\nDo you want to continue?").arg( url.toString() ),
+			                           i18n("&Yes"), i18n("&No"),
+			                           QString(), 0, 1 ) )
+				return false;
+
+		// no break! should continue to open.
+		//-fallthrough
 		case Config::ACTION_ALWAYS_OPEN:
 #if defined (USE_KDE)
 			new KRun ( url, 0 );
@@ -444,15 +441,15 @@ bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 		return false; // do not change the current page.
 	}
 
-    ViewWindow * vwnd = currentBrowser();
+	ViewWindow * vwnd = currentBrowser();
 
 	if ( flags & OPF_NEW_TAB )
-    {
-        qreal zoom = currentBrowser()->zoomFactor();
+	{
+		qreal zoom = currentBrowser()->zoomFactor();
 		vwnd = m_viewWindowMgr->addNewTab( !(flags & OPF_BACKGROUND) );
-        vwnd->setZoomFactor( zoom );
-    }
-	
+		vwnd->setZoomFactor( zoom );
+	}
+
 	if ( vwnd->openUrl (url) )
 	{
 		// Open all the tree items to show current item (if needed)
@@ -463,54 +460,52 @@ bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 	// Focus on the view window so keyboard scroll works; do not do it for the background tabs
 	if ( (flags & OPF_BACKGROUND) == 0 )
 		vwnd->setFocus( Qt::OtherFocusReason );
-	
+
 	return true;
 }
 
-
 void MainWindow::firstShow()
 {
-    if ( !parseCmdLineArgs( m_arguments ) )
+	if ( !parseCmdLineArgs( m_arguments ) )
 	{
 		if ( m_recentFiles && pConfig->m_startupMode == Config::STARTUP_LOAD_LAST_FILE && !m_recentFiles->latestFile().isEmpty() )
 		{
 			loadFile( m_recentFiles->latestFile() );
 			return;
 		}
-		
+
 		if ( pConfig->m_startupMode == Config::STARTUP_POPUP_OPENFILE )
 			actionOpenFile();
 	}
 }
 
-
 void MainWindow::setTextEncoding( const QString& encoding )
 {
 	m_ebookFile->setCurrentEncoding( qPrintable( encoding ) );
-	
+
 	// Find the appropriate encoding item in "Set encodings" menu
 	const QList<QAction *> encodings = m_encodingActions->actions();
-	
+
 	for ( QList<QAction *>::const_iterator it = encodings.begin();
-	      it != encodings.end();
-	      ++it )
+	        it != encodings.end();
+	        ++it )
 	{
 		if ( (*it)->data().toString() == encoding  )
 		{
 			if ( !(*it)->isChecked() )
 				(*it)->setChecked( true );
-			
+
 			break;
 		}
 	}
-	
+
 	// Because updateView() will call view->invalidate(), which clears the view->getOpenedPage(),
 	// we have to make a copy of it.
 	QUrl url = currentBrowser()->getOpenedPage();
-	
-	// Regenerate the content and index trees	
+
+	// Regenerate the content and index trees
 	refreshCurrentBrowser();
-	
+
 	currentBrowser()->openUrl( url );
 }
 
@@ -523,18 +518,18 @@ void MainWindow::closeFile( )
 			m_currentSettings->m_activeEncoding = m_ebookFile->currentEncoding();
 
 		m_currentSettings->m_activetabwindow = m_viewWindowMgr->currentPageIndex( );
-		
+
 		m_currentSettings->m_window_size_x = width();
 		m_currentSettings->m_window_size_y = height();
 
 #ifdef Q_OS_WIN
-        // On Windows if the window is maximised or minimized, the WM will not restore positions/state,
-        // so we reset to default size
-        if ( isMaximized() || isMinimized() )
-        {
-            m_currentSettings->m_window_size_x = WINDOW_DEFAULT_X_SIZE;
-            m_currentSettings->m_window_size_y = WINDOW_DEFAULT_Y_SIZE;
-        }
+		// On Windows if the window is maximised or minimized, the WM will not restore positions/state,
+		// so we reset to default size
+		if ( isMaximized() || isMinimized() )
+		{
+			m_currentSettings->m_window_size_x = WINDOW_DEFAULT_X_SIZE;
+			m_currentSettings->m_window_size_y = WINDOW_DEFAULT_Y_SIZE;
+		}
 #endif
 
 		m_currentSettings->m_window_size_splitter = m_navPanel->width();
@@ -545,10 +540,9 @@ void MainWindow::closeFile( )
 
 		m_currentSettings->saveSettings( );
 	}
-	
+
 	pConfig->save();
 }
-
 
 void MainWindow::closeEvent ( QCloseEvent * e )
 {
@@ -568,80 +562,80 @@ void MainWindow::closeEvent ( QCloseEvent * e )
 
 void MainWindow::printHelpAndExit()
 {
-    fprintf (stderr, "Usage: %s [options] [helpfile]\n"
-            "    The following options supported:\n"
-            "  -showPage <url>   opens the url in the help file\n"
-            "  -index <text>     searches for text in the Index tab\n"
-            "  -search <query>   searches for query in the Search tab, and activate the first entry if found\n"
-            "  -token <token>    specifies the application token; see the integration reference\n"
-            "  -background       start minimized\n"
-             , qPrintable( m_arguments[0] ) );
+	fprintf (stderr, "Usage: %s [options] [helpfile]\n"
+	         "    The following options supported:\n"
+	         "  -showPage <url>   opens the url in the help file\n"
+	         "  -index <text>     searches for text in the Index tab\n"
+	         "  -search <query>   searches for query in the Search tab, and activate the first entry if found\n"
+	         "  -token <token>    specifies the application token; see the integration reference\n"
+	         "  -background       start minimized\n"
+	         , qPrintable( m_arguments[0] ) );
 
-    exit (1);
+	exit (1);
 }
 
-bool MainWindow::parseCmdLineArgs(const QStringList& args , bool from_another_app )
+bool MainWindow::parseCmdLineArgs(const QStringList& args, bool from_another_app )
 {
-    QString filename, search_query, search_index, open_url, search_toc;
-    bool do_autotest = false, force_background = false;
+	QString filename, search_query, search_index, open_url, search_toc;
+	bool do_autotest = false, force_background = false;
 
 	// argv[0] in Qt is still a program name
-    for ( int i = 1; i < args.size(); i++  )
+	for ( int i = 1; i < args.size(); i++  )
 	{
-        if ( args[i] == "-h" || args[i] == "--help" )
-            printHelpAndExit();
-        else if ( args[i] == "--autotestmode" || args[i] == "--shortautotestmode" )
+		if ( args[i] == "-h" || args[i] == "--help" )
+			printHelpAndExit();
+		else if ( args[i] == "--autotestmode" || args[i] == "--shortautotestmode" )
 			do_autotest = true;
-        else if ( args[i] == "--search" || args[i] == "-search" )
-            search_query = args[++i];
-        else if ( args[i] == "--sindex" || args[i] == "-index" )
-            search_index = args[++i];
-        else if ( args[i] == "--stoc" )
-            search_toc = args[++i];
-        else if ( args[i] == "-token" )
-            i++; // ignore
-        else if ( args[i] == "-background" )
-            force_background = true;
-        else if ( args[i] == "-v" || args[i] == "--version" )
-        {
-            printf("uChmViewer version %d.%d built at %s %s\n", APP_VERSION_MAJOR, APP_VERSION_MINOR, __DATE__, __TIME__ );
-            exit( 0 );
-        }
-        else if ( args[i] == "--url" || args[i] == "-showPage" )
-            open_url = args[++i];
+		else if ( args[i] == "--search" || args[i] == "-search" )
+			search_query = args[++i];
+		else if ( args[i] == "--sindex" || args[i] == "-index" )
+			search_index = args[++i];
+		else if ( args[i] == "--stoc" )
+			search_toc = args[++i];
+		else if ( args[i] == "-token" )
+			i++; // ignore
+		else if ( args[i] == "-background" )
+			force_background = true;
+		else if ( args[i] == "-v" || args[i] == "--version" )
+		{
+			printf("uChmViewer version %d.%d built at %s %s\n", APP_VERSION_MAJOR, APP_VERSION_MINOR, __DATE__, __TIME__ );
+			exit( 0 );
+		}
+		else if ( args[i] == "--url" || args[i] == "-showPage" )
+			open_url = args[++i];
 		else
-        {
-            if ( filename.isEmpty() )
-                filename = args[i];
-            else
-            {
-                // Don't quit just because wrong CL was passed
-                if ( from_another_app )
-                    return false;
+		{
+			if ( filename.isEmpty() )
+				filename = args[i];
+			else
+			{
+				// Don't quit just because wrong CL was passed
+				if ( from_another_app )
+					return false;
 
-                fprintf (stderr, "Invalid command-line option %s (ebook filename is already specified as %s)\n",
-                         qPrintable( filename ), qPrintable( args[i] ) );
+				fprintf (stderr, "Invalid command-line option %s (ebook filename is already specified as %s)\n",
+				         qPrintable( filename ), qPrintable( args[i] ) );
 
-                printHelpAndExit();
-            }
-        }
+				printHelpAndExit();
+			}
+		}
 	}
 
-    // Opening the file?
+	// Opening the file?
 	if ( !filename.isEmpty() )
 	{
-        // If we have already opened the same file, no need to reopen it again
-        if ( !m_ebookFile || QDir(m_ebookFilename) != QDir(filename) )
-        {
-            if ( !loadFile( filename ) )
-                return true; // skip the latest checks, but do not exit from the program
-        }
+		// If we have already opened the same file, no need to reopen it again
+		if ( !m_ebookFile || QDir(m_ebookFilename) != QDir(filename) )
+		{
+			if ( !loadFile( filename ) )
+				return true; // skip the latest checks, but do not exit from the program
+		}
 
 		if ( !open_url.isEmpty() )
 		{
 			QStringList event_args;
-            event_args.push_back( m_ebookFile->pathToUrl(open_url).toString() );
-            qApp->postEvent( this, new UserEvent( "openPage", event_args ) );
+			event_args.push_back( m_ebookFile->pathToUrl(open_url).toString() );
+			qApp->postEvent( this, new UserEvent( "openPage", event_args ) );
 		}
 		else if ( !search_index.isEmpty() )
 		{
@@ -661,7 +655,7 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args , bool from_another_ap
 			event_args.push_back( search_toc );
 			qApp->postEvent( this, new UserEvent( "findInToc", event_args ) );
 		}
-		
+
 		if ( do_autotest )
 		{
 			if ( filename.isEmpty() )
@@ -672,23 +666,23 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args , bool from_another_ap
 			runAutoTest();
 		}
 
-        if ( force_background )
-            showMinimized();
-        else if ( from_another_app )
-        {
-            // On Windows it is not possible to activate the window of a non-active process. From MSDN:
-            // https://msdn.microsoft.com/en-us/library/windows/desktop/ms633539%28v=vs.85%29.aspx
-            //
-            // An application cannot force a window to the foreground while the user is working with another window.
-            // Instead, Windows flashes the taskbar button of the window to notify the user.
-            activateWindow();
-            raise();
-            show();
-        }
+		if ( force_background )
+			showMinimized();
+		else if ( from_another_app )
+		{
+			// On Windows it is not possible to activate the window of a non-active process. From MSDN:
+			// https://msdn.microsoft.com/en-us/library/windows/desktop/ms633539%28v=vs.85%29.aspx
+			//
+			// An application cannot force a window to the foreground while the user is working with another window.
+			// Instead, Windows flashes the taskbar button of the window to notify the user.
+			activateWindow();
+			raise();
+			show();
+		}
 
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -716,7 +710,7 @@ bool MainWindow::event( QEvent * e )
 {
 	if ( e->type() == QEvent::User )
 		return handleUserEvent( (UserEvent*) e );
-	
+
 	return QMainWindow::event( e );
 }
 
@@ -726,24 +720,24 @@ bool MainWindow::handleUserEvent( const UserEvent * event )
 	{
 		if ( event->m_args.size() != 1 && event->m_args.size() != 2 )
 			qFatal("handleUserEvent: event loadAndOpen must receive 1 or 2 args");
-		
+
 		QString chmfile = event->m_args[0];
 		QString openurl = event->m_args.size() > 1 ? event->m_args[1] : "/";
-				
+
 		return loadFile( chmfile, false ) && openPage( openurl );
 	}
 	else if ( event->m_action == "openPage" )
 	{
 		if ( event->m_args.size() != 1 )
 			qFatal("handleUserEvent: event openPage must receive 1 arg");
-		
+
 		return openPage( event->m_args[0] );
 	}
 	else if ( event->m_action == "findInIndex" )
 	{
 		if ( event->m_args.size() != 1 )
 			qFatal( "handleUserEvent: event findInIndex must receive 1 arg" );
-		
+
 		if ( !hasIndex() )
 			return false;
 
@@ -755,7 +749,7 @@ bool MainWindow::handleUserEvent( const UserEvent * event )
 	{
 		if ( event->m_args.size() != 1 )
 			qFatal( "handleUserEvent: event findInToc must receive 1 arg" );
-		
+
 		if ( !hasTableOfContents() )
 			return false;
 
@@ -767,17 +761,16 @@ bool MainWindow::handleUserEvent( const UserEvent * event )
 	{
 		if ( event->m_args.size() != 1 )
 			qFatal( "handleUserEvent: event searchQuery must receive 1 arg" );
-		
+
 		actionSwitchToSearchTab();
 		m_navPanel->executeQueryInSearch( event->m_args[0] );
 		return true;
 	}
 	else
 		qWarning( "Unknown user event received: %s", qPrintable( event->m_action ) );
-	
+
 	return false;
 }
-
 
 void MainWindow::runAutoTest()
 {
@@ -785,14 +778,14 @@ void MainWindow::runAutoTest()
 	{
 	case STATE_INITIAL:
 		m_autoteststate = STATE_OPEN_INDEX;
-		
+
 		QTimer::singleShot (500, this, SLOT(runAutoTest()) );
 		break; // allow to finish the initialization sequence
-		
+
 	case STATE_OPEN_INDEX:
 		if ( hasIndex() )
 			m_navPanel->setActive( NavigationPanel::TAB_INDEX );
-		
+
 		m_autoteststate = STATE_SHUTDOWN;
 		QTimer::singleShot (500, this, SLOT(runAutoTest()) );
 		break;
@@ -800,7 +793,7 @@ void MainWindow::runAutoTest()
 	case STATE_SHUTDOWN:
 		qApp->quit();
 		break;
-		
+
 	default:
 		break;
 	}
@@ -831,10 +824,10 @@ void MainWindow::actionOpenFile()
 #if defined (USE_KDE)
 	QString fn = KFileDialog::getOpenFileName( pConfig->m_lastOpenedDir, i18n("*.chm *.epub|All electronic book\n*.chm|Compressed Help Manual\n*.epub|EPUB electronic book"), this);
 #else
-	QString fn = QFileDialog::getOpenFileName( this, 
-	                                           i18n( "Open a chm file"), 
-											   pConfig->m_lastOpenedDir,
-											   i18n("Electronic books (*.chm *.epub)"),
+	QString fn = QFileDialog::getOpenFileName( this,
+	                                           i18n( "Open a chm file"),
+	                                           pConfig->m_lastOpenedDir,
+	                                           i18n("Electronic books (*.chm *.epub)"),
 	                                           0,
 	                                           QFileDialog::DontResolveSymlinks );
 #endif
@@ -866,47 +859,46 @@ void MainWindow::actionFindInPage()
 void MainWindow::actionChangeSettings()
 {
 	DialogSetup dlg ( this );
-	
+
 	dlg.exec();
 }
-
 
 void MainWindow::actionExtractCHM()
 {
 	QList< QUrl > files;
-	
+
 #if defined (USE_KDE)
 	QString outdir = KFileDialog::getExistingDirectory (
-		QUrl(),
-		this,
-		i18n("Choose a directory to store CHM content") );
+	                     QUrl(),
+	                     this,
+	                     i18n("Choose a directory to store CHM content") );
 #else
 	QString outdir = QFileDialog::getExistingDirectory (
-		this,
-		i18n("Choose a directory to store CHM content"),
-		QString(),
-		QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
+	                     this,
+	                     i18n("Choose a directory to store CHM content"),
+	                     QString(),
+	                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
 #endif
-	
+
 	if ( outdir.isEmpty() )
 		return;
-	
+
 	outdir += "/";
-	
+
 	// Enumerate all the files in archive
 	if ( !m_ebookFile || !m_ebookFile->enumerateFiles( files ) )
 		return;
 
-	QProgressDialog progress( i18n("Extracting CHM content"), 
-                              i18n("Extracting files..."),
-                              1,
-                              files.size(),
-                              this );
+	QProgressDialog progress( i18n("Extracting CHM content"),
+	                          i18n("Extracting files..."),
+	                          1,
+	                          files.size(),
+	                          this );
 
 	for ( int i = 0; i < files.size(); i++ )
 	{
 		progress.setValue( i );
-		
+
 		if ( (i % 3) == 0 )
 		{
 			qApp->processEvents();
@@ -917,7 +909,7 @@ void MainWindow::actionExtractCHM()
 
 		// Extract the file
 		QByteArray buf;
-		
+
 		if ( m_ebookFile->getFileContentAsBinary( buf, files[i] ) )
 		{
 			// Split filename to get the list of subdirectories
@@ -928,7 +920,7 @@ void MainWindow::actionExtractCHM()
 			// outside the directory (like creating the file images/../../../../../etc/passwd
 			int i, dirlevel = 0;
 			QStringList dirlist;
-				
+
 			for ( i = 0; i < dirs.size() - 1; i++ )
 			{
 				// Skip .. which lead too far above
@@ -943,7 +935,7 @@ void MainWindow::actionExtractCHM()
 				else
 				{
 					dirlist.push_back( dirs[i] );
-					
+
 					QDir dir ( outdir + dirlist.join( "/" ) );
 					if ( !dir.exists() )
 					{
@@ -952,7 +944,7 @@ void MainWindow::actionExtractCHM()
 					}
 				}
 			}
-			
+
 			QString filename = outdir + dirlist.join( "/" ) + "/" + dirs[i];
 			QFile wf( filename );
 			if ( !wf.open( QIODevice::WriteOnly ) )
@@ -960,14 +952,14 @@ void MainWindow::actionExtractCHM()
 				qWarning( "Could not write file %s\n", qPrintable( filename ) );
 				continue;
 			}
-			
+
 			wf. write( buf );
 			wf.close();
 		}
 		else
 			qWarning( "Could not get file %s\n", qPrintable( files[i].toString() ) );
 	}
-	
+
 	progress.setValue( files.size() );
 }
 
@@ -1029,8 +1021,8 @@ void MainWindow::actionViewHTMLsource()
 		if ( !QProcess::startDetached( pConfig->m_advExternalEditorPath, arguments, "." ) )
 		{
 			QMessageBox::warning( 0,
-								  i18n("Cannot start external editor"), 
-								  i18n("Cannot start external editor %1.\nMake sure the path is absolute!") .arg( pConfig->m_advExternalEditorPath ) );
+			                      i18n("Cannot start external editor"),
+			                      i18n("Cannot start external editor %1.\nMake sure the path is absolute!") .arg( pConfig->m_advExternalEditorPath ) );
 			delete m_tempFileKeeper.takeLast();
 		}
 	}
@@ -1039,13 +1031,13 @@ void MainWindow::actionViewHTMLsource()
 void MainWindow::actionToggleFullScreen()
 {
 	bool fullscreen = view_Toggle_fullscreen_action->isChecked();
-	
+
 	if ( fullscreen )
 	{
 		if ( !isFullScreen() )
 		{
 			showFullScreen ();
-			
+
 			// Hiding menu bar disables menu actions. Probably a bug in Qt.
 			//menuBar()->hide();
 			statusBar()->hide();
@@ -1083,27 +1075,26 @@ void MainWindow::actionLocateInContentsTab()
 		statusBar()->showMessage( i18n( "Could not locate opened topic in content window"), 2000 );
 }
 
-
 void MainWindow::actionAboutApp()
 {
-    QString info = QString( i18n("Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4") )
-            .arg( QSysInfo::buildCpuArchitecture() )
-            .arg( QSysInfo::buildAbi() )
-            .arg( QSysInfo::prettyProductName() )
-            .arg( qVersion() );
+	QString info = QString( i18n("Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4") )
+	               .arg( QSysInfo::buildCpuArchitecture() )
+	               .arg( QSysInfo::buildAbi() )
+	               .arg( QSysInfo::prettyProductName() )
+	               .arg( qVersion() );
 
-    QString abouttext = i18n( "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
-                              "<html><head><meta name=\"qrichtext\" content=\"1\" /></head>"
-                              "<body>"
-                              "<p>This is a fork of KchmViewer, a chm and epub file viewer.<br>"
-                              "KchmViewer is written by Georgy Yunaev.<br>"
-                              "uChmViewer version <b>%1.%2</b></p>"
-                              "<p>%3</p>"
-                              "<p>Copyright (C) George Yunaev, 2004-2015<br>"
-                              "Copyright (C) Nick Egorrov, 2021</p>"
-							  "<p>Licensed under GNU GPL license version 3.</p>"
-							  "</body></html>" )
-                                .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) .arg( info );
+	QString abouttext = i18n( "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
+	                          "<html><head><meta name=\"qrichtext\" content=\"1\" /></head>"
+	                          "<body>"
+	                          "<p>This is a fork of KchmViewer, a chm and epub file viewer.<br>"
+	                          "KchmViewer is written by Georgy Yunaev.<br>"
+	                          "uChmViewer version <b>%1.%2</b></p>"
+	                          "<p>%3</p>"
+	                          "<p>Copyright (C) George Yunaev, 2004-2015<br>"
+	                          "Copyright (C) Nick Egorrov, 2021</p>"
+	                          "<p>Licensed under GNU GPL license version 3.</p>"
+	                          "</body></html>" )
+	                    .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) .arg( info );
 
 	// It is quite funny that the argument order differs
 #if defined (USE_KDE)
@@ -1143,7 +1134,6 @@ void MainWindow::actionSwitchToBookmarkTab()
 	m_navPanel->setActive( NavigationPanel::TAB_BOOKMARK );
 }
 
-
 void MainWindow::setupActions()
 {
 	// File menu
@@ -1156,10 +1146,10 @@ void MainWindow::setupActions()
 	connect( edit_Copy_action, SIGNAL( triggered() ), this, SLOT( actionEditCopy() ) );
 	connect( edit_SelectAll_action, SIGNAL( triggered() ), this, SLOT( actionEditSelectAll() ) );
 	connect( edit_FindAction, SIGNAL( triggered() ), this, SLOT( actionFindInPage() ) );
-	
+
 	// Bookmarks
 	connect( bookmark_AddAction, SIGNAL( triggered() ), m_navPanel, SLOT( addBookmark()) );
-	
+
 	// View
 	connect( view_Increase_font_size_action, SIGNAL( triggered() ), this, SLOT( actionFontSizeIncrease() ) );
 	connect( view_Decrease_font_size_action, SIGNAL( triggered() ), this, SLOT( actionFontSizeDecrease() ) );
@@ -1188,10 +1178,10 @@ void MainWindow::setupActions()
 	m_viewWindowMgr->createMenu( this, menu_Windows, action_Close_window );
 
 	m_navPanel->setBookmarkMenu( menu_Bookmarks );
-	
+
 	// Close Window goes directly to the window manager
 	connect( action_Close_window, SIGNAL( triggered() ), m_viewWindowMgr, SLOT( onCloseCurrentWindow() ) );
-	
+
 	// Navigation panel visibility
 	connect( m_navPanel, SIGNAL(visibilityChanged(bool)), this, SLOT( navigatorVisibilityChanged(bool) ) );
 
@@ -1199,26 +1189,26 @@ void MainWindow::setupActions()
 	QAction * whatsthis = QWhatsThis::createAction( this );
 	menuHelp->addAction( whatsthis );
 	viewToolbar->addAction( whatsthis );
-		
+
 	// Tab switching actions
 	(void) new QShortcut( QKeySequence( i18n("Ctrl+1") ),
 	                      this,
 	                      SLOT( actionSwitchToContentTab() ),
 	                      SLOT( actionSwitchToContentTab() ),
 	                      Qt::ApplicationShortcut );
-	
+
 	(void)  new QShortcut( QKeySequence( i18n("Ctrl+2") ),
 	                       this,
 	                       SLOT( actionSwitchToIndexTab() ),
 	                       SLOT( actionSwitchToIndexTab() ),
 	                       Qt::ApplicationShortcut );
-	
+
 	(void) new QShortcut( QKeySequence( i18n("Ctrl+3") ),
 	                      this,
 	                      SLOT( actionSwitchToSearchTab() ),
 	                      SLOT( actionSwitchToSearchTab() ),
 	                      Qt::ApplicationShortcut );
-	
+
 	(void) new QShortcut( QKeySequence( i18n("Ctrl+4") ),
 	                      this,
 	                      SLOT( actionSwitchToBookmarkTab() ),
@@ -1231,7 +1221,7 @@ void MainWindow::setupActions()
 	                      SLOT( onActivateFind() ),
 	                      SLOT( onActivateFind() ),
 	                      Qt::ApplicationShortcut );
-	
+
 	// Find next global shortcuts
 	(void) new QShortcut( QKeySequence( i18n("F3") ),
 	                      m_viewWindowMgr,
@@ -1240,51 +1230,51 @@ void MainWindow::setupActions()
 	                      Qt::ApplicationShortcut );
 
 	(void) new QShortcut( QKeySequence( QKeySequence::FindNext ),
-						  m_viewWindowMgr,
-						  SLOT( onFindNext() ),
-						  SLOT( onFindNext() ),
-						  Qt::ApplicationShortcut );
+	                      m_viewWindowMgr,
+	                      SLOT( onFindNext() ),
+	                      SLOT( onFindNext() ),
+	                      Qt::ApplicationShortcut );
 
 	// Find prev global shortcut
 	(void) new QShortcut( QKeySequence( QKeySequence::FindPrevious ),
-						  m_viewWindowMgr,
-						  SLOT( onFindPrevious() ),
-						  SLOT( onFindPrevious() ),
-						  Qt::ApplicationShortcut );
+	                      m_viewWindowMgr,
+	                      SLOT( onFindPrevious() ),
+	                      SLOT( onFindPrevious() ),
+	                      Qt::ApplicationShortcut );
 
 	// Open next page in TOC global shortcut
 	(void) new QShortcut( QKeySequence( i18n("Ctrl+Right") ),
-						  m_navPanel,
-						  SLOT( showNextInToc() ),
-						  SLOT( showNextInToc() ),
-	                      Qt::ApplicationShortcut );
-	
-	// Open next page in TOC global shortcut
-	(void) new QShortcut( QKeySequence( i18n("Ctrl+Left") ),
-						  m_navPanel,
-						  SLOT( showPrevInToc() ),
-						  SLOT( showPrevInToc() ),
+	                      m_navPanel,
+	                      SLOT( showNextInToc() ),
+	                      SLOT( showNextInToc() ),
 	                      Qt::ApplicationShortcut );
 
-    // Copy current URL to clipboard global shortcut
-    (void) new QShortcut( QKeySequence( i18n("Ctrl+I") ),
-                          m_viewWindowMgr,
-                          SLOT( copyUrlToClipboard()),
-                          SLOT( copyUrlToClipboard()),
-                          Qt::ApplicationShortcut );
+	// Open next page in TOC global shortcut
+	(void) new QShortcut( QKeySequence( i18n("Ctrl+Left") ),
+	                      m_navPanel,
+	                      SLOT( showPrevInToc() ),
+	                      SLOT( showPrevInToc() ),
+	                      Qt::ApplicationShortcut );
+
+	// Copy current URL to clipboard global shortcut
+	(void) new QShortcut( QKeySequence( i18n("Ctrl+I") ),
+	                      m_viewWindowMgr,
+	                      SLOT( copyUrlToClipboard()),
+	                      SLOT( copyUrlToClipboard()),
+	                      Qt::ApplicationShortcut );
 
 	// Context menu
 	m_contextMenu = new QMenu( this );
-	
+
 	m_contextMenu->addAction ( i18n("&Open this link in a new tab"),
-	                          this, 
-	                          SLOT( onOpenPageInNewTab() ), 
-	                          QKeySequence( "Shift+Enter" ) );
-	
-	m_contextMenu->addAction ( i18n("&Open this link in a new background tab"), 
-	                          this, 
-	                          SLOT( onOpenPageInNewBackgroundTab() ),
-	                          QKeySequence( "Ctrl+Enter" ) );
+	                           this,
+	                           SLOT( onOpenPageInNewTab() ),
+	                           QKeySequence( "Shift+Enter" ) );
+
+	m_contextMenu->addAction ( i18n("&Open this link in a new background tab"),
+	                           this,
+	                           SLOT( onOpenPageInNewBackgroundTab() ),
+	                           QKeySequence( "Ctrl+Enter" ) );
 }
 
 void MainWindow::updateToolbars()
@@ -1295,20 +1285,20 @@ void MainWindow::updateToolbars()
 
 	switch ( pConfig->m_toolbarMode )
 	{
-		case Config::TOOLBAR_SMALLICONS:
-			iconsize = QSize( 16, 16 );
-			break;
+	case Config::TOOLBAR_SMALLICONS:
+		iconsize = QSize( 16, 16 );
+		break;
 
-		case Config::TOOLBAR_LARGEICONS:
-			break;
+	case Config::TOOLBAR_LARGEICONS:
+		break;
 
-		case Config::TOOLBAR_LARGEICONSTEXT:
-			buttonstyle = Qt::ToolButtonTextUnderIcon;
-			break;
+	case Config::TOOLBAR_LARGEICONSTEXT:
+		buttonstyle = Qt::ToolButtonTextUnderIcon;
+		break;
 
-		case Config::TOOLBAR_TEXTONLY:
-			buttonstyle = Qt::ToolButtonTextOnly;
-			break;
+	case Config::TOOLBAR_TEXTONLY:
+		buttonstyle = Qt::ToolButtonTextOnly;
+		break;
 	}
 
 	mainToolbar->setIconSize( iconsize );
@@ -1318,7 +1308,6 @@ void MainWindow::updateToolbars()
 	viewToolbar->setIconSize( iconsize );
 	viewToolbar->setToolButtonStyle( buttonstyle );
 }
-
 
 void MainWindow::navSetBackEnabled(bool enabled)
 {
@@ -1339,10 +1328,10 @@ void MainWindow::setupLangEncodingMenu()
 {
 	// Create the language selection menu.
 	QMenu * encodings = new QMenu( this );
-	
+
 	// Create the action group
 	m_encodingActions = new QActionGroup( this );
-	
+
 	// Get the supported languages and encodings
 	QStringList languages, qencodings;
 	TextEncodings::getSupported( languages, qencodings );
@@ -1350,22 +1339,22 @@ void MainWindow::setupLangEncodingMenu()
 	for ( int idx = 0; idx < qencodings.size(); idx++ )
 	{
 		QAction * action = new QAction( this );
-		
+
 		QString text = i18n("%1 ( %2 )") .arg( languages[idx] ) .arg( qencodings[idx] );
 		action->setText( text );
 		action->setData( QVariant::fromValue( qencodings[idx] ) );
 		action->setCheckable( true );
-		
+
 		// Add to the action group, so only one is checkable
 		m_encodingActions->addAction( action );
-		
+
 		// Add to the menu
 		encodings->addAction( action );
 	}
-	
+
 	// Set up the Select Codepage action
 	view_Set_encoding_action->setMenu( encodings );
-	
+
 	// Connect the action group signal
 	connect( m_encodingActions,
 	         SIGNAL( triggered ( QAction * ) ),
@@ -1373,13 +1362,11 @@ void MainWindow::setupLangEncodingMenu()
 	         SLOT( actionEncodingChanged( QAction * ) ) );
 }
 
-
 void MainWindow::actionEncodingChanged( QAction * action )
 {
 	QString encoding = action->data().toString();
 	setTextEncoding( encoding );
 }
-
 
 QMenu * MainWindow::tabItemsContextMenu()
 {

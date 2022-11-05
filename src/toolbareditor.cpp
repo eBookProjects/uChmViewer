@@ -27,8 +27,8 @@
 #include <QString>
 #include <QStringList>
 #include <Qt>				  // Qt::DecorationRole, Qt::DisplayRole, Qt::ToolTipRole
-							  // Qt::ItemIsDropEnabled,	Qt::ItemIsDragEnabled, Qt::ItemIsEnabled
-							  // Qt::ItemIsSelectable, Qt::DropAction, Qt::MoveAction, Qt::IgnoreAction
+                              // Qt::ItemIsDropEnabled,	Qt::ItemIsDragEnabled, Qt::ItemIsEnabled
+                              // Qt::ItemIsSelectable, Qt::DropAction, Qt::MoveAction, Qt::IgnoreAction
 #include <QtGlobal>			  // qFatal
 #include <QToolBar>
 #include <QVariant>
@@ -80,12 +80,12 @@ class ActionListModel : public QAbstractListModel
 
 			switch ( role )
 			{
-				case Qt::DisplayRole:
-				case Qt::ToolTipRole:
-					return action->toolTip();
+			case Qt::DisplayRole:
+			case Qt::ToolTipRole:
+				return action->toolTip();
 
-				case Qt::DecorationRole:
-					return action->icon();
+			case Qt::DecorationRole:
+				return action->icon();
 			}
 
 			return QVariant();
@@ -150,7 +150,7 @@ class ActionListModel : public QAbstractListModel
 				return 0;
 
 			QMimeData *mimeData = new QMimeData();
-            mimeData->setData( ACTION_MIME_FORMAT, m_actions[ indexes[0].row() ].toUtf8() );
+			mimeData->setData( ACTION_MIME_FORMAT, m_actions[ indexes[0].row() ].toUtf8() );
 			return mimeData;
 		}
 
@@ -206,7 +206,6 @@ class ActionListModel : public QAbstractListModel
 };
 
 
-
 ToolbarEditor::ToolbarEditor( QWidget *parent )
 	: QDialog(parent), Ui::ToolbarEditor()
 {
@@ -237,7 +236,6 @@ void ToolbarEditor::setAvailableActions( QList<QAction*> availableActions )
 {
 	m_availableActions = availableActions;
 }
-
 
 int ToolbarEditor::exec()
 {
@@ -272,7 +270,6 @@ QAction * ToolbarEditor::findAction( const QString& objectname ) const
 
 	return 0;
 }
-
 
 void ToolbarEditor::initToolbarActions( QToolBar * toolbar )
 {

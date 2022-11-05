@@ -17,10 +17,10 @@
  */
 
 #if defined (WIN32)
-    #include <io.h>     // dup
-    #define dup _dup
+	#include <io.h>     // dup
+	#define dup _dup
 #else
-    #include <unistd.h>
+	#include <unistd.h>
 #endif
 
 #include <QByteArray>
@@ -37,7 +37,7 @@
 #include "zip.h"
 
 #include "ebook_epub.h"						// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry
-											// EBook_EPUB
+                                            // EBook_EPUB
 #include "helperxmlhandler_epubcontainer.h"	// HelperXmlHandler_EpubContainer
 #include "helperxmlhandler_epubcontent.h"	// HelperXmlHandler_EpubContent
 #include "helperxmlhandler_epubtoc.h"		// HelperXmlHandler_EpubTOC
@@ -45,7 +45,7 @@
 const char * EBook_EPUB::URL_SCHEME_EPUB = "epub";
 
 EBook_EPUB::EBook_EPUB()
-    : EBook()
+	: EBook()
 {
 	m_zipFile = 0;
 }
@@ -69,18 +69,18 @@ bool EBook_EPUB::load(const QString &archiveName)
 	}
 
 	// Open the ZIP archive: http://www.nih.at/libzip/zip_fdopen.html
-    // Note that zip_fdopen takes control over the passed descriptor,
-    // so we need to pass a duplicate of it for this to work correctly
-    int fdcopy = dup( m_epubFile.handle() );
+	// Note that zip_fdopen takes control over the passed descriptor,
+	// so we need to pass a duplicate of it for this to work correctly
+	int fdcopy = dup( m_epubFile.handle() );
 
-    if ( fdcopy < 0 )
-    {
-        qWarning("Could not duplicate descriptor" );
-        return false;
-    }
+	if ( fdcopy < 0 )
+	{
+		qWarning("Could not duplicate descriptor" );
+		return false;
+	}
 
 	int errcode;
-    m_zipFile = zip_fdopen( fdcopy, 0, &errcode );
+	m_zipFile = zip_fdopen( fdcopy, 0, &errcode );
 
 	if ( !m_zipFile )
 	{
@@ -103,8 +103,8 @@ void EBook_EPUB::close()
 		m_zipFile = 0;
 	}
 
-    //if ( m_epubFile.isOpen() )
-    //	m_epubFile.close();
+	//if ( m_epubFile.isOpen() )
+	//	m_epubFile.close();
 
 
 }
@@ -137,17 +137,17 @@ QUrl EBook_EPUB::homeUrl() const
 
 bool EBook_EPUB::hasFeature(EBook::Feature code) const
 {
-    switch ( code )
-    {
-    case FEATURE_TOC:
-        return true;
+	switch ( code )
+	{
+	case FEATURE_TOC:
+		return true;
 
-    case FEATURE_INDEX:
-        return false;
+	case FEATURE_INDEX:
+		return false;
 
-    case FEATURE_ENCODING:
-        return false;
-    }
+	case FEATURE_ENCODING:
+		return false;
+	}
 
 	return false;
 }
@@ -173,7 +173,7 @@ QString EBook_EPUB::getTopicByUrl(const QUrl& url)
 
 QString EBook_EPUB::currentEncoding() const
 {
-    return "UTF-8";
+	return "UTF-8";
 }
 
 bool EBook_EPUB::setCurrentEncoding(const char *)
@@ -214,7 +214,7 @@ bool EBook_EPUB::parseBookinfo()
 	HelperXmlHandler_EpubContainer container_parser;
 
 	if ( !parseXML( "META-INF/container.xml", &container_parser )
-		 || container_parser.contentPath.isEmpty() )
+	        || container_parser.contentPath.isEmpty() )
 		return false;
 
 	// Parse the content.opf
@@ -243,47 +243,47 @@ bool EBook_EPUB::parseBookinfo()
 	// Get the data
 	m_title = content_parser.metadata[ "title" ];
 
-    // Move the manifest entries into the list
-    Q_FOREACH( QString f, content_parser.manifest.values() )
-        m_ebookManifest.push_back( pathToUrl( f ) );
+	// Move the manifest entries into the list
+	Q_FOREACH( QString f, content_parser.manifest.values() )
+		m_ebookManifest.push_back( pathToUrl( f ) );
 
-    // Copy the manifest information and fill up the other maps if we have it
-    if ( !toc_parser.entries.isEmpty() )
-    {
-        Q_FOREACH( EBookTocEntry e, toc_parser.entries )
-        {
-            // Add into url-title map
-            m_urlTitleMap[ e.url ] = e.name;
-            m_tocEntries.push_back( e );
-        }
-    }
-    else
-    {
-        // Copy them from spline
-        Q_FOREACH( QString u, content_parser.spine )
-        {
-            EBookTocEntry e;
-            QString url = u;
+	// Copy the manifest information and fill up the other maps if we have it
+	if ( !toc_parser.entries.isEmpty() )
+	{
+		Q_FOREACH( EBookTocEntry e, toc_parser.entries )
+		{
+			// Add into url-title map
+			m_urlTitleMap[ e.url ] = e.name;
+			m_tocEntries.push_back( e );
+		}
+	}
+	else
+	{
+		// Copy them from spline
+		Q_FOREACH( QString u, content_parser.spine )
+		{
+			EBookTocEntry e;
+			QString url = u;
 
-            if ( content_parser.manifest.contains( u ) )
-                url = content_parser.manifest[ u ];
+			if ( content_parser.manifest.contains( u ) )
+				url = content_parser.manifest[ u ];
 
-            e.name = url;
-            e.url= pathToUrl( url );
-            e.iconid = EBookTocEntry::IMAGE_NONE;
-            e.indent = 0;
+			e.name = url;
+			e.url= pathToUrl( url );
+			e.iconid = EBookTocEntry::IMAGE_NONE;
+			e.indent = 0;
 
-            // Add into url-title map
-            m_urlTitleMap[ pathToUrl( url ) ] = url;
-            m_tocEntries.push_back( e );
-        }
-    }
+			// Add into url-title map
+			m_urlTitleMap[ pathToUrl( url ) ] = url;
+			m_tocEntries.push_back( e );
+		}
+	}
 
-    // EPub with an empty TOC is not valid
-    if ( m_tocEntries.isEmpty() )
-    {
-        return false;
-    }
+	// EPub with an empty TOC is not valid
+	if ( m_tocEntries.isEmpty() )
+	{
+		return false;
+	}
 
 	return true;
 }
@@ -294,22 +294,22 @@ QUrl EBook_EPUB::pathToUrl(const QString &link) const
 	url.setScheme( URL_SCHEME_EPUB );
 	url.setHost( URL_SCHEME_EPUB );
 
-    // Does the link contain the fragment as well?
-    int off = link.indexOf( '#' );
-    QString path;
+	// Does the link contain the fragment as well?
+	int off = link.indexOf( '#' );
+	QString path;
 
-    if ( off != -1 )
-    {
-        path = link.left( off );
-        url.setFragment( link.mid( off + 1 ) );
-    }
-    else
-        path = link;
+	if ( off != -1 )
+	{
+		path = link.left( off );
+		url.setFragment( link.mid( off + 1 ) );
+	}
+	else
+		path = link;
 
-    if ( !path.startsWith( '/' ) )
-        path.prepend( '/' );
+	if ( !path.startsWith( '/' ) )
+		path.prepend( '/' );
 
-    url.setPath( QUrl::fromPercentEncoding( path.toUtf8() ) );
+	url.setPath( QUrl::fromPercentEncoding( path.toUtf8() ) );
 
 	return url;
 }
@@ -338,8 +338,8 @@ bool EBook_EPUB::getFileAsString(QString &str, const QString &path) const
 		if ( utf16 > 0 && utf16 < endxmltag )
 		{
 			QMessageBox::critical( 0,
-								   ("Unsupported encoding"),
-								   ("The encoding of this ebook is not supported yet. Please send it to gyunaev@ulduzsoft.com for support to be added") );
+			                       ("Unsupported encoding"),
+			                       ("The encoding of this ebook is not supported yet. Please send it to gyunaev@ulduzsoft.com for support to be added") );
 			return false;
 		}
 	}

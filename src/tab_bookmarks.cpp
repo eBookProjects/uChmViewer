@@ -48,13 +48,13 @@ class BookmarkItem : public QListWidgetItem
 			m_scroll_y = pos;
 			m_action = new QAction( name, widget );
 			m_action->setData( QVariant::fromValue( (void*) this ) );
-			
+
 			QObject::connect( m_action,
-			         SIGNAL( triggered() ),
-			         widget,
-			         SLOT( actionBookmarkActivated() ) );
+			                  SIGNAL( triggered() ),
+			                  widget,
+			                  SLOT( actionBookmarkActivated() ) );
 		}
-	
+
 		void setName( const QString& name )
 		{
 			m_name = name;
@@ -68,12 +68,12 @@ class BookmarkItem : public QListWidgetItem
 			case Qt::ToolTipRole:
 			case Qt::WhatsThisRole:
 			case Qt::DisplayRole:
-			     	return m_name;
+				return m_name;
 			}
-			
+
 			return QVariant();
 		}
-	
+
 		QString		m_name;
 		QString		m_url;
 		int			m_scroll_y;
@@ -87,37 +87,37 @@ TabBookmarks::TabBookmarks( QWidget *parent )
 {
 	// UIC code
 	setupUi( this );
-	
-    if ( pConfig->m_tabUseSingleClick )
-    {
-        connect( list,
-                 SIGNAL( itemClicked(QListWidgetItem*)),
-                 this,
-                 SLOT( onItemActivated( QListWidgetItem*)) );
-    }
-    else
-    {
-        connect( list,
-                 SIGNAL( itemActivated(QListWidgetItem*)),
-                 this,
-                 SLOT( onItemActivated( QListWidgetItem*)) );
-    }
-	
-	connect( btnAdd, 
-			 SIGNAL( clicked () ), 
-			 this, 
-			 SLOT( onAddBookmarkPressed( ) ) );
-	
-	connect( btnDel, 
-			 SIGNAL( clicked () ), 
-			 this, 
-			 SLOT( onDelBookmarkPressed( ) ) );
-	
-	connect( btnEdit, 
-			 SIGNAL( clicked () ), 
-			 this, 
-			 SLOT( onEditBookmarkPressed( ) ) );
-	
+
+	if ( pConfig->m_tabUseSingleClick )
+	{
+		connect( list,
+		         SIGNAL( itemClicked(QListWidgetItem*)),
+		         this,
+		         SLOT( onItemActivated( QListWidgetItem*)) );
+	}
+	else
+	{
+		connect( list,
+		         SIGNAL( itemActivated(QListWidgetItem*)),
+		         this,
+		         SLOT( onItemActivated( QListWidgetItem*)) );
+	}
+
+	connect( btnAdd,
+	         SIGNAL( clicked () ),
+	         this,
+	         SLOT( onAddBookmarkPressed( ) ) );
+
+	connect( btnDel,
+	         SIGNAL( clicked () ),
+	         this,
+	         SLOT( onDelBookmarkPressed( ) ) );
+
+	connect( btnEdit,
+	         SIGNAL( clicked () ),
+	         this,
+	         SLOT( onEditBookmarkPressed( ) ) );
+
 	m_menuBookmarks = 0;
 	m_contextMenu = 0;
 	m_listChanged = false;
@@ -125,9 +125,9 @@ TabBookmarks::TabBookmarks( QWidget *parent )
 	// Activate custom context menu, and connect it
 	list->setContextMenuPolicy( Qt::CustomContextMenu );
 
-	connect( list, 
+	connect( list,
 	         SIGNAL( customContextMenuRequested ( const QPoint & ) ),
-	         this, 
+	         this,
 	         SLOT( onContextMenuRequested( const QPoint & ) ) );
 
 	focus();
@@ -135,35 +135,34 @@ TabBookmarks::TabBookmarks( QWidget *parent )
 
 void TabBookmarks::onAddBookmarkPressed( )
 {
-    bool ok;
+	bool ok;
 	QString url = ::mainWindow->currentBrowser()->getOpenedPage().toString();
 	QString title = ::mainWindow->chmFile()->getTopicByUrl(url);
-	QString name = QInputDialog::getText( 
-	        this,
-			i18n( "%1 - add a bookmark") . arg(QCoreApplication::applicationName()),
-			i18n( "Enter the name for this bookmark:" ),
-			QLineEdit::Normal,
-			title,
-			&ok );
-    
+	QString name = QInputDialog::getText(
+	                   this,
+	                   i18n( "%1 - add a bookmark") . arg(QCoreApplication::applicationName()),
+	                   i18n( "Enter the name for this bookmark:" ),
+	                   QLineEdit::Normal,
+	                   title,
+	                   &ok );
+
 	if ( !ok || name.isEmpty() )
 		return;
 
 	BookmarkItem * item = new BookmarkItem ( this,
-											  list,
-											  name,
-											  url,
-											  ::mainWindow->currentBrowser()->getScrollbarPosition() );
-	
+	                                         list,
+	                                         name,
+	                                         url,
+	                                         ::mainWindow->currentBrowser()->getScrollbarPosition() );
+
 	m_menuBookmarks->addAction( item->m_action );
 	m_listChanged = true;
 }
 
-
 void TabBookmarks::onDelBookmarkPressed( )
 {
 	BookmarkItem * item = (BookmarkItem *) list->currentItem();
-	
+
 	if ( item )
 	{
 		m_menuBookmarks->removeAction( item->m_action );
@@ -172,22 +171,21 @@ void TabBookmarks::onDelBookmarkPressed( )
 	}
 }
 
-
 void TabBookmarks::onEditBookmarkPressed( )
 {
 	BookmarkItem * item = (BookmarkItem *) list->currentItem();
-	
+
 	if ( item )
 	{
-	    bool ok;
-		QString name = QInputDialog::getText( 
-			this,
-			i18n( "%1 - edit the bookmark name") . arg(QCoreApplication::applicationName()),
-			i18n( "Enter the name for this bookmark:" ),
-			QLineEdit::Normal,
-			item->m_name, 
-			&ok );
-    
+		bool ok;
+		QString name = QInputDialog::getText(
+		                   this,
+		                   i18n( "%1 - edit the bookmark name") . arg(QCoreApplication::applicationName()),
+		                   i18n( "Enter the name for this bookmark:" ),
+		                   QLineEdit::Normal,
+		                   item->m_name,
+		                   &ok );
+
 		if ( !ok || name.isEmpty() )
 			return;
 
@@ -198,7 +196,6 @@ void TabBookmarks::onEditBookmarkPressed( )
 	}
 }
 
-
 void TabBookmarks::restoreSettings( const Settings::bookmark_saved_settings_t & settings )
 {
 	for ( int i = 0; i < settings.size(); i++ )
@@ -208,7 +205,6 @@ void TabBookmarks::restoreSettings( const Settings::bookmark_saved_settings_t & 
 	}
 }
 
-
 void TabBookmarks::saveSettings( Settings::bookmark_saved_settings_t & settings )
 {
 	settings.clear();
@@ -217,7 +213,7 @@ void TabBookmarks::saveSettings( Settings::bookmark_saved_settings_t & settings 
 	{
 		BookmarkItem * treeitem = (BookmarkItem *) list->item( i );
 		settings.push_back( Settings::SavedBookmark( treeitem->m_name, treeitem->m_url, treeitem->m_scroll_y) );
-    }
+	}
 }
 
 void TabBookmarks::invalidate( )
@@ -243,9 +239,9 @@ void TabBookmarks::onItemActivated(QListWidgetItem * item)
 {
 	if ( !item )
 		return;
-	
+
 	BookmarkItem * treeitem = (BookmarkItem *) item;
-	
+
 	if ( ::mainWindow->currentBrowser()->getOpenedPage().toString() != treeitem->m_url )
 	{
 		::mainWindow->openPage( treeitem->m_url, MainWindow::OPF_CONTENT_TREE );
@@ -269,7 +265,7 @@ void TabBookmarks::actionBookmarkActivated()
 void TabBookmarks::onContextMenuRequested(const QPoint & point)
 {
 	BookmarkItem * item = (BookmarkItem *) list->itemAt( point );
-	
+
 	if( item )
 	{
 		::mainWindow->currentBrowser()->setTabKeeper( item->m_url );

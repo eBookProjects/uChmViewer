@@ -28,7 +28,7 @@ class QEvent;
 
 class UchmviewerApp : public QApplication
 {
-    Q_OBJECT
+		Q_OBJECT
 	public:
 		UchmviewerApp(int &argc, char **argv, int version= QT_VERSION);
 		virtual ~UchmviewerApp();

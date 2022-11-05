@@ -34,7 +34,7 @@ class QWidget;
 
 class ToolbarEditor : public QDialog, public Ui::ToolbarEditor
 {
-    Q_OBJECT
+		Q_OBJECT
 
 	public:
 		// Returns true if an action name in the list actionsForToolbar() is a separator
@@ -95,6 +95,5 @@ class ToolbarEditor : public QDialog, public Ui::ToolbarEditor
 		// Params
 		bool				m_allowActionsWithoutIcons;
 };
-
 
 #endif // TOOLBAREDITOR_H

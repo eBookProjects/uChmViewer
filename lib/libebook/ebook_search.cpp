@@ -79,18 +79,15 @@ class SearchDataKeeper
 };
 
 
-
 EBookSearch::EBookSearch()
 {
 	m_Index = 0;
 }
 
-
 EBookSearch::~ EBookSearch()
 {
 	delete m_Index;
 }
-
 
 bool EBookSearch::loadIndex( QDataStream & stream )
 {
@@ -100,55 +97,52 @@ bool EBookSearch::loadIndex( QDataStream & stream )
 	return m_Index->readDict( stream );
 }
 
-
 bool EBookSearch::generateIndex( EBook * ebookFile, QDataStream & stream )
 {
 	QList< QUrl > documents;
 	QList< QUrl > alldocuments;
-	
+
 	emit progressStep( 0, "Generating the list of documents" );
 	processEvents();
 
 	// Enumerate the documents
 	if ( !ebookFile->enumerateFiles( alldocuments ) )
 		return false;
-			
+
 	if ( m_Index )
 		delete m_Index;
 
 	m_Index = new QtAs::Index();
 	connect( m_Index, SIGNAL( indexingProgress( int, const QString& ) ), this, SLOT( updateProgress( int, const QString& ) ) );
-	
+
 	// Process the list of files in CHM archive and keep only HTML document files from there
 	for ( int i = 0; i < alldocuments.size(); i++ )
 	{
 		QString docpath = alldocuments[i].path();
 
 		if ( docpath.endsWith( ".html", Qt::CaseInsensitive )
-		|| docpath.endsWith( ".htm", Qt::CaseInsensitive )
-		|| docpath.endsWith( ".xhtml", Qt::CaseInsensitive ) )
+		        || docpath.endsWith( ".htm", Qt::CaseInsensitive )
+		        || docpath.endsWith( ".xhtml", Qt::CaseInsensitive ) )
 			documents.push_back( alldocuments[i] );
 	}
 
-    if ( !m_Index->makeIndex( documents, ebookFile ) )
+	if ( !m_Index->makeIndex( documents, ebookFile ) )
 	{
 		delete m_Index;
 		m_Index = 0;
 		return false;
 	}
-	
+
 	m_Index->writeDict( stream );
 	m_keywordDocuments.clear();
-	
+
 	return true;
 }
-
 
 void EBookSearch::cancelIndexGeneration()
 {
 	m_Index->setLastWinClosed();
 }
-
 
 void EBookSearch::updateProgress(int value, const QString & stepName)
 {
@@ -167,26 +161,26 @@ bool EBookSearch::searchQuery(const QString & query, QList< QUrl > * results, EB
 	// We should have index
 	if ( !m_Index )
 		return false;
-	
+
 	// Characters which split the words. We need to make them separate tokens
 	QString splitChars = m_Index->getCharsSplit();
-	
+
 	// Characters which are part of the word. We should keep them apart.
 	QString partOfWordChars = m_Index->getCharsPartOfWord();
-	
+
 	// Variables to store current state
-	SearchDataKeeper keeper;	
+	SearchDataKeeper keeper;
 	QString term;
 
 	for ( int i = 0; i < query.length(); i++ )
 	{
 		QChar ch = query[i].toLower();
-		
+
 		// a quote either begins or ends the phrase
 		if ( ch == '"' )
 		{
 			keeper.addTerm( term );
-			
+
 			if ( keeper.isInPhrase() )
 				keeper.endPhrase();
 			else
@@ -194,36 +188,36 @@ bool EBookSearch::searchQuery(const QString & query, QList< QUrl > * results, EB
 
 			continue;
 		}
-		
+
 		// If new char does not stop the word, add ot and continue
 		if ( ch.isLetterOrNumber() || partOfWordChars.indexOf( ch ) != -1 )
 		{
 			term.append( ch );
 			continue;
 		}
-		
+
 		// If it is a split char, add this term and split char as separate term
 		if ( splitChars.indexOf( ch ) != -1 )
 		{
 			// Add existing term if present
 			keeper.addTerm( term );
-			
+
 			// Change the term variable, so it will be added when we exit this block
 			term = ch;
 		}
 
 		// Just add the word; it is most likely a space or terminated by tokenizer.
 		keeper.addTerm( term );
-		term = QString();			
+		term = QString();
 	}
-	
+
 	keeper.addTerm( term );
-	
+
 	if ( keeper.isInPhrase() )
 		return false;
-	
+
 	QList< QUrl > foundDocs = m_Index->query( keeper.terms, keeper.phrases, keeper.phrasewords, ebookFile );
-	
+
 	for ( QList< QUrl >::iterator it = foundDocs.begin(); it != foundDocs.end() && limit > 0; ++it, limit-- )
 		results->push_back( *it );
 

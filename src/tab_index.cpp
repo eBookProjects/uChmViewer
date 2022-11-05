@@ -41,41 +41,41 @@ TabIndex::TabIndex ( QWidget * parent )
 {
 	// UIC stuff
 	setupUi( this );
-	
+
 	tree->headerItem()->setHidden( true );
-	
+
 	connect( text,
-			 SIGNAL( textChanged (const QString &) ), 
-			 this, 
-			 SLOT( onTextChanged(const QString &) ) );
-	
-	connect( text, 
-			 SIGNAL( returnPressed() ), 
-			 this, 
-			 SLOT( onReturnPressed() ) );
-	
-    if ( pConfig->m_tabUseSingleClick )
-    {
-        connect( tree,
-                 SIGNAL( itemClicked(QTreeWidgetItem*,int)),
-                 this,
-                 SLOT( onItemActivated( QTreeWidgetItem *, int ) ) );
-    }
-    else
-    {
-        connect( tree,
-                 SIGNAL( itemActivated ( QTreeWidgetItem *, int ) ),
-                 this,
-                 SLOT( onItemActivated( QTreeWidgetItem *, int ) ) );
-    }
+	         SIGNAL( textChanged (const QString &) ),
+	         this,
+	         SLOT( onTextChanged(const QString &) ) );
+
+	connect( text,
+	         SIGNAL( returnPressed() ),
+	         this,
+	         SLOT( onReturnPressed() ) );
+
+	if ( pConfig->m_tabUseSingleClick )
+	{
+		connect( tree,
+		         SIGNAL( itemClicked(QTreeWidgetItem*,int)),
+		         this,
+		         SLOT( onItemActivated( QTreeWidgetItem *, int ) ) );
+	}
+	else
+	{
+		connect( tree,
+		         SIGNAL( itemActivated ( QTreeWidgetItem *, int ) ),
+		         this,
+		         SLOT( onItemActivated( QTreeWidgetItem *, int ) ) );
+	}
 
 	// Activate custom context menu, and connect it
 	tree->setContextMenuPolicy( Qt::CustomContextMenu );
-	connect( tree, 
+	connect( tree,
 	         SIGNAL( customContextMenuRequested ( const QPoint & ) ),
-	         this, 
+	         this,
 	         SLOT( onContextMenuRequested( const QPoint & ) ) );
-	
+
 	m_indexListFilled = false;
 	m_lastSelectedItem = 0;
 	m_contextMenu = 0;
@@ -86,7 +86,7 @@ TabIndex::TabIndex ( QWidget * parent )
 void TabIndex::onTextChanged ( const QString & newvalue)
 {
 	QList<QTreeWidgetItem *> items = tree->findItems( newvalue, Qt::MatchStartsWith );
-	
+
 	if ( !items.isEmpty() )
 	{
 		m_lastSelectedItem = items[0];
@@ -96,7 +96,6 @@ void TabIndex::onTextChanged ( const QString & newvalue)
 	else
 		m_lastSelectedItem = 0;
 }
-
 
 void TabIndex::showEvent( QShowEvent * )
 {
@@ -111,11 +110,10 @@ void TabIndex::onReturnPressed( )
 {
 	if ( !m_lastSelectedItem )
 		return;
-	
+
 	TreeItem_Index * treeitem = (TreeItem_Index*) m_lastSelectedItem;
 	::mainWindow->activateUrl( treeitem->getUrl() );
 }
-
 
 void TabIndex::invalidate( )
 {
@@ -128,24 +126,24 @@ void TabIndex::onItemActivated ( QTreeWidgetItem * item, int )
 {
 	if ( !item )
 		return;
-	
+
 	TreeItem_Index * treeitem = (TreeItem_Index*) item;
-	
-	// Prevent opened index tree item from closing; because the tree open/close 
+
+	// Prevent opened index tree item from closing; because the tree open/close
 	// procedure will be triggered after the slots are called, we change the tree
 	// state to "collapsed", so the slot handler expands it again.
 	if ( item->isExpanded() )
 		item->setExpanded( false );
-	
+
 	QUrl url = treeitem->getUrl();
-	
+
 	if ( !url.isValid() )
 		return;
 
 	if ( treeitem->isSeeAlso() ) // 'see also' link
 	{
 		QList<QTreeWidgetItem *> items = tree->findItems( treeitem->seeAlso(), Qt::MatchFixedString );
-	
+
 		if ( !items.isEmpty() )
 		{
 			m_lastSelectedItem = items[0];
@@ -159,18 +157,17 @@ void TabIndex::onItemActivated ( QTreeWidgetItem * item, int )
 		::mainWindow->openPage( url, MainWindow::OPF_CONTENT_TREE );
 }
 
-
 void TabIndex::refillIndex( )
 {
 	ShowWaitCursor wc;
 	QList< EBookIndexEntry > data;
-	
+
 	if ( !::mainWindow->chmFile()->getIndex( data ) || data.size() == 0 )
 	{
 		qWarning ("CHM index present but is empty; wrong parsing?");
 		return;
 	}
-	
+
 	QVector< TreeItem_Index *> lastchild;
 	QVector< TreeItem_Index *> rootentry;
 	bool warning_shown = false;
@@ -262,7 +259,7 @@ void TabIndex::focus()
 void TabIndex::onContextMenuRequested(const QPoint & point)
 {
 	TreeItem_Index * treeitem = (TreeItem_Index *) tree->itemAt( point );
-	
+
 	if( treeitem )
 	{
 		::mainWindow->currentBrowser()->setTabKeeper( treeitem->getUrl() );

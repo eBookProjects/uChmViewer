@@ -29,11 +29,11 @@ DialogChooseUrlFromList::DialogChooseUrlFromList( QWidget* parent )
 	: QDialog( parent ), Ui::DialogTopicSelector()
 {
 	setupUi( this );
-	
+
 	// List doubleclick
-	connect( list, 
-			 SIGNAL( itemDoubleClicked ( QListWidgetItem * ) ),
-			 this,
+	connect( list,
+	         SIGNAL( itemDoubleClicked ( QListWidgetItem * ) ),
+	         this,
 	         SLOT( onDoubleClicked( QListWidgetItem * ) ) );
 }
 
@@ -43,14 +43,13 @@ void DialogChooseUrlFromList::onDoubleClicked( QListWidgetItem * item )
 		accept();
 }
 
-
 QUrl DialogChooseUrlFromList::getSelectedItemUrl(const QList<QUrl> &urls, const QStringList & titles )
 {
 	for ( int i = 0; i < urls.size(); i++ )
 		list->addItem( titles[i] );
-	
+
 	if ( exec() == QDialog::Accepted && list->currentRow() != -1 )
 		return urls[ list->currentRow() ];
-	
+
 	return QUrl();
 }

@@ -31,7 +31,7 @@
 
 // Enable Unicode use in libchm
 #if defined (WIN32)
-    #define PPC_BSTR
+	#define PPC_BSTR
 #endif
 
 #include "ebook.h"					// EBook
@@ -81,11 +81,11 @@ class EBook_CHM : public EBook
 		virtual QUrl homeUrl() const;
 
 		/*!
-         * \brief Checks whether the specific feature is present in this file.
-         * \return true if it is available; false otherwise.
-         * \ingroup information
-         */
-        virtual bool  hasFeature( Feature code ) const;
+		 * \brief Checks whether the specific feature is present in this file.
+		 * \return true if it is available; false otherwise.
+		 * \ingroup information
+		 */
+		virtual bool  hasFeature( Feature code ) const;
 
 		/*!
 		 * \brief Parses and fills up the Table of Contents (TOC)
@@ -189,7 +189,7 @@ class EBook_CHM : public EBook
 		virtual bool isSupportedUrl( const QUrl& url );
 
 		// Converts the string to the ebook-specific URL format
-        QUrl pathToUrl( const QString & link ) const;
+		QUrl pathToUrl( const QString & link ) const;
 
 		// Extracts the path component from the URL
 		QString urlToPath( const QUrl& link ) const;
@@ -264,13 +264,13 @@ class EBook_CHM : public EBook
 		 * Recursively parse and fill binary TOC
 		 */
 		bool RecurseLoadBTOC(const QByteArray& tocidx,
-							  const QByteArray& topics,
-							  const QByteArray& urltbl,
-							  const QByteArray& urlstr,
-							  const QByteArray& strings,
-							  int offset,
-							  QList<EBookTocEntry> &data,
-							  int level ) const;
+		                     const QByteArray& topics,
+		                     const QByteArray& urltbl,
+		                     const QByteArray& urlstr,
+		                     const QByteArray& strings,
+		                     int offset,
+		                     QList<EBookTocEntry> &data,
+		                     int level ) const;
 
 		/*!
 		 * Helper procedure in TOC parsing, decodes the string between the quotes (first or last) with decoding HTML

@@ -56,15 +56,16 @@ class UserEvent : public QEvent
 			: QEvent( QEvent::User ), m_action(action), m_args(args)
 		{
 		}
-	
+
 		QString			m_action;
 		QStringList		m_args;
 };
 
+
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {
-	Q_OBJECT
-	
+		Q_OBJECT
+
 	public:
 		// "Open page" parameter flags
 		enum
@@ -73,18 +74,18 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 			OPF_NEW_TAB = 1 << 2,		//! Open the page in a new tab
 			OPF_BACKGROUND 	= 1 << 3	//! Open the page in a new tab in background
 		};
-		
+
 	public:
-        MainWindow( const QStringList& arguments );
+		MainWindow( const QStringList& arguments );
 		~MainWindow();
-	
+
 		bool		openPage (const QUrl &url, unsigned int flags = OPF_CONTENT_TREE );
-		
+
 		EBook	*	chmFile() const	{ return m_ebookFile; }
 		const QString&	getOpenedFileName () { return m_ebookFilename; }
 		const QString&	getOpenedFileBaseName () { return m_ebookFileBasename; }
-		
-        ViewWindow * currentBrowser() const;
+
+		ViewWindow * currentBrowser() const;
 		Settings   * currentSettings() const { return m_currentSettings; }
 		ViewWindowMgr*	viewWindowMgr() const { return m_viewWindowMgr; }
 		NavigationPanel * navigator() const { return m_navPanel; }
@@ -92,18 +93,18 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		void		showInStatusBar (const QString& text);
 		void		setTextEncoding (const QString &enc);
 		QMenu * 	tabItemsContextMenu();
-        void        launch();
+		void        launch();
 
-        // Returns true if there's another instance running with the same token (assuming there's token);
-        // also sends the command-line data there so it runs properly.
-        bool        hasSameTokenInstance();
+		// Returns true if there's another instance running with the same token (assuming there's token);
+		// also sends the command-line data there so it runs properly.
+		bool        hasSameTokenInstance();
 
 		// Called from WindowMgr when another browser tab is activated
-        void		browserChanged( ViewWindow * newbrowser );
-	
+		void		browserChanged( ViewWindow * newbrowser );
+
 		// Adds some main window actions to the provided popup menu
-		void		setupPopupMenu( QMenu * menu );	
-	
+		void		setupPopupMenu( QMenu * menu );
+
 		// Returns true if currently opened file has TOC/index
 		bool		hasTableOfContents() const;
 		bool		hasIndex() const;
@@ -115,10 +116,10 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		// Navigation toolbar icons
 		void		navSetBackEnabled( bool enabled );
 		void		navSetForwardEnabled( bool enabled );
-		
+
 		void 		onOpenPageInNewTab();
 		void 		onOpenPageInNewBackgroundTab();
-					
+
 		// Actions
 		void		actionOpenFile();
 		void		actionPrint();
@@ -139,18 +140,18 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		void		actionNavigateBack();
 		void		actionNavigateForward();
 		void		actionNavigateHome();
-		
+
 		void		actionAboutApp();
 		void		actionAboutQt();
-		
+
 		void		actionSwitchToContentTab();
 		void		actionSwitchToIndexTab();
 		void		actionSwitchToSearchTab();
 		void		actionSwitchToBookmarkTab();
-		
+
 		void		actionOpenRecentFile( const QString& file );
 		void		actionEncodingChanged( QAction * action );
-	
+
 		// Link activation
 		void 		activateUrl( const QUrl & link );
 
@@ -160,34 +161,34 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 	protected slots:
 		// Called from the timer in main constructor
 		void 		firstShow();
-		
-        // single app mode
-        void        checkForSharedMemoryMessage();
+
+		// single app mode
+		void        checkForSharedMemoryMessage();
 
 	protected:
 		// Reimplemented functions
 		void		closeEvent ( QCloseEvent * e );
 		bool		event ( QEvent * e );
-		
+
 	private:
-        bool		parseCmdLineArgs(const QStringList &args, bool from_another_app = false );
+		bool		parseCmdLineArgs(const QStringList &args, bool from_another_app = false );
 		void 		setupActions();
 		void		setupLangEncodingMenu();
-		
-		bool		loadFile( const QString &fileName,  bool call_open_page = true );
-		void		closeFile();	
-		void		refreshCurrentBrowser();
-		
-		bool		handleUserEvent( const UserEvent * event );
-        void        printHelpAndExit();
 
-	private:		
+		bool		loadFile( const QString &fileName,  bool call_open_page = true );
+		void		closeFile();
+		void		refreshCurrentBrowser();
+
+		bool		handleUserEvent( const UserEvent * event );
+		void        printHelpAndExit();
+
+	private:
 		QString 				m_ebookFilename;
 		QString 				m_ebookFileBasename;
-		
+
 		Settings			*	m_currentSettings;
 		EBook				*	m_ebookFile;
-		
+
 		QList<QTemporaryFile*>	m_tempFileKeeper;
 
 		QActionGroup		*	m_encodingActions;
@@ -199,15 +200,15 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		NavigationPanel		*	m_navPanel;
 		ToolbarManager		*	m_toolbarMgr;
 
-        // For a single instance mode
-        QSharedMemory       *   m_sharedMemory;
+		// For a single instance mode
+		QSharedMemory       *   m_sharedMemory;
 
 		// Storage for built-in icons
 		QPixmap				 	m_builtinIcons[ EBookTocEntry::MAX_BUILTIN_ICONS ];
 
-        // Storage for command-line arguments due to KDE really insisting to use its own way
-        // for command-line parsing.
-        QStringList             m_arguments;
+		// Storage for command-line arguments due to KDE really insisting to use its own way
+		// for command-line parsing.
+		QStringList             m_arguments;
 
 	private:
 		// This is used for application automatic testing
@@ -218,12 +219,12 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 			STATE_OPEN_INDEX,
 			STATE_SHUTDOWN
 		};
-		
+
 		auto_test_state_t			m_autoteststate;
 
-private slots:
+	private slots:
 		void	runAutoTest();
-		
+
 };
 
 extern MainWindow * mainWindow;

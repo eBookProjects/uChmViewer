@@ -24,7 +24,7 @@
 #include <QXmlDefaultHandler>
 
 #include "ebook_epub.h"	// ebook.h -> EBookTocEntry
-						// EBook_EPUB
+                        // EBook_EPUB
 
 class QXmlAttributes;
 

@@ -89,37 +89,37 @@ QVariant TreeItem_TOC::data(int column, int role) const
 
 	switch( role )
 	{
-		// Item name
-		case Qt::DisplayRole:
-			return m_name;
+	// Item name
+	case Qt::DisplayRole:
+		return m_name;
 
-		// Item image
-		case Qt::DecorationRole:
-			if ( m_image != EBookTocEntry::IMAGE_NONE )
+	// Item image
+	case Qt::DecorationRole:
+		if ( m_image != EBookTocEntry::IMAGE_NONE )
+		{
+			// If the item has children, we change the book image to "open book", or next image automatically
+			if ( childCount() )
 			{
-				// If the item has children, we change the book image to "open book", or next image automatically
-				if ( childCount() )
-				{
-					if ( isExpanded() )
-						imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 1 : m_image;
-					else
-						imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 0 : m_image + 1;
-				}
+				if ( isExpanded() )
+					imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 1 : m_image;
 				else
-					imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 10 : m_image;
-
-				const QPixmap *pix = ::mainWindow->getEBookIconPixmap( (EBookTocEntry::Icon) imagenum );
-
-				if ( !pix || pix->isNull() )
-					abort();
-
-				return *pix;
+					imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 0 : m_image + 1;
 			}
-			break;
+			else
+				imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 10 : m_image;
 
-		case Qt::ToolTipRole:
-		case Qt::WhatsThisRole:
-			return m_name;
+			const QPixmap *pix = ::mainWindow->getEBookIconPixmap( (EBookTocEntry::Icon) imagenum );
+
+			if ( !pix || pix->isNull() )
+				abort();
+
+			return *pix;
+		}
+		break;
+
+	case Qt::ToolTipRole:
+	case Qt::WhatsThisRole:
+		return m_name;
 	}
 
 	return QVariant();

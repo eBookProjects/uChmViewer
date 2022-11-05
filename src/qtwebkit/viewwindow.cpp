@@ -62,11 +62,11 @@ ViewWindow::ViewWindow( QWidget * parent )
 
 	connect( this, SIGNAL( loadFinished(bool)), this, SLOT( onLoadFinished(bool)) );
 
-    // Search results highlighter
-    QPalette pal = palette();
-    pal.setColor( QPalette::Inactive, QPalette::Highlight, pal.color(QPalette::Active, QPalette::Highlight) );
-    pal.setColor( QPalette::Inactive, QPalette::HighlightedText, pal.color(QPalette::Active, QPalette::HighlightedText) );
-    setPalette( pal );
+	// Search results highlighter
+	QPalette pal = palette();
+	pal.setColor( QPalette::Inactive, QPalette::Highlight, pal.color(QPalette::Active, QPalette::Highlight) );
+	pal.setColor( QPalette::Inactive, QPalette::HighlightedText, pal.color(QPalette::Active, QPalette::HighlightedText) );
+	setPalette( pal );
 }
 
 ViewWindow::~ViewWindow()
@@ -82,7 +82,7 @@ void ViewWindow::invalidate( )
 
 bool ViewWindow::openUrl ( const QUrl& url )
 {
-    //qDebug("ViewWindow::openUrl %s", qPrintable(url.toString()));
+	//qDebug("ViewWindow::openUrl %s", qPrintable(url.toString()));
 
 	// Do not use setContent() here, it resets QWebHistory
 	load( url );
@@ -90,32 +90,31 @@ bool ViewWindow::openUrl ( const QUrl& url )
 	m_newTabLinkKeeper.clear();
 	mainWindow->viewWindowMgr()->setTabName( this );
 
-    return true;
+	return true;
 }
 
 void ViewWindow::applySettings(BrowserSettings &settings)
 {
-    QWebSettings * setup = QWebSettings::globalSettings();
+	QWebSettings * setup = QWebSettings::globalSettings();
 
-    setup->setAttribute( QWebSettings::AutoLoadImages, settings.enableImages );
-    setup->setAttribute( QWebSettings::JavascriptEnabled, settings.enableJS );
-    setup->setAttribute( QWebSettings::JavaEnabled, settings.enableJava );
-    setup->setAttribute( QWebSettings::PluginsEnabled, settings.enablePlugins );
-    setup->setAttribute( QWebSettings::OfflineStorageDatabaseEnabled, settings.enableOfflineStorage );
-    setup->setAttribute( QWebSettings::LocalStorageDatabaseEnabled, settings.enableLocalStorage );
-    setup->setAttribute( QWebSettings::LocalStorageEnabled, settings.enableLocalStorage );
+	setup->setAttribute( QWebSettings::AutoLoadImages, settings.enableImages );
+	setup->setAttribute( QWebSettings::JavascriptEnabled, settings.enableJS );
+	setup->setAttribute( QWebSettings::JavaEnabled, settings.enableJava );
+	setup->setAttribute( QWebSettings::PluginsEnabled, settings.enablePlugins );
+	setup->setAttribute( QWebSettings::OfflineStorageDatabaseEnabled, settings.enableOfflineStorage );
+	setup->setAttribute( QWebSettings::LocalStorageDatabaseEnabled, settings.enableLocalStorage );
+	setup->setAttribute( QWebSettings::LocalStorageEnabled, settings.enableLocalStorage );
 }
 
 QMenu * ViewWindow::createStandardContextMenu( QWidget * parent )
 {
 	QMenu * contextMenu = new QMenu( parent );
-	
+
 	contextMenu->addAction( "&Copy", ::mainWindow, SLOT(slotBrowserCopy()) );
 	contextMenu->addAction( "&Select all", ::mainWindow, SLOT(slotBrowserSelectAll()) );
-		
+
 	return contextMenu;
 }
-
 
 QMenu * ViewWindow::getContextMenu( const QUrl & link, QWidget * parent )
 {
@@ -124,7 +123,7 @@ QMenu * ViewWindow::getContextMenu( const QUrl & link, QWidget * parent )
 		// standard context menu
 		if ( !m_contextMenu )
 			m_contextMenu = createStandardContextMenu( parent );
-		
+
 		return m_contextMenu;
 	}
 	else
@@ -135,12 +134,12 @@ QMenu * ViewWindow::getContextMenu( const QUrl & link, QWidget * parent )
 		{
 			m_contextMenuLink = createStandardContextMenu( parent );
 			m_contextMenuLink->addSeparator();
-			
+
 			m_contextMenuLink->addAction( i18n("&Open this link in a new tab"), ::mainWindow, SLOT(onOpenPageInNewTab()), QKeySequence("Shift+Enter") );
-			
+
 			m_contextMenuLink->addAction( i18n("&Open this link in a new background tab"), ::mainWindow, SLOT(onOpenPageInNewBackgroundTab()), QKeySequence("Ctrl+Enter") );
 		}
-		
+
 		setTabKeeper( link );
 		return m_contextMenuLink;
 	}
@@ -149,14 +148,13 @@ QMenu * ViewWindow::getContextMenu( const QUrl & link, QWidget * parent )
 QString ViewWindow::title() const
 {
 	QString title = ::mainWindow->chmFile()->getTopicByUrl( url() );
-	
+
 	// If no title is found, use the path (without the first /)
 	if ( title.isEmpty() )
 		title = url().path().mid( 1 );
-	
+
 	return title;
 }
-
 
 void ViewWindow::navigateForward()
 {
@@ -257,7 +255,6 @@ QUrl ViewWindow::anchorAt(const QPoint & pos)
 	return  res.linkUrl();
 }
 
-
 void ViewWindow::mouseReleaseEvent ( QMouseEvent * event )
 {
 	if ( event->button() == Qt::MidButton )
@@ -274,7 +271,6 @@ void ViewWindow::mouseReleaseEvent ( QMouseEvent * event )
 
 	QWebView::mouseReleaseEvent( event );
 }
-
 
 void ViewWindow::contextMenuEvent(QContextMenuEvent *e)
 {
@@ -305,5 +301,5 @@ void ViewWindow::onLoadFinished ( bool )
 
 	updateHistoryIcons();
 
-    emit dataLoaded( this );
+	emit dataLoaded( this );
 }

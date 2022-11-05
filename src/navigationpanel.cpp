@@ -180,7 +180,6 @@ void NavigationPanel::showNextInToc()
 		::mainWindow->openPage( ((TreeItem_TOC *) (*lit) )->getUrl(),MainWindow::OPF_CONTENT_TREE );
 }
 
-
 int	NavigationPanel::active() const
 {
 	QWidget * cur = m_tabWidget->currentWidget();
@@ -199,32 +198,32 @@ void NavigationPanel::setActive( int index )
 {
 	switch ( index )
 	{
-		case TAB_CONTENTS:
-			if ( m_contentsTab )
-			{
-				m_tabWidget->setCurrentWidget( m_contentsTab );
-				m_contentsTab->focus();
-			}
-			break;
+	case TAB_CONTENTS:
+		if ( m_contentsTab )
+		{
+			m_tabWidget->setCurrentWidget( m_contentsTab );
+			m_contentsTab->focus();
+		}
+		break;
 
-		case TAB_INDEX:
-			if ( m_indexTab )
-			{
-				m_tabWidget->setCurrentWidget( m_indexTab );
-				m_indexTab->focus();
-			}
+	case TAB_INDEX:
+		if ( m_indexTab )
+		{
+			m_tabWidget->setCurrentWidget( m_indexTab );
+			m_indexTab->focus();
+		}
 
-			break;
+		break;
 
-		case TAB_SEARCH:
-			m_tabWidget->setCurrentWidget( m_searchTab );
-			m_searchTab->focus();
-			break;
+	case TAB_SEARCH:
+		m_tabWidget->setCurrentWidget( m_searchTab );
+		m_searchTab->focus();
+		break;
 
-		case TAB_BOOKMARK:
-			m_tabWidget->setCurrentWidget( m_bookmarksTab );
-			m_bookmarksTab->focus();
-			break;
+	case TAB_BOOKMARK:
+		m_tabWidget->setCurrentWidget( m_bookmarksTab );
+		m_bookmarksTab->focus();
+		break;
 	}
 }
 

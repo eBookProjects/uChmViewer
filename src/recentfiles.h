@@ -38,7 +38,7 @@ class QMenu;
 //
 class RecentFiles : public QObject
 {
-	Q_OBJECT
+		Q_OBJECT
 
 	public:
 		// A constructor specifies the menu to add recent files to, and the action to add it before.

@@ -39,7 +39,7 @@ class TabSearch;
 // This class shows content, index, search and bookmark tabs
 class NavigationPanel : public QDockWidget, public Ui::NavigatorPanel
 {
-	Q_OBJECT
+		Q_OBJECT
 
 	public:
 		enum
@@ -73,7 +73,7 @@ class NavigationPanel : public QDockWidget, public Ui::NavigatorPanel
 		void	refresh();
 
 		// Locate URL or text in the contents tab
-        bool	findUrlInContents( const QUrl & url );
+		bool	findUrlInContents( const QUrl & url );
 		void	findTextInContents( const QString & text );
 
 		// Find text in index tab

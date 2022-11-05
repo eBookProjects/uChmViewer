@@ -28,16 +28,16 @@ class QWidget;
 
 class DialogSetup : public QDialog, public Ui::DialogSetup
 {
-	Q_OBJECT
-			
+		Q_OBJECT
+
 	public:
 		DialogSetup( QWidget *parent = 0 );
 		~DialogSetup();
-		
+
 	public slots:
 		void	browseExternalEditor();
 		void	accept();
-		
+
 	private:
 		int		m_numOfRecentFiles;
 };

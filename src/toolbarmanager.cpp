@@ -54,7 +54,6 @@ bool ToolbarManager::hasAction( const QList<QAction*>& actions, QAction* action 
 	return false;
 }
 
-
 ToolbarManager::ToolbarManager( QObject * parent, const QString& settingpath )
 	: QObject( parent )
 {

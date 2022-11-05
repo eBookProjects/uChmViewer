@@ -21,7 +21,7 @@
 #include <QXmlAttributes>
 
 #include "helperxmlhandler_epubtoc.h"	// ebook.h -> EBookTocEntry
-										// ebook_epub.h -> EBook_EPUB
+                                        // ebook_epub.h -> EBook_EPUB
 
 HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC(EBook_EPUB *epub)
 {
@@ -77,7 +77,7 @@ bool HelperXmlHandler_EpubTOC::characters(const QString &ch)
 	return true;
 }
 
-bool HelperXmlHandler_EpubTOC::endElement(const QString& , const QString &localName, const QString &)
+bool HelperXmlHandler_EpubTOC::endElement(const QString&, const QString &localName, const QString &)
 {
 //	qDebug() << "endElement" << " " << qName;
 

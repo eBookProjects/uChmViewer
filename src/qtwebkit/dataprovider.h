@@ -62,5 +62,4 @@ class KCHMNetworkAccessManager : public QNetworkAccessManager
 		virtual QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = 0);
 };
 
-
 #endif // QWEBVIEWNETWORK_H

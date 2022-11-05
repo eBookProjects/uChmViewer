@@ -45,11 +45,11 @@ Config::Config()
 
 	QSettings settings;
 
-    m_startupMode = (Config::StartupMode) settings.value( "settings/onstartup", STARTUP_DO_NOTHING ).toInt();
-    m_onNewChmClick = (Config::choose_action_t) settings.value( "settings/onnewchm", ACTION_ASK_USER ).toInt();
-    m_onExternalLinkClick = (Config::choose_action_t) settings.value( "settings/onexternal", ACTION_ASK_USER ).toInt();
-    m_numOfRecentFiles = settings.value( "settings/maxrecentfiles", 10 ).toInt();
-    m_HistoryStoreExtra = settings.value( "settings/extrahistory", true ).toBool();
+	m_startupMode = (Config::StartupMode) settings.value( "settings/onstartup", STARTUP_DO_NOTHING ).toInt();
+	m_onNewChmClick = (Config::choose_action_t) settings.value( "settings/onnewchm", ACTION_ASK_USER ).toInt();
+	m_onExternalLinkClick = (Config::choose_action_t) settings.value( "settings/onexternal", ACTION_ASK_USER ).toInt();
+	m_numOfRecentFiles = settings.value( "settings/maxrecentfiles", 10 ).toInt();
+	m_HistoryStoreExtra = settings.value( "settings/extrahistory", true ).toBool();
 	m_advUseInternalEditor = settings.value( "advanced/internaleditor", true ).toBool();
 	m_advLayoutDirectionRL = settings.value( "advanced/layoutltr", false ).toBool();
 	m_advAutodetectEncoding = settings.value( "advanced/autodetectenc", false ).toBool();
@@ -66,8 +66,8 @@ Config::Config()
 	m_browserEnableRemoteContent = settings.value( "browser/enableremotecontent", false ).toBool();
 	browser.highlightSearchResults = settings.value( "browser/highlightsearchresults", true ).toBool();
 
-    m_tocOpenAllEntries = settings.value( "browser/tocopenallentries", true ).toBool();
-    m_tabUseSingleClick = settings.value( "browser/tabusesingleclick", true ).toBool();
+	m_tocOpenAllEntries = settings.value( "browser/tocopenallentries", true ).toBool();
+	m_tabUseSingleClick = settings.value( "browser/tabusesingleclick", true ).toBool();
 
 	QDir dir;
 	dir.setPath (m_datapath);
@@ -76,16 +76,15 @@ Config::Config()
 		qWarning( "Could not create directory %s", qPrintable( m_datapath ));
 }
 
-
 void Config::save( )
 {
 	QSettings settings;
 
-    settings.setValue( "settings/onstartup", m_startupMode );
-    settings.setValue( "settings/onnewchm", m_onNewChmClick );
-    settings.setValue( "settings/onexternal", m_onExternalLinkClick );
-    settings.setValue( "settings/maxrecentfiles", m_numOfRecentFiles );
-    settings.setValue( "settings/extrahistory", m_HistoryStoreExtra );
+	settings.setValue( "settings/onstartup", m_startupMode );
+	settings.setValue( "settings/onnewchm", m_onNewChmClick );
+	settings.setValue( "settings/onexternal", m_onExternalLinkClick );
+	settings.setValue( "settings/maxrecentfiles", m_numOfRecentFiles );
+	settings.setValue( "settings/extrahistory", m_HistoryStoreExtra );
 	settings.setValue( "advanced/internaleditor", m_advUseInternalEditor );
 	settings.setValue( "advanced/layoutltr", m_advLayoutDirectionRL );
 	settings.setValue( "advanced/autodetectenc", m_advAutodetectEncoding );
@@ -100,10 +99,10 @@ void Config::save( )
 	settings.setValue( "browser/enableofflinestorage", browser.enableOfflineStorage );
 	settings.setValue( "browser/enablelocalstorage", browser.enableLocalStorage );
 	settings.setValue( "browser/enableremotecontent", m_browserEnableRemoteContent );
-    settings.setValue( "browser/highlightsearchresults", browser.highlightSearchResults );
+	settings.setValue( "browser/highlightsearchresults", browser.highlightSearchResults );
 
-    settings.setValue( "browser/tocopenallentries", m_tocOpenAllEntries );
-    settings.setValue( "browser/tabusesingleclick", m_tabUseSingleClick );
+	settings.setValue( "browser/tocopenallentries", m_tocOpenAllEntries );
+	settings.setValue( "browser/tabusesingleclick", m_tabUseSingleClick );
 }
 
 QString Config::getEbookSettingFile(const QString &ebookfile ) const

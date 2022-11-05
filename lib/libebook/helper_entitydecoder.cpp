@@ -199,7 +199,6 @@ void HelperEntityDecoder::changeEncoding(QTextCodec *encoder)
 	m_entityDecodeMap["Prime"] = "\"";
 }
 
-
 QString HelperEntityDecoder::decode( const QString &entity ) const
 {
 	// If entity is an ASCII code like &#12349; - just decode it

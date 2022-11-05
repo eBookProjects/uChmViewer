@@ -65,13 +65,12 @@ class ViewWindowTabWidget : public QTabWidget
 };
 
 
-
 ViewWindowMgr::ViewWindowMgr( QWidget *parent )
 	: QWidget( parent ), Ui::TabbedBrowser()
 {
 	// UIC
 	setupUi( this );
-	
+
 	// Set up the initial settings
 	applyBrowserSettings();
 
@@ -90,22 +89,22 @@ ViewWindowMgr::ViewWindowMgr( QWidget *parent )
 	newButton->setIcon( QIcon( ":/images/addtab.png" ) );
 	newButton->setToolTip( i18n("Add page") );
 	connect( newButton, SIGNAL( clicked() ), this, SLOT( openNewTab() ) );
-	
+
 	// Put it there
 	m_tabWidget->setCornerWidget( newButton, Qt::TopLeftCorner );
-	
+
 	// Hide the search frame
 	frameFind->setVisible( false );
-	
+
 	// Search Line edit
 	connect( editFind,
 	         SIGNAL( textEdited ( const QString & ) ),
-	         this, 
+	         this,
 	         SLOT( editTextEdited( const QString & ) ) );
 
-    connect( editFind, SIGNAL(returnPressed()), this, SLOT(onFindNext()) );
+	connect( editFind, SIGNAL(returnPressed()), this, SLOT(onFindNext()) );
 
-    // Search toolbar buttons
+	// Search toolbar buttons
 	toolClose->setShortcut( Qt::Key_Escape );
 	connect( toolClose, SIGNAL(clicked()), this, SLOT( closeSearch()) );
 
@@ -116,7 +115,7 @@ ViewWindowMgr::ViewWindowMgr( QWidget *parent )
 ViewWindowMgr::~ViewWindowMgr( )
 {
 }
-	
+
 void ViewWindowMgr::createMenu( MainWindow *, QMenu * menuWindow, QAction * actionCloseWindow )
 {
 	m_menuWindow = menuWindow;
@@ -129,57 +128,56 @@ void ViewWindowMgr::invalidate()
 	addNewTab( true );
 }
 
-
 ViewWindow * ViewWindowMgr::current()
 {
 	TabData * tab = findTab( m_tabWidget->currentWidget() );
-	
+
 	if ( !tab )
 		abort();
-	
+
 	return tab->window;
 }
 
 ViewWindow * ViewWindowMgr::addNewTab( bool set_active )
 {
 	ViewWindow * viewvnd = new ViewWindow( m_tabWidget );
-	
+
 	editFind->installEventFilter( this );
-	
+
 	// Create the tab data structure
 	TabData tabdata;
 	tabdata.window = viewvnd;
 	tabdata.action = new QAction( "window", this ); // temporary name; real name is set in setTabName
 	tabdata.widget = viewvnd;
-	
+
 	connect( tabdata.action,
-			 SIGNAL( triggered() ),
+	         SIGNAL( triggered() ),
 	         this,
 	         SLOT( activateWindow() ) );
-	
+
 	m_Windows.push_back( tabdata );
 	m_tabWidget->addTab( tabdata.widget, "" );
 	Q_ASSERT( m_Windows.size() == m_tabWidget->count() );
-		
+
 	// Set active if it is the first tab
 	if ( set_active || m_Windows.size() == 1 )
 		m_tabWidget->setCurrentWidget( tabdata.widget );
-	
+
 	// Handle clicking on link in browser window
 	connect( viewvnd,
-			 SIGNAL( linkClicked ( const QUrl& ) ),
-	         ::mainWindow, 
-			 SLOT( activateUrl( const QUrl& ) ) );
+	         SIGNAL( linkClicked ( const QUrl& ) ),
+	         ::mainWindow,
+	         SLOT( activateUrl( const QUrl& ) ) );
 
-    connect( viewvnd, SIGNAL(dataLoaded(ViewWindow*)), this, SLOT(onWindowContentChanged(ViewWindow*)));
+	connect( viewvnd, SIGNAL(dataLoaded(ViewWindow*)), this, SLOT(onWindowContentChanged(ViewWindow*)));
 
 	// Set up the accelerator if we have room
 	if ( m_Windows.size() < 10 )
 		tabdata.action->setShortcut( QKeySequence( i18n("Alt+%1").arg( m_Windows.size() ) ) );
-	
+
 	// Add it to the "Windows" menu
 	m_menuWindow->addAction( tabdata.action );
-	
+
 	return viewvnd;
 }
 
@@ -192,18 +190,18 @@ void ViewWindowMgr::closeAllWindows( )
 void ViewWindowMgr::setTabName( ViewWindow * window )
 {
 	TabData * tab = findTab( window );
-	
+
 	if ( tab )
 	{
-        QString title = window->title().trimmed();
-		
+		QString title = window->title().trimmed();
+
 		// Trim too long string
 		if ( title.length() > 25 )
 			title = title.left( 22 ) + "...";
-	
+
 		m_tabWidget->setTabText( m_tabWidget->indexOf( window ), title );
 		tab->action->setText( title );
-		
+
 		updateCloseButtons();
 	}
 }
@@ -213,11 +211,10 @@ void ViewWindowMgr::onCloseCurrentWindow( )
 	// Do not allow to close the last window
 	if ( m_Windows.size() == 1 )
 		return;
-			
+
 	TabData * tab = findTab( m_tabWidget->currentWidget() );
 	closeWindow( tab->widget );
 }
-
 
 void ViewWindowMgr::onCloseWindow( int num )
 {
@@ -234,35 +231,34 @@ void ViewWindowMgr::onCloseWindow( int num )
 void ViewWindowMgr::closeWindow( QWidget * widget )
 {
 	WindowsIterator it;
-	
+
 	for ( it = m_Windows.begin(); it != m_Windows.end(); ++it )
 		if ( it->widget == widget )
 			break;
-	
+
 	if ( it == m_Windows.end() )
 		qFatal( "ViewWindowMgr::closeWindow called with unknown widget!" );
 
 	m_menuWindow->removeAction( it->action );
-	
+
 	m_tabWidget->removeTab( m_tabWidget->indexOf( it->widget ) );
 	delete it->window;
 	delete it->action;
-	
+
 	m_Windows.erase( it );
 	updateCloseButtons();
-	
+
 	// Change the accelerators, as we might have removed the item in the middle
 	int count = 1;
 	for ( WindowsIterator it = m_Windows.begin(); it != m_Windows.end() && count < 10; ++it, count++ )
 		(*it).action->setShortcut( QKeySequence( i18n("Alt+%1").arg( count ) ) );
 }
 
-
 void ViewWindowMgr::restoreSettings( const Settings::viewindow_saved_settings_t & settings )
 {
 	// Destroy automatically created tab
 	closeWindow( m_Windows.first().widget );
-	
+
 	for ( int i = 0; i < settings.size(); i++ )
 	{
 		ViewWindow * window = addNewTab( false );
@@ -272,29 +268,28 @@ void ViewWindowMgr::restoreSettings( const Settings::viewindow_saved_settings_t 
 	}
 }
 
-
 void ViewWindowMgr::saveSettings( Settings::viewindow_saved_settings_t & settings )
 {
 	settings.clear();
-	
+
 	for ( int i = 0; i < m_tabWidget->count(); i++ )
 	{
 		QWidget * p = m_tabWidget->widget( i );
 		TabData * tab = findTab( p );
-			
+
 		if ( !tab )
 			abort();
-		
+
 		settings.push_back( Settings::SavedViewWindow( tab->window->getOpenedPage().toString(),
-													   tab->window->getScrollbarPosition(),
-													   tab->window->getZoomFactor()) );
+		                                               tab->window->getScrollbarPosition(),
+		                                               tab->window->getZoomFactor()) );
 	}
 }
 
 void ViewWindowMgr::updateCloseButtons( )
 {
 	bool enabled = m_Windows.size() > 1;
-	
+
 	m_actionCloseWindow->setEnabled( enabled );
 	m_tabWidget->setTabsClosable( enabled );
 }
@@ -305,7 +300,7 @@ void ViewWindowMgr::onTabChanged( int newtabIndex )
 		return;
 
 	TabData * tab = findTab( m_tabWidget->widget( newtabIndex ) );
-	
+
 	if ( tab )
 	{
 		tab->window->updateHistoryIcons();
@@ -313,7 +308,6 @@ void ViewWindowMgr::onTabChanged( int newtabIndex )
 		tab->widget->setFocus();
 	}
 }
-
 
 void ViewWindowMgr::openNewTab()
 {
@@ -323,12 +317,12 @@ void ViewWindowMgr::openNewTab()
 void ViewWindowMgr::activateWindow()
 {
 	QAction *action = qobject_cast< QAction * >(sender());
-	
+
 	for ( WindowsIterator it = m_Windows.begin(); it != m_Windows.end(); ++it )
 	{
 		if ( it->action != action )
 			continue;
-		
+
 		QWidget *widget = it->widget;
 		m_tabWidget->setCurrentWidget(widget);
 		break;
@@ -346,7 +340,7 @@ ViewWindowMgr::TabData * ViewWindowMgr::findTab(QWidget * widget)
 	for ( WindowsIterator it = m_Windows.begin(); it != m_Windows.end(); ++it )
 		if ( it->widget == widget )
 			return (it.operator->());
-		
+
 	return 0;
 }
 
@@ -370,63 +364,62 @@ void ViewWindowMgr::onActivateFind()
 
 void ViewWindowMgr::find( bool backward )
 {
-    QWebPage::FindFlags webkitflags = 0;
-	
+	QWebPage::FindFlags webkitflags = 0;
+
 	if ( checkCase->isChecked() )
-        webkitflags |= QWebPage::FindCaseSensitively;
-	
+		webkitflags |= QWebPage::FindCaseSensitively;
+
 	if ( backward )
-        webkitflags |= QWebPage::FindBackward;
+		webkitflags |= QWebPage::FindBackward;
 
-    if ( pConfig->browser.highlightSearchResults )
-    {
-        // From the doc:
-        // If the HighlightAllOccurrences flag is passed, the
-        // function will highlight all occurrences that exist
-        // in the page. All subsequent calls will extend the
-        // highlight, rather than replace it, with occurrences
-        // of the new string.
+	if ( pConfig->browser.highlightSearchResults )
+	{
+		// From the doc:
+		// If the HighlightAllOccurrences flag is passed, the
+		// function will highlight all occurrences that exist
+		// in the page. All subsequent calls will extend the
+		// highlight, rather than replace it, with occurrences
+		// of the new string.
 
-        // If the search text is different, we run the empty string search
-        // to discard old highlighting
-        if ( m_lastSearchedWord != editFind->text() )
-            current()->findText( "", webkitflags | QWebPage::HighlightAllOccurrences );
+		// If the search text is different, we run the empty string search
+		// to discard old highlighting
+		if ( m_lastSearchedWord != editFind->text() )
+			current()->findText( "", webkitflags | QWebPage::HighlightAllOccurrences );
 
-        m_lastSearchedWord = editFind->text();
+		m_lastSearchedWord = editFind->text();
 
-        // Now we call search with highlighting enabled, while the main search below will have
-        // it disabled. This leads in both having the highlighting results AND working forward/
-        // backward buttons.
-        current()->findText( editFind->text(), webkitflags | QWebPage::HighlightAllOccurrences );
-    }
+		// Now we call search with highlighting enabled, while the main search below will have
+		// it disabled. This leads in both having the highlighting results AND working forward/
+		// backward buttons.
+		current()->findText( editFind->text(), webkitflags | QWebPage::HighlightAllOccurrences );
+	}
 
-    // Pre-hide the wrapper
-    labelWrapped->hide();
+	// Pre-hide the wrapper
+	labelWrapped->hide();
 
-    bool found = current()->findText( editFind->text(), webkitflags );
+	bool found = current()->findText( editFind->text(), webkitflags );
 
-    // If we didn't find anything, enable the wrap and try again
-    if ( !found )
-    {
-        found = current()->findText( editFind->text(), webkitflags | QWebPage::FindWrapsAroundDocument );
+	// If we didn't find anything, enable the wrap and try again
+	if ( !found )
+	{
+		found = current()->findText( editFind->text(), webkitflags | QWebPage::FindWrapsAroundDocument );
 
-        if ( found )
-            labelWrapped->show();
-    }
+		if ( found )
+			labelWrapped->show();
+	}
 
 	if ( !frameFind->isVisible() )
 		frameFind->show();
 
 	QPalette p = editFind->palette();
 
-    if ( !found )
+	if ( !found )
 		p.setColor( QPalette::Active, QPalette::Base, QColor(255, 102, 102) );
 	else
 		p.setColor( QPalette::Active, QPalette::Base, Qt::white );
 
 	editFind->setPalette( p );
 }
-
 
 void ViewWindowMgr::editTextEdited(const QString &)
 {
@@ -440,24 +433,23 @@ void ViewWindowMgr::onFindNext()
 
 void ViewWindowMgr::onFindPrevious()
 {
-    find( true );
+	find( true );
 }
 
 void ViewWindowMgr::onWindowContentChanged(ViewWindow *window)
 {
-    setTabName( (ViewWindow*) window );
+	setTabName( (ViewWindow*) window );
 }
 
 void ViewWindowMgr::copyUrlToClipboard()
 {
-    QString url = current()->getOpenedPage().toString();
+	QString url = current()->getOpenedPage().toString();
 
-    if ( !url.isEmpty() )
-        QApplication::clipboard()->setText( url );
+	if ( !url.isEmpty() )
+		QApplication::clipboard()->setText( url );
 }
-
 
 void ViewWindowMgr::applyBrowserSettings()
 {
-    ViewWindow::applySettings(pConfig->browser);
+	ViewWindow::applySettings(pConfig->browser);
 }

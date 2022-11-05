@@ -22,7 +22,7 @@
 #include <QString>
 #include <QStringList>
 #include <Qt>		   // Qt::DisplayRole, Qt::ForegroundRole, Qt::ToolTipRole, Qt::WhatsThisRole
-					   // Qt::red, Qt::lightGray
+                       // Qt::red, Qt::lightGray
 #include <QtGlobal>	   // qPrintable, qWarning
 #include <QUrl>
 #include <QVariant>
@@ -108,22 +108,22 @@ QVariant TreeItem_Index::data(int column, int role) const
 
 	switch( role )
 	{
-		// Item name
-		case Qt::DisplayRole:
-			return m_name;
+	// Item name
+	case Qt::DisplayRole:
+		return m_name;
 
-		// Item foreground color
-		case Qt::ForegroundRole:
-			// For Index URL it means that there is URL list in m_url
-			if ( m_urls.size() > 1 )
-				return QBrush( QColor( Qt::red ) );
-			else if ( isSeeAlso() )
-				return QBrush( QColor( Qt::lightGray ) );
-			break;
+	// Item foreground color
+	case Qt::ForegroundRole:
+		// For Index URL it means that there is URL list in m_url
+		if ( m_urls.size() > 1 )
+			return QBrush( QColor( Qt::red ) );
+		else if ( isSeeAlso() )
+			return QBrush( QColor( Qt::lightGray ) );
+		break;
 
-		case Qt::ToolTipRole:
-		case Qt::WhatsThisRole:
-			return m_name;
+	case Qt::ToolTipRole:
+	case Qt::WhatsThisRole:
+		return m_name;
 	}
 
 	return QVariant();

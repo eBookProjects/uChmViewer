@@ -44,22 +44,22 @@ struct Document
 	{
 		return docNumber == doc.docNumber;
 	}
-	
+
 	bool operator<( const Document &doc ) const
 	{
 		return frequency > doc.frequency;
 	}
-	
+
 	bool operator<=( const Document &doc ) const
 	{
 		return frequency >= doc.frequency;
 	}
-	
+
 	bool operator>( const Document &doc ) const
 	{
 		return frequency < doc.frequency;
 	}
-	
+
 	qint16	docNumber;
 	qint16	frequency;
 };
@@ -69,11 +69,11 @@ QDataStream &operator<<( QDataStream &s, const Document &l );
 
 class Index : public QObject
 {
-    Q_OBJECT
+		Q_OBJECT
 	public:
 
 		Index();
-		
+
 		void 		writeDict( QDataStream& stream );
 		bool 		readDict( QDataStream& stream );
 		bool 		makeIndex(const QList<QUrl> &docs, EBook * chmFile );
@@ -94,29 +94,29 @@ class Index : public QObject
 			Entry( QVector<Document> l ) : documents( l ) {}
 			QVector<Document> documents;
 		};
-		
+
 		struct PosEntry
 		{
 			PosEntry( int p ) { positions.append( p ); }
 			QList<uint> positions;
 		};
-		
+
 		bool	parseDocumentToStringlist( EBook * chmFile, const QUrl& filename, QStringList& tokenlist );
 		void	insertInDict( const QString&, int );
-		
+
 		QStringList				getWildcardTerms( const QString& );
 		QStringList				split( const QString& );
 		QList<Document> 		setupDummyTerm( const QStringList& );
 		bool 					searchForPhrases(const QStringList &phrases, const QStringList &words, const QUrl &filename, EBook * chmFile );
-		
+
 		QList< QUrl > 			docList;
 		QHash<QString, Entry*> 	dict;
 		QHash<QString,PosEntry*>miniDict;
 		bool 					lastWindowClosed;
 		HelperEntityDecoder		entityDecoder;
-	
+
 		// Those characters are splitters (i.e. split the word), but added themselves into dictionary too.
-		// This makes the dictionary MUCH larger, but ensure that for the piece of "window->print" both 
+		// This makes the dictionary MUCH larger, but ensure that for the piece of "window->print" both
 		// search for "print" and "->print" will find it.
 		QString 				m_charssplit;
 

@@ -169,7 +169,6 @@ static short lcid_Western[] =
 	0
 };
 
-
 static const EbookChmTextEncodingEntry text_encoding_table [] =
 {
 	{
@@ -294,7 +293,6 @@ static const EbookChmTextEncodingEntry text_encoding_table [] =
 
 	{	0,	0	}
 };
-
 
 QString Ebook_CHM_Encoding::guessByLCID(unsigned short lcid)
 {

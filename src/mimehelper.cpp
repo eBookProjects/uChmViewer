@@ -28,51 +28,51 @@
 
 QByteArray MimeHelper::mimeType(const QUrl &url, const QByteArray &buf)
 {
-    QString path = url.path().toLower();
+	QString path = url.path().toLower();
 
-    // Try to recognize the MIME type by the extension of the file name.
-    if (path.endsWith(".cs") || path.endsWith(".css"))
-        return "text/css";
-    else if (path.endsWith(".js"))
-        return "text/js";
-    
-    /* BOM          Encoding Form
-     * 00 00 FE FF 	UTF-32, big-endian
-     * FF FE 00 00 	UTF-32, little-endian
-     * FE FF 	    UTF-16, big-endian
-     * FF FE 	    UTF-16, little-endian
-     * EF BB BF 	UTF-8
-     */
-    auto iter = buf.begin();
-    // Skip utf-8 Byte Order Mark
-    if (buf.startsWith("\xEF\xBB\xBF")) {
-        iter +=3;
-    }
+	// Try to recognize the MIME type by the extension of the file name.
+	if (path.endsWith(".cs") || path.endsWith(".css"))
+		return "text/css";
+	else if (path.endsWith(".js"))
+		return "text/js";
 
-    /* If the first non space character in buf is '<',
-     * then we assume that the buffer contains HTML,
-     * or if it is followed by '?', then XML.
-     * 
-     * TODO Skip comments like "<!-- -->" */
-    for (; iter != buf.end() ; iter++) {
-        char c = *iter;
+	/* BOM          Encoding Form
+	 * 00 00 FE FF 	UTF-32, big-endian
+	 * FF FE 00 00 	UTF-32, little-endian
+	 * FE FF 	    UTF-16, big-endian
+	 * FF FE 	    UTF-16, little-endian
+	 * EF BB BF 	UTF-8
+	 */
+	auto iter = buf.begin();
+	// Skip utf-8 Byte Order Mark
+	if (buf.startsWith("\xEF\xBB\xBF")) {
+		iter +=3;
+	}
 
-        if (c == '<') {
-            c = *(++iter);
-            if( c == '?')
-                return "text/xml";
-            else
-                return "text/html";
-        }
+	/* If the first non space character in buf is '<',
+	 * then we assume that the buffer contains HTML,
+	 * or if it is followed by '?', then XML.
+	 *
+	 * TODO Skip comments like "<!-- -->" */
+	for (; iter != buf.end() ; iter++) {
+		char c = *iter;
 
-        if (!isspace(c))
-            break;
-    }
-    
-    if (path.endsWith(".htm") || path.endsWith(".html"))
-        return "text/html";
-    else if (path.endsWith(".xhtml") || path.endsWith(".xml"))
-        return "text/xml";
+		if (c == '<') {
+			c = *(++iter);
+			if( c == '?')
+				return "text/xml";
+			else
+				return "text/html";
+		}
 
-    return "application/octet-stream";
+		if (!isspace(c))
+			break;
+	}
+
+	if (path.endsWith(".htm") || path.endsWith(".html"))
+		return "text/html";
+	else if (path.endsWith(".xhtml") || path.endsWith(".xml"))
+		return "text/xml";
+
+	return "application/octet-stream";
 }

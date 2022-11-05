@@ -33,7 +33,7 @@ class QToolBar;
 // - Allows toolbar editing;
 class ToolbarManager : public QObject
 {
-	Q_OBJECT
+		Q_OBJECT
 
 	public:
 		// Returns the name of the separator object which should be used in place

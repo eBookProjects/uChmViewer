@@ -27,7 +27,6 @@ EBook::EBook()
 {
 }
 
-
 EBook::~EBook()
 {
 }
@@ -41,7 +40,6 @@ EBook * EBook::loadFile( const QString &archiveName )
 
 	delete cbook;
 
-
 	EBook_EPUB * ebook = new EBook_EPUB();
 
 	if ( ebook->load( archiveName ) )
@@ -50,4 +48,3 @@ EBook * EBook::loadFile( const QString &archiveName )
 	delete ebook;
 	return 0;
 }
-

@@ -38,32 +38,32 @@ TabContents::TabContents( QWidget *parent )
 	: QWidget( parent ), Ui::TabContents()
 {
 	setupUi( this );
-	
+
 	m_contextMenu = 0;
-	
+
 	tree->header()->hide();
-	
+
 	// Handle clicking on m_contentsWindow element
-    if ( pConfig->m_tabUseSingleClick )
-    {
-        connect( tree,
-                 SIGNAL( itemClicked(QTreeWidgetItem*,int)),
-                 this,
-                 SLOT( onClicked ( QTreeWidgetItem *, int ) ) );
-    }
-    else
-    {
-        connect( tree,
-                 SIGNAL( itemActivated ( QTreeWidgetItem *, int ) ),
-                 this,
-                 SLOT( onClicked ( QTreeWidgetItem *, int ) ) );
-    }
+	if ( pConfig->m_tabUseSingleClick )
+	{
+		connect( tree,
+		         SIGNAL( itemClicked(QTreeWidgetItem*,int)),
+		         this,
+		         SLOT( onClicked ( QTreeWidgetItem *, int ) ) );
+	}
+	else
+	{
+		connect( tree,
+		         SIGNAL( itemActivated ( QTreeWidgetItem *, int ) ),
+		         this,
+		         SLOT( onClicked ( QTreeWidgetItem *, int ) ) );
+	}
 
 	// Activate custom context menu, and connect it
 	tree->setContextMenuPolicy( Qt::CustomContextMenu );
-	connect( tree, 
+	connect( tree,
 	         SIGNAL( customContextMenuRequested ( const QPoint & ) ),
-	         this, 
+	         this,
 	         SLOT( onContextMenuRequested( const QPoint & ) ) );
 
 	focus();
@@ -77,9 +77,9 @@ void TabContents::refillTableOfContents( )
 {
 	ShowWaitCursor wc;
 	QList< EBookTocEntry > data;
-	
+
 	if ( !::mainWindow->chmFile()->getTableOfContents( data )
-	|| data.size() == 0 )
+	        || data.size() == 0 )
 	{
 		qWarning ("Table of contents is present but is empty; wrong parsing?");
 		return;
@@ -143,8 +143,8 @@ void TabContents::refillTableOfContents( )
 			item = new TreeItem_TOC( rootentry[indent-1], lastchild[indent], data[i].name, data[i].url, data[i].iconid );
 		}
 
-        if ( pConfig->m_tocOpenAllEntries )
-            item->setExpanded( true );
+		if ( pConfig->m_tocOpenAllEntries )
+			item->setExpanded( true );
 
 		lastchild[indent] = item;
 		rootentry[indent] = item;
@@ -152,7 +152,6 @@ void TabContents::refillTableOfContents( )
 
 	tree->update();
 }
-
 
 static TreeItem_TOC * findTreeItem( TreeItem_TOC *item, const QUrl& url, bool ignorefragment )
 {
@@ -201,12 +200,11 @@ void TabContents::showItem( TreeItem_TOC * item )
 	tree->scrollToItem( item );
 }
 
-
 void TabContents::onClicked(QTreeWidgetItem * item, int)
 {
 	if ( !item )
 		return;
-	
+
 	TreeItem_TOC * treeitem = (TreeItem_TOC*) item;
 	::mainWindow->activateUrl( treeitem->getUrl() );
 }
@@ -214,7 +212,7 @@ void TabContents::onClicked(QTreeWidgetItem * item, int)
 void TabContents::onContextMenuRequested(const QPoint & point)
 {
 	TreeItem_TOC * treeitem = (TreeItem_TOC *) tree->itemAt( point );
-	
+
 	if( treeitem )
 	{
 		::mainWindow->currentBrowser()->setTabKeeper( treeitem->getUrl() );
@@ -222,14 +220,13 @@ void TabContents::onContextMenuRequested(const QPoint & point)
 	}
 }
 
-
 void TabContents::search( const QString & text )
 {
 	QList<QTreeWidgetItem*> items = tree->findItems( text, Qt::MatchWildcard | Qt::MatchRecursive );
 
 	if ( items.isEmpty() )
 		return;
-			
+
 	TreeItem_TOC * treeitem = (TreeItem_TOC *) items.first();
 	::mainWindow->activateUrl( treeitem->getUrl() );
 }
