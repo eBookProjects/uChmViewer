@@ -116,7 +116,7 @@ bool Index::makeIndex(const QList< QUrl >& docs, EBook* chmFile )
 				insertInDict( *tit, i );
 		}
 
-		if ( i%steps == 0 )
+		if ( i % steps == 0 )
 		{
 			prog++;
 			prog = qMin( prog, 99 );
@@ -321,7 +321,7 @@ void Index::writeDict( QDataStream& stream )
 	stream << docList;
 
 	// Dictionary
-	for( QHash<QString, Entry*>::ConstIterator it = dict.begin(); it != dict.end(); ++it )
+	for ( QHash<QString, Entry*>::ConstIterator it = dict.begin(); it != dict.end(); ++it )
 	{
 		stream << it.key();
 		stream << (int) it.value()->documents.count();
@@ -388,10 +388,10 @@ QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq,
 	std::sort( termList.begin(), termList.end() );
 
 	QVector<Document> minDocs = termList.takeFirst().documents;
-	for(QList<Term>::Iterator it = termList.begin(); it != termList.end(); ++it) {
+	for (QList<Term>::Iterator it = termList.begin(); it != termList.end(); ++it) {
 		Term* t = &(*it);
 		QVector<Document> docs = t->documents;
-		for(QVector<Document>::Iterator minDoc_it = minDocs.begin(); minDoc_it != minDocs.end(); ) {
+		for (QVector<Document>::Iterator minDoc_it = minDocs.begin(); minDoc_it != minDocs.end(); ) {
 			bool found = false;
 			for (QVector<Document>::ConstIterator doc_it = docs.constBegin(); doc_it != docs.constEnd(); ++doc_it ) {
 				if ( (*minDoc_it).docNumber == (*doc_it).docNumber ) {
@@ -411,13 +411,13 @@ QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq,
 	std::sort( minDocs.begin(), minDocs.end() );
 
 	if ( termSeq.isEmpty() ) {
-		for(QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it)
+		for (QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it)
 			results << docList.at((int)(*it).docNumber);
 		return results;
 	}
 
 	QUrl fileName;
-	for(QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it) {
+	for (QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it) {
 		fileName =  docList[ (int)(*it).docNumber ];
 		if ( searchForPhrases( termSeq, seqWords, fileName, chmFile ) )
 			results << fileName;

@@ -177,7 +177,7 @@ void NavigationPanel::showNextInToc()
 	lit++;
 
 	if ( *lit )
-		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl(),MainWindow::OPF_CONTENT_TREE );
+		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl(), MainWindow::OPF_CONTENT_TREE );
 }
 
 int	NavigationPanel::active() const
@@ -250,7 +250,7 @@ QStringList NavigationPanel::searchQuery( const QString& text )
 	QStringList result;
 	m_searchTab->searchQuery( text, &res );
 
-	Q_FOREACH( QUrl u, res )
+	Q_FOREACH ( QUrl u, res )
 		result.push_back( u.path() );
 
 	return result;

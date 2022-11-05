@@ -91,7 +91,7 @@ void ToolbarManager::applyActions( QToolBar* toolbar, const QStringList& actions
 	// Apply the actions to the toolbar
 	toolbar->clear();
 
-	foreach( QString name, actions )
+	foreach ( QString name, actions )
 	{
 		if ( name == separatorName() )
 		{
@@ -117,7 +117,7 @@ void ToolbarManager::load()
 
 	QSettings settings;
 
-	foreach( QToolBar* toolbar, m_toolbars )
+	foreach ( QToolBar* toolbar, m_toolbars )
 	{
 		QString settingName = m_settingsRoot + toolbar->objectName();
 
@@ -133,7 +133,7 @@ void ToolbarManager::save()
 {
 	QSettings settings;
 
-	foreach( QToolBar* toolbar, m_toolbars )
+	foreach ( QToolBar* toolbar, m_toolbars )
 	{
 		QString settingName = m_settingsRoot + toolbar->objectName();
 		QStringList names;
@@ -159,6 +159,6 @@ void ToolbarManager::editDialog()
 	if ( dlg.exec() == QDialog::Rejected )
 		return;
 
-	foreach( QToolBar* toolbar, m_toolbars )
+	foreach ( QToolBar* toolbar, m_toolbars )
 		applyActions( toolbar, dlg.actionsForToolbar( toolbar ) );
 }

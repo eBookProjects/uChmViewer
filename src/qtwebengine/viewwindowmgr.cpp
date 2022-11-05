@@ -375,7 +375,7 @@ void ViewWindowMgr::find( bool backward )
 	// Pre-hide the wrapper
 	labelWrapped->hide();
 
-	current()->findText( editFind->text(), webkitflags, [=](bool found) {
+	current()->findText( editFind->text(), webkitflags, [ = ](bool found) {
 		if ( !frameFind->isVisible() )
 			frameFind->show();
 

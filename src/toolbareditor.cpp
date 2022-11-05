@@ -229,7 +229,7 @@ void ToolbarEditor::addToolbar( QToolBar* toolbar )
 
 void ToolbarEditor::addToolbars( QList<QToolBar*> toolbars )
 {
-	foreach( QToolBar* t, toolbars )
+	foreach ( QToolBar* t, toolbars )
 		m_toolbars.push_back( t );
 }
 
@@ -249,7 +249,7 @@ int ToolbarEditor::exec()
 		groupEditToolbars->hide();
 
 	// Init the toolbar(s) actions
-	foreach( QToolBar* toolbar, m_toolbars )
+	foreach ( QToolBar* toolbar, m_toolbars )
 	{
 		initToolbarActions( toolbar );
 
@@ -297,7 +297,7 @@ void ToolbarEditor::setupViews( QToolBar* toolbar )
 	// Create the list of available actions
 	QStringList available;
 
-	foreach( QAction* action, m_availableActions )
+	foreach ( QAction* action, m_availableActions )
 	{
 		if ( !actions.contains( ToolbarManager::actionName( action ) ) )
 		{

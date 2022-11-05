@@ -46,7 +46,7 @@ QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
 	auto iter = buf.begin();
 	// Skip utf-8 Byte Order Mark
 	if (buf.startsWith("\xEF\xBB\xBF")) {
-		iter +=3;
+		iter += 3;
 	}
 
 	/* If the first non space character in buf is '<',
@@ -59,7 +59,7 @@ QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
 
 		if (c == '<') {
 			c = *(++iter);
-			if( c == '?')
+			if ( c == '?')
 				return "text/xml";
 			else
 				return "text/html";

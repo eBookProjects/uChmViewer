@@ -57,7 +57,7 @@ TabIndex::TabIndex ( QWidget* parent )
 	if ( pConfig->m_tabUseSingleClick )
 	{
 		connect( tree,
-		         SIGNAL( itemClicked(QTreeWidgetItem*,int)),
+		         SIGNAL( itemClicked(QTreeWidgetItem*, int)),
 		         this,
 		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
@@ -201,8 +201,8 @@ void TabIndex::refillIndex( )
 
 				for ( int j = maxindent; j < indent; j++ )
 				{
-					lastchild[j+1] = lastchild[j];
-					rootentry[j+1] = rootentry[j];
+					lastchild[j + 1] = lastchild[j];
+					rootentry[j + 1] = rootentry[j];
 				}
 			}
 
@@ -219,10 +219,10 @@ void TabIndex::refillIndex( )
 		{
 			// New non-root entry. It is possible (for some buggy CHMs) that there is no previous entry: previoous entry had indent 1,
 			// and next entry has indent 3. Backtracking it up, creating missing entries.
-			if ( rootentry[indent-1] == 0 )
+			if ( rootentry[indent - 1] == 0 )
 				qFatal("Child entry indented as %d with no root entry!", indent);
 
-			item = new TreeItem_Index( rootentry[indent-1], lastchild[indent], data[i].name, data[i].urls, data[i].seealso );
+			item = new TreeItem_Index( rootentry[indent - 1], lastchild[indent], data[i].name, data[i].urls, data[i].seealso );
 		}
 
 		// Make it open
@@ -260,7 +260,7 @@ void TabIndex::onContextMenuRequested(const QPoint& point)
 {
 	TreeItem_Index* treeitem = (TreeItem_Index*) tree->itemAt( point );
 
-	if( treeitem )
+	if ( treeitem )
 	{
 		::mainWindow->currentBrowser()->setTabKeeper( treeitem->getUrl() );
 		::mainWindow->tabItemsContextMenu()->popup( tree->viewport()->mapToGlobal( point ) );

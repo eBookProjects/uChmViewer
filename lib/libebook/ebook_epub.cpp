@@ -244,13 +244,13 @@ bool EBook_EPUB::parseBookinfo()
 	m_title = content_parser.metadata[ "title" ];
 
 	// Move the manifest entries into the list
-	Q_FOREACH( QString f, content_parser.manifest.values() )
+	Q_FOREACH ( QString f, content_parser.manifest.values() )
 		m_ebookManifest.push_back( pathToUrl( f ) );
 
 	// Copy the manifest information and fill up the other maps if we have it
 	if ( !toc_parser.entries.isEmpty() )
 	{
-		Q_FOREACH( EBookTocEntry e, toc_parser.entries )
+		Q_FOREACH ( EBookTocEntry e, toc_parser.entries )
 		{
 			// Add into url-title map
 			m_urlTitleMap[ e.url ] = e.name;
@@ -260,7 +260,7 @@ bool EBook_EPUB::parseBookinfo()
 	else
 	{
 		// Copy them from spline
-		Q_FOREACH( QString u, content_parser.spine )
+		Q_FOREACH ( QString u, content_parser.spine )
 		{
 			EBookTocEntry e;
 			QString url = u;
@@ -269,7 +269,7 @@ bool EBook_EPUB::parseBookinfo()
 				url = content_parser.manifest[ u ];
 
 			e.name = url;
-			e.url= pathToUrl( url );
+			e.url = pathToUrl( url );
 			e.iconid = EBookTocEntry::IMAGE_NONE;
 			e.indent = 0;
 

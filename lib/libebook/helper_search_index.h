@@ -111,7 +111,7 @@ class Index : public QObject
 
 		QList< QUrl > 			docList;
 		QHash<QString, Entry*> 	dict;
-		QHash<QString,PosEntry*>miniDict;
+		QHash<QString, PosEntry*>miniDict;
 		bool 					lastWindowClosed;
 		HelperEntityDecoder		entityDecoder;
 

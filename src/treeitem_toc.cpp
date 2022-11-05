@@ -87,7 +87,7 @@ QVariant TreeItem_TOC::data(int column, int role) const
 	if ( column != 0 )
 		return QVariant();
 
-	switch( role )
+	switch ( role )
 	{
 	// Item name
 	case Qt::DisplayRole:

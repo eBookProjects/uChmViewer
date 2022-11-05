@@ -65,7 +65,7 @@ class SearchTreeViewItem : public QTreeWidgetItem
 		// Overriden member
 		QVariant data ( int column, int role ) const
 		{
-			switch( role )
+			switch ( role )
 			{
 			// Item name
 			case Qt::DisplayRole:
@@ -115,7 +115,7 @@ TabSearch::TabSearch( QWidget* parent )
 	if ( pConfig->m_tabUseSingleClick )
 	{
 		connect( tree,
-		         SIGNAL( itemClicked(QTreeWidgetItem*,int)),
+		         SIGNAL( itemClicked(QTreeWidgetItem*, int)),
 		         this,
 		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
@@ -324,7 +324,7 @@ void TabSearch::onContextMenuRequested( const QPoint& point )
 {
 	SearchTreeViewItem* treeitem = (SearchTreeViewItem*) tree->itemAt( point );
 
-	if( treeitem )
+	if ( treeitem )
 	{
 		::mainWindow->currentBrowser()->setTabKeeper( treeitem->getUrl() );
 		::mainWindow->tabItemsContextMenu()->popup( tree->viewport()->mapToGlobal( point ) );

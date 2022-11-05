@@ -216,7 +216,7 @@ int ViewWindow::getScrollbarPosition()
 
 	page()->runJavaScript("document.body.scrollTop",
 	                      QWebEngineScript::UserWorld,
-	[&value](const QVariant &v) { value = v.toInt(); });
+	[&value](const QVariant & v) { value = v.toInt(); });
 
 	while ( value == -1 )
 	{
@@ -232,7 +232,7 @@ void ViewWindow::setScrollbarPosition(int pos, bool force)
 		m_storedScrollbarPosition = pos;
 	else
 		page()->runJavaScript( QString( "document.body.scrollTop=%1" ).arg( pos )
-		                       ,QWebEngineScript::UserWorld );
+		                       , QWebEngineScript::UserWorld );
 }
 
 void ViewWindow::clipSelectAll()

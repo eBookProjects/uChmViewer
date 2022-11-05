@@ -135,7 +135,7 @@ bool EBook_CHM::getTableOfContents( QList<EBookTocEntry>& toc ) const
 
 	// Fill up the real toc
 	toc.reserve( parsed.size() );
-	Q_FOREACH( const ParsedEntry& e, parsed )
+	Q_FOREACH ( const ParsedEntry& e, parsed )
 	{
 		if ( root_offset == -1 )
 			root_offset = e.indent;
@@ -170,7 +170,7 @@ bool EBook_CHM::getIndex(QList<EBookIndexEntry>& index) const
 	index.reserve( parsed.size() );
 
 	// Find the index root offset
-	Q_FOREACH( const ParsedEntry& e, parsed )
+	Q_FOREACH ( const ParsedEntry& e, parsed )
 	{
 		if ( e.urls.empty() )
 			continue;
@@ -179,7 +179,7 @@ bool EBook_CHM::getIndex(QList<EBookIndexEntry>& index) const
 	}
 
 	// And apply the index
-	Q_FOREACH( const ParsedEntry& e, parsed )
+	Q_FOREACH ( const ParsedEntry& e, parsed )
 	{
 		if ( e.urls.empty() )
 			continue;
@@ -216,7 +216,7 @@ bool EBook_CHM::getBinaryContent( QByteArray& data, const QString& url ) const
 {
 	chmUnitInfo ui;
 
-	if( !ResolveObject( url, &ui ) )
+	if ( !ResolveObject( url, &ui ) )
 		return false;
 
 	data.resize( ui.length );
@@ -252,7 +252,7 @@ int EBook_CHM::getContentSize(const QString& url)
 {
 	chmUnitInfo ui;
 
-	if( !ResolveObject( url, &ui ) )
+	if ( !ResolveObject( url, &ui ) )
 		return -1;
 
 	return ui.length;
@@ -268,7 +268,7 @@ bool EBook_CHM::load(const QString& archiveName)
 	else
 		filename = archiveName;
 
-	if( m_chmFile )
+	if ( m_chmFile )
 		close();
 
 #if defined (WIN32)
@@ -424,8 +424,8 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 			if ( (src[i] == '"' || src[i] == '\'') )
 			{
 				// find where quote ends, either by another quote, or by '>' symbol (some people don't know HTML)
-				int nextpos = src.indexOf (src[i], i+1);
-				if ( nextpos == -1 	&& (nextpos = src.indexOf ('>', i+1)) == -1 )
+				int nextpos = src.indexOf (src[i], i + 1);
+				if ( nextpos == -1 	&& (nextpos = src.indexOf ('>', i + 1)) == -1 )
 				{
 					qWarning ("EBook_CHMImpl::ParseHhcAndFillTree: corrupted TOC: %s", qPrintable( src.mid(i) ));
 					return false;
@@ -628,7 +628,7 @@ bool EBook_CHM::getInfoFromWindows()
 		if ( !RetrieveObject (&ui, raw, 8, entries * entry_size) )
 			return false;
 
-		if( !ResolveObject ("/#STRINGS", &ui) )
+		if ( !ResolveObject ("/#STRINGS", &ui) )
 			return false;
 
 		for ( unsigned int i = 0; i < entries; ++i )
@@ -706,13 +706,13 @@ bool EBook_CHM::getInfoFromSystem()
 		cursor = buffer + index;
 		value = UINT16ARRAY(cursor);
 
-		switch(value)
+		switch (value)
 		{
 		case 0:
 			index += 2;
 			cursor = buffer + index;
 
-			if(m_topicsFile.isEmpty())
+			if (m_topicsFile.isEmpty())
 				m_topicsFile = QByteArray("/") + QByteArray((const char*) buffer + index + 2);
 
 			break;
@@ -721,7 +721,7 @@ bool EBook_CHM::getInfoFromSystem()
 			index += 2;
 			cursor = buffer + index;
 
-			if(m_indexFile.isEmpty())
+			if (m_indexFile.isEmpty())
 				m_indexFile = QByteArray("/") + QByteArray((const char*)buffer + index + 2);
 			break;
 
@@ -729,7 +729,7 @@ bool EBook_CHM::getInfoFromSystem()
 			index += 2;
 			cursor = buffer + index;
 
-			if(m_home.isEmpty() || m_home == "/")
+			if (m_home.isEmpty() || m_home == "/")
 				m_home = QByteArray("/") + QByteArray((const char*) buffer + index + 2);
 			break;
 
@@ -744,7 +744,7 @@ bool EBook_CHM::getInfoFromSystem()
 			cursor = buffer + index;
 
 			p = buffer + index + 2;
-			m_detectedLCID = (short) (p[0] | (p[1]<<8));
+			m_detectedLCID = (short) (p[0] | (p[1] << 8));
 
 			break;
 
@@ -755,7 +755,7 @@ bool EBook_CHM::getInfoFromSystem()
 			if ( m_topicsFile.isEmpty() )
 			{
 				QString topicAttempt = "/", tmp;
-				topicAttempt += QString ((const char*) buffer +index +2);
+				topicAttempt += QString ((const char*) buffer + index + 2);
 
 				tmp = topicAttempt + ".hhc";
 
@@ -988,7 +988,7 @@ bool EBook_CHM::RecurseLoadBTOC( const QByteArray& tocidx,
 					return false;
 				}
 
-				int tocoffset = (int) UINT32ARRAY(topics.data()+ (index * 16) + 4);
+				int tocoffset = (int) UINT32ARRAY(topics.data() + (index * 16) + 4);
 
 				if ( strings.size() < tocoffset + 1 )
 				{

@@ -266,7 +266,7 @@ void TabBookmarks::onContextMenuRequested(const QPoint& point)
 {
 	BookmarkItem* item = (BookmarkItem*) list->itemAt( point );
 
-	if( item )
+	if ( item )
 	{
 		::mainWindow->currentBrowser()->setTabKeeper( item->m_url );
 		::mainWindow->tabItemsContextMenu()->popup( list->viewport()->mapToGlobal( point ) );
