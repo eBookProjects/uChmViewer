@@ -110,6 +110,10 @@ MainWindow::MainWindow( const QStringList& arguments )
 	// Create the view window, which is a central widget
 	m_viewWindowMgr = new ViewWindowMgr( this );
 	setCentralWidget( m_viewWindowMgr );
+	connect(m_viewWindowMgr,
+	        SIGNAL(historyChanged()),
+	        this,
+	        SLOT(onHistoryChanged()));
 
 	// Create a navigation panel
 	m_navPanel = new NavigationPanel( this );
@@ -1328,6 +1332,12 @@ void MainWindow::navSetBackEnabled(bool enabled)
 void MainWindow::navSetForwardEnabled(bool enabled)
 {
 	nav_actionForward->setEnabled( enabled );
+}
+
+void MainWindow::onHistoryChanged()
+{
+	navSetBackEnabled( currentBrowser()->canGoBack() );
+	navSetForwardEnabled( currentBrowser()->canGoForward() );
 }
 
 void MainWindow::actionOpenRecentFile( const QString& file )

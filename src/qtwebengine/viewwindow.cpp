@@ -146,6 +146,16 @@ QString ViewWindow::title() const
 	return title;
 }
 
+bool ViewWindow::canGoBack() const
+{
+	return history()->canGoBack();
+}
+
+bool ViewWindow::canGoForward() const
+{
+	return history()->canGoForward();
+}
+
 void ViewWindow::setTabKeeper( const QUrl& link )
 {
 	m_newTabLinkKeeper = link;
@@ -230,15 +240,6 @@ void ViewWindow::clipCopy()
 	triggerPageAction( QWebEnginePage::Copy );
 }
 
-void ViewWindow::updateHistoryIcons()
-{
-	if ( mainWindow )
-	{
-		mainWindow->navSetBackEnabled( history()->canGoBack() );
-		mainWindow->navSetForwardEnabled( history()->canGoForward() );
-	}
-}
-
 void ViewWindow::contextMenuEvent(QContextMenuEvent* e)
 {
 	QMenu* m = new QMenu(0);
@@ -271,8 +272,7 @@ void ViewWindow::onLoadFinished ( bool )
 		m_storedScrollbarPosition = 0;
 	}
 
-	updateHistoryIcons();
-
+	emit urlChanged( url() );
 	emit dataLoaded( this );
 }
 

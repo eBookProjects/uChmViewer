@@ -119,6 +119,10 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 
 		void        setNewTabLink(const QUrl& link);
 		QUrl        getNewTabLink() const;
+
+		//! Connected to ViewWindowMgr::historyChanged().
+		//! Update state of navigation actions.
+		void        onHistoryChanged();
 		void        onOpenPageInNewTab();
 		void        onOpenPageInNewBackgroundTab();
 

@@ -82,11 +82,12 @@ class ViewWindow : public QWebView
 		//! Copies the selected content to the clipboard
 		void    clipCopy();
 
-		//! Updates the history toolbar icon status
-		void    updateHistoryIcons();
-
 		//! Returns the window title
 		QString title() const;
+
+		bool    canGoBack() const;
+
+		bool    canGoForward() const;
 
 		//! Keeps the tab URL between link following
 		void    setTabKeeper ( const QUrl& link );

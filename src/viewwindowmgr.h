@@ -70,6 +70,15 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		// Set up the configuration settings
 		void    applyBrowserSettings();
 
+	signals:
+		/**
+		 * This signal is emitted when tabs are switched or when the url of
+		 * the ViewWindow changes.
+		 *
+		 * see onUrlChanged(), onTabChanged()
+		 */
+		void    historyChanged();
+
 	public slots:
 		void    onCloseCurrentWindow();
 		void    onCloseWindow( int num );
@@ -82,6 +91,8 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 	protected slots:
 		void    openNewTab();
 		void    onTabChanged( int newtabIndex );
+		//! Connected to ViewWindow::urlChanged()
+		void    onUrlChanged(const QUrl& );
 		void    updateCloseButtons();
 		void    activateWindow();
 		void    closeSearch();

@@ -167,6 +167,11 @@ ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 	         ::mainWindow,
 	         SLOT( activateUrl( const QUrl& ) ) );
 
+	connect( viewvnd,
+	         SIGNAL( urlChanged( const QUrl& ) ),
+	         this,
+	         SLOT( onUrlChanged( const QUrl& ) ) );
+
 	connect( viewvnd, SIGNAL(dataLoaded(ViewWindow*)), this, SLOT(onWindowContentChanged(ViewWindow*)));
 
 	// Set up the accelerator if we have room
@@ -301,10 +306,15 @@ void ViewWindowMgr::onTabChanged( int newtabIndex )
 
 	if ( tab )
 	{
-		tab->window->updateHistoryIcons();
+		emit historyChanged();
 		mainWindow->browserChanged( tab->window );
 		tab->widget->setFocus();
 	}
+}
+
+void ViewWindowMgr::onUrlChanged(const QUrl&)
+{
+	emit historyChanged();
 }
 
 void ViewWindowMgr::openNewTab()

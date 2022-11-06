@@ -156,6 +156,16 @@ QString ViewWindow::title() const
 	return title;
 }
 
+bool ViewWindow::canGoBack() const
+{
+	return history()->canGoBack();
+}
+
+bool ViewWindow::canGoForward() const
+{
+	return history()->canGoForward();
+}
+
 void ViewWindow::setTabKeeper( const QUrl& link )
 {
 	m_newTabLinkKeeper = link;
@@ -221,15 +231,6 @@ void ViewWindow::clipCopy()
 	triggerPageAction( QWebPage::Copy );
 }
 
-void ViewWindow::updateHistoryIcons()
-{
-	if ( mainWindow )
-	{
-		mainWindow->navSetBackEnabled( history()->canGoBack() );
-		mainWindow->navSetForwardEnabled( history()->canGoForward() );
-	}
-}
-
 QUrl ViewWindow::anchorAt(const QPoint& pos)
 {
 	QWebHitTestResult res = page()->currentFrame()->hitTestContent( pos );
@@ -283,8 +284,6 @@ void ViewWindow::onLoadFinished ( bool )
 		page()->currentFrame()->setScrollBarValue( Qt::Vertical, m_storedScrollbarPosition );
 		m_storedScrollbarPosition = 0;
 	}
-
-	updateHistoryIcons();
 
 	emit dataLoaded( this );
 }
