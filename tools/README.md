@@ -26,6 +26,16 @@ Usage (from source root):
     codespell --config tools/codespell.cfg
 
 
+doxygen
+-------
+
+https://www.doxygen.nl/manual/index.html
+
+Usage (from source root):
+
+    doxygen tools/doxygen.cfg 1>/dev/null
+
+
 Include-What-You-Use
 --------------------
 

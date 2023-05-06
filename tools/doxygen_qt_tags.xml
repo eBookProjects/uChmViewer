@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<tagfile>
+  <compound kind="class">
+    <name>QPoint</name>
+    <filename>qpoint.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>QString</name>
+    <filename>qstring.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>QUrl</name>
+    <filename>qurl.html</filename>
+  </compound>
+
+
+  <compound kind="class">
+    <name>QAction</name>
+    <filename>qaction.html</filename>
+  </compound>
+  <compound kind="class">
+    <name>QWidget</name>
+    <filename>qwidget.html</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>customContextMenuRequested</name>
+      <anchor>customContextMenuRequested</anchor>
+      <arglist>(const QPoint&amp;)</arglist>
+    </member>
+    <member kind="function">
+      <type>QPoint</type>
+      <name>mapToGlobal</name>
+      <anchor>mapToGlobal</anchor>
+      <arglist>(const QPoint&amp;)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>QMenu</name>
+    <filename>qmenu.html</filename>
+    <member kind="function">
+      <type>QAction*</type>
+      <name>exec</name>
+      <anchor>exec-1</anchor>
+      <arglist>(QPoint&amp;, QAction*)</arglist>
+    </member>
+  </compound>
+</tagfile>
