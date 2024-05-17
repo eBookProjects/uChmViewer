@@ -52,7 +52,7 @@ msgid ""
 "first entry if found"
 msgstr ""
 "'--search <query>' określa zapytanie do wyszukania i aktywuje opcję "
-"pierwszy wpis, jeśli został znaleziony”
+"pierwszy wpis, jeśli został znaleziony"
 
 #: main.cpp:59
 msgid ""
@@ -70,7 +70,7 @@ msgstr ""
 
 #: main.cpp:61
 msgid "'--url <relative url>' specifies the URL to activate if found."
-msgstr "'--url <relative url>' określa adres URL, do znaleźenia i aktywuje, jeśli zostanie znaleziony.”
+msgstr "'--url <relative url>' określa adres URL, do znaleźenia i aktywuje, jeśli zostanie znaleziony."
 
 #. i18n: file: mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
@@ -425,7 +425,7 @@ msgid ""
 "opened page, search history, font size, bookmarks and so on."
 msgstr ""
 "Zapamiętuje informacje o plikach, które zostały otwarte. Zapamiętuje ostatnio "
-"otwartą stronę, historię wyszukiwania, rozmiar czcionki, zakładki i inne”.
+"otwartą stronę, historię wyszukiwania, rozmiar czcionki, zakładki i inne".
 
 #. i18n: file: dialog_setup.ui:156
 #. i18n: ectx: property (text), widget (QCheckBox, m_rememberHistoryInfo)
@@ -641,11 +641,11 @@ msgid ""
 "check will only performed once in 24 hours. No user information is requested "
 "or transmitted from your computer during this check."
 msgstr ""
-"Jeśli ta opcja jest włączona, aplikacja będzie sprawdzać dostępność aktualizacji (jeśli są”
+"Jeśli ta opcja jest włączona, aplikacja będzie sprawdzać dostępność aktualizacji (jeśli są"
 "wydane nowe wersje aplikacji). Jeżeli jest dostępna nowa wersja, zostanie wyświetlony "
 "komunikat informujący o nowej wersji "
-"To sprawdzanie będzie przeprowadzane tylko raz na 24 godziny. Zadne informacje o użytkowniku”
-"nie są wymagane lub przesłane z Twojego komputera podczas tej kontroli.”
+"To sprawdzanie będzie przeprowadzane tylko raz na 24 godziny. Zadne informacje o użytkowniku"
+"nie są wymagane lub przesłane z Twojego komputera podczas tej kontroli."
 
 #. i18n: file: dialog_setup.ui:461
 #. i18n: ectx: property (text), widget (QCheckBox, cbCheckForUpdates)
@@ -847,7 +847,7 @@ msgid ""
 "are extracted."
 msgstr ""
 "Wyodrębnia zawartość archiwum CHM do określonego katalogu. Wszystkie pliki „
-"wyodrębniono.”.
+"wyodrębniono.".
 
 #. i18n: file: mainwindow.ui:294
 #. i18n: ectx: property (text), widget (QStatusBar, mainStatusBar)
@@ -1395,8 +1395,8 @@ msgid ""
 "Drag the actions to the toolbar list to add them to the toolbar. \n"
 "Drag them from toolbar list to remove them from the toolbar."
 msgstr ""
-"Przeciągnij akcje na listę pasków narzędzi, aby dodać je do paska narzędzi. \n”
-"Przeciągnij je z listy pasków narzędzi, aby usunąć je z paska narzędzi.”
+"Przeciągnij akcje na listę pasków narzędzi, aby dodać je do paska narzędzi. \n"
+"Przeciągnij je z listy pasków narzędzi, aby usunąć je z paska narzędzi."
 
 #. i18n: file: toolbareditor.ui:65
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
