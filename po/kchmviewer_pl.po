@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Artur Wdowik <artww@outlook.com>, 2024.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
