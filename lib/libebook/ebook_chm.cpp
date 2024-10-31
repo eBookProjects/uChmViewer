@@ -196,7 +196,7 @@ bool EBook_CHM::getIndex(QList<EBookIndexEntry>& index) const
 			entry.indent = e.indent - root_offset;
 
 		index.append( entry );
-		printf("%d: %s\n", entry.indent, qPrintable(entry.name));
+		// printf("%d: %s\n", entry.indent, qPrintable(entry.name));
 	}
 
 	return true;
