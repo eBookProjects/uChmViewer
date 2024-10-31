@@ -35,12 +35,12 @@
 #include <QWebSettings>
 #include <QWidget>
 
-#include "../i18n.h"
+#include "i18n.h"
 
-#include "../browser-settings.hpp"  // BrowserSettings
-#include "../mainwindow.h"          // ::mainWindow
-#include "../viewwindow.h"          // ViewWindow, QWebView
-#include "../viewwindowmgr.h"       // ViewWindowMgr
+#include "browser-settings.hpp"  // BrowserSettings
+#include "mainwindow.h"          // ::mainWindow
+#include "viewwindow.h"
+#include "viewwindowmgr.h"       // ViewWindowMgr
 #include "dataprovider.h"           // KCHMNetworkAccessManager
 
 

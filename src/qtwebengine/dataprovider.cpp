@@ -25,8 +25,8 @@
 #include <QUrl>
 #include <QWebEngineUrlRequestJob>
 
-#include "../mainwindow.h" // ::mainWindow
-#include "../mimehelper.h" // MimeHelper::mimeType
+#include "mainwindow.h" // ::mainWindow
+#include "mimehelper.h" // MimeHelper::mimeType
 #include "dataprovider.h"  // DataProvider, QWebEngineUrlSchemeHandler
 #include "ebook.h"         // EBook
 #include "ebook_chm.h"     // EBook_CHM::URL_SCHEME_CHM

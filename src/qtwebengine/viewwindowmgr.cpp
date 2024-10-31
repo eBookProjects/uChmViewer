@@ -34,13 +34,13 @@
 #include <QWebEnginePage>     // QWebEnginePage::{ FindFlag, FindBackward, FindCaseSensitively }
 #include <QWidget>
 
-#include "../i18n.h"
+#include "i18n.h"
 
-#include "../config.h"        // ::pConfig
-#include "../mainwindow.h"    // MainWindow, ::mainWindow
-#include "../settings.h"      // Settings
-#include "../viewwindow.h"    // ViewWindow
-#include "../viewwindowmgr.h"
+#include "config.h"        // ::pConfig
+#include "mainwindow.h"    // MainWindow, ::mainWindow
+#include "settings.h"      // Settings
+#include "viewwindow.h"    // ViewWindow
+#include "viewwindowmgr.h"
 
 
 // A small overriden class to handle a middle click

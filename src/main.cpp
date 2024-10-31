@@ -25,7 +25,9 @@
 
 #include "config.h"     // Config, pConfig
 #include "mainwindow.h" // MainWindow ::mainWindow
+#if defined (USE_KDE)
 #include "version.h"    // APP_VERSION_MAJOR, APP_VERSION_MINOR
+#endif
 
 #if defined USE_DBUS
 	#include <QDBusConnection>
