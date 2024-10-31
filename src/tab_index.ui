@@ -33,6 +33,9 @@
    </item>
    <item>
     <widget class="QTreeWidget" name="tree">
+    <property name="expandsOnDoubleClick">
+      <bool>false</bool>
+    </property>
      <property name="indentation">
       <number>10</number>
      </property>
