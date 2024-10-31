@@ -128,12 +128,6 @@ void TabIndex::onItemActivated ( QTreeWidgetItem* item, int )
 
 	TreeItem_Index* treeitem = (TreeItem_Index*) item;
 
-	// Prevent opened index tree item from closing; because the tree open/close
-	// procedure will be triggered after the slots are called, we change the tree
-	// state to "collapsed", so the slot handler expands it again.
-	if ( item->isExpanded() )
-		item->setExpanded( false );
-
 	QUrl url = treeitem->getUrl();
 
 	if ( !url.isValid() )
