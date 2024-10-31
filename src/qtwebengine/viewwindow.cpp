@@ -40,12 +40,12 @@
 #include <QWebEngineScript>
 #include <QWidget>
 
-#include "../i18n.h"
+#include "i18n.h"
 
-#include "../browser-settings.hpp"  // BrowserSettings
-#include "../mainwindow.h"          // ::mainWindow
-#include "../viewwindow.h"          // ViewWindow, QWebEngineView
-#include "../viewwindowmgr.h"       // ViewWindowMgr
+#include "browser-settings.hpp"  // BrowserSettings
+#include "mainwindow.h"          // ::mainWindow
+#include "viewwindow.h"          // ViewWindow, QWebEngineView
+#include "viewwindowmgr.h"       // ViewWindowMgr
 #include "webenginepage.h"          // WebEnginePage
 
 

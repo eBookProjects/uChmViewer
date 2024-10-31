@@ -25,8 +25,6 @@
 #include <QtGlobal>         // qPrintable, qWarning
 
 #include "config.h"
-#include "settings.h"   // QSettings
-#include "mainwindow.h"
 
 Config* pConfig;
 

@@ -24,9 +24,9 @@
 #include <QtGlobal>        // qint64, qPrintable, qDebug, qWarning
 #include <QUrl>
 
-#include "../config.h"     // ::pConfig
-#include "../mainwindow.h" // ::mainWindow
-#include "../mimehelper.h" // MimeHelper::mimeType
+#include "config.h"     // ::pConfig
+#include "mainwindow.h" // ::mainWindow
+#include "mimehelper.h" // MimeHelper::mimeType
 #include "dataprovider.h"
 
 
