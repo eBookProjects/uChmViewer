@@ -68,6 +68,7 @@ Config::Config()
 
 	m_tocOpenAllEntries = settings.value( "browser/tocopenallentries", true ).toBool();
 	m_tabUseSingleClick = settings.value( "browser/tabusesingleclick", true ).toBool();
+	m_tabOpenInForeground = settings.value( "browser/tabopeninforeground", false ).toBool();
 
 	QDir dir;
 	dir.setPath (m_datapath);
@@ -124,6 +125,7 @@ void Config::save( )
 
 	settings.setValue( "browser/tocopenallentries", m_tocOpenAllEntries );
 	settings.setValue( "browser/tabusesingleclick", m_tabUseSingleClick );
+	settings.setValue( "browser/tabopeninforeground", m_tabOpenInForeground );
 }
 
 QString Config::getEbookSettingFile(const QString& ebookfile ) const

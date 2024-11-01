@@ -707,12 +707,7 @@ QUrl MainWindow::getNewTabLink() const
 
 void MainWindow::onOpenPageInNewTab( )
 {
-	openPage( getNewTabLink(), OPF_NEW_TAB | OPF_CONTENT_TREE );
-}
-
-void MainWindow::onOpenPageInNewBackgroundTab( )
-{
-	openPage( getNewTabLink(), OPF_NEW_TAB | OPF_BACKGROUND );
+	openPage( getNewTabLink(), OPF_NEW_TAB | (pConfig->m_tabOpenInForeground ? OPF_CONTENT_TREE : OPF_BACKGROUND) );
 }
 
 void MainWindow::browserChanged(ViewWindow* newbrowser )
@@ -1284,11 +1279,6 @@ void MainWindow::setupActions()
 	m_contextMenu->addAction ( i18n("&Open this link in a new tab"),
 	                           this,
 	                           SLOT( onOpenPageInNewTab() ),
-	                           QKeySequence( "Shift+Enter" ) );
-
-	m_contextMenu->addAction ( i18n("&Open this link in a new background tab"),
-	                           this,
-	                           SLOT( onOpenPageInNewBackgroundTab() ),
 	                           QKeySequence( "Ctrl+Enter" ) );
 }
 

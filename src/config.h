@@ -73,6 +73,7 @@ class Config
 
 		bool                m_tocOpenAllEntries;
 		bool                m_tabUseSingleClick;
+		bool                m_tabOpenInForeground;
 
 		bool                m_advUseInternalEditor;
 		QString             m_advExternalEditorPath;

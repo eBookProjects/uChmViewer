@@ -124,7 +124,6 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		//! Update state of navigation actions.
 		void        onHistoryChanged();
 		void        onOpenPageInNewTab();
-		void        onOpenPageInNewBackgroundTab();
 
 		// Actions
 		void        actionOpenFile();

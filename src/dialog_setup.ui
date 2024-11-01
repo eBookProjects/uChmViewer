@@ -377,7 +377,14 @@
             </property>
            </widget>
           </item>
-         </layout>
+          <item>
+            <widget class="QCheckBox" name="boxTabOpenInForeground">
+             <property name="text">
+              <string>Open tabs in foreground</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
         </widget>
        </item>
        <item>

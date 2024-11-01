@@ -135,9 +135,7 @@ QMenu* ViewWindow::getContextMenu( const QUrl& link, QWidget* parent )
 			m_contextMenuLink = createStandardContextMenu( parent );
 			m_contextMenuLink->addSeparator();
 
-			m_contextMenuLink->addAction( i18n("&Open this link in a new tab"), ::mainWindow, SLOT(onOpenPageInNewTab()), QKeySequence("Shift+Enter") );
-
-			m_contextMenuLink->addAction( i18n("&Open this link in a new background tab"), ::mainWindow, SLOT(onOpenPageInNewBackgroundTab()), QKeySequence("Ctrl+Enter") );
+			m_contextMenuLink->addAction( i18n("&Open this link in a new tab"), ::mainWindow, SLOT(onOpenPageInNewTab()), QKeySequence("Ctrl+Enter") );
 		}
 
 		setTabKeeper( link );
@@ -250,7 +248,7 @@ void ViewWindow::mouseReleaseEvent ( QMouseEvent* event )
 		if ( !link.isEmpty() )
 		{
 			setTabKeeper( link );
-			::mainWindow->onOpenPageInNewBackgroundTab();
+			::mainWindow->onOpenPageInNewTab();
 			return;
 		}
 	}
@@ -267,7 +265,6 @@ void ViewWindow::contextMenuEvent(QContextMenuEvent* e)
 	if ( !link.isEmpty() )
 	{
 		m->addAction( i18n("Open Link in a new tab\tShift+LMB"), ::mainWindow, SLOT( onOpenPageInNewTab() ) );
-		m->addAction( i18n("Open Link in a new background tab\tCtrl+LMB"), ::mainWindow, SLOT( onOpenPageInNewBackgroundTab() ) );
 		m->addSeparator();
 		setTabKeeper( link );
 	}
