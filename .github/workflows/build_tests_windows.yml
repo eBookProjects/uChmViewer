@@ -62,7 +62,7 @@ jobs:
 
     steps:
     - name: checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v4
       with:
         submodules: true
 
@@ -70,7 +70,7 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
 
     - name: Install Qt
-      uses: jurplel/install-qt-action@v2 # Fuck!!! .7.2
+      uses: jurplel/install-qt-action@v4
       with:
         version: ${{ matrix.config.qt_version }}
         modules: ${{ matrix.config.qt_modules }}
