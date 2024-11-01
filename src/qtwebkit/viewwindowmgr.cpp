@@ -374,7 +374,7 @@ void ViewWindowMgr::onActivateFind()
 
 void ViewWindowMgr::find( bool backward )
 {
-	QWebPage::FindFlags webkitflags = 0;
+	QWebPage::FindFlags webkitflags;
 
 	if ( checkCase->isChecked() )
 		webkitflags |= QWebPage::FindCaseSensitively;
