@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 # Need to include generated files.
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -87,7 +87,7 @@ qt_add_resources(RSRCS resources/images.qrc)
 
 qt_wrap_ui(UI_SOURCES ${UIS})
 qt_wrap_cpp(MOC_SOURCES ${MOC_HEADERS})
-add_executable(uchmviewer ${CPP_SOURCES} ${RSRCS} ${UI_SOURCES} ${MOC_SOURCES})
+add_executable(uchmviewer WIN32 ${CPP_SOURCES} ${RSRCS} ${UI_SOURCES} ${MOC_SOURCES})
 target_link_libraries(uchmviewer
     ebook
     chm
