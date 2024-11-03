@@ -8,3 +8,6 @@ CMakeLists.txt.user*
 # KDev project files
 .kdev4
 *.kdev4
+/.cache/
+CMakeUserPresets.json
+compile_commands.json

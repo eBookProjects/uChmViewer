@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     install(FILES freedesktop/uchmviewer.desktop DESTINATION ${APP_DEF_INSTALL_DIR})

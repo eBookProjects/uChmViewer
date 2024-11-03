@@ -3,7 +3,7 @@
 # Copyright (c) 2022 Nick Egorrov
 ########################################
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 
 #[==============================[
 Attempts to set the cache variable to ON when building for a specific OS.
