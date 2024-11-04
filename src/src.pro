@@ -1,7 +1,21 @@
 
 TEMPLATE = app
-TARGET = ../bin/uchmviewer
+TARGET = uchmviewer
 CONFIG *= c++11 warn_on threads
+
+include(../common.pri)
+
+defined(VERSION, var) {
+    # Define the version as a string literal
+    # https://stackoverflow.com/a/2411008
+    DEFINES += 'APP_VERSION=\\"$$VERSION\\"'
+} else {
+    VERSION = $$getVersion()
+}
+
+defined(USE_GETTEXT, var): DEFINES += USE_GETTEXT \
+    'APP_INSTALL_DIR_BIN=\\"$${APP_BIN_DIR}\\"' \
+    'APP_INSTALL_DIR_LOCALE=\\"$${APP_LOCALE_DIR}\\"' \
 
 QT += \
     xml \
@@ -104,6 +118,7 @@ win32:{
     }
 
     LIBS += -loleaut32
+    defined(USE_GETTEXT, var): LIBS *= -lintl
 }
 
 unix:!macx: {
@@ -129,3 +144,6 @@ unix:!macx: {
 }
 
 greaterThan(QT_MAJOR_VERSION, 5): QT += core5compat
+
+target.path = $${PREFIX}/$${APP_BIN_DIR}
+INSTALLS += target
