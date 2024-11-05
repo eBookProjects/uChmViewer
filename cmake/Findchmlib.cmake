@@ -18,11 +18,10 @@ if (chmlib_FOUND)
       message(STATUS "Found libchm: ${chmlib_LIBRARY}")
    endif (NOT chmlib_FIND_QUIETLY)
 
-   add_library(libchm SHARED IMPORTED)
+   add_library(libchm INTERFACE IMPORTED GLOBAL)
    set_target_properties(libchm PROPERTIES
          INTERFACE_INCLUDE_DIRECTORIES ${chmlib_INCLUDE_DIR}
-         IMPORTED_LOCATION ${chmlib_LIBRARY}
-         IMPORTED_IMPLIB ${chmlib_LIBRARY} # Windows
+         INTERFACE_LINK_LIBRARIES ${chmlib_LIBRARY}
    )
 else ()
    if (chmlib_FIND_REQUIRED)

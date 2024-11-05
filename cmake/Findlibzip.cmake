@@ -20,11 +20,10 @@ if (libzip_FOUND)
       message(STATUS "Found libzip: ${libzip_LIBRARY}")
    endif ()
 
-   add_library(libzip::zip SHARED IMPORTED)
+   add_library(libzip::zip INTERFACE IMPORTED GLOBAL)
    set_target_properties(libzip::zip PROPERTIES
          INTERFACE_INCLUDE_DIRECTORIES ${libzip_INCLUDE_DIR}
-         IMPORTED_LOCATION ${libzip_LIBRARY}
-         IMPORTED_IMPLIB ${libzip_LIBRARY} # Windows
+         INTERFACE_LINK_LIBRARIES ${libzip_LIBRARY}
    )
 elseif (libzip_FIND_REQUIRED)
       message(FATAL_ERROR "Could not find libzip. Please install libzip and libzip-devel packages.")
