@@ -90,7 +90,7 @@ qt_wrap_cpp(MOC_SOURCES ${MOC_HEADERS})
 add_executable(uchmviewer WIN32 ${CPP_SOURCES} ${RSRCS} ${UI_SOURCES} ${MOC_SOURCES})
 target_link_libraries(uchmviewer
     ebook
-    chm
+    chmlib
     extra
     Qt::Core
     Qt::Network
