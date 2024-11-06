@@ -46,11 +46,11 @@ add_library(extra INTERFACE)
 find_package(libzip REQUIRED)
 
 # Prepare to find Qt modules.
-set(APP_QT_VERSION 5.0)
+set(APP_QT_MIN_VERSION 5.0)
 set(APP_QT_MODULES Core Network PrintSupport Widgets Xml)
 # Modules for WebKit or WebEngine.
 if (${USE_WEBENGINE})
-    set(APP_QT_VERSION 5.9)
+    set(APP_QT_MIN_VERSION 5.9)
     list(APPEND APP_QT_MODULES WebEngineWidgets)
     target_link_libraries(extra INTERFACE Qt::WebEngineWidgets)
     target_compile_definitions(extra INTERFACE USE_WEBENGINE)
@@ -58,8 +58,19 @@ else ()
     list(APPEND APP_QT_MODULES WebKit WebKitWidgets)
     target_link_libraries(extra INTERFACE Qt::WebKit Qt::WebKitWidgets)
 endif ()
+
+set(APP_QT_VERSION ${APP_QT_MIN_VERSION} CACHE STRING "Prefered Qt version")
+
 # What version of Qt are we working with?
-find_package(QT ${APP_QT_VERSION} NAMES Qt5 Qt6 REQUIRED)
+if ($CACHE{APP_QT_VERSION} VERSION_LESS 6)
+    find_package(QT $CACHE{APP_QT_VERSION} NAMES Qt5)
+endif ()
+
+if (NOT QT_FOUND)
+    find_package(QT $CACHE{APP_QT_VERSION} NAMES Qt5 Qt6 REQUIRED)
+endif ()
+
+
 set(QT Qt${QT_VERSION_MAJOR})
 # Since Qt 6 QTextCodec moved in the Qt 5 Core Compat module.
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
