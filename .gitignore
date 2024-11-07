@@ -1,13 +1,18 @@
-
+# Build & artefacts
 build/
+*.deb
+*.exe
+*.rpm
+*.zip
 
-# Qt project files
+# Qmake project files
+*.pro.user*
+
+# Cmake project files
 CMakeLists.txt.user*
-*.pro.user
-
-# KDev project files
-.kdev4
-*.kdev4
-/.cache/
 CMakeUserPresets.json
 compile_commands.json
+
+# KDev project files
+*.kdev4*
+
