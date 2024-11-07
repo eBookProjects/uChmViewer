@@ -70,7 +70,7 @@
 #include "textencodings.h"      // TextEncodings
 #include "toolbarmanager.h"     // ToolbarManager
 #include "ui_dialog_about.h"    // Ui::DialogAbout
-#include "version.h"            // APP_VERSION_MAJOR, APP_VERSION_MINOR
+#include "version.h"            // APP_VERSION
 #include "viewwindow.h"         // ViewWindow
 #include "viewwindowmgr.h"      // ViewWindowMgr
 
@@ -602,7 +602,7 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args, bool from_another_app
 			force_background = true;
 		else if ( args[i] == "-v" || args[i] == "--version" )
 		{
-			printf("uChmViewer version %d.%d built at %s %s\n", APP_VERSION_MAJOR, APP_VERSION_MINOR, __DATE__, __TIME__ );
+			printf("uChmViewer version %s built at %s %s\n", APP_VERSION, __DATE__, __TIME__ );
 			exit( 0 );
 		}
 		else if ( args[i] == "--url" || args[i] == "-showPage" )
@@ -1103,13 +1103,13 @@ void MainWindow::actionAboutApp()
 	                          "<body>"
 	                          "<p>This is a fork of KchmViewer, a chm and epub file viewer.<br>"
 	                          "KchmViewer is written by Georgy Yunaev.<br>"
-	                          "uChmViewer version <b>%1.%2</b></p>"
-	                          "<p>%3</p>"
+	                          "uChmViewer version <b>%1</b></p>"
+	                          "<p>%2</p>"
 	                          "<p>Copyright (C) George Yunaev, 2004-2015<br>"
 	                          "Copyright (C) Nick Egorrov, 2021</p>"
 	                          "<p>Licensed under GNU GPL license version 3.</p>"
 	                          "</body></html>" )
-	                    .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) .arg( info );
+	                    .arg(APP_VERSION) .arg( info );
 
 	// It is quite funny that the argument order differs
 #if defined (USE_KDE)

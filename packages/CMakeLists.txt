@@ -50,7 +50,7 @@ endif ()
 ################################################################################
 
 if (NOT CPACK_PACKAGE_VERSION)
-    set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+    set(CPACK_PACKAGE_VERSION ${APP_VERSION})
 endif ()
 
 set(CPACK_PACKAGE_CONTACT nicegorov@yandex.ru)

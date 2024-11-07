@@ -25,8 +25,9 @@
 
 #include "config.h"     // Config, pConfig
 #include "mainwindow.h" // MainWindow ::mainWindow
+
 #if defined (USE_KDE)
-#include "version.h"    // APP_VERSION_MAJOR, APP_VERSION_MINOR
+    #include "version.h"    // APP_VERSION
 #endif
 
 #if defined USE_DBUS
@@ -49,7 +50,7 @@ int main( int argc, char** argv )
 	K4AboutData aboutdata ( "uChmViewer",
 	                        QByteArray(),
 	                        ki18n("uChmViewer"),
-	                        qPrintable( QString("%1.%2") .arg(APP_VERSION_MAJOR) .arg(APP_VERSION_MINOR) ),
+	                        APP_VERSION,
 	                        ki18n("CHM file viewer"),
 	                        K4AboutData::License_GPL,
 	                        ki18n("(c) 2004-2015 George Yunaev"),

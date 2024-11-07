@@ -24,7 +24,6 @@ cmake_minimum_required(VERSION 3.13)
 # Project info
 project(uchmviewer HOMEPAGE_URL "https://github.com/u-235/uchmviewer")
 include(cmake/get-version.cmake)
-set(CMAKE_PROJECT_VERSION ${PROJECT_VERSION})
 
 include(cmake/use-in.cmake)
 option(USE_KF5            "Use KDE Framework 5"                             OFF)
