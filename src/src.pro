@@ -119,6 +119,8 @@ win32:{
 
     LIBS += -loleaut32
     defined(USE_GETTEXT, var): LIBS *= -lintl
+    
+    RC_ICONS = resources/uchmviewer.ico
 }
 
 unix:!macx: {

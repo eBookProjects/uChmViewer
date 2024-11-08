@@ -30,6 +30,10 @@ unix {
 }
 
 win32 {
+    icons.files = $${PROJECT_ROOT_DIR}/src/resources/uchmviewer.ico
+    icons.path = $${PREFIX}/$${APP_ICONS_DIR}
+
+    INSTALLS += icons
 }
 
 macx {
