@@ -1,0 +1,249 @@
+name: release
+# Based on https://github.com/ra3xdh/qucs_s/.github/workflows/deploy.yml
+
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  # Problems with Debian 9, Ubuntu 18 and older:
+  # - Repositories are not available for Debian 9 and it is not possible
+  #   to install the required packages.
+  # - Both Debian 9 and Ubuntu 18 (and older) do not work with Node20.
+  #   It is possible to rollback to Node16 using
+  #   env:ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true, but in this case
+  #   the unloading of received artefacts does not work.
+  # Errors while actions/checkout@v3 or actions/upload-artifact@v4:
+  # /__e/node20/bin/node: /lib/x86_64-linux-gnu/libm.so.6: version `GLIBC_2.27' not found (required by /__e/node20/bin/node)
+  # /__e/node20/bin/node: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by /__e/node20/bin/node)
+  # /__e/node20/bin/node: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.25' not found (required by /__e/node20/bin/node)
+  # https://github.com/actions/checkout/issues/1590
+  # https://github.blog/changelog/2024-03-07-github-actions-all-actions-will-run-on-node20-instead-of-node16-by-default/
+
+jobs:
+  setup:
+    runs-on: ubuntu-22.04
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract version
+        id: get_version
+        run: |
+          if [ "${{github.ref_type}}" = "tag" ]; then
+            VERSION="$(echo ${{ github.ref_name }} | grep -Eo '[[:digit:]]+.*')"
+          else
+            VERSION="$(git rev-parse --short HEAD)"
+          fi
+            
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          
+      - name: Print version 
+        run: echo "Version is \"${{ env.VERSION }}\""
+
+  # https://en.wikipedia.org/wiki/Debian_version_history
+  # https://hub.docker.com/_/debian
+  build-debian-packages:
+    runs-on: ubuntu-22.04
+    needs: setup
+    strategy:
+      fail-fast: false
+      matrix:
+        distr:
+          - name:       trixie
+            version:    13
+            extra_pack: ""
+          - name:       bookworm
+            version:    12
+            extra_pack: ""
+          - name:       bullseye
+            version:    11
+            extra_pack: ""
+          - name:       buster
+            version:    10
+            extra_pack: "qt5-default"
+        arch:
+          - name: amd64
+            id:   linux/amd64
+    container:
+      image: debian:${{matrix.distr.name}}
+      options: --platform ${{matrix.arch.id}}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          apt-get update
+          # https://serverfault.com/a/992421
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y build-essential qtbase5-dev libqt5webkit5-dev gettext libzip-dev libchm-dev ${{matrix.distr.extra_pack}}
+
+      - name: Build
+        run: packages/build-deb.sh -s debian-${{matrix.distr.name}} -v ${{ needs.setup.outputs.version }}
+
+      - name: Upload debian packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: debian-${{matrix.distr.name}}-${{matrix.arch.name}}
+          path: '*.deb'
+
+  # https://en.wikipedia.org/wiki/Ubuntu_version_history
+  # https://hub.docker.com/_/ubuntu
+  build-ubuntu-packages:
+    runs-on: ubuntu-22.04
+    needs: setup
+    strategy:
+      fail-fast: false
+      matrix:
+        distr:
+          - name:       noble
+            version:    24.04
+            extra_pack: ""
+          - name:       jammy
+            version:    22.04
+            extra_pack: ""
+          - name:       focal
+            version:    20.04
+            extra_pack: "qt5-default"
+        arch:
+          - name: amd64
+            id:   linux/amd64
+    container:
+      image: ubuntu:${{matrix.distr.name}}
+      options: --platform ${{matrix.arch.id}}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y build-essential qtbase5-dev libqt5webkit5-dev gettext libzip-dev libchm-dev ${{matrix.distr.extra_pack}}
+
+      - name: Build
+        run: packages/build-deb.sh -s ubuntu-${{matrix.distr.name}} -v ${{ needs.setup.outputs.version }}
+
+      - name: Upload ubuntu packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: ubuntu-${{matrix.distr.name}}-${{matrix.arch.name}}
+          path: '*.deb'
+
+  build-windows-installer:
+    runs-on: windows-2022
+    needs: setup
+    strategy:
+      fail-fast: false
+      matrix:
+        msystem:
+          - mingw64
+          - mingw32
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Disable autocrlf in Git
+        shell: pwsh
+        # https://github.com/msys2/setup-msys2?tab=readme-ov-file#actionscheckout-and-line-endings
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Set up MSYS2 environment
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: ${{matrix.msystem}}
+          cache: true
+          update: true
+          install: >-
+            make
+            zip
+          pacboy: >-
+            gcc:p
+            nsis:p
+            ntldd:p
+            libzip:p
+            qt5-base:p
+            qt5-translations:p
+            qtwebkit:p
+
+      - name: Build
+        run: packages/build-win-msys2.sh -s windows -v ${{ needs.setup.outputs.version }}
+
+      - name: Upload windows installers
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-${{matrix.msystem}}
+          path: |
+            *.exe
+            *.zip
+
+  create-release:
+    runs-on: ubuntu-22.04
+    needs: [build-debian-packages, build-ubuntu-packages, build-windows-installer]
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ~/artifacts
+          merge-multiple: true
+
+      - name: Calculate SHA-256 checksums
+        run: |
+          cd ~/artifacts
+          echo 'SHA-256 checksums' > notes.txt
+          echo '-----------------' >> notes.txt
+          echo -e '\n```' >> notes.txt
+          for file in $(find . -type f \( -name "*.exe" -o -name "*.zip" -o -name "*.deb" -o -name "*.rpm" \) | sort); do
+            filename=$(basename "$file")
+            checksum=$(sha256sum "$file" | awk '{print $1}')
+            echo "$checksum  $filename" >> notes.txt
+            #echo $checksum > "$filename".sha256
+          done
+          echo -e '```\n' >> notes.txt
+          cd ..
+          tree ~/artifacts
+
+      - name: Setup Release Information
+        run: |
+          echo "RELEASE_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+          echo "TAG_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        continue-on-error: false
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Find existing artifact files
+          hash_files=$(find ~/artifacts -name "*.sha256" -print0 | xargs -0 echo)
+          exe_files=$(find ~/artifacts -name "*.exe" -print0 | xargs -0 echo)
+          zip_files=$(find ~/artifacts -name "*.zip" -print0 | xargs -0 echo)
+          deb_files=$(find ~/artifacts -name "*.deb" -print0 | xargs -0 echo)
+          rpm_files=$(find ~/artifacts -name "*.rpm" -print0 | xargs -0 echo)
+
+          # Check existing release and delete if it's exist
+          if gh release view ${{ env.TAG_NAME }} --repo $GITHUB_REPOSITORY &> /dev/null; then
+            gh release delete ${{ env.TAG_NAME }} --repo $GITHUB_REPOSITORY
+            echo "${{ env.TAG_NAME }} deleted!"
+          fi
+
+          gh release create ${{ env.TAG_NAME }} \
+            --repo $GITHUB_REPOSITORY \
+            --draft \
+            --title "${{ env.RELEASE_NAME }}" \
+            --notes-file ~/artifacts/notes.txt \
+            $hash_files \
+            $exe_files \
+            $zip_files \
+            $deb_files \
+            $rpm_files

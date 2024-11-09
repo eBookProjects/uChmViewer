@@ -8,7 +8,8 @@ on:
       - gha
       - Qt4
       - Qt4-dev
-    tags-ignore:
+    tags-ignore: '*'
+    paths-ignore: '/.github/workflows/release.yml'
   pull_request:
 
 env:
