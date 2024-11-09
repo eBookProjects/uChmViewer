@@ -61,6 +61,9 @@ void app_i18n::initGettext()
 		appDir.remove( QRegularExpression(binDir + "$") );
 		appDir.append( localeDir );
 		bindtextdomain ( "uchmviewer", appDir.toUtf8().data() );
+		// https://www.gnu.org/software/gettext/manual/html_node/Charset-conversion.html
+		// Special for Windows
+		bind_textdomain_codeset ( "uchmviewer", "UTF-8" );
 	}
 
 	textdomain ( "uchmviewer" );
