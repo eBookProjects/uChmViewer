@@ -7,7 +7,9 @@ if (${USE_STATIC_CHMLIB})
     if (EXISTS ${CHMLIB_SRC_DIR}/chm_lib.h)
         add_library(chmlib STATIC
             ${CHMLIB_SRC_DIR}/chm_lib.c
-            ${CHMLIB_SRC_DIR}/lzx.c)
+            ${CHMLIB_SRC_DIR}/chm_lib.h
+            ${CHMLIB_SRC_DIR}/lzx.c
+            ${CHMLIB_SRC_DIR}/lzx.h)
         target_include_directories(chmlib PUBLIC ${CHMLIB_SRC_DIR})
         #The PPC_BSTR macro is required when building on Windows.
         #The ffs = __ builtin_ffs macro is required when using MSYS.

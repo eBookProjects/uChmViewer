@@ -6,24 +6,42 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Project files
 set(CPP_SOURCES
     config.cpp
+    config.h
     dialog_chooseurlfromlist.cpp
+    dialog_chooseurlfromlist.h
     dialog_setup.cpp
+    dialog_setup.h
+    i18n.cpp
+    i18n.h
     main.cpp
     mainwindow.cpp
-    recentfiles.cpp
-    settings.cpp
-    tab_bookmarks.cpp
-    tab_contents.cpp
-    tab_index.cpp
-    tab_search.cpp
-    navigationpanel.cpp
-    toolbarmanager.cpp
-    toolbareditor.cpp
-    textencodings.cpp
-    treeitem_toc.cpp
-    treeitem_index.cpp
+    mainwindow.h
     mimehelper.cpp
-    i18n.cpp
+    mimehelper.h
+    navigationpanel.cpp
+    navigationpanel.h
+    recentfiles.cpp
+    recentfiles.h
+    settings.cpp
+    settings.h
+    tab_bookmarks.cpp
+    tab_bookmarks.h
+    tab_contents.cpp
+    tab_contents.h
+    tab_index.cpp
+    tab_index.h
+    tab_search.cpp
+    tab_search.h
+    toolbareditor.cpp
+    toolbareditor.h
+    toolbarmanager.cpp
+    toolbarmanager.h
+    textencodings.cpp
+    textencodings.h
+    treeitem_index.cpp
+    treeitem_index.h
+    treeitem_toc.cpp
+    treeitem_toc.h
     )
 
 set(MOC_HEADERS
@@ -59,27 +77,31 @@ set(UIS
 if (${USE_WEBENGINE})
     list(APPEND CPP_SOURCES
         qtwebengine/viewwindow.cpp
+        qtwebengine/viewwindow.h
         qtwebengine/dataprovider.cpp
+        qtwebengine/dataprovider.h
         qtwebengine/viewwindowmgr.cpp
         )
     list(APPEND MOC_HEADERS qtwebengine/viewwindow.h  qtwebengine/webenginepage.h)
 else ()
     list(APPEND CPP_SOURCES
         qtwebkit/viewwindow.cpp
+        qtwebkit/viewwindow.h
         qtwebkit/dataprovider.cpp
+        qtwebkit/dataprovider.h
         qtwebkit/viewwindowmgr.cpp
         )
     list(APPEND MOC_HEADERS qtwebkit/viewwindow.h)
 endif ()
 
 if (${USE_DBUS})
-    list(APPEND CPP_SOURCES dbus_interface.cpp)
+    list(APPEND CPP_SOURCES dbus_interface.cpp dbus_interface.h)
     list(APPEND MOC_HEADERS dbus_interface.h)
 endif ()
 
 # Mac OS specific
 if (${USE_MAC_APP})
-    list(APPEND CPP_SOURCES uchmviewerapp.cpp)
+    list(APPEND CPP_SOURCES uchmviewerapp.cpp uchmviewerapp.h)
     list(APPEND MOC_HEADERS uchmviewerapp.h)
 endif ()
 

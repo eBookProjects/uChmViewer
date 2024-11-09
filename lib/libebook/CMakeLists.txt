@@ -3,16 +3,27 @@ cmake_minimum_required(VERSION 3.5)
 
 # Project files
 set(CPP_SOURCES
-    ebook_chm.cpp
-    ebook_epub.cpp
+    bitfiddle.h
     ebook.cpp
+    ebook.h
+    ebook_chm.cpp
+    ebook_chm.h
     ebook_chm_encoding.cpp
+    ebook_chm_encoding.h
+    ebook_epub.cpp
+    ebook_epub.h
     ebook_search.cpp
+    ebook_search.h
     helper_entitydecoder.cpp
+    helper_entitydecoder.h
     helper_search_index.cpp
+    helper_search_index.h
     helperxmlhandler_epubcontainer.cpp
+    helperxmlhandler_epubcontainer.h
     helperxmlhandler_epubcontent.cpp
+    helperxmlhandler_epubcontent.h
     helperxmlhandler_epubtoc.cpp
+    helperxmlhandler_epubtoc.h
     )
 
 set(MOC_HEADERS
