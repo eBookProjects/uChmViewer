@@ -21,7 +21,7 @@ endif ()
 
 if (USE_DEPLOY_RUNTIME)
     install(FILES $<TARGET_FILE:libzip::zip> DESTINATION ${APP_BIN_INSTALL_DIR})
-    
+
     if (NOT USE_STATIC_CHMLIB)
         install(FILES $<TARGET_FILE:chm> DESTINATION ${APP_BIN_INSTALL_DIR})
     endif ()
