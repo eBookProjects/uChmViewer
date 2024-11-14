@@ -1,9 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -e
 
 #MODE_NO_CLEAN=1
-#MODE_QUIET=1
 
 PACKAGE_ARCH=$(dpkg --print-architecture)
 PACKAGE_INSTALL_PREFIX=/usr
@@ -19,14 +18,15 @@ clean()
     fi
 
     if [ -d  "${PACKAGE_DIR}/DEBIAN" ]; then
-		echo "Remove ${PACKAGE_DIR}/DEBIAN"
-		rm -r "${PACKAGE_DIR}/DEBIAN"
+        echo "Remove ${PACKAGE_DIR}/DEBIAN"
+        rm -r "${PACKAGE_DIR}/DEBIAN"
     fi
 }
 
 pre_build()
 {
-    QMAKE_OPTIONS+=" PREFIX=$PACKAGE_INSTALL_PREFIX"
+    QMAKE_OPTIONS="$QMAKE_OPTIONS PREFIX=$PACKAGE_INSTALL_PREFIX"
+    echo "$QMAKE -r $QMAKE_OPTIONS ${SOURCE_DIR}"
     $QMAKE -r $QMAKE_OPTIONS ${SOURCE_DIR}
 }
 
@@ -48,12 +48,7 @@ package()
 {
     mkdir -p "$PACKAGE_DIR"/DEBIAN
 
-    echo -n "Getting depends..."
-    for bin_obj in "$(find "$PACKAGE_BIN_DIR" -type f -name "*")"; do
-        BINS+=("${bin_obj}")
-    done
-    PACKAGE_DEPENDS=$(get_deb_dependies "$PACKAGE_ARCH" ${BINS[@]})
-    echo " Done"
+    get_deb_dependencies "${PACKAGE_DIR}/${PACKAGE_INSTALL_PREFIX}/bin"
 
     # https://www.debian.org/doc/debian-policy/ch-controlfields.html
     cat <<EOF > "$PACKAGE_DIR"/DEBIAN/control
@@ -71,9 +66,12 @@ Maintainer: Nick Egorrov <nicegorov@yandex.ru>
 Installed-Size: $(du -s "$PACKAGE_DIR" | awk '{print $1}')
 EOF
 
-    dpkg-deb -v --build "$PACKAGE_DIR" "${PACKAGE_FILE_NAME}.deb"
+    title2 "Run dpkg-deb"
+    echo "dpkg-deb --build $PACKAGE_DIR ${PACKAGE_FILE_NAME}.deb"
+    dpkg-deb --build "$PACKAGE_DIR" "${PACKAGE_FILE_NAME}.deb"
 }
 
-source ${SCRIPT_DIR}/build-helper.sh
+__NESTED__=1
+. ${SCRIPT_DIR}/build-helper.sh
 
 create package

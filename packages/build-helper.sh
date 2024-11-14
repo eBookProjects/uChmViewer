@@ -1,45 +1,70 @@
+#!/usr/bin/env sh
 
-get_version()
-{
-    cat ${SOURCE_DIR}/src/version.h | grep 'define\s*APP_VERSION' | awk -F'"' '{print $(NF-1)}'
-}
+if ! [ "$__NESTED__" = 1 ]; then
+    echo "WARNING! This is an helper script."
+    echo "Do not run the \"$(basename "$0")\" script directly,"
+    echo "instead run the \"deb-build.sh\" or \"win-msys2-build.sh\" script."
+    exit 2
+fi
 
+# Package specific
+########################################
 PACKAGE_NAME=uchmviewer
-PACKAGE_VERSION=$(get_version)
+PACKAGE_LANG_LIST=$(cat "${SOURCE_DIR}/po/languages.txt")
+PACKAGE_QT_QM_LIST="qt_ qtbase_"
+PACKAGE_VERSION=$(cat "${SOURCE_DIR}"/src/version.h | grep 'define\s*APP_VERSION' | awk -F'"' '{print $(NF-1)}')
 PACKAGE_BROWSER=webkit
+
+# Default settings
+########################################
 BUILD_DIR=${SOURCE_DIR}/build
+QMAKE=qmake
+MAKE_JOBS=$(nproc)
+
+# Work files
+########################################
+BIN_LIST_FILE=${BUILD_DIR}/get_dependies-bin.txt
+LDD_LIST_FILE=${BUILD_DIR}/get_dependies-ldd.txt
+OBJ_LIST_FILE=${BUILD_DIR}/get_dependies-obj.txt
+LIB_LIST_FILE=${BUILD_DIR}/get_dependies-lib.txt
+PKG_LIST_FILE=${BUILD_DIR}/get_dependies-pkg.txt
+DEP_LIST_FILE=${BUILD_DIR}/get_dependies-dep.txt
 
 usage()
 {
-  echo  -e "\
-Build the application and create the package.\n\
-Usage:\n\
-$(basename "$0") [-b bld_dir] [-p pkg_dir] [-q qmake] [-s suffix] [-v version] [-w browser]\n\
-\n\
-Options:\n\
-  -b bld_dir  The directory where the application will be built.\n\
-              By default it is <source_root>/build\n\
-  -p pkg_dir  The directory where the package will be built.\n\
-              By default this is <bld_dir>/<pkg_name>_<pkg_version>\n\
-  -q qmake    The name or full path of the qmake utility. In some\n\
-              distributives, qmake for Qt 6 is named qmake6.\n\
-  -s suffux   The suffix that will be added to the package name after the\n\
-              version and before the architecture type.\n\
-              Nothing is added by default.\n\
-  -v version  Define the package version. By default version gettings from\n\
-              the version.h file.\n\
-  -w browser  Define the webengine to be used. Possible values:\n\
-              WebEngine or WebKit (default).\n\
-\n\
-It is assumed that the necessary dependencies and tools are already installed\n\
-in the system.\n\
-\n\
-The created package is saved in the current working directory.\
+    echo "\
+
+Usage:
+$(basename "$0") [-b bld_dir] [-p pkg_dir] [-q qmake] [-s suffix] [-v version] [-w browser]
+
+Options:
+  -b bld_dir  The directory where the application will be built.
+              By default it is <source_root>/build
+  -p pkg_dir  The directory where the package will be built.
+              By default this is <bld_dir>/<pkg_name>_<pkg_version>
+  -q qmake    The name or full path of the qmake utility. In some
+              distributives, qmake for Qt 6 is named qmake6.
+  -s suffux   The suffix that will be added to the package name after the
+              version and before the architecture type.
+              Nothing is added by default.
+  -v version  Define the package version. By default version gettings from
+              the version.h file.
+  -w browser  Define the webengine to be used. Possible values:
+              WebEngine or WebKit (default).
+
+It is assumed that the necessary dependencies and tools are already installed
+in the system.
+
+The created package is saved in the current working directory.
 " 1>&2
 }
 
-MAKE_JOBS=$(nproc)
-QMAKE=qmake
+help()
+{
+    echo "\
+Build the application and create the package." 1>&2
+usage
+}
 
 while getopts ":b:p:q:s:v:w:h" options; do
     case "${options}" in
@@ -69,109 +94,165 @@ while getopts ":b:p:q:s:v:w:h" options; do
             PACKAGE_BROWSER=webengine
             ;;
         *)
-            echo -e "Error: unknown browser '${OPTARG}'.\n"
+            echo "Error: unknown browser '${OPTARG}'."
             usage
             exit 1
             ;;
         esac
         ;;
     h)
-        usage
+        help
         exit 0
         ;;
     *)
-        echo -e "Error: unknown option '-${OPTARG}'.\n"
+        echo "Error: unknown option '-${OPTARG}'."
         usage
         exit 1
         ;;
     esac
 done
 
-if ! [ -v FORCE_PACKAGE_DIR ]; then
+if ! [ "$FORCE_PACKAGE_DIR" = 1 ]; then
     PACKAGE_DIR=${BUILD_DIR}/${PACKAGE_NAME}_${PACKAGE_VERSION}
 fi
 PACKAGE_BIN_DIR=${PACKAGE_DIR}/${PACKAGE_INSTALL_PREFIX}/bin
 PACKAGE_FILE_NAME="${PACKAGE_NAME}-${PACKAGE_BROWSER}-${PACKAGE_VERSION}${PACKAGE_SUFFIX}_${PACKAGE_ARCH}"
 
-echo_step()
+title1()
 {
-    [ -v MODE_QUIET ] && return
-    echo -e "\n================================================================================"
-    echo -e "$1"
-    echo -e "================================================================================\n"
+    echo
+    echo "================================================================================"
+    echo "$1"
+    echo "================================================================================"
+    echo
 }
 
-# Returns 0 if there is no 'key' value in the 'list' array.
-# param:
-#   key    - key
-#   list[] - list of a keys
-is_uniquue()
+title2()
 {
-    local item
-
-    for item in "${@:2}"; do
-        [[ ${item} == "${1}" ]] && return 1
-    done
-
-    return 0
+    echo
+    echo "$1"
+    echo "========================================="
 }
 
-# Returns a list of libraries on which the binaries depend
-# param:
-#   bins[] - list of a binaries
-get_libs()
+title3()
 {
-    local app
-    local lib
-    local lib_list
+    echo
+    echo "$1"
+    echo "-------------------------"
+}
 
-    for app in "${@}"; do
-        for lib in $(objdump -p "${app}" | grep NEEDED | awk '{print $2}'); do
-            if is_uniquue "${lib}" "${lib_list[@]}"; then
-                lib_list+=("${lib}")
+# Calculates the dependencies and stores them in the variable PACKAGE_DEPENDS.
+#
+# get_deb_dependencies BIN_DIR
+#   BIN_DIR - Directory with binaries for which dependencies are calculated.
+################################################################
+get_deb_dependencies()
+{
+	_bin_dir=$1
+    title2 "Getting dependencies"
+    echo "  BIN_DIR $_bin_dir"
+
+    title3 "List of binaries:"
+    find "$_bin_dir" -type f -name "*" > "$BIN_LIST_FILE"
+    cat "$BIN_LIST_FILE"
+
+    title3 "List of libraries from the ldd utility:"
+    cat "$BIN_LIST_FILE" | xargs ldd | awk '{if (NF == 4) print "*"$3}' > "$LDD_LIST_FILE"
+    cat "$LDD_LIST_FILE"
+
+    title3 "List of libraries from the objdump utility:"
+    cat "$BIN_LIST_FILE" | xargs objdump -p | grep NEEDED | awk '{print $2}'> "$OBJ_LIST_FILE"
+    cat "$OBJ_LIST_FILE"
+
+    title3 "Filtered list of libraries:"
+    grep -F --file="$OBJ_LIST_FILE"  "$LDD_LIST_FILE" | sort -u > "$LIB_LIST_FILE"
+    cat "$LIB_LIST_FILE"
+
+    title3 "List of packages:"
+    cat "$LIB_LIST_FILE" | xargs dpkg-query -S | awk '{print substr( $1, 1, length($1)-1 )}' | sort -u > "$PKG_LIST_FILE"
+    cat "$PKG_LIST_FILE"
+
+    title3 "String with dependencies:"
+    cat "$PKG_LIST_FILE" | xargs xargs dpkg-query -W -f='${Package} (>= ${Version}), '| awk '{print substr( $0, 1, length($0)-2 )}' > "$DEP_LIST_FILE"
+    cat "$DEP_LIST_FILE"
+    PACKAGE_DEPENDS=$(cat "$DEP_LIST_FILE")
+}
+
+# Copies a Qt plugins files to the specified directory
+#
+# deploy_qt_plugins SRC DST
+#   SRC - directory with installed Qt translations files
+#   DST - destination directory
+################################################################
+deploy_qt_plugins()
+{
+    _src=$1
+    _dst=$2
+
+    if [ -f "$_src"/platforms/qwindows.dll ]; then
+        title2 "Coping Qt plugins"
+        echo "  SRC $_src"
+        echo "  DST $_dst"
+
+        mkdir -p "$_dst"/bearer
+        mkdir -p "$_dst"/imageformats
+        mkdir -p "$_dst"/platforms
+        mkdir -p "$_dst"/printsupport
+        mkdir -p "$_dst"/styles
+        cp -v "$_src"/bearer/qgenericbearer.dll "$_dst"/bearer
+        cp -v "$_src"/imageformats/*.dll "$_dst"/imageformats
+        cp -v "$_src"/platforms/qwindows.dll "$_dst"/platforms
+        cp -v "$_src"/printsupport/windowsprintersupport.dll "$_dst"/printsupport
+        cp -v "$_src"/styles/qwindowsvistastyle.dll "$_dst"/styles
+    fi
+}
+
+# Copies a Qt translations files to the specified directory
+#
+# deploy_qt_translations SRC DST
+#   SRC - directory with installed Qt translations files
+#   DST - destination directory
+################################################################
+deploy_qt_translations()
+{
+    _src=$1
+    _dst=$2
+    title2 "Coping a Qt translations files"
+    echo "  SRC $_src"
+    echo "  DST $_dst"
+
+    for _lang in $PACKAGE_LANG_LIST; do
+        title3 "Language code <${_lang}>"
+        for _name in $PACKAGE_QT_QM_LIST; do
+            _file=${_name}${_lang}.qm
+            if [ -f "${_src}/${_file}" ]; then
+                echo "${_file}"
+                cp "${_src}/${_file}" "$_dst";
             fi
         done
     done
-
-    echo "${lib_list[@]}"
 }
 
-# Returns a list of packages on which the binaries depend
-# param:
-#   arch   - architecture name
-#   bins[] - list of a binaries
-get_deb_packages()
+# Copies the DLLs needed for the binaries located in the specified directory.
+#
+# deploy_dlls BIN_DIR
+#   BIN_DIR - Directory with binaries for which DLLs will be copied
+################################################################
+deploy_dlls()
 {
-    local pack
-    local pack_list
+    _bin_dir=$1
+    title2 "Deploy DLLs"
+    echo "  BIN_DIR $_bin_dir"
 
-    for pack in $(dpkg -S $(get_libs "${@:2}") | grep "${1}" | awk -F: '{print $1}'); do
-        if is_uniquue "${pack}" "${pack_list[@]}"; then
-            pack_list+=("${pack}")
-        fi
-    done
+    title3 "List of binaries:"
+    find "$_bin_dir" -type f -name "*.exe" > "$BIN_LIST_FILE"
+    cat "$BIN_LIST_FILE"
 
-    echo "${pack_list[@]}"
-}
+    title3 "List of DLLs:"
+    ntldd -R $(cat "$BIN_LIST_FILE") | grep mingw | awk '{print $3}'| sort -u > "$LIB_LIST_FILE"
+    cat "$LIB_LIST_FILE"
 
-# Returns a list of packages on which the binaries depend
-# param:
-#   arch   - architecture name
-#   bins[] - list of a binaries
-get_deb_dependies()
-{
-    local pack
-    local dep_list
-    local comma=0
-
-    for pack in $(get_deb_packages "${1}" "${@:2}"); do
-        ver=$(dpkg-query -f='${Version}' -W "${pack}:${1}")
-        [[ ${comma} -eq 1 ]] && dep_list+=", "
-        dep_list+="${pack} (>= ${ver})"
-        comma=1
-    done
-
-    echo "${dep_list}"
+    cp $(cat "$LIB_LIST_FILE") "$_bin_dir"
 }
 
 create()
@@ -179,25 +260,27 @@ create()
     CREATE_PACKAGE=0
     CREATE_PORTABLE=0
 
-    for inst in "${@}"; do
-        if [ ${inst} == package ]; then CREATE_PACKAGE=1; fi
-        if [ ${inst} == portable ]; then CREATE_PORTABLE=1; fi
+    for arg in "${@}"; do
+        if [ "${arg}" = package ]; then CREATE_PACKAGE=1; fi
+        if [ "${arg}" = portable ]; then CREATE_PORTABLE=1; fi
     done
 
-    echo_step "\
-Try to build package with:\n\
-PACKAGE_NAME      ${PACKAGE_NAME}\n\
-PACKAGE_BROWSER   ${PACKAGE_BROWSER}\n\
-PACKAGE_SUFFIX    ${PACKAGE_SUFFIX}\n\
-PACKAGE_VERSION   ${PACKAGE_VERSION}\n\
-PACKAGE_ARCH      ${PACKAGE_ARCH}\n\
-PACKAGE_FILE_NAME ${PACKAGE_FILE_NAME}\n\
-SOURCE_DIR        ${SOURCE_DIR}\n\
-BUILD_DIR         ${BUILD_DIR}\n\
-PACKAGE_DIR       ${PACKAGE_DIR}\n"
+    title1 "\
+Try to build package with:
 
-    if ! [ -v MODE_NO_CLEAN ]; then
-        echo_step "Clean the build tree and the package dir"
+PACKAGE_NAME      ${PACKAGE_NAME}
+PACKAGE_BROWSER   ${PACKAGE_BROWSER}
+PACKAGE_SUFFIX    ${PACKAGE_SUFFIX}
+PACKAGE_VERSION   ${PACKAGE_VERSION}
+PACKAGE_ARCH      ${PACKAGE_ARCH}
+PACKAGE_FILE_NAME ${PACKAGE_FILE_NAME}
+SOURCE_DIR        ${SOURCE_DIR}
+BUILD_DIR         ${BUILD_DIR}
+PACKAGE_DIR       ${PACKAGE_DIR}
+"
+
+    if ! [ "$MODE_NO_CLEAN" = 1 ]; then
+        title1 "Clean the build tree and the package dir"
         clean
 
         if [ -d  "$BUILD_DIR" ]; then
@@ -211,40 +294,40 @@ PACKAGE_DIR       ${PACKAGE_DIR}\n"
         fi
     fi
 
-    QMAKE_OPTIONS="USE_GETTEXT=1"
+    QMAKE_OPTIONS="$QMAKE_OPTIONS USE_GETTEXT=1"
 
-    if [ -v FORCE_VERSION ]; then
-        QMAKE_OPTIONS+=" VERSION=$PACKAGE_VERSION"
+    if [ "$FORCE_VERSION" = 1 ]; then
+        QMAKE_OPTIONS="$QMAKE_OPTIONS VERSION=$PACKAGE_VERSION"
     fi
 
-    if [ ${PACKAGE_BROWSER} == webengine ]; then
-        QMAKE_OPTIONS+=" USE_WEBENGINE=1"
+    if [ "$PACKAGE_BROWSER" = webengine ]; then
+        QMAKE_OPTIONS="$QMAKE_OPTIONS USE_WEBENGINE=1"
     fi
 
-    echo_step "Prepare to build"
+    title1 "Prepare to build"
     OLD_PWD=$PWD
     mkdir -p "$BUILD_DIR"
     mkdir -p "$PACKAGE_DIR"
     cd "$BUILD_DIR"
     pre_build
 
-    echo_step "Make translations"
+    title1 "Make translations"
     i18n
 
-    echo_step "Make application"
+    title1 "Make application"
     build
 
-    echo_step "Copy application to the package directory"
+    title1 "Copy application to the package directory"
     deploy
     cd "$OLD_PWD"
 
-    if [ ${CREATE_PACKAGE} == 1 ]; then
-        echo_step "Create package"
+    if [ "${CREATE_PACKAGE}" = 1 ]; then
+        title1 "Create package"
         package
     fi
 
-    if [ ${CREATE_PORTABLE} == 1 ]; then
-        echo_step "Create portable"
+    if [ "${CREATE_PORTABLE}" = 1 ]; then
+        title1 "Create portable"
         portable
     fi
 }
