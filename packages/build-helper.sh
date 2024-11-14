@@ -3,7 +3,7 @@
 if ! [ "$__NESTED__" = 1 ]; then
     echo "WARNING! This is an helper script."
     echo "Do not run the \"$(basename "$0")\" script directly,"
-    echo "instead run the \"deb-build.sh\" or \"win-msys2-build.sh\" script."
+    echo "instead run the \"build-deb.sh\" or \"build-win-msys2.sh\" script."
     exit 2
 fi
 
