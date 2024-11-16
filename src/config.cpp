@@ -21,6 +21,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QSettings>
+#include <QStandardPaths>
 #include <QString>
 #include <QtGlobal>         // qPrintable, qWarning
 
@@ -32,14 +33,16 @@ Config::Config()
 {
 	// Support for portable app - if the data path is specified in the configuration, use it.
 	m_datapath = QCoreApplication::applicationDirPath() + QDir::separator() + "portable";
+	bool portable = QFile( m_datapath ).exists();
 
-	if ( QFile( m_datapath ).exists() )
+	if ( portable )
 	{
+		QSettings::setDefaultFormat( QSettings::IniFormat );
 		QSettings::setPath( QSettings::defaultFormat(), QSettings::UserScope, m_datapath );
 		m_datapath += QDir::separator() + QString("data");
 	}
 	else
-		m_datapath = QDir::homePath () + "/" + ".uchmviewer";
+		m_datapath = QStandardPaths::writableLocation( QStandardPaths::GenericCacheLocation ) + "/" + "uchmviewer";
 
 	QSettings settings;
 
@@ -70,8 +73,29 @@ Config::Config()
 	QDir dir;
 	dir.setPath (m_datapath);
 
-	if ( !dir.exists() && !dir.mkdir(m_datapath) )
+	if ( !dir.exists() && !dir.mkpath(m_datapath) )
 		qWarning( "Could not create directory %s", qPrintable( m_datapath ));
+
+	// If the old cache directory exists, copy its contents to the correct directory
+	//  and remove the old directory.
+	if ( !portable )
+	{
+		QDir oldDataDir = QDir( QDir::homePath () + "/" + ".uchmviewer" );
+		QDir dataDir = QDir( m_datapath );
+
+		if ( oldDataDir.exists() )
+		{
+			const QStringList& files = oldDataDir.entryList( {"*.idx", "*.uchmviewer"},
+			                                                 QDir::Files | QDir::NoDot | QDir::NoDotDot );
+
+			for ( const QString& file : files )
+			{
+				QFile::rename( oldDataDir.filePath( file ), dataDir.filePath( file ) );
+			}
+
+			oldDataDir.rmdir( oldDataDir.absolutePath() );
+		}
+	}
 }
 
 void Config::save( )
