@@ -221,6 +221,9 @@
           </item>
           <item>
            <widget class="QGroupBox" name="buttonGroup5">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="title">
              <string>When link pointed to a new CHM file clicked</string>
             </property>
@@ -472,13 +475,6 @@
            <widget class="QCheckBox" name="boxLayoutDirectionRL">
             <property name="text">
              <string>Use right-to-left layout direction (Arabic and Hebrew layouts)</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="boxAutodetectEncoding">
-            <property name="text">
-             <string>Automatically detect encoding for KHTMLPart and WebKit browsers (not recommended)</string>
             </property>
            </widget>
           </item>

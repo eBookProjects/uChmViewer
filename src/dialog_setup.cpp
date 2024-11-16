@@ -73,7 +73,6 @@ DialogSetup::DialogSetup(QWidget* parent)
 
 	m_numOfRecentFiles = pConfig->m_numOfRecentFiles;
 
-	boxAutodetectEncoding->setChecked( pConfig->m_advAutodetectEncoding );
 	boxLayoutDirectionRL->setChecked( pConfig->m_advLayoutDirectionRL );
 
 	// Browser settings
@@ -188,9 +187,6 @@ void DialogSetup::accept()
 
 	if ( pConfig->m_numOfRecentFiles != m_numOfRecentFiles )
 		need_restart = true;
-
-	// Autodetect encoding
-	Check_Need_Restart( boxAutodetectEncoding, &pConfig->m_advAutodetectEncoding, &need_restart );
 
 	// Layout direction management
 	bool layout_rl = boxLayoutDirectionRL->isChecked();

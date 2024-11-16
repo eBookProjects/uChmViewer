@@ -53,7 +53,6 @@ Config::Config()
 	m_HistoryStoreExtra = settings.value( "settings/extrahistory", true ).toBool();
 	m_advUseInternalEditor = settings.value( "advanced/internaleditor", true ).toBool();
 	m_advLayoutDirectionRL = settings.value( "advanced/layoutltr", false ).toBool();
-	m_advAutodetectEncoding = settings.value( "advanced/autodetectenc", false ).toBool();
 	m_advExternalEditorPath = settings.value( "advanced/editorpath", "/usr/bin/kate" ).toString();
 	m_toolbarMode = (Config::ToolbarMode) settings.value( "advanced/toolbarmode", TOOLBAR_LARGEICONSTEXT ).toInt();
 	m_lastOpenedDir = settings.value( "advanced/lastopendir", "." ).toString();
@@ -109,7 +108,7 @@ void Config::save( )
 	settings.setValue( "settings/extrahistory", m_HistoryStoreExtra );
 	settings.setValue( "advanced/internaleditor", m_advUseInternalEditor );
 	settings.setValue( "advanced/layoutltr", m_advLayoutDirectionRL );
-	settings.setValue( "advanced/autodetectenc", m_advAutodetectEncoding );
+	settings.remove( "advanced/autodetectenc" );
 	settings.setValue( "advanced/editorpath", m_advExternalEditorPath );
 	settings.setValue( "advanced/toolbarmode", m_toolbarMode );
 	settings.setValue( "advanced/lastopendir", m_lastOpenedDir );

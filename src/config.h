@@ -77,7 +77,6 @@ class Config
 		bool                m_advUseInternalEditor;
 		QString             m_advExternalEditorPath;
 		bool                m_advLayoutDirectionRL;
-		bool                m_advAutodetectEncoding;
 
 	private:
 		QString             m_datapath;
