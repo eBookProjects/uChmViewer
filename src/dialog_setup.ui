@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>KchmViewer settings</string>
+   <string>uChmViewer settings</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>

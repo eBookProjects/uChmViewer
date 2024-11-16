@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 16:10+0300\n"
+"POT-Creation-Date: 2024-11-16 20:51+0300\n"
 "PO-Revision-Date: 2010-06-23 19:03+0300\n"
 "Last-Translator: Yatsenko Alexandr <yatsenko.alexandr@gmail.com>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -15,13 +15,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1110
+#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1116
 #, fuzzy
 msgid "About uChmViewer"
-msgstr "kchmviewer"
+msgstr "uChmViewer"
 
 #: ../src/dialog_about.ui:24
 #, fuzzy
@@ -77,8 +77,8 @@ msgid ""
 msgstr ""
 
 #: ../src/dialog_setup.ui:20
-msgid "KchmViewer settings"
-msgstr "Налаштування KchmViewer"
+msgid "uChmViewer settings"
+msgstr "Налаштування uChmViewer"
 
 #: ../src/dialog_setup.ui:42
 msgid "General behavior"
@@ -149,7 +149,7 @@ msgstr "Завжди відкривати в зов&нішньому брауз�
 msgid "Alt+Y"
 msgstr "Alt+Y"
 
-#: ../src/dialog_setup.ui:205 ../src/dialog_setup.ui:244
+#: ../src/dialog_setup.ui:205 ../src/dialog_setup.ui:247
 msgid "Ask for confirmation"
 msgstr "Запитати підтвердження"
 
@@ -157,167 +157,159 @@ msgstr "Запитати підтвердження"
 msgid "Do not open the link"
 msgstr "Не відкривати посилання"
 
-#: ../src/dialog_setup.ui:225
+#: ../src/dialog_setup.ui:228
 msgid "When link pointed to a new CHM file clicked"
 msgstr "Коли обрано посилання на інший файл CHM"
 
-#: ../src/dialog_setup.ui:237
+#: ../src/dialog_setup.ui:240
 msgid "Always open a new CHM file"
 msgstr "Завжди відкривати новий файл CHM"
 
-#: ../src/dialog_setup.ui:251
+#: ../src/dialog_setup.ui:254
 msgid "Do not open a new CHM file"
 msgstr "Не відкривати новий файл CHM"
 
-#: ../src/dialog_setup.ui:278
+#: ../src/dialog_setup.ui:281
 #, fuzzy
 msgid "Browser"
 msgstr "&Огляд"
 
-#: ../src/dialog_setup.ui:290
+#: ../src/dialog_setup.ui:293
 #, fuzzy
 msgid "HTML browser settings"
 msgstr "Налаштування безпеки CHM"
 
-#: ../src/dialog_setup.ui:296
+#: ../src/dialog_setup.ui:299
 msgid "Load the &images"
 msgstr ""
 
-#: ../src/dialog_setup.ui:303
+#: ../src/dialog_setup.ui:306
 msgid "Enable browser &plugins (i.e. Flash)"
 msgstr ""
 
-#: ../src/dialog_setup.ui:306
+#: ../src/dialog_setup.ui:309
 msgid "Alt+P"
 msgstr "Alt+L"
 
-#: ../src/dialog_setup.ui:313
+#: ../src/dialog_setup.ui:316
 msgid "Enable &Java"
 msgstr "Увімкнути &Java"
 
-#: ../src/dialog_setup.ui:316
+#: ../src/dialog_setup.ui:319
 msgid "Alt+J"
 msgstr "Alt+J"
 
-#: ../src/dialog_setup.ui:323
+#: ../src/dialog_setup.ui:326
 msgid "Enable Java&Script"
 msgstr "Увімкнути Java&Script"
 
-#: ../src/dialog_setup.ui:326
+#: ../src/dialog_setup.ui:329
 msgid "Alt+S"
 msgstr "Alt+S"
 
-#: ../src/dialog_setup.ui:333
+#: ../src/dialog_setup.ui:336
 msgid "Enable &offline storage (HTML5)"
 msgstr ""
 
-#: ../src/dialog_setup.ui:336
+#: ../src/dialog_setup.ui:339
 msgid "Alt+R"
 msgstr "Alt+Y"
 
-#: ../src/dialog_setup.ui:343
+#: ../src/dialog_setup.ui:346
 msgid "Enable &local storage (HTML5)"
 msgstr ""
 
-#: ../src/dialog_setup.ui:350
+#: ../src/dialog_setup.ui:353
 msgid "Highlight search results during in-page search"
 msgstr ""
 
-#: ../src/dialog_setup.ui:360
+#: ../src/dialog_setup.ui:363
 msgid "Table of Contents and other windows"
 msgstr ""
 
-#: ../src/dialog_setup.ui:366
+#: ../src/dialog_setup.ui:369
 msgid "Open all Table of Contents entries automatically"
 msgstr ""
 
-#: ../src/dialog_setup.ui:373
+#: ../src/dialog_setup.ui:376
 msgid ""
 "Always use a single click to open the elements instead of OS-specific "
 "activation"
 msgstr ""
 
-#: ../src/dialog_setup.ui:397
+#: ../src/dialog_setup.ui:400
 msgid "Advanced"
 msgstr "Додатково"
 
-#: ../src/dialog_setup.ui:403
+#: ../src/dialog_setup.ui:406
 msgid "View HTML source command uses"
 msgstr "Переглядати використані команди HTML"
 
-#: ../src/dialog_setup.ui:415
+#: ../src/dialog_setup.ui:418
 msgid "Built-in HTML source viewer"
 msgstr "Вбудований переглядач HTML коду"
 
-#: ../src/dialog_setup.ui:425
+#: ../src/dialog_setup.ui:428
 msgid "E&xternal program, specified below"
 msgstr "&Зовнішня програма, вказана нижче"
 
-#: ../src/dialog_setup.ui:428
+#: ../src/dialog_setup.ui:431
 msgid "Alt+X"
 msgstr "Alt+P"
 
-#: ../src/dialog_setup.ui:443
+#: ../src/dialog_setup.ui:446
 msgid "External program:"
 msgstr "Зовнішня програма:"
 
-#: ../src/dialog_setup.ui:456
+#: ../src/dialog_setup.ui:459
 msgid "&Browse"
 msgstr "&Огляд"
 
-#: ../src/dialog_setup.ui:468
+#: ../src/dialog_setup.ui:471
 msgid "Other"
 msgstr "Інше"
 
-#: ../src/dialog_setup.ui:474
+#: ../src/dialog_setup.ui:477
 #, fuzzy
 msgid "Use right-to-left layout direction (Arabic and Hebrew layouts)"
 msgstr "Використовувати напрямок справа вліво (Арабська мова та Іврит)"
 
-#: ../src/dialog_setup.ui:481
-msgid ""
-"Automatically detect encoding for KHTMLPart and WebKit browsers (not "
-"recommended)"
-msgstr ""
-"Автоматично визначати кодування для браузерів KHTMLPart та WebKit (не "
-"рекомендується)"
-
-#: ../src/dialog_setup.ui:491
+#: ../src/dialog_setup.ui:487
 #, fuzzy
 msgid "Toolbars"
 msgstr "панель дій"
 
-#: ../src/dialog_setup.ui:497
+#: ../src/dialog_setup.ui:493
 msgid "Small icons"
 msgstr ""
 
-#: ../src/dialog_setup.ui:504
+#: ../src/dialog_setup.ui:500
 msgid "Large icons"
 msgstr ""
 
-#: ../src/dialog_setup.ui:511
+#: ../src/dialog_setup.ui:507
 msgid "Large icons and text"
 msgstr ""
 
-#: ../src/dialog_setup.ui:518
+#: ../src/dialog_setup.ui:514
 #, fuzzy
 msgid "Just text"
 msgstr "Про &Qt"
 
-#: ../src/dialog_setup.cpp:210
+#: ../src/dialog_setup.cpp:205
 msgid ""
 "Changing those options requires restarting the application to take effect."
 msgstr "Щоб зміни набули чинності, слід перезапустити програму"
 
-#: ../src/dialog_setup.cpp:219
+#: ../src/dialog_setup.cpp:213
 msgid "*|Executables"
 msgstr "*|Виконувані файли"
 
-#: ../src/dialog_setup.cpp:219 ../src/dialog_setup.cpp:222
+#: ../src/dialog_setup.cpp:213 ../src/dialog_setup.cpp:216
 msgid "Choose an editor executable"
 msgstr "Оберіть виконуваний файл редактора"
 
-#: ../src/dialog_setup.cpp:224
+#: ../src/dialog_setup.cpp:218
 msgid "Executables (*)"
 msgstr "Виконувані файли (*)"
 
@@ -329,10 +321,10 @@ msgstr ""
 msgid "Please select the topic to open:"
 msgstr ""
 
-#: ../src/mainwindow.ui:14 ../src/main.cpp:49
+#: ../src/mainwindow.ui:14 ../src/main.cpp:52
 #, fuzzy
 msgid "uChmViewer"
-msgstr "kchmviewer"
+msgstr "uChmViewer"
 
 #: ../src/mainwindow.ui:28
 msgid "&Settings"
@@ -697,8 +689,8 @@ msgstr "Перейти на наступну сторінку із таблиц�
 
 #: ../src/mainwindow.ui:547
 msgid ""
-"Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: Ctrl"
-"+Right Arrow</i>"
+"Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: "
+"Ctrl+Right Arrow</i>"
 msgstr ""
 "Перейти до наступної сторінки із <b>таблиці змісту</b><br><br><i>Скорочення: "
 "Ctrl+Стрілка вправо</i>"
@@ -722,7 +714,7 @@ msgstr "Ctrl+W"
 #: ../src/mainwindow.ui:570
 #, fuzzy
 msgid "About uChmViewer..."
-msgstr "kchmviewer"
+msgstr "uChmViewer"
 
 #: ../src/mainwindow.ui:575
 #, fuzzy
@@ -734,41 +726,41 @@ msgstr "Про &Qt"
 msgid "Edit toolbars..."
 msgstr "панель дій"
 
-#: ../src/mainwindow.cpp:222
+#: ../src/mainwindow.cpp:226
 msgid "Shared memory segment failed"
 msgstr ""
 
-#: ../src/mainwindow.cpp:223
+#: ../src/mainwindow.cpp:227
 #, qt-format
 msgid "Failed to create a shared memory segment: %1"
 msgstr ""
 
-#: ../src/mainwindow.cpp:286
+#: ../src/mainwindow.cpp:290
 #, qt-format
 msgid "Detected file encoding: %1 ( %2 )"
 msgstr "Визначено кодування файлу: %1 ( %2 )"
 
-#: ../src/mainwindow.cpp:360
+#: ../src/mainwindow.cpp:364
 #, qt-format
 msgid "%1 - failed to load the chm file"
 msgstr "%1 — помилка при завантаженні файлу chm"
 
-#: ../src/mainwindow.cpp:361
+#: ../src/mainwindow.cpp:365
 #, qt-format
 msgid "Unable to load the chm file %1"
 msgstr "Неможливо завантажити файл chm %1"
 
-#: ../src/mainwindow.cpp:369
+#: ../src/mainwindow.cpp:373
 #, qt-format
 msgid "Could not load file %1"
 msgstr "Не вдалося завантажити файл %1"
 
-#: ../src/mainwindow.cpp:427
+#: ../src/mainwindow.cpp:428
 #, qt-format
 msgid "%1 - remote link clicked - %2"
 msgstr "%1 — вибрано зовнішнє посилання - %2"
 
-#: ../src/mainwindow.cpp:428
+#: ../src/mainwindow.cpp:429
 #, qt-format
 msgid ""
 "A remote link %1 will start the external program to open it.\n"
@@ -779,15 +771,15 @@ msgstr ""
 "\n"
 "Бажаєте продовжити?"
 
-#: ../src/mainwindow.cpp:429
+#: ../src/mainwindow.cpp:430
 msgid "&Yes"
 msgstr "&Так"
 
-#: ../src/mainwindow.cpp:429
+#: ../src/mainwindow.cpp:430
 msgid "&No"
 msgstr "&Ні"
 
-#: ../src/mainwindow.cpp:832
+#: ../src/mainwindow.cpp:840
 #, fuzzy
 msgid ""
 "*.chm *.epub|All electronic book\n"
@@ -795,113 +787,113 @@ msgid ""
 "*.epub|EPUB electronic book"
 msgstr "*.chm|Стиснений файл довідки - Compressed Help Manual (*.chm)"
 
-#: ../src/mainwindow.cpp:835
+#: ../src/mainwindow.cpp:843
 msgid "Open a chm file"
 msgstr "Відкрити файл chm"
 
-#: ../src/mainwindow.cpp:837
+#: ../src/mainwindow.cpp:845
 msgid "Electronic books (*.chm *.epub)"
 msgstr ""
 
-#: ../src/mainwindow.cpp:882 ../src/mainwindow.cpp:886
+#: ../src/mainwindow.cpp:889 ../src/mainwindow.cpp:893
 msgid "Choose a directory to store CHM content"
 msgstr "Оберіть теку для зберігання вмісту CHM"
 
-#: ../src/mainwindow.cpp:900
+#: ../src/mainwindow.cpp:907
 msgid "Extracting CHM content"
 msgstr "Витягування вмісту CHM"
 
-#: ../src/mainwindow.cpp:901
+#: ../src/mainwindow.cpp:908
 msgid "Extracting files..."
 msgstr "Витягування файлів..."
 
-#: ../src/mainwindow.cpp:1002
+#: ../src/mainwindow.cpp:1009
 #, fuzzy
 msgid "HTML source"
 msgstr "&Переглянути джерело HTML"
 
-#: ../src/mainwindow.cpp:1032
+#: ../src/mainwindow.cpp:1039
 msgid "Cannot start external editor"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1033
+#: ../src/mainwindow.cpp:1040
 #, qt-format
 msgid ""
 "Cannot start external editor %1.\n"
 "Make sure the path is absolute!"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1083
+#: ../src/mainwindow.cpp:1090
 msgid "Could not locate opened topic in content window"
 msgstr "Неможливо знайти відкриту тему у вікні змісту"
 
-#: ../src/mainwindow.cpp:1089
+#: ../src/mainwindow.cpp:1095
 #, qt-format
 msgid "Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1095
+#: ../src/mainwindow.cpp:1101
 #, qt-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\"><html><head><meta name=\"qrichtext\" content=\"1\" /"
 "></head><body><p>This is a fork of KchmViewer, a chm and epub file viewer."
-"<br>KchmViewer is written by Georgy Yunaev.<br>uChmViewer version <b>%1.%2</"
-"b></p><p>%3</p><p>Copyright (C) George Yunaev, 2004-2015<br>Copyright (C) "
-"Nick Egorrov, 2021</p><p>Licensed under GNU GPL license version 3.</p></"
-"body></html>"
+"<br>KchmViewer is written by Georgy Yunaev.<br>uChmViewer version <b>%1</b></"
+"p><p>%2</p><p>Copyright (C) George Yunaev, 2004-2015<br>Copyright (C) Nick "
+"Egorrov, 2021</p><p>Licensed under GNU GPL license version 3.</p></body></"
+"html>"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1204
+#: ../src/mainwindow.cpp:1209
 msgid "Ctrl+1"
 msgstr "Ctrl+1"
 
-#: ../src/mainwindow.cpp:1210
+#: ../src/mainwindow.cpp:1215
 msgid "Ctrl+2"
 msgstr "Ctrl+2"
 
-#: ../src/mainwindow.cpp:1216
+#: ../src/mainwindow.cpp:1221
 msgid "Ctrl+3"
 msgstr "Ctrl+3"
 
-#: ../src/mainwindow.cpp:1222
+#: ../src/mainwindow.cpp:1227
 msgid "Ctrl+4"
 msgstr "Ctrl+4"
 
-#: ../src/mainwindow.cpp:1229
+#: ../src/mainwindow.cpp:1234
 msgid "/"
 msgstr "/"
 
-#: ../src/mainwindow.cpp:1236
+#: ../src/mainwindow.cpp:1241
 msgid "F3"
 msgstr "F3"
 
-#: ../src/mainwindow.cpp:1256
+#: ../src/mainwindow.cpp:1261
 msgid "Ctrl+Right"
 msgstr "Ctrl+Стрілка вправо"
 
-#: ../src/mainwindow.cpp:1263
+#: ../src/mainwindow.cpp:1268
 msgid "Ctrl+Left"
 msgstr "Ctrl+Стрілка вліво"
 
-#: ../src/mainwindow.cpp:1270
+#: ../src/mainwindow.cpp:1275
 #, fuzzy
 msgid "Ctrl+I"
 msgstr "Ctrl+"
 
-#: ../src/mainwindow.cpp:1279 ../src/qtwebengine/viewwindow.cpp:129
-#: ../src/qtwebkit/viewwindow.cpp:139
+#: ../src/mainwindow.cpp:1284 ../src/qtwebengine/viewwindow.cpp:129
+#: ../src/qtwebkit/viewwindow.cpp:138
 #, fuzzy
 msgid "&Open this link in a new tab"
 msgstr "Відкрити посилання у новій вкладці\tShift+ЛКМ"
 
-#: ../src/mainwindow.cpp:1284 ../src/qtwebengine/viewwindow.cpp:130
-#: ../src/qtwebkit/viewwindow.cpp:141
+#: ../src/mainwindow.cpp:1289 ../src/qtwebengine/viewwindow.cpp:130
+#: ../src/qtwebkit/viewwindow.cpp:140
 #, fuzzy
 msgid "&Open this link in a new background tab"
 msgstr "Відкрити посилання у фоновій вкладці\tCtrl+ЛКМ"
 
-#: ../src/mainwindow.cpp:1354
+#: ../src/mainwindow.cpp:1364
 #, qt-format
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
@@ -953,11 +945,11 @@ msgstr ""
 msgid "%1 - add a bookmark"
 msgstr "%1 - додати закладку"
 
-#: ../src/tab_bookmarks.cpp:144 ../src/tab_bookmarks.cpp:186
+#: ../src/tab_bookmarks.cpp:144 ../src/tab_bookmarks.cpp:184
 msgid "Enter the name for this bookmark:"
 msgstr "Уведіть назву для цієї закладки:"
 
-#: ../src/tab_bookmarks.cpp:185
+#: ../src/tab_bookmarks.cpp:183
 #, qt-format
 msgid "%1 - edit the bookmark name"
 msgstr "%1 — зміна назви закладки"
@@ -970,7 +962,7 @@ msgstr ""
 msgid "F&ind:"
 msgstr ""
 
-#: ../src/tab_index.ui:50
+#: ../src/tab_index.ui:53
 msgid "1"
 msgstr ""
 
@@ -995,20 +987,20 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: ../src/tab_search.cpp:184
+#: ../src/tab_search.cpp:182
 #, qt-format
 msgid "Search returned %1 result(s)"
 msgstr "Знайдено %1 результат(ів)"
 
-#: ../src/tab_search.cpp:188
+#: ../src/tab_search.cpp:186
 msgid "Search returned no results"
 msgstr "Нічого не знайдено"
 
-#: ../src/tab_search.cpp:191
+#: ../src/tab_search.cpp:189
 msgid "Search failed"
 msgstr "Помилка пошуку"
 
-#: ../src/tab_search.cpp:224
+#: ../src/tab_search.cpp:218
 #, fuzzy
 msgid ""
 "<html><p>The improved search engine allows you to search for a word, symbol "
@@ -1027,36 +1019,36 @@ msgstr ""
 "фразу, що є набором слів, поміщених в лапки. Буде показано лише ті "
 "документи, що відповідають усім умовам пошуку. Префікси не потрібні. <p>На "
 "відміну від пошуку MS CHM, мій покращений пошуковий рушій індексує все, "
-"навіть спеціальні символи. Тому стало можливим знаходити щось на зразок <i>"
-"$q = new ChmFile();</i>.Також повністю підтримується Unicode, що означає "
+"навіть спеціальні символи. Тому стало можливим знаходити щось на зразок "
+"<i>$q = new ChmFile();</i>.Також повністю підтримується Unicode, що означає "
 "можливість пошуку в документах різними мовами.<p> Якщо ви хочете знайти "
 "лапки, використайте позначення лапок замість них. Рушій розпізнає лапки та "
 "позначення лапок як один символ, що дозволяє використовувати їх у пошукових "
 "фразах.</html>"
 
-#: ../src/tab_search.cpp:241
+#: ../src/tab_search.cpp:234
 msgid "Reading dictionary..."
 msgstr "Читання словника..."
 
-#: ../src/tab_search.cpp:255 ../src/tab_search.cpp:256
-#: ../src/tab_search.cpp:261
+#: ../src/tab_search.cpp:248 ../src/tab_search.cpp:249
+#: ../src/tab_search.cpp:254
 msgid "Generating search index..."
 msgstr "Створення пошукового індексу..."
 
-#: ../src/tab_search.cpp:271
+#: ../src/tab_search.cpp:264
 msgid "Cannot save index"
 msgstr ""
 
-#: ../src/tab_search.cpp:271
+#: ../src/tab_search.cpp:264
 #, qt-format
 msgid "The index cannot be saved into file %1"
 msgstr ""
 
-#: ../src/tab_search.cpp:311
+#: ../src/tab_search.cpp:302
 msgid "No index present"
 msgstr ""
 
-#: ../src/tab_search.cpp:311
+#: ../src/tab_search.cpp:302
 msgid "The index is not present"
 msgstr ""
 
@@ -1101,46 +1093,53 @@ msgstr ""
 msgid "Toolbar actions"
 msgstr ""
 
-#: ../src/qtwebengine/viewwindow.cpp:175 ../src/qtwebkit/viewwindow.cpp:188
+#: ../src/qtwebengine/viewwindow.cpp:170 ../src/qtwebkit/viewwindow.cpp:181
 msgid "Printing aborted"
 msgstr "Друк перервано"
 
-#: ../src/qtwebengine/viewwindow.cpp:182 ../src/qtwebkit/viewwindow.cpp:193
+#: ../src/qtwebengine/viewwindow.cpp:177 ../src/qtwebkit/viewwindow.cpp:186
 msgid "Printing finished"
 msgstr "Друк завершено"
 
-#: ../src/qtwebengine/viewwindow.cpp:269 ../src/qtwebkit/viewwindow.cpp:287
+#: ../src/qtwebengine/viewwindow.cpp:255 ../src/qtwebkit/viewwindow.cpp:269
 msgid "Open Link in a new tab\tShift+LMB"
 msgstr "Відкрити посилання у новій вкладці\tShift+ЛКМ"
 
-#: ../src/qtwebengine/viewwindow.cpp:270 ../src/qtwebkit/viewwindow.cpp:288
+#: ../src/qtwebengine/viewwindow.cpp:256 ../src/qtwebkit/viewwindow.cpp:270
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr "Відкрити посилання у фоновій вкладці\tCtrl+ЛКМ"
 
-#: ../src/qtwebengine/viewwindowmgr.cpp:88 ../src/qtwebkit/viewwindowmgr.cpp:92
+#: ../src/qtwebengine/viewwindowmgr.cpp:88 ../src/qtwebkit/viewwindowmgr.cpp:90
 msgid "Add page"
 msgstr "Додати сторінку"
 
-#: ../src/qtwebengine/viewwindowmgr.cpp:174
-#: ../src/qtwebengine/viewwindowmgr.cpp:252
-#: ../src/qtwebkit/viewwindowmgr.cpp:179 ../src/qtwebkit/viewwindowmgr.cpp:258
+#: ../src/qtwebengine/viewwindowmgr.cpp:179
+#: ../src/qtwebengine/viewwindowmgr.cpp:257
+#: ../src/qtwebkit/viewwindowmgr.cpp:181 ../src/qtwebkit/viewwindowmgr.cpp:259
 #, qt-format
 msgid "Alt+%1"
 msgstr "Alt+%1"
 
-#: ../src/main.cpp:51
+#: ../src/main.cpp:54
 msgid "CHM file viewer"
 msgstr "Переглядач файлів довідки CHM"
 
-#: ../src/main.cpp:53
+#: ../src/main.cpp:56
 #, fuzzy
 msgid "(c) 2004-2015 George Yunaev"
 msgstr "© George Yunaev, gyunaev@ulduzsoft.com, 2004—2008"
 
-#: ../src/main.cpp:54
+#: ../src/main.cpp:57
 #, fuzzy
 msgid "Please report bugs to nicegorov@ya.com"
-msgstr "Будь ласка, повідомляйте про помилки на kchmviewer@ulduzsoft.com"
+msgstr "Будь ласка, повідомляйте про помилки на nicegorov@ya.com"
+
+#~ msgid ""
+#~ "Automatically detect encoding for KHTMLPart and WebKit browsers (not "
+#~ "recommended)"
+#~ msgstr ""
+#~ "Автоматично визначати кодування для браузерів KHTMLPart та WebKit (не "
+#~ "рекомендується)"
 
 #~ msgid "Abort"
 #~ msgstr "Перервати"
