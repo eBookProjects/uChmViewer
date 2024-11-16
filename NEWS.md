@@ -1,3 +1,10 @@
+## 2024-11-24 v8.3
+
+* Completely updated the Italian translation.
+* Fixed several bugs.
+* Added installer for Windows and packages for Debian and Ubuntu.
+
+
 ## 2022-02-12 v8.2-rc
 
 The release adds support for KDE Framework 5 instead of KDE4 and initial support for Qt6 instead of Qt4.

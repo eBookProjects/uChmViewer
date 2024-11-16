@@ -22,7 +22,9 @@ KchmViewer is written by [Georgy Yunaev](https://github.com/gyunaev), and is lic
 
 ## What's New
 
-Release 8.2 says goodbye to Qt4 and KDE4 and welcomes KDE Framework 5.
+Thanks to [Manuele Grueff](https://github.com/ShoresOfNowhere), the Italian
+translation has been completely updated. Thanks to [oltolm](https://github.com/oltolm) several bugs have been fixed.
+
 Read more in the [release note](https://github.com/u-235/uchmviewer/releases/latest) and in the [news](NEWS.md).
 
 
@@ -47,9 +49,12 @@ Read more in the [release note](https://github.com/u-235/uchmviewer/releases/lat
 
 ## Getting uChmViewer
 
-The application is currently distributed in source code and you need to build it on your computer. This will not take long.
-
-Go to the [build instructions page](INSTALL.md).
+Binary builds for Debian, Ubuntu and Windows are available on the
+[release page](https://github.com/eBookProjects/uChmViewer/releases/latest).You
+can also build the application yourself by following the
+[build instructions](INSTALL.md). In addition, thanks to Андрей Алыпов (AndnoVember),
+[RPM packages](https://build.opensuse.org/package/show/home:AndnoVember:LXQt:Qt6/uchmviewer)
+for OpenSuse are available.
 
 
 ## Usage

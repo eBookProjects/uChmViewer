@@ -29,12 +29,12 @@
 
 ## Getting sources
 
-Use the `git clone` command to retrieve the sources. The `-b release` option allows you to switch to the `release` branch immediately after downloading; this branch points to the latest release. If you need static linking to CHMLib, use `--recursive` options to download the CHMLib submodule.
+Use the `git clone` command to retrieve the sources. If you need static linking to CHMLib, use `--recursive` options to download the CHMLib submodule.
 
 ```sh
 # Getting the repository together with the submodule
 # and switching to the release branch
-git clone -b release --recursive https://github.com/u-235/uchmviewer
+git clone --recursive https://github.com/eBookProjects/uChmViewer
 ```
 
 
@@ -93,7 +93,7 @@ CMake comes with a `cpack` utility for generating installers. The build scripts 
 In GNU/Linux with package manager DEB-based you need the following packages and their dependencies:
 
 - `build-essential` `cmake` `git` `libzip-dev`
-- `qt5-default`; `libqt5webkit5-dev` or `qtwebengine5-dev`
+- `libqt5webkit5-dev` or `qtwebengine5-dev`
 - `libkf5kdelibs4support-dev` if you choose build with KDE support.
 - `libchm-dev`
 - `gettext`
@@ -103,8 +103,8 @@ In GNU/Linux with package manager DEB-based you need the following packages and 
 
 ```sh
 apt install build-essential cmake git libzip-dev libchm-dev\
- gettext qt5-default libqt5webkit5-dev
-git clone -b release --recursive https://github.com/u-235/uchmviewer
+ gettext libqt5webkit5-dev
+git clone --recursive https://github.com/eBookProjects/uChmViewer
 mkdir uchmviewer/build
 cd uchmviewer/build
 cmake -DCMAKE_BUILD_TYPE=Release ../
@@ -118,8 +118,8 @@ cpack -G DEB -DCPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON
 
 ```sh
 apt install build-essential cmake git libzip-dev libchm-dev\
- gettext qt5-default qtwebengine5-dev
-git clone -b release --recursive https://github.com/u-235/uchmviewer
+ gettext qtwebengine5-dev
+git clone --recursive https://github.com/eBookProjects/uChmViewer
 mkdir uchmviewer/build
 cd uchmviewer/build
 cmake -DCMAKE_BUILD_TYPE=Release -DUSE_WEBENGINE=ON ../
@@ -133,8 +133,8 @@ cpack -G DEB -DCPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON
 
 ```sh
 apt install build-essential cmake git libzip-dev libchm-dev\
- gettext qt5-default libqt5webkit5-dev libkf5kdelibs4support-dev
-git clone -b release --recursive https://github.com/u-235/uchmviewer
+ gettext libqt5webkit5-dev libkf5kdelibs4support-dev
+git clone --recursive https://github.com/eBookProjects/uChmViewer
 mkdir uchmviewer/build
 cd uchmviewer/build
 cmake -DCMAKE_BUILD_TYPE=Release -DUSE_KF5=ON ../

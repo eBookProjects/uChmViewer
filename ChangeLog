@@ -1,3 +1,16 @@
+2024-11-16 u-235 <nicegorov@yandex.com>
+    - Created the release github actions.
+    - Changed the location of the cache directory.
+    - Removed unused options.
+    - Update translations.
+
+2024-11-09 u-235 <nicegorov@yandex.com>
+    - Fixed the Cmake build script, mainly around building with MSYS2.
+    - Now Qmake generates the translation files and makes the installation of the application.
+    - Added explicit UTF-8 encoding for GetText functions. This is actual for Windows.
+    - Added a Windows application installer that uses NSIS.
+    - Added scripts for creating DEB packages and Windows installers.
+
 2022-07-01 u-235 <nicegorov@yandex.com>
     - Updated the Italian translation, thanks to Manuele Grueff for the patch.
 
