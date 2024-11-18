@@ -1,3 +1,6 @@
+2022-11-18 u-235 <nicegorov@yandex.com>
+    - v8.3 published
+
 2024-11-16 u-235 <nicegorov@yandex.com>
     - Created the release github actions.
     - Changed the location of the cache directory.

@@ -1,8 +1,8 @@
-## 2024-11-24 v8.3
+## 2024-11-18 v8.3
 
 * Completely updated the Italian translation.
 * Fixed several bugs.
-* Added installer for Windows and packages for Debian and Ubuntu.
+* Added installers for Windows and packages for Debian and Ubuntu.
 
 
 ## 2022-02-12 v8.2-rc
