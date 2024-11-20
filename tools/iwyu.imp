@@ -1,0 +1,14 @@
+[
+    "ref": "iwyu_clang.imp",
+    "ref": "iwyu_qt.imp",
+    "ref": "iwyu_qt_web.imp",
+
+
+    { include: ['<stdlib.h>', 'public',         '<cstdlib>', 'public'] },
+    { include: ['"stdlib.h"', 'public',         '<cstdlib>', 'public'] },
+    { include: ['<time.h>', 'public',           '<ctime>', 'public'] },
+    { include: ['"time.h"', 'public',           '<ctime>', 'public'] },
+
+    { symbol:  ['getenv', 'private',            '<cstdlib>', 'public'] },
+    { symbol:  ['memcpy', 'private',            '<cstring>', 'public'] }
+]
