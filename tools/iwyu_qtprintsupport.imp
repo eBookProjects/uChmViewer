@@ -1,0 +1,18 @@
+[
+    { include: ['<qabstractprintdialog.h>', 'private', '<QAbstractPrintDialog>', 'public'] },
+    { include: ['"qabstractprintdialog.h"', 'private', '<QAbstractPrintDialog>', 'public'] },
+    { include: ['<qpagesetupdialog.h>', 'private', '<QPageSetupDialog>', 'public'] },
+    { include: ['"qpagesetupdialog.h"', 'private', '<QPageSetupDialog>', 'public'] },
+    { include: ['<qprintdialog.h>', 'private', '<QPrintDialog>', 'public'] },
+    { include: ['"qprintdialog.h"', 'private', '<QPrintDialog>', 'public'] },
+    { include: ['<qprintengine.h>', 'private', '<QPrintEngine>', 'public'] },
+    { include: ['"qprintengine.h"', 'private', '<QPrintEngine>', 'public'] },
+    { include: ['<qprinter.h>', 'private', '<QPrinter>', 'public'] },
+    { include: ['"qprinter.h"', 'private', '<QPrinter>', 'public'] },
+    { include: ['<qprinterinfo.h>', 'private', '<QPrinterInfo>', 'public'] },
+    { include: ['"qprinterinfo.h"', 'private', '<QPrinterInfo>', 'public'] },
+    { include: ['<qprintpreviewdialog.h>', 'private', '<QPrintPreviewDialog>', 'public'] },
+    { include: ['"qprintpreviewdialog.h"', 'private', '<QPrintPreviewDialog>', 'public'] },
+    { include: ['<qprintpreviewwidget.h>', 'private', '<QPrintPreviewWidget>', 'public'] },
+    { include: ['"qprintpreviewwidget.h"', 'private', '<QPrintPreviewWidget>', 'public'] }
+]

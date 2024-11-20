@@ -14,3 +14,43 @@ Usage (from source root):
 or
 
     astyle  --options=tools/astyle.cfg -I -r 'module/*.cpp' 'module/*.h'
+
+
+Include-What-You-Use
+--------------------
+
+https://include-what-you-use.org
+    
+To use IWYU, run qmake with the optional USE flag:
+
+    qmake  -r USE+=check_iwyu path/to/uchmviewer.pro
+
+The following additional parameters are possible:
+
+* `IWYU_INCLUDES` specifies additional paths to search for header files,
+  this comes in handy in Debian:
+
+      IWYU_INCLUDES=/usr/lib/llvm-13/include/c++/v1
+
+* `IWYU_EXTRA_FLAGS` additional options specifically IWYU:
+
+      IWYU_EXTRA_FLAGS='-Xiwyu --update_comments'
+
+For a more complete check, use the `USE_GETTEXT` and `USE_MAC_APP` flags.
+
+
+### Examples
+
+For QtWebEngine:
+
+    qmake -r CHECK_IWYU=1 USE_GETTEXT=1 USE_MAC_APP=1 USE_WEBENGINE=1 IWYU_EXTRA_FLAGS='-Xiwyu --update_comments' ..
+
+For QtWebKit:
+
+    qmake -r CHECK_IWYU=1 USE_GETTEXT=1 USE_MAC_APP=1 IWYU_EXTRA_FLAGS='-Xiwyu --update_comments' ..
+
+
+Additional links:
+
+* https://github.com/include-what-you-use/include-what-you-use/blob/master/docs/IWYUMappings.md
+* https://github.com/include-what-you-use/include-what-you-use/blob/master/docs/IWYUPragmas.md

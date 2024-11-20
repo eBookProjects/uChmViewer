@@ -1,0 +1,14 @@
+[
+    "ref": "iwyu_clang.imp",
+    "ref": "iwyu_qtcore.imp",
+    "ref": "iwyu_qtdbus.imp",
+    "ref": "iwyu_qtextra.imp",
+    "ref": "iwyu_qtgui.imp",
+    "ref": "iwyu_qtnetwork.imp",
+    "ref": "iwyu_qtprintsupport.imp",
+    "ref": "iwyu_qtwebenginecore.imp",
+    "ref": "iwyu_qtwebenginewidgets.imp",
+    "ref": "iwyu_qtwebkitwidgets.imp",
+    "ref": "iwyu_qtwidgets.imp",
+    "ref": "iwyu_qtxml.imp"
+]

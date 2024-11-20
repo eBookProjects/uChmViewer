@@ -4,6 +4,8 @@ TARGET = ebook
 CONFIG *= c++11 warn_on staticlib
 QT += widgets xml
 
+include(../../common.pri)
+
 HEADERS += \
     bitfiddle.h \
     ebook_chm.h \
