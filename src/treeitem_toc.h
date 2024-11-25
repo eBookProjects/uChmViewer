@@ -19,8 +19,8 @@
 #ifndef TREEITEM_TOC_H
 #define TREEITEM_TOC_H
 
-#include <QTreeWidgetItem>
 #include <QString>
+#include <QTreeWidget>
 #include <QUrl>
 
 class QVariant;

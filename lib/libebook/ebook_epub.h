@@ -27,8 +27,8 @@
 
 #include "ebook.h"
 
+class QByteArray;
 class QXmlDefaultHandler;
-struct zip;
 
 
 class EBook_EPUB : public EBook

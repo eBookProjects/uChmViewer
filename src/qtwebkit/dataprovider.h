@@ -22,11 +22,11 @@
 #include <QByteArray>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QtGlobal>                 // qint64
+#include <QtGlobal>
 
-class QObject;
 class QIODevice;
 class QNetworkRequest;
+class QObject;
 class QUrl;
 
 

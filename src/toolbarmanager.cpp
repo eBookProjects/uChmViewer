@@ -16,20 +16,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstring> // strcmp
+#include <cstring>
 
 #include <QAction>
-#include <QDialog>     // QDialog::Rejected
+#include <QDialog>
 #include <QList>
-#include <QObjectList>
+#include <QMetaObject>
 #include <QSettings>
 #include <QString>
 #include <QStringList>
-#include <QtGlobal>    // qWarning
 #include <QToolBar>
+#include <QVariant>
+#include <QtGlobal>
 
-#include "toolbareditor.h"  // ToolbarEditor
-#include "toolbarmanager.h" // ToolbarManager, QObject
+#include "toolbareditor.h"
+
+#include "toolbarmanager.h"
 
 
 QString ToolbarManager::separatorName()

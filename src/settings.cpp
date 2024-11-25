@@ -16,15 +16,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QByteArray>
 #include <QDataStream>
 #include <QDateTime>
 #include <QFile>
 #include <QFileInfo>
-#include <QIODevice>        // QIODevice::ReadOnly, QIODevice::WriteOnly
+#include <QIODevice>
 #include <QString>
-#include <QtGlobal>         // qint32, qPrintable, qWarning
+#include <QtGlobal>
+#include "config.h"
 
-#include "config.h"   // pConfig
 #include "settings.h"
 
 

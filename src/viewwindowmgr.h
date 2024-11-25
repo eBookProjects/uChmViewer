@@ -20,19 +20,21 @@
 #define VIEWWINDOWMGR_H
 
 #include <QList>
+#include <QObject>
 #include <QString>
 #include <QWidget>
 
-#include "settings.h"
-
-#include "ui_window_browser.h"
-
 class QAction;
 class QMenu;
+class QUrl;
+
+#include "settings.h"
 
 class MainWindow;
 class ViewWindow;
 class ViewWindowTabWidget;
+
+#include "ui_window_browser.h"
 
 
 class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser

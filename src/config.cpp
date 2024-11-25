@@ -16,6 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QByteArray>
+#include <QChar>
 #include <QCoreApplication>
 #include <QDir>
 #include <QFile>
@@ -23,11 +25,15 @@
 #include <QSettings>
 #include <QStandardPaths>
 #include <QString>
-#include <QtGlobal>         // qPrintable, qWarning
+#include <QStringList>
+#include <QVariant>
+#include <QtGlobal>
 
 #include "config.h"
 
+
 Config* pConfig;
+
 
 Config::Config()
 {

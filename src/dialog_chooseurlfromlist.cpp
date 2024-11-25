@@ -17,12 +17,11 @@
  */
 
 #include <QList>
-#include <QListWidgetItem>
+#include <QListWidget>
 #include <QStringList>
 #include <QUrl>
-#include <QWidget>
 
-#include "dialog_chooseurlfromlist.h"   // DialogChooseUrlFromList, QDialog
+#include "dialog_chooseurlfromlist.h"
 
 
 DialogChooseUrlFromList::DialogChooseUrlFromList( QWidget* parent )

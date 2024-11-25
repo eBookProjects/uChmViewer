@@ -17,19 +17,28 @@
  */
 
 #include <QCheckBox>
+#include <QCoreApplication>
+#include <QLineEdit>
 #include <QMessageBox>
-#include <QObject>      // QObject::connect
+#include <QObject>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QSpinBox>
 #include <QString>
-#include <QUrl>
-#include <QWidget>
 
-#include "kde-qt.h" // KFileDialog or QFileDialog
+#ifdef USE_KDE
+	#include <kfiledialog.h>
+#else
+	#include <QFileDialog>
+#endif
 
+#include "browser-settings.hpp"
+#include "config.h"
 #include "i18n.h"
+#include "mainwindow.h"
 
-#include "config.h"       // Config, pConfig
-#include "dialog_setup.h" // DialogSetup, QDialog
-#include "mainwindow.h"   // :mainWindow
+#include "dialog_setup.h"
+#include "ui_dialog_setup.h"
 
 
 DialogSetup::DialogSetup(QWidget* parent)

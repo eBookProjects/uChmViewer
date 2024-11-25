@@ -19,8 +19,9 @@
 #ifndef EBookSearch_H
 #define EBookSearch_H
 
-#include <QStringList>
 #include <QObject>
+#include <QString>
+#include <QStringList>
 
 class QDataStream;
 template<typename T> class QList;
@@ -30,6 +31,7 @@ class EBook;
 namespace QtAs {
 class Index;
 }
+
 
 class EBookSearch : public QObject
 {

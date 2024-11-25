@@ -17,30 +17,31 @@
  */
 
 #if defined (WIN32)
-	#include <io.h>     // dup
+	#include <io.h>
 	#define dup _dup
 #else
 	#include <unistd.h>
 #endif
 
 #include <QByteArray>
+#include <QChar>
 #include <QIODevice>
 #include <QList>
 #include <QMessageBox>
 #include <QString>
-#include <QtGlobal>             // qPrintable, qDebug, qWarning
 #include <QUrl>
 #include <QXmlDefaultHandler>
-#include <QXmlSimpleReader>
 #include <QXmlInputSource>
+#include <QXmlSimpleReader>
+#include <QtGlobal>
 
-#include "zip.h"
+#include <zip.h>
 
-// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry, EBook_EPUB
 #include "ebook_epub.h"
-#include "helperxmlhandler_epubcontainer.h" // HelperXmlHandler_EpubContainer
-#include "helperxmlhandler_epubcontent.h"   // HelperXmlHandler_EpubContent
-#include "helperxmlhandler_epubtoc.h"       // HelperXmlHandler_EpubTOC
+#include "helperxmlhandler_epubcontainer.h"
+#include "helperxmlhandler_epubcontent.h"
+#include "helperxmlhandler_epubtoc.h"
+
 
 const char* EBook_EPUB::URL_SCHEME_EPUB = "epub";
 

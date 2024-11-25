@@ -16,33 +16,46 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstdlib>      // abort
+#include <cstdlib>
 
 #include <QAction>
+#include <QApplication>
+#include <QCheckBox>
 #include <QClipboard>
+#include <QColor>
+#include <QFrame>
 #include <QIcon>
 #include <QKeySequence>
+#include <QLabel>
+#include <QLineEdit>
+#include <QList>
 #include <QMenu>
-#include <QObject>      // QObject::connect
+#include <QMouseEvent>
+#include <QObject>
 #include <QPalette>
 #include <QString>
-#include <Qt>           // Qt::MidButton and things
 #include <QTabBar>
 #include <QTabWidget>
-#include <QtGlobal>     // qFatal
 #include <QToolButton>
-#include <QMouseEvent>
 #include <QUrl>
-#include <QWebPage>     // QWebPage::{ FindFlag, FindBackward, FindCaseSensitively, HighlightAllOccurrences }
+#include <QVBoxLayout>
+#include <QWebPage>
 #include <QWidget>
+#include <Qt>
+#include <QtGlobal>
 
+class QMouseEvent;
+
+#include "../browser-settings.hpp"
+#include "../config.h"
 #include "../i18n.h"
+#include "../mainwindow.h"
+#include "../settings.h"
+#include "viewwindow.h"
 
-#include "../config.h"        // ::pConfig
-#include "../mainwindow.h"    // MainWindow, ::mainWindow
-#include "../settings.h"      // Settings
-#include "../viewwindow.h"    // ViewWindow
-#include "../viewwindowmgr.h"
+#include "ui_window_browser.h"
+
+#include "../viewwindowmgr.h" // IWYU pragma: associated
 
 
 // A small overriden class to handle a middle click

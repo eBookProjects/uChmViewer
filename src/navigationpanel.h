@@ -20,13 +20,13 @@
 #define NAVIGATIONPANEL_H
 
 #include <QDockWidget>
+#include <QObject>
+#include <QString>
 #include <QStringList>
 
-#include "ui_navigatorpanel.h"
-
 class QMenu;
-class QString;
 class QUrl;
+class QWidget;
 
 class EBook;
 class Settings;
@@ -34,6 +34,8 @@ class TabBookmarks;
 class TabContents;
 class TabIndex;
 class TabSearch;
+
+#include "ui_navigatorpanel.h"
 
 
 // This class shows content, index, search and bookmark tabs

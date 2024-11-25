@@ -20,15 +20,16 @@
 #define QTWEBENGINE_WEBENGINEPAGE_H
 
 #include <QApplication>
-#include <QtDebug>           // qDebug()
+#include <QtDebug>
 #include <QObject>
-#include <Qt>                // Qt::KeyboardModifiers, Qt::ControlModifier, Qt::ShiftModifier
+#include <Qt>
 #include <QWebEnginePage>
 #include <QWebEngineProfile>
 
-#include "dataprovider.h" // DataProvider
-#include "ebook_chm.h"    // EBook_CHM::URL_SCHEME_CHM
-#include "ebook_epub.h"   // EBook_EPUB::URL_SCHEME_EPUB
+#include <ebook_chm.h>
+#include <ebook_epub.h>
+
+#include "dataprovider.h"
 
 #if defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEPAGE
 	#define PRINT_DEBUG 1

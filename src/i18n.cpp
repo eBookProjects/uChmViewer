@@ -20,16 +20,21 @@
 #include <QLatin1String>
 #include <QLibraryInfo>
 #include <QLocale>
-#include <QRegularExpression>
 #include <QString>
 #include <QTranslator>
+
+#if defined USE_GETTEXT
+	#include <QByteArray>
+	#include <QRegularExpression>
+	#include <QtGlobal>
+
+	#include <libintl.h>
+#endif
 
 #include "i18n.h"
 
 
 #if defined USE_GETTEXT
-#include <libintl.h>
-
 namespace app_i18n
 {
 void initGettext();

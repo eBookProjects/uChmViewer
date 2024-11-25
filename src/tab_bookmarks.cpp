@@ -19,23 +19,27 @@
 #include <QAction>
 #include <QCoreApplication>
 #include <QInputDialog>
-#include <QLineEdit>        // QLineEdit::Normal
+#include <QLineEdit>
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QMenu>
-#include <QObject>          // QObject::connect
-#include <QPoint>
+#include <QObject>
+#include <QPushButton>
 #include <QString>
-#include <Qt>               // Qt::CustomContextMenu, Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
+#include <QUrl>
 #include <QVariant>
+#include <Qt>
 
+#include <ebook.h>
+
+#include "config.h"
 #include "i18n.h"
+#include "mainwindow.h"
+#include "settings.h"
+#include "viewwindow.h"
 
-#include "config.h"         // pConfig
-#include "mainwindow.h"     // ::mainWindow
-#include "settings.h"       // Settings::bookmark_saved_settings_t, Settings::SavedBookmark
-#include "tab_bookmarks.h"  // TabBookmarks, QWidget
-#include "viewwindow.h"     // ViewWindow
+#include "tab_bookmarks.h"
+
 
 class BookmarkItem : public QListWidgetItem
 {

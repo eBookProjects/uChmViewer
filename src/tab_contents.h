@@ -19,17 +19,18 @@
 #ifndef TAB_CONTENTS_H
 #define TAB_CONTENTS_H
 
+#include <QObject>
+#include <QString>
 #include <QWidget>
-
-#include "ui_tab_contents.h"
 
 class QMenu;
 class QPoint;
-class QString;
 class QTreeWidgetItem;
 class QUrl;
 
 class TreeItem_TOC;
+
+#include "ui_tab_contents.h"
 
 
 class TabContents : public QWidget, public Ui::TabContents

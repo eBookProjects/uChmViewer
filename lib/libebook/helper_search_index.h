@@ -19,15 +19,18 @@
 #ifndef EBOOK_SEARCH_INDEX_H
 #define EBOOK_SEARCH_INDEX_H
 
-#include <QDataStream>
 #include <QHash>
+#include <QList>
 #include <QObject>
+#include <QString>
 #include <QStringList>
-#include <QtGlobal>     // qint16
 #include <QUrl>
 #include <QVector>
+#include <QtGlobal>
 
-#include "helper_entitydecoder.h"   // HelperEntityDecoder
+class QDataStream;
+
+#include "helper_entitydecoder.h"
 
 class EBook;
 

@@ -19,9 +19,15 @@
 #ifndef TEXTENCODINGS_H
 #define TEXTENCODINGS_H
 
-#include <QStringList>
+#include <QtGlobal>
 
 class QString;
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	class QStringList;
+#else
+	using QStringList = QList<QString>;
+#endif
 
 
 class TextEncodings

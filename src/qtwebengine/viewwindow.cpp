@@ -18,35 +18,37 @@
 
 #include <QApplication>
 #include <QContextMenuEvent>
-#include <QDialog>                          // QDialog::Accepted
+#include <QDialog>
 #include <QKeySequence>
 #include <QMenu>
 #include <QPalette>
-#include <QPrinter>
 #include <QPrintDialog>
+#include <QPrinter>
 #include <QString>
-#include <QtGlobal>                         // QT_VERSION, QT_VERSION_CHECK
 #include <QUrl>
 #include <QVariant>
+#include <QWebEngineHistory>
+#include <QWebEnginePage>
+#include <QWebEngineProfile>
+#include <QWebEngineScript>
+#include <QWebEngineSettings>
+#include <QtGlobal>
+
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 2, 0))
 	#include <QWebEngineContextMenuRequest>
 #else
 	#include <QWebEngineContextMenuData>
 #endif
-#include <QWebEngineHistory>
-#include <QWebEnginePage>
-#include <QWebEngineProfile>
-#include <QWebEngineSettings>
-#include <QWebEngineScript>
-#include <QWidget>
 
-#include "i18n.h"
+#include <ebook.h>
 
-#include "browser-settings.hpp"  // BrowserSettings
-#include "mainwindow.h"          // ::mainWindow
-#include "viewwindow.h"          // ViewWindow, QWebEngineView
-#include "viewwindowmgr.h"       // ViewWindowMgr
-#include "webenginepage.h"          // WebEnginePage
+#include "../browser-settings.hpp"
+#include "../i18n.h"
+#include "../mainwindow.h"
+#include "../viewwindowmgr.h"
+#include "webenginepage.h"
+
+#include "viewwindow.h"
 
 
 #if defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEVIEWWINDOW

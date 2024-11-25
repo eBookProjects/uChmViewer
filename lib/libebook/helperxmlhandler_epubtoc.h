@@ -23,9 +23,11 @@
 #include <QString>
 #include <QXmlDefaultHandler>
 
-#include "ebook_epub.h" // EBook_EPUB, ebook.h -> EBookTocEntry
-
 class QXmlAttributes;
+
+#include "ebook.h"
+
+class EBook_EPUB;
 
 
 class HelperXmlHandler_EpubTOC : public QXmlDefaultHandler

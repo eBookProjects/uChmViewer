@@ -16,21 +16,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QHeaderView>
 #include <QList>
-#include <QObject>          // QObject::connect
-#include <QPoint>
-#include <Qt>               // Qt::CustomContextMenu, Qt::MatchRecursive, Qt::MatchWildcard
-#include <QtGlobal>         // qFatal, qWarning
-#include <QTreeWidgetItem>
-#include <QUrl>
+#include <QMenu>
+#include <QObject>
+#include <QTreeWidget>
 #include <QVector>
+#include <Qt>
+#include <QtGlobal>
 
-#include "ebook.h"          // EBookTocEntry
-#include "config.h"         // pConfig
-#include "mainwindow.h"     // ::mainWindow
-#include "showwaitcursor.h" // ShowWaitCursor
-#include "tab_contents.h"   // TabContents, QWidget
-#include "treeitem_toc.h"   // TreeItem_TOC
+#include <ebook.h>
+
+#include "config.h"
+#include "mainwindow.h"
+#include "showwaitcursor.h"
+#include "treeitem_toc.h"
+
+#include "tab_contents.h"
 
 
 TabContents::TabContents( QWidget* parent )

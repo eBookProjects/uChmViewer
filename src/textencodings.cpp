@@ -19,7 +19,7 @@
 #include <QString>
 #include <QStringList>
 
-#include "textencodings.h" // TextEncodings
+#include "textencodings.h"
 
 
 typedef struct

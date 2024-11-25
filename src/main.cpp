@@ -16,30 +16,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtGlobal>     // qPrintable, qWarning
+#include <QCoreApplication>
+#include <QObject>
 #include <QStringList>
+#include <QtGlobal>
 
-#include "kde-qt.h"     // KApplication or QApplication
-
-#include "i18n.h"       // app_i18n::init, ki18n
-
-#include "config.h"     // Config, pConfig
-#include "mainwindow.h" // MainWindow ::mainWindow
-
-#if defined (USE_KDE)
-    #include "version.h"    // APP_VERSION
+#if defined USE_KDE
+	#include <k4aboutdata.h>
+	#include <kapplication.h>
+	#include <kcmdlineargs.h>
+	#include "version.h"
+#elif defined USE_MAC_APP
+	#include "uchmviewerapp.h"
+#else
+	#include <QApplication>
+	typedef QApplication  UchmviewerApp;
 #endif
 
 #if defined USE_DBUS
 	#include <QDBusConnection>
-	#include "dbus_interface.h" // SERVICE_NAME
+	#include "dbus_interface.h"
 #endif
 
-#if defined USE_MAC_APP
-	#include "uchmviewerapp.h"
-#else
-	typedef QApplication  UchmviewerApp;
-#endif
+#include "config.h"
+#include "i18n.h"
+#include "mainwindow.h"
 
 MainWindow* mainWindow;
 

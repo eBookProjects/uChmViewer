@@ -18,18 +18,17 @@
 
 #include <QApplication>
 #include <QChar>
-#include <QDataStream>
-#include <QEventLoop>   // QEventLoop::ExcludeUserInputEvents
+#include <QEventLoop>
 #include <QList>
-#include <QObject>      // QObject::connect
-#include <Qt>           // Qt::CaseInsensitive
+#include <QObject>
 #include <QString>
 #include <QStringList>
 #include <QUrl>
+#include <Qt>
 
-#include "ebook.h"                  // EBook
+#include "ebook.h"
 #include "ebook_search.h"
-#include "helper_search_index.h"    // QtAs::Index
+#include "helper_search_index.h"
 
 
 // Helper class to simplity state management and data keeping

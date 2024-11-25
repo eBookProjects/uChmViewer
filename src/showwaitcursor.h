@@ -21,7 +21,7 @@
 
 #include <QApplication>
 #include <QCursor>
-#include <Qt>           // Qt::WaitCursor
+#include <Qt>
 
 
 class ShowWaitCursor

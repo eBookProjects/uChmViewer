@@ -16,17 +16,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstdlib>  // abort
+#include <cstdlib>
 
 #include <QPixmap>
 #include <QString>
-#include <Qt>        // Qt::DecorationRole, Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
 #include <QUrl>
 #include <QVariant>
+#include <Qt>
 
-#include "ebook.h"        // EBookTocEntry::Icon, EBookTocEntry::IMAGE_AUTO, EBookTocEntry::IMAGE_NONE
-#include "treeitem_toc.h" // TreeItem_TOC, QTreeWidgetItem
-#include "mainwindow.h"   // ::mainWindow
+#include <ebook.h>
+
+#include "mainwindow.h"
+
+#include "treeitem_toc.h"
 
 
 TreeItem_TOC::TreeItem_TOC(QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image)

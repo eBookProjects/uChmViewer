@@ -21,7 +21,7 @@
 
 #include <QList>
 #include <QString>
-#include <QTreeWidgetItem>
+#include <QTreeWidget>
 #include <QUrl>
 
 class QVariant;

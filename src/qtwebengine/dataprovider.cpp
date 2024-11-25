@@ -21,16 +21,22 @@
 #include <QByteArray>
 #include <QObject>
 #include <QString>
-#include <QtGlobal>                 // QT_VERSION, QT_VERSION_CHECK
 #include <QUrl>
 #include <QWebEngineUrlRequestJob>
+#include <QtGlobal>
 
-#include "mainwindow.h" // ::mainWindow
-#include "mimehelper.h" // MimeHelper::mimeType
-#include "dataprovider.h"  // DataProvider, QWebEngineUrlSchemeHandler
-#include "ebook.h"         // EBook
-#include "ebook_chm.h"     // EBook_CHM::URL_SCHEME_CHM
-#include "ebook_epub.h"    // EBook_EPUB::URL_SCHEME_EPUB
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
+	#include <QWebEngineUrlScheme>
+#endif
+
+#include <ebook.h>
+#include <ebook_chm.h>
+#include <ebook_epub.h>
+
+#include "../mainwindow.h"
+#include "../mimehelper.h"
+
+#include "dataprovider.h"
 
 
 #if defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEDATAPROVIDER
@@ -38,9 +44,6 @@
 #endif
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
-
-#include <QWebEngineUrlScheme>
-
 static struct RegistrationHelper
 {
 	RegistrationHelper()

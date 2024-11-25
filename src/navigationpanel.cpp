@@ -18,24 +18,25 @@
 
 #include <QDockWidget>
 #include <QList>
-#include <QMenu>
-#include <QString>
 #include <QStringList>
+#include <QTabWidget>
 #include <QTreeWidgetItemIterator>
 #include <QUrl>
+#include <QtGlobal>
+
+#include <ebook.h>
 
 #include "i18n.h"
+#include "mainwindow.h"
+#include "settings.h"
+#include "tab_bookmarks.h"
+#include "tab_contents.h"
+#include "tab_index.h"
+#include "tab_search.h"
+#include "treeitem_toc.h"
+#include "viewwindow.h"
 
-#include "ebook.h"           // EBook
-#include "mainwindow.h"      // ::mainWindow
-#include "navigationpanel.h" // NavigationPanel, QWidget
-#include "settings.h"        // Settings
-#include "tab_bookmarks.h"   // TabBookmarks
-#include "tab_contents.h"    // TabContents
-#include "tab_index.h"       // TabIndex
-#include "tab_search.h"      // TabSearch
-#include "treeitem_toc.h"    // TreeItem_TOC
-#include "viewwindow.h"      // ViewWindow
+#include "navigationpanel.h"
 
 
 NavigationPanel::NavigationPanel( QWidget* parent )

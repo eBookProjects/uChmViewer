@@ -16,37 +16,38 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>     // qApp
+#include <QApplication>
+#include <QComboBox>
 #include <QDataStream>
-#include <QEventLoop>       // QEventLoop::ExcludeUserInputEvents
+#include <QEventLoop>
 #include <QFile>
-#include <QHeaderView>
-#include <QIODevice>        // QIODevice::ReadOnly, QIODevice::WriteOnly
+#include <QIODevice>
+#include <QLabel>
 #include <QLineEdit>
 #include <QList>
 #include <QMenu>
 #include <QMessageBox>
-#include <QObject>          // QObject::connect
-#include <QPoint>
+#include <QObject>
 #include <QProgressDialog>
+#include <QPushButton>
+#include <QStatusBar>
 #include <QString>
-// Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
-// Qt::CustomContextMenu
-#include <Qt>
 #include <QTreeWidget>
-#include <QTreeWidgetItem>
 #include <QUrl>
 #include <QVariant>
 #include <QWhatsThis>
+#include <Qt>
 
+#include <ebook.h>
+
+#include "config.h"
+#include "ebook_search.h"
 #include "i18n.h"
+#include "mainwindow.h"
+#include "settings.h"
+#include "showwaitcursor.h"
 
-#include "config.h"         // pConfig
-#include "ebook_search.h"   // EBookSearch
-#include "mainwindow.h"     // ::mainWindow
-#include "settings.h"       // Settings::search_saved_settings_t
-#include "showwaitcursor.h" // ShowWaitCursor
-#include "tab_search.h"     // TabSearch, QWidget
+#include "tab_search.h"
 
 
 class SearchTreeViewItem : public QTreeWidgetItem

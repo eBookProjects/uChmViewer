@@ -21,7 +21,7 @@
 
 #include <QList>
 #include <QString>
-#include <QtGlobal> // qreal
+#include <QtGlobal>
 
 
 class Settings

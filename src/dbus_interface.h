@@ -20,9 +20,8 @@
 #define DBUS_INTERFACE_H
 
 #include <QObject>
+#include <QString>
 #include <QStringList>
-
-class QString;
 
 
 #define SERVICE_NAME            "net.uchmviewer.application"

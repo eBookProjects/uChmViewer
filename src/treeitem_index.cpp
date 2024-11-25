@@ -17,21 +17,22 @@
  */
 
 #include <QBrush>
+#include <QByteArray>
 #include <QColor>
 #include <QList>
 #include <QString>
 #include <QStringList>
-// Qt::DisplayRole, Qt::ForegroundRole, Qt::ToolTipRole
-// Qt::WhatsThisRole, Qt::red, Qt::lightGray
-#include <Qt>
-#include <QtGlobal>    // qPrintable, qWarning
 #include <QUrl>
 #include <QVariant>
+#include <Qt>
+#include <QtGlobal>
 
-#include "ebook.h"                    // EBook
-#include "dialog_chooseurlfromlist.h" // DialogChooseUrlFromList
-#include "mainwindow.h"               // ::mainWindow
-#include "treeitem_index.h"           // TreeItem_Index, QTreeWidgetItem
+#include <ebook.h>
+
+#include "dialog_chooseurlfromlist.h"
+#include "mainwindow.h"
+
+#include "treeitem_index.h"
 
 
 TreeItem_Index::TreeItem_Index(QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, const QString& seealso)

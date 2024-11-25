@@ -23,14 +23,11 @@
 #include <QEvent>
 #include <QList>
 #include <QMainWindow>
-#include <QObject>      // Q_OBJECT
+#include <QObject>
 #include <QPixmap>
 #include <QString>
 #include <QStringList>
-
-#include "ui_mainwindow.h"
-
-#include <ebook.h>  // EBook, EBookTocEntry::Icon
+#include <QUrl>
 
 class QAction;
 class QActionGroup;
@@ -38,7 +35,8 @@ class QCloseEvent;
 class QMenu;
 class QSharedMemory;
 class QTemporaryFile;
-class QUrl;
+
+#include <ebook.h>
 
 class NavigationPanel;
 class RecentFiles;
@@ -46,6 +44,8 @@ class Settings;
 class ToolbarManager;
 class ViewWindow;
 class ViewWindowMgr;
+
+#include "ui_mainwindow.h"
 
 
 //! Those events could be sent to main window to do useful things. See handleUserEvents()

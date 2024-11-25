@@ -19,15 +19,16 @@
 #ifndef TAB_INDEX_H
 #define TAB_INDEX_H
 
+#include <QObject>
+#include <QString>
 #include <QWidget>
-
-#include "ui_tab_index.h"
 
 class QMenu;
 class QPoint;
 class QShowEvent;
-class QString;
 class QTreeWidgetItem;
+
+#include "ui_tab_index.h"
 
 
 class TabIndex : public QWidget, public Ui::TabIndex

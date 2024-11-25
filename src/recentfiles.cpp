@@ -18,11 +18,13 @@
 
 #include <QAction>
 #include <QFileInfo>
+#include <QList>
 #include <QMenu>
 #include <QSettings>
 #include <QString>
 #include <QStringList>
-#include <QtGlobal>     // qFatal
+#include <QVariant>
+#include <QtGlobal>
 
 #include "recentfiles.h"
 

@@ -16,25 +16,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstddef>  // size_t
-#include <cstdio>   // fprintf
+#include <cstddef>
+#include <cstdlib>
 
 #include <QByteArray>
+#include <QChar>
 #include <QFile>
 #include <QList>
 #include <QString>
-#include <Qt>           // CaseInsensitive
-#include <QtGlobal>     // qPrintable, qDebug, qFatal, qWarning
 #include <QTextCodec>
-#include <QVector>
 #include <QUrl>
+#include <QVector>
+#include <Qt>
+#include <QtGlobal>
 
-#include "bitfiddle.h"              // UINT16ARRAY, UINT32ARRAY, get_int32_le
-// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry
-// chm_lib.h -> chmUnitInfo, LONGUINT64, EBook_CHM, ParsedEntry
+#include "bitfiddle.h"
 #include "ebook_chm.h"
-#include "ebook_chm_encoding.h"     // Ebook_CHM_Encoding
-#include "helper_entitydecoder.h"   // HelperEntityDecoder
+#include "ebook_chm_encoding.h"
+#include "helper_entitydecoder.h"
 
 
 // Big-enough buffer size for use with various routines.

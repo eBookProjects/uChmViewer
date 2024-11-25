@@ -17,21 +17,23 @@
  */
 
 #include <algorithm>
+#include <cstring>
 
 #include <QApplication>
+#include <QByteArray>
 #include <QChar>
-#include <QDataStream>
 #include <QEventLoop>
 #include <QList>
 #include <QString>
 #include <QStringList>
 #include <QTextCodec>
-#include <QtGlobal>     // qPrintable, qDebug, qWarning
 #include <QUrl>
 #include <QVector>
+#include <QtGlobal>
+#include <QDataStream>
 
-#include "ebook.h"                  // EBook
-#include "helper_search_index.h"    // Document, Entry, Index, PosEntry
+#include "ebook.h"
+#include "helper_search_index.h"
 
 
 static const int DICT_VERSION = 4;

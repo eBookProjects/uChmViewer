@@ -21,6 +21,7 @@
 
 #define i18n(str)   tr(str)
 
+
 namespace app_i18n
 {
 void init();
