@@ -16,34 +16,44 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstdlib>      // abort
+#include <cstdlib>  // for abort
 
-#include <QAction>
-#include <QClipboard>
-#include <QIcon>
-#include <QKeySequence>
-#include <QMenu>
-#include <QObject>      // QObject::connect
-#include <QPalette>
-#include <QString>
-#include <Qt>           // Qt::MidButton and things
-#include <QTabBar>
-#include <QTabWidget>
-#include <QtGlobal>     // qFatal
-#include <QToolButton>
-#include <QMouseEvent>
-#include <QUrl>
-#include <QWebPage>     // QWebPage::{ FindFlag, FindBackward, FindCaseSensitively, HighlightAllOccurrences }
-#include <QWidget>
+#include <QAction>      // for QAction
+#include <QApplication> // for QApplication
+#include <QCheckBox>    // for QCheckBox
+#include <QClipboard>   // for QClipboard
+#include <QColor>       // for QColor
+#include <QFrame>       // for QFrame
+#include <QIcon>        // for QIcon
+#include <QKeySequence> // for QKeySequence
+#include <QLabel>       // for QLabel
+#include <QLineEdit>    // for QLineEdit
+#include <QList>        // for QList, QList<>::iterator
+#include <QMenu>        // for QMenu
+#include <QMouseEvent>  // for QMouseEvent
+#include <QObject>      // for SIGNAL, SLOT, emit, qobject_cast
+#include <QPalette>     // for QPalette, QPalette::Active, QPalette::Base
+#include <QString>      // for QString, operator!=, operator+
+#include <QTabBar>      // for QTabBar
+#include <QTabWidget>   // for QTabWidget
+#include <QToolButton>  // for QToolButton
+#include <QUrl>         // for QUrl
+#include <QVBoxLayout>  // for QVBoxLayout
+#include <QWebPage>     // for QWebPage, QWebPage::FindFlags, QWebPage::HighlightAllOccurrences, QWebPage::FindBackward, QWebPage::FindCaseSensiti...
+#include <QWidget>      // for QWidget
+#include <Qt>           // for ArrowCursor, Key_Escape, MidButton, ShortcutFocusReason, TopLeftCorner, white
+#include <QtGlobal>     // for QFlags, Q_ASSERT, qFatal
 
-#include "../i18n.h"
+class QMouseEvent;
 
-#include "../config.h"        // ::pConfig
-#include "../mainwindow.h"    // MainWindow, ::mainWindow
-#include "../settings.h"      // Settings
-#include "../viewwindow.h"    // ViewWindow
-#include "../viewwindowmgr.h"
-
+#include "../browser-settings.hpp"  // for BrowserSettings
+#include "../config.h"              // for Config, pConfig
+#include "../i18n.h"                // for i18n
+#include "../mainwindow.h"          // for MainWindow, mainWindow, MainWindow::OPF_CONTENT_TREE, MainWindow::OPF_NEW_TAB
+#include "../settings.h"            // for Settings::viewindow_saved_settings_t, Settings::SavedViewWindow, Settings
+#include "../viewwindowmgr.h"       // IWYU pragma: associated
+#include "ui_window_browser.h"      // for TabbedBrowser
+#include "viewwindow.h"             // for ViewWindow
 
 // A small overriden class to handle a middle click
 class ViewWindowTabWidget : public QTabWidget

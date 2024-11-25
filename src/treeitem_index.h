@@ -19,10 +19,10 @@
 #ifndef TREEITEM_INDEX_H
 #define TREEITEM_INDEX_H
 
-#include <QList>
-#include <QString>
-#include <QTreeWidgetItem>
-#include <QUrl>
+#include <QList>        // for QList
+#include <QString>      // for QString
+#include <QTreeWidget>  // for QTreeWidgetItem
+#include <QUrl>         // for QUrl
 
 class QVariant;
 

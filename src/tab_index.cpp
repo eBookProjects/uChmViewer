@@ -16,23 +16,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QList>
-#include <QObject>          // QObject::connect
-#include <QPoint>
-#include <QShowEvent>
-#include <QString>
-#include <Qt>               // Qt::CustomContextMenu, Qt::MatchFixedString, Qt::MatchStartsWith
-#include <QtGlobal>         // qFatal, qWarning
-#include <QTreeWidgetItem>
-#include <QUrl>
-#include <QVector>
+#include <new>      // for operator new
+#include <utility>  // for move
 
-#include "config.h"         // pConfig
-#include "ebook.h"          // EBookIndexEntry
-#include "mainwindow.h"     // :mainWindow
-#include "showwaitcursor.h" // ShowWaitCursor
-#include "tab_index.h"      // TabIndex, QWidget
-#include "treeitem_index.h" // TreeItem_Index
+#include <QLineEdit>    // for QLineEdit
+#include <QList>        // for QList
+#include <QMenu>        // for QMenu
+#include <QObject>      // for SIGNAL, SLOT
+#include <QString>      // for QString
+#include <QTreeWidget>  // for QTreeWidget, QTreeWidgetItem
+#include <QUrl>         // for QUrl
+#include <QVector>      // for QVector
+#include <Qt>           // for CustomContextMenu, MatchFixedString, MatchStartsWith
+#include <QtGlobal>     // for qFatal, qWarning
+
+#include <ebook.h>  // for EBookIndexEntry, EBook
+
+#include "config.h"         // for Config, pConfig
+#include "mainwindow.h"     // for MainWindow, mainWindow, MainWindow::OPF_CONTENT_TREE
+#include "showwaitcursor.h" // for ShowWaitCursor
+#include "tab_index.h"
+#include "treeitem_index.h" // for TreeItem_Index
 
 
 TabIndex::TabIndex ( QWidget* parent )

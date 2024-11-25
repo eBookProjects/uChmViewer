@@ -19,8 +19,8 @@
 #ifndef HELPERXMLHANDLER_EPUBCONTAINER_H
 #define HELPERXMLHANDLER_EPUBCONTAINER_H
 
-#include <QString>
-#include <QXmlDefaultHandler>
+#include <QString>              // for QString
+#include <QXmlDefaultHandler>   // for QXmlDefaultHandler
 
 class QXmlAttributes;
 

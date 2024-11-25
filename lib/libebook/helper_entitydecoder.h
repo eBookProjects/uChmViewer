@@ -19,8 +19,8 @@
 #ifndef HELPER_ENTITYDECODER_H
 #define HELPER_ENTITYDECODER_H
 
-#include <QMap>
-#include <QString>
+#include <QMap>     // for QMap
+#include <QString>  // for QString
 
 class QTextCodec;
 

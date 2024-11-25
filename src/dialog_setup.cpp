@@ -16,20 +16,28 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QCheckBox>
-#include <QMessageBox>
-#include <QObject>      // QObject::connect
-#include <QString>
-#include <QUrl>
-#include <QWidget>
+#include <QCheckBox>        // for QCheckBox
+#include <QCoreApplication> // for QCoreApplication
+#include <QLineEdit>        // for QLineEdit
+#include <QMessageBox>      // for QMessageBox
+#include <QObject>          // for SIGNAL, SLOT
+#include <QPushButton>      // for QPushButton
+#include <QRadioButton>     // for QRadioButton
+#include <QSpinBox>         // for QSpinBox
+#include <QString>          // for QString
 
-#include "kde-qt.h" // KFileDialog or QFileDialog
+#ifdef USE_KDE
+	#include <kfiledialog.h>    // for KFileDialog
+#else
+	#include <QFileDialog>      // for QFileDialog
+#endif
 
-#include "i18n.h"
-
-#include "config.h"       // Config, pConfig
-#include "dialog_setup.h" // DialogSetup, QDialog
-#include "mainwindow.h"   // :mainWindow
+#include "browser-settings.hpp" // for BrowserSettings
+#include "config.h"             // for Config, pConfig, Config::ACTION_ALWAYS_OPEN, Config::ACTION_ASK_USER, Config::ACTION_DONT_OPEN, Config::STARTUP_DO_N...
+#include "dialog_setup.h"
+#include "i18n.h"               // for i18n
+#include "mainwindow.h"         // for MainWindow, mainWindow
+#include "ui_dialog_setup.h"    // for DialogSetup
 
 
 DialogSetup::DialogSetup(QWidget* parent)

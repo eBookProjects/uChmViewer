@@ -16,20 +16,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>
-#include <QChar>
-#include <QDataStream>
-#include <QEventLoop>   // QEventLoop::ExcludeUserInputEvents
-#include <QList>
-#include <QObject>      // QObject::connect
-#include <Qt>           // Qt::CaseInsensitive
-#include <QString>
-#include <QStringList>
-#include <QUrl>
+#include <QApplication> // for QApplication, qApp
+#include <QChar>        // for QChar, operator==
+#include <QEventLoop>   // for QEventLoop, QEventLoop::ExcludeUserInputEvents
+#include <QList>        // for QList, QList<>::iterator
+#include <QObject>      // for emit, SIGNAL, SLOT
+#include <QString>      // for QString
+#include <QStringList>  // for QStringList
+#include <QUrl>         // for QUrl
+#include <Qt>           // for CaseInsensitive
 
-#include "ebook.h"                  // EBook
+#include "ebook.h"                  // for EBook
 #include "ebook_search.h"
-#include "helper_search_index.h"    // QtAs::Index
+#include "helper_search_index.h"    // for Index
 
 
 // Helper class to simplity state management and data keeping

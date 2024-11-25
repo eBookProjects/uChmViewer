@@ -19,10 +19,9 @@
 #ifndef DBUS_INTERFACE_H
 #define DBUS_INTERFACE_H
 
-#include <QObject>
-#include <QStringList>
-
-class QString;
+#include <QObject>      // for Q_SCRIPTABLE, QObject, Q_CLASSINFO, Q_OBJECT, Q_SLOTS
+#include <QString>      // for QString
+#include <QStringList>  // for QStringList
 
 
 #define SERVICE_NAME            "net.uchmviewer.application"

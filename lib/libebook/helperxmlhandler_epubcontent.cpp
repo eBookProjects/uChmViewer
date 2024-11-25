@@ -16,9 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtDebug>                  // qDebug() <<
-#include <QString>
-#include <QXmlAttributes>
+#include <QString>          // for QString, operator<
+#include <QXmlAttributes>   // for QXmlAttributes
 
 #include "helperxmlhandler_epubcontent.h"
 

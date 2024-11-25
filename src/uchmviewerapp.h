@@ -19,9 +19,10 @@
 #ifndef UCHMVIEWERAPP_H
 #define UCHMVIEWERAPP_H
 
-#include <QApplication>
-#include <QtGlobal>     // QT_VERSION, Q_OS_DARWIN
-#include <QString>
+#include <QApplication> // for QApplication
+#include <QObject>      // for Q_OBJECT, slots
+#include <QString>      // for QString
+#include <QtGlobal>     // for QT_VERSION
 
 class QEvent;
 

@@ -16,22 +16,24 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <algorithm>
+#include <algorithm>    // for sort
+#include <cstring>      // for memcpy
 
-#include <QApplication>
-#include <QChar>
-#include <QDataStream>
-#include <QEventLoop>
-#include <QList>
-#include <QString>
-#include <QStringList>
-#include <QTextCodec>
-#include <QtGlobal>     // qPrintable, qDebug, qWarning
-#include <QUrl>
-#include <QVector>
+#include <QApplication> // for QApplication, qApp
+#include <QByteArray>   // for QByteArray
+#include <QChar>        // for operator==, QChar, operator!=
+#include <QEventLoop>   // for QEventLoop, QEventLoop::ExcludeUserInputEvents
+#include <QList>        // for QList<>::iterator, QList, QList<>::ConstIterator, QList<>::const_iterator, QList<>::Iterator
+#include <QString>      // for QString, operator==, operator<<, operator>>, QCharRef
+#include <QStringList>  // for QStringList
+#include <QTextCodec>   // for QTextCodec
+#include <QUrl>         // for QUrl, operator<<, operator>>
+#include <QVector>      // for QVector, QVector<>::Iterator, QVector<>::ConstIterator
+#include <QtGlobal>     // for uint, qMax, qMin, qPrintable, qWarning
+#include <QDataStream>  // for QDataStream, operator<<, operator>>
 
-#include "ebook.h"                  // EBook
-#include "helper_search_index.h"    // Document, Entry, Index, PosEntry
+#include "ebook.h"                  // for EBook, EBook::FEATURE_ENCODING
+#include "helper_search_index.h"
 
 
 static const int DICT_VERSION = 4;

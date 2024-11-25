@@ -16,37 +16,38 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>
-#include <QContextMenuEvent>
-#include <QDialog>                          // QDialog::Accepted
-#include <QKeySequence>
-#include <QMenu>
-#include <QPalette>
-#include <QPrinter>
-#include <QPrintDialog>
-#include <QString>
-#include <QtGlobal>                         // QT_VERSION, QT_VERSION_CHECK
-#include <QUrl>
-#include <QVariant>
+#include <QApplication>         // for QApplication
+#include <QContextMenuEvent>    // for QContextMenuEvent
+#include <QDialog>              // for QDialog, QDialog::Accepted
+#include <QKeySequence>         // for QKeySequence
+#include <QMenu>                // for QMenu
+#include <QPalette>             // for QPalette, QPalette::Active, QPalette::Highlight, QPalette::HighlightedText, QPalette::Inactive
+#include <QPrintDialog>         // for QPrintDialog
+#include <QPrinter>             // for QPrinter, QPrinter::HighResolution
+#include <QString>              // for QString
+#include <QUrl>                 // for QUrl
+#include <QVariant>             // for QVariant
+#include <QWebEngineHistory>    // for QWebEngineHistory
+#include <QWebEnginePage>       // for QWebEnginePage, QWebEnginePage::Copy, QWebEnginePage::SelectAll
+#include <QWebEngineProfile>    // for QWebEngineProfile
+#include <QWebEngineScript>     // for QWebEngineScript, QWebEngineScript::UserWorld
+#include <QWebEngineSettings>   // for QWebEngineSettings, QWebEngineSettings::AutoLoadImages, QWebEngineSettings::JavascriptEnabled, QWebEngineSettin...
+#include <QtGlobal>             // for QAtomicInt, QT_VERSION, QT_VERSION_CHECK, qreal, Q_UNUSED
+
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 2, 0))
 	#include <QWebEngineContextMenuRequest>
 #else
 	#include <QWebEngineContextMenuData>
 #endif
-#include <QWebEngineHistory>
-#include <QWebEnginePage>
-#include <QWebEngineProfile>
-#include <QWebEngineSettings>
-#include <QWebEngineScript>
-#include <QWidget>
 
-#include "i18n.h"
+#include <ebook.h>  // for EBook
 
-#include "browser-settings.hpp"  // BrowserSettings
-#include "mainwindow.h"          // ::mainWindow
-#include "viewwindow.h"          // ViewWindow, QWebEngineView
-#include "viewwindowmgr.h"       // ViewWindowMgr
-#include "webenginepage.h"          // WebEnginePage
+#include "../browser-settings.hpp"  // for BrowserSettings
+#include "../i18n.h"                // for i18n
+#include "../mainwindow.h"          // for MainWindow, mainWindow
+#include "../viewwindowmgr.h"       // for ViewWindowMgr
+#include "webenginepage.h"          // for WebEnginePage
+#include "viewwindow.h"
 
 
 #if defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEVIEWWINDOW

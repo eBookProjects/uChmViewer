@@ -19,10 +19,10 @@
 #ifndef HELPERXMLHANDLER_EPUBCONTENT_H
 #define HELPERXMLHANDLER_EPUBCONTENT_H
 
-#include <QList>
-#include <QMap>
-#include <QString>
-#include <QXmlDefaultHandler>
+#include <QList>                // for QList
+#include <QMap>                 // for QMap
+#include <QString>              // for QString
+#include <QXmlDefaultHandler>   // for QXmlDefaultHandler
 
 class QXmlAttributes;
 

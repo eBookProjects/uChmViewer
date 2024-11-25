@@ -16,12 +16,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtDebug>          // qDebug() <<
-#include <QString>
-#include <QXmlAttributes>
+#include <QString>          // for QString
+#include <QUrl>             // for QUrl
+#include <QXmlAttributes>   // for QXmlAttributes
 
-// ebook.h -> EBookTocEntry
-// ebook_epub.h -> EBook_EPUB
+#include "ebook_epub.h"                 // for EBook_EPUB
 #include "helperxmlhandler_epubtoc.h"
 
 

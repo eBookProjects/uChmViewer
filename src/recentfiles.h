@@ -19,10 +19,10 @@
 #ifndef RECENTFILES_H
 #define RECENTFILES_H
 
-#include <QObject>
-#include <QString>
-#include <QStringList>
-#include <QVector>
+#include <QObject>      // for slots, QObject, Q_OBJECT, signals
+#include <QString>      // for QString
+#include <QStringList>  // for QStringList
+#include <QVector>      // for QVector
 
 class QAction;
 class QMenu;

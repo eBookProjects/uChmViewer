@@ -16,15 +16,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QDataStream>
-#include <QDateTime>
-#include <QFile>
-#include <QFileInfo>
-#include <QIODevice>        // QIODevice::ReadOnly, QIODevice::WriteOnly
-#include <QString>
-#include <QtGlobal>         // qint32, qPrintable, qWarning
+#include <QByteArray>   // for QByteArray
+#include <QDataStream>  // for QDataStream, operator<<, operator>>
+#include <QDateTime>    // for QDateTime
+#include <QFile>        // for QFile
+#include <QFileInfo>    // for QFileInfo
+#include <QIODevice>    // for QIODevice, QIODevice::ReadOnly, QIODevice::WriteOnly
+#include <QString>      // for QString, operator<<, operator>>
+#include <QtGlobal>     // for qPrintable, qint32, qWarning
+#include "config.h"     // for Config, pConfig
 
-#include "config.h"   // pConfig
 #include "settings.h"
 
 

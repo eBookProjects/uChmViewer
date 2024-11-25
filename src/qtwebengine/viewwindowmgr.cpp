@@ -16,31 +16,41 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QAction>
-#include <QClipboard>
-#include <QIcon>
-#include <QKeySequence>
-#include <QMenu>
-#include <QObject>            // QObject::connect
-#include <QPalette>
-#include <QString>
-#include <Qt>                 // Qt::MiddleButton and things
-#include <QTabBar>
-#include <QTabWidget>
-#include <QtGlobal>           // QT_VERSION, QT_VERSION_CHECK
-#include <QToolButton>
-#include <QMouseEvent>
-#include <QUrl>
-#include <QWebEnginePage>     // QWebEnginePage::{ FindFlag, FindBackward, FindCaseSensitively }
-#include <QWidget>
+#include <cstdlib>  // for abort
 
-#include "i18n.h"
+#include <QAction>          // for QAction
+#include <QApplication>     // for QApplication
+#include <QCheckBox>        // for QCheckBox
+#include <QClipboard>       // for QClipboard
+#include <QColor>           // for QColor
+#include <QFrame>           // for QFrame
+#include <QIcon>            // for QIcon
+#include <QKeySequence>     // for QKeySequence
+#include <QLabel>           // for QLabel
+#include <QLineEdit>        // for QLineEdit
+#include <QMenu>            // for QMenu
+#include <QMouseEvent>      // for QMouseEvent
+#include <QObject>          // for SIGNAL, SLOT, emit, qobject_cast
+#include <QPalette>         // for QPalette, QPalette::Active, QPalette::Base
+#include <QString>          // for QString, operator+
+#include <QTabBar>          // for QTabBar
+#include <QTabWidget>       // for QTabWidget
+#include <QToolButton>      // for QToolButton
+#include <QUrl>             // for QUrl
+#include <QVBoxLayout>      // for QVBoxLayout
+#include <QWebEnginePage>   // for QWebEnginePage::FindFlags, QWebEnginePage, QWebEnginePage::FindBackward, QWebEnginePage::FindCaseSensitively
+#include <QWidget>          // for QWidget
+#include <Qt>               // for ArrowCursor, Key_Escape, MiddleButton, ShortcutFocusReason, TopLeftCorner, white
+#include <QtGlobal>         // for QT_VERSION, QT_VERSION_CHECK, Q_ASSERT, qFatal
 
-#include "config.h"        // ::pConfig
-#include "mainwindow.h"    // MainWindow, ::mainWindow
-#include "settings.h"      // Settings
-#include "viewwindow.h"    // ViewWindow
-#include "viewwindowmgr.h"
+class QMouseEvent;
+
+#include "../config.h"          // for Config, pConfig
+#include "../i18n.h"            // for i18n
+#include "../mainwindow.h"      // for MainWindow, mainWindow, MainWindow::OPF_CONTENT_TREE, MainWindow::OPF_NEW_TAB
+#include "../settings.h"        // for Settings::viewindow_saved_settings_t, Settings::SavedViewWindow, Settings
+#include "../viewwindowmgr.h"   // IWYU pragma: associated
+#include "viewwindow.h"         // for ViewWindow
 
 
 // A small overriden class to handle a middle click

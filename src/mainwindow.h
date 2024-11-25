@@ -20,17 +20,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QEvent>
-#include <QList>
-#include <QMainWindow>
-#include <QObject>      // Q_OBJECT
-#include <QPixmap>
-#include <QString>
-#include <QStringList>
-
-#include "ui_mainwindow.h"
-
-#include <ebook.h>  // EBook, EBookTocEntry::Icon
+#include <QEvent>       // for QEvent, QEvent::User
+#include <QList>        // for QList
+#include <QMainWindow>  // for QMainWindow
+#include <QObject>      // for slots, Q_OBJECT
+#include <QPixmap>      // for QPixmap
+#include <QString>      // for QString
+#include <QStringList>  // for QStringList
+#include <QUrl>         // for QUrl
 
 class QAction;
 class QActionGroup;
@@ -38,7 +35,10 @@ class QCloseEvent;
 class QMenu;
 class QSharedMemory;
 class QTemporaryFile;
-class QUrl;
+
+#include <ebook.h>  // for EBookTocEntry, EBookTocEntry::Icon, EBookTocEntry::MAX_BUILTIN_ICONS
+
+#include "ui_mainwindow.h"
 
 class NavigationPanel;
 class RecentFiles;

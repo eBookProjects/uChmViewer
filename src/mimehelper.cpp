@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QBuffer>
-#include <QString>
-#include <QUrl>
+#include <QByteArray>   // for QByteArray
+#include <QString>      // for QString
+#include <QUrl>         // for QUrl
 
 #include "mimehelper.h"
 

@@ -16,63 +16,75 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstdio>           // fprintf, stderr
-#include <cstdlib>          // exit
+#include <cstdio>   // for fprintf, printf, stderr
+#include <cstdlib>  // for exit
+#include <cstring>  // for memcpy
+#include <utility>  // for move
 
-#include <QApplication>     // aApp
-#include <QAction>
-#include <QActionGroup>
-#include <QByteArray>
-#include <QCloseEvent>
-#include <QDateTime>
-#include <QDesktopServices>
-#include <QDialog>
-#include <QDir>
-#include <QEvent>
-#include <QFile>
-#include <QFileInfo>
-#include <QIODevice>        // QIODevice::WriteOnly
-#include <QKeySequence>
-#include <QList>
-#include <QMessageBox>
-#include <QObject>          // QObject::connect
-#include <QPixmap>
-#include <QProcess>
-#include <QProgressDialog>
-#include <QSettings>
-#include <QSharedMemory>
-#include <QSize>
-#include <QShortcut>
-#include <QString>
-#include <QStringList>
-#include <QSysInfo>
-#include <Qt>               // Qt::LeftToRight, Qt::RightToLeft, Qt::Vertical, Qt::WA_DeleteOnClose
-#include <QtGlobal>         // qreal, qPrintable, qDebug, qFatal, qWarning
-#include <QTemporaryFile>
-#include <QTextEdit>
-#include <QTextStream>
-#include <QTimer>
-#include <QUrl>
-#include <QVariant>
-#include <QWhatsThis>
+#include <QAction>          // for QAction
+#include <QActionGroup>     // for QActionGroup
+#include <QApplication>     // for QApplication, qApp
+#include <QByteArray>       // for QByteArray
+#include <QCoreApplication> // for QCoreApplication
+#include <QDialog>          // for QDialog
+#include <QDir>             // for QDir
+#include <QEvent>           // for QEvent, QEvent::User
+#include <QFile>            // for QFile
+#include <QFileInfo>        // for QFileInfo
+#include <QIODevice>        // for QIODevice, QIODevice::WriteOnly
+#include <QIcon>            // for QIcon
+#include <QKeySequence>     // for QKeySequence, QKeySequence::FindNext, QKeySequence::FindPrevious
+#include <QLabel>           // for QLabel
+#include <QList>            // for QList, QList<>::const_iterator
+#include <QMenu>            // for QMenu
+#include <QMenuBar>         // for QMenuBar
+#include <QObject>          // for SLOT, SIGNAL
+#include <QPixmap>          // for QPixmap
+#include <QProcess>         // for QProcess
+#include <QProgressDialog>  // for QProgressDialog
+#include <QSharedMemory>    // for QSharedMemory
+#include <QShortcut>        // for QShortcut
+#include <QSize>            // for QSize
+#include <QStatusBar>       // for QStatusBar
+#include <QString>          // for QString, operator+, operator==
+#include <QStringList>      // for QStringList
+#include <QTemporaryFile>   // for QTemporaryFile
+#include <QTextEdit>        // for QTextEdit
+#include <QTimer>           // for QTimer
+#include <QToolBar>         // for QToolBar
+#include <QUrl>             // for QUrl
+#include <QVariant>         // for QVariant
+#include <QWhatsThis>       // for QWhatsThis
+#include <Qt>               // for ApplicationShortcut, operator|, LeftDockWidgetArea, NoButton, ControlModifier, KeyboardModifiers, LeftToRight, Othe...
+#include <QtGlobal>         // for qPrintable, qFatal, QFlags, qWarning, QSysInfo, qVersion, qDebug, qreal
 
-#include "kde-qt.h" // KRun or QDesktopServices, KFileDialog or QFileDialog
+#ifdef USE_KDE
+	#include <kfiledialog.h>    // for KFileDialog
+	#include <kmessagebox.h>    // for KMessageBox
+	#include <krun.h>           // for KRun
+#else
+	#include <QDesktopServices> // for QDesktopServices
+	#include <QFileDialog>      // for QFileDialog, operator|, QFileDialog::DontResolveSymlinks, QFileDialog::ShowDirsOnly
+	#include <QMessageBox>      // for QMessageBox, QMessageBox::Critical, QMessageBox::Ok
+#endif
 
-#include "i18n.h"
+class QCloseEvent;
 
-#include "config.h"             // pConfig
-#include "dialog_setup.h"       // DialogSetup
-#include "ebook.h"              // EBook
-#include "mainwindow.h"         // MainWindow, QMainWindow
-#include "navigationpanel.h"    // NavigationPanel
-#include "recentfiles.h"        // RecentFiles
-#include "settings.h"           // Settings
-#include "textencodings.h"      // TextEncodings
-#include "toolbarmanager.h"     // ToolbarManager
-#include "ui_dialog_about.h"    // Ui::DialogAbout
-#include "version.h"            // APP_VERSION
-#include "viewwindow.h"         // ViewWindow
-#include "viewwindowmgr.h"      // ViewWindowMgr
+#include <ebook.h>                // for EBook, EBook::FEATURE_ENCODING, EBook::FEATURE_TOC, EBook::FEATURE_INDEX, EBookTocEntry, EBookTocEntry::Icon
+
+#include "config.h"               // for Config, pConfig, Config::ACTION_ALWAYS_OPEN, Config::ACTION_ASK_USER, Config::ACTION_DONT_OPEN, Config::STARTUP_LOA...
+#include "dialog_setup.h"         // for DialogSetup
+#include "i18n.h"                 // for i18n
+#include "mainwindow.h"
+#include "navigationpanel.h"      // for NavigationPanel, NavigationPanel::TAB_CONTENTS, NavigationPanel::TAB_INDEX, NavigationPanel::TAB_BOOKMARK, Navigati...
+#include "recentfiles.h"          // for RecentFiles
+#include "settings.h"             // for Settings
+#include "textencodings.h"        // for TextEncodings
+#include "toolbarmanager.h"       // for ToolbarManager
+#include "ui_dialog_about.h"      // for DialogAbout
+#include "version.h"              // for APP_VERSION
+#include "viewwindow.h"           // for ViewWindow
+#include "viewwindowmgr.h"        // for ViewWindowMgr
 
 
 // Maximum memory size for inter-application communication

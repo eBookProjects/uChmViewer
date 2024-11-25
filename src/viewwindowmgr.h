@@ -19,16 +19,17 @@
 #ifndef VIEWWINDOWMGR_H
 #define VIEWWINDOWMGR_H
 
-#include <QList>
-#include <QString>
-#include <QWidget>
-
-#include "settings.h"
-
-#include "ui_window_browser.h"
+#include <QList>    // for QList, QList<>::iterator
+#include <QObject>  // for slots, Q_OBJECT, signals
+#include <QString>  // for QString
+#include <QWidget>  // for QWidget
 
 class QAction;
 class QMenu;
+class QUrl;
+
+#include "settings.h"           // for Settings, Settings::viewindow_saved_settings_t
+#include "ui_window_browser.h"  // for TabbedBrowser
 
 class MainWindow;
 class ViewWindow;

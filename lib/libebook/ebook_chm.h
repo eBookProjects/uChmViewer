@@ -21,22 +21,24 @@
 
 #include <cstddef>  // size_t
 
-#include <QByteArray>
-#include <QList>
-#include <QMap>
-#include <QString>
-#include <QTextCodec>
-#include <QtGlobal>     // qPrintable
-#include <QUrl>
+#include <QByteArray>   // for QByteArray
+#include <QList>        // for QList
+#include <QMap>         // for QMap
+#include <QString>      // for QString
+#include <QTextCodec>   // for QTextCodec
+#include <QUrl>         // for QUrl
+#include <QtGlobal>     // for qPrintable
 
 // Enable Unicode use in libchm
 #if defined (WIN32)
 	#define PPC_BSTR
 #endif
 
-#include "ebook.h"                  // EBook
-#include <chm_lib.h>                // chmUnitInfo, LONGUINT64
-#include "helper_entitydecoder.h"   // HelperEntityDecoder
+#include "ebook.h"                  // for EBookTocEntry (ptr only), EBook, EBook::Feature, EBookIndexEntry (ptr only)
+#include <chm_lib.h>                // for chmUnitInfo, LONGINT64, LONGUINT64
+#include "helper_entitydecoder.h"   // for HelperEntityDecoder
+
+struct chmFile;
 
 
 class EBook_CHM : public EBook

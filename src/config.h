@@ -19,9 +19,9 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <QString>
+#include <QString>  // for QString
 
-#include "browser-settings.hpp"
+#include "browser-settings.hpp" // for BrowserSettings
 
 
 class Config

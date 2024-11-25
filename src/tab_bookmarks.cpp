@@ -16,26 +16,28 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QAction>
-#include <QCoreApplication>
-#include <QInputDialog>
-#include <QLineEdit>        // QLineEdit::Normal
-#include <QListWidget>
-#include <QListWidgetItem>
-#include <QMenu>
-#include <QObject>          // QObject::connect
-#include <QPoint>
-#include <QString>
-#include <Qt>               // Qt::CustomContextMenu, Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
-#include <QVariant>
+#include <QAction>          // for QAction
+#include <QCoreApplication> // for QCoreApplication
+#include <QInputDialog>     // for QInputDialog
+#include <QLineEdit>        // for QLineEdit, QLineEdit::Normal
+#include <QListWidget>      // for QListWidget
+#include <QListWidgetItem>  // for QListWidgetItem
+#include <QMenu>            // for QMenu
+#include <QObject>          // for SIGNAL, SLOT, qobject_cast, QObject
+#include <QPushButton>      // for QPushButton
+#include <QString>          // for QString, operator!=
+#include <QUrl>             // for QUrl
+#include <QVariant>         // for QVariant
+#include <Qt>               // for CustomContextMenu, DisplayRole, ToolTipRole, WhatsThisRole
 
-#include "i18n.h"
+#include <ebook.h>  // for EBook
 
-#include "config.h"         // pConfig
-#include "mainwindow.h"     // ::mainWindow
-#include "settings.h"       // Settings::bookmark_saved_settings_t, Settings::SavedBookmark
-#include "tab_bookmarks.h"  // TabBookmarks, QWidget
-#include "viewwindow.h"     // ViewWindow
+#include "config.h"          // for Config, pConfig
+#include "i18n.h"            // for i18n
+#include "mainwindow.h"      // for MainWindow, mainWindow, MainWindow::OPF_CONTENT_TREE
+#include "settings.h"        // for Settings::bookmark_saved_settings_t, Settings::SavedBookmark, Settings
+#include "tab_bookmarks.h"
+#include "viewwindow.h"      // for ViewWindow
 
 class BookmarkItem : public QListWidgetItem
 {

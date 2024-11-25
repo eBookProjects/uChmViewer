@@ -19,9 +19,9 @@
 #ifndef SHOWWAITCURSOR_H
 #define SHOWWAITCURSOR_H
 
-#include <QApplication>
-#include <QCursor>
-#include <Qt>           // Qt::WaitCursor
+#include <QApplication> // for QApplication
+#include <QCursor>      // for QCursor
+#include <Qt>           // for Qt::WaitCursor
 
 
 class ShowWaitCursor

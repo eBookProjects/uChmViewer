@@ -16,37 +16,37 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>     // qApp
-#include <QDataStream>
-#include <QEventLoop>       // QEventLoop::ExcludeUserInputEvents
-#include <QFile>
-#include <QHeaderView>
-#include <QIODevice>        // QIODevice::ReadOnly, QIODevice::WriteOnly
-#include <QLineEdit>
-#include <QList>
-#include <QMenu>
-#include <QMessageBox>
-#include <QObject>          // QObject::connect
-#include <QPoint>
-#include <QProgressDialog>
-#include <QString>
-// Qt::DisplayRole, Qt::ToolTipRole, Qt::WhatsThisRole
-// Qt::CustomContextMenu
-#include <Qt>
-#include <QTreeWidget>
-#include <QTreeWidgetItem>
-#include <QUrl>
-#include <QVariant>
-#include <QWhatsThis>
+#include <QApplication>     // for QApplication, qApp
+#include <QComboBox>        // for QComboBox
+#include <QDataStream>      // for QDataStream
+#include <QEventLoop>       // for QEventLoop, QEventLoop::ExcludeUserInputEvents
+#include <QFile>            // for QFile
+#include <QIODevice>        // for QIODevice, QIODevice::ReadOnly, QIODevice::WriteOnly
+#include <QLabel>           // for QLabel
+#include <QLineEdit>        // for QLineEdit
+#include <QList>            // for QList
+#include <QMenu>            // for QMenu
+#include <QMessageBox>      // for QMessageBox
+#include <QObject>          // for SIGNAL, SLOT
+#include <QProgressDialog>  // for QProgressDialog
+#include <QPushButton>      // for QPushButton
+#include <QStatusBar>       // for QStatusBar
+#include <QString>          // for QString
+#include <QTreeWidget>      // for QTreeWidget, QTreeWidgetItem
+#include <QUrl>             // for QUrl
+#include <QVariant>         // for QVariant
+#include <QWhatsThis>       // for QWhatsThis
+#include <Qt>               // for CustomContextMenu, DisplayRole, ToolTipRole, WhatsThisRole
 
-#include "i18n.h"
+#include <ebook.h>  // for EBook
 
-#include "config.h"         // pConfig
-#include "ebook_search.h"   // EBookSearch
-#include "mainwindow.h"     // ::mainWindow
-#include "settings.h"       // Settings::search_saved_settings_t
-#include "showwaitcursor.h" // ShowWaitCursor
-#include "tab_search.h"     // TabSearch, QWidget
+#include "config.h"         // for Config, pConfig
+#include "ebook_search.h"   // for EBookSearch
+#include "i18n.h"           // for i18n
+#include "mainwindow.h"     // for MainWindow, mainWindow
+#include "settings.h"       // for Settings::search_saved_settings_t, Settings
+#include "showwaitcursor.h" // for ShowWaitCursor
+#include "tab_search.h"
 
 
 class SearchTreeViewItem : public QTreeWidgetItem

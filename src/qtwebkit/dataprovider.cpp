@@ -16,17 +16,23 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QByteArray>
-#include <QIODevice>
-#include <QNetworkRequest>
-#include <QObject>
-#include <Qt>              // Qt::QueuedConnection
-#include <QtGlobal>        // qint64, qPrintable, qDebug, qWarning
-#include <QUrl>
+#include <cstring>  // for memcpy
 
-#include "config.h"     // ::pConfig
-#include "mainwindow.h" // ::mainWindow
-#include "mimehelper.h" // MimeHelper::mimeType
+#include <QByteArray>       // for QByteArray
+#include <QIODevice>        // for QIODevice, QIODevice::ReadOnly
+#include <QMetaObject>      // for QMetaObject
+#include <QNetworkRequest>  // for QNetworkRequest, QNetworkRequest::ContentLengthHeader, QNetworkRequest::ContentTypeHeader
+#include <QString>          // for QString
+#include <QUrl>             // for QUrl
+#include <QVariant>         // for QVariant
+#include <Qt>               // for QueuedConnection
+#include <QtGlobal>         // for qint64, qMin, qPrintable, qWarning
+
+#include <ebook.h>  // for EBook
+
+#include "../config.h"      // for Config, pConfig
+#include "../mainwindow.h"  // for MainWindow, mainWindow
+#include "../mimehelper.h"  // for MimeHelper
 #include "dataprovider.h"
 
 

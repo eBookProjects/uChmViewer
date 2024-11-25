@@ -16,8 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QString>
-#include <QXmlAttributes>
+#include <QString>          // for QString
+#include <QXmlAttributes>   // for QXmlAttributes
 
 #include "helperxmlhandler_epubcontainer.h"
 

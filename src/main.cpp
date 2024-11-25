@@ -16,30 +16,33 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtGlobal>     // qPrintable, qWarning
-#include <QStringList>
+#include <QCoreApplication> // for QCoreApplication
+#include <QIcon>            // for QIcon
+#include <QObject>          // for SIGNAL, SLOT
+#include <QString>          // for QString
+#include <QStringList>      // for QStringList
+#include <QtGlobal>         // for qWarning
 
-#include "kde-qt.h"     // KApplication or QApplication
-
-#include "i18n.h"       // app_i18n::init, ki18n
-
-#include "config.h"     // Config, pConfig
-#include "mainwindow.h" // MainWindow ::mainWindow
-
-#if defined (USE_KDE)
-    #include "version.h"    // APP_VERSION
+#if defined USE_KDE
+	#include <k4aboutdata.h>
+	#include <kapplication.h>   // for KApplication
+	#include <kcmdlineargs.h>
+	#include "version.h"        // APP_VERSION
+#elif defined USE_MAC_APP
+	#include "uchmviewerapp.h"
+#else
+	#include <QApplication>     // for QApplication
+	typedef QApplication  UchmviewerApp;
 #endif
 
 #if defined USE_DBUS
-	#include <QDBusConnection>
-	#include "dbus_interface.h" // SERVICE_NAME
+	#include <QDBusConnection>  // for QDBusConnection, QDBusConnection::ExportAllSlots
+	#include "dbus_interface.h" // for DBusInterface, SERVICE_NAME
 #endif
 
-#if defined USE_MAC_APP
-	#include "uchmviewerapp.h"
-#else
-	typedef QApplication  UchmviewerApp;
-#endif
+#include "config.h"          // for Config, pConfig
+#include "i18n.h"            // for init
+#include "mainwindow.h"      // for MainWindow
 
 MainWindow* mainWindow;
 

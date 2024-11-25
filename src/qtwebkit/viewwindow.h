@@ -19,15 +19,16 @@
 #ifndef VIEWWINDOW_WEBKIT_H
 #define VIEWWINDOW_WEBKIT_H
 
-#include <QtGlobal> // qreal
-#include <QUrl>
-#include <QWebView>
+#include <QObject>  // for slots, Q_OBJECT, signals
+#include <QString>  // for QString
+#include <QUrl>     // for QUrl
+#include <QWebView> // for QWebView
+#include <QtGlobal> // for qreal
 
 class QContextMenuEvent;
 class QMenu;
 class QMouseEvent;
 class QPoint;
-class QString;
 class QWidget;
 
 class BrowserSettings;

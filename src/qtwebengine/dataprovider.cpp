@@ -17,20 +17,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QBuffer>
-#include <QByteArray>
-#include <QObject>
-#include <QString>
-#include <QtGlobal>                 // QT_VERSION, QT_VERSION_CHECK
-#include <QUrl>
-#include <QWebEngineUrlRequestJob>
+#include <QBuffer>                  // for QBuffer
+#include <QByteArray>               // for QByteArray, operator==
+#include <QObject>                  // for SIGNAL, SLOT
+#include <QString>                  // for QString
+#include <QUrl>                     // for QUrl
+#include <QWebEngineUrlRequestJob>  // for QWebEngineUrlRequestJob, QWebEngineUrlRequestJob::UrlNotFound
+#include <QtGlobal>                 // for QT_VERSION, QT_VERSION_CHECK, qPrintable, qWarning
 
-#include "mainwindow.h" // ::mainWindow
-#include "mimehelper.h" // MimeHelper::mimeType
-#include "dataprovider.h"  // DataProvider, QWebEngineUrlSchemeHandler
-#include "ebook.h"         // EBook
-#include "ebook_chm.h"     // EBook_CHM::URL_SCHEME_CHM
-#include "ebook_epub.h"    // EBook_EPUB::URL_SCHEME_EPUB
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
+	#include <QWebEngineUrlScheme>  // for QWebEngineUrlScheme, QWebEngineUrlScheme::SecureScheme, QWebEngineUrlScheme::Syntax, QWebEngineUrlScheme::Syntax:...
+#endif
+
+#include <ebook.h>      // for EBook
+#include <ebook_chm.h>  // for EBook_CHM, EBook_CHM::URL_SCHEME_CHM
+#include <ebook_epub.h> // for EBook_EPUB, EBook_EPUB::URL_SCHEME_EPUB
+
+#include "dataprovider.h"
+#include "../mainwindow.h"  // for MainWindow, mainWindow
+#include "../mimehelper.h"  // for MimeHelper
 
 
 #if defined PRINT_DEBUG_ALL || defined PRINT_DEBUG_WEBENGINE || defined PRINT_DEBUG_WEBENGINEDATAPROVIDER
@@ -38,9 +43,6 @@
 #endif
 
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
-
-#include <QWebEngineUrlScheme>
-
 static struct RegistrationHelper
 {
 	RegistrationHelper()

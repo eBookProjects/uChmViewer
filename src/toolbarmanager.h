@@ -19,10 +19,10 @@
 #ifndef TOOLBARMANAGER_H
 #define TOOLBARMANAGER_H
 
-#include <QList>
-#include <QObject>
-#include <QString>
-#include <QStringList>
+#include <QList>        // for QList
+#include <QObject>      // for QObject, Q_OBJECT
+#include <QString>      // for QString
+#include <QStringList>  // for QStringList
 
 class QAction;
 class QToolBar;

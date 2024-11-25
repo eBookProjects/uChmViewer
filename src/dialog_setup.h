@@ -19,11 +19,13 @@
 #ifndef DIALOG_SETUP_H
 #define DIALOG_SETUP_H
 
-#include <QDialog>
-
-#include <ui_dialog_setup.h>
+#include <QDialog>  // for QDialog
+#include <QObject>  // for Q_OBJECT, slots
+#include <QString>  // for QString
 
 class QWidget;
+
+#include <ui_dialog_setup.h>    // for DialogSetup
 
 
 class DialogSetup : public QDialog, public Ui::DialogSetup

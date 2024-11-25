@@ -16,25 +16,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstddef>  // size_t
-#include <cstdio>   // fprintf
+#include <cstddef>  // for NULL, size_t
+#include <cstdlib>  // for getenv
+#include <new>      // for operator new
+#include <utility>  // for move
 
-#include <QByteArray>
-#include <QFile>
-#include <QList>
-#include <QString>
-#include <Qt>           // CaseInsensitive
-#include <QtGlobal>     // qPrintable, qDebug, qFatal, qWarning
-#include <QTextCodec>
-#include <QVector>
-#include <QUrl>
+#include <QByteArray>  // for QByteArray, operator+, operator==, QByteRef
+#include <QChar>       // for operator==, QChar, operator!=
+#include <QFile>       // for QFile
+#include <QList>       // for QList
+#include <QString>     // for QString, QCharRef, operator+, operator!=
+#include <QTextCodec>  // for QTextCodec
+#include <QUrl>        // for QUrl
+#include <QVector>     // for QVector
+#include <Qt>          // for CaseInsensitive
+#include <QtGlobal>    // for qWarning, qPrintable, qMakeForeachContainer, qFatal, Q_FOREACH, qMin
 
-#include "bitfiddle.h"              // UINT16ARRAY, UINT32ARRAY, get_int32_le
-// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry
-// chm_lib.h -> chmUnitInfo, LONGUINT64, EBook_CHM, ParsedEntry
+#include "bitfiddle.h"              // for get_int32_le, UINT32ARRAY, UINT16ARRAY
 #include "ebook_chm.h"
-#include "ebook_chm_encoding.h"     // Ebook_CHM_Encoding
-#include "helper_entitydecoder.h"   // HelperEntityDecoder
+#include "ebook_chm_encoding.h"     // for Ebook_CHM_Encoding
+#include "helper_entitydecoder.h"   // for HelperEntityDecoder
 
 
 // Big-enough buffer size for use with various routines.

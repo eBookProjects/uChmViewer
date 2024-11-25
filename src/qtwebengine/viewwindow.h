@@ -19,13 +19,14 @@
 #ifndef QTWEBENGINE_VIEWWINDOW_H
 #define QTWEBENGINE_VIEWWINDOW_H
 
-#include <QtGlobal>         // qreal
-#include <QUrl>
-#include <QWebEngineView>
+#include <QObject>          // for slots, Q_OBJECT, signals
+#include <QString>          // for QString
+#include <QUrl>             // for QUrl
+#include <QWebEngineView>   // for QWebEngineView
+#include <QtGlobal>         // for qreal
 
 class QContextMenuEvent;
 class QMenu;
-class QString;
 class QWidget;
 
 class BrowserSettings;

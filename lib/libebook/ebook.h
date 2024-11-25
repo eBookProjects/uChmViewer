@@ -19,9 +19,9 @@
 #ifndef INCLUDE_EBOOK_H
 #define INCLUDE_EBOOK_H
 
-#include <QList>
-#include <QString>
-#include <QUrl>
+#include <QList>    // for QList
+#include <QString>  // for QString
+#include <QUrl>     // for QUrl
 
 class QByteArray;
 

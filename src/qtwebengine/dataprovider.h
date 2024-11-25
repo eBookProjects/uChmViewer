@@ -20,7 +20,7 @@
 #ifndef QTWEBENGINE_DATAPROVIDER_H
 #define QTWEBENGINE_DATAPROVIDER_H
 
-#include <QWebEngineUrlSchemeHandler>
+#include <QWebEngineUrlSchemeHandler>   // for QWebEngineUrlSchemeHandler
 
 class QObject;
 class QWebEngineUrlRequestJob;

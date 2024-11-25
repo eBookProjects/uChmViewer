@@ -16,20 +16,22 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstring> // strcmp
+#include <cstring>  // for strcmp
+#include <utility>  // for move
 
-#include <QAction>
-#include <QDialog>     // QDialog::Rejected
-#include <QList>
-#include <QObjectList>
-#include <QSettings>
-#include <QString>
-#include <QStringList>
-#include <QtGlobal>    // qWarning
-#include <QToolBar>
+#include <QAction>      // for QAction
+#include <QDialog>      // for QDialog, QDialog::Rejected
+#include <QList>        // for QList, QList<>::const_iterator
+#include <QMetaObject>  // for QMetaObject
+#include <QSettings>    // for QSettings
+#include <QString>      // for QString, operator==, operator+
+#include <QStringList>  // for QStringList
+#include <QToolBar>     // for QToolBar
+#include <QVariant>     // for QVariant
+#include <QtGlobal>     // for qMakeForeachContainer, foreach, qWarning
 
-#include "toolbareditor.h"  // ToolbarEditor
-#include "toolbarmanager.h" // ToolbarManager, QObject
+#include "toolbareditor.h"  // for ToolbarEditor
+#include "toolbarmanager.h"
 
 
 QString ToolbarManager::separatorName()

@@ -16,20 +16,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QCoreApplication>
-#include <QLatin1String>
-#include <QLibraryInfo>
-#include <QLocale>
-#include <QRegularExpression>
-#include <QString>
-#include <QTranslator>
+#include <QCoreApplication> // for QCoreApplication
+#include <QLatin1String>    // for QLatin1String
+#include <QLibraryInfo>     // for QLibraryInfo, QLibraryInfo::TranslationsPath
+#include <QLocale>          // for QLocale
+#include <QString>          // for QString
+#include <QTranslator>      // for QTranslator
+
+#if defined USE_GETTEXT
+	#include <QByteArray>           // for QByteArray
+	#include <QRegularExpression>   // for QRegularExpression
+	#include <QtGlobal>             // for Q_UNUSED
+
+	#include <libintl.h>    // for bind_textdomain_codeset, bindtextdomain, gettext, textdomain
+#endif
 
 #include "i18n.h"
 
 
 #if defined USE_GETTEXT
-#include <libintl.h>
-
 namespace app_i18n
 {
 void initGettext();

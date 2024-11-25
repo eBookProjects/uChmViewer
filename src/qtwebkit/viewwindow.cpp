@@ -16,32 +16,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>
-#include <QContextMenuEvent>
-#include <QDialog>           // QDialog::Accepted
-#include <QKeySequence>
-#include <QMenu>
-#include <QMouseEvent>
-#include <QPalette>
-#include <QPoint>
-#include <QPrinter>
-#include <QPrintDialog>
-#include <QString>
-#include <Qt>                // Qt::Vertical, Qt::MidButton
-#include <QtGlobal>          // qreal, qPrintable, qDebug
-#include <QUrl>
-#include <QWebFrame>
-#include <QWebHistory>
-#include <QWebSettings>
-#include <QWidget>
+#include <QDialog>      // for QDialog, QDialog::Accepted
+#include <QEvent>       // for QContextMenuEvent
+#include <QKeySequence> // for QKeySequence
+#include <QMenu>        // for QMenu
+#include <QMouseEvent>  // for QMouseEvent
+#include <QPalette>     // for QPalette, QPalette::Active, QPalette::Highlight, QPalette::HighlightedText, QPalette::Inactive
+#include <QPrintDialog> // for QPrintDialog
+#include <QPrinter>     // for QPrinter, QPrinter::HighResolution
+#include <QString>      // for QString
+#include <QUrl>         // for QUrl
+#include <QWebFrame>    // for QWebFrame, QWebHitTestResult
+#include <QWebHistory>  // for QWebHistory
+#include <QWebPage>     // for QWebPage, QWebPage::Copy, QWebPage::DelegateAllLinks, QWebPage::SelectAll
+#include <QWebSettings> // for QWebSettings, QWebSettings::AutoLoadImages, QWebSettings::JavaEnabled, QWebSettings::JavascriptEnabled, QWebSetti...
+#include <Qt>           // for Vertical, MidButton
+#include <QtGlobal>     // for qreal
 
-#include "i18n.h"
+#include <ebook.h>  // for EBook
 
-#include "browser-settings.hpp"  // BrowserSettings
-#include "mainwindow.h"          // ::mainWindow
+#include "../browser-settings.hpp"  // for BrowserSettings
+#include "../i18n.h"                // for i18n
+#include "../mainwindow.h"          // for MainWindow, mainWindow
+#include "../viewwindowmgr.h"       // for ViewWindowMgr
+#include "dataprovider.h"           // for KCHMNetworkAccessManager
 #include "viewwindow.h"
-#include "viewwindowmgr.h"       // ViewWindowMgr
-#include "dataprovider.h"           // KCHMNetworkAccessManager
 
 
 static const qreal ZOOM_FACTOR_CHANGE = 0.1;

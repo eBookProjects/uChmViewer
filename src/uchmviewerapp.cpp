@@ -16,13 +16,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>
-#include <QEvent>
-#include <QFileOpenEvent>
-#include <QTimer>
-#include <QtGlobal>        // qWarning
+#include <string>   // for basic_string, string
 
-#include "mainwindow.h"    // MainWindow
+#include <QApplication>     // for QApplication
+#include <QEvent>           // for QEvent, QEvent::FileOpen
+#include <QFileOpenEvent>   // for QFileOpenEvent
+#include <QTimer>           // for QTimer
+#include <QWidget>          // for QWidget
+#include <QtGlobal>         // for qMakeForeachContainer, qWarning, foreach
+
+#include "mainwindow.h"     // for MainWindow
 #include "uchmviewerapp.h"
 
 

@@ -19,15 +19,17 @@
 #ifndef DIALOG_CHOOSEURLFROMLIST_H
 #define DIALOG_CHOOSEURLFROMLIST_H
 
-#include <QDialog>
-#include <QStringList>
+#include <QDialog>      // for QDialog
+#include <QObject>      // for Q_OBJECT, slots
+#include <QString>      // for QString
+#include <QStringList>  // for QStringList
 
-#include "ui_dialog_topicselector.h"
+#include "ui_dialog_topicselector.h"    // for DialogTopicSelector
 
-template<typename T> class QList;
 class QListWidgetItem;
 class QUrl;
 class QWidget;
+template<typename T> class QList;
 
 
 class DialogChooseUrlFromList : public QDialog, public Ui::DialogTopicSelector

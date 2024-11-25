@@ -16,13 +16,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QAction>
-#include <QFileInfo>
-#include <QMenu>
-#include <QSettings>
-#include <QString>
-#include <QStringList>
-#include <QtGlobal>     // qFatal
+#include <new>      // for operator new
+#include <utility>  // for move
+
+#include <QAction>      // for QAction
+#include <QFileInfo>    // for QFileInfo
+#include <QList>        // for QList
+#include <QMenu>        // for QMenu
+#include <QSettings>    // for QSettings
+#include <QString>      // for QString
+#include <QStringList>  // for QStringList
+#include <QVariant>     // for QVariant
+#include <QtGlobal>     // for qMin, qFatal
 
 #include "recentfiles.h"
 

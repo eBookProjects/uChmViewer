@@ -19,14 +19,16 @@
 #ifndef NAVIGATIONPANEL_H
 #define NAVIGATIONPANEL_H
 
-#include <QDockWidget>
-#include <QStringList>
-
-#include "ui_navigatorpanel.h"
+#include <QDockWidget>  // for QDockWidget
+#include <QObject>      // for Q_OBJECT, slots
+#include <QString>      // for QString
+#include <QStringList>  // for QStringList
 
 class QMenu;
-class QString;
 class QUrl;
+class QWidget;
+
+#include "ui_navigatorpanel.h"
 
 class EBook;
 class Settings;

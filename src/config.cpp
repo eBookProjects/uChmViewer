@@ -16,18 +16,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QCoreApplication>
-#include <QDir>
-#include <QFile>
-#include <QFileInfo>
-#include <QSettings>
-#include <QStandardPaths>
-#include <QString>
-#include <QtGlobal>         // qPrintable, qWarning
+#include <QByteArray>       // for QByteArray
+#include <QChar>            // for QChar
+#include <QCoreApplication> // for QCoreApplication
+#include <QDir>             // for QDir, operator|, QDir::Files, QDir::NoDot, QDir::NoDotDot
+#include <QFile>            // for QFile
+#include <QFileInfo>        // for QFileInfo
+#include <QList>            // for QList<>::const_iterator
+#include <QSettings>        // for QSettings, QSettings::IniFormat, QSettings::UserScope
+#include <QStandardPaths>   // for QStandardPaths, QStandardPaths::GenericCacheLocation
+#include <QString>          // for operator+, QString
+#include <QStringList>      // for QStringList
+#include <QVariant>         // for QVariant
+#include <QtGlobal>         // for QFlags, qPrintable, qWarning
 
 #include "config.h"
 
+
 Config* pConfig;
+
 
 Config::Config()
 {

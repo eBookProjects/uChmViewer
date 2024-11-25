@@ -19,14 +19,14 @@
 #ifndef QWEBVIEWNETWORK_H
 #define QWEBVIEWNETWORK_H
 
-#include <QByteArray>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
-#include <QtGlobal>                 // qint64
+#include <QByteArray>               // for QByteArray
+#include <QNetworkAccessManager>    // for QNetworkAccessManager, QNetworkAccessManager::Operation
+#include <QNetworkReply>            // for QNetworkReply
+#include <QtGlobal>                 // for qint64
 
-class QObject;
 class QIODevice;
 class QNetworkRequest;
+class QObject;
 class QUrl;
 
 

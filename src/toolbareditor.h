@@ -19,17 +19,18 @@
 #ifndef TOOLBAREDITOR_H
 #define TOOLBAREDITOR_H
 
-#include <QDialog>
-#include <QList>
-#include <QMap>
-#include <QStringList>
-
-#include "ui_toolbareditor.h"
+#include <QDialog>      // for QDialog
+#include <QList>        // for QList
+#include <QMap>         // for QMap
+#include <QObject>      // for Q_OBJECT, slots
+#include <QString>      // for QString
+#include <QStringList>  // for QStringList
 
 class QAction;
 class QToolBar;
-class QString;
 class QWidget;
+
+#include "ui_toolbareditor.h"   // for ToolbarEditor
 
 
 class ToolbarEditor : public QDialog, public Ui::ToolbarEditor

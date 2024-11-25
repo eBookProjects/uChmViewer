@@ -23,24 +23,25 @@
 	#include <unistd.h>
 #endif
 
-#include <QByteArray>
-#include <QIODevice>
-#include <QList>
-#include <QMessageBox>
-#include <QString>
-#include <QtGlobal>             // qPrintable, qDebug, qWarning
-#include <QUrl>
-#include <QXmlDefaultHandler>
-#include <QXmlSimpleReader>
-#include <QXmlInputSource>
+#include <QByteArray>           // for QByteArray
+#include <QChar>                // for operator==, QChar
+#include <QIODevice>            // for QIODevice, QIODevice::ReadOnly
+#include <QList>                // for QList
+#include <QMessageBox>          // for QMessageBox
+#include <QString>              // for QString, operator+, operator<
+#include <QUrl>                 // for QUrl
+#include <QXmlDefaultHandler>   // for QXmlDefaultHandler
+#include <QXmlInputSource>      // for QXmlInputSource
+#include <QXmlSimpleReader>     // for QXmlSimpleReader
+#include <QtGlobal>             // for qMakeForeachContainer, qPrintable, Q_FOREACH, qWarning, qDebug
 
-#include "zip.h"
+#include <zip.h>    // for zip_stat, zip_fclose, zip_close, zip_fdopen, zip_fopen_index, zip_fread, ZIP_STAT_INDEX, ZIP_STAT_SIZE
 
-// ebook.h -> EBook, EBookIndexEntry, EBookTocEntry, EBook_EPUB
 #include "ebook_epub.h"
-#include "helperxmlhandler_epubcontainer.h" // HelperXmlHandler_EpubContainer
-#include "helperxmlhandler_epubcontent.h"   // HelperXmlHandler_EpubContent
-#include "helperxmlhandler_epubtoc.h"       // HelperXmlHandler_EpubTOC
+#include "helperxmlhandler_epubcontainer.h" // for HelperXmlHandler_EpubContainer
+#include "helperxmlhandler_epubcontent.h"   // for HelperXmlHandler_EpubContent
+#include "helperxmlhandler_epubtoc.h"       // for HelperXmlHandler_EpubTOC
+
 
 const char* EBook_EPUB::URL_SCHEME_EPUB = "epub";
 

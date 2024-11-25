@@ -16,27 +16,28 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QAbstractListModel>
-#include <QAction>
-#include <QByteArray>
-#include <QList>
-#include <QMap>
-#include <QMimeData>
-#include <QModelIndex>
-#include <QObject>            // QObject::connect
-#include <QString>
-#include <QStringList>
-// Qt::DecorationRole, Qt::DisplayRole, Qt::ToolTipRole
-// Qt::ItemIsDropEnabled,   Qt::ItemIsDragEnabled, Qt::ItemIsEnabled
-// Qt::ItemIsSelectable, Qt::DropAction, Qt::MoveAction, Qt::IgnoreAction
-#include <Qt>
-#include <QtGlobal>           // qFatal
-#include <QToolBar>
-#include <QVariant>
-#include <QWidget>
+#include <QAbstractItemModel>   // for QAbstractItemModel, QAbstractListModel
+#include <QAction>              // for QAction
+#include <QByteArray>           // for QByteArray
+#include <QComboBox>            // for QComboBox
+#include <QGroupBox>            // for QGroupBox
+#include <QIcon>                // for QIcon
+#include <QList>                // for QList
+#include <QListView>            // for QListView
+#include <QMap>                 // for QMap
+#include <QMimeData>            // for QMimeData
+#include <QModelIndex>          // for QModelIndex
+#include <QModelIndexList>      // for QModelIndexList
+#include <QObject>              // for emit, SIGNAL, SLOT
+#include <QString>              // for operator==, QString, QByteArray::operator==
+#include <QStringList>          // for QStringList
+#include <QToolBar>             // for QToolBar
+#include <QVariant>             // for QVariant
+#include <Qt>                   // for DisplayRole, operator|, DropActions, ItemFlags, DecorationRole, DropAction, IgnoreAction, ItemIsDragEnabled, ItemIsDro...
+#include <QtGlobal>             // for qMakeForeachContainer, foreach, qFatal, QFlags
 
-#include "toolbareditor.h"  // ToolbarEditor, QDialog
-#include "toolbarmanager.h" // ToolbarManager
+#include "toolbareditor.h"
+#include "toolbarmanager.h" // for ToolbarManager
 
 
 static const char* ACTION_MIME_FORMAT = "application/vnd.action.list";
