@@ -27,7 +27,6 @@ HEADERS += \
     config.h \
     dialog_chooseurlfromlist.h \
     dialog_setup.h \
-    kde-qt.h \
     mainwindow.h \
     recentfiles.h \
     settings.h \
