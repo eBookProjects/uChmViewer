@@ -104,7 +104,7 @@ linux-g++-32: {
 }
 
 # General per-platform settings
-macx:{
+defined(USE_MAC_APP, var) | macx:{
     HEADERS += uchmviewerapp.h
     SOURCES += uchmviewerapp.cpp
     DEFINES += USE_MAC_APP
@@ -119,7 +119,7 @@ win32:{
 
     LIBS += -loleaut32
     defined(USE_GETTEXT, var): LIBS *= -lintl
-    
+
     RC_ICONS = resources/uchmviewer.ico
 }
 
