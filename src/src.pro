@@ -59,6 +59,7 @@ SOURCES += \
     tab_contents.cpp \
     tab_index.cpp \
     tab_search.cpp \
+    viewwindowmgr.cpp \
     navigationpanel.cpp \
     toolbarmanager.cpp \
     toolbareditor.cpp \
@@ -135,12 +136,12 @@ unix:!macx: {
 
     QT += webenginewidgets
     DEFINES += USE_WEBENGINE
-    SOURCES += qtwebengine/viewwindow.cpp qtwebengine/dataprovider.cpp qtwebengine/viewwindowmgr.cpp
+    SOURCES += qtwebengine/viewwindow.cpp qtwebengine/dataprovider.cpp
     HEADERS += qtwebengine/dataprovider.h qtwebengine/viewwindow.h qtwebengine/webenginepage.h
 } else {
     QT += webkit webkitwidgets
     DEFINES += USE_WEBKIT
-    SOURCES += qtwebkit/viewwindow.cpp qtwebkit/dataprovider.cpp qtwebkit/viewwindowmgr.cpp
+    SOURCES += qtwebkit/viewwindow.cpp qtwebkit/dataprovider.cpp
     HEADERS += qtwebkit/dataprovider.h qtwebkit/viewwindow.h
 }
 

@@ -78,6 +78,12 @@ class ViewWindow : public QWebEngineView
 		//! Sets the scrollbar position.
 		void    setScrollbarPosition(int pos, bool force = false);
 
+		void findText(const QString& text,
+		              bool backward,
+		              bool caseSensitively,
+		              bool highlightSearchResults,
+		              std::function<void (bool found, bool wrapped)> result);
+
 		//! Select the content of the whole page
 		void    clipSelectAll();
 

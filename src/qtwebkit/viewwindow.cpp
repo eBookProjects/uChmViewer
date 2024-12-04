@@ -221,6 +221,55 @@ void ViewWindow::setScrollbarPosition(int pos, bool force)
 		page()->currentFrame()->setScrollBarValue( Qt::Vertical, pos );
 }
 
+void ViewWindow::findText(const QString& text,
+                          bool backward,
+                          bool caseSensitively,
+                          bool highlightSearchResults,
+                          std::function<void (bool found, bool wrapped)> result)
+{
+	QWebPage::FindFlags webkitflags;
+
+	if ( caseSensitively )
+		webkitflags |= QWebPage::FindCaseSensitively;
+
+	if ( backward )
+		webkitflags |= QWebPage::FindBackward;
+
+	if ( highlightSearchResults )
+	{
+		// From the doc:
+		// If the HighlightAllOccurrences flag is passed, the
+		// function will highlight all occurrences that exist
+		// in the page. All subsequent calls will extend the
+		// highlight, rather than replace it, with occurrences
+		// of the new string.
+
+		// If the search text is different, we run the empty string search
+		// to discard old highlighting
+		if ( m_lastSearchedWord != text )
+			QWebView::findText( "", webkitflags | QWebPage::HighlightAllOccurrences );
+
+		m_lastSearchedWord = text;
+
+		// Now we call search with highlighting enabled, while the main search below will have
+		// it disabled. This leads in both having the highlighting results AND working forward/
+		// backward buttons.
+		QWebView::findText( text, webkitflags | QWebPage::HighlightAllOccurrences );
+	}
+
+	bool found = QWebView::findText( text, webkitflags );
+	bool wrapped = false;
+
+	// If we didn't find anything, enable the wrap and try again
+	if ( !found )
+	{
+		found = QWebView::findText( text, webkitflags | QWebPage::FindWrapsAroundDocument );
+		wrapped = found;
+	}
+
+	result(found, wrapped);
+}
+
 void ViewWindow::clipSelectAll()
 {
 	triggerPageAction( QWebPage::SelectAll );

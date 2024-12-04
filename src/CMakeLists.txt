@@ -42,6 +42,7 @@ set(CPP_SOURCES
     treeitem_index.h
     treeitem_toc.cpp
     treeitem_toc.h
+    viewwindowmgr.cpp
     )
 
 set(MOC_HEADERS
@@ -80,7 +81,6 @@ if (${USE_WEBENGINE})
         qtwebengine/viewwindow.h
         qtwebengine/dataprovider.cpp
         qtwebengine/dataprovider.h
-        qtwebengine/viewwindowmgr.cpp
         )
     list(APPEND MOC_HEADERS qtwebengine/viewwindow.h  qtwebengine/webenginepage.h)
 else ()
@@ -89,7 +89,6 @@ else ()
         qtwebkit/viewwindow.h
         qtwebkit/dataprovider.cpp
         qtwebkit/dataprovider.h
-        qtwebkit/viewwindowmgr.cpp
         )
     list(APPEND MOC_HEADERS qtwebkit/viewwindow.h)
 endif ()
