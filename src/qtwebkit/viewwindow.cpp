@@ -189,17 +189,19 @@ void ViewWindow::zoomDecrease()
 	setZoomFactor( zoomFactor() - ZOOM_FACTOR_CHANGE );
 }
 
-int ViewWindow::getScrollbarPosition()
+int ViewWindow::scrollTop()
 {
 	return page()->currentFrame()->scrollBarValue( Qt::Vertical );
 }
 
-void ViewWindow::setScrollbarPosition(int pos, bool force)
+void ViewWindow::setScrollTop(int pos)
 {
-	if ( !force )
-		m_storedScrollbarPosition = pos;
-	else
-		page()->currentFrame()->setScrollBarValue( Qt::Vertical, pos );
+	page()->currentFrame()->setScrollBarValue( Qt::Vertical, pos );
+}
+
+void ViewWindow::setAutoScroll(int pos)
+{
+	m_storedScrollbarPosition = pos;
 }
 
 void ViewWindow::findText(const QString& text,

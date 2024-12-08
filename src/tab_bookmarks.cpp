@@ -157,7 +157,7 @@ void TabBookmarks::onAddBookmarkPressed( )
 	                                        list,
 	                                        name,
 	                                        url,
-	                                        ::mainWindow->currentBrowser()->getScrollbarPosition() );
+	                                        ::mainWindow->currentBrowser()->scrollTop() );
 
 	m_menuBookmarks->addAction( item->m_action );
 	m_listChanged = true;
@@ -249,12 +249,12 @@ void TabBookmarks::onItemActivated(QListWidgetItem* item)
 	if ( ::mainWindow->currentBrowser()->url().toString() != treeitem->m_url )
 	{
 		::mainWindow->openPage( treeitem->m_url, MainWindow::OPF_CONTENT_TREE );
-		::mainWindow->currentBrowser()->setScrollbarPosition( treeitem->m_scroll_y );
+		::mainWindow->currentBrowser()->setAutoScroll( treeitem->m_scroll_y );
 	}
 	else
 	{
 		// Force the scroll since the page is not reloaded
-		::mainWindow->currentBrowser()->setScrollbarPosition( treeitem->m_scroll_y, true );
+		::mainWindow->currentBrowser()->setScrollTop( treeitem->m_scroll_y );
 	}
 }
 

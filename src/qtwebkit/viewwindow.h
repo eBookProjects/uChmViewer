@@ -75,10 +75,11 @@ class ViewWindow : public QWebView
 		* There is no restriction on returned value, except that giving this value to
 		* setScrollbarPosition() should move the scrollbar in the same position.
 		*/
-		int     getScrollbarPosition();
+		int     scrollTop();
 
 		//! Sets the scrollbar position.
-		void    setScrollbarPosition(int pos, bool force = false);
+		void    setScrollTop(int pos);
+		void    setAutoScroll(int pos);
 
 		void findText(const QString& text,
 		              bool backward,

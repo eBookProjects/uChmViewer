@@ -292,7 +292,7 @@ void ViewWindowMgr::restoreSettings( const Settings::viewindow_saved_settings_t&
 	{
 		ViewWindow* browser = addNewTab( false );
 		browser->load( settings[i].url ); // will call setTabName()
-		browser->setScrollbarPosition( settings[i].scroll_y );
+		browser->setAutoScroll( settings[i].scroll_y );
 		browser->setZoomFactor( settings[i].zoom );
 	}
 }
@@ -306,7 +306,7 @@ void ViewWindowMgr::saveSettings( Settings::viewindow_saved_settings_t& settings
 		{
 			const TabData& tab = findTabData( i );
 			settings.push_back( Settings::SavedViewWindow( tab.browser->url().toString(),
-			                                               tab.browser->getScrollbarPosition(),
+			                                               tab.browser->scrollTop(),
 			                                               tab.browser->zoomFactor()) );
 		}
 	} catch ( const std::invalid_argument& ) {

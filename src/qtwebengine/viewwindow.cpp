@@ -191,7 +191,7 @@ void ViewWindow::zoomDecrease()
 	setZoomFactor( zoomFactor() - ZOOM_FACTOR_CHANGE );
 }
 
-int ViewWindow::getScrollbarPosition()
+int ViewWindow::scrollTop()
 {
 	QAtomicInt value = -1;
 
@@ -207,13 +207,15 @@ int ViewWindow::getScrollbarPosition()
 	return value;
 }
 
-void ViewWindow::setScrollbarPosition(int pos, bool force)
+void ViewWindow::setScrollTop(int pos)
 {
-	if ( !force )
-		m_storedScrollbarPosition = pos;
-	else
-		page()->runJavaScript( QString( "document.body.scrollTop=%1" ).arg( pos )
-		                       , QWebEngineScript::UserWorld );
+	page()->runJavaScript( QString( "document.body.scrollTop=%1" ).arg( pos )
+	                       , QWebEngineScript::UserWorld );
+}
+
+void ViewWindow::setAutoScroll(int pos)
+{
+	m_storedScrollbarPosition = pos;
 }
 
 void ViewWindow::findText(const QString& text,
