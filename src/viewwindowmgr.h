@@ -104,16 +104,24 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 	private:
 		void    find( bool backward = false );
 
-		typedef struct
+		struct TabData
 		{
 			QWidget*                widget;
 			ViewWindow*             browser;
 			QAction*                action;
-		} TabData;
+
+			bool operator==(const TabData& an) const
+			{
+				return widget == an.widget && browser == an.browser;
+			}
+		};
 
 		void    closeAllWindows();
 		void    closeWindow( QWidget* widget );
-		TabData* findTab( QWidget* widget );
+		void    closeTab( const TabData& data );
+		TabData findTabData( QWidget* widget ) noexcept(false);
+		TabData findTabData( ViewWindow* browser ) noexcept(false);
+		TabData findTabData( int tabIndex ) noexcept(false);
 
 		// Storage of all available windows
 		QList< TabData >    m_Windows;
