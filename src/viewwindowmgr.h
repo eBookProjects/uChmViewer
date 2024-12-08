@@ -52,7 +52,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		ViewWindow*     addNewTab( bool set_active );
 
 		// Sets the tab name and updates Windows menu
-		void    setTabName( ViewWindow* window );
+		void    setTabName( ViewWindow* browser );
 
 		void    invalidate();
 
@@ -87,7 +87,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void    onActivateFind();
 		void    onFindNext();
 		void    onFindPrevious();
-		void    onWindowContentChanged(ViewWindow* window );
+		void    onWindowContentChanged(ViewWindow* browser );
 		void    copyUrlToClipboard();
 
 	protected slots:
@@ -107,7 +107,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		typedef struct
 		{
 			QWidget*                widget;
-			ViewWindow*         window;
+			ViewWindow*             browser;
 			QAction*                action;
 		} TabData;
 

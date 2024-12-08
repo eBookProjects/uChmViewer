@@ -100,7 +100,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		bool        hasSameTokenInstance();
 
 		// Called from WindowMgr when another browser tab is activated
-		void        browserChanged( ViewWindow* newbrowser );
+		void        browserChanged(ViewWindow* browser);
 
 		// Adds some main window actions to the provided popup menu
 		void        setupPopupMenu( QMenu* menu );
