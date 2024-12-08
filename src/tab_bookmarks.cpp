@@ -140,7 +140,7 @@ TabBookmarks::TabBookmarks( QWidget* parent )
 void TabBookmarks::onAddBookmarkPressed( )
 {
 	bool ok;
-	QString url = ::mainWindow->currentBrowser()->getOpenedPage().toString();
+	QString url = ::mainWindow->currentBrowser()->url().toString();
 	QString title = ::mainWindow->chmFile()->getTopicByUrl(url);
 	QString name = QInputDialog::getText(
 	                   this,
@@ -246,7 +246,7 @@ void TabBookmarks::onItemActivated(QListWidgetItem* item)
 
 	BookmarkItem* treeitem = (BookmarkItem*) item;
 
-	if ( ::mainWindow->currentBrowser()->getOpenedPage().toString() != treeitem->m_url )
+	if ( ::mainWindow->currentBrowser()->url().toString() != treeitem->m_url )
 	{
 		::mainWindow->openPage( treeitem->m_url, MainWindow::OPF_CONTENT_TREE );
 		::mainWindow->currentBrowser()->setScrollbarPosition( treeitem->m_scroll_y );

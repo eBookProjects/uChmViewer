@@ -43,9 +43,9 @@ class ViewWindow : public QWebView
 		virtual ~ViewWindow();
 
 		//! Open a page from current chm archive
-		bool    openUrl (const QUrl& url );
+		bool    load (const QUrl& url );
 
-		QUrl    getOpenedPage() const   { return url(); }
+		QUrl    url() const   { return QWebView::url(); }
 		QUrl    getNewTabLink() const   { return m_newTabLinkKeeper; }
 
 	signals:

@@ -91,10 +91,10 @@ void ViewWindow::invalidate( )
 	reload();
 }
 
-bool ViewWindow::openUrl ( const QUrl& url )
+bool ViewWindow::load ( const QUrl& url )
 {
 	// Do not use setContent() here, it resets QWebHistory
-	load( url );
+	QWebEngineView::load( url );
 
 	m_newTabLinkKeeper.clear();
 	mainWindow->viewWindowMgr()->setTabName( this );

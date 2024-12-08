@@ -151,7 +151,7 @@ void NavigationPanel::showPrevInToc()
 		return;
 
 	// Try to find current list item
-	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->getOpenedPage() );
+	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->url() );
 
 	if ( !current )
 		return;
@@ -169,7 +169,7 @@ void NavigationPanel::showNextInToc()
 		return;
 
 	// Try to find current list item
-	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->getOpenedPage() );
+	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->url() );
 
 	if ( !current )
 		return;

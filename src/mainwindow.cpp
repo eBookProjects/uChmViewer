@@ -475,7 +475,7 @@ bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, unsigned i
 		browser->setZoomFactor( zoom );
 	}
 
-	if ( browser->openUrl (url) )
+	if ( browser->load (url) )
 	{
 		// Open all the tree items to show current item (if needed)
 		if ( (flags & OPF_CONTENT_TREE) != 0 )
@@ -524,14 +524,14 @@ void MainWindow::setTextEncoding( const QString& encoding )
 		}
 	}
 
-	// Because updateView() will call view->invalidate(), which clears the view->getOpenedPage(),
+	// Because updateView() will call view->invalidate(), which clears the view->url(),
 	// we have to make a copy of it.
-	QUrl url = currentBrowser()->getOpenedPage();
+	QUrl url = currentBrowser()->url();
 
 	// Regenerate the content and index trees
 	refreshCurrentBrowser();
 
-	currentBrowser()->openUrl( url );
+	currentBrowser()->load( url );
 }
 
 void MainWindow::closeFile( )
@@ -738,7 +738,7 @@ void MainWindow::onOpenPageInNewBackgroundTab( )
 
 void MainWindow::browserChanged(ViewWindow* browser)
 {
-	m_navPanel->findUrlInContents( browser->getOpenedPage() );
+	m_navPanel->findUrlInContents( browser->url() );
 }
 
 bool MainWindow::event( QEvent* e )
@@ -1016,7 +1016,7 @@ void MainWindow::actionViewHTMLsource()
 		return;
 	}
 
-	QUrl page = currentBrowser()->getOpenedPage();
+	QUrl page = currentBrowser()->url();
 
 	if ( pConfig->m_advUseInternalEditor )
 	{
@@ -1105,7 +1105,7 @@ void MainWindow::navigatorVisibilityChanged( bool visible )
 
 void MainWindow::actionLocateInContentsTab()
 {
-	if ( m_navPanel->findUrlInContents( currentBrowser()->getOpenedPage() ) )
+	if ( m_navPanel->findUrlInContents( currentBrowser()->url() ) )
 		m_navPanel->setActive( NavigationPanel::TAB_CONTENTS );
 	else
 		statusBar()->showMessage( i18n( "Could not locate opened topic in content window"), 2000 );
