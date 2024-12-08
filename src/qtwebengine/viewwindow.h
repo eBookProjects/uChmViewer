@@ -66,7 +66,7 @@ class ViewWindow : public QWebEngineView
 		void print( QPrinter* printer, std::function<void (bool success)> result );
 
 		//! Return current ZoomFactor.
-		qreal   getZoomFactor() const;
+		qreal   zoomFactor() const;
 
 		//! Sets ZoomFactor. The value returned by getZoomFactor(), given to this function, should give the same result.
 		void    setZoomFactor( qreal zoom );

@@ -176,9 +176,9 @@ void ViewWindow::setZoomFactor(qreal zoom)
 	QWebEngineView::setZoomFactor( zoom );
 }
 
-qreal ViewWindow::getZoomFactor() const
+qreal ViewWindow::zoomFactor() const
 {
-	return zoomFactor();
+	return QWebEngineView::zoomFactor();
 }
 
 void ViewWindow::zoomIncrease()
