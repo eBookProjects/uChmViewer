@@ -87,10 +87,10 @@ class ViewWindow : public QWebView
 		              std::function<void (bool found, bool wrapped)> result);
 
 		//! Select the content of the whole page
-		void    clipSelectAll();
+		void    selectAll();
 
 		//! Copies the selected content to the clipboard
-		void    clipCopy();
+		void    selectedCopy();
 
 		//! Returns the window title
 		QString title() const;

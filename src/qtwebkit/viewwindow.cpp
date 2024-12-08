@@ -251,12 +251,12 @@ void ViewWindow::findText(const QString& text,
 	result(found, wrapped);
 }
 
-void ViewWindow::clipSelectAll()
+void ViewWindow::selectAll()
 {
 	triggerPageAction( QWebPage::SelectAll );
 }
 
-void ViewWindow::clipCopy()
+void ViewWindow::selectedCopy()
 {
 	triggerPageAction( QWebPage::Copy );
 }

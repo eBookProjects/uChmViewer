@@ -893,12 +893,12 @@ void MainWindow::actionPrint()
 
 void MainWindow::actionEditCopy()
 {
-	currentBrowser()->clipCopy();
+	currentBrowser()->selectedCopy();
 }
 
 void MainWindow::actionEditSelectAll()
 {
-	currentBrowser()->clipSelectAll();
+	currentBrowser()->selectAll();
 }
 
 void MainWindow::actionFindInPage()
