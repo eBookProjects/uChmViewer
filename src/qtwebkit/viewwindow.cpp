@@ -16,14 +16,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QContextMenuEvent>
 #include <QDialog>
+#include <QEvent>
 #include <QKeySequence>
 #include <QMenu>
 #include <QMouseEvent>
 #include <QPalette>
-#include <QPrintDialog>
-#include <QPrinter>
 #include <QString>
 #include <QUrl>
 #include <QWebFrame>
@@ -33,13 +31,9 @@
 #include <Qt>
 #include <QtGlobal>
 
-#include <ebook.h>
+class QPrinter;
 
-#include "../browser-settings.hpp"
-#include "../i18n.h"
-#include "../mainwindow.h"
-#include "../viewwindowmgr.h"
-#include "dataprovider.h"
+#include <ebook.h>
 
 #include "viewwindow.h"
 
@@ -169,21 +163,10 @@ void ViewWindow::setTabKeeper( const QUrl& link )
 	m_newTabLinkKeeper = link;
 }
 
-bool ViewWindow::printCurrentPage()
+void ViewWindow::print( QPrinter* printer, std::function<void (bool success)> result )
 {
-	QPrinter printer( QPrinter::HighResolution );
-	QPrintDialog dlg( &printer, this );
-
-	if ( dlg.exec() != QDialog::Accepted )
-	{
-		::mainWindow->showInStatusBar( i18n( "Printing aborted") );
-		return false;
-	}
-
-	print( &printer );
-	::mainWindow->showInStatusBar( i18n( "Printing finished") );
-
-	return true;
+	QWebView::print( printer );
+	result(true);
 }
 
 void ViewWindow::setZoomFactor(qreal zoom)

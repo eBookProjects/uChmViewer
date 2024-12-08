@@ -39,6 +39,8 @@
 #include <QMenuBar>
 #include <QObject>
 #include <QPixmap>
+#include <QPrinter>
+#include <QPrintDialog>
 #include <QProcess>
 #include <QProgressDialog>
 #include <QSharedMemory>
@@ -873,7 +875,20 @@ void MainWindow::actionOpenFile()
 
 void MainWindow::actionPrint()
 {
-	currentBrowser()->printCurrentPage();
+	QPrinter* printer = new QPrinter( QPrinter::HighResolution );
+	QPrintDialog dlg( printer, this );
+
+	if ( dlg.exec() != QDialog::Accepted )
+	{
+		showInStatusBar( i18n( "Printing aborted") );
+		return;
+	}
+
+	currentBrowser()->print(printer, [ = ](bool succes) {
+		Q_UNUSED(succes);
+		showInStatusBar( i18n( "Printing finished") );
+		delete printer;
+	});
 }
 
 void MainWindow::actionEditCopy()

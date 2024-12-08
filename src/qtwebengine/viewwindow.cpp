@@ -22,8 +22,6 @@
 #include <QKeySequence>
 #include <QMenu>
 #include <QPalette>
-#include <QPrintDialog>
-#include <QPrinter>
 #include <QString>
 #include <QUrl>
 #include <QVariant>
@@ -42,13 +40,9 @@
 	#include <QWebEngineContextMenuData>
 #endif
 
-#include <ebook.h>
+class QPrinter;
 
-#include "../browser-settings.hpp"
-#include "../i18n.h"
-#include "../mainwindow.h"
-#include "../viewwindowmgr.h"
-#include "webenginepage.h"
+#include <ebook.h>
 
 #include "viewwindow.h"
 
@@ -163,28 +157,18 @@ void ViewWindow::setTabKeeper( const QUrl& link )
 	m_newTabLinkKeeper = link;
 }
 
-bool ViewWindow::printCurrentPage()
+void ViewWindow::print( QPrinter* printer, std::function<void (bool success)> result )
 {
-	QPrinter* printer = new QPrinter( QPrinter::HighResolution );
-	QPrintDialog dlg( printer, this );
-	if ( dlg.exec() != QDialog::Accepted )
-	{
-		::mainWindow->showInStatusBar( i18n( "Printing aborted") );
-		return false;
-	}
-
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-	page()->print( printer, [printer](bool result) {
-		Q_UNUSED(result);
-		::mainWindow->showInStatusBar( i18n( "Printing finished") );
-		delete printer;
+	page()->print( printer, [&result](bool success) {
+		result( success );
 	});
 #else
-	// TODO make slot onPrintFinished()
-	print( printer );
+	connect(this, &QWebEngineView::printFinished, [result](bool success) {
+		result( success );
+	});
+	QWebEngineView::print( printer );
 #endif
-
-	return true;
 }
 
 void ViewWindow::setZoomFactor(qreal zoom)
