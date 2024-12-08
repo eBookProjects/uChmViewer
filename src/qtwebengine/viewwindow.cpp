@@ -91,15 +91,13 @@ void ViewWindow::invalidate( )
 	reload();
 }
 
-bool ViewWindow::load ( const QUrl& url )
+void ViewWindow::load ( const QUrl& url )
 {
 	// Do not use setContent() here, it resets QWebHistory
 	QWebEngineView::load( url );
 
 	m_newTabLinkKeeper.clear();
 	mainWindow->viewWindowMgr()->setTabName( this );
-
-	return true;
 }
 
 QMenu* ViewWindow::createStandardContextMenu( QWidget* parent )
