@@ -33,6 +33,7 @@ class QAction;
 class QActionGroup;
 class QCloseEvent;
 class QMenu;
+class QPoint;
 class QSharedMemory;
 class QTemporaryFile;
 
@@ -154,6 +155,9 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		// Link activation
 		void        activateUrl( const QUrl& link );
 		bool        onLinkClicked( ViewWindow* browser, const QUrl& url, UBrowser::OpenMode mode );
+		void        showBrowserContextMenu( ViewWindow* browser,
+		                                    const QPoint& globalPos,
+		                                    const QUrl& link );
 
 		void        updateToolbars();
 		void        updateActions();

@@ -18,8 +18,6 @@
 
 #include <QApplication>
 #include <QContextMenuEvent>
-#include <QKeySequence>
-#include <QMenu>
 #include <QMouseEvent>
 #include <QPalette>
 #include <QString>
@@ -37,7 +35,6 @@ class QPrinter;
 #include <browser-types.hpp>
 #include <ebook.h>
 
-#include "../i18n.h"
 #include "../mainwindow.h"
 #include "../viewwindowmgr.h"
 #include "dataprovider.h"
@@ -51,8 +48,6 @@ ViewWindow::ViewWindow( QWidget* parent )
 	: QWebView ( parent )
 {
 	invalidate();
-	m_contextMenu = 0;
-	m_contextMenuLink = 0;
 	m_storedScrollbarPosition = 0;
 
 	// Use our network emulation layer
@@ -86,7 +81,6 @@ ViewWindow::~ViewWindow()
 
 void ViewWindow::invalidate( )
 {
-	m_newTabLinkKeeper = QString();
 	m_storedScrollbarPosition = 0;
 	reload();
 }
@@ -98,7 +92,6 @@ void ViewWindow::load( const QUrl& url )
 	// Do not use setContent() here, it resets QWebHistory
 	QWebView::load( url );
 
-	m_newTabLinkKeeper.clear();
 	mainWindow->viewWindowMgr()->setTabName( this );
 }
 
@@ -113,45 +106,6 @@ void ViewWindow::applySettings(BrowserSettings& settings)
 	setup->setAttribute( QWebSettings::OfflineStorageDatabaseEnabled, settings.enableOfflineStorage );
 	setup->setAttribute( QWebSettings::LocalStorageDatabaseEnabled, settings.enableLocalStorage );
 	setup->setAttribute( QWebSettings::LocalStorageEnabled, settings.enableLocalStorage );
-}
-
-QMenu* ViewWindow::createStandardContextMenu( QWidget* parent )
-{
-	QMenu* contextMenu = new QMenu( parent );
-
-	contextMenu->addAction( "&Copy", ::mainWindow, SLOT(slotBrowserCopy()) );
-	contextMenu->addAction( "&Select all", ::mainWindow, SLOT(slotBrowserSelectAll()) );
-
-	return contextMenu;
-}
-
-QMenu* ViewWindow::getContextMenu( const QUrl& link, QWidget* parent )
-{
-	if ( link.isEmpty() )
-	{
-		// standard context menu
-		if ( !m_contextMenu )
-			m_contextMenu = createStandardContextMenu( parent );
-
-		return m_contextMenu;
-	}
-	else
-	{
-		// Open in New Tab context menu
-		// standard context menu
-		if ( !m_contextMenuLink )
-		{
-			m_contextMenuLink = createStandardContextMenu( parent );
-			m_contextMenuLink->addSeparator();
-
-			m_contextMenuLink->addAction( i18n("&Open this link in a new tab"), ::mainWindow, SLOT(onOpenPageInNewTab()), QKeySequence("Shift+Enter") );
-
-			m_contextMenuLink->addAction( i18n("&Open this link in a new background tab"), ::mainWindow, SLOT(onOpenPageInNewBackgroundTab()), QKeySequence("Ctrl+Enter") );
-		}
-
-		setTabKeeper( link );
-		return m_contextMenuLink;
-	}
 }
 
 QString ViewWindow::title() const
@@ -173,11 +127,6 @@ bool ViewWindow::canGoBack() const
 bool ViewWindow::canGoForward() const
 {
 	return history()->canGoForward();
-}
-
-void ViewWindow::setTabKeeper( const QUrl& link )
-{
-	m_newTabLinkKeeper = link;
 }
 
 void ViewWindow::print( QPrinter* printer, std::function<void (bool success)> result )
@@ -308,21 +257,8 @@ void ViewWindow::mouseReleaseEvent ( QMouseEvent* event )
 
 void ViewWindow::contextMenuEvent(QContextMenuEvent* e)
 {
-	// From Qt Assistant
-	QMenu* m = new QMenu(0);
 	QUrl link = anchorAt( e->pos() );
-
-	if ( !link.isEmpty() )
-	{
-		m->addAction( i18n("Open Link in a new tab\tShift+LMB"), ::mainWindow, SLOT( onOpenPageInNewTab() ) );
-		m->addAction( i18n("Open Link in a new background tab\tCtrl+LMB"), ::mainWindow, SLOT( onOpenPageInNewBackgroundTab() ) );
-		m->addSeparator();
-		setTabKeeper( link );
-	}
-
-	::mainWindow->setupPopupMenu( m );
-	m->exec( e->globalPos() );
-	delete m;
+	emit contextMenuRequested(e->globalPos(), link);
 }
 
 void ViewWindow::onLoadFinished ( bool )

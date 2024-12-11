@@ -46,6 +46,7 @@
 #include <QtGlobal>
 
 class QMouseEvent;
+class QPoint;
 
 #include <browser-settings.hpp>
 #include <browser-types.hpp>
@@ -195,6 +196,12 @@ ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 	         [browser, this] (bool success)
 	{
 		onBrowserLoadFinished( browser, success );
+	});
+
+	connect( browser, &ViewWindow::contextMenuRequested,
+	         [browser, this] ( const QPoint & pos, const QUrl & link )
+	{
+		emit contextMenuRequested( browser, pos, link );
 	});
 
 	// Set up the accelerator if we have room

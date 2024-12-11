@@ -139,6 +139,8 @@ MainWindow::MainWindow( const QStringList& arguments )
 	        this, &MainWindow::onUrlChanged);
 	connect(m_viewWindowMgr, &ViewWindowMgr::linkClicked,
 	        this, &MainWindow::onLinkClicked);
+	connect(m_viewWindowMgr, &ViewWindowMgr::contextMenuRequested,
+	        this, &MainWindow::showBrowserContextMenu);
 
 	// Add navigation dock
 	m_navPanel->setAllowedAreas( Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea );
@@ -416,6 +418,33 @@ void MainWindow::refreshCurrentBrowser( )
 	currentBrowser()->invalidate();
 
 	m_navPanel->refresh();
+}
+
+void MainWindow::showBrowserContextMenu(ViewWindow* browser,
+                                        const QPoint& globalPos,
+                                        const QUrl& link)
+{
+	Q_UNUSED(browser)
+	QMenu* m = new QMenu(this);
+
+	if ( !link.isEmpty() )
+	{
+		m->addAction( i18n("Open Link in a new tab\tShift+LMB"),
+		              [this, link] ()
+		{
+			openPage( link, UBrowser::OPEN_IN_NEW );
+		});
+		m->addAction( i18n("Open Link in a new background tab\tCtrl+LMB"),
+		              [this, link] ()
+		{
+			openPage( link, UBrowser::OPEN_IN_BACKGROUND );
+		});
+		m->addSeparator();
+	}
+
+	setupPopupMenu( m );
+	m->exec( globalPos );
+	m->deleteLater();
 }
 
 void MainWindow::activateUrl( const QUrl& link )
