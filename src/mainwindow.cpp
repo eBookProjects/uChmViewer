@@ -16,6 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <functional>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -71,6 +72,7 @@
 
 class QCloseEvent;
 
+#include <browser-types.hpp>
 #include <ebook.h>
 
 #include "config.h"
@@ -136,7 +138,7 @@ MainWindow::MainWindow( const QStringList& arguments )
 	connect(m_viewWindowMgr, &ViewWindowMgr::urlChanged,
 	        this, &MainWindow::onUrlChanged);
 	connect(m_viewWindowMgr, &ViewWindowMgr::linkClicked,
-	        this, &MainWindow::activateUrl);
+	        this, &MainWindow::onLinkClicked);
 
 	// Add navigation dock
 	m_navPanel->setAllowedAreas( Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea );
@@ -424,19 +426,19 @@ void MainWindow::activateUrl( const QUrl& link )
 	Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
 
 	if ( mods & Qt::ShiftModifier )
-		openPage( link, OPF_NEW_TAB | OPF_CONTENT_TREE );
+		openPage( link, UBrowser::OPEN_IN_NEW );
 	else if ( mods & Qt::ControlModifier )
-		openPage( link, OPF_NEW_TAB | OPF_BACKGROUND );
+		openPage( link, UBrowser::OPEN_IN_BACKGROUND );
 	else
-		openPage( link, OPF_CONTENT_TREE );
+		openPage( link, UBrowser::OPEN_IN_CURRENT );
 }
 
-bool MainWindow::openPage( const QUrl& url, unsigned int flags )
+bool MainWindow::openPage(const QUrl& url, UBrowser::OpenMode mode )
 {
-	return onLinkClicked( currentBrowser(), url, flags );
+	return onLinkClicked( currentBrowser(), url, mode );
 }
 
-bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, unsigned int flags )
+bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, UBrowser::OpenMode mode )
 {
 	QString otherlink;
 
@@ -470,22 +472,23 @@ bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, unsigned i
 		return false; // do not change the current page.
 	}
 
-	if ( flags & OPF_NEW_TAB )
+
+	if ( mode == UBrowser::OPEN_IN_NEW || mode == UBrowser::OPEN_IN_BACKGROUND )
 	{
 		qreal zoom = currentBrowser()->zoomFactor();
-		browser = m_viewWindowMgr->addNewTab( !(flags & OPF_BACKGROUND) );
+		browser = m_viewWindowMgr->addNewTab( mode != UBrowser::OPEN_IN_BACKGROUND );
 		browser->setZoomFactor( zoom );
 	}
 
 	browser->load( url );
 
-	// Open all the tree items to show current item (if needed)
-	if ( (flags & OPF_CONTENT_TREE) != 0 )
+	if ( mode != UBrowser::OPEN_IN_BACKGROUND )
+	{
+		// Open all the tree items to show current item (if needed)
 		m_navPanel->findUrlInContents( url );
-
-	// Focus on the view window so keyboard scroll works; do not do it for the background tabs
-	if ( (flags & OPF_BACKGROUND) == 0 )
+		// Focus on the view window so keyboard scroll works; do not do it for the background tabs
 		browser->setFocus( Qt::OtherFocusReason );
+	}
 
 	return true;
 }
@@ -729,12 +732,12 @@ QUrl MainWindow::getNewTabLink() const
 
 void MainWindow::onOpenPageInNewTab( )
 {
-	openPage( getNewTabLink(), OPF_NEW_TAB | OPF_CONTENT_TREE );
+	openPage( getNewTabLink(), UBrowser::OPEN_IN_NEW );
 }
 
 void MainWindow::onOpenPageInNewBackgroundTab( )
 {
-	openPage( getNewTabLink(), OPF_NEW_TAB | OPF_BACKGROUND );
+	openPage( getNewTabLink(), UBrowser::OPEN_IN_BACKGROUND );
 }
 
 void MainWindow::browserChanged(ViewWindow* browser)

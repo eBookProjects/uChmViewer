@@ -248,7 +248,7 @@ void TabBookmarks::onItemActivated(QListWidgetItem* item)
 
 	if ( ::mainWindow->currentBrowser()->url().toString() != treeitem->m_url )
 	{
-		::mainWindow->openPage( treeitem->m_url, MainWindow::OPF_CONTENT_TREE );
+		::mainWindow->openPage( treeitem->m_url );
 		::mainWindow->currentBrowser()->setAutoScroll( treeitem->m_scroll_y );
 	}
 	else

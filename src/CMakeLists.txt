@@ -5,6 +5,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Project files
 set(CPP_SOURCES
+    browser-types.hpp
     config.cpp
     config.h
     dialog_chooseurlfromlist.cpp

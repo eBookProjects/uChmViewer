@@ -26,6 +26,7 @@
 #include <QWebEnginePage>
 #include <QWebEngineProfile>
 
+#include <browser-types.hpp>
 #include <ebook_chm.h>
 #include <ebook_epub.h>
 
@@ -41,7 +42,7 @@ class WebEnginePage : public QWebEnginePage
 
 	signals:
 		// This signal is emitted whenever the user clicks on a link.
-		void linkClicked( const QUrl& url );
+		void linkClicked( const QUrl& url, UBrowser::OpenMode mode );
 
 	public:
 		WebEnginePage(QObject* parent)
@@ -63,7 +64,13 @@ class WebEnginePage : public QWebEnginePage
 		{
 		}
 
-		// Link click capture. This does not work for the right mouse button.
+		/* Link click capture. This does not work for the right mouse button.
+		 * Important! In Qt5, this function is called both when clicking with
+		 * the Ctrl and/or Shift keys pressed and when clicking without keyboard
+		 * modifiers, whereas in Qt6 it is called only when clicking without
+		 * keyboard modifiers. In any Qt, the createWindow function is called
+		 * when clicking with keyboard modifier.
+		 */
 		virtual bool acceptNavigationRequest( const QUrl& url, NavigationType type, bool isMainFrame ) override
 		{
 #if PRINT_DEBUG
@@ -77,7 +84,14 @@ class WebEnginePage : public QWebEnginePage
 
 			if ( type == QWebEnginePage::NavigationTypeLinkClicked )
 			{
-				emit linkClicked( url );
+				/*
+				 * Here m_url is used as a flag. If linkClicked was emitted in the createWindow
+				 * function, the m_url variable has been cleared and we don't need to re-emit
+				 * linkClicked. This is specifically for QwebEngine < 6.2.
+				 */
+				if ( !m_url.isEmpty() )
+					emit linkClicked( url, UBrowser::OPEN_IN_CURRENT );
+
 				return false;
 			}
 
@@ -104,11 +118,16 @@ class WebEnginePage : public QWebEnginePage
 			if ( !m_url.isEmpty() )
 			{
 				Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
-				if ( !( mods & (Qt::ShiftModifier | Qt::ControlModifier ) ) )
-					linkClicked( ( m_url ) );
+
+				if ( ( mods & Qt::ShiftModifier ) != 0 || type == QWebEnginePage::WebBrowserTab)
+					emit linkClicked( m_url, UBrowser::OPEN_IN_NEW );
+				else
+					emit linkClicked(  m_url, UBrowser::OPEN_IN_BACKGROUND );
+
+				m_url.clear();
 			}
 
-			return 0;
+			return nullptr;
 		}
 
 	protected slots:

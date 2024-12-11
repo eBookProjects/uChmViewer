@@ -16,6 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <functional>
 #include <cstdlib>
 #include <stdexcept>
 
@@ -40,18 +41,14 @@
 #include <QToolButton>
 #include <QUrl>
 #include <QVBoxLayout>
-#include <QWebEnginePage>
 #include <QWidget>
 #include <Qt>
 #include <QtGlobal>
 
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-	#include <QWebEngineView>
-#else
-	#include <functional>
-#endif
-
 class QMouseEvent;
+
+#include <browser-settings.hpp>
+#include <browser-types.hpp>
 
 #include "config.h"
 #include "i18n.h"
@@ -183,9 +180,9 @@ ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 
 	// Handle clicking on link in browser window
 	connect( browser, &ViewWindow::linkClicked,
-	         [this] ( const QUrl & link )
+	         [browser, this] ( const QUrl & link, UBrowser::OpenMode mode )
 	{
-		emit linkClicked( link );
+		emit linkClicked( browser, link, mode );
 	});
 
 	connect( browser, &ViewWindow::urlChanged,
@@ -353,7 +350,7 @@ void ViewWindowMgr::onBrowserLoadFinished(ViewWindow* browser, bool success)
 
 void ViewWindowMgr::openNewTab()
 {
-	::mainWindow->openPage( current()->url(), MainWindow::OPF_NEW_TAB | MainWindow::OPF_CONTENT_TREE );
+	::mainWindow->openPage( current()->url(), UBrowser::OPEN_IN_NEW );
 }
 
 void ViewWindowMgr::activateWindow()

@@ -18,7 +18,6 @@
 
 #include <QApplication>
 #include <QContextMenuEvent>
-#include <QDialog>
 #include <QKeySequence>
 #include <QMenu>
 #include <QPalette>
@@ -42,7 +41,14 @@
 
 class QPrinter;
 
+#include <browser-settings.hpp>
+#include <browser-types.hpp>
 #include <ebook.h>
+
+#include "../i18n.h"
+#include "../mainwindow.h"
+#include "../viewwindowmgr.h"
+#include "webenginepage.h"
 
 #include "viewwindow.h"
 
@@ -62,7 +68,7 @@ ViewWindow::ViewWindow( QWidget* parent )
 	m_storedScrollbarPosition = 0;
 
 	WebEnginePage* page = new WebEnginePage( this );
-	connect( page, SIGNAL( linkClicked ( const QUrl& ) ), this, SLOT( onLinkClicked( const QUrl& ) ) );
+	connect( page, SIGNAL( linkClicked ( const QUrl&, UBrowser::OpenMode ) ), this, SLOT( onLinkClicked( const QUrl&, UBrowser::OpenMode ) ) );
 	setPage( page );
 
 	connect( this, SIGNAL( loadFinished(bool)), this, SLOT( onLoadFinished(bool)) );
@@ -294,9 +300,9 @@ void ViewWindow::onLoadFinished ( bool )
 	emit dataLoaded( this );
 }
 
-void ViewWindow::onLinkClicked(const QUrl& url)
+void ViewWindow::onLinkClicked(const QUrl& url, UBrowser::OpenMode mode)
 {
-	emit linkClicked( url );
+	emit linkClicked( url, mode );
 }
 
 void ViewWindow::applySettings(BrowserSettings& settings)

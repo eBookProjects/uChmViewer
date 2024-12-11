@@ -36,6 +36,7 @@ class QMenu;
 class QSharedMemory;
 class QTemporaryFile;
 
+#include <browser-types.hpp>
 #include <ebook.h>
 
 class NavigationPanel;
@@ -67,19 +68,10 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		Q_OBJECT
 
 	public:
-		// "Open page" parameter flags
-		enum
-		{
-			OPF_CONTENT_TREE = 1 << 0,  //! Locate this page in the content tree
-			OPF_NEW_TAB = 1 << 2,       //! Open the page in a new tab
-			OPF_BACKGROUND  = 1 << 3    //! Open the page in a new tab in background
-		};
-
-	public:
 		MainWindow( const QStringList& arguments );
 		~MainWindow();
 
-		bool        openPage (const QUrl& url, unsigned int flags = OPF_CONTENT_TREE );
+		bool        openPage (const QUrl& url, UBrowser::OpenMode mode = UBrowser::OPEN_IN_CURRENT );
 
 		EBook*      chmFile() const { return m_ebookFile; }
 		const QString&  getOpenedFileName () { return m_ebookFilename; }
@@ -161,7 +153,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 
 		// Link activation
 		void        activateUrl( const QUrl& link );
-		bool        onLinkClicked( ViewWindow* browser, const QUrl& url, unsigned int flags );
+		bool        onLinkClicked( ViewWindow* browser, const QUrl& url, UBrowser::OpenMode mode );
 
 		void        updateToolbars();
 		void        updateActions();

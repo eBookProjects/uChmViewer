@@ -160,7 +160,7 @@ void NavigationPanel::showPrevInToc()
 	lit--;
 
 	if ( *lit )
-		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl(), MainWindow::OPF_CONTENT_TREE );
+		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl() );
 }
 
 void NavigationPanel::showNextInToc()
@@ -178,7 +178,7 @@ void NavigationPanel::showNextInToc()
 	lit++;
 
 	if ( *lit )
-		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl(), MainWindow::OPF_CONTENT_TREE );
+		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl() );
 }
 
 int NavigationPanel::active() const

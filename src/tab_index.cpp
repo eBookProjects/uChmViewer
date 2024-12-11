@@ -148,7 +148,7 @@ void TabIndex::onItemActivated ( QTreeWidgetItem* item, int )
 			m_lastSelectedItem = 0;
 	}
 	else
-		::mainWindow->openPage( url, MainWindow::OPF_CONTENT_TREE );
+		::mainWindow->openPage( url );
 }
 
 void TabIndex::refillIndex( )

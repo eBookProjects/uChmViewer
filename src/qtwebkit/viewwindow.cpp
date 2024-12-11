@@ -16,8 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QDialog>
-#include <QEvent>
+#include <QApplication>
+#include <QContextMenuEvent>
 #include <QKeySequence>
 #include <QMenu>
 #include <QMouseEvent>
@@ -33,7 +33,14 @@
 
 class QPrinter;
 
+#include <browser-settings.hpp>
+#include <browser-types.hpp>
 #include <ebook.h>
+
+#include "../i18n.h"
+#include "../mainwindow.h"
+#include "../viewwindowmgr.h"
+#include "dataprovider.h"
 
 #include "viewwindow.h"
 
@@ -55,6 +62,16 @@ ViewWindow::ViewWindow( QWidget* parent )
 	page()->setLinkDelegationPolicy( QWebPage::DelegateAllLinks );
 
 	connect( this, SIGNAL( loadFinished(bool)), this, SLOT( onLoadFinished(bool)) );
+	connect(this, &QWebView::linkClicked,
+	        [this](const QUrl & link)
+	{
+		if ( (QApplication::keyboardModifiers() & Qt::ShiftModifier) != 0 )
+			emit linkClicked( link, UBrowser::OPEN_IN_NEW );
+		else if ( (QApplication::keyboardModifiers() & Qt::ControlModifier) != 0 )
+			emit linkClicked( link, UBrowser::OPEN_IN_BACKGROUND );
+		else
+			emit linkClicked( link, UBrowser::OPEN_IN_CURRENT );
+	});
 
 	// Search results highlighter
 	QPalette pal = palette();
@@ -281,8 +298,7 @@ void ViewWindow::mouseReleaseEvent ( QMouseEvent* event )
 
 		if ( !link.isEmpty() )
 		{
-			setTabKeeper( link );
-			::mainWindow->onOpenPageInNewBackgroundTab();
+			emit linkClicked( link, UBrowser::OPEN_IN_BACKGROUND );
 			return;
 		}
 	}

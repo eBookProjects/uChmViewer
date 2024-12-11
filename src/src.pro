@@ -24,6 +24,7 @@ QT += \
     printsupport
 
 HEADERS += \
+    browser-types.hpp \
     config.h \
     dialog_chooseurlfromlist.h \
     dialog_setup.h \
