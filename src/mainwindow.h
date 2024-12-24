@@ -99,9 +99,6 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		// also sends the command-line data there so it runs properly.
 		bool        hasSameTokenInstance();
 
-		// Called from WindowMgr when another browser tab is activated
-		void        browserChanged(ViewWindow* browser);
-
 		// Adds some main window actions to the provided popup menu
 		void        setupPopupMenu( QMenu* menu );
 
@@ -113,6 +110,9 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		const QPixmap* getEBookIconPixmap( EBookTocEntry::Icon imagenum );
 
 	public slots:
+		// Called from WindowMgr when another browser tab is activated
+		void        browserChanged(ViewWindow* browser);
+
 		// Navigation toolbar icons
 		void        navSetBackEnabled( bool enabled );
 		void        navSetForwardEnabled( bool enabled );

@@ -323,7 +323,7 @@ void ViewWindowMgr::onTabChanged( int newtabIndex )
 	try {
 		const TabData& tab = findTabData( newtabIndex );
 		emit historyChanged();
-		mainWindow->browserChanged( tab.browser );
+		emit browserChanged( tab.browser );
 		tab.widget->setFocus();
 	} catch ( const std::invalid_argument& ) {
 	}

@@ -126,6 +126,8 @@ MainWindow::MainWindow( const QStringList& arguments )
 	        SIGNAL(historyChanged()),
 	        this,
 	        SLOT(onHistoryChanged()));
+	connect(m_viewWindowMgr, &ViewWindowMgr::browserChanged,
+	        this, &MainWindow::browserChanged);
 
 	// Create a navigation panel
 	m_navPanel = new NavigationPanel( this );
