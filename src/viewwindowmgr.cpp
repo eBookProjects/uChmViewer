@@ -187,10 +187,11 @@ ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 	         ::mainWindow,
 	         SLOT( activateUrl( const QUrl& ) ) );
 
-	connect( browser,
-	         SIGNAL( urlChanged( const QUrl& ) ),
-	         this,
-	         SLOT( onUrlChanged( const QUrl& ) ) );
+	connect( browser, &ViewWindow::urlChanged,
+	         [browser, this] ( const QUrl & url )
+	{
+		onBrowserUrlChanged( browser, url );
+	});
 
 	connect( browser, SIGNAL(dataLoaded(ViewWindow*)), this, SLOT(onWindowContentChanged(ViewWindow*)));
 
@@ -323,15 +324,20 @@ void ViewWindowMgr::onTabChanged( int newtabIndex )
 	try {
 		const TabData& tab = findTabData( newtabIndex );
 		emit historyChanged();
+		emit urlChanged( tab.browser->url() );
 		emit browserChanged( tab.browser );
 		tab.widget->setFocus();
 	} catch ( const std::invalid_argument& ) {
 	}
 }
 
-void ViewWindowMgr::onUrlChanged(const QUrl&)
+void ViewWindowMgr::onBrowserUrlChanged( ViewWindow* browser, const QUrl& url )
 {
-	emit historyChanged();
+	if ( browser == current() )
+	{
+		emit urlChanged(url);
+		emit historyChanged();
+	}
 }
 
 void ViewWindowMgr::openNewTab()

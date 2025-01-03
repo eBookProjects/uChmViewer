@@ -123,6 +123,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		//! Connected to ViewWindowMgr::historyChanged().
 		//! Update state of navigation actions.
 		void        onHistoryChanged();
+		void        onUrlChanged( const QUrl& url );
 		void        onOpenPageInNewTab();
 		void        onOpenPageInNewBackgroundTab();
 

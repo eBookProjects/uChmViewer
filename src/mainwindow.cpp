@@ -122,15 +122,17 @@ MainWindow::MainWindow( const QStringList& arguments )
 	// Create the view window, which is a central widget
 	m_viewWindowMgr = new ViewWindowMgr( this );
 	setCentralWidget( m_viewWindowMgr );
+	// Create a navigation panel
+	m_navPanel = new NavigationPanel( this );
+
 	connect(m_viewWindowMgr,
 	        SIGNAL(historyChanged()),
 	        this,
 	        SLOT(onHistoryChanged()));
 	connect(m_viewWindowMgr, &ViewWindowMgr::browserChanged,
 	        this, &MainWindow::browserChanged);
-
-	// Create a navigation panel
-	m_navPanel = new NavigationPanel( this );
+	connect(m_viewWindowMgr, &ViewWindowMgr::urlChanged,
+	        this, &MainWindow::onUrlChanged);
 
 	// Add navigation dock
 	m_navPanel->setAllowedAreas( Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea );
@@ -1352,6 +1354,11 @@ void MainWindow::onHistoryChanged()
 {
 	navSetBackEnabled( currentBrowser()->canGoBack() );
 	navSetForwardEnabled( currentBrowser()->canGoForward() );
+}
+
+void MainWindow::onUrlChanged(const QUrl& url)
+{
+	m_navPanel->findUrlInContents( url );
 }
 
 void MainWindow::actionOpenRecentFile( const QString& file )
