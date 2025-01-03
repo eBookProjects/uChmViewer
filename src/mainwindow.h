@@ -161,6 +161,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 
 		// Link activation
 		void        activateUrl( const QUrl& link );
+		bool        onLinkClicked( ViewWindow* browser, const QUrl& url, unsigned int flags );
 
 		void        updateToolbars();
 		void        updateActions();

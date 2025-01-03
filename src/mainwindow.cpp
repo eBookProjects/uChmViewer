@@ -431,6 +431,11 @@ void MainWindow::activateUrl( const QUrl& link )
 
 bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 {
+	return onLinkClicked( currentBrowser(), url, flags );
+}
+
+bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, unsigned int flags )
+{
 	QString otherlink;
 
 	// Feed to the browser all non-internal URLs
@@ -462,8 +467,6 @@ bool MainWindow::openPage( const QUrl& url, unsigned int flags )
 
 		return false; // do not change the current page.
 	}
-
-	ViewWindow* browser = currentBrowser();
 
 	if ( flags & OPF_NEW_TAB )
 	{
