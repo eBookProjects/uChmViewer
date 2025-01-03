@@ -1208,7 +1208,7 @@ void MainWindow::setupActions()
 	connect( nav_actionNextPageToc, SIGNAL( triggered() ), m_navPanel, SLOT( showNextInToc() ) );
 
 	// m_viewWindowMgr fills and maintains 'Window' menu
-	m_viewWindowMgr->createMenu( this, menu_Windows, action_Close_window );
+	m_viewWindowMgr->createMenu( menu_Windows, action_Close_window );
 
 	m_navPanel->setBookmarkMenu( menu_Bookmarks );
 

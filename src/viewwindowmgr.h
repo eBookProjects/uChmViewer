@@ -57,7 +57,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void    invalidate();
 
 		// Creates a Window menu
-		void    createMenu( MainWindow* parent, QMenu* menuWindow, QAction* actionCloseWindow );
+		void    createMenu( QMenu* menuWindow, QAction* actionCloseWindow );
 
 		// Saves and restores current settings between sessions
 		void    restoreSettings( const Settings::viewindow_saved_settings_t& settings );

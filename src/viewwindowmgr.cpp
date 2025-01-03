@@ -135,7 +135,7 @@ ViewWindowMgr::~ViewWindowMgr( )
 {
 }
 
-void ViewWindowMgr::createMenu( MainWindow*, QMenu* menuWindow, QAction* actionCloseWindow )
+void ViewWindowMgr::createMenu( QMenu* menuWindow, QAction* actionCloseWindow )
 {
 	m_menuWindow = menuWindow;
 	m_actionCloseWindow = actionCloseWindow;
