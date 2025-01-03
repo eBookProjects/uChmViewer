@@ -133,6 +133,8 @@ MainWindow::MainWindow( const QStringList& arguments )
 	        this, &MainWindow::browserChanged);
 	connect(m_viewWindowMgr, &ViewWindowMgr::urlChanged,
 	        this, &MainWindow::onUrlChanged);
+	connect(m_viewWindowMgr, &ViewWindowMgr::linkClicked,
+	        this, &MainWindow::activateUrl);
 
 	// Add navigation dock
 	m_navPanel->setAllowedAreas( Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea );

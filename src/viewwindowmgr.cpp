@@ -182,10 +182,11 @@ ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 		m_tabWidget->setCurrentWidget( tabdata.widget );
 
 	// Handle clicking on link in browser window
-	connect( browser,
-	         SIGNAL( linkClicked ( const QUrl& ) ),
-	         ::mainWindow,
-	         SLOT( activateUrl( const QUrl& ) ) );
+	connect( browser, &ViewWindow::linkClicked,
+	         [this] ( const QUrl & link )
+	{
+		emit linkClicked( link );
+	});
 
 	connect( browser, &ViewWindow::urlChanged,
 	         [browser, this] ( const QUrl & url )

@@ -83,6 +83,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void    historyChanged();
 		void    urlChanged( const QUrl& url );
 		void    loadFinished( ViewWindow* browser, bool success );
+		void    linkClicked( const QUrl& url );
 
 	public slots:
 		void    onCloseCurrentWindow();
