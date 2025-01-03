@@ -82,6 +82,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		 */
 		void    historyChanged();
 		void    urlChanged( const QUrl& url );
+		void    loadFinished( ViewWindow* browser, bool success );
 
 	public slots:
 		void    onCloseCurrentWindow();
@@ -89,7 +90,6 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void    onActivateFind();
 		void    onFindNext();
 		void    onFindPrevious();
-		void    onWindowContentChanged(ViewWindow* browser );
 		void    copyUrlToClipboard();
 
 	protected slots:
@@ -97,6 +97,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void    onTabChanged( int newtabIndex );
 		//! Connected to ViewWindow::urlChanged()
 		void    onBrowserUrlChanged( ViewWindow* browser, const QUrl& url );
+		void    onBrowserLoadFinished( ViewWindow* browser, bool success );
 		void    updateCloseButtons();
 		void    activateWindow();
 		void    closeSearch();

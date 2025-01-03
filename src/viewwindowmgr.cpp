@@ -193,7 +193,11 @@ ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 		onBrowserUrlChanged( browser, url );
 	});
 
-	connect( browser, SIGNAL(dataLoaded(ViewWindow*)), this, SLOT(onWindowContentChanged(ViewWindow*)));
+	connect( browser, &ViewWindow::loadFinished,
+	         [browser, this] (bool success)
+	{
+		onBrowserLoadFinished( browser, success );
+	});
 
 	// Set up the accelerator if we have room
 	if ( m_Windows.size() < 10 )
@@ -340,6 +344,12 @@ void ViewWindowMgr::onBrowserUrlChanged( ViewWindow* browser, const QUrl& url )
 	}
 }
 
+void ViewWindowMgr::onBrowserLoadFinished(ViewWindow* browser, bool success)
+{
+	setTabName( browser );
+	emit loadFinished( browser, success );
+}
+
 void ViewWindowMgr::openNewTab()
 {
 	::mainWindow->openPage( current()->getOpenedPage(), MainWindow::OPF_NEW_TAB | MainWindow::OPF_CONTENT_TREE );
@@ -447,11 +457,6 @@ void ViewWindowMgr::onFindNext()
 void ViewWindowMgr::onFindPrevious()
 {
 	find( true );
-}
-
-void ViewWindowMgr::onWindowContentChanged(ViewWindow* browser)
-{
-	setTabName( browser );
 }
 
 void ViewWindowMgr::copyUrlToClipboard()
