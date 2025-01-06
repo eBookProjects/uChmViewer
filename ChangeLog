@@ -1,5 +1,11 @@
+2024-01-06 u-235 <nicegorov@yandex.com>
+    - v8.4 published
+
 2024-12-28 u-235 <nicegorov@yandex.com>
     - Imported a50c547, a0f1f70 and cbeec3c commits from https://github.com/artww/kchmviewer that add Polish translation.
+
+2024-12-11 u-235 <nicegorov@yandex.com>
+    - Fixed a bug causing false detection of an external link and displaying the "Open link in external program" dialog box. This was happening when clicking on the link together with the `Ctrl`/`Shift` key or when activating the context menu item "Open in new/background tab".
 
 2024-11-18 u-235 <nicegorov@yandex.com>
     - v8.3 published

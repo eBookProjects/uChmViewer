@@ -32,6 +32,7 @@
 - Csaba Zakarias, Hungarian.
 - Emilio Scalise, Italian.
 - [Manuele Grueff](https://github.com/ShoresOfNowhere), Italian.
+- [Artur Wdowik](https://github.com/artww), Polish.
 - Ivan Bobrov, Russian.
 - George Yunaev, Russian.
 - [Daniel Nylander](https://github.com/yeager), Swedish.

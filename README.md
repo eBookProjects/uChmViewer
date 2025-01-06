@@ -22,8 +22,7 @@ KchmViewer is written by [Georgy Yunaev](https://github.com/gyunaev), and is lic
 
 ## What's New
 
-Thanks to [Manuele Grueff](https://github.com/ShoresOfNowhere), the Italian
-translation has been completely updated. Thanks to [oltolm](https://github.com/oltolm) several bugs have been fixed.
+Fixed a bug causing false detection of an external link and displaying the “Open link in external program” dialog box.
 
 Read more in the [release note](https://github.com/u-235/uchmviewer/releases/latest) and in the [news](NEWS.md).
 

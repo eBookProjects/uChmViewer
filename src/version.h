@@ -21,7 +21,7 @@
 
 
 #ifndef APP_VERSION
-	#define APP_VERSION "8.3"
+	#define APP_VERSION "8.4"
 #endif
 
 #endif /* INCLUDE_VERSION_H */

@@ -1,3 +1,9 @@
+## 2025-01-06 v8.4
+
+* Added Polish translation imported from https://github.com/artww/kchmviewer .
+* Fixed a bug causing false detection of an external link and displaying the "Open link in external program" dialog box. This was happening when clicking on the link together with the `Ctrl`/`Shift` key or when activating the context menu item "Open in new/background tab".
+
+
 ## 2024-11-18 v8.3
 
 * Completely updated the Italian translation.
