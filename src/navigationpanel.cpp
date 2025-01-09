@@ -130,6 +130,7 @@ bool NavigationPanel::findUrlInContents( const QUrl& url )
 	if ( treeitem )
 	{
 		TreeItem_TOC* itemparent = treeitem;
+
 		while ( (itemparent = (TreeItem_TOC*) itemparent->parent()) != 0 )
 			itemparent->setExpanded(true);
 
@@ -205,6 +206,7 @@ void NavigationPanel::setActive( int index )
 			m_tabWidget->setCurrentWidget( m_contentsTab );
 			m_contentsTab->focus();
 		}
+
 		break;
 
 	case TAB_INDEX:

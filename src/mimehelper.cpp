@@ -44,6 +44,7 @@ QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
 	 * EF BB BF     UTF-8
 	 */
 	auto iter = buf.begin();
+
 	// Skip utf-8 Byte Order Mark
 	if (buf.startsWith("\xEF\xBB\xBF"))
 	{
@@ -62,6 +63,7 @@ QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
 		if (c == '<')
 		{
 			c = *(++iter);
+
 			if ( c == '?')
 				return "text/xml";
 			else

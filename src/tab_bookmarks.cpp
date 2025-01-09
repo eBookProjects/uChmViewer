@@ -85,7 +85,6 @@ class BookmarkItem : public QListWidgetItem
 };
 
 
-
 TabBookmarks::TabBookmarks( QWidget* parent )
 	: QWidget( parent ), Ui::TabBookmarks()
 {

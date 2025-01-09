@@ -134,6 +134,7 @@ bool Index::makeIndex(const QList< QUrl >& docs, EBook* chmFile )
 void Index::insertInDict( const QString& str, int docNum )
 {
 	Entry* e = 0;
+
 	if ( dict.count() )
 		e = dict[ str ];
 
@@ -299,6 +300,7 @@ bool Index::parseDocumentToStringlist(EBook* chmFile, const QUrl& filename, QStr
 		}
 
 	tokenize_buf:
+
 		// Just add the word; it is most likely a space or terminated by tokenizer.
 		if ( !parsedbuf.isEmpty() )
 		{
@@ -370,6 +372,7 @@ QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq,
 	QList<Term> termList;
 
 	QStringList::ConstIterator it = terms.begin();
+
 	for ( it = terms.begin(); it != terms.end(); ++it )
 	{
 		Entry* e = 0;
@@ -391,13 +394,16 @@ QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq,
 	std::sort( termList.begin(), termList.end() );
 
 	QVector<Document> minDocs = termList.takeFirst().documents;
+
 	for (QList<Term>::Iterator it = termList.begin(); it != termList.end(); ++it)
 	{
 		Term* t = &(*it);
 		QVector<Document> docs = t->documents;
+
 		for (QVector<Document>::Iterator minDoc_it = minDocs.begin(); minDoc_it != minDocs.end(); )
 		{
 			bool found = false;
+
 			for (QVector<Document>::ConstIterator doc_it = docs.constBegin(); doc_it != docs.constEnd(); ++doc_it )
 			{
 				if ( (*minDoc_it).docNumber == (*doc_it).docNumber )
@@ -407,6 +413,7 @@ QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq,
 					break;
 				}
 			}
+
 			if ( !found )
 				minDoc_it = minDocs.erase( minDoc_it );
 			else
@@ -421,13 +428,16 @@ QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq,
 	{
 		for (QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it)
 			results << docList.at((int)(*it).docNumber);
+
 		return results;
 	}
 
 	QUrl fileName;
+
 	for (QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it)
 	{
 		fileName =  docList[ (int)(*it).docNumber ];
+
 		if ( searchForPhrases( termSeq, seqWords, fileName, chmFile ) )
 			results << fileName;
 	}
@@ -450,6 +460,7 @@ bool Index::searchForPhrases( const QStringList& phrases, const QStringList& wor
 
 	// Fill the dictionary with the words from the document
 	unsigned int word_offset = 3;
+
 	for ( QStringList::ConstIterator it = parsed_document.begin(); it != parsed_document.end(); it++, word_offset++ )
 	{
 		PosEntry* entry = miniDict[ *it ];

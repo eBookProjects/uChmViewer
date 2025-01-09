@@ -163,6 +163,7 @@ bool Settings::loadSettings( const QString& filename )
 	}
 
 	stream >> data; // version
+
 	if ( data > SETTINGS_VERSION )
 	{
 		qWarning ("file %s has unsupported data version %d, ignoring it.", qPrintable( file.fileName()), data);
@@ -173,6 +174,7 @@ bool Settings::loadSettings( const QString& filename )
 	while ( 1 )
 	{
 		stream >> data; // marker
+
 		if ( data == MARKER_END )
 		{
 			complete_read = true;
@@ -184,19 +186,23 @@ bool Settings::loadSettings( const QString& filename )
 		case MARKER_FILESIZE:
 			unsigned int sizestamp;
 			stream >> sizestamp;
+
 			if ( m_currentfilesize != sizestamp )
 			{
 				return false;
 			}
+
 			break;
 
 		case MARKER_FILETIME:
 			unsigned int timestamp;
 			stream >> timestamp;
+
 			if ( m_currentfiledate != timestamp )
 			{
 				return false;
 			}
+
 			break;
 
 		case MARKER_ACTIVETABSYSTEM:
@@ -242,6 +248,7 @@ bool Settings::loadSettings( const QString& filename )
 bool Settings::saveSettings( )
 {
 	QFile file( m_settingsFile );
+
 	if ( !file.open (QIODevice::WriteOnly) )
 	{
 		qWarning ("Could not write settings into file %s: %s",

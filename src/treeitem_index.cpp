@@ -116,11 +116,13 @@ QVariant TreeItem_Index::data(int column, int role) const
 
 	// Item foreground color
 	case Qt::ForegroundRole:
+
 		// For Index URL it means that there is URL list in m_url
 		if ( m_urls.size() > 1 )
 			return QBrush( QColor( Qt::red ) );
 		else if ( isSeeAlso() )
 			return QBrush( QColor( Qt::lightGray ) );
+
 		break;
 
 	case Qt::ToolTipRole:

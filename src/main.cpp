@@ -83,6 +83,7 @@ int main( int argc, char** argv )
 	pConfig = new Config();
 
 #if defined USE_DBUS
+
 	if ( QDBusConnection::sessionBus().isConnected() )
 	{
 		if ( QDBusConnection::sessionBus().registerService(SERVICE_NAME) )
@@ -95,6 +96,7 @@ int main( int argc, char** argv )
 	}
 	else
 		qWarning( "Cannot connect to the D-BUS session bus. Going without D-BUS support." );
+
 #endif
 
 #if defined (USE_KDE)

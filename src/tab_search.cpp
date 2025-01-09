@@ -86,7 +86,6 @@ class SearchTreeViewItem : public QTreeWidgetItem
 };
 
 
-
 TabSearch::TabSearch( QWidget* parent )
 	: QWidget( parent ), Ui::TabSearch()
 {

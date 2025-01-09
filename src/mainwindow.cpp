@@ -407,10 +407,12 @@ void MainWindow::refreshCurrentBrowser( )
 
 	if ( title.isEmpty() )
 		title = QCoreApplication::applicationName();
+
 	// KDE adds application name automatically, so we don't need it here
 #if !defined (USE_KDE)
 	else
 		title = (QString) QCoreApplication::applicationName() + " - " + title;
+
 #endif
 
 	setWindowTitle( title );
@@ -581,6 +583,7 @@ void MainWindow::closeFile( )
 		m_currentSettings->m_window_size_y = height();
 
 #ifdef Q_OS_WIN
+
 		// On Windows if the window is maximised or minimized, the WM will not restore positions/state,
 		// so we reset to default size
 		if ( isMaximized() || isMinimized() )
@@ -588,6 +591,7 @@ void MainWindow::closeFile( )
 			m_currentSettings->m_window_size_x = WINDOW_DEFAULT_X_SIZE;
 			m_currentSettings->m_window_size_y = WINDOW_DEFAULT_Y_SIZE;
 		}
+
 #endif
 
 		m_currentSettings->m_window_size_splitter = m_navPanel->width();
@@ -1020,6 +1024,7 @@ void MainWindow::actionExtractCHM()
 					dirlist.push_back( dirs[i] );
 
 					QDir dir ( outdir + dirlist.join( "/" ) );
+
 					if ( !dir.exists() )
 					{
 						if ( !dir.mkdir( dir.path() ) )
@@ -1030,6 +1035,7 @@ void MainWindow::actionExtractCHM()
 
 			QString filename = outdir + dirlist.join( "/" ) + "/" + dirs[i];
 			QFile wf( filename );
+
 			if ( !wf.open( QIODevice::WriteOnly ) )
 			{
 				qWarning( "Could not write file %s\n", qPrintable( filename ) );

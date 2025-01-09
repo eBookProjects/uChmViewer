@@ -298,6 +298,7 @@ void ViewWindowMgr::closeTab(const TabData& data)
 
 	// Change the accelerators, as we might have removed the item in the middle
 	int count = 1;
+
 	for ( WindowsIterator it = m_Windows.begin(); it != m_Windows.end() && count < 10; ++it, count++ )
 		(*it).action->setShortcut( QKeySequence( i18n("Alt+%1").arg( count ) ) );
 }

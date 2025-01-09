@@ -117,6 +117,7 @@ QVariant TreeItem_TOC::data(int column, int role) const
 
 			return *pix;
 		}
+
 		break;
 
 	case Qt::ToolTipRole:

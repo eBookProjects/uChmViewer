@@ -134,6 +134,7 @@ bool EBook_CHM::getTableOfContents( QList<EBookTocEntry>& toc ) const
 
 	// Fill up the real toc
 	toc.reserve( parsed.size() );
+
 	Q_FOREACH ( const ParsedEntry& e, parsed )
 	{
 		if ( root_offset == -1 )
@@ -424,6 +425,7 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 			{
 				// find where quote ends, either by another quote, or by '>' symbol (some people don't know HTML)
 				int nextpos = src.indexOf (src[i], i + 1);
+
 				if ( nextpos == -1  && (nextpos = src.indexOf ('>', i + 1)) == -1 )
 				{
 					qWarning ("EBook_CHMImpl::ParseHhcAndFillTree: corrupted TOC: %s", qPrintable( src.mid(i) ));
@@ -675,6 +677,7 @@ bool EBook_CHM::getInfoFromWindows()
 				m_indexFile = QByteArray("/") + QByteArray((const char*) buffer + off_hhk % 4096);
 		}
 	}
+
 	return true;
 }
 
@@ -722,6 +725,7 @@ bool EBook_CHM::getInfoFromSystem()
 
 			if (m_indexFile.isEmpty())
 				m_indexFile = QByteArray("/") + QByteArray((const char*)buffer + index + 2);
+
 			break;
 
 		case 2:
@@ -730,6 +734,7 @@ bool EBook_CHM::getInfoFromSystem()
 
 			if (m_home.isEmpty() || m_home == "/")
 				m_home = QByteArray("/") + QByteArray((const char*) buffer + index + 2);
+
 			break;
 
 		case 3:
@@ -766,6 +771,7 @@ bool EBook_CHM::getInfoFromSystem()
 				if ( ResolveObject( tmp, &ui) )
 					m_indexFile = qPrintable( tmp );
 			}
+
 			break;
 
 		case 16:

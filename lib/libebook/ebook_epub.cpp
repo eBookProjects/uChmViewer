@@ -384,6 +384,7 @@ bool EBook_EPUB::getFileAsBinary(QByteArray& data, const QString& path) const
 
 	// Could it return a positive number but not fileinfo.size???
 	int ret = zip_fread( file, data.data(), fileinfo.size );
+
 	if ( ret != (int) fileinfo.size )
 	{
 		zip_fclose( file );

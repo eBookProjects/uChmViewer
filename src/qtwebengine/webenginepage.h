@@ -49,6 +49,7 @@ class WebEnginePage : public QWebEnginePage
 			: QWebEnginePage( parent )
 		{
 			QWebEngineProfile* pf = profile();
+
 			if ( pf->urlSchemeHandler( EBook_CHM::URL_SCHEME_CHM ) == NULL )
 			{
 				pf->installUrlSchemeHandler( EBook_CHM::URL_SCHEME_CHM, new DataProvider( pf ) );
