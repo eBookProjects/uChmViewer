@@ -916,7 +916,8 @@ void MainWindow::actionPrint()
 		return;
 	}
 
-	currentBrowser()->print(printer, [ = ](bool succes) {
+	currentBrowser()->print(printer, [ = ](bool succes)
+	{
 		Q_UNUSED(succes);
 		showInStatusBar( i18n( "Printing finished") );
 		delete printer;

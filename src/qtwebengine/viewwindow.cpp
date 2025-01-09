@@ -117,11 +117,13 @@ bool ViewWindow::canGoForward() const
 void ViewWindow::print( QPrinter* printer, std::function<void (bool success)> result )
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-	page()->print( printer, [&result](bool success) {
+	page()->print( printer, [&result](bool success)
+	{
 		result( success );
 	});
 #else
-	connect(this, &QWebEngineView::printFinished, [result](bool success) {
+	connect(this, &QWebEngineView::printFinished, [result](bool success)
+	{
 		result( success );
 	});
 	QWebEngineView::print( printer );

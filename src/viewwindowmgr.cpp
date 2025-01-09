@@ -147,9 +147,12 @@ void ViewWindowMgr::invalidate()
 
 ViewWindow* ViewWindowMgr::current()
 {
-	try {
+	try
+	{
 		return findTabData( m_tabWidget->currentWidget() ).browser;
-	} catch ( const std::invalid_argument& ) {
+	}
+	catch ( const std::invalid_argument& )
+	{
 		abort();
 	}
 }
@@ -222,7 +225,8 @@ void ViewWindowMgr::closeAllWindows( )
 
 void ViewWindowMgr::setTabName(ViewWindow* browser )
 {
-	try {
+	try
+	{
 		const TabData& tab = findTabData( browser );
 		QString title = browser->title().trimmed();
 
@@ -233,7 +237,9 @@ void ViewWindowMgr::setTabName(ViewWindow* browser )
 		m_tabWidget->setTabText( m_tabWidget->indexOf( browser ), title );
 		tab.action->setText( title );
 		updateCloseButtons();
-	} catch ( const std::invalid_argument& ) {
+	}
+	catch ( const std::invalid_argument& )
+	{
 	}
 }
 
@@ -243,9 +249,12 @@ void ViewWindowMgr::onCloseCurrentWindow( )
 	if ( m_Windows.size() == 1 )
 		return;
 
-	try {
+	try
+	{
 		closeTab( findTabData( m_tabWidget->currentWidget()));
-	} catch ( const std::invalid_argument& ) {
+	}
+	catch ( const std::invalid_argument& )
+	{
 	}
 }
 
@@ -255,17 +264,23 @@ void ViewWindowMgr::onCloseWindow( int num )
 	if ( m_Windows.size() == 1 )
 		return;
 
-	try {
+	try
+	{
 		closeTab( findTabData( num ));
-	} catch ( const std::invalid_argument& ) {
+	}
+	catch ( const std::invalid_argument& )
+	{
 	}
 }
 
 void ViewWindowMgr::closeWindow( QWidget* widget )
 {
-	try {
+	try
+	{
 		closeTab( findTabData( widget));
-	} catch ( const std::invalid_argument& ) {
+	}
+	catch ( const std::invalid_argument& )
+	{
 		qFatal( "ViewWindowMgr::closeWindow called with unknown widget!" );
 	}
 }
@@ -305,7 +320,8 @@ void ViewWindowMgr::saveSettings( Settings::viewindow_saved_settings_t& settings
 {
 	settings.clear();
 
-	try {
+	try
+	{
 		for ( int i = 0; i < m_tabWidget->count(); i++ )
 		{
 			const TabData& tab = findTabData( i );
@@ -313,7 +329,9 @@ void ViewWindowMgr::saveSettings( Settings::viewindow_saved_settings_t& settings
 			                                               tab.browser->scrollTop(),
 			                                               tab.browser->zoomFactor()) );
 		}
-	} catch ( const std::invalid_argument& ) {
+	}
+	catch ( const std::invalid_argument& )
+	{
 	}
 }
 
@@ -330,13 +348,16 @@ void ViewWindowMgr::onTabChanged( int newtabIndex )
 	if ( newtabIndex == -1 )
 		return;
 
-	try {
+	try
+	{
 		const TabData& tab = findTabData( newtabIndex );
 		emit historyChanged();
 		emit urlChanged( tab.browser->url() );
 		emit browserChanged( tab.browser );
 		tab.widget->setFocus();
-	} catch ( const std::invalid_argument& ) {
+	}
+	catch ( const std::invalid_argument& )
+	{
 	}
 }
 

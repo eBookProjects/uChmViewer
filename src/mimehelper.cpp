@@ -45,7 +45,8 @@ QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
 	 */
 	auto iter = buf.begin();
 	// Skip utf-8 Byte Order Mark
-	if (buf.startsWith("\xEF\xBB\xBF")) {
+	if (buf.startsWith("\xEF\xBB\xBF"))
+	{
 		iter += 3;
 	}
 
@@ -54,10 +55,12 @@ QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
 	 * or if it is followed by '?', then XML.
 	 *
 	 * TODO Skip comments like "<!-- -->" */
-	for (; iter != buf.end() ; iter++) {
+	for (; iter != buf.end() ; iter++)
+	{
 		char c = *iter;
 
-		if (c == '<') {
+		if (c == '<')
+		{
 			c = *(++iter);
 			if ( c == '?')
 				return "text/xml";

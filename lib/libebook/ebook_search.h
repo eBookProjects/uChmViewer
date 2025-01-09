@@ -28,7 +28,8 @@ template<typename T> class QList;
 class QUrl;
 
 class EBook;
-namespace QtAs {
+namespace QtAs
+{
 class Index;
 }
 

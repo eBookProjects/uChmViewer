@@ -684,7 +684,7 @@ bool EBook_CHM::getInfoFromSystem()
 	chmUnitInfo ui;
 
 	size_t index = 0;
-	unsigned char* cursor = NULL, *p;
+	unsigned char* cursor = NULL, * p;
 	unsigned short value = 0;
 	size_t size = 0;
 
