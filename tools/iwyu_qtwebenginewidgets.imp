@@ -7,6 +7,8 @@
     { include: ['"qwebengineclientcertselection.h"', 'private', '<QWebEngineClientCertSelection>', 'public'] },
     { include: ['<qwebenginecontextmenudata.h>', 'private', '<QWebEngineContextMenuData>', 'public'] },
     { include: ['"qwebenginecontextmenudata.h"', 'private', '<QWebEngineContextMenuData>', 'public'] },
+    { include: ['<qwebenginecontextmenurequest.h>', 'private', '<QWebEngineContextMenuRequest>', 'public'] },
+    { include: ['"qwebenginecontextmenurequest.h"', 'private', '<QWebEngineContextMenuRequest>', 'public'] },
     { include: ['<qwebenginedownloaditem.h>', 'private', '<QWebEngineDownloadItem>', 'public'] },
     { include: ['"qwebenginedownloaditem.h"', 'private', '<QWebEngineDownloadItem>', 'public'] },
     { include: ['<qwebenginefullscreenrequest.h>', 'private', '<QWebEngineFullScreenRequest>', 'public'] },

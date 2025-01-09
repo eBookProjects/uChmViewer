@@ -1,6 +1,8 @@
 [
     { include: ['<qcoreevent.h>', 'private', '<QEvent>', 'public'] },
     { include: ['"qcoreevent.h"', 'private', '<QEvent>', 'public'] },
+    { include: ['<qtmetamacros.h>', 'private', '<QObject>', 'public'] },
+    { include: ['"qtmetamacros.h"', 'private', '<QObject>', 'public'] },
     { include: ['<qobjectdefs.h>', 'private', '<QObject>', 'public'] },
     { include: ['"qobjectdefs.h"', 'private', '<QObject>', 'public'] },
     { include: ['<qnamespace.h>', 'private', '<Qt>', 'public'] },
@@ -14,6 +16,7 @@
     { include: ['"qtypeinfo.h"', 'private', '<QtGlobal>', 'public'] },
     { include: ['<qtypeinfo.h>', 'private', '<QtGlobal>', 'public'] },
 
+    { symbol:  ['QAtomicInt', 'private', '<QAtomicInt>', 'public'] },
     { symbol:  ['QMetaObject', 'private', '<QMetaObject>', 'public'] },
 
     { symbol:  ['QCloseEvent', 'private', '<QCloseEvent>', 'public'] },
