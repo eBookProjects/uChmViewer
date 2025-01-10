@@ -50,20 +50,20 @@ TabContents::TabContents( QWidget* parent )
 		connect( tree,
 		         SIGNAL( itemClicked( QTreeWidgetItem*, int ) ),
 		         this,
-		         SLOT( onClicked ( QTreeWidgetItem*, int ) ) );
+		         SLOT( onClicked( QTreeWidgetItem*, int ) ) );
 	}
 	else
 	{
 		connect( tree,
-		         SIGNAL( itemActivated ( QTreeWidgetItem*, int ) ),
+		         SIGNAL( itemActivated( QTreeWidgetItem*, int ) ),
 		         this,
-		         SLOT( onClicked ( QTreeWidgetItem*, int ) ) );
+		         SLOT( onClicked( QTreeWidgetItem*, int ) ) );
 	}
 
 	// Activate custom context menu, and connect it
 	tree->setContextMenuPolicy( Qt::CustomContextMenu );
 	connect( tree,
-	         SIGNAL( customContextMenuRequested ( const QPoint& ) ),
+	         SIGNAL( customContextMenuRequested( const QPoint& ) ),
 	         this,
 	         SLOT( onContextMenuRequested( const QPoint& ) ) );
 
@@ -82,7 +82,7 @@ void TabContents::refillTableOfContents( )
 	if ( !::mainWindow->chmFile()->getTableOfContents( data )
 	        || data.size() == 0 )
 	{
-		qWarning ( "Table of contents is present but is empty; wrong parsing?" );
+		qWarning( "Table of contents is present but is empty; wrong parsing?" );
 		return;
 	}
 

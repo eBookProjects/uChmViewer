@@ -69,7 +69,7 @@ class ViewWindowTabWidget : public QTabWidget
 		ViewWindowTabWidget( QWidget* parent ) : QTabWidget( parent ) {}
 
 	protected:
-		void mouseReleaseEvent ( QMouseEvent* event )
+		void mouseReleaseEvent( QMouseEvent* event )
 		{
 			if ( event->button() == Qt::MiddleButton )
 			{
@@ -115,7 +115,7 @@ ViewWindowMgr::ViewWindowMgr( QWidget* parent )
 
 	// Search Line edit
 	connect( editFind,
-	         SIGNAL( textEdited ( const QString& ) ),
+	         SIGNAL( textEdited( const QString& ) ),
 	         this,
 	         SLOT( editTextEdited( const QString& ) ) );
 
@@ -184,25 +184,25 @@ ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 
 	// Handle clicking on link in browser window
 	connect( browser, &ViewWindow::linkClicked,
-	         [browser, this] ( const QUrl & link, UBrowser::OpenMode mode )
+	         [browser, this]( const QUrl & link, UBrowser::OpenMode mode )
 	{
 		emit linkClicked( browser, link, mode );
 	} );
 
 	connect( browser, &ViewWindow::urlChanged,
-	         [browser, this] ( const QUrl & url )
+	         [browser, this]( const QUrl & url )
 	{
 		onBrowserUrlChanged( browser, url );
 	} );
 
 	connect( browser, &ViewWindow::loadFinished,
-	         [browser, this] ( bool success )
+	         [browser, this]( bool success )
 	{
 		onBrowserLoadFinished( browser, success );
 	} );
 
 	connect( browser, &ViewWindow::contextMenuRequested,
-	         [browser, this] ( const QPoint & pos, const QUrl & link )
+	         [browser, this]( const QPoint & pos, const QUrl & link )
 	{
 		emit contextMenuRequested( browser, pos, link );
 	} );

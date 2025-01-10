@@ -53,23 +53,23 @@ int main( int argc, char** argv )
 #endif
 
 #if defined (USE_KDE)
-	K4AboutData aboutdata ( "uChmViewer",
-	                        QByteArray(),
-	                        ki18n( "uChmViewer" ),
-	                        APP_VERSION,
-	                        ki18n( "CHM file viewer" ),
-	                        K4AboutData::License_GPL,
-	                        ki18n( "(c) 2004-2015 George Yunaev" ),
-	                        ki18n( "Please report bugs to nicegorov@ya.com" ),
-	                        "https://github.com/u-235/uchmviewer",
-	                        "" );
+	K4AboutData aboutdata( "uChmViewer",
+	                       QByteArray(),
+	                       ki18n( "uChmViewer" ),
+	                       APP_VERSION,
+	                       ki18n( "CHM file viewer" ),
+	                       K4AboutData::License_GPL,
+	                       ki18n( "(c) 2004-2015 George Yunaev" ),
+	                       ki18n( "Please report bugs to nicegorov@ya.com" ),
+	                       "https://github.com/u-235/uchmviewer",
+	                       "" );
 
 	KCmdLineArgs::init( &aboutdata );
 	KApplication app;
 #else
 	UchmviewerApp app( argc, argv );
 
-	app.addLibraryPath ( "qt-plugins" );
+	app.addLibraryPath( "qt-plugins" );
 #endif
 
 	app_i18n::init();

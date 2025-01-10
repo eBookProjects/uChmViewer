@@ -65,7 +65,7 @@ class BookmarkItem : public QListWidgetItem
 		}
 
 		// Visualization
-		virtual QVariant data ( int role ) const
+		virtual QVariant data( int role ) const
 		{
 			switch ( role )
 			{
@@ -107,17 +107,17 @@ TabBookmarks::TabBookmarks( QWidget* parent )
 	}
 
 	connect( btnAdd,
-	         SIGNAL( clicked () ),
+	         SIGNAL( clicked() ),
 	         this,
 	         SLOT( onAddBookmarkPressed( ) ) );
 
 	connect( btnDel,
-	         SIGNAL( clicked () ),
+	         SIGNAL( clicked() ),
 	         this,
 	         SLOT( onDelBookmarkPressed( ) ) );
 
 	connect( btnEdit,
-	         SIGNAL( clicked () ),
+	         SIGNAL( clicked() ),
 	         this,
 	         SLOT( onEditBookmarkPressed( ) ) );
 
@@ -129,7 +129,7 @@ TabBookmarks::TabBookmarks( QWidget* parent )
 	list->setContextMenuPolicy( Qt::CustomContextMenu );
 
 	connect( list,
-	         SIGNAL( customContextMenuRequested ( const QPoint& ) ),
+	         SIGNAL( customContextMenuRequested( const QPoint& ) ),
 	         this,
 	         SLOT( onContextMenuRequested( const QPoint& ) ) );
 
@@ -152,11 +152,11 @@ void TabBookmarks::onAddBookmarkPressed( )
 	if ( !ok || name.isEmpty() )
 		return;
 
-	BookmarkItem* item = new BookmarkItem ( this,
-	                                        list,
-	                                        name,
-	                                        url,
-	                                        ::mainWindow->currentBrowser()->scrollTop() );
+	BookmarkItem* item = new BookmarkItem( this,
+	                                       list,
+	                                       name,
+	                                       url,
+	                                       ::mainWindow->currentBrowser()->scrollTop() );
 
 	m_menuBookmarks->addAction( item->m_action );
 	m_listChanged = true;

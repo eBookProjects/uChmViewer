@@ -48,8 +48,8 @@ class TabContents : public QWidget, public Ui::TabContents
 		TreeItem_TOC*   getTreeItem( const QUrl& url );
 
 	public slots:
-		void    onContextMenuRequested ( const QPoint& point );
-		void    onClicked ( QTreeWidgetItem* item, int column );
+		void    onContextMenuRequested( const QPoint& point );
+		void    onClicked( QTreeWidgetItem* item, int column );
 
 	private:
 		QMenu*      m_contextMenu;

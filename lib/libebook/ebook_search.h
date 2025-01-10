@@ -70,7 +70,7 @@ class EBookSearch : public QObject
 		//!
 		//! Note that the function does not clear \param results before adding search results, so if you are
 		//! not merging search results, make sure it's empty.
-		bool    searchQuery ( const QString& query, QList< QUrl >* results, EBook* chmFile, unsigned int limit = 100 );
+		bool    searchQuery( const QString& query, QList< QUrl >* results, EBook* chmFile, unsigned int limit = 100 );
 
 		//! Returns true if a valid search index is present, and therefore search could be executed
 		bool    hasIndex() const;

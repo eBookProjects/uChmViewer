@@ -57,13 +57,13 @@ class QPrinter;
 static const qreal ZOOM_FACTOR_CHANGE = 0.1;
 
 ViewWindow::ViewWindow( QWidget* parent )
-	: QWebEngineView ( parent )
+	: QWebEngineView( parent )
 {
 	invalidate();
 	m_storedScrollbarPosition = 0;
 
 	WebEnginePage* page = new WebEnginePage( this );
-	connect( page, SIGNAL( linkClicked ( const QUrl&, UBrowser::OpenMode ) ), this, SLOT( onLinkClicked( const QUrl&, UBrowser::OpenMode ) ) );
+	connect( page, SIGNAL( linkClicked( const QUrl&, UBrowser::OpenMode ) ), this, SLOT( onLinkClicked( const QUrl&, UBrowser::OpenMode ) ) );
 	setPage( page );
 
 	connect( this, SIGNAL( loadFinished( bool ) ), this, SLOT( onLoadFinished( bool ) ) );
@@ -85,7 +85,7 @@ void ViewWindow::invalidate( )
 	reload();
 }
 
-void ViewWindow::load ( const QUrl& url )
+void ViewWindow::load( const QUrl& url )
 {
 	// Do not use setContent() here, it resets QWebHistory
 	QWebEngineView::load( url );
@@ -228,7 +228,7 @@ void ViewWindow::contextMenuEvent( QContextMenuEvent* e )
 	emit contextMenuRequested( e->globalPos(), link );
 }
 
-void ViewWindow::onLoadFinished ( bool )
+void ViewWindow::onLoadFinished( bool )
 {
 	if ( m_storedScrollbarPosition > 0 )
 	{

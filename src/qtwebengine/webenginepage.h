@@ -125,7 +125,7 @@ class WebEnginePage : public QWebEnginePage
 				if ( ( mods & Qt::ShiftModifier ) != 0 || type == QWebEnginePage::WebBrowserTab )
 					emit linkClicked( m_url, UBrowser::OPEN_IN_NEW );
 				else
-					emit linkClicked(  m_url, UBrowser::OPEN_IN_BACKGROUND );
+					emit linkClicked( m_url, UBrowser::OPEN_IN_BACKGROUND );
 
 				m_url.clear();
 			}

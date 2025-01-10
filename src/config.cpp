@@ -76,7 +76,7 @@ Config::Config()
 	m_tabUseSingleClick = settings.value( "browser/tabusesingleclick", true ).toBool();
 
 	QDir dir;
-	dir.setPath ( m_datapath );
+	dir.setPath( m_datapath );
 
 	if ( !dir.exists() && !dir.mkpath( m_datapath ) )
 		qWarning( "Could not create directory %s", qPrintable( m_datapath ) );
@@ -85,7 +85,7 @@ Config::Config()
 	//  and remove the old directory.
 	if ( !portable )
 	{
-		QDir oldDataDir = QDir( QDir::homePath () + "/" + ".uchmviewer" );
+		QDir oldDataDir = QDir( QDir::homePath() + "/" + ".uchmviewer" );
 		QDir dataDir = QDir( m_datapath );
 
 		if ( oldDataDir.exists() )
@@ -134,7 +134,7 @@ void Config::save( )
 
 QString Config::getEbookSettingFile( const QString& ebookfile ) const
 {
-	QFileInfo finfo ( ebookfile );
+	QFileInfo finfo( ebookfile );
 	QString prefix = pConfig->m_datapath + QDir::separator() + finfo.completeBaseName();
 
 	return prefix + ".uchmviewer";
@@ -142,7 +142,7 @@ QString Config::getEbookSettingFile( const QString& ebookfile ) const
 
 QString Config::getEbookIndexFile( const QString& ebookfile ) const
 {
-	QFileInfo finfo ( ebookfile );
+	QFileInfo finfo( ebookfile );
 	QString prefix = pConfig->m_datapath + "/" + finfo.completeBaseName();
 
 	return prefix + ".idx";

@@ -72,19 +72,19 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		MainWindow( const QStringList& arguments );
 		~MainWindow();
 
-		bool        openPage ( const QUrl& url, UBrowser::OpenMode mode = UBrowser::OPEN_IN_CURRENT );
+		bool        openPage( const QUrl& url, UBrowser::OpenMode mode = UBrowser::OPEN_IN_CURRENT );
 
 		EBook*      chmFile() const { return m_ebookFile; }
-		const QString&  getOpenedFileName () { return m_ebookFilename; }
-		const QString&  getOpenedFileBaseName () { return m_ebookFileBasename; }
+		const QString&  getOpenedFileName() { return m_ebookFilename; }
+		const QString&  getOpenedFileBaseName() { return m_ebookFileBasename; }
 
 		ViewWindow* currentBrowser() const;
 		Settings*    currentSettings() const { return m_currentSettings; }
 		ViewWindowMgr*  viewWindowMgr() const { return m_viewWindowMgr; }
 		NavigationPanel* navigator() const { return m_navPanel; }
 
-		void        showInStatusBar ( const QString& text );
-		void        setTextEncoding ( const QString& enc );
+		void        showInStatusBar( const QString& text );
+		void        setTextEncoding( const QString& enc );
 		QMenu*      tabItemsContextMenu();
 		void        launch();
 
@@ -171,8 +171,8 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 
 	protected:
 		// Reimplemented functions
-		void        closeEvent ( QCloseEvent* e );
-		bool        event ( QEvent* e );
+		void        closeEvent( QCloseEvent* e );
+		bool        event( QEvent* e );
 
 	private:
 		bool        parseCmdLineArgs( const QStringList& args, bool from_another_app = false );

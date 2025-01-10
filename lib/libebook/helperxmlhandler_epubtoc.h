@@ -39,7 +39,7 @@ class HelperXmlHandler_EpubTOC : public QXmlDefaultHandler
 
 	private:
 		// Overridden members
-		bool startElement ( const QString& namespaceURI, const QString& localName, const QString& qName, const QXmlAttributes& atts );
+		bool startElement( const QString& namespaceURI, const QString& localName, const QString& qName, const QXmlAttributes& atts );
 		bool characters( const QString& ch );
 		bool endElement( const QString& namespaceURI, const QString& localName, const QString& qName );
 		void checkNewTocEntry();

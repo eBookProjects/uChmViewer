@@ -39,8 +39,8 @@ class TreeItem_Index : public QTreeWidgetItem
 		QString     seeAlso() const;
 
 		// Overridden methods
-		int         columnCount () const;
-		QVariant    data ( int column, int role ) const;
+		int         columnCount() const;
+		QVariant    data( int column, int role ) const;
 
 	private:
 		QString     m_name;

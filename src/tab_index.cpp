@@ -36,7 +36,7 @@
 #include "tab_index.h"
 
 
-TabIndex::TabIndex ( QWidget* parent )
+TabIndex::TabIndex( QWidget* parent )
 	: QWidget( parent ), Ui::TabIndex()
 {
 	// UIC stuff
@@ -45,7 +45,7 @@ TabIndex::TabIndex ( QWidget* parent )
 	tree->headerItem()->setHidden( true );
 
 	connect( text,
-	         SIGNAL( textChanged ( const QString& ) ),
+	         SIGNAL( textChanged( const QString& ) ),
 	         this,
 	         SLOT( onTextChanged( const QString& ) ) );
 
@@ -64,7 +64,7 @@ TabIndex::TabIndex ( QWidget* parent )
 	else
 	{
 		connect( tree,
-		         SIGNAL( itemActivated ( QTreeWidgetItem*, int ) ),
+		         SIGNAL( itemActivated( QTreeWidgetItem*, int ) ),
 		         this,
 		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
@@ -72,7 +72,7 @@ TabIndex::TabIndex ( QWidget* parent )
 	// Activate custom context menu, and connect it
 	tree->setContextMenuPolicy( Qt::CustomContextMenu );
 	connect( tree,
-	         SIGNAL( customContextMenuRequested ( const QPoint& ) ),
+	         SIGNAL( customContextMenuRequested( const QPoint& ) ),
 	         this,
 	         SLOT( onContextMenuRequested( const QPoint& ) ) );
 
@@ -83,7 +83,7 @@ TabIndex::TabIndex ( QWidget* parent )
 	focus();
 }
 
-void TabIndex::onTextChanged ( const QString& newvalue )
+void TabIndex::onTextChanged( const QString& newvalue )
 {
 	QList<QTreeWidgetItem*> items = tree->findItems( newvalue, Qt::MatchStartsWith );
 
@@ -122,7 +122,7 @@ void TabIndex::invalidate( )
 	m_lastSelectedItem = 0;
 }
 
-void TabIndex::onItemActivated ( QTreeWidgetItem* item, int )
+void TabIndex::onItemActivated( QTreeWidgetItem* item, int )
 {
 	if ( !item )
 		return;
@@ -158,7 +158,7 @@ void TabIndex::refillIndex( )
 
 	if ( !::mainWindow->chmFile()->getIndex( data ) || data.size() == 0 )
 	{
-		qWarning ( "CHM index present but is empty; wrong parsing?" );
+		qWarning( "CHM index present but is empty; wrong parsing?" );
 		return;
 	}
 

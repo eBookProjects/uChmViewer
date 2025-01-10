@@ -60,10 +60,10 @@ class SearchTreeViewItem : public QTreeWidgetItem
 
 	protected:
 		// Overriden members
-		int columnCount () const    { return 2; }
+		int columnCount() const    { return 2; }
 
 		// Overriden member
-		QVariant data ( int column, int role ) const
+		QVariant data( int column, int role ) const
 		{
 			switch ( role )
 			{
@@ -100,7 +100,7 @@ TabSearch::TabSearch( QWidget* parent )
 
 	// Go Button
 	connect( btnGo,
-	         SIGNAL( clicked () ),
+	         SIGNAL( clicked() ),
 	         this,
 	         SLOT( onReturnPressed() ) );
 
@@ -121,7 +121,7 @@ TabSearch::TabSearch( QWidget* parent )
 	else
 	{
 		connect( tree,
-		         SIGNAL( itemActivated ( QTreeWidgetItem*, int ) ),
+		         SIGNAL( itemActivated( QTreeWidgetItem*, int ) ),
 		         this,
 		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
@@ -129,7 +129,7 @@ TabSearch::TabSearch( QWidget* parent )
 	// Activate custom context menu, and connect it
 	tree->setContextMenuPolicy( Qt::CustomContextMenu );
 	connect( tree,
-	         SIGNAL( customContextMenuRequested ( const QPoint& ) ),
+	         SIGNAL( customContextMenuRequested( const QPoint& ) ),
 	         this,
 	         SLOT( onContextMenuRequested( const QPoint& ) ) );
 
@@ -171,9 +171,9 @@ void TabSearch::onReturnPressed( )
 		{
 			for ( int i = 0; i < results.size(); i++ )
 			{
-				SearchTreeViewItem* item = new SearchTreeViewItem ( tree,
-				                                                    ::mainWindow->chmFile()->getTopicByUrl( results[i] ),
-				                                                    results[i] );
+				SearchTreeViewItem* item = new SearchTreeViewItem( tree,
+				                                                   ::mainWindow->chmFile()->getTopicByUrl( results[i] ),
+				                                                   results[i] );
 
 				if ( i == 0 )
 					tree->setCurrentItem( item );
@@ -201,7 +201,7 @@ void TabSearch::onItemActivated( QTreeWidgetItem* item, int )
 void TabSearch::restoreSettings( const Settings::search_saved_settings_t& settings )
 {
 	for ( int i = 0; i < settings.size(); i++ )
-		searchBox->addItem ( settings[i] );
+		searchBox->addItem( settings[i] );
 }
 
 void TabSearch::saveSettings( Settings::search_saved_settings_t& settings )
@@ -214,8 +214,8 @@ void TabSearch::saveSettings( Settings::search_saved_settings_t& settings )
 
 void TabSearch::onHelpClicked( const QString& )
 {
-	QWhatsThis::showText ( mapToGlobal( lblHelp->pos() ),
-	                       i18n( "<html><p>The improved search engine allows you to search for a word, symbol or phrase, which is set of words and symbols included in quotes. Only the documents which include all the terms specified in th search query are shown; no prefixes needed.<p>Unlike MS CHM internal search index, my improved search engine indexes everything, including special symbols. Therefore it is possible to search (and find!) for something like <i>$q = new ChmFile();</i>. This search also fully supports Unicode, which means that you can search in non-English documents.<p>If you want to search for a quote symbol, use quotation mark instead. The engine treats a quote and a quotation mark as the same symbol, which allows to use them in phrases.</html>" ) );
+	QWhatsThis::showText( mapToGlobal( lblHelp->pos() ),
+	                      i18n( "<html><p>The improved search engine allows you to search for a word, symbol or phrase, which is set of words and symbols included in quotes. Only the documents which include all the terms specified in th search query are shown; no prefixes needed.<p>Unlike MS CHM internal search index, my improved search engine indexes everything, including special symbols. Therefore it is possible to search (and find!) for something like <i>$q = new ChmFile();</i>. This search also fully supports Unicode, which means that you can search in non-English documents.<p>If you want to search for a quote symbol, use quotation mark instead. The engine treats a quote and a quotation mark as the same symbol, which allows to use them in phrases.</html>" ) );
 }
 
 bool TabSearch::initSearchEngine( )
@@ -299,7 +299,7 @@ bool TabSearch::searchQuery( const QString& query, QList< QUrl >* results )
 
 	if ( !m_searchEngine->hasIndex() )
 	{
-		QMessageBox::information ( this, i18n( "No index present" ), i18n( "The index is not present" ) );
+		QMessageBox::information( this, i18n( "No index present" ), i18n( "The index is not present" ) );
 		return false;
 	}
 

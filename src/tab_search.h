@@ -44,16 +44,16 @@ class TabSearch : public QWidget, public Ui::TabSearch
 		TabSearch( QWidget* parent = 0 );
 
 		void    invalidate();
-		void    restoreSettings ( const Settings::search_saved_settings_t& settings );
+		void    restoreSettings( const Settings::search_saved_settings_t& settings );
 		void    saveSettings( Settings::search_saved_settings_t& settings );
 		void    execSearchQueryInGui( const QString& query );
 		bool    searchQuery( const QString& query, QList<QUrl>* results );
 		void    focus();
 
 	private slots:
-		void    onContextMenuRequested ( const QPoint& point );
+		void    onContextMenuRequested( const QPoint& point );
 		void    onHelpClicked( const QString& );
-		void    onReturnPressed ();
+		void    onReturnPressed();
 		void    onItemActivated( QTreeWidgetItem* item, int );
 
 		// For index generation

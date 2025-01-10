@@ -47,7 +47,7 @@ class ViewWindow : public QWebView
 		virtual ~ViewWindow();
 
 		//! Open a page from current chm archive
-		void    load ( const QUrl& url );
+		void    load( const QUrl& url );
 
 		QUrl    url() const   { return QWebView::url(); }
 
@@ -107,20 +107,20 @@ class ViewWindow : public QWebView
 		void    zoomDecrease();
 
 	protected:
-		bool            openPage ( const QUrl& url );
+		bool            openPage( const QUrl& url );
 		void            handleStartPageAsImage( QUrl& link );
 
 		// Overriden to change the source
-		void            setSource ( const QUrl& name );
+		void            setSource( const QUrl& name );
 		QUrl            anchorAt( const QPoint& pos );
 
 		// Overloaded to provide custom context menu
 		void            contextMenuEvent( QContextMenuEvent* e );
-		void            mouseReleaseEvent ( QMouseEvent* event );
+		void            mouseReleaseEvent( QMouseEvent* event );
 
 	private slots:
 		// Used to restore the scrollbar position and the navigation button status
-		void            onLoadFinished ( bool ok );
+		void            onLoadFinished( bool ok );
 
 	private:
 		QString                 m_lastSearchedWord;

@@ -29,9 +29,9 @@ class Settings
 	public:
 		Settings();
 
-		bool    loadSettings ( const QString& filename );
-		bool    saveSettings ( );
-		void    removeSettings ( const QString& filename );
+		bool    loadSettings( const QString& filename );
+		bool    saveSettings( );
+		void    removeSettings( const QString& filename );
 
 		QString searchIndexFile() const { return m_searchIndex; }
 
@@ -39,7 +39,7 @@ class Settings
 		{
 			public:
 				SavedBookmark() { scroll_y = 0; }
-				SavedBookmark ( const QString& n, const QString& u, int y ) : name( n ), url( u ), scroll_y( y ) {};
+				SavedBookmark( const QString& n, const QString& u, int y ) : name( n ), url( u ), scroll_y( y ) {};
 
 				QString     name;
 				QString     url;
@@ -50,7 +50,7 @@ class Settings
 		{
 			public:
 				SavedViewWindow() { scroll_y = 0; zoom = 0.0; }
-				SavedViewWindow ( const QString& u, int y, qreal z ) : url( u ), scroll_y( y ), zoom( z ) {};
+				SavedViewWindow( const QString& u, int y, qreal z ) : url( u ), scroll_y( y ), zoom( z ) {};
 
 				QString     url;
 				int         scroll_y;

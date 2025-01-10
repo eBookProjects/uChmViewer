@@ -436,7 +436,7 @@ QList< QUrl > Index::query( const QStringList& terms, const QStringList& termSeq
 
 	for ( QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it )
 	{
-		fileName =  docList[ ( int )( *it ).docNumber ];
+		fileName =  docList[( int )( *it ).docNumber ];
 
 		if ( searchForPhrases( termSeq, seqWords, fileName, chmFile ) )
 			results << fileName;

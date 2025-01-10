@@ -32,7 +32,7 @@ HelperEntityDecoder::HelperEntityDecoder( QTextCodec* encoder )
 
 static inline QString encodeWithCodec( QTextCodec* encoder, const QByteArray& str )
 {
-	return ( encoder ? encoder->toUnicode( str.constData () ) : str );
+	return ( encoder ? encoder->toUnicode( str.constData() ) : str );
 }
 
 void HelperEntityDecoder::changeEncoding( QTextCodec* encoder )
@@ -213,11 +213,11 @@ QString HelperEntityDecoder::decode( const QString& entity ) const
 
 		if ( !valid )
 		{
-			qWarning ( "HelperEntityDecoder::decode: could not decode HTML entity '%s'", qPrintable( entity ) );
+			qWarning( "HelperEntityDecoder::decode: could not decode HTML entity '%s'", qPrintable( entity ) );
 			return QString();
 		}
 
-		return ( QString ) ( QChar( ascode ) );
+		return ( QString )( QChar( ascode ) );
 	}
 	else
 	{
@@ -225,7 +225,7 @@ QString HelperEntityDecoder::decode( const QString& entity ) const
 
 		if ( it == m_entityDecodeMap.end() )
 		{
-			qWarning ( "HelperEntityDecoder::decode: could not decode HTML entity '%s'", qPrintable( entity ) );
+			qWarning( "HelperEntityDecoder::decode: could not decode HTML entity '%s'", qPrintable( entity ) );
 			return "";
 		}
 

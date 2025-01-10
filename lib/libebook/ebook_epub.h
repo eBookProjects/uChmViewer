@@ -146,7 +146,7 @@ class EBook_EPUB : public EBook
 		 *
 		 * \ingroup dataretrieve
 		 */
-		virtual QString getTopicByUrl ( const QUrl& url );
+		virtual QString getTopicByUrl( const QUrl& url );
 
 		/*!
 		 * \brief Gets the current ebook encoding (set or autodetected) as qtcodec
@@ -162,7 +162,7 @@ class EBook_EPUB : public EBook
 		 *
 		 * \ingroup encoding
 		 */
-		virtual bool setCurrentEncoding ( const char* encoding );
+		virtual bool setCurrentEncoding( const char* encoding );
 
 		/*!
 		 * \brief Checks if this kind of URL is supported by the ebook format (i.e. could be passed to ebook functions)

@@ -99,7 +99,7 @@ static const unsigned int WINDOW_DEFAULT_Y_SIZE = 700;
 
 
 MainWindow::MainWindow( const QStringList& arguments )
-	: QMainWindow ( 0 ), Ui::MainWindow()
+	: QMainWindow( 0 ), Ui::MainWindow()
 {
 	const unsigned int SPLT_X_SIZE = 300;
 
@@ -200,7 +200,7 @@ bool MainWindow::hasSameTokenInstance()
 	QString token;
 
 	// argv[0] in Qt is still a program name
-	for ( int i = 1; i < m_arguments.size(); i++  )
+	for ( int i = 1; i < m_arguments.size(); i++ )
 	{
 		// This is not bulletproof (think -showPage -token) but this is not likely to happen
 		if ( m_arguments[i] == "-token" )
@@ -287,7 +287,7 @@ void MainWindow::checkForSharedMemoryMessage()
 		parseCmdLineArgs( args, true );
 }
 
-bool MainWindow::loadFile ( const QString& loadFileName, bool call_open_page )
+bool MainWindow::loadFile( const QString& loadFileName, bool call_open_page )
 {
 	QString fileName = loadFileName;
 
@@ -317,11 +317,11 @@ bool MainWindow::loadFile ( const QString& loadFileName, bool call_open_page )
 
 		// Make the file name absolute; we'll need it later
 		QDir qd;
-		qd.setPath ( fileName );
+		qd.setPath( fileName );
 		m_ebookFilename = qd.absolutePath();
 
 		// Qt's 'dirname' does not work well
-		QFileInfo qf ( m_ebookFilename );
+		QFileInfo qf( m_ebookFilename );
 		pConfig->m_lastOpenedDir = qf.dir().path();
 		m_ebookFileBasename = qf.fileName();
 
@@ -329,7 +329,7 @@ bool MainWindow::loadFile ( const QString& loadFileName, bool call_open_page )
 		m_navPanel->updateTabs( m_ebookFile );
 
 		// and to navigation buttons
-		nav_actionPreviousPage->setEnabled( hasTableOfContents()  );
+		nav_actionPreviousPage->setEnabled( hasTableOfContents() );
 		nav_actionNextPageToc->setEnabled( hasTableOfContents() );
 
 		navSetBackEnabled( false );
@@ -342,7 +342,7 @@ bool MainWindow::loadFile ( const QString& loadFileName, bool call_open_page )
 		if ( !m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
 			refreshCurrentBrowser();
 
-		if ( m_currentSettings->loadSettings ( fileName ) )
+		if ( m_currentSettings->loadSettings( fileName ) )
 		{
 			if ( m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
 				setTextEncoding( m_currentSettings->m_activeEncoding );
@@ -432,12 +432,12 @@ void MainWindow::showBrowserContextMenu( ViewWindow* browser,
 	if ( !link.isEmpty() )
 	{
 		m->addAction( i18n( "Open Link in a new tab\tShift+LMB" ),
-		              [this, link] ()
+		              [this, link]()
 		{
 			openPage( link, UBrowser::OPEN_IN_NEW );
 		} );
 		m->addAction( i18n( "Open Link in a new background tab\tCtrl+LMB" ),
-		              [this, link] ()
+		              [this, link]()
 		{
 			openPage( link, UBrowser::OPEN_IN_BACKGROUND );
 		} );
@@ -474,7 +474,7 @@ bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, UBrowser::
 	QString otherlink;
 
 	// Feed to the browser all non-internal URLs
-	if ( !m_ebookFile->isSupportedUrl( url  ) )
+	if ( !m_ebookFile->isSupportedUrl( url ) )
 	{
 		switch ( pConfig->m_onExternalLinkClick )
 		{
@@ -493,7 +493,7 @@ bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, UBrowser::
 		//-fallthrough
 		case Config::ACTION_ALWAYS_OPEN:
 #if defined (USE_KDE)
-			new KRun ( url, 0 );
+			new KRun( url, 0 );
 #else
 			QDesktopServices::openUrl( url );
 #endif
@@ -550,7 +550,7 @@ void MainWindow::setTextEncoding( const QString& encoding )
 	        it != encodings.end();
 	        ++it )
 	{
-		if ( ( *it )->data().toString() == encoding  )
+		if ( ( *it )->data().toString() == encoding )
 		{
 			if ( !( *it )->isChecked() )
 				( *it )->setChecked( true );
@@ -606,7 +606,7 @@ void MainWindow::closeFile( )
 	pConfig->save();
 }
 
-void MainWindow::closeEvent ( QCloseEvent* e )
+void MainWindow::closeEvent( QCloseEvent* e )
 {
 	// Save the settings if we have something opened
 	if ( m_ebookFile )
@@ -619,21 +619,21 @@ void MainWindow::closeEvent ( QCloseEvent* e )
 	// Save toolbars
 	m_toolbarMgr->save();
 
-	QMainWindow::closeEvent ( e );
+	QMainWindow::closeEvent( e );
 }
 
 void MainWindow::printHelpAndExit()
 {
-	fprintf ( stderr, "Usage: %s [options] [helpfile]\n"
-	          "    The following options supported:\n"
-	          "  -showPage <url>   opens the url in the help file\n"
-	          "  -index <text>     searches for text in the Index tab\n"
-	          "  -search <query>   searches for query in the Search tab, and activate the first entry if found\n"
-	          "  -token <token>    specifies the application token; see the integration reference\n"
-	          "  -background       start minimized\n"
-	          , qPrintable( m_arguments[0] ) );
+	fprintf( stderr, "Usage: %s [options] [helpfile]\n"
+	         "    The following options supported:\n"
+	         "  -showPage <url>   opens the url in the help file\n"
+	         "  -index <text>     searches for text in the Index tab\n"
+	         "  -search <query>   searches for query in the Search tab, and activate the first entry if found\n"
+	         "  -token <token>    specifies the application token; see the integration reference\n"
+	         "  -background       start minimized\n"
+	         , qPrintable( m_arguments[0] ) );
 
-	exit ( 1 );
+	exit( 1 );
 }
 
 bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_app )
@@ -642,7 +642,7 @@ bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_ap
 	bool do_autotest = false, force_background = false;
 
 	// argv[0] in Qt is still a program name
-	for ( int i = 1; i < args.size(); i++  )
+	for ( int i = 1; i < args.size(); i++ )
 	{
 		if ( args[i] == "-h" || args[i] == "--help" )
 			printHelpAndExit();
@@ -675,8 +675,8 @@ bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_ap
 				if ( from_another_app )
 					return false;
 
-				fprintf ( stderr, "Invalid command-line option %s (ebook filename is already specified as %s)\n",
-				          qPrintable( filename ), qPrintable( args[i] ) );
+				fprintf( stderr, "Invalid command-line option %s (ebook filename is already specified as %s)\n",
+				         qPrintable( filename ), qPrintable( args[i] ) );
 
 				printHelpAndExit();
 			}
@@ -721,10 +721,10 @@ bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_ap
 		if ( do_autotest )
 		{
 			if ( filename.isEmpty() )
-				qFatal ( "Could not use Auto Test mode without a chm file!" );
+				qFatal( "Could not use Auto Test mode without a chm file!" );
 
 			m_autoteststate = STATE_INITIAL;
-			showMinimized ();
+			showMinimized();
 			runAutoTest();
 		}
 
@@ -851,7 +851,7 @@ void MainWindow::runAutoTest()
 	case STATE_INITIAL:
 		m_autoteststate = STATE_OPEN_INDEX;
 
-		QTimer::singleShot ( 500, this, SLOT( runAutoTest() ) );
+		QTimer::singleShot( 500, this, SLOT( runAutoTest() ) );
 		break; // allow to finish the initialization sequence
 
 	case STATE_OPEN_INDEX:
@@ -859,7 +859,7 @@ void MainWindow::runAutoTest()
 			m_navPanel->setActive( NavigationPanel::TAB_INDEX );
 
 		m_autoteststate = STATE_SHUTDOWN;
-		QTimer::singleShot ( 500, this, SLOT( runAutoTest() ) );
+		QTimer::singleShot( 500, this, SLOT( runAutoTest() ) );
 		break;
 
 	case STATE_SHUTDOWN:
@@ -945,7 +945,7 @@ void MainWindow::actionFindInPage()
 
 void MainWindow::actionChangeSettings()
 {
-	DialogSetup dlg ( this );
+	DialogSetup dlg( this );
 
 	dlg.exec();
 }
@@ -955,12 +955,12 @@ void MainWindow::actionExtractCHM()
 	QList< QUrl > files;
 
 #if defined (USE_KDE)
-	QString outdir = KFileDialog::getExistingDirectory (
+	QString outdir = KFileDialog::getExistingDirectory(
 	                     QUrl(),
 	                     this,
 	                     i18n( "Choose a directory to store CHM content" ) );
 #else
-	QString outdir = QFileDialog::getExistingDirectory (
+	QString outdir = QFileDialog::getExistingDirectory(
 	                     this,
 	                     i18n( "Choose a directory to store CHM content" ),
 	                     QString(),
@@ -1023,7 +1023,7 @@ void MainWindow::actionExtractCHM()
 				{
 					dirlist.push_back( dirs[i] );
 
-					QDir dir ( outdir + dirlist.join( "/" ) );
+					QDir dir( outdir + dirlist.join( "/" ) );
 
 					if ( !dir.exists() )
 					{
@@ -1078,7 +1078,7 @@ void MainWindow::actionViewHTMLsource()
 		if ( !m_ebookFile->getFileContentAsString( text, page ) || text.isEmpty() )
 			return;
 
-		QTextEdit* editor = new QTextEdit ( 0 );
+		QTextEdit* editor = new QTextEdit( 0 );
 		editor->setPlainText( text );
 		editor->setWindowTitle( i18n( "HTML source" ) );
 		editor->resize( 800, 600 );
@@ -1125,7 +1125,7 @@ void MainWindow::actionToggleFullScreen()
 	{
 		if ( !isFullScreen() )
 		{
-			showFullScreen ();
+			showFullScreen();
 
 			// Hiding menu bar disables menu actions. Probably a bug in Qt.
 			//menuBar()->hide();
@@ -1355,15 +1355,15 @@ void MainWindow::setupActions()
 	// Context menu
 	m_contextMenu = new QMenu( this );
 
-	m_contextMenu->addAction ( i18n( "&Open this link in a new tab" ),
-	                           this,
-	                           SLOT( onOpenPageInNewTab() ),
-	                           QKeySequence( "Shift+Enter" ) );
+	m_contextMenu->addAction( i18n( "&Open this link in a new tab" ),
+	                          this,
+	                          SLOT( onOpenPageInNewTab() ),
+	                          QKeySequence( "Shift+Enter" ) );
 
-	m_contextMenu->addAction ( i18n( "&Open this link in a new background tab" ),
-	                           this,
-	                           SLOT( onOpenPageInNewBackgroundTab() ),
-	                           QKeySequence( "Ctrl+Enter" ) );
+	m_contextMenu->addAction( i18n( "&Open this link in a new background tab" ),
+	                          this,
+	                          SLOT( onOpenPageInNewBackgroundTab() ),
+	                          QKeySequence( "Ctrl+Enter" ) );
 }
 
 void MainWindow::updateToolbars()
@@ -1457,7 +1457,7 @@ void MainWindow::setupLangEncodingMenu()
 
 	// Connect the action group signal
 	connect( m_encodingActions,
-	         SIGNAL( triggered ( QAction* ) ),
+	         SIGNAL( triggered( QAction* ) ),
 	         this,
 	         SLOT( actionEncodingChanged( QAction* ) ) );
 }

@@ -31,7 +31,7 @@ DialogChooseUrlFromList::DialogChooseUrlFromList( QWidget* parent )
 
 	// List doubleclick
 	connect( list,
-	         SIGNAL( itemDoubleClicked ( QListWidgetItem* ) ),
+	         SIGNAL( itemDoubleClicked( QListWidgetItem* ) ),
 	         this,
 	         SLOT( onDoubleClicked( QListWidgetItem* ) ) );
 }

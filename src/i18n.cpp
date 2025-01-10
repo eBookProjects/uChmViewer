@@ -43,7 +43,7 @@ void initGettext();
 #if !defined APP_INSTALL_DIR_BIN || !defined APP_INSTALL_DIR_LOCALE
 void app_i18n::initGettext()
 {
-	textdomain ( "uchmviewer" );
+	textdomain( "uchmviewer" );
 }
 #else
 void app_i18n::initGettext()
@@ -65,13 +65,13 @@ void app_i18n::initGettext()
 		// Getting the installation root folder and adding the translations path.
 		appDir.remove( QRegularExpression( binDir + "$" ) );
 		appDir.append( localeDir );
-		bindtextdomain ( "uchmviewer", appDir.toUtf8().data() );
+		bindtextdomain( "uchmviewer", appDir.toUtf8().data() );
 		// https://www.gnu.org/software/gettext/manual/html_node/Charset-conversion.html
 		// Special for Windows
-		bind_textdomain_codeset ( "uchmviewer", "UTF-8" );
+		bind_textdomain_codeset( "uchmviewer", "UTF-8" );
 	}
 
-	textdomain ( "uchmviewer" );
+	textdomain( "uchmviewer" );
 }
 #endif //!defined APP_INSTALL_DIR_BIN || !defined APP_INSTALL_DIR_LOCALE
 

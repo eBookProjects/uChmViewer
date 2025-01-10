@@ -330,17 +330,17 @@ bool EBook_CHM::load( const QString& archiveName )
 	return true;
 }
 
-int EBook_CHM::findStringInQuotes ( const QString& tag, int offset, QString& value, bool firstquote, bool decodeentities ) const
+int EBook_CHM::findStringInQuotes( const QString& tag, int offset, QString& value, bool firstquote, bool decodeentities ) const
 {
-	int qbegin = tag.indexOf ( '"', offset );
+	int qbegin = tag.indexOf( '"', offset );
 
 	if ( qbegin == -1 )
-		qFatal ( "EBook_CHMImpl::findStringInQuotes: cannot find first quote in <param> tag: '%s'", qPrintable( tag ) );
+		qFatal( "EBook_CHMImpl::findStringInQuotes: cannot find first quote in <param> tag: '%s'", qPrintable( tag ) );
 
-	int qend = firstquote ? tag.indexOf ( '"', qbegin + 1 ) : tag.lastIndexOf ( '"' );
+	int qend = firstquote ? tag.indexOf( '"', qbegin + 1 ) : tag.lastIndexOf( '"' );
 
 	if ( qend == -1 || qend <= qbegin )
-		qFatal ( "EBook_CHMImpl::findStringInQuotes: cannot find last quote in <param> tag: '%s'", qPrintable( tag ) );
+		qFatal( "EBook_CHMImpl::findStringInQuotes: cannot find last quote in <param> tag: '%s'", qPrintable( tag ) );
 
 	// If we do not need to decode HTML entities, just return.
 	if ( decodeentities )
@@ -348,7 +348,7 @@ int EBook_CHM::findStringInQuotes ( const QString& tag, int offset, QString& val
 		QString htmlentity = QString();
 		bool fill_entity = false;
 
-		value.reserve ( qend - qbegin ); // to avoid multiple memory allocations
+		value.reserve( qend - qbegin );  // to avoid multiple memory allocations
 
 		for ( int i = qbegin + 1; i < qend; i++ )
 		{
@@ -357,7 +357,7 @@ int EBook_CHM::findStringInQuotes ( const QString& tag, int offset, QString& val
 				if ( tag[i] == '&' ) // HTML entity starts
 					fill_entity = true;
 				else
-					value.append ( tag[i] );
+					value.append( tag[i] );
 			}
 			else
 			{
@@ -369,17 +369,17 @@ int EBook_CHM::findStringInQuotes ( const QString& tag, int offset, QString& val
 					if ( decode.isNull() )
 						break;
 
-					value.append ( decode );
+					value.append( decode );
 					htmlentity = QString();
 					fill_entity = false;
 				}
 				else
-					htmlentity.append ( tag[i] );
+					htmlentity.append( tag[i] );
 			}
 		}
 	}
 	else
-		value = tag.mid ( qbegin + 1, qend - qbegin - 1 );
+		value = tag.mid( qbegin + 1, qend - qbegin - 1 );
 
 	return qend + 1;
 }
@@ -414,7 +414,7 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 	// Split the HHC file by HTML tags
 	int stringlen = src.length();
 
-	while ( pos < stringlen && ( pos = src.indexOf ( '<', pos ) ) != -1 )
+	while ( pos < stringlen && ( pos = src.indexOf( '<', pos ) ) != -1 )
 	{
 		int i, word_end = 0;
 
@@ -424,40 +424,40 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 			if ( ( src[i] == '"' || src[i] == '\'' ) )
 			{
 				// find where quote ends, either by another quote, or by '>' symbol (some people don't know HTML)
-				int nextpos = src.indexOf ( src[i], i + 1 );
+				int nextpos = src.indexOf( src[i], i + 1 );
 
-				if ( nextpos == -1  && ( nextpos = src.indexOf ( '>', i + 1 ) ) == -1 )
+				if ( nextpos == -1  && ( nextpos = src.indexOf( '>', i + 1 ) ) == -1 )
 				{
-					qWarning ( "EBook_CHMImpl::ParseHhcAndFillTree: corrupted TOC: %s", qPrintable( src.mid( i ) ) );
+					qWarning( "EBook_CHMImpl::ParseHhcAndFillTree: corrupted TOC: %s", qPrintable( src.mid( i ) ) );
 					return false;
 				}
 
 				i =  nextpos;
 			}
-			else if ( src[i] == '>'  )
+			else if ( src[i] == '>' )
 				break;
 			else if ( !src[i].isLetterOrNumber() && src[i] != '/' && !word_end )
 				word_end = i;
 		}
 
-		QString tagword, tag = src.mid ( pos, i - pos );
+		QString tagword, tag = src.mid( pos, i - pos );
 
 		if ( word_end )
-			tagword = src.mid ( pos, word_end - pos ).toLower();
+			tagword = src.mid( pos, word_end - pos ).toLower();
 		else
 			tagword = tag.toLower();
 
 		//DEBUGPARSER(("tag: '%s', tagword: '%s'\n", qPrintable( tag ), qPrintable( tagword ) ));
 
 		// <OBJECT type="text/sitemap"> - a topic entry
-		if ( tagword == "object" && tag.indexOf ( "text/sitemap", 0, Qt::CaseInsensitive ) != -1 )
+		if ( tagword == "object" && tag.indexOf( "text/sitemap", 0, Qt::CaseInsensitive ) != -1 )
 			in_object = true;
 		else if ( tagword == "/object" && in_object )
 		{
 			// a topic entry closed. Add a tree item
 			if ( entry.name.isEmpty() && entry.urls.isEmpty() )
 			{
-				qWarning ( "EBook_CHMImpl::ParseAndFillTopicsTree: <object> tag is parsed, but both name and url are empty." );
+				qWarning( "EBook_CHMImpl::ParseAndFillTopicsTree: <object> tag is parsed, but both name and url are empty." );
 			}
 			else
 			{
@@ -496,18 +496,18 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 			QString name_pattern = "name=", value_pattern = "value=";
 			QString pname, pvalue;
 
-			if ( ( offset = tag.indexOf ( name_pattern, 0, Qt::CaseInsensitive ) ) == -1 )
-				qFatal ( "EBook_CHMImpl::ParseAndFillTopicsTree: bad <param> tag '%s': no name=\n", qPrintable( tag ) );
+			if ( ( offset = tag.indexOf( name_pattern, 0, Qt::CaseInsensitive ) ) == -1 )
+				qFatal( "EBook_CHMImpl::ParseAndFillTopicsTree: bad <param> tag '%s': no name=\n", qPrintable( tag ) );
 
 			// offset+5 skips 'name='
-			offset = findStringInQuotes ( tag, offset + name_pattern.length(), pname, true, false );
+			offset = findStringInQuotes( tag, offset + name_pattern.length(), pname, true, false );
 			pname = pname.toLower();
 
 			if ( ( offset = tag.indexOf( value_pattern, offset, Qt::CaseInsensitive ) ) == -1 )
-				qFatal ( "EBook_CHMImpl::ParseAndFillTopicsTree: bad <param> tag '%s': no value=\n", qPrintable( tag ) );
+				qFatal( "EBook_CHMImpl::ParseAndFillTopicsTree: bad <param> tag '%s': no value=\n", qPrintable( tag ) );
 
 			// offset+6 skips 'value='
-			findStringInQuotes ( tag, offset + value_pattern.length(), pvalue, false, true );
+			findStringInQuotes( tag, offset + value_pattern.length(), pvalue, false, true );
 
 			//DEBUGPARSER(("<param>: name '%s', value '%s'", qPrintable( pname ), qPrintable( pvalue )));
 
@@ -552,7 +552,7 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 			else if ( pname == "imagenumber" )
 			{
 				bool bok;
-				int imgnum = pvalue.toInt ( &bok );
+				int imgnum = pvalue.toInt( &bok );
 
 				if ( bok && imgnum >= 0 && imgnum < EBookTocEntry::MAX_BUILTIN_ICONS )
 					entry.iconid = ( EBookTocEntry::Icon ) imgnum;
@@ -626,10 +626,10 @@ bool EBook_CHM::getInfoFromWindows()
 		QVector<unsigned char> uptr( entries * entry_size );
 		unsigned char* raw = ( unsigned char* ) uptr.data();
 
-		if ( !RetrieveObject ( &ui, raw, 8, entries * entry_size ) )
+		if ( !RetrieveObject( &ui, raw, 8, entries * entry_size ) )
 			return false;
 
-		if ( !ResolveObject ( "/#STRINGS", &ui ) )
+		if ( !ResolveObject( "/#STRINGS", &ui ) )
 			return false;
 
 		for ( unsigned int i = 0; i < entries; ++i )
@@ -647,12 +647,12 @@ bool EBook_CHM::getInfoFromWindows()
 				size = RetrieveObject( &ui, buffer, factor * 4096, BUF_SIZE );
 
 			if ( size && off_title )
-				m_title = QByteArray( ( const char* ) ( buffer + off_title % 4096 ) );
+				m_title = QByteArray( ( const char* )( buffer + off_title % 4096 ) );
 
 			if ( factor != off_home / 4096 )
 			{
 				factor = off_home / 4096;
-				size = RetrieveObject ( &ui, buffer, factor * 4096, BUF_SIZE );
+				size = RetrieveObject( &ui, buffer, factor * 4096, BUF_SIZE );
 			}
 
 			if ( size && off_home )
@@ -670,7 +670,7 @@ bool EBook_CHM::getInfoFromWindows()
 			if ( factor != off_hhk / 4096 )
 			{
 				factor = off_hhk / 4096;
-				size = RetrieveObject ( &ui, buffer, factor * 4096, BUF_SIZE );
+				size = RetrieveObject( &ui, buffer, factor * 4096, BUF_SIZE );
 			}
 
 			if ( size && off_hhk )
@@ -693,11 +693,11 @@ bool EBook_CHM::getInfoFromSystem()
 
 	// Run the first loop to detect the encoding. We need this, because title could be
 	// already encoded in user encoding. Same for file names
-	if ( !ResolveObject ( "/#SYSTEM", &ui ) )
+	if ( !ResolveObject( "/#SYSTEM", &ui ) )
 		return false;
 
 	// Can we pull BUFF_SIZE bytes of the #SYSTEM file?
-	if ( ( size = RetrieveObject ( &ui, buffer, 4, BUF_SIZE ) ) == 0 )
+	if ( ( size = RetrieveObject( &ui, buffer, 4, BUF_SIZE ) ) == 0 )
 		return false;
 
 	buffer[size - 1] = 0;
@@ -740,7 +740,7 @@ bool EBook_CHM::getInfoFromSystem()
 		case 3:
 			index += 2;
 			cursor = buffer + index;
-			m_title = QByteArray( ( const char* ) ( buffer + index + 2 ) );
+			m_title = QByteArray( ( const char* )( buffer + index + 2 ) );
 			break;
 
 		case 4:
@@ -748,7 +748,7 @@ bool EBook_CHM::getInfoFromSystem()
 			cursor = buffer + index;
 
 			p = buffer + index + 2;
-			m_detectedLCID = ( short ) ( p[0] | ( p[1] << 8 ) );
+			m_detectedLCID = ( short )( p[0] | ( p[1] << 8 ) );
 
 			break;
 
@@ -759,7 +759,7 @@ bool EBook_CHM::getInfoFromSystem()
 			if ( m_topicsFile.isEmpty() )
 			{
 				QString topicAttempt = "/", tmp;
-				topicAttempt += QString ( ( const char* ) buffer + index + 2 );
+				topicAttempt += QString( ( const char* ) buffer + index + 2 );
 
 				tmp = topicAttempt + ".hhc";
 
@@ -778,7 +778,7 @@ bool EBook_CHM::getInfoFromSystem()
 			index += 2;
 			cursor = buffer + index;
 
-			m_font = QString ( ( const char* ) buffer + index + 2 );
+			m_font = QString( ( const char* ) buffer + index + 2 );
 			break;
 
 		default:
@@ -836,13 +836,13 @@ bool EBook_CHM::guessTextEncoding()
 {
 	if ( !m_detectedLCID )
 	{
-		qFatal ( "Could not detect LCID" );
+		qFatal( "Could not detect LCID" );
 		return false;
 	}
 
 	QString enc = Ebook_CHM_Encoding::guessByLCID( m_detectedLCID );
 
-	if ( changeFileEncoding ( enc ) )
+	if ( changeFileEncoding( enc ) )
 	{
 		m_currentEncoding = enc;
 		return true;
@@ -851,7 +851,7 @@ bool EBook_CHM::guessTextEncoding()
 	return false;
 }
 
-bool EBook_CHM::changeFileEncoding( const QString& qtencoding  )
+bool EBook_CHM::changeFileEncoding( const QString& qtencoding )
 {
 	// Encoding could be either simple Qt codepage, or set like CP1251/KOI8, which allows to
 	// set up encodings separately for text (first) and internal files (second)
@@ -918,7 +918,7 @@ void EBook_CHM::fillTopicsUrlMap()
 		QUrl url = pathToUrl( ( const char* ) urlstr.data() + off_url );
 
 		if ( off_title < ( unsigned int )strings.size() )
-			m_url2topics[url] = encodeWithCurrentCodec ( ( const char* ) strings.data() + off_title );
+			m_url2topics[url] = encodeWithCurrentCodec( ( const char* ) strings.data() + off_title );
 		else
 			m_url2topics[url] = "Untitled";
 	}

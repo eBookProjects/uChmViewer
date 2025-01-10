@@ -64,21 +64,21 @@ DialogSetup::DialogSetup( QWidget* parent )
 		break;
 	}
 
-	m_historySize->setValue ( pConfig->m_numOfRecentFiles );
-	m_rememberHistoryInfo->setChecked ( pConfig->m_HistoryStoreExtra );
+	m_historySize->setValue( pConfig->m_numOfRecentFiles );
+	m_rememberHistoryInfo->setChecked( pConfig->m_HistoryStoreExtra );
 
-	m_radioExtLinkOpenAlways->setChecked ( pConfig->m_onExternalLinkClick == Config::ACTION_ALWAYS_OPEN );
-	m_radioExtLinkAsk->setChecked ( pConfig->m_onExternalLinkClick == Config::ACTION_ASK_USER );
-	m_radioExtLinkOpenNever->setChecked ( pConfig->m_onExternalLinkClick == Config::ACTION_DONT_OPEN );
+	m_radioExtLinkOpenAlways->setChecked( pConfig->m_onExternalLinkClick == Config::ACTION_ALWAYS_OPEN );
+	m_radioExtLinkAsk->setChecked( pConfig->m_onExternalLinkClick == Config::ACTION_ASK_USER );
+	m_radioExtLinkOpenNever->setChecked( pConfig->m_onExternalLinkClick == Config::ACTION_DONT_OPEN );
 	m_highlightSearchResults->setChecked( pConfig->browser.highlightSearchResults );
 
-	m_radioNewChmOpenAlways->setChecked ( pConfig->m_onNewChmClick == Config::ACTION_ALWAYS_OPEN );
-	m_radioNewChmAsk->setChecked ( pConfig->m_onNewChmClick == Config::ACTION_ASK_USER );
-	m_radioNewChmOpenNever->setChecked ( pConfig->m_onNewChmClick == Config::ACTION_DONT_OPEN );
+	m_radioNewChmOpenAlways->setChecked( pConfig->m_onNewChmClick == Config::ACTION_ALWAYS_OPEN );
+	m_radioNewChmAsk->setChecked( pConfig->m_onNewChmClick == Config::ACTION_ASK_USER );
+	m_radioNewChmOpenNever->setChecked( pConfig->m_onNewChmClick == Config::ACTION_DONT_OPEN );
 
 	m_advExternalProgramName->setText( pConfig->m_advExternalEditorPath );
-	m_advViewSourceExternal->setChecked ( !pConfig->m_advUseInternalEditor );
-	m_advViewSourceInternal->setChecked ( pConfig->m_advUseInternalEditor );
+	m_advViewSourceExternal->setChecked( !pConfig->m_advUseInternalEditor );
+	m_advViewSourceInternal->setChecked( pConfig->m_advUseInternalEditor );
 
 	m_numOfRecentFiles = pConfig->m_numOfRecentFiles;
 
@@ -148,16 +148,16 @@ void DialogSetup::accept()
 	pConfig->browser.highlightSearchResults = m_highlightSearchResults->isChecked();
 	pConfig->m_tocOpenAllEntries = m_openAllTOCEntries->isChecked();
 
-	if ( m_radioExtLinkOpenAlways->isChecked () )
+	if ( m_radioExtLinkOpenAlways->isChecked() )
 		pConfig->m_onExternalLinkClick = Config::ACTION_ALWAYS_OPEN;
-	else if ( m_radioExtLinkAsk->isChecked () )
+	else if ( m_radioExtLinkAsk->isChecked() )
 		pConfig->m_onExternalLinkClick = Config::ACTION_ASK_USER;
 	else
 		pConfig->m_onExternalLinkClick = Config::ACTION_DONT_OPEN;
 
-	if ( m_radioNewChmOpenAlways->isChecked () )
+	if ( m_radioNewChmOpenAlways->isChecked() )
 		pConfig->m_onNewChmClick = Config::ACTION_ALWAYS_OPEN;
-	else if ( m_radioNewChmAsk->isChecked () )
+	else if ( m_radioNewChmAsk->isChecked() )
 		pConfig->m_onNewChmClick = Config::ACTION_ASK_USER;
 	else
 		pConfig->m_onNewChmClick = Config::ACTION_DONT_OPEN;
@@ -211,7 +211,7 @@ void DialogSetup::accept()
 	if ( need_restart )
 		QMessageBox::information( this,
 		                          QCoreApplication::applicationName(),
-		                          i18n( "Changing those options requires restarting the application to take effect." )  );
+		                          i18n( "Changing those options requires restarting the application to take effect." ) );
 
 	QDialog::accept();
 }

@@ -42,13 +42,13 @@ class TabIndex : public QWidget, public Ui::TabIndex
 		void    focus();
 
 	private slots:
-		void    onTextChanged ( const QString& newvalue );
-		void    onReturnPressed ();
-		void    onItemActivated ( QTreeWidgetItem* item, int column );
-		void    onContextMenuRequested ( const QPoint& point );
+		void    onTextChanged( const QString& newvalue );
+		void    onReturnPressed();
+		void    onItemActivated( QTreeWidgetItem* item, int column );
+		void    onContextMenuRequested( const QPoint& point );
 
 	private:
-		void    showEvent ( QShowEvent* );
+		void    showEvent( QShowEvent* );
 
 		void    refillIndex();
 

@@ -45,7 +45,7 @@ class QPrinter;
 static const qreal ZOOM_FACTOR_CHANGE = 0.1;
 
 ViewWindow::ViewWindow( QWidget* parent )
-	: QWebView ( parent )
+	: QWebView( parent )
 {
 	invalidate();
 	m_storedScrollbarPosition = 0;
@@ -239,7 +239,7 @@ QUrl ViewWindow::anchorAt( const QPoint& pos )
 	return  res.linkUrl();
 }
 
-void ViewWindow::mouseReleaseEvent ( QMouseEvent* event )
+void ViewWindow::mouseReleaseEvent( QMouseEvent* event )
 {
 	if ( event->button() == Qt::MidButton )
 	{
@@ -261,7 +261,7 @@ void ViewWindow::contextMenuEvent( QContextMenuEvent* e )
 	emit contextMenuRequested( e->globalPos(), link );
 }
 
-void ViewWindow::onLoadFinished ( bool )
+void ViewWindow::onLoadFinished( bool )
 {
 	if ( m_storedScrollbarPosition > 0 )
 	{

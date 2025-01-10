@@ -46,7 +46,7 @@ class ViewWindow : public QWebEngineView
 		virtual ~ViewWindow();
 
 		//! Open a page from current chm archive
-		void    load ( const QUrl& url );
+		void    load( const QUrl& url );
 
 		QUrl    url() const   { return QWebEngineView::url(); }
 
@@ -108,11 +108,11 @@ class ViewWindow : public QWebEngineView
 		void    zoomDecrease();
 
 	protected:
-		bool            openPage ( const QUrl& url );
+		bool            openPage( const QUrl& url );
 		void            handleStartPageAsImage( QUrl& link );
 
 		// Overriden to change the source
-		void            setSource ( const QUrl& name );
+		void            setSource( const QUrl& name );
 
 		// Overloaded to provide custom context menu
 		void            contextMenuEvent( QContextMenuEvent* e );
@@ -120,7 +120,7 @@ class ViewWindow : public QWebEngineView
 
 	private slots:
 		// Used to restore the scrollbar position and the navigation button status
-		void            onLoadFinished ( bool ok );
+		void            onLoadFinished( bool ok );
 		void            onLinkClicked( const QUrl& url, UBrowser::OpenMode mode = UBrowser::OPEN_IN_CURRENT );
 
 	private:

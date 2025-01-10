@@ -58,14 +58,14 @@ class ActionListModel : public QAbstractListModel
 			m_actionSource = actionSource;
 		}
 
-		int rowCount ( const QModelIndex& ) const
+		int rowCount( const QModelIndex& ) const
 		{
 			return m_actions.size();
 		}
 
-		QVariant data ( const QModelIndex& index, int role = Qt::DisplayRole ) const
+		QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const
 		{
-			if ( !index.isValid() || index.row() < 0 || index.row() >= m_actions.size()  )
+			if ( !index.isValid() || index.row() < 0 || index.row() >= m_actions.size() )
 				return QVariant();
 
 			if ( m_actions[ index.row() ] == ToolbarManager::separatorName() )
@@ -94,7 +94,7 @@ class ActionListModel : public QAbstractListModel
 			return QVariant();
 		}
 
-		Qt::ItemFlags flags ( const QModelIndex& index ) const
+		Qt::ItemFlags flags( const QModelIndex& index ) const
 		{
 			if ( index.isValid() )
 				return Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled;
@@ -108,11 +108,11 @@ class ActionListModel : public QAbstractListModel
 		}
 
 		// Required for drag and drop
-		bool insertRows ( int row, int count, const QModelIndex& parent = QModelIndex() )
+		bool insertRows( int row, int count, const QModelIndex& parent = QModelIndex() )
 		{
 			int start = row;
 			int end = row + count - 1;
-			emit beginInsertRows ( parent, start, end );
+			emit beginInsertRows( parent, start, end );
 
 			for ( ; count > 0; count-- )
 				m_actions.insert( row, 0 );
@@ -122,7 +122,7 @@ class ActionListModel : public QAbstractListModel
 		}
 
 		// Required for drag and drop
-		bool removeRows ( int row, int count, const QModelIndex& parent = QModelIndex() )
+		bool removeRows( int row, int count, const QModelIndex& parent = QModelIndex() )
 		{
 			// Do not remove a row with separator
 			if ( m_actionSource && m_actions[row ] == ToolbarManager::separatorName() )
