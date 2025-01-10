@@ -47,7 +47,7 @@ class SearchDataKeeper
 		{
 			m_inPhrase = false;
 			phrasewords += phrase_terms;
-			phrases.push_back( phrase_terms.join(" ") );
+			phrases.push_back( phrase_terms.join( " " ) );
 		}
 
 		bool isInPhrase() const { return m_inPhrase; }
@@ -143,7 +143,7 @@ void EBookSearch::cancelIndexGeneration()
 	m_Index->setLastWinClosed();
 }
 
-void EBookSearch::updateProgress(int value, const QString& stepName)
+void EBookSearch::updateProgress( int value, const QString& stepName )
 {
 	emit progressStep( value, stepName );
 }
@@ -155,7 +155,7 @@ void EBookSearch::processEvents()
 		qApp->processEvents( QEventLoop::ExcludeUserInputEvents );
 }
 
-bool EBookSearch::searchQuery(const QString& query, QList< QUrl >* results, EBook* ebookFile, unsigned int limit)
+bool EBookSearch::searchQuery( const QString& query, QList< QUrl >* results, EBook* ebookFile, unsigned int limit )
 {
 	// We should have index
 	if ( !m_Index )

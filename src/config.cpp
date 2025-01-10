@@ -45,22 +45,22 @@ Config::Config()
 	{
 		QSettings::setDefaultFormat( QSettings::IniFormat );
 		QSettings::setPath( QSettings::defaultFormat(), QSettings::UserScope, m_datapath );
-		m_datapath += QDir::separator() + QString("data");
+		m_datapath += QDir::separator() + QString( "data" );
 	}
 	else
 		m_datapath = QStandardPaths::writableLocation( QStandardPaths::GenericCacheLocation ) + "/" + "uchmviewer";
 
 	QSettings settings;
 
-	m_startupMode = (Config::StartupMode) settings.value( "settings/onstartup", STARTUP_DO_NOTHING ).toInt();
-	m_onNewChmClick = (Config::choose_action_t) settings.value( "settings/onnewchm", ACTION_ASK_USER ).toInt();
-	m_onExternalLinkClick = (Config::choose_action_t) settings.value( "settings/onexternal", ACTION_ASK_USER ).toInt();
+	m_startupMode = ( Config::StartupMode ) settings.value( "settings/onstartup", STARTUP_DO_NOTHING ).toInt();
+	m_onNewChmClick = ( Config::choose_action_t ) settings.value( "settings/onnewchm", ACTION_ASK_USER ).toInt();
+	m_onExternalLinkClick = ( Config::choose_action_t ) settings.value( "settings/onexternal", ACTION_ASK_USER ).toInt();
 	m_numOfRecentFiles = settings.value( "settings/maxrecentfiles", 10 ).toInt();
 	m_HistoryStoreExtra = settings.value( "settings/extrahistory", true ).toBool();
 	m_advUseInternalEditor = settings.value( "advanced/internaleditor", true ).toBool();
 	m_advLayoutDirectionRL = settings.value( "advanced/layoutltr", false ).toBool();
 	m_advExternalEditorPath = settings.value( "advanced/editorpath", "/usr/bin/kate" ).toString();
-	m_toolbarMode = (Config::ToolbarMode) settings.value( "advanced/toolbarmode", TOOLBAR_LARGEICONSTEXT ).toInt();
+	m_toolbarMode = ( Config::ToolbarMode ) settings.value( "advanced/toolbarmode", TOOLBAR_LARGEICONSTEXT ).toInt();
 	m_lastOpenedDir = settings.value( "advanced/lastopendir", "." ).toString();
 
 	browser.enableJS = settings.value( "browser/enablejs", true ).toBool();
@@ -76,10 +76,10 @@ Config::Config()
 	m_tabUseSingleClick = settings.value( "browser/tabusesingleclick", true ).toBool();
 
 	QDir dir;
-	dir.setPath (m_datapath);
+	dir.setPath ( m_datapath );
 
-	if ( !dir.exists() && !dir.mkpath(m_datapath) )
-		qWarning( "Could not create directory %s", qPrintable( m_datapath ));
+	if ( !dir.exists() && !dir.mkpath( m_datapath ) )
+		qWarning( "Could not create directory %s", qPrintable( m_datapath ) );
 
 	// If the old cache directory exists, copy its contents to the correct directory
 	//  and remove the old directory.
@@ -132,7 +132,7 @@ void Config::save( )
 	settings.setValue( "browser/tabusesingleclick", m_tabUseSingleClick );
 }
 
-QString Config::getEbookSettingFile(const QString& ebookfile ) const
+QString Config::getEbookSettingFile( const QString& ebookfile ) const
 {
 	QFileInfo finfo ( ebookfile );
 	QString prefix = pConfig->m_datapath + QDir::separator() + finfo.completeBaseName();
@@ -140,7 +140,7 @@ QString Config::getEbookSettingFile(const QString& ebookfile ) const
 	return prefix + ".uchmviewer";
 }
 
-QString Config::getEbookIndexFile(const QString& ebookfile) const
+QString Config::getEbookIndexFile( const QString& ebookfile ) const
 {
 	QFileInfo finfo ( ebookfile );
 	QString prefix = pConfig->m_datapath + "/" + finfo.completeBaseName();

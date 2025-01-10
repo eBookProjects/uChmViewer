@@ -71,7 +71,7 @@ class ViewWindowTabWidget : public QTabWidget
 	protected:
 		void mouseReleaseEvent ( QMouseEvent* event )
 		{
-			if ( event->button() == Qt::MiddleButton)
+			if ( event->button() == Qt::MiddleButton )
 			{
 				int tab = tabBar()->tabAt( event->pos() );
 
@@ -96,15 +96,15 @@ ViewWindowMgr::ViewWindowMgr( QWidget* parent )
 	verticalLayout->insertWidget( 0, m_tabWidget, 10 );
 
 	// on current tab changed
-	connect( m_tabWidget, SIGNAL( currentChanged(int) ), this, SLOT( onTabChanged(int) ) );
-	connect( m_tabWidget, SIGNAL( tabCloseRequested(int) ), this, SLOT( onCloseWindow(int) ) );
+	connect( m_tabWidget, SIGNAL( currentChanged( int ) ), this, SLOT( onTabChanged( int ) ) );
+	connect( m_tabWidget, SIGNAL( tabCloseRequested( int ) ), this, SLOT( onCloseWindow( int ) ) );
 
 	// Create a "new tab" button
 	QToolButton* newButton = new QToolButton( this );
 	newButton->setCursor( Qt::ArrowCursor );
 	newButton->setAutoRaise( true );
 	newButton->setIcon( QIcon( ":/images/addtab.png" ) );
-	newButton->setToolTip( i18n("Add page") );
+	newButton->setToolTip( i18n( "Add page" ) );
 	connect( newButton, SIGNAL( clicked() ), this, SLOT( openNewTab() ) );
 
 	// Put it there
@@ -119,14 +119,14 @@ ViewWindowMgr::ViewWindowMgr( QWidget* parent )
 	         this,
 	         SLOT( editTextEdited( const QString& ) ) );
 
-	connect( editFind, SIGNAL(returnPressed()), this, SLOT(onFindNext()) );
+	connect( editFind, SIGNAL( returnPressed() ), this, SLOT( onFindNext() ) );
 
 	// Search toolbar buttons
 	toolClose->setShortcut( Qt::Key_Escape );
-	connect( toolClose, SIGNAL(clicked()), this, SLOT( closeSearch()) );
+	connect( toolClose, SIGNAL( clicked() ), this, SLOT( closeSearch() ) );
 
-	connect( toolPrevious, SIGNAL(clicked()), this, SLOT( onFindPrevious()) );
-	connect( toolNext, SIGNAL(clicked()), this, SLOT( onFindNext()) );
+	connect( toolPrevious, SIGNAL( clicked() ), this, SLOT( onFindPrevious() ) );
+	connect( toolNext, SIGNAL( clicked() ), this, SLOT( onFindNext() ) );
 }
 
 ViewWindowMgr::~ViewWindowMgr( )
@@ -187,29 +187,29 @@ ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 	         [browser, this] ( const QUrl & link, UBrowser::OpenMode mode )
 	{
 		emit linkClicked( browser, link, mode );
-	});
+	} );
 
 	connect( browser, &ViewWindow::urlChanged,
 	         [browser, this] ( const QUrl & url )
 	{
 		onBrowserUrlChanged( browser, url );
-	});
+	} );
 
 	connect( browser, &ViewWindow::loadFinished,
-	         [browser, this] (bool success)
+	         [browser, this] ( bool success )
 	{
 		onBrowserLoadFinished( browser, success );
-	});
+	} );
 
 	connect( browser, &ViewWindow::contextMenuRequested,
 	         [browser, this] ( const QPoint & pos, const QUrl & link )
 	{
 		emit contextMenuRequested( browser, pos, link );
-	});
+	} );
 
 	// Set up the accelerator if we have room
 	if ( m_Windows.size() < 10 )
-		tabdata.action->setShortcut( QKeySequence( i18n("Alt+%1").arg( m_Windows.size() ) ) );
+		tabdata.action->setShortcut( QKeySequence( i18n( "Alt+%1" ).arg( m_Windows.size() ) ) );
 
 	// Add it to the "Windows" menu
 	m_menuWindow->addAction( tabdata.action );
@@ -223,7 +223,7 @@ void ViewWindowMgr::closeAllWindows( )
 		closeWindow( m_Windows.first().widget );
 }
 
-void ViewWindowMgr::setTabName(ViewWindow* browser )
+void ViewWindowMgr::setTabName( ViewWindow* browser )
 {
 	try
 	{
@@ -251,7 +251,7 @@ void ViewWindowMgr::onCloseCurrentWindow( )
 
 	try
 	{
-		closeTab( findTabData( m_tabWidget->currentWidget()));
+		closeTab( findTabData( m_tabWidget->currentWidget() ) );
 	}
 	catch ( const std::invalid_argument& )
 	{
@@ -266,7 +266,7 @@ void ViewWindowMgr::onCloseWindow( int num )
 
 	try
 	{
-		closeTab( findTabData( num ));
+		closeTab( findTabData( num ) );
 	}
 	catch ( const std::invalid_argument& )
 	{
@@ -277,7 +277,7 @@ void ViewWindowMgr::closeWindow( QWidget* widget )
 {
 	try
 	{
-		closeTab( findTabData( widget));
+		closeTab( findTabData( widget ) );
 	}
 	catch ( const std::invalid_argument& )
 	{
@@ -285,7 +285,7 @@ void ViewWindowMgr::closeWindow( QWidget* widget )
 	}
 }
 
-void ViewWindowMgr::closeTab(const TabData& data)
+void ViewWindowMgr::closeTab( const TabData& data )
 {
 	m_menuWindow->removeAction( data.action );
 
@@ -300,7 +300,7 @@ void ViewWindowMgr::closeTab(const TabData& data)
 	int count = 1;
 
 	for ( WindowsIterator it = m_Windows.begin(); it != m_Windows.end() && count < 10; ++it, count++ )
-		(*it).action->setShortcut( QKeySequence( i18n("Alt+%1").arg( count ) ) );
+		( *it ).action->setShortcut( QKeySequence( i18n( "Alt+%1" ).arg( count ) ) );
 }
 
 void ViewWindowMgr::restoreSettings( const Settings::viewindow_saved_settings_t& settings )
@@ -328,7 +328,7 @@ void ViewWindowMgr::saveSettings( Settings::viewindow_saved_settings_t& settings
 			const TabData& tab = findTabData( i );
 			settings.push_back( Settings::SavedViewWindow( tab.browser->url().toString(),
 			                                               tab.browser->scrollTop(),
-			                                               tab.browser->zoomFactor()) );
+			                                               tab.browser->zoomFactor() ) );
 		}
 	}
 	catch ( const std::invalid_argument& )
@@ -366,12 +366,12 @@ void ViewWindowMgr::onBrowserUrlChanged( ViewWindow* browser, const QUrl& url )
 {
 	if ( browser == current() )
 	{
-		emit urlChanged(url);
+		emit urlChanged( url );
 		emit historyChanged();
 	}
 }
 
-void ViewWindowMgr::onBrowserLoadFinished(ViewWindow* browser, bool success)
+void ViewWindowMgr::onBrowserLoadFinished( ViewWindow* browser, bool success )
 {
 	setTabName( browser );
 	emit loadFinished( browser, success );
@@ -384,7 +384,7 @@ void ViewWindowMgr::openNewTab()
 
 void ViewWindowMgr::activateWindow()
 {
-	QAction* action = qobject_cast< QAction* >(sender());
+	QAction* action = qobject_cast< QAction* >( sender() );
 
 	for ( WindowsIterator it = m_Windows.begin(); it != m_Windows.end(); ++it )
 	{
@@ -392,7 +392,7 @@ void ViewWindowMgr::activateWindow()
 			continue;
 
 		QWidget* widget = it->widget;
-		m_tabWidget->setCurrentWidget(widget);
+		m_tabWidget->setCurrentWidget( widget );
 		break;
 	}
 }
@@ -403,30 +403,30 @@ void ViewWindowMgr::closeSearch()
 	m_tabWidget->currentWidget()->setFocus();
 }
 
-ViewWindowMgr::TabData ViewWindowMgr::findTabData(QWidget* widget) noexcept(false)
+ViewWindowMgr::TabData ViewWindowMgr::findTabData( QWidget* widget ) noexcept( false )
 {
 	for ( int i = 0; i < m_Windows.size(); ++i )
 		if ( m_Windows[i].widget == widget )
 			return m_Windows[i];
 
-	throw std::invalid_argument("");
+	throw std::invalid_argument( "" );
 }
 
-ViewWindowMgr::TabData ViewWindowMgr::findTabData(ViewWindow* browser) noexcept(false)
+ViewWindowMgr::TabData ViewWindowMgr::findTabData( ViewWindow* browser ) noexcept( false )
 {
 	for ( int i = 0; i < m_Windows.size(); ++i )
 		if ( m_Windows[i].browser == browser )
 			return m_Windows[i];
 
-	throw std::invalid_argument("");
+	throw std::invalid_argument( "" );
 }
 
-ViewWindowMgr::TabData ViewWindowMgr::findTabData(int tabIndex) noexcept(false)
+ViewWindowMgr::TabData ViewWindowMgr::findTabData( int tabIndex ) noexcept( false )
 {
 	return findTabData( m_tabWidget->widget( tabIndex ) );
 }
 
-void ViewWindowMgr::setCurrentPage(int index)
+void ViewWindowMgr::setCurrentPage( int index )
 {
 	m_tabWidget->setCurrentIndex( index );
 }
@@ -452,7 +452,7 @@ void ViewWindowMgr::find( bool backward )
 	current()->findText( editFind->text(),
 	                     backward, checkCase->isChecked(),
 	                     pConfig->browser.highlightSearchResults,
-	                     [ = ](bool found, bool wrapped)
+	                     [ = ]( bool found, bool wrapped )
 	{
 		if ( !frameFind->isVisible() )
 			frameFind->show();
@@ -463,15 +463,15 @@ void ViewWindowMgr::find( bool backward )
 		QPalette p = editFind->palette();
 
 		if ( !found )
-			p.setColor( QPalette::Active, QPalette::Base, QColor(255, 102, 102) );
+			p.setColor( QPalette::Active, QPalette::Base, QColor( 255, 102, 102 ) );
 		else
 			p.setColor( QPalette::Active, QPalette::Base, Qt::white );
 
 		editFind->setPalette( p );
-	});
+	} );
 }
 
-void ViewWindowMgr::editTextEdited(const QString&)
+void ViewWindowMgr::editTextEdited( const QString& )
 {
 	find();
 }
@@ -496,5 +496,5 @@ void ViewWindowMgr::copyUrlToClipboard()
 
 void ViewWindowMgr::applyBrowserSettings()
 {
-	ViewWindow::applySettings(pConfig->browser);
+	ViewWindow::applySettings( pConfig->browser );
 }

@@ -45,7 +45,7 @@ class TabContents : public QWidget, public Ui::TabContents
 		void    search( const QString& text );
 		void    focus();
 
-		TreeItem_TOC*   getTreeItem(const QUrl& url );
+		TreeItem_TOC*   getTreeItem( const QUrl& url );
 
 	public slots:
 		void    onContextMenuRequested ( const QPoint& point );

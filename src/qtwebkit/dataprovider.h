@@ -41,7 +41,7 @@ class KCHMNetworkReply : public QNetworkReply
 		virtual void abort();
 
 	protected:
-		virtual qint64 readData(char* buffer, qint64 maxlen);
+		virtual qint64 readData( char* buffer, qint64 maxlen );
 		QByteArray loadResource( const QUrl& url );
 
 	private:
@@ -59,7 +59,7 @@ class KCHMNetworkAccessManager : public QNetworkAccessManager
 		KCHMNetworkAccessManager( QObject* parent );
 
 	protected:
-		virtual QNetworkReply* createRequest(Operation op, const QNetworkRequest& request, QIODevice* outgoingData = 0);
+		virtual QNetworkReply* createRequest( Operation op, const QNetworkRequest& request, QIODevice* outgoingData = 0 );
 };
 
 #endif // QWEBVIEWNETWORK_H

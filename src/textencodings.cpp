@@ -178,7 +178,7 @@ TextEncodings::TextEncodings()
 {
 }
 
-void TextEncodings::getSupported(QStringList& languages, QStringList& qtcodecs)
+void TextEncodings::getSupported( QStringList& languages, QStringList& qtcodecs )
 {
 	for ( const TextEncodingEntry* e = text_encoding_table; e->language; e++ )
 	{
@@ -187,7 +187,7 @@ void TextEncodings::getSupported(QStringList& languages, QStringList& qtcodecs)
 	}
 }
 
-QString TextEncodings::languageForCodec(const QString& qtcodec)
+QString TextEncodings::languageForCodec( const QString& qtcodec )
 {
 	for ( const TextEncodingEntry* e = text_encoding_table; e->language; e++ )
 	{

@@ -26,14 +26,14 @@
 // Yes, I know about std::isspace(), but it may depend on the locale.
 #define isspace(c) (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\f' || c == '\v')
 
-QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
+QByteArray MimeHelper::mimeType( const QUrl& url, const QByteArray& buf )
 {
 	QString path = url.path().toLower();
 
 	// Try to recognize the MIME type by the extension of the file name.
-	if (path.endsWith(".cs") || path.endsWith(".css"))
+	if ( path.endsWith( ".cs" ) || path.endsWith( ".css" ) )
 		return "text/css";
-	else if (path.endsWith(".js"))
+	else if ( path.endsWith( ".js" ) )
 		return "text/js";
 
 	/* BOM          Encoding Form
@@ -46,7 +46,7 @@ QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
 	auto iter = buf.begin();
 
 	// Skip utf-8 Byte Order Mark
-	if (buf.startsWith("\xEF\xBB\xBF"))
+	if ( buf.startsWith( "\xEF\xBB\xBF" ) )
 	{
 		iter += 3;
 	}
@@ -56,27 +56,27 @@ QByteArray MimeHelper::mimeType(const QUrl& url, const QByteArray& buf)
 	 * or if it is followed by '?', then XML.
 	 *
 	 * TODO Skip comments like "<!-- -->" */
-	for (; iter != buf.end() ; iter++)
+	for ( ; iter != buf.end() ; iter++ )
 	{
 		char c = *iter;
 
-		if (c == '<')
+		if ( c == '<' )
 		{
-			c = *(++iter);
+			c = *( ++iter );
 
-			if ( c == '?')
+			if ( c == '?' )
 				return "text/xml";
 			else
 				return "text/html";
 		}
 
-		if (!isspace(c))
+		if ( !isspace( c ) )
 			break;
 	}
 
-	if (path.endsWith(".htm") || path.endsWith(".html"))
+	if ( path.endsWith( ".htm" ) || path.endsWith( ".html" ) )
 		return "text/html";
-	else if (path.endsWith(".xhtml") || path.endsWith(".xml"))
+	else if ( path.endsWith( ".xhtml" ) || path.endsWith( ".xml" ) )
 		return "text/xml";
 
 	return "application/octet-stream";

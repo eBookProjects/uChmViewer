@@ -29,7 +29,7 @@
 class DBusInterface : public QObject
 {
 		Q_OBJECT
-		Q_CLASSINFO("D-Bus Interface", "net.uchmviewer.application")
+		Q_CLASSINFO( "D-Bus Interface", "net.uchmviewer.application" )
 
 	public:
 		DBusInterface( QObject* parent = 0 );

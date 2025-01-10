@@ -45,9 +45,9 @@ TabIndex::TabIndex ( QWidget* parent )
 	tree->headerItem()->setHidden( true );
 
 	connect( text,
-	         SIGNAL( textChanged (const QString&) ),
+	         SIGNAL( textChanged ( const QString& ) ),
 	         this,
-	         SLOT( onTextChanged(const QString&) ) );
+	         SLOT( onTextChanged( const QString& ) ) );
 
 	connect( text,
 	         SIGNAL( returnPressed() ),
@@ -57,7 +57,7 @@ TabIndex::TabIndex ( QWidget* parent )
 	if ( pConfig->m_tabUseSingleClick )
 	{
 		connect( tree,
-		         SIGNAL( itemClicked(QTreeWidgetItem*, int)),
+		         SIGNAL( itemClicked( QTreeWidgetItem*, int ) ),
 		         this,
 		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
@@ -83,7 +83,7 @@ TabIndex::TabIndex ( QWidget* parent )
 	focus();
 }
 
-void TabIndex::onTextChanged ( const QString& newvalue)
+void TabIndex::onTextChanged ( const QString& newvalue )
 {
 	QList<QTreeWidgetItem*> items = tree->findItems( newvalue, Qt::MatchStartsWith );
 
@@ -111,7 +111,7 @@ void TabIndex::onReturnPressed( )
 	if ( !m_lastSelectedItem )
 		return;
 
-	TreeItem_Index* treeitem = (TreeItem_Index*) m_lastSelectedItem;
+	TreeItem_Index* treeitem = ( TreeItem_Index* ) m_lastSelectedItem;
 	::mainWindow->activateUrl( treeitem->getUrl() );
 }
 
@@ -127,7 +127,7 @@ void TabIndex::onItemActivated ( QTreeWidgetItem* item, int )
 	if ( !item )
 		return;
 
-	TreeItem_Index* treeitem = (TreeItem_Index*) item;
+	TreeItem_Index* treeitem = ( TreeItem_Index* ) item;
 
 	QUrl url = treeitem->getUrl();
 
@@ -158,7 +158,7 @@ void TabIndex::refillIndex( )
 
 	if ( !::mainWindow->chmFile()->getIndex( data ) || data.size() == 0 )
 	{
-		qWarning ("CHM index present but is empty; wrong parsing?");
+		qWarning ( "CHM index present but is empty; wrong parsing?" );
 		return;
 	}
 
@@ -182,14 +182,14 @@ void TabIndex::refillIndex( )
 			rootentry.resize( indent + 1 );
 
 			if ( indent > 0 && maxindent < 0 )
-				qFatal("Invalid fisrt TOC indent (first entry has no root entry), aborting.");
+				qFatal( "Invalid fisrt TOC indent (first entry has no root entry), aborting." );
 
 			// And init the rest if needed
-			if ( (indent - maxindent) > 1 )
+			if ( ( indent - maxindent ) > 1 )
 			{
 				if ( !warning_shown )
 				{
-					qWarning("Invalid TOC step, applying workaround. Results may vary.");
+					qWarning( "Invalid TOC step, applying workaround. Results may vary." );
 					warning_shown = true;
 				}
 
@@ -214,7 +214,7 @@ void TabIndex::refillIndex( )
 			// New non-root entry. It is possible (for some buggy CHMs) that there is no previous entry: previoous entry had indent 1,
 			// and next entry has indent 3. Backtracking it up, creating missing entries.
 			if ( rootentry[indent - 1] == 0 )
-				qFatal("Child entry indented as %d with no root entry!", indent);
+				qFatal( "Child entry indented as %d with no root entry!", indent );
 
 			item = new TreeItem_Index( rootentry[indent - 1], lastchild[indent], data[i].name, data[i].urls, data[i].seealso );
 		}
@@ -250,9 +250,9 @@ void TabIndex::focus()
 		tree->setFocus();
 }
 
-void TabIndex::onContextMenuRequested(const QPoint& point)
+void TabIndex::onContextMenuRequested( const QPoint& point )
 {
-	TreeItem_Index* treeitem = (TreeItem_Index*) tree->itemAt( point );
+	TreeItem_Index* treeitem = ( TreeItem_Index* ) tree->itemAt( point );
 
 	if ( treeitem )
 	{

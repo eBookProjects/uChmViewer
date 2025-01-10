@@ -146,10 +146,10 @@ bool Settings::loadSettings( const QString& filename )
 
 	QFile file( m_settingsFile );
 
-	if ( !file.open (QIODevice::ReadOnly) )
+	if ( !file.open ( QIODevice::ReadOnly ) )
 		return false; // it's ok, file may not exist
 
-	QDataStream stream (&file);
+	QDataStream stream ( &file );
 
 	// Read and check header
 	qint32 data;
@@ -158,7 +158,7 @@ bool Settings::loadSettings( const QString& filename )
 
 	if ( data != SETTINGS_MAGIC )
 	{
-		qWarning ("file %s has bad magic value, ignoring it.", qPrintable( file.fileName()) );
+		qWarning ( "file %s has bad magic value, ignoring it.", qPrintable( file.fileName() ) );
 		return false;
 	}
 
@@ -166,7 +166,7 @@ bool Settings::loadSettings( const QString& filename )
 
 	if ( data > SETTINGS_VERSION )
 	{
-		qWarning ("file %s has unsupported data version %d, ignoring it.", qPrintable( file.fileName()), data);
+		qWarning ( "file %s has unsupported data version %d, ignoring it.", qPrintable( file.fileName() ), data );
 		return false;
 	}
 
@@ -181,7 +181,7 @@ bool Settings::loadSettings( const QString& filename )
 			break;
 		}
 
-		switch (data)
+		switch ( data )
 		{
 		case MARKER_FILESIZE:
 			unsigned int sizestamp;
@@ -249,15 +249,15 @@ bool Settings::saveSettings( )
 {
 	QFile file( m_settingsFile );
 
-	if ( !file.open (QIODevice::WriteOnly) )
+	if ( !file.open ( QIODevice::WriteOnly ) )
 	{
-		qWarning ("Could not write settings into file %s: %s",
-		          qPrintable( file.fileName()),
-		          qPrintable( file.errorString() ));
+		qWarning ( "Could not write settings into file %s: %s",
+		           qPrintable( file.fileName() ),
+		           qPrintable( file.errorString() ) );
 		return false;
 	}
 
-	QDataStream stream (&file);
+	QDataStream stream ( &file );
 
 	// Save header
 	stream << SETTINGS_MAGIC;

@@ -96,7 +96,7 @@ TabSearch::TabSearch( QWidget* parent )
 	connect( lblHelp,
 	         SIGNAL( linkActivated( const QString& ) ),
 	         this,
-	         SLOT( onHelpClicked(const QString& ) ) );
+	         SLOT( onHelpClicked( const QString& ) ) );
 
 	// Go Button
 	connect( btnGo,
@@ -114,7 +114,7 @@ TabSearch::TabSearch( QWidget* parent )
 	if ( pConfig->m_tabUseSingleClick )
 	{
 		connect( tree,
-		         SIGNAL( itemClicked(QTreeWidgetItem*, int)),
+		         SIGNAL( itemClicked( QTreeWidgetItem*, int ) ),
 		         this,
 		         SLOT( onItemActivated( QTreeWidgetItem*, int ) ) );
 	}
@@ -179,14 +179,14 @@ void TabSearch::onReturnPressed( )
 					tree->setCurrentItem( item );
 			}
 
-			::mainWindow->showInStatusBar( i18n( "Search returned %1 result(s)" ) . arg(results.size()) );
+			::mainWindow->showInStatusBar( i18n( "Search returned %1 result(s)" ) . arg( results.size() ) );
 			tree->setFocus();
 		}
 		else
-			::mainWindow->showInStatusBar( i18n( "Search returned no results") );
+			::mainWindow->showInStatusBar( i18n( "Search returned no results" ) );
 	}
 	else
-		::mainWindow->showInStatusBar( i18n( "Search failed") );
+		::mainWindow->showInStatusBar( i18n( "Search failed" ) );
 }
 
 void TabSearch::onItemActivated( QTreeWidgetItem* item, int )
@@ -194,14 +194,14 @@ void TabSearch::onItemActivated( QTreeWidgetItem* item, int )
 	if ( !item )
 		return;
 
-	SearchTreeViewItem* treeitem = (SearchTreeViewItem*) item;
+	SearchTreeViewItem* treeitem = ( SearchTreeViewItem* ) item;
 	::mainWindow->openPage( treeitem->getUrl() );
 }
 
 void TabSearch::restoreSettings( const Settings::search_saved_settings_t& settings )
 {
 	for ( int i = 0; i < settings.size(); i++ )
-		searchBox->addItem (settings[i]);
+		searchBox->addItem ( settings[i] );
 }
 
 void TabSearch::saveSettings( Settings::search_saved_settings_t& settings )
@@ -209,13 +209,13 @@ void TabSearch::saveSettings( Settings::search_saved_settings_t& settings )
 	settings.clear();
 
 	for ( int i = 0; i < searchBox->count(); i++ )
-		settings.push_back( searchBox->itemText(i) );
+		settings.push_back( searchBox->itemText( i ) );
 }
 
 void TabSearch::onHelpClicked( const QString& )
 {
 	QWhatsThis::showText ( mapToGlobal( lblHelp->pos() ),
-	                       i18n( "<html><p>The improved search engine allows you to search for a word, symbol or phrase, which is set of words and symbols included in quotes. Only the documents which include all the terms specified in th search query are shown; no prefixes needed.<p>Unlike MS CHM internal search index, my improved search engine indexes everything, including special symbols. Therefore it is possible to search (and find!) for something like <i>$q = new ChmFile();</i>. This search also fully supports Unicode, which means that you can search in non-English documents.<p>If you want to search for a quote symbol, use quotation mark instead. The engine treats a quote and a quotation mark as the same symbol, which allows to use them in phrases.</html>") );
+	                       i18n( "<html><p>The improved search engine allows you to search for a word, symbol or phrase, which is set of words and symbols included in quotes. Only the documents which include all the terms specified in th search query are shown; no prefixes needed.<p>Unlike MS CHM internal search index, my improved search engine indexes everything, including special symbols. Therefore it is possible to search (and find!) for something like <i>$q = new ChmFile();</i>. This search also fully supports Unicode, which means that you can search in non-English documents.<p>If you want to search for a quote symbol, use quotation mark instead. The engine treats a quote and a quotation mark as the same symbol, which allows to use them in phrases.</html>" ) );
 }
 
 bool TabSearch::initSearchEngine( )
@@ -261,7 +261,7 @@ bool TabSearch::initSearchEngine( )
 
 	if ( !file.open( QIODevice::WriteOnly ) )
 	{
-		QMessageBox::critical( 0, i18n("Cannot save index"), i18n("The index cannot be saved into file %1") .arg( file.fileName() ) );
+		QMessageBox::critical( 0, i18n( "Cannot save index" ), i18n( "The index cannot be saved into file %1" ) .arg( file.fileName() ) );
 		return false;
 	}
 
@@ -299,7 +299,7 @@ bool TabSearch::searchQuery( const QString& query, QList< QUrl >* results )
 
 	if ( !m_searchEngine->hasIndex() )
 	{
-		QMessageBox::information ( this, i18n("No index present"), i18n("The index is not present") );
+		QMessageBox::information ( this, i18n( "No index present" ), i18n( "The index is not present" ) );
 		return false;
 	}
 
@@ -321,7 +321,7 @@ void TabSearch::focus()
 
 void TabSearch::onContextMenuRequested( const QPoint& point )
 {
-	SearchTreeViewItem* treeitem = (SearchTreeViewItem*) tree->itemAt( point );
+	SearchTreeViewItem* treeitem = ( SearchTreeViewItem* ) tree->itemAt( point );
 
 	if ( treeitem )
 	{
@@ -330,7 +330,7 @@ void TabSearch::onContextMenuRequested( const QPoint& point )
 	}
 }
 
-void TabSearch::onProgressStep(int value, const QString& stepName)
+void TabSearch::onProgressStep( int value, const QString& stepName )
 {
 	if ( m_genIndexProgress )
 	{

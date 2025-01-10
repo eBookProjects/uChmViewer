@@ -45,13 +45,13 @@ KCHMNetworkReply::KCHMNetworkReply( const QNetworkRequest& request, const QUrl& 
 	m_data = loadResource( url );
 	m_length = m_data.length();
 
-	setHeader( QNetworkRequest::ContentLengthHeader, QByteArray::number(m_data.length()) );
-	QMetaObject::invokeMethod(this, "metaDataChanged", Qt::QueuedConnection);
+	setHeader( QNetworkRequest::ContentLengthHeader, QByteArray::number( m_data.length() ) );
+	QMetaObject::invokeMethod( this, "metaDataChanged", Qt::QueuedConnection );
 
 	if ( m_length )
-		QMetaObject::invokeMethod(this, "readyRead", Qt::QueuedConnection);
+		QMetaObject::invokeMethod( this, "readyRead", Qt::QueuedConnection );
 
-	QMetaObject::invokeMethod(this, "finished", Qt::QueuedConnection);
+	QMetaObject::invokeMethod( this, "finished", Qt::QueuedConnection );
 }
 
 qint64 KCHMNetworkReply::bytesAvailable() const
@@ -63,14 +63,14 @@ void KCHMNetworkReply::abort()
 {
 }
 
-qint64 KCHMNetworkReply::readData(char* buffer, qint64 maxlen)
+qint64 KCHMNetworkReply::readData( char* buffer, qint64 maxlen )
 {
-	qint64 len = qMin(qint64(m_data.length()), maxlen);
+	qint64 len = qMin( qint64( m_data.length() ), maxlen );
 
-	if (len)
+	if ( len )
 	{
-		memcpy(buffer, m_data.constData(), len);
-		m_data.remove(0, len);
+		memcpy( buffer, m_data.constData(), len );
+		m_data.remove( 0, len );
 	}
 
 	return len;
@@ -93,7 +93,7 @@ QByteArray KCHMNetworkReply::loadResource( const QUrl& url )
 
 	if ( mime == "text/html" || mime == "text/xhtml" || mime == "text/xml" )
 	{
-		QString header = QString( "%1; charset=%2")
+		QString header = QString( "%1; charset=%2" )
 		                 .arg( mime )
 		                 .arg( ::mainWindow->chmFile()->currentEncoding() );
 		setHeader( QNetworkRequest::ContentTypeHeader, header );
@@ -103,7 +103,7 @@ QByteArray KCHMNetworkReply::loadResource( const QUrl& url )
 }
 
 KCHMNetworkAccessManager::KCHMNetworkAccessManager( QObject* parent )
-	: QNetworkAccessManager(parent)
+	: QNetworkAccessManager( parent )
 {
 }
 
@@ -117,5 +117,5 @@ QNetworkReply* KCHMNetworkAccessManager::createRequest( Operation op, const QNet
 	if ( pConfig->m_browserEnableRemoteContent )
 		return QNetworkAccessManager::createRequest( op, request, outgoingData );
 	else
-		return QNetworkAccessManager::createRequest( QNetworkAccessManager::GetOperation, QNetworkRequest(QUrl()) );
+		return QNetworkAccessManager::createRequest( QNetworkAccessManager::GetOperation, QNetworkRequest( QUrl() ) );
 }

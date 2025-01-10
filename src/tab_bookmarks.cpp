@@ -51,7 +51,7 @@ class BookmarkItem : public QListWidgetItem
 			m_url = url;
 			m_scroll_y = pos;
 			m_action = new QAction( name, widget );
-			m_action->setData( QVariant::fromValue( (void*) this ) );
+			m_action->setData( QVariant::fromValue( ( void* ) this ) );
 
 			QObject::connect( m_action,
 			                  SIGNAL( triggered() ),
@@ -94,16 +94,16 @@ TabBookmarks::TabBookmarks( QWidget* parent )
 	if ( pConfig->m_tabUseSingleClick )
 	{
 		connect( list,
-		         SIGNAL( itemClicked(QListWidgetItem*)),
+		         SIGNAL( itemClicked( QListWidgetItem* ) ),
 		         this,
-		         SLOT( onItemActivated( QListWidgetItem*)) );
+		         SLOT( onItemActivated( QListWidgetItem* ) ) );
 	}
 	else
 	{
 		connect( list,
-		         SIGNAL( itemActivated(QListWidgetItem*)),
+		         SIGNAL( itemActivated( QListWidgetItem* ) ),
 		         this,
-		         SLOT( onItemActivated( QListWidgetItem*)) );
+		         SLOT( onItemActivated( QListWidgetItem* ) ) );
 	}
 
 	connect( btnAdd,
@@ -140,10 +140,10 @@ void TabBookmarks::onAddBookmarkPressed( )
 {
 	bool ok;
 	QString url = ::mainWindow->currentBrowser()->url().toString();
-	QString title = ::mainWindow->chmFile()->getTopicByUrl(url);
+	QString title = ::mainWindow->chmFile()->getTopicByUrl( url );
 	QString name = QInputDialog::getText(
 	                   this,
-	                   i18n( "%1 - add a bookmark") . arg(QCoreApplication::applicationName()),
+	                   i18n( "%1 - add a bookmark" ) . arg( QCoreApplication::applicationName() ),
 	                   i18n( "Enter the name for this bookmark:" ),
 	                   QLineEdit::Normal,
 	                   title,
@@ -164,7 +164,7 @@ void TabBookmarks::onAddBookmarkPressed( )
 
 void TabBookmarks::onDelBookmarkPressed( )
 {
-	BookmarkItem* item = (BookmarkItem*) list->currentItem();
+	BookmarkItem* item = ( BookmarkItem* ) list->currentItem();
 
 	if ( item )
 	{
@@ -176,14 +176,14 @@ void TabBookmarks::onDelBookmarkPressed( )
 
 void TabBookmarks::onEditBookmarkPressed( )
 {
-	BookmarkItem* item = (BookmarkItem*) list->currentItem();
+	BookmarkItem* item = ( BookmarkItem* ) list->currentItem();
 
 	if ( item )
 	{
 		bool ok;
 		QString name = QInputDialog::getText(
 		                   this,
-		                   i18n( "%1 - edit the bookmark name") . arg(QCoreApplication::applicationName()),
+		                   i18n( "%1 - edit the bookmark name" ) . arg( QCoreApplication::applicationName() ),
 		                   i18n( "Enter the name for this bookmark:" ),
 		                   QLineEdit::Normal,
 		                   item->m_name,
@@ -214,15 +214,15 @@ void TabBookmarks::saveSettings( Settings::bookmark_saved_settings_t& settings )
 
 	for ( int i = 0; i < list->count(); i++ )
 	{
-		BookmarkItem* treeitem = (BookmarkItem*) list->item( i );
-		settings.push_back( Settings::SavedBookmark( treeitem->m_name, treeitem->m_url, treeitem->m_scroll_y) );
+		BookmarkItem* treeitem = ( BookmarkItem* ) list->item( i );
+		settings.push_back( Settings::SavedBookmark( treeitem->m_name, treeitem->m_url, treeitem->m_scroll_y ) );
 	}
 }
 
 void TabBookmarks::invalidate( )
 {
 	for ( int i = 0; i < list->count(); i++ )
-		m_menuBookmarks->removeAction( ((BookmarkItem*) list->item( i ))->m_action );
+		m_menuBookmarks->removeAction( ( ( BookmarkItem* ) list->item( i ) )->m_action );
 
 	list->clear();
 }
@@ -238,12 +238,12 @@ void TabBookmarks::createMenu( QMenu* menuBookmarks )
 	m_menuBookmarks = menuBookmarks;
 }
 
-void TabBookmarks::onItemActivated(QListWidgetItem* item)
+void TabBookmarks::onItemActivated( QListWidgetItem* item )
 {
 	if ( !item )
 		return;
 
-	BookmarkItem* treeitem = (BookmarkItem*) item;
+	BookmarkItem* treeitem = ( BookmarkItem* ) item;
 
 	if ( ::mainWindow->currentBrowser()->url().toString() != treeitem->m_url )
 	{
@@ -259,15 +259,15 @@ void TabBookmarks::onItemActivated(QListWidgetItem* item)
 
 void TabBookmarks::actionBookmarkActivated()
 {
-	QAction* action = qobject_cast< QAction* >(sender());
+	QAction* action = qobject_cast< QAction* >( sender() );
 
-	BookmarkItem* item = (BookmarkItem*) action->data().value< void* > ();
+	BookmarkItem* item = ( BookmarkItem* ) action->data().value< void* > ();
 	onItemActivated( item );
 }
 
-void TabBookmarks::onContextMenuRequested(const QPoint& point)
+void TabBookmarks::onContextMenuRequested( const QPoint& point )
 {
-	BookmarkItem* item = (BookmarkItem*) list->itemAt( point );
+	BookmarkItem* item = ( BookmarkItem* ) list->itemAt( point );
 
 	if ( item )
 	{

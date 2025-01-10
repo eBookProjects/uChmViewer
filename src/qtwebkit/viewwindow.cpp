@@ -51,27 +51,27 @@ ViewWindow::ViewWindow( QWidget* parent )
 	m_storedScrollbarPosition = 0;
 
 	// Use our network emulation layer
-	page()->setNetworkAccessManager( new KCHMNetworkAccessManager(this) );
+	page()->setNetworkAccessManager( new KCHMNetworkAccessManager( this ) );
 
 	// All links are going through us
 	page()->setLinkDelegationPolicy( QWebPage::DelegateAllLinks );
 
-	connect( this, SIGNAL( loadFinished(bool)), this, SLOT( onLoadFinished(bool)) );
-	connect(this, &QWebView::linkClicked,
-	        [this](const QUrl & link)
+	connect( this, SIGNAL( loadFinished( bool ) ), this, SLOT( onLoadFinished( bool ) ) );
+	connect( this, &QWebView::linkClicked,
+	         [this]( const QUrl & link )
 	{
-		if ( (QApplication::keyboardModifiers() & Qt::ShiftModifier) != 0 )
+		if ( ( QApplication::keyboardModifiers() & Qt::ShiftModifier ) != 0 )
 			emit linkClicked( link, UBrowser::OPEN_IN_NEW );
-		else if ( (QApplication::keyboardModifiers() & Qt::ControlModifier) != 0 )
+		else if ( ( QApplication::keyboardModifiers() & Qt::ControlModifier ) != 0 )
 			emit linkClicked( link, UBrowser::OPEN_IN_BACKGROUND );
 		else
 			emit linkClicked( link, UBrowser::OPEN_IN_CURRENT );
-	});
+	} );
 
 	// Search results highlighter
 	QPalette pal = palette();
-	pal.setColor( QPalette::Inactive, QPalette::Highlight, pal.color(QPalette::Active, QPalette::Highlight) );
-	pal.setColor( QPalette::Inactive, QPalette::HighlightedText, pal.color(QPalette::Active, QPalette::HighlightedText) );
+	pal.setColor( QPalette::Inactive, QPalette::Highlight, pal.color( QPalette::Active, QPalette::Highlight ) );
+	pal.setColor( QPalette::Inactive, QPalette::HighlightedText, pal.color( QPalette::Active, QPalette::HighlightedText ) );
 	setPalette( pal );
 }
 
@@ -95,7 +95,7 @@ void ViewWindow::load( const QUrl& url )
 	mainWindow->viewWindowMgr()->setTabName( this );
 }
 
-void ViewWindow::applySettings(BrowserSettings& settings)
+void ViewWindow::applySettings( BrowserSettings& settings )
 {
 	QWebSettings* setup = QWebSettings::globalSettings();
 
@@ -129,13 +129,13 @@ bool ViewWindow::canGoForward() const
 	return history()->canGoForward();
 }
 
-void ViewWindow::print( QPrinter* printer, std::function<void (bool success)> result )
+void ViewWindow::print( QPrinter* printer, std::function<void ( bool success )> result )
 {
 	QWebView::print( printer );
-	result(true);
+	result( true );
 }
 
-void ViewWindow::setZoomFactor(qreal zoom)
+void ViewWindow::setZoomFactor( qreal zoom )
 {
 	QWebView::setZoomFactor( zoom );
 }
@@ -160,21 +160,21 @@ int ViewWindow::scrollTop()
 	return page()->currentFrame()->scrollBarValue( Qt::Vertical );
 }
 
-void ViewWindow::setScrollTop(int pos)
+void ViewWindow::setScrollTop( int pos )
 {
 	page()->currentFrame()->setScrollBarValue( Qt::Vertical, pos );
 }
 
-void ViewWindow::setAutoScroll(int pos)
+void ViewWindow::setAutoScroll( int pos )
 {
 	m_storedScrollbarPosition = pos;
 }
 
-void ViewWindow::findText(const QString& text,
-                          bool backward,
-                          bool caseSensitively,
-                          bool highlightSearchResults,
-                          std::function<void (bool found, bool wrapped)> result)
+void ViewWindow::findText( const QString& text,
+                           bool backward,
+                           bool caseSensitively,
+                           bool highlightSearchResults,
+                           std::function<void ( bool found, bool wrapped )> result )
 {
 	QWebPage::FindFlags webkitflags;
 
@@ -216,7 +216,7 @@ void ViewWindow::findText(const QString& text,
 		wrapped = found;
 	}
 
-	result(found, wrapped);
+	result( found, wrapped );
 }
 
 void ViewWindow::selectAll()
@@ -229,7 +229,7 @@ void ViewWindow::selectedCopy()
 	triggerPageAction( QWebPage::Copy );
 }
 
-QUrl ViewWindow::anchorAt(const QPoint& pos)
+QUrl ViewWindow::anchorAt( const QPoint& pos )
 {
 	QWebHitTestResult res = page()->currentFrame()->hitTestContent( pos );
 
@@ -255,10 +255,10 @@ void ViewWindow::mouseReleaseEvent ( QMouseEvent* event )
 	QWebView::mouseReleaseEvent( event );
 }
 
-void ViewWindow::contextMenuEvent(QContextMenuEvent* e)
+void ViewWindow::contextMenuEvent( QContextMenuEvent* e )
 {
 	QUrl link = anchorAt( e->pos() );
-	emit contextMenuRequested(e->globalPos(), link);
+	emit contextMenuRequested( e->globalPos(), link );
 }
 
 void ViewWindow::onLoadFinished ( bool )

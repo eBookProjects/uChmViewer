@@ -79,8 +79,8 @@ void ToolbarManager::queryAvailableActions( QObject* source )
 	QObjectList objs = source->children();
 
 	for ( QObjectList::const_iterator it = objs.begin(); it != objs.end(); ++it )
-		if ( !strcmp( (*it)->metaObject()->className(), "QAction" ) )
-			m_availableActions.push_back( (QAction*) *it );
+		if ( !strcmp( ( *it )->metaObject()->className(), "QAction" ) )
+			m_availableActions.push_back( ( QAction* ) *it );
 }
 
 void ToolbarManager::addManaged( QToolBar* toolbar )

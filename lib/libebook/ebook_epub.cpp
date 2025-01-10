@@ -56,7 +56,7 @@ EBook_EPUB::~EBook_EPUB()
 	close();
 }
 
-bool EBook_EPUB::load(const QString& archiveName)
+bool EBook_EPUB::load( const QString& archiveName )
 {
 	close();
 
@@ -65,7 +65,7 @@ bool EBook_EPUB::load(const QString& archiveName)
 
 	if ( !m_epubFile.open( QIODevice::ReadOnly ) )
 	{
-		qWarning("Could not open file %s: %s", qPrintable(archiveName), qPrintable( m_epubFile.errorString()));
+		qWarning( "Could not open file %s: %s", qPrintable( archiveName ), qPrintable( m_epubFile.errorString() ) );
 		return false;
 	}
 
@@ -76,7 +76,7 @@ bool EBook_EPUB::load(const QString& archiveName)
 
 	if ( fdcopy < 0 )
 	{
-		qWarning("Could not duplicate descriptor" );
+		qWarning( "Could not duplicate descriptor" );
 		return false;
 	}
 
@@ -85,7 +85,7 @@ bool EBook_EPUB::load(const QString& archiveName)
 
 	if ( !m_zipFile )
 	{
-		qWarning("Could not open file %s: error %d", qPrintable(archiveName), errcode);
+		qWarning( "Could not open file %s: error %d", qPrintable( archiveName ), errcode );
 		return false;
 	}
 
@@ -110,17 +110,17 @@ void EBook_EPUB::close()
 
 }
 
-bool EBook_EPUB::getFileContentAsString(QString& str, const QUrl& url) const
+bool EBook_EPUB::getFileContentAsString( QString& str, const QUrl& url ) const
 {
 	return getFileAsString( str, urlToPath( url ) );
 }
 
-bool EBook_EPUB::getFileContentAsBinary(QByteArray& data, const QUrl& url) const
+bool EBook_EPUB::getFileContentAsBinary( QByteArray& data, const QUrl& url ) const
 {
 	return getFileAsBinary( data, urlToPath( url ) );
 }
 
-bool EBook_EPUB::enumerateFiles(QList<QUrl>& files)
+bool EBook_EPUB::enumerateFiles( QList<QUrl>& files )
 {
 	files = m_ebookManifest;
 	return true;
@@ -136,7 +136,7 @@ QUrl EBook_EPUB::homeUrl() const
 	return m_tocEntries[0].url;
 }
 
-bool EBook_EPUB::hasFeature(EBook::Feature code) const
+bool EBook_EPUB::hasFeature( EBook::Feature code ) const
 {
 	switch ( code )
 	{
@@ -159,12 +159,12 @@ bool EBook_EPUB::getTableOfContents( QList<EBookTocEntry>& toc ) const
 	return true;
 }
 
-bool EBook_EPUB::getIndex(QList<EBookIndexEntry>&) const
+bool EBook_EPUB::getIndex( QList<EBookIndexEntry>& ) const
 {
 	return false;
 }
 
-QString EBook_EPUB::getTopicByUrl(const QUrl& url)
+QString EBook_EPUB::getTopicByUrl( const QUrl& url )
 {
 	if ( m_urlTitleMap.contains( url ) )
 		return m_urlTitleMap[ url ];
@@ -177,23 +177,23 @@ QString EBook_EPUB::currentEncoding() const
 	return "UTF-8";
 }
 
-bool EBook_EPUB::setCurrentEncoding(const char*)
+bool EBook_EPUB::setCurrentEncoding( const char* )
 {
 	return false;
 }
 
-bool EBook_EPUB::isSupportedUrl(const QUrl& url)
+bool EBook_EPUB::isSupportedUrl( const QUrl& url )
 {
 	return url.scheme() == URL_SCHEME_EPUB;
 }
 
-bool EBook_EPUB::parseXML(const QString& uri, QXmlDefaultHandler* parser)
+bool EBook_EPUB::parseXML( const QString& uri, QXmlDefaultHandler* parser )
 {
 	QByteArray container;
 
 	if ( !getFileAsBinary( container, uri ) )
 	{
-		qDebug("Failed to retrieve XML file %s", qPrintable( uri ) );
+		qDebug( "Failed to retrieve XML file %s", qPrintable( uri ) );
 		return false;
 	}
 
@@ -225,7 +225,7 @@ bool EBook_EPUB::parseBookinfo()
 		return false;
 
 	// At least title and the TOC must be present
-	if ( !content_parser.metadata.contains("title") || content_parser.tocname.isEmpty() )
+	if ( !content_parser.metadata.contains( "title" ) || content_parser.tocname.isEmpty() )
 		return false;
 
 	// All the files, including TOC, are relative to the container_parser.contentPath
@@ -289,7 +289,7 @@ bool EBook_EPUB::parseBookinfo()
 	return true;
 }
 
-QUrl EBook_EPUB::pathToUrl(const QString& link) const
+QUrl EBook_EPUB::pathToUrl( const QString& link ) const
 {
 	QUrl url;
 	url.setScheme( URL_SCHEME_EPUB );
@@ -315,7 +315,7 @@ QUrl EBook_EPUB::pathToUrl(const QString& link) const
 	return url;
 }
 
-QString EBook_EPUB::urlToPath(const QUrl& link) const
+QString EBook_EPUB::urlToPath( const QUrl& link ) const
 {
 	if ( link.scheme() == URL_SCHEME_EPUB )
 		return link.path();
@@ -323,7 +323,7 @@ QString EBook_EPUB::urlToPath(const QUrl& link) const
 	return "";
 }
 
-bool EBook_EPUB::getFileAsString(QString& str, const QString& path) const
+bool EBook_EPUB::getFileAsString( QString& str, const QString& path ) const
 {
 	QByteArray data;
 
@@ -331,16 +331,16 @@ bool EBook_EPUB::getFileAsString(QString& str, const QString& path) const
 		return false;
 
 	// I have never seen yet an UTF16 epub
-	if ( data.startsWith("<?xml" ) )
+	if ( data.startsWith( "<?xml" ) )
 	{
 		int endxmltag = data.indexOf( "?>" );
-		int utf16 = data.indexOf("UTF-16");
+		int utf16 = data.indexOf( "UTF-16" );
 
 		if ( utf16 > 0 && utf16 < endxmltag )
 		{
 			QMessageBox::critical( 0,
-			                       ("Unsupported encoding"),
-			                       ("The encoding of this ebook is not supported yet. Please send it to gyunaev@ulduzsoft.com for support to be added") );
+			                       ( "Unsupported encoding" ),
+			                       ( "The encoding of this ebook is not supported yet. Please send it to gyunaev@ulduzsoft.com for support to be added" ) );
 			return false;
 		}
 	}
@@ -349,7 +349,7 @@ bool EBook_EPUB::getFileAsString(QString& str, const QString& path) const
 	return true;
 }
 
-bool EBook_EPUB::getFileAsBinary(QByteArray& data, const QString& path) const
+bool EBook_EPUB::getFileAsBinary( QByteArray& data, const QString& path ) const
 {
 	// Retrieve the file size
 	struct zip_stat fileinfo;
@@ -363,14 +363,14 @@ bool EBook_EPUB::getFileAsBinary(QByteArray& data, const QString& path) const
 	//qDebug("URL requested: %s (%s)", qPrintable(path), qPrintable(completeUrl));
 
 	// http://www.nih.at/libzip/zip_stat.html
-	if ( zip_stat( m_zipFile, completeUrl.toUtf8().constData(), 0, &fileinfo) != 0 )
+	if ( zip_stat( m_zipFile, completeUrl.toUtf8().constData(), 0, &fileinfo ) != 0 )
 	{
-		qDebug("File %s is not found in the archive", qPrintable(completeUrl));
+		qDebug( "File %s is not found in the archive", qPrintable( completeUrl ) );
 		return false;
 	}
 
 	// Make sure the size field is valid
-	if ( (fileinfo.valid & ZIP_STAT_SIZE) == 0 || (fileinfo.valid & ZIP_STAT_INDEX) == 0 )
+	if ( ( fileinfo.valid & ZIP_STAT_SIZE ) == 0 || ( fileinfo.valid & ZIP_STAT_INDEX ) == 0 )
 		return false;
 
 	// Open the file
@@ -385,7 +385,7 @@ bool EBook_EPUB::getFileAsBinary(QByteArray& data, const QString& path) const
 	// Could it return a positive number but not fileinfo.size???
 	int ret = zip_fread( file, data.data(), fileinfo.size );
 
-	if ( ret != (int) fileinfo.size )
+	if ( ret != ( int ) fileinfo.size )
 	{
 		zip_fclose( file );
 		return false;

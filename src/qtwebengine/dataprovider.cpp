@@ -91,10 +91,10 @@ void DataProvider::requestStarted( QWebEngineUrlRequestJob* request )
 	// for other types "application/octet-stream" is sufficient.
 	// In addition, for "text/html", a "meta" tag is added specifying the text encoding.
 	// This is the easiest and most stable way to set the encoding.
-	if ( mimetype == "text/html")
+	if ( mimetype == "text/html" )
 	{
-		buf.prepend(QString( "<META http-equiv='Content-Type' content='text/html; charset=%1'>" )
-		            .arg( ::mainWindow->chmFile()->currentEncoding() ).toLatin1() );
+		buf.prepend( QString( "<META http-equiv='Content-Type' content='text/html; charset=%1'>" )
+		             .arg( ::mainWindow->chmFile()->currentEncoding() ).toLatin1() );
 	}
 
 	// We will use the buffer because reply() requires the QIODevice.

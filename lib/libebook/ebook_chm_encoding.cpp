@@ -294,7 +294,7 @@ static const EbookChmTextEncodingEntry text_encoding_table [] =
 	{   0,  0   }
 };
 
-QString Ebook_CHM_Encoding::guessByLCID(unsigned short lcid)
+QString Ebook_CHM_Encoding::guessByLCID( unsigned short lcid )
 {
 	for ( const EbookChmTextEncodingEntry* t = text_encoding_table; t->qtcodec; ++t )
 	{

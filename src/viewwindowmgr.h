@@ -76,7 +76,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void    applyBrowserSettings();
 
 	signals:
-		void    browserChanged(ViewWindow* browser);
+		void    browserChanged( ViewWindow* browser );
 		/**
 		 * This signal is emitted when tabs are switched or when the url of
 		 * the ViewWindow changes.
@@ -120,7 +120,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 			ViewWindow*             browser;
 			QAction*                action;
 
-			bool operator==(const TabData& an) const
+			bool operator==( const TabData& an ) const
 			{
 				return widget == an.widget && browser == an.browser;
 			}
@@ -129,9 +129,9 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void    closeAllWindows();
 		void    closeWindow( QWidget* widget );
 		void    closeTab( const TabData& data );
-		TabData findTabData( QWidget* widget ) noexcept(false);
-		TabData findTabData( ViewWindow* browser ) noexcept(false);
-		TabData findTabData( int tabIndex ) noexcept(false);
+		TabData findTabData( QWidget* widget ) noexcept( false );
+		TabData findTabData( ViewWindow* browser ) noexcept( false );
+		TabData findTabData( int tabIndex ) noexcept( false );
 
 		// Storage of all available windows
 		QList< TabData >    m_Windows;

@@ -52,7 +52,7 @@ static const char WORD_CHARACTERS[] = "$_";
 
 struct Term
 {
-	Term() : frequency(-1) {}
+	Term() : frequency( -1 ) {}
 	Term( const QString& t, int f, QVector<Document> l ) : term( t ), frequency( f ), documents( l ) {}
 	QString term;
 	int frequency;
@@ -70,8 +70,8 @@ QDataStream& operator>>( QDataStream& s, Document& l )
 
 QDataStream& operator<<( QDataStream& s, const Document& l )
 {
-	s << (short)l.docNumber;
-	s << (short)l.frequency;
+	s << ( short )l.docNumber;
+	s << ( short )l.frequency;
 	return s;
 }
 
@@ -87,7 +87,7 @@ void Index::setLastWinClosed()
 	lastWindowClosed = true;
 }
 
-bool Index::makeIndex(const QList< QUrl >& docs, EBook* chmFile )
+bool Index::makeIndex( const QList< QUrl >& docs, EBook* chmFile )
 {
 	if ( docs.isEmpty() )
 		return false;
@@ -123,11 +123,11 @@ bool Index::makeIndex(const QList< QUrl >& docs, EBook* chmFile )
 		{
 			prog++;
 			prog = qMin( prog, 99 );
-			emit indexingProgress( prog, tr("Processing document %1") .arg( (*it).path() ) );
+			emit indexingProgress( prog, tr( "Processing document %1" ) .arg( ( *it ).path() ) );
 		}
 	}
 
-	emit indexingProgress( 100, tr("Processing completed") );
+	emit indexingProgress( 100, tr( "Processing completed" ) );
 	return true;
 }
 
@@ -141,7 +141,7 @@ void Index::insertInDict( const QString& str, int docNum )
 	if ( e )
 	{
 		if ( e->documents.last().docNumber != docNum )
-			e->documents.append( Document(docNum, 1 ) );
+			e->documents.append( Document( docNum, 1 ) );
 		else
 			e->documents.last().frequency++;
 	}
@@ -151,7 +151,7 @@ void Index::insertInDict( const QString& str, int docNum )
 	}
 }
 
-bool Index::parseDocumentToStringlist(EBook* chmFile, const QUrl& filename, QStringList& tokenlist )
+bool Index::parseDocumentToStringlist( EBook* chmFile, const QUrl& filename, QStringList& tokenlist )
 {
 	QString parsedbuf, parseentity, text;
 
@@ -183,7 +183,7 @@ bool Index::parseDocumentToStringlist(EBook* chmFile, const QUrl& filename, QStr
 	{
 		QChar ch = text[j];
 
-		if ( (j % 20000) == 0 )
+		if ( ( j % 20000 ) == 0 )
 			qApp->processEvents( QEventLoop::ExcludeUserInputEvents );
 
 		if ( state == STATE_IN_HTML_TAG )
@@ -329,7 +329,7 @@ void Index::writeDict( QDataStream& stream )
 	for ( QHash<QString, Entry*>::ConstIterator it = dict.begin(); it != dict.end(); ++it )
 	{
 		stream << it.key();
-		stream << (int) it.value()->documents.count();
+		stream << ( int ) it.value()->documents.count();
 		stream << it.value()->documents;
 	}
 }
@@ -367,7 +367,7 @@ bool Index::readDict( QDataStream& stream )
 	return dict.size() > 0;
 }
 
-QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq, const QStringList& seqWords, EBook* chmFile )
+QList< QUrl > Index::query( const QStringList& terms, const QStringList& termSeq, const QStringList& seqWords, EBook* chmFile )
 {
 	QList<Term> termList;
 
@@ -395,20 +395,20 @@ QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq,
 
 	QVector<Document> minDocs = termList.takeFirst().documents;
 
-	for (QList<Term>::Iterator it = termList.begin(); it != termList.end(); ++it)
+	for ( QList<Term>::Iterator it = termList.begin(); it != termList.end(); ++it )
 	{
-		Term* t = &(*it);
+		Term* t = &( *it );
 		QVector<Document> docs = t->documents;
 
-		for (QVector<Document>::Iterator minDoc_it = minDocs.begin(); minDoc_it != minDocs.end(); )
+		for ( QVector<Document>::Iterator minDoc_it = minDocs.begin(); minDoc_it != minDocs.end(); )
 		{
 			bool found = false;
 
-			for (QVector<Document>::ConstIterator doc_it = docs.constBegin(); doc_it != docs.constEnd(); ++doc_it )
+			for ( QVector<Document>::ConstIterator doc_it = docs.constBegin(); doc_it != docs.constEnd(); ++doc_it )
 			{
-				if ( (*minDoc_it).docNumber == (*doc_it).docNumber )
+				if ( ( *minDoc_it ).docNumber == ( *doc_it ).docNumber )
 				{
-					(*minDoc_it).frequency += (*doc_it).frequency;
+					( *minDoc_it ).frequency += ( *doc_it ).frequency;
 					found = true;
 					break;
 				}
@@ -426,17 +426,17 @@ QList< QUrl > Index::query(const QStringList& terms, const QStringList& termSeq,
 
 	if ( termSeq.isEmpty() )
 	{
-		for (QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it)
-			results << docList.at((int)(*it).docNumber);
+		for ( QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it )
+			results << docList.at( ( int )( *it ).docNumber );
 
 		return results;
 	}
 
 	QUrl fileName;
 
-	for (QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it)
+	for ( QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it )
 	{
-		fileName =  docList[ (int)(*it).docNumber ];
+		fileName =  docList[ ( int )( *it ).docNumber ];
 
 		if ( searchForPhrases( termSeq, seqWords, fileName, chmFile ) )
 			results << fileName;
@@ -499,7 +499,7 @@ bool Index::searchForPhrases( const QStringList& phrases, const QStringList& wor
 			{
 				if ( next_word_it.indexOf( *dict_it + 1 ) != -1 )
 				{
-					(*dict_it)++;
+					( *dict_it )++;
 					++dict_it;
 				}
 				else

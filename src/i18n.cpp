@@ -60,10 +60,10 @@ void app_i18n::initGettext()
 	localeDir.remove( trailingSlash );
 	appDir.remove( trailingSlash );
 
-	if (appDir.endsWith( binDir ))
+	if ( appDir.endsWith( binDir ) )
 	{
 		// Getting the installation root folder and adding the translations path.
-		appDir.remove( QRegularExpression(binDir + "$") );
+		appDir.remove( QRegularExpression( binDir + "$" ) );
 		appDir.append( localeDir );
 		bindtextdomain ( "uchmviewer", appDir.toUtf8().data() );
 		// https://www.gnu.org/software/gettext/manual/html_node/Charset-conversion.html

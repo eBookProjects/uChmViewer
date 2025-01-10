@@ -66,12 +66,12 @@ ViewWindow::ViewWindow( QWidget* parent )
 	connect( page, SIGNAL( linkClicked ( const QUrl&, UBrowser::OpenMode ) ), this, SLOT( onLinkClicked( const QUrl&, UBrowser::OpenMode ) ) );
 	setPage( page );
 
-	connect( this, SIGNAL( loadFinished(bool)), this, SLOT( onLoadFinished(bool)) );
+	connect( this, SIGNAL( loadFinished( bool ) ), this, SLOT( onLoadFinished( bool ) ) );
 
 	// Search results highlighter
 	QPalette pal = palette();
-	pal.setColor( QPalette::Inactive, QPalette::Highlight, pal.color(QPalette::Active, QPalette::Highlight) );
-	pal.setColor( QPalette::Inactive, QPalette::HighlightedText, pal.color(QPalette::Active, QPalette::HighlightedText) );
+	pal.setColor( QPalette::Inactive, QPalette::Highlight, pal.color( QPalette::Active, QPalette::Highlight ) );
+	pal.setColor( QPalette::Inactive, QPalette::HighlightedText, pal.color( QPalette::Active, QPalette::HighlightedText ) );
 	setPalette( pal );
 }
 
@@ -114,23 +114,23 @@ bool ViewWindow::canGoForward() const
 	return history()->canGoForward();
 }
 
-void ViewWindow::print( QPrinter* printer, std::function<void (bool success)> result )
+void ViewWindow::print( QPrinter* printer, std::function<void ( bool success )> result )
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-	page()->print( printer, [&result](bool success)
+	page()->print( printer, [&result]( bool success )
 	{
 		result( success );
-	});
+	} );
 #else
-	connect(this, &QWebEngineView::printFinished, [result](bool success)
+	connect( this, &QWebEngineView::printFinished, [result]( bool success )
 	{
 		result( success );
-	});
+	} );
 	QWebEngineView::print( printer );
 #endif
 }
 
-void ViewWindow::setZoomFactor(qreal zoom)
+void ViewWindow::setZoomFactor( qreal zoom )
 {
 	QWebEngineView::setZoomFactor( zoom );
 }
@@ -154,9 +154,9 @@ int ViewWindow::scrollTop()
 {
 	QAtomicInt value = -1;
 
-	page()->runJavaScript("document.body.scrollTop",
-	                      QWebEngineScript::UserWorld,
-	[&value](const QVariant & v) { value = v.toInt(); });
+	page()->runJavaScript( "document.body.scrollTop",
+	                       QWebEngineScript::UserWorld,
+	[&value]( const QVariant & v ) { value = v.toInt(); } );
 
 	while ( value == -1 )
 	{
@@ -166,24 +166,24 @@ int ViewWindow::scrollTop()
 	return value;
 }
 
-void ViewWindow::setScrollTop(int pos)
+void ViewWindow::setScrollTop( int pos )
 {
 	page()->runJavaScript( QString( "document.body.scrollTop=%1" ).arg( pos )
 	                       , QWebEngineScript::UserWorld );
 }
 
-void ViewWindow::setAutoScroll(int pos)
+void ViewWindow::setAutoScroll( int pos )
 {
 	m_storedScrollbarPosition = pos;
 }
 
-void ViewWindow::findText(const QString& text,
-                          bool backward,
-                          bool caseSensitively,
-                          bool highlightSearchResults,
-                          std::function<void (bool found, bool wrapped)> result)
+void ViewWindow::findText( const QString& text,
+                           bool backward,
+                           bool caseSensitively,
+                           bool highlightSearchResults,
+                           std::function<void ( bool found, bool wrapped )> result )
 {
-	Q_UNUSED(highlightSearchResults);
+	Q_UNUSED( highlightSearchResults );
 	QWebEnginePage::FindFlags webkitflags;
 
 	if ( caseSensitively )
@@ -194,16 +194,16 @@ void ViewWindow::findText(const QString& text,
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 	QWebEngineView::findText( text, webkitflags,
-	                          [ = ](bool found)
+	                          [ = ]( bool found )
 	{
-		result(found, false);
-	});
+		result( found, false );
+	} );
 #else
 	QWebEngineView::findText( text, webkitflags,
-	                          [ = ](const QWebEngineFindTextResult & found)
+	                          [ = ]( const QWebEngineFindTextResult & found )
 	{
-		result(found.numberOfMatches() > 0, false);
-	});
+		result( found.numberOfMatches() > 0, false );
+	} );
 #endif
 }
 
@@ -217,7 +217,7 @@ void ViewWindow::selectedCopy()
 	triggerPageAction( QWebEnginePage::Copy );
 }
 
-void ViewWindow::contextMenuEvent(QContextMenuEvent* e)
+void ViewWindow::contextMenuEvent( QContextMenuEvent* e )
 {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
 	QUrl link = lastContextMenuRequest()->linkUrl();
@@ -225,7 +225,7 @@ void ViewWindow::contextMenuEvent(QContextMenuEvent* e)
 	QUrl link = page()->contextMenuData().linkUrl();
 #endif
 
-	emit contextMenuRequested(e->globalPos(), link);
+	emit contextMenuRequested( e->globalPos(), link );
 }
 
 void ViewWindow::onLoadFinished ( bool )
@@ -241,12 +241,12 @@ void ViewWindow::onLoadFinished ( bool )
 	emit dataLoaded( this );
 }
 
-void ViewWindow::onLinkClicked(const QUrl& url, UBrowser::OpenMode mode)
+void ViewWindow::onLinkClicked( const QUrl& url, UBrowser::OpenMode mode )
 {
 	emit linkClicked( url, mode );
 }
 
-void ViewWindow::applySettings(BrowserSettings& settings)
+void ViewWindow::applySettings( BrowserSettings& settings )
 {
 	QWebEngineSettings* setup = QWebEngineProfile::defaultProfile()->settings();
 

@@ -46,7 +46,7 @@ class ViewWindow : public QWebEngineView
 		virtual ~ViewWindow();
 
 		//! Open a page from current chm archive
-		void    load (const QUrl& url );
+		void    load ( const QUrl& url );
 
 		QUrl    url() const   { return QWebEngineView::url(); }
 
@@ -54,18 +54,18 @@ class ViewWindow : public QWebEngineView
 		void    dataLoaded( ViewWindow* window );
 
 		// This signal is emitted whenever the user clicks on a link.
-		void    linkClicked(const QUrl& url, UBrowser::OpenMode mode);
-		void    contextMenuRequested(const QPoint& globalPos, const QUrl& url);
+		void    linkClicked( const QUrl& url, UBrowser::OpenMode mode );
+		void    contextMenuRequested( const QPoint& globalPos, const QUrl& url );
 
 	public:
 		// Apply the configuration settings (JS enabled etc) to the web renderer
-		static  void    applySettings(BrowserSettings& settings);
+		static  void    applySettings( BrowserSettings& settings );
 
 		//! Invalidate current view, doing all the cleanups etc.
 		void    invalidate();
 
 		//! Prints the current page on the printer.
-		void print( QPrinter* printer, std::function<void (bool success)> result );
+		void print( QPrinter* printer, std::function<void ( bool success )> result );
 
 		//! Return current ZoomFactor.
 		qreal   zoomFactor() const;
@@ -81,14 +81,14 @@ class ViewWindow : public QWebEngineView
 		int     scrollTop();
 
 		//! Sets the scrollbar position.
-		void    setScrollTop(int pos);
-		void    setAutoScroll(int pos);
+		void    setScrollTop( int pos );
+		void    setAutoScroll( int pos );
 
-		void findText(const QString& text,
-		              bool backward,
-		              bool caseSensitively,
-		              bool highlightSearchResults,
-		              std::function<void (bool found, bool wrapped)> result);
+		void findText( const QString& text,
+		               bool backward,
+		               bool caseSensitively,
+		               bool highlightSearchResults,
+		               std::function<void ( bool found, bool wrapped )> result );
 
 		//! Select the content of the whole page
 		void    selectAll();
@@ -121,7 +121,7 @@ class ViewWindow : public QWebEngineView
 	private slots:
 		// Used to restore the scrollbar position and the navigation button status
 		void            onLoadFinished ( bool ok );
-		void            onLinkClicked(const QUrl& url, UBrowser::OpenMode mode = UBrowser::OPEN_IN_CURRENT);
+		void            onLinkClicked( const QUrl& url, UBrowser::OpenMode mode = UBrowser::OPEN_IN_CURRENT );
 
 	private:
 		// Keeps the scrollbar position to move after the page is loaded

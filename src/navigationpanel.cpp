@@ -48,11 +48,11 @@ NavigationPanel::NavigationPanel( QWidget* parent )
 	m_tabWidget->clear();
 
 	// Add the required tabs
-	m_searchTab = new TabSearch(m_tabWidget);
+	m_searchTab = new TabSearch( m_tabWidget );
 	m_tabWidget->addTab( m_searchTab, i18n( "Search" ) );
 
 	m_bookmarksTab = new TabBookmarks( m_tabWidget );
-	m_tabWidget->addTab( m_bookmarksTab, i18n("Bookmarks") );
+	m_tabWidget->addTab( m_bookmarksTab, i18n( "Bookmarks" ) );
 
 	// Those tabs will be added later
 	m_contentsTab = 0;
@@ -89,13 +89,13 @@ void NavigationPanel::updateTabs( EBook* file )
 	invalidate();
 
 	// Insert index first
-	if ( file->hasFeature( EBook::FEATURE_INDEX) )
+	if ( file->hasFeature( EBook::FEATURE_INDEX ) )
 	{
-		m_indexTab = new TabIndex(m_tabWidget);
+		m_indexTab = new TabIndex( m_tabWidget );
 		m_tabWidget->insertTab( 0, m_indexTab, i18n( "Index" ) );
 	}
 
-	if ( file->hasFeature( EBook::FEATURE_TOC) )
+	if ( file->hasFeature( EBook::FEATURE_TOC ) )
 	{
 		m_contentsTab = new TabContents( m_tabWidget );
 		m_tabWidget->insertTab( 0, m_contentsTab, i18n( "Contents" ) );
@@ -131,8 +131,8 @@ bool NavigationPanel::findUrlInContents( const QUrl& url )
 	{
 		TreeItem_TOC* itemparent = treeitem;
 
-		while ( (itemparent = (TreeItem_TOC*) itemparent->parent()) != 0 )
-			itemparent->setExpanded(true);
+		while ( ( itemparent = ( TreeItem_TOC* ) itemparent->parent() ) != 0 )
+			itemparent->setExpanded( true );
 
 		m_contentsTab->showItem( treeitem );
 		return true;
@@ -161,7 +161,7 @@ void NavigationPanel::showPrevInToc()
 	lit--;
 
 	if ( *lit )
-		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl() );
+		::mainWindow->openPage( ( ( TreeItem_TOC* ) ( *lit ) )->getUrl() );
 }
 
 void NavigationPanel::showNextInToc()
@@ -179,7 +179,7 @@ void NavigationPanel::showNextInToc()
 	lit++;
 
 	if ( *lit )
-		::mainWindow->openPage( ((TreeItem_TOC*) (*lit) )->getUrl() );
+		::mainWindow->openPage( ( ( TreeItem_TOC* ) ( *lit ) )->getUrl() );
 }
 
 int NavigationPanel::active() const

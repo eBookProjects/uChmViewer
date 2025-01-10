@@ -42,7 +42,7 @@ void DialogChooseUrlFromList::onDoubleClicked( QListWidgetItem* item )
 		accept();
 }
 
-QUrl DialogChooseUrlFromList::getSelectedItemUrl(const QList<QUrl>& urls, const QStringList& titles )
+QUrl DialogChooseUrlFromList::getSelectedItemUrl( const QList<QUrl>& urls, const QStringList& titles )
 {
 	for ( int i = 0; i < urls.size(); i++ )
 		list->addItem( titles[i] );

@@ -31,8 +31,8 @@
 #include "uchmviewerapp.h"
 
 
-UchmviewerApp::UchmviewerApp(int& argc, char** argv, int version)
-	: QApplication(argc, argv, version)
+UchmviewerApp::UchmviewerApp( int& argc, char** argv, int version )
+	: QApplication( argc, argv, version )
 {
 }
 
@@ -40,47 +40,47 @@ UchmviewerApp::~UchmviewerApp()
 {
 }
 
-bool UchmviewerApp::event(QEvent* ev)
+bool UchmviewerApp::event( QEvent* ev )
 {
-	if (ev->type() == QEvent::FileOpen)
+	if ( ev->type() == QEvent::FileOpen )
 	{
 		m_nResend = 0;
-		m_filePath = static_cast<QFileOpenEvent*>(ev)->file();
+		m_filePath = static_cast<QFileOpenEvent*>( ev )->file();
 		onTimer();
 		return true;
 	}
 
-	return QApplication::event(ev);
+	return QApplication::event( ev );
 }
 
 void UchmviewerApp::onTimer()
 {
 	MainWindow* main;
 
-	foreach (QWidget* widget, QApplication::topLevelWidgets())
+	foreach ( QWidget* widget, QApplication::topLevelWidgets() )
 	{
-		main = dynamic_cast<MainWindow*>(widget);
+		main = dynamic_cast<MainWindow*>( widget );
 
-		if (main != 0)
+		if ( main != 0 )
 		{
 			break;
 		}
 	}
 
-	if (main == 0)
+	if ( main == 0 )
 	{
-		qWarning("resending %s", m_filePath.toStdString().c_str());
+		qWarning( "resending %s", m_filePath.toStdString().c_str() );
 
-		if (m_nResend >= 30)
+		if ( m_nResend >= 30 )
 		{
-			qWarning("aborting loading of %s", m_filePath.toStdString().c_str());
+			qWarning( "aborting loading of %s", m_filePath.toStdString().c_str() );
 			return;
 		}
 
-		QTimer::singleShot(250, this, SLOT(onTimer()));
+		QTimer::singleShot( 250, this, SLOT( onTimer() ) );
 		++m_nResend;
 		return;
 	}
 
-	main->actionOpenRecentFile(m_filePath);
+	main->actionOpenRecentFile( m_filePath );
 }

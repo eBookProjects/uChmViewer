@@ -45,7 +45,7 @@ class WebEnginePage : public QWebEnginePage
 		void linkClicked( const QUrl& url, UBrowser::OpenMode mode );
 
 	public:
-		WebEnginePage(QObject* parent)
+		WebEnginePage( QObject* parent )
 			: QWebEnginePage( parent )
 		{
 			QWebEngineProfile* pf = profile();
@@ -122,7 +122,7 @@ class WebEnginePage : public QWebEnginePage
 			{
 				Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
 
-				if ( ( mods & Qt::ShiftModifier ) != 0 || type == QWebEnginePage::WebBrowserTab)
+				if ( ( mods & Qt::ShiftModifier ) != 0 || type == QWebEnginePage::WebBrowserTab )
 					emit linkClicked( m_url, UBrowser::OPEN_IN_NEW );
 				else
 					emit linkClicked(  m_url, UBrowser::OPEN_IN_BACKGROUND );

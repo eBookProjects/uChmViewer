@@ -129,18 +129,18 @@ MainWindow::MainWindow( const QStringList& arguments )
 	// Create a navigation panel
 	m_navPanel = new NavigationPanel( this );
 
-	connect(m_viewWindowMgr,
-	        SIGNAL(historyChanged()),
-	        this,
-	        SLOT(onHistoryChanged()));
-	connect(m_viewWindowMgr, &ViewWindowMgr::browserChanged,
-	        this, &MainWindow::browserChanged);
-	connect(m_viewWindowMgr, &ViewWindowMgr::urlChanged,
-	        this, &MainWindow::onUrlChanged);
-	connect(m_viewWindowMgr, &ViewWindowMgr::linkClicked,
-	        this, &MainWindow::onLinkClicked);
-	connect(m_viewWindowMgr, &ViewWindowMgr::contextMenuRequested,
-	        this, &MainWindow::showBrowserContextMenu);
+	connect( m_viewWindowMgr,
+	         SIGNAL( historyChanged() ),
+	         this,
+	         SLOT( onHistoryChanged() ) );
+	connect( m_viewWindowMgr, &ViewWindowMgr::browserChanged,
+	         this, &MainWindow::browserChanged );
+	connect( m_viewWindowMgr, &ViewWindowMgr::urlChanged,
+	         this, &MainWindow::onUrlChanged );
+	connect( m_viewWindowMgr, &ViewWindowMgr::linkClicked,
+	         this, &MainWindow::onLinkClicked );
+	connect( m_viewWindowMgr, &ViewWindowMgr::contextMenuRequested,
+	         this, &MainWindow::showBrowserContextMenu );
 
 	// Add navigation dock
 	m_navPanel->setAllowedAreas( Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea );
@@ -166,12 +166,12 @@ MainWindow::MainWindow( const QStringList& arguments )
 
 	statusBar()->show();
 
-	qApp->setWindowIcon( QPixmap(":/images/uchmviewer.png") );
+	qApp->setWindowIcon( QPixmap( ":/images/uchmviewer.png" ) );
 
 	if ( pConfig->m_numOfRecentFiles > 0 )
 	{
 		m_recentFiles = new RecentFiles( menu_File, file_exit_action, pConfig->m_numOfRecentFiles );
-		connect( m_recentFiles, SIGNAL(openRecentFile(QString)), this, SLOT(actionOpenRecentFile(QString)) );
+		connect( m_recentFiles, SIGNAL( openRecentFile( QString ) ), this, SLOT( actionOpenRecentFile( QString ) ) );
 	}
 	else
 		m_recentFiles = 0;
@@ -191,7 +191,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::launch()
 {
-	QTimer::singleShot( 0, this, SLOT( firstShow()) );
+	QTimer::singleShot( 0, this, SLOT( firstShow() ) );
 }
 
 bool MainWindow::hasSameTokenInstance()
@@ -203,7 +203,7 @@ bool MainWindow::hasSameTokenInstance()
 	for ( int i = 1; i < m_arguments.size(); i++  )
 	{
 		// This is not bulletproof (think -showPage -token) but this is not likely to happen
-		if ( m_arguments[i] == "-token")
+		if ( m_arguments[i] == "-token" )
 		{
 			token = m_arguments[++i];
 			break;
@@ -219,21 +219,21 @@ bool MainWindow::hasSameTokenInstance()
 	if ( m_sharedMemory->attach() )
 	{
 		// Another instance exists; send the command-line there
-		QByteArray args = m_arguments.join("|").toLocal8Bit();
+		QByteArray args = m_arguments.join( "|" ).toLocal8Bit();
 
 		if ( args.size() < SHARED_MEMORY_SIZE - 2 )
 		{
 			// Write the size first, then the string
 			if ( m_sharedMemory->lock() )
 			{
-				char* data = (char*) m_sharedMemory->data();
-				*((short*)data) = args.size();
+				char* data = ( char* ) m_sharedMemory->data();
+				*( ( short* )data ) = args.size();
 				memcpy( data + 2, args.data(), args.size() );
 
 				m_sharedMemory->unlock();
 			}
 			else
-				qDebug("failed to lock");
+				qDebug( "failed to lock" );
 		}
 
 		// Clean up
@@ -247,18 +247,18 @@ bool MainWindow::hasSameTokenInstance()
 	if ( !m_sharedMemory->create( SHARED_MEMORY_SIZE ) )
 	{
 		QMessageBox::critical( 0,
-		                       i18n("Shared memory segment failed"),
-		                       i18n("Failed to create a shared memory segment: %1").arg( m_sharedMemory->errorString()) );
+		                       i18n( "Shared memory segment failed" ),
+		                       i18n( "Failed to create a shared memory segment: %1" ).arg( m_sharedMemory->errorString() ) );
 		return false;
 	}
 
 	// Set it up so our checker knows there's no data yet
-	*((short*) m_sharedMemory->data()) = 0;
+	*( ( short* ) m_sharedMemory->data() ) = 0;
 
 	// Recheck every second
 	QTimer* timer = new QTimer( this );
-	connect( timer, SIGNAL(timeout()), this, SLOT(checkForSharedMemoryMessage()));
-	timer->start(1000);
+	connect( timer, SIGNAL( timeout() ), this, SLOT( checkForSharedMemoryMessage() ) );
+	timer->start( 1000 );
 	return false;
 }
 
@@ -268,16 +268,16 @@ void MainWindow::checkForSharedMemoryMessage()
 	m_sharedMemory->lock();
 
 	// Is there any data?
-	char* data = (char*) m_sharedMemory->data();
+	char* data = ( char* ) m_sharedMemory->data();
 
 	if ( data[0] != 0 || data[1] != 0 )
 	{
 		// Get the message length and the message
-		short len = *((short*) data);
+		short len = *( ( short* ) data );
 		args = QString::fromLocal8Bit( data + 2, len ).split( "|" );
 
 		// Clean up
-		*((short*) data) = 0;
+		*( ( short* ) data ) = 0;
 	}
 
 	m_sharedMemory->unlock();
@@ -311,13 +311,13 @@ bool MainWindow::loadFile ( const QString& loadFileName, bool call_open_page )
 
 		// Show current encoding in status bar
 		if ( m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
-			showInStatusBar( i18n("Detected file encoding: %1 ( %2 )")
-			                 .arg( TextEncodings::languageForCodec( m_ebookFile->currentEncoding() ))
+			showInStatusBar( i18n( "Detected file encoding: %1 ( %2 )" )
+			                 .arg( TextEncodings::languageForCodec( m_ebookFile->currentEncoding() ) )
 			                 .arg( m_ebookFile->currentEncoding() ) );
 
 		// Make the file name absolute; we'll need it later
 		QDir qd;
-		qd.setPath (fileName);
+		qd.setPath ( fileName );
 		m_ebookFilename = qd.absolutePath();
 
 		// Qt's 'dirname' does not work well
@@ -342,10 +342,10 @@ bool MainWindow::loadFile ( const QString& loadFileName, bool call_open_page )
 		if ( !m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
 			refreshCurrentBrowser();
 
-		if ( m_currentSettings->loadSettings (fileName) )
+		if ( m_currentSettings->loadSettings ( fileName ) )
 		{
 			if ( m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
-				setTextEncoding(m_currentSettings->m_activeEncoding );
+				setTextEncoding( m_currentSettings->m_activeEncoding );
 
 			m_navPanel->applySettings( m_currentSettings );
 
@@ -385,16 +385,16 @@ bool MainWindow::loadFile ( const QString& loadFileName, bool call_open_page )
 	else
 	{
 		QMessageBox mbox(
-		    i18n("%1 - failed to load the chm file") . arg(QCoreApplication::applicationName() ),
-		    i18n("Unable to load the chm file %1") . arg(fileName),
+		    i18n( "%1 - failed to load the chm file" ) . arg( QCoreApplication::applicationName() ),
+		    i18n( "Unable to load the chm file %1" ) . arg( fileName ),
 		    QMessageBox::Critical,
 		    QMessageBox::Ok,
 		    Qt::NoButton,
-		    Qt::NoButton);
+		    Qt::NoButton );
 		mbox.exec();
 
 		statusBar()->showMessage(
-		    i18n("Could not load file %1").arg(fileName),
+		    i18n( "Could not load file %1" ).arg( fileName ),
 		    2000 );
 
 		return false;
@@ -411,7 +411,7 @@ void MainWindow::refreshCurrentBrowser( )
 	// KDE adds application name automatically, so we don't need it here
 #if !defined (USE_KDE)
 	else
-		title = (QString) QCoreApplication::applicationName() + " - " + title;
+		title = ( QString ) QCoreApplication::applicationName() + " - " + title;
 
 #endif
 
@@ -422,25 +422,25 @@ void MainWindow::refreshCurrentBrowser( )
 	m_navPanel->refresh();
 }
 
-void MainWindow::showBrowserContextMenu(ViewWindow* browser,
-                                        const QPoint& globalPos,
-                                        const QUrl& link)
+void MainWindow::showBrowserContextMenu( ViewWindow* browser,
+                                         const QPoint& globalPos,
+                                         const QUrl& link )
 {
-	Q_UNUSED(browser)
-	QMenu* m = new QMenu(this);
+	Q_UNUSED( browser )
+	QMenu* m = new QMenu( this );
 
 	if ( !link.isEmpty() )
 	{
-		m->addAction( i18n("Open Link in a new tab\tShift+LMB"),
+		m->addAction( i18n( "Open Link in a new tab\tShift+LMB" ),
 		              [this, link] ()
 		{
 			openPage( link, UBrowser::OPEN_IN_NEW );
-		});
-		m->addAction( i18n("Open Link in a new background tab\tCtrl+LMB"),
+		} );
+		m->addAction( i18n( "Open Link in a new background tab\tCtrl+LMB" ),
 		              [this, link] ()
 		{
 			openPage( link, UBrowser::OPEN_IN_BACKGROUND );
-		});
+		} );
 		m->addSeparator();
 	}
 
@@ -464,7 +464,7 @@ void MainWindow::activateUrl( const QUrl& link )
 		openPage( link, UBrowser::OPEN_IN_CURRENT );
 }
 
-bool MainWindow::openPage(const QUrl& url, UBrowser::OpenMode mode )
+bool MainWindow::openPage( const QUrl& url, UBrowser::OpenMode mode )
 {
 	return onLinkClicked( currentBrowser(), url, mode );
 }
@@ -482,11 +482,11 @@ bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, UBrowser::
 			break;
 
 		case Config::ACTION_ASK_USER:
-			if ( QMessageBox::question(this,
-			                           i18n("%1 - remote link clicked - %2") . arg(QCoreApplication::applicationName()) . arg(otherlink),
-			                           i18n("A remote link %1 will start the external program to open it.\n\nDo you want to continue?").arg( url.toString() ),
-			                           i18n("&Yes"), i18n("&No"),
-			                           QString(), 0, 1 ) )
+			if ( QMessageBox::question( this,
+			                            i18n( "%1 - remote link clicked - %2" ) . arg( QCoreApplication::applicationName() ) . arg( otherlink ),
+			                            i18n( "A remote link %1 will start the external program to open it.\n\nDo you want to continue?" ).arg( url.toString() ),
+			                            i18n( "&Yes" ), i18n( "&No" ),
+			                            QString(), 0, 1 ) )
 				return false;
 
 		// no break! should continue to open.
@@ -550,10 +550,10 @@ void MainWindow::setTextEncoding( const QString& encoding )
 	        it != encodings.end();
 	        ++it )
 	{
-		if ( (*it)->data().toString() == encoding  )
+		if ( ( *it )->data().toString() == encoding  )
 		{
-			if ( !(*it)->isChecked() )
-				(*it)->setChecked( true );
+			if ( !( *it )->isChecked() )
+				( *it )->setChecked( true );
 
 			break;
 		}
@@ -624,19 +624,19 @@ void MainWindow::closeEvent ( QCloseEvent* e )
 
 void MainWindow::printHelpAndExit()
 {
-	fprintf (stderr, "Usage: %s [options] [helpfile]\n"
-	         "    The following options supported:\n"
-	         "  -showPage <url>   opens the url in the help file\n"
-	         "  -index <text>     searches for text in the Index tab\n"
-	         "  -search <query>   searches for query in the Search tab, and activate the first entry if found\n"
-	         "  -token <token>    specifies the application token; see the integration reference\n"
-	         "  -background       start minimized\n"
-	         , qPrintable( m_arguments[0] ) );
+	fprintf ( stderr, "Usage: %s [options] [helpfile]\n"
+	          "    The following options supported:\n"
+	          "  -showPage <url>   opens the url in the help file\n"
+	          "  -index <text>     searches for text in the Index tab\n"
+	          "  -search <query>   searches for query in the Search tab, and activate the first entry if found\n"
+	          "  -token <token>    specifies the application token; see the integration reference\n"
+	          "  -background       start minimized\n"
+	          , qPrintable( m_arguments[0] ) );
 
-	exit (1);
+	exit ( 1 );
 }
 
-bool MainWindow::parseCmdLineArgs(const QStringList& args, bool from_another_app )
+bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_app )
 {
 	QString filename, search_query, search_index, open_url, search_toc;
 	bool do_autotest = false, force_background = false;
@@ -660,7 +660,7 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args, bool from_another_app
 			force_background = true;
 		else if ( args[i] == "-v" || args[i] == "--version" )
 		{
-			printf("uChmViewer version %s built at %s %s\n", APP_VERSION, __DATE__, __TIME__ );
+			printf( "uChmViewer version %s built at %s %s\n", APP_VERSION, __DATE__, __TIME__ );
 			exit( 0 );
 		}
 		else if ( args[i] == "--url" || args[i] == "-showPage" )
@@ -675,8 +675,8 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args, bool from_another_app
 				if ( from_another_app )
 					return false;
 
-				fprintf (stderr, "Invalid command-line option %s (ebook filename is already specified as %s)\n",
-				         qPrintable( filename ), qPrintable( args[i] ) );
+				fprintf ( stderr, "Invalid command-line option %s (ebook filename is already specified as %s)\n",
+				          qPrintable( filename ), qPrintable( args[i] ) );
 
 				printHelpAndExit();
 			}
@@ -687,7 +687,7 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args, bool from_another_app
 	if ( !filename.isEmpty() )
 	{
 		// If we have already opened the same file, no need to reopen it again
-		if ( !m_ebookFile || QDir(m_ebookFilename) != QDir(filename) )
+		if ( !m_ebookFile || QDir( m_ebookFilename ) != QDir( filename ) )
 		{
 			if ( !loadFile( filename ) )
 				return true; // skip the latest checks, but do not exit from the program
@@ -696,7 +696,7 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args, bool from_another_app
 		if ( !open_url.isEmpty() )
 		{
 			QStringList event_args;
-			event_args.push_back( m_ebookFile->pathToUrl(open_url).toString() );
+			event_args.push_back( m_ebookFile->pathToUrl( open_url ).toString() );
 			qApp->postEvent( this, new UserEvent( "openPage", event_args ) );
 		}
 		else if ( !search_index.isEmpty() )
@@ -721,7 +721,7 @@ bool MainWindow::parseCmdLineArgs(const QStringList& args, bool from_another_app
 		if ( do_autotest )
 		{
 			if ( filename.isEmpty() )
-				qFatal ("Could not use Auto Test mode without a chm file!");
+				qFatal ( "Could not use Auto Test mode without a chm file!" );
 
 			m_autoteststate = STATE_INITIAL;
 			showMinimized ();
@@ -753,7 +753,7 @@ ViewWindow* MainWindow::currentBrowser( ) const
 	return m_viewWindowMgr->current();
 }
 
-void MainWindow::setNewTabLink(const QUrl& link)
+void MainWindow::setNewTabLink( const QUrl& link )
 {
 	m_newTabLink = link;
 }
@@ -773,7 +773,7 @@ void MainWindow::onOpenPageInNewBackgroundTab( )
 	openPage( getNewTabLink(), UBrowser::OPEN_IN_BACKGROUND );
 }
 
-void MainWindow::browserChanged(ViewWindow* browser)
+void MainWindow::browserChanged( ViewWindow* browser )
 {
 	m_navPanel->findUrlInContents( browser->url() );
 }
@@ -781,7 +781,7 @@ void MainWindow::browserChanged(ViewWindow* browser)
 bool MainWindow::event( QEvent* e )
 {
 	if ( e->type() == QEvent::User )
-		return handleUserEvent( (UserEvent*) e );
+		return handleUserEvent( ( UserEvent* ) e );
 
 	return QMainWindow::event( e );
 }
@@ -791,7 +791,7 @@ bool MainWindow::handleUserEvent( const UserEvent* event )
 	if ( event->m_action == "loadAndOpen" )
 	{
 		if ( event->m_args.size() != 1 && event->m_args.size() != 2 )
-			qFatal("handleUserEvent: event loadAndOpen must receive 1 or 2 args");
+			qFatal( "handleUserEvent: event loadAndOpen must receive 1 or 2 args" );
 
 		QString chmfile = event->m_args[0];
 		QString openurl = event->m_args.size() > 1 ? event->m_args[1] : "/";
@@ -801,7 +801,7 @@ bool MainWindow::handleUserEvent( const UserEvent* event )
 	else if ( event->m_action == "openPage" )
 	{
 		if ( event->m_args.size() != 1 )
-			qFatal("handleUserEvent: event openPage must receive 1 arg");
+			qFatal( "handleUserEvent: event openPage must receive 1 arg" );
 
 		return openPage( event->m_args[0] );
 	}
@@ -846,12 +846,12 @@ bool MainWindow::handleUserEvent( const UserEvent* event )
 
 void MainWindow::runAutoTest()
 {
-	switch (m_autoteststate)
+	switch ( m_autoteststate )
 	{
 	case STATE_INITIAL:
 		m_autoteststate = STATE_OPEN_INDEX;
 
-		QTimer::singleShot (500, this, SLOT(runAutoTest()) );
+		QTimer::singleShot ( 500, this, SLOT( runAutoTest() ) );
 		break; // allow to finish the initialization sequence
 
 	case STATE_OPEN_INDEX:
@@ -859,7 +859,7 @@ void MainWindow::runAutoTest()
 			m_navPanel->setActive( NavigationPanel::TAB_INDEX );
 
 		m_autoteststate = STATE_SHUTDOWN;
-		QTimer::singleShot (500, this, SLOT(runAutoTest()) );
+		QTimer::singleShot ( 500, this, SLOT( runAutoTest() ) );
 		break;
 
 	case STATE_SHUTDOWN:
@@ -871,7 +871,7 @@ void MainWindow::runAutoTest()
 	}
 }
 
-void MainWindow::showInStatusBar(const QString& text)
+void MainWindow::showInStatusBar( const QString& text )
 {
 	statusBar()->showMessage( text, 2000 );
 }
@@ -895,12 +895,12 @@ void MainWindow::actionNavigateHome()
 void MainWindow::actionOpenFile()
 {
 #if defined (USE_KDE)
-	QString fn = KFileDialog::getOpenFileName( pConfig->m_lastOpenedDir, i18n("*.chm *.epub|All electronic book\n*.chm|Compressed Help Manual\n*.epub|EPUB electronic book"), this);
+	QString fn = KFileDialog::getOpenFileName( pConfig->m_lastOpenedDir, i18n( "*.chm *.epub|All electronic book\n*.chm|Compressed Help Manual\n*.epub|EPUB electronic book" ), this );
 #else
 	QString fn = QFileDialog::getOpenFileName( this,
-	                                           i18n( "Open a chm file"),
+	                                           i18n( "Open a chm file" ),
 	                                           pConfig->m_lastOpenedDir,
-	                                           i18n("Electronic books (*.chm *.epub)"),
+	                                           i18n( "Electronic books (*.chm *.epub)" ),
 	                                           0,
 	                                           QFileDialog::DontResolveSymlinks );
 #endif
@@ -916,16 +916,16 @@ void MainWindow::actionPrint()
 
 	if ( dlg.exec() != QDialog::Accepted )
 	{
-		showInStatusBar( i18n( "Printing aborted") );
+		showInStatusBar( i18n( "Printing aborted" ) );
 		return;
 	}
 
-	currentBrowser()->print(printer, [ = ](bool succes)
+	currentBrowser()->print( printer, [ = ]( bool succes )
 	{
-		Q_UNUSED(succes);
-		showInStatusBar( i18n( "Printing finished") );
+		Q_UNUSED( succes );
+		showInStatusBar( i18n( "Printing finished" ) );
 		delete printer;
-	});
+	} );
 }
 
 void MainWindow::actionEditCopy()
@@ -958,11 +958,11 @@ void MainWindow::actionExtractCHM()
 	QString outdir = KFileDialog::getExistingDirectory (
 	                     QUrl(),
 	                     this,
-	                     i18n("Choose a directory to store CHM content") );
+	                     i18n( "Choose a directory to store CHM content" ) );
 #else
 	QString outdir = QFileDialog::getExistingDirectory (
 	                     this,
-	                     i18n("Choose a directory to store CHM content"),
+	                     i18n( "Choose a directory to store CHM content" ),
 	                     QString(),
 	                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
 #endif
@@ -976,8 +976,8 @@ void MainWindow::actionExtractCHM()
 	if ( !m_ebookFile || !m_ebookFile->enumerateFiles( files ) )
 		return;
 
-	QProgressDialog progress( i18n("Extracting CHM content"),
-	                          i18n("Extracting files..."),
+	QProgressDialog progress( i18n( "Extracting CHM content" ),
+	                          i18n( "Extracting files..." ),
 	                          1,
 	                          files.size(),
 	                          this );
@@ -986,7 +986,7 @@ void MainWindow::actionExtractCHM()
 	{
 		progress.setValue( i );
 
-		if ( (i % 3) == 0 )
+		if ( ( i % 3 ) == 0 )
 		{
 			qApp->processEvents();
 
@@ -1080,7 +1080,7 @@ void MainWindow::actionViewHTMLsource()
 
 		QTextEdit* editor = new QTextEdit ( 0 );
 		editor->setPlainText( text );
-		editor->setWindowTitle( i18n("HTML source") );
+		editor->setWindowTitle( i18n( "HTML source" ) );
 		editor->resize( 800, 600 );
 		editor->show();
 	}
@@ -1096,7 +1096,7 @@ void MainWindow::actionViewHTMLsource()
 
 		if ( !tf->open() )
 		{
-			qWarning("Cannot open created QTemporaryFile: something is wrong with your system");
+			qWarning( "Cannot open created QTemporaryFile: something is wrong with your system" );
 			return;
 		}
 
@@ -1110,8 +1110,8 @@ void MainWindow::actionViewHTMLsource()
 		if ( !QProcess::startDetached( pConfig->m_advExternalEditorPath, arguments, "." ) )
 		{
 			QMessageBox::warning( 0,
-			                      i18n("Cannot start external editor"),
-			                      i18n("Cannot start external editor %1.\nMake sure the path is absolute!") .arg( pConfig->m_advExternalEditorPath ) );
+			                      i18n( "Cannot start external editor" ),
+			                      i18n( "Cannot start external editor %1.\nMake sure the path is absolute!" ) .arg( pConfig->m_advExternalEditorPath ) );
 			delete m_tempFileKeeper.takeLast();
 		}
 	}
@@ -1161,12 +1161,12 @@ void MainWindow::actionLocateInContentsTab()
 	if ( m_navPanel->findUrlInContents( currentBrowser()->url() ) )
 		m_navPanel->setActive( NavigationPanel::TAB_CONTENTS );
 	else
-		statusBar()->showMessage( i18n( "Could not locate opened topic in content window"), 2000 );
+		statusBar()->showMessage( i18n( "Could not locate opened topic in content window" ), 2000 );
 }
 
 void MainWindow::actionAboutApp()
 {
-	QString info = QString( i18n("Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4") )
+	QString info = QString( i18n( "Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4" ) )
 	               .arg( QSysInfo::buildCpuArchitecture() )
 	               .arg( QSysInfo::buildAbi() )
 	               .arg( QSysInfo::prettyProductName() )
@@ -1183,11 +1183,11 @@ void MainWindow::actionAboutApp()
 	                          "Copyright (C) Nick Egorrov, 2021</p>"
 	                          "<p>Licensed under GNU GPL license version 3.</p>"
 	                          "</body></html>" )
-	                    .arg(APP_VERSION) .arg( info );
+	                    .arg( APP_VERSION ) .arg( info );
 
 	// It is quite funny that the argument order differs
 #if defined (USE_KDE)
-	KMessageBox::about( this, abouttext, i18n("About uChmViewer") );
+	KMessageBox::about( this, abouttext, i18n( "About uChmViewer" ) );
 #else
 	QDialog dlg;
 	Ui::DialogAbout ui;
@@ -1237,14 +1237,14 @@ void MainWindow::setupActions()
 	connect( edit_FindAction, SIGNAL( triggered() ), this, SLOT( actionFindInPage() ) );
 
 	// Bookmarks
-	connect( bookmark_AddAction, SIGNAL( triggered() ), m_navPanel, SLOT( addBookmark()) );
+	connect( bookmark_AddAction, SIGNAL( triggered() ), m_navPanel, SLOT( addBookmark() ) );
 
 	// View
 	connect( view_Increase_font_size_action, SIGNAL( triggered() ), this, SLOT( actionFontSizeIncrease() ) );
 	connect( view_Decrease_font_size_action, SIGNAL( triggered() ), this, SLOT( actionFontSizeDecrease() ) );
 	connect( view_View_HTML_source_action, SIGNAL( triggered() ), this, SLOT( actionViewHTMLsource() ) );
 	connect( view_Toggle_fullscreen_action, SIGNAL( triggered() ), this, SLOT( actionToggleFullScreen() ) );
-	connect( view_Show_navigator_window, SIGNAL( triggered(bool) ), this, SLOT( actionShowHideNavigator(bool) ) );
+	connect( view_Show_navigator_window, SIGNAL( triggered( bool ) ), this, SLOT( actionShowHideNavigator( bool ) ) );
 	connect( view_Locate_in_contents_action, SIGNAL( triggered() ), this, SLOT( actionLocateInContentsTab() ) );
 
 	// Settings
@@ -1252,8 +1252,8 @@ void MainWindow::setupActions()
 	connect( actionEdit_toolbars, SIGNAL( triggered() ), this, SLOT( actionEditToolbars() ) );
 
 	// Help menu
-	connect( actionAbout_kchmviewer, SIGNAL(triggered()), this, SLOT(actionAboutApp()) );
-	connect( actionAbout_Qt, SIGNAL(triggered()), this, SLOT(actionAboutQt()) );
+	connect( actionAbout_kchmviewer, SIGNAL( triggered() ), this, SLOT( actionAboutApp() ) );
+	connect( actionAbout_Qt, SIGNAL( triggered() ), this, SLOT( actionAboutQt() ) );
 	menuHelp->addSeparator();
 
 	// Navigation toolbar
@@ -1272,7 +1272,7 @@ void MainWindow::setupActions()
 	connect( action_Close_window, SIGNAL( triggered() ), m_viewWindowMgr, SLOT( onCloseCurrentWindow() ) );
 
 	// Navigation panel visibility
-	connect( m_navPanel, SIGNAL(visibilityChanged(bool)), this, SLOT( navigatorVisibilityChanged(bool) ) );
+	connect( m_navPanel, SIGNAL( visibilityChanged( bool ) ), this, SLOT( navigatorVisibilityChanged( bool ) ) );
 
 	// "What's this" action
 	QAction* whatsthis = QWhatsThis::createAction( this );
@@ -1280,87 +1280,87 @@ void MainWindow::setupActions()
 	viewToolbar->addAction( whatsthis );
 
 	// Tab switching actions
-	(void) new QShortcut( QKeySequence( i18n("Ctrl+1") ),
-	                      this,
-	                      SLOT( actionSwitchToContentTab() ),
-	                      SLOT( actionSwitchToContentTab() ),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( i18n( "Ctrl+1" ) ),
+	                        this,
+	                        SLOT( actionSwitchToContentTab() ),
+	                        SLOT( actionSwitchToContentTab() ),
+	                        Qt::ApplicationShortcut );
 
-	(void)  new QShortcut( QKeySequence( i18n("Ctrl+2") ),
-	                       this,
-	                       SLOT( actionSwitchToIndexTab() ),
-	                       SLOT( actionSwitchToIndexTab() ),
-	                       Qt::ApplicationShortcut );
+	( void )  new QShortcut( QKeySequence( i18n( "Ctrl+2" ) ),
+	                         this,
+	                         SLOT( actionSwitchToIndexTab() ),
+	                         SLOT( actionSwitchToIndexTab() ),
+	                         Qt::ApplicationShortcut );
 
-	(void) new QShortcut( QKeySequence( i18n("Ctrl+3") ),
-	                      this,
-	                      SLOT( actionSwitchToSearchTab() ),
-	                      SLOT( actionSwitchToSearchTab() ),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( i18n( "Ctrl+3" ) ),
+	                        this,
+	                        SLOT( actionSwitchToSearchTab() ),
+	                        SLOT( actionSwitchToSearchTab() ),
+	                        Qt::ApplicationShortcut );
 
-	(void) new QShortcut( QKeySequence( i18n("Ctrl+4") ),
-	                      this,
-	                      SLOT( actionSwitchToBookmarkTab() ),
-	                      SLOT( actionSwitchToBookmarkTab() ),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( i18n( "Ctrl+4" ) ),
+	                        this,
+	                        SLOT( actionSwitchToBookmarkTab() ),
+	                        SLOT( actionSwitchToBookmarkTab() ),
+	                        Qt::ApplicationShortcut );
 
 	// Find (/) global shortcut
-	(void) new QShortcut( QKeySequence( i18n("/") ),
-	                      m_viewWindowMgr,
-	                      SLOT( onActivateFind() ),
-	                      SLOT( onActivateFind() ),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( i18n( "/" ) ),
+	                        m_viewWindowMgr,
+	                        SLOT( onActivateFind() ),
+	                        SLOT( onActivateFind() ),
+	                        Qt::ApplicationShortcut );
 
 	// Find next global shortcuts
-	(void) new QShortcut( QKeySequence( i18n("F3") ),
-	                      m_viewWindowMgr,
-	                      SLOT( onFindNext() ),
-	                      SLOT( onFindNext() ),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( i18n( "F3" ) ),
+	                        m_viewWindowMgr,
+	                        SLOT( onFindNext() ),
+	                        SLOT( onFindNext() ),
+	                        Qt::ApplicationShortcut );
 
-	(void) new QShortcut( QKeySequence( QKeySequence::FindNext ),
-	                      m_viewWindowMgr,
-	                      SLOT( onFindNext() ),
-	                      SLOT( onFindNext() ),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( QKeySequence::FindNext ),
+	                        m_viewWindowMgr,
+	                        SLOT( onFindNext() ),
+	                        SLOT( onFindNext() ),
+	                        Qt::ApplicationShortcut );
 
 	// Find prev global shortcut
-	(void) new QShortcut( QKeySequence( QKeySequence::FindPrevious ),
-	                      m_viewWindowMgr,
-	                      SLOT( onFindPrevious() ),
-	                      SLOT( onFindPrevious() ),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( QKeySequence::FindPrevious ),
+	                        m_viewWindowMgr,
+	                        SLOT( onFindPrevious() ),
+	                        SLOT( onFindPrevious() ),
+	                        Qt::ApplicationShortcut );
 
 	// Open next page in TOC global shortcut
-	(void) new QShortcut( QKeySequence( i18n("Ctrl+Right") ),
-	                      m_navPanel,
-	                      SLOT( showNextInToc() ),
-	                      SLOT( showNextInToc() ),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( i18n( "Ctrl+Right" ) ),
+	                        m_navPanel,
+	                        SLOT( showNextInToc() ),
+	                        SLOT( showNextInToc() ),
+	                        Qt::ApplicationShortcut );
 
 	// Open next page in TOC global shortcut
-	(void) new QShortcut( QKeySequence( i18n("Ctrl+Left") ),
-	                      m_navPanel,
-	                      SLOT( showPrevInToc() ),
-	                      SLOT( showPrevInToc() ),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( i18n( "Ctrl+Left" ) ),
+	                        m_navPanel,
+	                        SLOT( showPrevInToc() ),
+	                        SLOT( showPrevInToc() ),
+	                        Qt::ApplicationShortcut );
 
 	// Copy current URL to clipboard global shortcut
-	(void) new QShortcut( QKeySequence( i18n("Ctrl+I") ),
-	                      m_viewWindowMgr,
-	                      SLOT( copyUrlToClipboard()),
-	                      SLOT( copyUrlToClipboard()),
-	                      Qt::ApplicationShortcut );
+	( void ) new QShortcut( QKeySequence( i18n( "Ctrl+I" ) ),
+	                        m_viewWindowMgr,
+	                        SLOT( copyUrlToClipboard() ),
+	                        SLOT( copyUrlToClipboard() ),
+	                        Qt::ApplicationShortcut );
 
 	// Context menu
 	m_contextMenu = new QMenu( this );
 
-	m_contextMenu->addAction ( i18n("&Open this link in a new tab"),
+	m_contextMenu->addAction ( i18n( "&Open this link in a new tab" ),
 	                           this,
 	                           SLOT( onOpenPageInNewTab() ),
 	                           QKeySequence( "Shift+Enter" ) );
 
-	m_contextMenu->addAction ( i18n("&Open this link in a new background tab"),
+	m_contextMenu->addAction ( i18n( "&Open this link in a new background tab" ),
 	                           this,
 	                           SLOT( onOpenPageInNewBackgroundTab() ),
 	                           QKeySequence( "Ctrl+Enter" ) );
@@ -1398,12 +1398,12 @@ void MainWindow::updateToolbars()
 	viewToolbar->setToolButtonStyle( buttonstyle );
 }
 
-void MainWindow::navSetBackEnabled(bool enabled)
+void MainWindow::navSetBackEnabled( bool enabled )
 {
 	nav_action_Back->setEnabled( enabled );
 }
 
-void MainWindow::navSetForwardEnabled(bool enabled)
+void MainWindow::navSetForwardEnabled( bool enabled )
 {
 	nav_actionForward->setEnabled( enabled );
 }
@@ -1414,7 +1414,7 @@ void MainWindow::onHistoryChanged()
 	navSetForwardEnabled( currentBrowser()->canGoForward() );
 }
 
-void MainWindow::onUrlChanged(const QUrl& url)
+void MainWindow::onUrlChanged( const QUrl& url )
 {
 	m_navPanel->findUrlInContents( url );
 }
@@ -1440,7 +1440,7 @@ void MainWindow::setupLangEncodingMenu()
 	{
 		QAction* action = new QAction( this );
 
-		QString text = i18n("%1 ( %2 )") .arg( languages[idx] ) .arg( qencodings[idx] );
+		QString text = i18n( "%1 ( %2 )" ) .arg( languages[idx] ) .arg( qencodings[idx] );
 		action->setText( text );
 		action->setData( QVariant::fromValue( qencodings[idx] ) );
 		action->setCheckable( true );
@@ -1501,17 +1501,17 @@ bool MainWindow::hasIndex() const
 	return m_ebookFile && m_ebookFile->hasFeature( EBook::FEATURE_INDEX );
 }
 
-const QPixmap* MainWindow::getEBookIconPixmap(EBookTocEntry::Icon imagenum)
+const QPixmap* MainWindow::getEBookIconPixmap( EBookTocEntry::Icon imagenum )
 {
 	if ( m_builtinIcons[imagenum].isNull() )
 	{
-		QString resicon = QString( ":/chm_icons/icon_%1.png") .arg( imagenum );
+		QString resicon = QString( ":/chm_icons/icon_%1.png" ) .arg( imagenum );
 
 		if ( !m_builtinIcons[imagenum].load( resicon ) )
-			qFatal("Could not initialize the internal icon %d as %s", imagenum, qPrintable( resicon ) );
+			qFatal( "Could not initialize the internal icon %d as %s", imagenum, qPrintable( resicon ) );
 	}
 
-	return &(m_builtinIcons[imagenum]);
+	return &( m_builtinIcons[imagenum] );
 }
 
 void MainWindow::updateActions()

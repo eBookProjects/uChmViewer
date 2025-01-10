@@ -157,9 +157,9 @@ class ActionListModel : public QAbstractListModel
 			return mimeData;
 		}
 
-		bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent)
+		bool dropMimeData( const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent )
 		{
-			if (action == Qt::IgnoreAction)
+			if ( action == Qt::IgnoreAction )
 				return true;
 
 			if ( !data->hasFormat( ACTION_MIME_FORMAT ) )
@@ -180,7 +180,7 @@ class ActionListModel : public QAbstractListModel
 			else if ( parent.isValid() )
 				beginRow = parent.row();
 			else
-				beginRow = rowCount(QModelIndex());
+				beginRow = rowCount( QModelIndex() );
 
 			QByteArray actionName = data->data( ACTION_MIME_FORMAT );
 
@@ -210,14 +210,14 @@ class ActionListModel : public QAbstractListModel
 
 
 ToolbarEditor::ToolbarEditor( QWidget* parent )
-	: QDialog(parent), Ui::ToolbarEditor()
+	: QDialog( parent ), Ui::ToolbarEditor()
 {
 	setupUi( this );
 
 	m_allowActionsWithoutIcons = true;
 	m_activeToolbar = 0;
 
-	connect( boxToolbars, SIGNAL(activated(int)), this, SLOT(toolbarSelected(int)) );
+	connect( boxToolbars, SIGNAL( activated( int ) ), this, SLOT( toolbarSelected( int ) ) );
 }
 
 ToolbarEditor::~ToolbarEditor()
@@ -243,7 +243,7 @@ void ToolbarEditor::setAvailableActions( QList<QAction*> availableActions )
 int ToolbarEditor::exec()
 {
 	if ( m_toolbars.size() == 0 )
-		qFatal("ToolbarEditor::exec: no toolbars selected, and editing is disabled. Aborting.");
+		qFatal( "ToolbarEditor::exec: no toolbars selected, and editing is disabled. Aborting." );
 
 	// Hide the group allowing to edit toolbar list if we do not allow editing, and there
 	// is only one toolbar
@@ -292,7 +292,7 @@ void ToolbarEditor::initToolbarActions( QToolBar* toolbar )
 void ToolbarEditor::setupViews( QToolBar* toolbar )
 {
 	if ( !m_selected.contains( toolbar ) )
-		qFatal("ToolbarEditor::setupViews: invalid toolbar");
+		qFatal( "ToolbarEditor::setupViews: invalid toolbar" );
 
 	QStringList actions = m_selected[ toolbar ];
 
@@ -316,8 +316,8 @@ void ToolbarEditor::setupViews( QToolBar* toolbar )
 	ActionListModel* newModelSelected = new ActionListModel( this, actions, false );
 
 	// Set them, and get the old models
-	ActionListModel* oldModelAvailable = (ActionListModel*) listAvailable->model();
-	ActionListModel* oldModelSelected = (ActionListModel*) listActions->model();
+	ActionListModel* oldModelAvailable = ( ActionListModel* ) listAvailable->model();
+	ActionListModel* oldModelSelected = ( ActionListModel* ) listActions->model();
 
 	listActions->setModel( newModelSelected );
 	listAvailable->setModel( newModelAvailable );
@@ -347,9 +347,9 @@ void ToolbarEditor::toolbarSelected( int index )
 void ToolbarEditor::updateToolbarActions( QToolBar* toolbar )
 {
 	if ( !m_selected.contains( toolbar ) )
-		qFatal("ToolbarEditor::updateToolbarActions: invalid toolbar");
+		qFatal( "ToolbarEditor::updateToolbarActions: invalid toolbar" );
 
-	ActionListModel* model = (ActionListModel*) listActions->model();
+	ActionListModel* model = ( ActionListModel* ) listActions->model();
 	m_selected[ toolbar ] = model->actions();
 }
 

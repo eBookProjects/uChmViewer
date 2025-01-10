@@ -61,7 +61,7 @@ class NavigationPanel : public QDockWidget, public Ui::NavigatorPanel
 		void    invalidate();
 
 		// Update tabs content from CHM file data
-		void    updateTabs(EBook* file );
+		void    updateTabs( EBook* file );
 
 		// Save/load current file settings
 		void    applySettings( Settings* settings );

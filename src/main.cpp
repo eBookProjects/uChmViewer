@@ -55,14 +55,14 @@ int main( int argc, char** argv )
 #if defined (USE_KDE)
 	K4AboutData aboutdata ( "uChmViewer",
 	                        QByteArray(),
-	                        ki18n("uChmViewer"),
+	                        ki18n( "uChmViewer" ),
 	                        APP_VERSION,
-	                        ki18n("CHM file viewer"),
+	                        ki18n( "CHM file viewer" ),
 	                        K4AboutData::License_GPL,
-	                        ki18n("(c) 2004-2015 George Yunaev"),
-	                        ki18n("Please report bugs to nicegorov@ya.com"),
+	                        ki18n( "(c) 2004-2015 George Yunaev" ),
+	                        ki18n( "Please report bugs to nicegorov@ya.com" ),
 	                        "https://github.com/u-235/uchmviewer",
-	                        "");
+	                        "" );
 
 	KCmdLineArgs::init( &aboutdata );
 	KApplication app;
@@ -75,9 +75,9 @@ int main( int argc, char** argv )
 	app_i18n::init();
 
 	// Set data for QSettings
-	QCoreApplication::setOrganizationName("uChmViewer");
-	QCoreApplication::setOrganizationDomain("uChmViewer.net");
-	QCoreApplication::setApplicationName("uchmviewer");
+	QCoreApplication::setOrganizationName( "uChmViewer" );
+	QCoreApplication::setOrganizationDomain( "uChmViewer.net" );
+	QCoreApplication::setApplicationName( "uchmviewer" );
 
 	// Configuration
 	pConfig = new Config();
@@ -86,7 +86,7 @@ int main( int argc, char** argv )
 
 	if ( QDBusConnection::sessionBus().isConnected() )
 	{
-		if ( QDBusConnection::sessionBus().registerService(SERVICE_NAME) )
+		if ( QDBusConnection::sessionBus().registerService( SERVICE_NAME ) )
 		{
 			DBusInterface* dbusiface = new DBusInterface();
 			QDBusConnection::sessionBus().registerObject( "/", dbusiface, QDBusConnection::ExportAllSlots );
@@ -122,6 +122,6 @@ int main( int argc, char** argv )
 	mainWindow->show();
 	mainWindow->launch();
 
-	app.connect( &app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()) );
+	app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
 	return app.exec();
 }

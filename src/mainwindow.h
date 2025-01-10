@@ -55,7 +55,7 @@ class UserEvent : public QEvent
 {
 	public:
 		UserEvent( const QString& action, const QStringList& args = QStringList() )
-			: QEvent( QEvent::User ), m_action(action), m_args(args)
+			: QEvent( QEvent::User ), m_action( action ), m_args( args )
 		{
 		}
 
@@ -72,7 +72,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		MainWindow( const QStringList& arguments );
 		~MainWindow();
 
-		bool        openPage (const QUrl& url, UBrowser::OpenMode mode = UBrowser::OPEN_IN_CURRENT );
+		bool        openPage ( const QUrl& url, UBrowser::OpenMode mode = UBrowser::OPEN_IN_CURRENT );
 
 		EBook*      chmFile() const { return m_ebookFile; }
 		const QString&  getOpenedFileName () { return m_ebookFilename; }
@@ -83,8 +83,8 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		ViewWindowMgr*  viewWindowMgr() const { return m_viewWindowMgr; }
 		NavigationPanel* navigator() const { return m_navPanel; }
 
-		void        showInStatusBar (const QString& text);
-		void        setTextEncoding (const QString& enc);
+		void        showInStatusBar ( const QString& text );
+		void        setTextEncoding ( const QString& enc );
 		QMenu*      tabItemsContextMenu();
 		void        launch();
 
@@ -104,13 +104,13 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 
 	public slots:
 		// Called from WindowMgr when another browser tab is activated
-		void        browserChanged(ViewWindow* browser);
+		void        browserChanged( ViewWindow* browser );
 
 		// Navigation toolbar icons
 		void        navSetBackEnabled( bool enabled );
 		void        navSetForwardEnabled( bool enabled );
 
-		void        setNewTabLink(const QUrl& link);
+		void        setNewTabLink( const QUrl& link );
 		QUrl        getNewTabLink() const;
 
 		//! Connected to ViewWindowMgr::historyChanged().
@@ -132,7 +132,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		void        actionFontSizeDecrease();
 		void        actionViewHTMLsource();
 		void        actionToggleFullScreen();
-		void        actionShowHideNavigator(bool);
+		void        actionShowHideNavigator( bool );
 		void        navigatorVisibilityChanged( bool visible );
 		void        actionLocateInContentsTab();
 		void        actionEditToolbars();
@@ -175,7 +175,7 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		bool        event ( QEvent* e );
 
 	private:
-		bool        parseCmdLineArgs(const QStringList& args, bool from_another_app = false );
+		bool        parseCmdLineArgs( const QStringList& args, bool from_another_app = false );
 		void        setupActions();
 		void        setupLangEncodingMenu();
 

@@ -35,7 +35,7 @@
 #include "treeitem_index.h"
 
 
-TreeItem_Index::TreeItem_Index(QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, const QString& seealso)
+TreeItem_Index::TreeItem_Index( QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, const QString& seealso )
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
@@ -43,7 +43,7 @@ TreeItem_Index::TreeItem_Index(QTreeWidgetItem* parent, QTreeWidgetItem* after, 
 	m_seealso = seealso;
 }
 
-TreeItem_Index::TreeItem_Index(QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, const QString& seealso)
+TreeItem_Index::TreeItem_Index( QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, const QString& seealso )
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
@@ -67,17 +67,17 @@ QUrl TreeItem_Index::getUrl() const
 		if ( title.isEmpty() )
 		{
 			qWarning( "Could not get item name for url '%s'", qPrintable( m_urls[i].toString() ) );
-			titles.push_back(QString());
+			titles.push_back( QString() );
 		}
 		else
-			titles.push_back(title);
+			titles.push_back( title );
 	}
 
 	DialogChooseUrlFromList dlg( ::mainWindow );
 	return dlg.getSelectedItemUrl( m_urls, titles );
 }
 
-bool TreeItem_Index::containstUrl(const QUrl& url) const
+bool TreeItem_Index::containstUrl( const QUrl& url ) const
 {
 	for ( int i = 0; i < m_urls.size(); i++ )
 	{
@@ -103,7 +103,7 @@ int TreeItem_Index::columnCount() const
 	return 1;
 }
 
-QVariant TreeItem_Index::data(int column, int role) const
+QVariant TreeItem_Index::data( int column, int role ) const
 {
 	if ( column != 0 )
 		return QVariant();

@@ -79,7 +79,7 @@ class Index : public QObject
 
 		void        writeDict( QDataStream& stream );
 		bool        readDict( QDataStream& stream );
-		bool        makeIndex(const QList<QUrl>& docs, EBook* chmFile );
+		bool        makeIndex( const QList<QUrl>& docs, EBook* chmFile );
 		QList<QUrl> query( const QStringList&, const QStringList&, const QStringList&, EBook* chmFile );
 		QString     getCharsSplit() const { return m_charssplit; }
 		QString     getCharsPartOfWord() const { return m_charsword; }
@@ -110,7 +110,7 @@ class Index : public QObject
 		QStringList             getWildcardTerms( const QString& );
 		QStringList             split( const QString& );
 		QList<Document>         setupDummyTerm( const QStringList& );
-		bool                    searchForPhrases(const QStringList& phrases, const QStringList& words, const QUrl& filename, EBook* chmFile );
+		bool                    searchForPhrases( const QStringList& phrases, const QStringList& words, const QUrl& filename, EBook* chmFile );
 
 		QList< QUrl >           docList;
 		QHash<QString, Entry*>  dict;

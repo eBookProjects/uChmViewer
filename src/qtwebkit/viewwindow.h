@@ -47,24 +47,24 @@ class ViewWindow : public QWebView
 		virtual ~ViewWindow();
 
 		//! Open a page from current chm archive
-		void    load (const QUrl& url );
+		void    load ( const QUrl& url );
 
 		QUrl    url() const   { return QWebView::url(); }
 
 	signals:
 		void    dataLoaded( ViewWindow* window );
 		void    linkClicked( const QUrl& link, UBrowser::OpenMode mode );
-		void    contextMenuRequested(const QPoint& globalPos, const QUrl& url);
+		void    contextMenuRequested( const QPoint& globalPos, const QUrl& url );
 
 	public:
 		// Apply the configuration settings (JS enabled etc) to the web renderer
-		static  void    applySettings(BrowserSettings& settings);
+		static  void    applySettings( BrowserSettings& settings );
 
 		//! Invalidate current view, doing all the cleanups etc.
 		void    invalidate();
 
 		//! Prints the current page on the printer.
-		void print( QPrinter* printer, std::function<void (bool success)> result );
+		void print( QPrinter* printer, std::function<void ( bool success )> result );
 
 		//! Return current ZoomFactor.
 		qreal   zoomFactor() const;
@@ -80,14 +80,14 @@ class ViewWindow : public QWebView
 		int     scrollTop();
 
 		//! Sets the scrollbar position.
-		void    setScrollTop(int pos);
-		void    setAutoScroll(int pos);
+		void    setScrollTop( int pos );
+		void    setAutoScroll( int pos );
 
-		void findText(const QString& text,
-		              bool backward,
-		              bool caseSensitively,
-		              bool highlightSearchResults,
-		              std::function<void (bool found, bool wrapped)> result);
+		void findText( const QString& text,
+		               bool backward,
+		               bool caseSensitively,
+		               bool highlightSearchResults,
+		               std::function<void ( bool found, bool wrapped )> result );
 
 		//! Select the content of the whole page
 		void    selectAll();

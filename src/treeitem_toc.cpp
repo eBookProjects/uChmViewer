@@ -31,7 +31,7 @@
 #include "treeitem_toc.h"
 
 
-TreeItem_TOC::TreeItem_TOC(QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image)
+TreeItem_TOC::TreeItem_TOC( QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image )
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
@@ -39,7 +39,7 @@ TreeItem_TOC::TreeItem_TOC(QTreeWidgetItem* parent, QTreeWidgetItem* after, cons
 	m_image = image;
 }
 
-TreeItem_TOC::TreeItem_TOC(QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image)
+TreeItem_TOC::TreeItem_TOC( QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image )
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
@@ -52,7 +52,7 @@ QUrl TreeItem_TOC::getUrl() const
 	return m_url;
 }
 
-bool TreeItem_TOC::containstUrl(const QUrl& url, bool ignorefragment ) const
+bool TreeItem_TOC::containstUrl( const QUrl& url, bool ignorefragment ) const
 {
 	if ( ignorefragment )
 	{
@@ -63,10 +63,10 @@ bool TreeItem_TOC::containstUrl(const QUrl& url, bool ignorefragment ) const
 
 		// Memory allocation-wise this must really suck :( however this code is rarely used,
 		// and only for buggy epub/chms.
-		if ( !urlpath.startsWith( '/') )
+		if ( !urlpath.startsWith( '/' ) )
 			urlpath.prepend( '/' );
 
-		if ( !ourpath.startsWith( '/') )
+		if ( !ourpath.startsWith( '/' ) )
 			ourpath.prepend( '/' );
 
 		return urlpath == ourpath;
@@ -82,7 +82,7 @@ int TreeItem_TOC::columnCount() const
 	return 1;
 }
 
-QVariant TreeItem_TOC::data(int column, int role) const
+QVariant TreeItem_TOC::data( int column, int role ) const
 {
 	int imagenum;
 
@@ -103,14 +103,14 @@ QVariant TreeItem_TOC::data(int column, int role) const
 			if ( childCount() )
 			{
 				if ( isExpanded() )
-					imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 1 : m_image;
+					imagenum = ( m_image == EBookTocEntry::IMAGE_AUTO ) ? 1 : m_image;
 				else
-					imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 0 : m_image + 1;
+					imagenum = ( m_image == EBookTocEntry::IMAGE_AUTO ) ? 0 : m_image + 1;
 			}
 			else
-				imagenum = (m_image == EBookTocEntry::IMAGE_AUTO) ? 10 : m_image;
+				imagenum = ( m_image == EBookTocEntry::IMAGE_AUTO ) ? 10 : m_image;
 
-			const QPixmap* pix = ::mainWindow->getEBookIconPixmap( (EBookTocEntry::Icon) imagenum );
+			const QPixmap* pix = ::mainWindow->getEBookIconPixmap( ( EBookTocEntry::Icon ) imagenum );
 
 			if ( !pix || pix->isNull() )
 				abort();
