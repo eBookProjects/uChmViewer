@@ -432,15 +432,9 @@ void MainWindow::showBrowserContextMenu( ViewWindow* browser,
 	if ( !link.isEmpty() )
 	{
 		m->addAction( i18n( "Open Link in a new tab\tShift+LMB" ),
-		              [this, link]()
-		{
-			openPage( link, UBrowser::OPEN_IN_NEW );
-		} );
+		              [this, link]() { openPage( link, UBrowser::OPEN_IN_NEW ); } );
 		m->addAction( i18n( "Open Link in a new background tab\tCtrl+LMB" ),
-		              [this, link]()
-		{
-			openPage( link, UBrowser::OPEN_IN_BACKGROUND );
-		} );
+		              [this, link]() { openPage( link, UBrowser::OPEN_IN_BACKGROUND ); } );
 		m->addSeparator();
 	}
 
@@ -921,11 +915,11 @@ void MainWindow::actionPrint()
 	}
 
 	currentBrowser()->print( printer, [ = ]( bool succes )
-	{
-		Q_UNUSED( succes );
-		showInStatusBar( i18n( "Printing finished" ) );
-		delete printer;
-	} );
+	                         {
+	                             Q_UNUSED( succes );
+	                             showInStatusBar( i18n( "Printing finished" ) );
+	                             delete printer;
+	                         } );
 }
 
 void MainWindow::actionEditCopy()

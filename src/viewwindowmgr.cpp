@@ -185,27 +185,19 @@ ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 	// Handle clicking on link in browser window
 	connect( browser, &ViewWindow::linkClicked,
 	         [browser, this]( const QUrl & link, UBrowser::OpenMode mode )
-	{
-		emit linkClicked( browser, link, mode );
-	} );
+	         { emit linkClicked( browser, link, mode ); } );
 
 	connect( browser, &ViewWindow::urlChanged,
 	         [browser, this]( const QUrl & url )
-	{
-		onBrowserUrlChanged( browser, url );
-	} );
+	         { onBrowserUrlChanged( browser, url ); } );
 
 	connect( browser, &ViewWindow::loadFinished,
 	         [browser, this]( bool success )
-	{
-		onBrowserLoadFinished( browser, success );
-	} );
+	         { onBrowserLoadFinished( browser, success ); } );
 
 	connect( browser, &ViewWindow::contextMenuRequested,
 	         [browser, this]( const QPoint & pos, const QUrl & link )
-	{
-		emit contextMenuRequested( browser, pos, link );
-	} );
+	         { emit contextMenuRequested( browser, pos, link ); } );
 
 	// Set up the accelerator if we have room
 	if ( m_Windows.size() < 10 )
@@ -444,6 +436,24 @@ void ViewWindowMgr::onActivateFind()
 	editFind->selectAll();
 }
 
+void ViewWindowMgr::findResult( bool found, bool wrapped )
+{
+	if ( !frameFind->isVisible() )
+		frameFind->show();
+
+	if ( wrapped )
+		labelWrapped->show();
+
+	QPalette p = editFind->palette();
+
+	if ( !found )
+		p.setColor( QPalette::Active, QPalette::Base, QColor( 255, 102, 102 ) );
+	else
+		p.setColor( QPalette::Active, QPalette::Base, Qt::white );
+
+	editFind->setPalette( p );
+}
+
 void ViewWindowMgr::find( bool backward )
 {
 	// Pre-hide the wrapper
@@ -452,23 +462,7 @@ void ViewWindowMgr::find( bool backward )
 	current()->findText( editFind->text(),
 	                     backward, checkCase->isChecked(),
 	                     pConfig->browser.highlightSearchResults,
-	                     [ = ]( bool found, bool wrapped )
-	{
-		if ( !frameFind->isVisible() )
-			frameFind->show();
-
-		if ( wrapped )
-			labelWrapped->show();
-
-		QPalette p = editFind->palette();
-
-		if ( !found )
-			p.setColor( QPalette::Active, QPalette::Base, QColor( 255, 102, 102 ) );
-		else
-			p.setColor( QPalette::Active, QPalette::Base, Qt::white );
-
-		editFind->setPalette( p );
-	} );
+	                     [ = ]( bool found, bool wrapped ) { findResult( found, wrapped ); } );
 }
 
 void ViewWindowMgr::editTextEdited( const QString& )

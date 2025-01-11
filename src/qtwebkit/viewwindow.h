@@ -119,6 +119,7 @@ class ViewWindow : public QWebView
 		void            mouseReleaseEvent( QMouseEvent* event );
 
 	private slots:
+		void            onLinkClicked( const QUrl& link );
 		// Used to restore the scrollbar position and the navigation button status
 		void            onLoadFinished( bool ok );
 

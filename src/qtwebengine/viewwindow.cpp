@@ -117,15 +117,11 @@ bool ViewWindow::canGoForward() const
 void ViewWindow::print( QPrinter* printer, std::function<void ( bool success )> result )
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
-	page()->print( printer, [&result]( bool success )
-	{
-		result( success );
-	} );
+	page()->print( printer,
+	               [&result]( bool success ) { result( success ); } );
 #else
-	connect( this, &QWebEngineView::printFinished, [result]( bool success )
-	{
-		result( success );
-	} );
+	connect( this, &QWebEngineView::printFinished,
+	         [result]( bool success ) { result( success ); } );
 	QWebEngineView::print( printer );
 #endif
 }
@@ -156,7 +152,7 @@ int ViewWindow::scrollTop()
 
 	page()->runJavaScript( "document.body.scrollTop",
 	                       QWebEngineScript::UserWorld,
-	[&value]( const QVariant & v ) { value = v.toInt(); } );
+	                       [&value]( const QVariant & v ) { value = v.toInt(); } );
 
 	while ( value == -1 )
 	{
@@ -194,16 +190,11 @@ void ViewWindow::findText( const QString& text,
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 2, 0)
 	QWebEngineView::findText( text, webkitflags,
-	                          [ = ]( bool found )
-	{
-		result( found, false );
-	} );
+	                          [ = ]( bool found ) { result( found, false ); } );
 #else
 	QWebEngineView::findText( text, webkitflags,
 	                          [ = ]( const QWebEngineFindTextResult & found )
-	{
-		result( found.numberOfMatches() > 0, false );
-	} );
+	                          { result( found.numberOfMatches() > 0, false ); } );
 #endif
 }
 

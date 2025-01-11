@@ -112,6 +112,7 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		void    editTextEdited( const QString& text );
 
 	private:
+		void    findResult( bool found, bool wrapped );
 		void    find( bool backward = false );
 
 		struct TabData

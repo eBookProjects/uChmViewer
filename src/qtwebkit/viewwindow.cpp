@@ -58,15 +58,7 @@ ViewWindow::ViewWindow( QWidget* parent )
 
 	connect( this, SIGNAL( loadFinished( bool ) ), this, SLOT( onLoadFinished( bool ) ) );
 	connect( this, &QWebView::linkClicked,
-	         [this]( const QUrl & link )
-	{
-		if ( ( QApplication::keyboardModifiers() & Qt::ShiftModifier ) != 0 )
-			emit linkClicked( link, UBrowser::OPEN_IN_NEW );
-		else if ( ( QApplication::keyboardModifiers() & Qt::ControlModifier ) != 0 )
-			emit linkClicked( link, UBrowser::OPEN_IN_BACKGROUND );
-		else
-			emit linkClicked( link, UBrowser::OPEN_IN_CURRENT );
-	} );
+	         [this]( const QUrl & link ) { onLinkClicked( link ); } );
 
 	// Search results highlighter
 	QPalette pal = palette();
@@ -259,6 +251,16 @@ void ViewWindow::contextMenuEvent( QContextMenuEvent* e )
 {
 	QUrl link = anchorAt( e->pos() );
 	emit contextMenuRequested( e->globalPos(), link );
+}
+
+void ViewWindow::onLinkClicked( const QUrl& link )
+{
+	if ( ( QApplication::keyboardModifiers() & Qt::ShiftModifier ) != 0 )
+		emit linkClicked( link, UBrowser::OPEN_IN_NEW );
+	else if ( ( QApplication::keyboardModifiers() & Qt::ControlModifier ) != 0 )
+		emit linkClicked( link, UBrowser::OPEN_IN_BACKGROUND );
+	else
+		emit linkClicked( link, UBrowser::OPEN_IN_CURRENT );
 }
 
 void ViewWindow::onLoadFinished( bool )
