@@ -423,10 +423,12 @@ void MainWindow::showBrowserContextMenu( ViewWindow* browser,
 
 	if ( !link.isEmpty() )
 	{
-		m->addAction( i18n( "Open Link in a new tab\tShift+LMB" ),
-		              [this, link]() { openPage( link, UBrowser::OPEN_IN_NEW ); } );
-		m->addAction( i18n( "Open Link in a new background tab\tCtrl+LMB" ),
-		              [this, link]() { openPage( link, UBrowser::OPEN_IN_BACKGROUND ); } );
+		QAction* newTab = m->addAction( i18n( "Open Link in a new tab\tShift+LMB" ) );
+		connect( newTab, &QAction::triggered,
+		         [this, link]() { openPage( link, UBrowser::OPEN_IN_NEW ); } );
+		QAction* bckgTab = m->addAction( i18n( "Open Link in a new background tab\tCtrl+LMB" ) );
+		connect( bckgTab, &QAction::triggered,
+		         [this, link]() { openPage( link, UBrowser::OPEN_IN_BACKGROUND ); } );
 		m->addSeparator();
 	}
 
