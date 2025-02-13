@@ -47,6 +47,11 @@ MainWindow* mainWindow;
 
 int main( int argc, char** argv )
 {
+#if QT_VERSION >= 0x050600
+	/* Attribute Qt::AA_EnableHighDpiScaling must be set before QCoreApplication is created. */
+	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
+
 #if defined (USE_KDE)
 	K4AboutData aboutdata ( "uChmViewer",
 	                        QByteArray(),
