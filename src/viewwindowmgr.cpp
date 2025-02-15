@@ -62,7 +62,7 @@ class QPoint;
 #include "viewwindowmgr.h"
 
 
-// A small overriden class to handle a middle click
+// A small overridden class to handle a middle click
 class ViewWindowTabWidget : public QTabWidget
 {
 	public:

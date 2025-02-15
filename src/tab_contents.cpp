@@ -107,7 +107,7 @@ void TabContents::refillTableOfContents( )
 			rootentry.resize( indent + 1 );
 
 			if ( indent > 0 && maxindent < 0 )
-				qFatal( "Invalid fisrt TOC indent (first entry has no root entry), aborting." );
+				qFatal( "Invalid first TOC indent (first entry has no root entry), aborting." );
 
 			// And init the rest if needed
 			if ( ( indent - maxindent ) > 1 )
@@ -136,7 +136,7 @@ void TabContents::refillTableOfContents( )
 			item = new TreeItem_TOC( tree, lastchild[indent], data[i].name, data[i].url, data[i].iconid );
 		else
 		{
-			// New non-root entry. It is possible (for some buggy CHMs) that there is no previous entry: previoous entry had indent 1,
+			// New non-root entry. It is possible (for some buggy CHMs) that there is no previous entry: previous entry had indent 1,
 			// and next entry has indent 3. Backtracking it up, creating missing entries.
 			if ( rootentry[indent - 1] == 0 )
 				qFatal( "Child entry indented as %d with no root entry!", indent );
@@ -172,7 +172,7 @@ static TreeItem_TOC* findTreeItem( TreeItem_TOC* item, const QUrl& url, bool ign
 
 TreeItem_TOC* TabContents::getTreeItem( const QUrl& url )
 {
-	// During the first iteraction we check for the fragment as well, so the URLs
+	// During the first interaction we check for the fragment as well, so the URLs
 	// like ch05.htm#app1 and ch05.htm#app2 could be handled as different TOC entries
 	for ( int i = 0; i < tree->topLevelItemCount(); i++ )
 	{
@@ -182,7 +182,7 @@ TreeItem_TOC* TabContents::getTreeItem( const QUrl& url )
 			return item;
 	}
 
-	// During the second iteraction we ignore the fragment, so if there is no ch05.htm#app1
+	// During the second interaction we ignore the fragment, so if there is no ch05.htm#app1
 	// but there is ch05.htm, we just use it
 	for ( int i = 0; i < tree->topLevelItemCount(); i++ )
 	{

@@ -188,7 +188,7 @@ bool EBookSearch::searchQuery( const QString& query, QList< QUrl >* results, EBo
 			continue;
 		}
 
-		// If new char does not stop the word, add ot and continue
+		// If new char does not stop the word, add it and continue
 		if ( ch.isLetterOrNumber() || partOfWordChars.indexOf( ch ) != -1 )
 		{
 			term.append( ch );

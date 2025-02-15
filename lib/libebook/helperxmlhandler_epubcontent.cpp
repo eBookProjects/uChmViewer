@@ -73,7 +73,7 @@ bool HelperXmlHandler_EpubContent::characters( const QString& ch )
 {
 	if ( m_state == STATE_IN_METADATA && !m_tagname.isEmpty() && !ch.trimmed().isEmpty() )
 	{
-		// Some metadata may be duplicated; we concantenate them with |
+		// Some metadata may be duplicated; we concatenate them with |
 		if ( metadata.contains( m_tagname ) )
 		{
 			metadata[ m_tagname ].append( "|" );

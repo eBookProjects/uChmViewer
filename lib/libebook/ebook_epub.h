@@ -102,11 +102,11 @@ class EBook_EPUB : public EBook
 
 		/*!
 		 * \brief Retrieves the content associated with the url from the current ebook as QString.
-		 * \param str A string where the retreived content should be stored.
-		 * \param url An URL in chm file to retreive content from. Must be absolute.
+		 * \param str A string where the retrieved content should be stored.
+		 * \param url An URL in chm file to retrieve content from. Must be absolute.
 		 * \return true if the content is successfully received; false otherwise. Note content may be an empty string.
 		 *
-		 * This function retreives the file content (mostly for HTML pages) from the ebook. Because the content
+		 * This function retrieves the file content (mostly for HTML pages) from the ebook. Because the content
 		 * in chm file might not be stored in Unicode, it will be recoded according to current encoding.
 		 * Do not use for binary data.
 		 *
@@ -117,11 +117,11 @@ class EBook_EPUB : public EBook
 
 		/*!
 		 * \brief Retrieves the content from url in current chm file to QByteArray.
-		 * \param data A data array where the retreived content should be stored.
-		 * \param url An URL in chm file to retreive content from. Must be absolute.
+		 * \param data A data array where the retrieved content should be stored.
+		 * \param url An URL in chm file to retrieve content from. Must be absolute.
 		 * \return true if the content is successfully received; false otherwise.
 		 *
-		 * This function retreives the file content from the chm archive opened by load()
+		 * This function retrieves the file content from the chm archive opened by load()
 		 * function. The content is not encoded.
 		 *
 		 * \sa getFileContentAsString()

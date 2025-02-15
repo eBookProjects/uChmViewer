@@ -81,7 +81,7 @@ static short lcid_CyrillicCP1251[] =
 
 static short lcid_CyrillicKOI8R[] =
 {
-	0x7001, // artifical LCID
+	0x7001, // artificial LCID
 	0
 };
 
@@ -144,13 +144,13 @@ static short lcid_Vietnamese[] =
 
 static short lcid_UnicodeUTF8[] =
 {
-	0x7004, // artifical LCID
+	0x7004, // artificial LCID
 	0
 };
 
 static short lcid_UnicodeUTF16[] =
 {
-	0x7005, // artifical LCID
+	0x7005, // artificial LCID
 	0
 };
 

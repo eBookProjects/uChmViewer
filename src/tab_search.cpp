@@ -59,10 +59,10 @@ class SearchTreeViewItem : public QTreeWidgetItem
 		QUrl    getUrl() const { return m_url; }
 
 	protected:
-		// Overriden members
+		// Overridden members
 		int columnCount() const    { return 2; }
 
-		// Overriden member
+		// Overridden member
 		QVariant data( int column, int role ) const
 		{
 			switch ( role )

@@ -59,7 +59,7 @@ else ()
     target_link_libraries(extra INTERFACE Qt::WebKit Qt::WebKitWidgets)
 endif ()
 
-set(APP_QT_VERSION ${APP_QT_MIN_VERSION} CACHE STRING "Prefered Qt version")
+set(APP_QT_VERSION ${APP_QT_MIN_VERSION} CACHE STRING "Preferred Qt version")
 
 # What version of Qt are we working with?
 if ($CACHE{APP_QT_VERSION} VERSION_LESS 6)

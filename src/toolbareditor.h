@@ -45,10 +45,10 @@ class ToolbarEditor : public QDialog, public Ui::ToolbarEditor
 		ToolbarEditor( QWidget* parent = 0 );
 		~ToolbarEditor();
 
-		// Add a toolbar to the list of toolbars to be editer
+		// Add a toolbar to the list of toolbars to be edited
 		void    addToolbar( QToolBar* toolbar );
 
-		// Add toolbars to the list of toolbars to be editer
+		// Add toolbars to the list of toolbars to be edited
 		void    addToolbars( QList<QToolBar*> toolbars );
 
 		// Set the actions available to select in toolbars. Actions present in toolbars must be

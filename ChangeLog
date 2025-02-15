@@ -81,14 +81,14 @@
 
 2016-07-30 tim <gyunaev@ulduzsoft.com>
     - Added a Ctrl-I shortcut which copies the URL of currently opened page to clipboard
-    - Minor bugfixes    
-    
+    - Minor bugfixes
+
 2015-11-14  tim <gyunaev@ulduzsoft.com>
     - Version 7.5 released (r458);
     - Added more useful information into About window;
     - Fixed EPUB default encoding to be UTF-8;
     - Changed the TOC/Index/Search default click to be single-click, not system-specific.
-    - On Windows we do not store the window size if it is minimized or maximized; using default size instead.    
+    - On Windows we do not store the window size if it is minimized or maximized; using default size instead.
 
 2015-11-02  tim <gyunaev@ulduzsoft.com>
     - Version 7.4 released (r450)
@@ -98,7 +98,7 @@
     - Added an option (Settings/Browser/Always use single click) to use a single-click to open tree items in the contents/index tabs despite the selected OS activator such as KDE double-click. Off by default.
     - Fixed TOC parsing on some CHM files which had TOC names without associated URLs.
     - Disabled encoding selection menu for epubs
-    
+
 2015-02-22  tim <gyunaev@ulduzsoft.com>
     - Version 7.3 released (r440)
     - Fixed Windows-specific issues, Windows build works again
@@ -157,7 +157,7 @@
     - Added Ukrainian localization (thanks Olexander Yatsenko)
     - Added Brazilian localization (thanks Márcio Moraes)
     - Fixed some grammatical errors (thanks Robin 'cheese' Lee)
-    - Fixed webkit engine for buggy CHMs which do not have all content, as well as 
+    - Fixed webkit engine for buggy CHMs which do not have all content, as well as
       cases when external references cannot be loaded. Thanks to Kai-Chieh Ku
     - Added Mac support (thanks Serge Weinstock)
 
@@ -171,7 +171,7 @@
     - Fixed typos in README and FAQ (thanks Martin 'Cheese' Lee)
     - Fixed errors while building index because 'keyword' was ignored (thanks ivg)
     - Switched to use new cross-compiler from http://mingw-cross-env.nongnu.org/ to create Windows builds
-    
+
 2009-12-17 tim <gyunaev@ulduzsoft.com>
     - 5.1 RELEASE
     - Trying to use non-normalized URL first to fix CHMs which use them in TOC/Index
@@ -227,7 +227,7 @@
     - Implemented binary TOC and index tables (thx Razvan Cojocaru <razvanco@gmx.net>, the author of xchm). Speed up loading files more than twice!
     - Now showing 'waiting' cursor while loading chm table of contents or index.
     - Fixed QTextBrowser by providing workaround for "empty" books.
-    - More compatibility fixes with KDE 4.1 
+    - More compatibility fixes with KDE 4.1
     - Added Swedish translation (thx Daniel Nylander)
     - Fixed handling files with file:// prefix.
     - Added D-BUS support for Qt and KDE builds, the application could now be controlled remotely from other applications or scripts.
@@ -249,7 +249,7 @@
     - Windows version should not rely on mingw DLL anymore;
     - Toolbars are now named;
     - Fixed parallel build (thanks Patrice Dumas);
-    
+
 2008-02-10 tim <gyunaev@ulduzsoft.com>
     - Version changed to 4.0b2 (this is Qt4-only release);
     - Added a command-line option to search through table of contents (--stoc);
@@ -262,7 +262,7 @@
       but do not specify so in the project file;
     - Fixed handling of CHM files which have local links in form of MS-ITS: urls;
     - Search engine has been integrated into libchmfile;
-    - Search indexes are now stored in a single file, which should make it easier to make 
+    - Search indexes are now stored in a single file, which should make it easier to make
       search available through the indexing application;
 
 2007-08-26 tim <gyunaev@ulduzsoft.com>
@@ -271,7 +271,7 @@
     - Search on page is now done via toolbar (like FireFox), activated by Ctrl-F and /.
     - After switching tabs (either with mouse or Alt+<number> the focus is moved to the browser widget,
       so you don't have to click on it to navigate using keyboard.
-    - Enchanced browser context menu.
+    - Enhanced browser context menu.
 
 2007-06-16 tim <gyunaev@ulduzsoft.com>
     - Fixed locale and .desktop installation directory for Gentoo (thanks Peter Volkov)
@@ -302,14 +302,14 @@
     - Removed duplicated application title in KDE.
     - Gentoo installation issues fixed.
     - KDE version sometime didn't kill the process after quit; thanks Norberto Bensa for fix.
-    - Fixed popup menu popping in a wrong place when using QTextBrowser if the scrollbar 
+    - Fixed popup menu popping in a wrong place when using QTextBrowser if the scrollbar
       position is not at the top of the document.
-    - KHTMLPart options sometime were not disabled while QTextBrowser was choosen.
-    
+    - KHTMLPart options sometime were not disabled while QTextBrowser was chosen.
+
 2007-03-01 tim <gyunaev@ulduzsoft.com>
     - The design changed; created the chm files processing library, and moved it outside the source
       to improve and simplify Okular integration.
-    - Changed URL2Topic search, the result - startup and opening times increased up to 20 times 
+    - Changed URL2Topic search, the result - startup and opening times increased up to 20 times
       for large chm files!
     - Index multiple URL entry also opens now faster.
     - Added support for new autotools.
@@ -317,18 +317,18 @@
 2006-12-01 tim <gyunaev@ulduzsoft.com>
     - Version changed to 2.7.
     - You can now switch between tabs using Alt+<tab number>, thanks Bobi Jam.
-    - Kchmviewer should now work correctly on non-x86 platforms, including the codepage 
+    - Kchmviewer should now work correctly on non-x86 platforms, including the codepage
       autodetection.
-    - Added a warning when the browser or browser settings are changed that the application 
+    - Added a warning when the browser or browser settings are changed that the application
       restart is required for changes to take effect.
     - Fixed the i18n compilation problem in kchmviewwindow.cpp.
     - If the TOC directory entry did not have an associated page, it was not possible to select it.
-    - TOC directory entries now could be opened/closed with double-click on the entry name/icon, 
+    - TOC directory entries now could be opened/closed with double-click on the entry name/icon,
       not just +/- icons. Credits to Ludo for the ideas.
     - No more duplicate entries in previous file history.
     - The window title is now truncated if too long.
     - Tab close icon now positioned correctly.
-    - Now current window size and splitter position is also stored on exit - separately 
+    - Now current window size and splitter position is also stored on exit - separately
       for each chm file.
     - Window selection with multiple tabs now works.
     - Czech translation added, thanks Hynek Fabian.
@@ -347,13 +347,13 @@
     - Fixed handling of mailto: urls.
     - 'Locate in content' button now opens a Contents tab, if hidden.
     - Version 2.5 release.
-    
+
 2006-04-02 tim <gyunaev@ulduzsoft.com>
     - A tooltip is now shows the full text in all the tree and list views if truncated on screen.
     - Fixed content tree parser, now the content table should be parsed correctly.
     - Fixed crash after the encoding is changed, if any tree item is clicked.
     - Added a bookmark menu. Ctrl-B is a shortcut to add a bookmark.
-    
+
 2006-04-01 tim <gyunaev@ulduzsoft.com>
     - Added tab browsing. Use right-click and 'Open in new tab'.
 	- Added right-click content menu to open pages in a new tab.
@@ -381,8 +381,8 @@
 
 2006-02-01 tim <gyunaev@ulduzsoft.com>
     - Now kchmviewer uses system libchm if found, and no --with-builtin-chmlib configure switch defined.
-    - Made configure more compatible with newest autoconf and Debian - thanks to Jose Luis Tallon. 
-    - Added an application icon - thanks to Jose Luis Tallon. 
+    - Made configure more compatible with newest autoconf and Debian - thanks to Jose Luis Tallon.
+    - Added an application icon - thanks to Jose Luis Tallon.
     - Fixed index parser for PHP manual - thanks to Dmitry Bakshaev.
     - In full screen mode the menu bar and status bar are now hidden.
 
@@ -419,8 +419,8 @@
     - Added 'next page' and 'prev page' buttons.
     - Added extra charset encodings for Japanese, Chinese, Russian and Ukrainian languages.
     - Added UTF-8 and UTF-16 encodings to country 'Unicode' :)
-    - Added special KOI8 encoding to Russian and Ukrainian languages. 'Special' means that 
-      TOC is in CP1251 encoding, while content is in KOI8 encoding. There were some CHM files 
+    - Added special KOI8 encoding to Russian and Ukrainian languages. 'Special' means that
+      TOC is in CP1251 encoding, while content is in KOI8 encoding. There were some CHM files
       with such weird encoding, so it is kinda hack.
     - Fixed language selection bug - application crashed when you select the last language in any submenu.
     - 'Set encoding' menu renamed to 'Set Language'.
@@ -446,7 +446,7 @@
 
 2005-06-30 tim <gyunaev@ulduzsoft.com>
 	- version 0.92 RELEASE CANDIDATE 2 released.
-	- fixed Slackware 10 compilation (one more time) 
+	- fixed Slackware 10 compilation (one more time)
 
 2005-06-25 tim <gyunaev@ulduzsoft.com>
 	- more namespace cleanups and bugfixes.
@@ -521,7 +521,7 @@
 	- fixed search/print for QTextBrowser.
 
 2005-05-03 tim <gyunaev@ulduzsoft.com>
-	- Reimplemented browser history in a more convinient way.
+	- Reimplemented browser history in a more convenient way.
 	- KDE integration continues. Now we support KHTML.
 	- Added a KIO-slave to handle CHMs.
 	- Now it is possible to open files with non-latin filenames.
@@ -535,7 +535,7 @@
 	- version 0.2 released.
 
 2005-04-24 tim <gyunaev@ulduzsoft.com>
-	- added index fields identation according to .hhk file.
+	- added index fields indentation according to .hhk file.
 	- index entries with multiple links are now supported. A dialog is opened when such a link is clicked.
 	- index "see also" links are now supported.
 	- added red color for index entries with multiple links, and grey color for "see also" links.
@@ -558,7 +558,7 @@
 
 2005-04-05 tim <gyunaev@ulduzsoft.com>
 	- version 0.1alpha released
-	- fixed slowdown on big files; 
-	 
+	- fixed slowdown on big files;
+
 2005-04-05 tim <gyunaev@ulduzsoft.com>
-	- images merged into the main executable 
+	- images merged into the main executable

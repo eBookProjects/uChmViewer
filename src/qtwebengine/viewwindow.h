@@ -111,7 +111,7 @@ class ViewWindow : public QWebEngineView
 		bool            openPage( const QUrl& url );
 		void            handleStartPageAsImage( QUrl& link );
 
-		// Overriden to change the source
+		// Overridden to change the source
 		void            setSource( const QUrl& name );
 
 		// Overloaded to provide custom context menu

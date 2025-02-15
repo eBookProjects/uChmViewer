@@ -74,7 +74,7 @@ void DataProvider::requestStarted( QWebEngineUrlRequestJob* request )
 	qDebug() << "  url = " << url.toString();
 #endif
 
-	// Retreive the data from ebook file
+	// Retrieve the data from ebook file
 	QByteArray buf;
 
 	if ( !::mainWindow->chmFile()->getFileContentAsBinary( buf, url ) )

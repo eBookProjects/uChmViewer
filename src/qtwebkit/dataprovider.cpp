@@ -80,7 +80,7 @@ QByteArray KCHMNetworkReply::loadResource( const QUrl& url )
 {
 	//qDebug("loadResource %s", qPrintable(url.toString()) );
 
-	// Retreive the data from ebook file
+	// Retrieve the data from ebook file
 	QByteArray buf;
 
 	if ( !::mainWindow->chmFile()->getFileContentAsBinary( buf, url ) )

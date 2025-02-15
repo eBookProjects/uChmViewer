@@ -110,7 +110,7 @@ class ViewWindow : public QWebView
 		bool            openPage( const QUrl& url );
 		void            handleStartPageAsImage( QUrl& link );
 
-		// Overriden to change the source
+		// Overridden to change the source
 		void            setSource( const QUrl& name );
 		QUrl            anchorAt( const QPoint& pos );
 

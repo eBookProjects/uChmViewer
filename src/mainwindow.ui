@@ -280,7 +280,7 @@
     <string>Extract the CHM content to the directory</string>
    </property>
    <property name="whatsThis">
-    <string>Exctracts the CHM archive content to the specified directory. All the files are extracted.</string>
+    <string>Extracts the CHM archive content to the specified directory. All the files are extracted.</string>
    </property>
   </action>
   <action name="settings_SettingsAction">

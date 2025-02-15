@@ -182,7 +182,7 @@ void TabIndex::refillIndex( )
 			rootentry.resize( indent + 1 );
 
 			if ( indent > 0 && maxindent < 0 )
-				qFatal( "Invalid fisrt TOC indent (first entry has no root entry), aborting." );
+				qFatal( "Invalid first TOC indent (first entry has no root entry), aborting." );
 
 			// And init the rest if needed
 			if ( ( indent - maxindent ) > 1 )
@@ -211,7 +211,7 @@ void TabIndex::refillIndex( )
 			item = new TreeItem_Index( tree, lastchild[indent], data[i].name, data[i].urls, data[i].seealso );
 		else
 		{
-			// New non-root entry. It is possible (for some buggy CHMs) that there is no previous entry: previoous entry had indent 1,
+			// New non-root entry. It is possible (for some buggy CHMs) that there is no previous entry: previous entry had indent 1,
 			// and next entry has indent 3. Backtracking it up, creating missing entries.
 			if ( rootentry[indent - 1] == 0 )
 				qFatal( "Child entry indented as %d with no root entry!", indent );

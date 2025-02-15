@@ -21,7 +21,7 @@
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>About appplication</string>
+       <string>About application</string>
       </attribute>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
