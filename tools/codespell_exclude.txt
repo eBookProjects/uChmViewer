@@ -1,0 +1,1 @@
+	m_entityDecodeMap["curren"] = encodeWithCodec( encoder, "\244" );

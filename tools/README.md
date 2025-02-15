@@ -16,11 +16,21 @@ or
     astyle  --options=tools/astyle.cfg -I -r 'module/*.cpp' 'module/*.h'
 
 
+codespell
+---------
+
+https://github.com/codespell-project/codespell
+
+Usage (from source root):
+
+    codespell --config tools/codespell.cfg
+
+
 Include-What-You-Use
 --------------------
 
 https://include-what-you-use.org
-    
+
 To use IWYU, run qmake with the optional USE flag:
 
     qmake  -r USE+=check_iwyu path/to/uchmviewer.pro
