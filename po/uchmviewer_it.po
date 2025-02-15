@@ -23,7 +23,7 @@ msgstr "Informazioni su uChmViewer"
 
 # here the original text has an error, 3 p instead of 2 p
 #: ../src/dialog_about.ui:24
-msgid "About appplication"
+msgid "About application"
 msgstr "Informazioni sull'applicazione"
 
 #: ../src/dialog_about.ui:46
@@ -494,7 +494,7 @@ msgstr "Estrai il contenuto del CHM nella cartella"
 
 #: ../src/mainwindow.ui:283
 msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
+"Extracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr ""
 "Estrae il contenuto del CHM nella cartella specificata. Tutti i file verrano "

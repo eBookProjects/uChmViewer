@@ -24,7 +24,7 @@ msgstr "uChmViewer"
 
 #: ../src/dialog_about.ui:24
 #, fuzzy
-msgid "About appplication"
+msgid "About application"
 msgstr "Sluit het programma af."
 
 #: ../src/dialog_about.ui:46
@@ -466,7 +466,7 @@ msgstr "Pakt de CHM-inhoud uit naar een map"
 
 #: ../src/mainwindow.ui:283
 msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
+"Extracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr ""
 "Pakt de CHM-archiefinhoud uit naar een map. Alle bestanden worden uitgepakt."

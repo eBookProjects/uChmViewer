@@ -25,7 +25,7 @@ msgid "About uChmViewer"
 msgstr "关于uChmViewer"
 
 #: ../src/dialog_about.ui:24
-msgid "About appplication"
+msgid "About application"
 msgstr "关于应用程序"
 
 #: ../src/dialog_about.ui:46
@@ -453,7 +453,7 @@ msgstr "将 CHM 的内容提取到目录中"
 
 #: ../src/mainwindow.ui:283
 msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
+"Extracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr "将 CHM 存档中的内容提取到指定的目录中。所有的文件都会被提取出来。"
 

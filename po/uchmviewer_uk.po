@@ -25,7 +25,7 @@ msgstr "uChmViewer"
 
 #: ../src/dialog_about.ui:24
 #, fuzzy
-msgid "About appplication"
+msgid "About application"
 msgstr "Закриває програму"
 
 #: ../src/dialog_about.ui:46
@@ -464,7 +464,7 @@ msgstr "Витягти вміст CHM до теки"
 
 #: ../src/mainwindow.ui:283
 msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
+"Extracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr "Витягує вміст CHM архіву до вказаної теки. Буде витягнуто всі файли."
 

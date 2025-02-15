@@ -21,7 +21,7 @@ msgid "About uChmViewer"
 msgstr "O uChmViewer"
 
 #: ../src/dialog_about.ui:24
-msgid "About appplication"
+msgid "About application"
 msgstr "O aplikacji"
 
 #: ../src/dialog_about.ui:46
@@ -450,7 +450,7 @@ msgstr "Wyodrębnij zawartość CHM do katalogu"
 
 #: ../src/mainwindow.ui:283
 msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
+"Extracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr ""
 "Wyodrębnia zawartość archiwum CHM do określonego katalogu. Wszystkie pliki "

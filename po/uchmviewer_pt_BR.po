@@ -25,7 +25,7 @@ msgstr "uChmViewer"
 
 #: ../src/dialog_about.ui:24
 #, fuzzy
-msgid "About appplication"
+msgid "About application"
 msgstr "Sai do programa"
 
 #: ../src/dialog_about.ui:46
@@ -468,7 +468,7 @@ msgstr "Extrair o conteúdo CHM para o diretório"
 
 #: ../src/mainwindow.ui:283
 msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
+"Extracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr ""
 "Extrai o conteúdo do arquivo CHM para o diretório especificado. Todos os "

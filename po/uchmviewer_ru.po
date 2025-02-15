@@ -26,7 +26,7 @@ msgid "About uChmViewer"
 msgstr "О uChmViewer"
 
 #: ../src/dialog_about.ui:24
-msgid "About appplication"
+msgid "About application"
 msgstr "О приложении"
 
 #: ../src/dialog_about.ui:46
@@ -486,7 +486,7 @@ msgstr "Распаковать содержимое CHM файла в папку
 
 #: ../src/mainwindow.ui:283
 msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
+"Extracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr "Извлекает содержимое CHM в заданную папку. Извлекаются все файлы."
 

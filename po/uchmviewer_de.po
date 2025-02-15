@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../src/dialog_about.ui:24
 #, fuzzy
-msgid "About appplication"
+msgid "About application"
 msgstr "Programm beenden"
 
 #: ../src/dialog_about.ui:46
@@ -472,7 +472,7 @@ msgstr "Extrahiere CHM Inhalt in das Verzeichnis"
 
 #: ../src/mainwindow.ui:283
 msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
+"Extracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr ""
 "Extrahiere CHM Archiv Inhalt in das Verzeichnis, alle Dateien werden "

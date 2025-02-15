@@ -20,7 +20,7 @@ msgid "About uChmViewer"
 msgstr ""
 
 #: ../src/dialog_about.ui:24
-msgid "About appplication"
+msgid "About application"
 msgstr ""
 
 #: ../src/dialog_about.ui:46
@@ -470,7 +470,7 @@ msgstr "Extrahering av CHM-innehåll"
 #: ../src/mainwindow.ui:283
 #, fuzzy
 msgid ""
-"Exctracts the CHM archive content to the specified directory. All the files "
+"Extracts the CHM archive content to the specified directory. All the files "
 "are extracted."
 msgstr "Extrahering av CHM-innehåll"
 
