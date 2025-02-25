@@ -26,38 +26,38 @@ jobs:
         config:
         - {
             name:     "CMake : WebKit + KF5",
-            os:       ubuntu-20.04,
-            packages: qt5-default libqt5webkit5-dev extra-cmake-modules libkf5kdelibs4support-dev  gettext,
+            os:       ubuntu-22.04,
+            packages: libqt5webkit5-dev extra-cmake-modules libkf5kdelibs4support-dev  gettext,
             xmake:    "cmake -DUSE_KF5=ON -DUSE_STATIC_CHMLIB=ON ."
           }
         - {
             name:     "CMake : WebEngine + KF5",
-            os:       ubuntu-20.04,
-            packages: qt5-default qtwebengine5-dev extra-cmake-modules libkf5kdelibs4support-dev  gettext,
+            os:       ubuntu-22.04,
+            packages: qtwebengine5-dev extra-cmake-modules libkf5kdelibs4support-dev  gettext,
             xmake:    "cmake -DUSE_KF5=ON -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON ."
           }
         - {
             name:     "qmake : WebKit + Qt5",
-            os:       ubuntu-20.04,
-            packages: qt5-default libqt5webkit5-dev,
+            os:       ubuntu-22.04,
+            packages: libqt5webkit5-dev,
             xmake:    'qmake -r "USE_STATIC_CHMLIB=1"'
           }
         - {
             name:     "qmake : WebEngine + Qt5",
-            os:       ubuntu-20.04,
-            packages: qt5-default qtwebengine5-dev,
+            os:       ubuntu-22.04,
+            packages: qtwebengine5-dev,
             xmake:    'qmake -r "USE_STATIC_CHMLIB=1" "USE_WEBENGINE=1"'
           }
         - {
             name:     "CMake : WebKit + Qt5",
-            os:       ubuntu-20.04,
-            packages: qt5-default libqt5webkit5-dev,
+            os:       ubuntu-22.04,
+            packages: libqt5webkit5-dev,
             xmake:    "cmake -DUSE_STATIC_CHMLIB=ON ."
           }
         - {
             name:     "CMake : WebEngine + Qt5",
-            os:       ubuntu-20.04,
-            packages: qt5-default qtwebengine5-dev,
+            os:       ubuntu-22.04,
+            packages: qtwebengine5-dev,
             xmake:    "cmake -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON ."
           }
 
