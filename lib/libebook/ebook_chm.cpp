@@ -57,7 +57,7 @@ EBook_CHM::EBook_CHM()
 	m_filename = m_font = QString();
 
 	m_textCodec = 0;
-	m_textCodecForSpecialFiles = 0;
+	m_textCodecForInternalFiles = 0;
 	m_detectedLCID = 0;
 	m_currentEncoding = "UTF-8";
 	m_htmlEntityDecoder = 0;
@@ -84,7 +84,7 @@ void EBook_CHM::close()
 	m_indexFile.clear();
 
 	m_textCodec = 0;
-	m_textCodecForSpecialFiles = 0;
+	m_textCodecForInternalFiles = 0;
 	m_detectedLCID = 0;
 	m_currentEncoding = "UTF-8";
 	m_lookupTablesValid = false;
@@ -92,12 +92,12 @@ void EBook_CHM::close()
 
 QString EBook_CHM::title() const
 {
-	return encodeWithCurrentCodec( m_title );
+	return encodeInternalWithCurrentCodec( m_title );
 }
 
 QUrl EBook_CHM::homeUrl() const
 {
-	return pathToUrl( encodeWithCurrentCodec( m_home ) );
+	return pathToUrl( encodeInternalWithCurrentCodec( m_home ) );
 }
 
 bool EBook_CHM::hasFeature( EBook::Feature code ) const
@@ -125,7 +125,7 @@ bool EBook_CHM::getTableOfContents( QList<EBookTocEntry>& toc ) const
 	// Parse the plain text TOC
 	QList< ParsedEntry > parsed;
 
-	if ( !parseFileAndFillArray( encodeWithCurrentCodec( m_topicsFile ), parsed, false ) )
+	if ( !parseFileAndFillArray( encodeInternalWithCurrentCodec( m_topicsFile ), parsed, false ) )
 		return false;
 
 	// Find out the root offset, and reduce the indent level to it
@@ -159,7 +159,7 @@ bool EBook_CHM::getIndex( QList<EBookIndexEntry>& index ) const
 	// Parse the plain text index
 	QList< ParsedEntry > parsed;
 
-	if ( !parseFileAndFillArray( encodeWithCurrentCodec( m_indexFile ), parsed, true ) )
+	if ( !parseFileAndFillArray( encodeInternalWithCurrentCodec( m_indexFile ), parsed, true ) )
 		return false;
 
 	// Find out the root offset, and reduce the indent level to it
@@ -212,11 +212,39 @@ bool EBook_CHM::getFileContentAsBinary( QByteArray& data, const QUrl& url ) cons
 	return getBinaryContent( data, urlToPath( url ) );
 }
 
-bool EBook_CHM::getBinaryContent( QByteArray& data, const QString& url ) const
+bool EBook_CHM::getTextContent( QString& str, const QString& path, bool internal_encoding ) const
+{
+	QByteArray buf;
+
+	if ( getBinaryContent( buf, path ) )
+	{
+		unsigned int length = buf.size();
+
+		if ( length > 0 )
+		{
+			if ( internal_encoding )
+			{
+				buf.resize( length + 1 );
+				buf [length] = '\0';
+				str = encodeInternalWithCurrentCodec( buf );
+			}
+			else
+			{
+				QTextCodec* codec = QTextCodec::codecForHtml(buf);
+				str = codec ? codec->toUnicode(buf) : QString::fromUtf8(buf);
+			}
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool EBook_CHM::getBinaryContent( QByteArray& data, const QString& path ) const
 {
 	chmUnitInfo ui;
 
-	if ( !ResolveObject( url, &ui ) )
+	if ( !ResolveObject( path, &ui ) )
 		return false;
 
 	data.resize( ui.length );
@@ -227,32 +255,11 @@ bool EBook_CHM::getBinaryContent( QByteArray& data, const QString& url ) const
 	return false;
 }
 
-bool EBook_CHM::getTextContent( QString& str, const QString& url, bool internal_encoding ) const
-{
-	QByteArray buf;
-
-	if ( getBinaryContent( buf, url ) )
-	{
-		unsigned int length = buf.size();
-
-		if ( length > 0 )
-		{
-			buf.resize( length + 1 );
-			buf [length] = '\0';
-
-			str = internal_encoding ? encodeInternalWithCurrentCodec( buf.constData() ) :  encodeWithCurrentCodec( buf.constData() );
-			return true;
-		}
-	}
-
-	return false;
-}
-
-int EBook_CHM::getContentSize( const QString& url )
+int EBook_CHM::getContentSize( const QString& path )
 {
 	chmUnitInfo ui;
 
-	if ( !ResolveObject( url, &ui ) )
+	if ( !ResolveObject( path, &ui ) )
 		return -1;
 
 	return ui.length;
@@ -290,7 +297,7 @@ bool EBook_CHM::load( const QString& archiveName )
 
 	// Reset encoding
 	m_textCodec = 0;
-	m_textCodecForSpecialFiles = 0;
+	m_textCodecForInternalFiles = 0;
 	m_currentEncoding = "UTF-8";
 
 	// Get information from /#WINDOWS and /#SYSTEM files (encoding, title, context file and so)
@@ -404,12 +411,12 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 	}
 	*/
 
-	EBookTocEntry::Icon defaultimagenum = EBookTocEntry::IMAGE_AUTO;
 	int pos = 0, indent = 0, root_indent_offset = 0;
 	bool in_object = false, root_indent_offset_set = false;
 
 	ParsedEntry entry;
-	entry.iconid = defaultimagenum;
+	QList<QString> indexNames;
+	QMap<QString, ParsedEntry> indexNameEntryMap;
 
 	// Split the HHC file by HTML tags
 	int stringlen = src.length();
@@ -474,19 +481,34 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 						qWarning( "CHM has improper index; root indent offset is %d", root_indent_offset );
 				}
 
-				// Trim the entry name
-				entry.name = entry.name.trimmed();
+				Q_FOREACH ( const QString& s, indexNames )
+				{
+					// Trim the entry name
+					entry.name = s.trimmed();
+					int real_indent = indent - root_indent_offset;
+					entry.indent = real_indent;
 
-				int real_indent = indent - root_indent_offset;
-
-				entry.indent = real_indent;
-				data.push_back( entry );
+					if ( !asIndex )
+					{
+						data.push_back( entry );
+					}
+					else
+					{
+						QMap<QString, ParsedEntry>::iterator it;
+						if ( ( it = indexNameEntryMap.find(entry.name) ) == indexNameEntryMap.end() )
+						{
+							indexNameEntryMap[entry.name] = entry;
+						}
+						else
+						{
+							it.value().urls.append(entry.urls);
+						}
+					}
+				}
 			}
 
-			entry.name = QString();
-			entry.urls.clear();
-			entry.iconid = defaultimagenum;
-			entry.seealso.clear();
+			entry.clear();
+			indexNames.clear();
 			in_object = false;
 		}
 		else if ( tagword == "param" && in_object )
@@ -513,9 +535,11 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 
 			if ( pname == "name" || pname == "keyword" )
 			{
-				// Some help files contain duplicate names, where the second name is empty. Work it around by keeping the first one
-				if ( !pvalue.isEmpty() )
+				if ( !pvalue.isEmpty() && !indexNames.contains( pvalue ) )
+				{
 					entry.name = pvalue;
+					indexNames.push_back( pvalue );
+				}
 			}
 			else if ( pname == "merge" )
 			{
@@ -577,6 +601,11 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 		pos = i;
 	}
 
+	if (asIndex)
+	{
+		data = indexNameEntryMap.values();
+	}
+
 	// Dump our array
 //    for ( int i = 0; i < data.size(); i++ )
 //        qDebug() << data[i].indent << data[i].name << data[i].urls;
@@ -586,6 +615,10 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 
 bool EBook_CHM::ResolveObject( const QString& fileName, chmUnitInfo* ui ) const
 {
+	/*
+	 * PMGL and PMQI are always in UTF-8
+	 * http://www.russotto.net/chm/chmformat.html
+	 */
 	return m_chmFile != NULL
 	       && ::chm_resolve_object(m_chmFile, qUtf8Printable( fileName ), ui) ==
 	       CHM_RESOLVE_SUCCESS;
@@ -596,7 +629,7 @@ bool EBook_CHM::hasFile( const QString& fileName ) const
 	chmUnitInfo ui;
 
 	return m_chmFile != NULL
-	       && ::chm_resolve_object( m_chmFile, qPrintable( fileName ), &ui ) ==
+	       && ::chm_resolve_object( m_chmFile, qUtf8Printable( fileName ), &ui ) ==
 	       CHM_RESOLVE_SUCCESS;
 }
 
@@ -818,12 +851,11 @@ bool EBook_CHM::enumerateFiles( QList<QUrl>& files )
 
 QString EBook_CHM::currentEncoding() const
 {
-	return m_currentEncoding;
+	return ( m_textCodec == 0 ) ? "UTF-8" : QString::fromUtf8(m_textCodec->name());
 }
 
 bool EBook_CHM::setCurrentEncoding( const char* encoding )
 {
-	m_currentEncoding = encoding;
 	return changeFileEncoding( encoding );
 }
 
@@ -842,9 +874,8 @@ bool EBook_CHM::guessTextEncoding()
 
 	QString enc = Ebook_CHM_Encoding::guessByLCID( m_detectedLCID );
 
-	if ( changeFileEncoding( enc ) )
+	if ( changeFileEncoding( enc + '/' + enc ) )
 	{
-		m_currentEncoding = enc;
 		return true;
 	}
 
@@ -860,7 +891,7 @@ bool EBook_CHM::changeFileEncoding( const QString& qtencoding )
 	if ( p != -1 )
 	{
 		QString global = qtencoding.left( p );
-		QString special = qtencoding.mid( p + 1 );
+		QString internal = qtencoding.mid( p + 1 );
 
 		m_textCodec = QTextCodec::codecForName( global.toUtf8() );
 
@@ -870,17 +901,17 @@ bool EBook_CHM::changeFileEncoding( const QString& qtencoding )
 			return false;
 		}
 
-		m_textCodecForSpecialFiles = QTextCodec::codecForName( special.toUtf8() );
+		m_textCodecForInternalFiles = QTextCodec::codecForName( internal.toUtf8() );
 
-		if ( !m_textCodecForSpecialFiles )
+		if ( !m_textCodecForInternalFiles )
 		{
-			qWarning( "Could not set up Text Codec for encoding '%s'", qPrintable( special ) );
+			qWarning( "Could not set up Text Codec for encoding '%s'", qPrintable( internal ) );
 			return false;
 		}
 	}
 	else
 	{
-		m_textCodecForSpecialFiles = m_textCodec = QTextCodec::codecForName( qtencoding.toUtf8() );
+		m_textCodec = QTextCodec::codecForName( qtencoding.toUtf8() );
 
 		if ( !m_textCodec )
 		{
@@ -915,8 +946,12 @@ void EBook_CHM::fillTopicsUrlMap()
 		unsigned int off_url = get_int32_le( ( unsigned int* )( topics.data() + i + 8 ) );
 		off_url = get_int32_le( ( unsigned int* )( urltbl.data() + off_url + 8 ) ) + 8;
 
-		QUrl url = pathToUrl( ( const char* ) urlstr.data() + off_url );
+		QUrl url = pathToUrl( encodeInternalWithCurrentCodec( ( const char* ) urlstr.data() + off_url ) );
 
+		/*
+		 * Title is extracted from the <title> field from html page, try with text codec.
+		 * These values are used in index search and index with multiple topics selection currently.
+		 */
 		if ( off_title < ( unsigned int )strings.size() )
 			m_url2topics[url] = encodeWithCurrentCodec( ( const char* ) strings.data() + off_title );
 		else
@@ -1111,10 +1146,4 @@ QString EBook_CHM::urlToPath( const QUrl& link ) const
 	}
 
 	return "";
-}
-
-EBook_CHM::ParsedEntry::ParsedEntry()
-{
-	iconid = 0;
-	indent = 0;
 }

@@ -95,7 +95,7 @@ void ViewWindow::load( const QUrl& url )
 
 QString ViewWindow::title() const
 {
-	QString title = ::mainWindow->chmFile()->getTopicByUrl( url() );
+	QString title = QWebEngineView::title();  //::mainWindow->chmFile()->getTopicByUrl( url() );
 
 	// If no title is found, use the path (without the first /)
 	if ( title.isEmpty() )

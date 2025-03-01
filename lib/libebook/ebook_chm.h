@@ -201,8 +201,19 @@ class EBook_CHM : public EBook
 		class ParsedEntry
 		{
 			public:
-				ParsedEntry();
-
+				ParsedEntry()
+				{
+					iconid = EBookTocEntry::IMAGE_AUTO;
+					indent = 0;
+				}
+				void clear()
+				{
+					name.clear();
+					urls.clear();
+					iconid = EBookTocEntry::IMAGE_AUTO;
+					indent = 0;
+					seealso.clear();
+				}
 				QString     name;
 				QList<QUrl> urls;
 				int         iconid;
@@ -233,16 +244,16 @@ class EBook_CHM : public EBook
 
 		//! Encode the string from internal files with the currently selected text codec, if possible.
 		//! Or return as-is, if not.
-		inline QString encodeInternalWithCurrentCodec( const QString& str ) const
+		inline QString encodeInternalWithCurrentCodec( const QByteArray& str ) const
 		{
-			return ( m_textCodecForSpecialFiles ? m_textCodecForSpecialFiles->toUnicode( qPrintable( str ) ) : str );
+			return ( m_textCodecForInternalFiles ? m_textCodecForInternalFiles->toUnicode( str.constData() ) : str );
 		}
 
 		//! Encode the string from internal files with the currently selected text codec, if possible.
 		//! Or return as-is, if not.
 		inline QString encodeInternalWithCurrentCodec( const char* str ) const
 		{
-			return ( m_textCodecForSpecialFiles ? m_textCodecForSpecialFiles->toUnicode( str ) : ( QString ) str );
+			return ( m_textCodecForInternalFiles ? m_textCodecForInternalFiles->toUnicode( str ) : ( QString ) str );
 		}
 
 		//! Helper. Translates from Win32 encodings to generic wxWidgets ones.
@@ -251,8 +262,8 @@ class EBook_CHM : public EBook
 		//! Parse the HHC or HHS file, and fill the context (asIndex is false) or index (asIndex is true) array.
 		bool        parseFileAndFillArray( const QString& file, QList< ParsedEntry >& data, bool asIndex ) const;
 
-		bool        getBinaryContent( QByteArray& data, const QString& url ) const;
-		bool        getTextContent( QString& str, const QString& url, bool internal_encoding = false ) const;
+		bool        getTextContent( QString& str, const QString& path, bool internal_encoding = false ) const;
+		bool        getBinaryContent( QByteArray& data, const QString& path ) const;
 
 		/*!
 		 * Parse binary TOC
@@ -315,7 +326,7 @@ class EBook_CHM : public EBook
 
 		//! Chosen text codec
 		QTextCodec* m_textCodec;
-		QTextCodec* m_textCodecForSpecialFiles;
+		QTextCodec* m_textCodecForInternalFiles;
 
 		//! Current encoding
 		QString     m_currentEncoding;
