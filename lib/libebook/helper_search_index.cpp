@@ -82,6 +82,25 @@ Index::Index()
 	connect( qApp, SIGNAL( lastWindowClosed() ), this, SLOT( setLastWinClosed() ) );
 }
 
+Index::~Index()
+{
+	clearDict();
+}
+
+void Index::clearDict()
+{
+	for ( QHash<QString, Entry*>::iterator it = dict.begin(); it != dict.end(); ++it )
+	{
+		delete it.value();
+	}
+	dict.clear();
+	for ( QHash<QString, PosEntry*>::iterator it = miniDict.begin(); it != miniDict.end(); ++it )
+	{
+		delete it.value();
+	}
+	miniDict.clear();
+}
+
 void Index::setLastWinClosed()
 {
 	lastWindowClosed = true;
@@ -336,7 +355,7 @@ void Index::writeDict( QDataStream& stream )
 
 bool Index::readDict( QDataStream& stream )
 {
-	dict.clear();
+	clearDict();
 	docList.clear();
 
 	QString key;
@@ -452,6 +471,10 @@ bool Index::searchForPhrases( const QStringList& phrases, const QStringList& wor
 	if ( !parseDocumentToStringlist( chmFile, filename, parsed_document ) )
 		return false;
 
+	for ( QHash<QString, PosEntry*>::iterator it = miniDict.begin(); it != miniDict.end(); ++it )
+	{
+		delete it.value();
+	}
 	miniDict.clear();
 
 	// Initialize the dictionary with the words in phrase(s)

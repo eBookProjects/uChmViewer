@@ -42,6 +42,7 @@ class TabSearch : public QWidget, public Ui::TabSearch
 		Q_OBJECT
 	public:
 		TabSearch( QWidget* parent = 0 );
+		~TabSearch();
 
 		void    invalidate();
 		void    restoreSettings( const Settings::search_saved_settings_t& settings );
