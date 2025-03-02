@@ -143,6 +143,11 @@ TabSearch::TabSearch( QWidget* parent )
 	connect( m_searchEngine, SIGNAL( progressStep( int, const QString& ) ), this, SLOT( onProgressStep( int, const QString& ) ) );
 }
 
+TabSearch::~TabSearch()
+{
+	delete m_searchEngine;
+}
+
 void TabSearch::invalidate( )
 {
 	tree->clear();

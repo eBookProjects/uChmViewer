@@ -76,7 +76,9 @@ class Index : public QObject
 	public:
 
 		Index();
+		~Index();
 
+		void        clearDict();
 		void        writeDict( QDataStream& stream );
 		bool        readDict( QDataStream& stream );
 		bool        makeIndex( const QList<QUrl>& docs, EBook* chmFile );

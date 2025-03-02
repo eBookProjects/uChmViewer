@@ -182,11 +182,15 @@ MainWindow::MainWindow( const QStringList& arguments )
 
 MainWindow::~MainWindow()
 {
+	if ( m_recentFiles )
+		delete m_recentFiles;
+
 	// Temporary files cleanup
 	while ( !m_tempFileKeeper.isEmpty() )
 		delete m_tempFileKeeper.takeFirst();
 
 	delete m_sharedMemory;
+	delete m_currentSettings;
 }
 
 void MainWindow::launch()
