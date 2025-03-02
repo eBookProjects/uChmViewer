@@ -90,14 +90,13 @@ Index::~Index()
 void Index::clearDict()
 {
 	for ( QHash<QString, Entry*>::iterator it = dict.begin(); it != dict.end(); ++it )
-	{
 		delete it.value();
-	}
+
 	dict.clear();
+
 	for ( QHash<QString, PosEntry*>::iterator it = miniDict.begin(); it != miniDict.end(); ++it )
-	{
 		delete it.value();
-	}
+
 	miniDict.clear();
 }
 
@@ -472,9 +471,8 @@ bool Index::searchForPhrases( const QStringList& phrases, const QStringList& wor
 		return false;
 
 	for ( QHash<QString, PosEntry*>::iterator it = miniDict.begin(); it != miniDict.end(); ++it )
-	{
 		delete it.value();
-	}
+
 	miniDict.clear();
 
 	// Initialize the dictionary with the words in phrase(s)
