@@ -1,7 +1,9 @@
 
 TEMPLATE = lib
 TARGET = chm
-CONFIG *= c++11 warn_on staticlib
+CONFIG *= staticlib
+
+include(../common.pri)
 
 HEADERS = \
     CHMLib/src/chm_lib.h \

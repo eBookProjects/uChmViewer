@@ -1,4 +1,13 @@
 
+CONFIG *= c++11
+
+CONFIG(debug, debug|release) {
+    CONFIG *= warn_on
+} else {
+    # Suppress debug message
+    DEFINES *= QT_NO_DEBUG_OUTPUT QT_NO_INFO_OUTPUT
+}
+
 PROJECT_ROOT_DIR = $${PWD}
 
 # If the msgfmt command is not found, reset the USE_GETTEX variable.

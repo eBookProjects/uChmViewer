@@ -35,7 +35,14 @@ unix {
     icons.files = $$findFiles($$ICONS_BASE_DIR, *.png)
     icons.path = $${PREFIX}/$${APP_ICONS_DIR}
 
-    INSTALLS += desktop icons
+    docs.files = \
+        $${PROJECT_ROOT_DIR}/AUTHORS.md \
+        $${PROJECT_ROOT_DIR}/ChangeLog \
+        $${PROJECT_ROOT_DIR}/NEWS.md \
+        $${PROJECT_ROOT_DIR}/README.md
+    docs.path = $${PREFIX}/share/doc/uchmviewer
+
+    INSTALLS += desktop icons docs
 }
 
 win32 {

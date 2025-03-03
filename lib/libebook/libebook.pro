@@ -1,7 +1,7 @@
 
 TEMPLATE = lib
 TARGET = ebook
-CONFIG *= c++11 warn_on staticlib
+CONFIG *= staticlib
 QT += widgets xml
 
 include(../../common.pri)

@@ -1,7 +1,6 @@
 
 TEMPLATE = app
 TARGET = uchmviewer
-CONFIG *= c++11 warn_on threads
 
 include(../common.pri)
 
@@ -70,7 +69,8 @@ SOURCES += \
     mimehelper.cpp \
     i18n.cpp
 
-FORMS += tab_bookmarks.ui \
+FORMS += \
+    tab_bookmarks.ui \
     tab_index.ui \
     tab_contents.ui \
     tab_search.ui \
