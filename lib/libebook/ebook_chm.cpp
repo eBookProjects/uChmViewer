@@ -587,7 +587,7 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 bool EBook_CHM::ResolveObject( const QString& fileName, chmUnitInfo* ui ) const
 {
 	return m_chmFile != NULL
-	       && ::chm_resolve_object(m_chmFile, qUtf8Printable( fileName ), ui) ==
+	       && ::chm_resolve_object( m_chmFile, qUtf8Printable( fileName ), ui ) ==
 	       CHM_RESOLVE_SUCCESS;
 }
 

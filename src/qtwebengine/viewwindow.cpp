@@ -17,6 +17,7 @@
  */
 
 #include <QApplication>
+#include <QAtomicInt>
 #include <QContextMenuEvent>
 #include <QPalette>
 #include <QString>

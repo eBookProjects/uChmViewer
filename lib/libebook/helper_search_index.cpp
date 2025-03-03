@@ -17,7 +17,6 @@
  */
 
 #include <algorithm>
-#include <cstring>
 
 #include <QApplication>
 #include <QByteArray>

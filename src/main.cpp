@@ -19,6 +19,7 @@
 #include <QCoreApplication>
 #include <QObject>
 #include <QStringList>
+#include <Qt>
 #include <QtGlobal>
 
 #if defined USE_MAC_APP
