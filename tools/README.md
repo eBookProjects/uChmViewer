@@ -33,7 +33,7 @@ https://include-what-you-use.org
 
 To use IWYU, run qmake with the optional USE flag:
 
-    qmake  -r USE+=check_iwyu path/to/uchmviewer.pro
+    qmake  -r CHECK_IWYU=1 path/to/uchmviewer.pro
 
 The following additional parameters are possible:
 

@@ -4,6 +4,9 @@
 #
 # LIBZIP_ROOT       - the root directory in which the zip library is installed.
 # CHMLIB_ROOT       - the root directory in which the chm library is installed.
+#
+#    Flags:
+#
 # USE_STATIC_CHMLIB - if defined, static linkage to the chm library is used.
 # USE_WEBENGINE     - if defined, WebEngine is used, otherwise WebKit is used.
 # USE_GETTEXT       - if specified, the msgfmt command will be used to compile
@@ -11,6 +14,8 @@
 # USE_MAC_APP       - if specified, force the use of the UchmviewerApp class
 #                     when building for non-macOS. This can be useful when
 #                     checking sources using IWYU.
+# CHECK_IWYU        - if defined, checks an includes using Include-What-You-Use.
+#                     see tools/README.md
 #
 ###############################################################################
 

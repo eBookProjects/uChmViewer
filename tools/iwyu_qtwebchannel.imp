@@ -1,0 +1,6 @@
+[
+    { include: ['<qwebchannel.h>', 'private', '<QWebChannel>', 'public'] },
+    { include: ['"qwebchannel.h"', 'private', '<QWebChannel>', 'public'] },
+    { include: ['<qwebchannelabstracttransport.h>', 'private', '<QWebChannelAbstractTransport>', 'public'] },
+    { include: ['"qwebchannelabstracttransport.h"', 'private', '<QWebChannelAbstractTransport>', 'public'] }
+]
