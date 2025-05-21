@@ -53,44 +53,50 @@ void fallbackFonts()
 {
 #ifdef _WIN32
 	// Obtain default GUI font (typically "Segoe UI, 9pt", see QTBUG-58610)
-	QFont systemFont = QApplication::font("QMessageBox");
+	QFont systemFont = QApplication::font( "QMessageBox" );
 	LANGID lid = GetUserDefaultLangID();
 	QStringList result;
+
 	switch ( lid & 0xff )
 	{
 	case LANG_CHINESE:
 		if ( lid == 0x0804 || lid == 0x1004 )  // China mainland and Singapore
 			result << "Microsoft YaHei UI" << "Microsoft YaHei" << "Arial"
-				<< "Microsoft JhengHei UI" << "Microsoft JhengHei" << "Malgun Gothic" << "Yu Gothic UI" << "Meiryo UI"
-				<< "Yu Gothic" << "Meiryo";
+			       << "Microsoft JhengHei UI" << "Microsoft JhengHei" << "Malgun Gothic" << "Yu Gothic UI" << "Meiryo UI"
+			       << "Yu Gothic" << "Meiryo";
 		else
 			result << "Microsoft JhengHei UI" << "Microsoft JhengHei" << "Arial"
-				<< "Microsoft YaHei UI" << "Microsoft YaHei" << "Malgun Gothic" << "Yu Gothic UI" << "Meiryo UI"
-				<< "Yu Gothic" << "Meiryo";
+			       << "Microsoft YaHei UI" << "Microsoft YaHei" << "Malgun Gothic" << "Yu Gothic UI" << "Meiryo UI"
+			       << "Yu Gothic" << "Meiryo";
+
 		break;
+
 	case LANG_JAPANESE:
 		result << "Yu Gothic UI" << "Meiryo UI" << "Yu Gothic" << "Meiryo" << "Arial"
-			<< "Malgun Gothic" << "Microsoft YaHei UI" << "Microsoft YaHei" << "Microsoft JhengHei UI" << "Microsoft JhengHei";
+		       << "Malgun Gothic" << "Microsoft YaHei UI" << "Microsoft YaHei" << "Microsoft JhengHei UI" << "Microsoft JhengHei";
 		break;
+
 	case LANG_KOREAN:
 		result << "Malgun Gothic" << "Arial"
-			<< "Microsoft JhengHei UI" << "Microsoft JhengHei" << "Microsoft YaHei UI" << "Microsoft YaHei"
-			<< "Yu Gothic UI" << "Meiryo UI" << "Yu Gothic" << "Meiryo";
+		       << "Microsoft JhengHei UI" << "Microsoft JhengHei" << "Microsoft YaHei UI" << "Microsoft YaHei"
+		       << "Yu Gothic UI" << "Meiryo UI" << "Yu Gothic" << "Meiryo";
 		break;
+
 	default:
 		result << "Arial" << "Yu Gothic UI" << "Meiryo UI" << "Yu Gothic" << "Meiryo" << "Malgun Gothic"
-			<< "Microsoft JhengHei UI" << "Microsoft JhengHei" << "Microsoft YaHei UI" << "Microsoft YaHei";
+		       << "Microsoft JhengHei UI" << "Microsoft JhengHei" << "Microsoft YaHei UI" << "Microsoft YaHei";
 		break;
 	}
+
 	result << "Nirmala UI"
-		<< "Iskoola Pota"
-		<< "Ebrima"
-		<< "Arial Unicode MS"
-		<< "Segoe UI Emoji"
-		<< "Segoe UI Symbol";
-	systemFont.insertSubstitutions(systemFont.family(), result);
-	systemFont.setHintingPreference(QFont::PreferNoHinting);
-	QApplication::setFont(systemFont);
+	       << "Iskoola Pota"
+	       << "Ebrima"
+	       << "Arial Unicode MS"
+	       << "Segoe UI Emoji"
+	       << "Segoe UI Symbol";
+	systemFont.insertSubstitutions( systemFont.family(), result );
+	systemFont.setHintingPreference( QFont::PreferNoHinting );
+	QApplication::setFont( systemFont );
 #endif
 }
 
