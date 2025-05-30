@@ -70,8 +70,8 @@ QDataStream& operator>>( QDataStream& s, Document& l )
 
 QDataStream& operator<<( QDataStream& s, const Document& l )
 {
-	s << ( short )l.docNumber;
-	s << ( short )l.frequency;
+	s << l.docNumber;
+	s << l.frequency;
 	return s;
 }
 
