@@ -102,9 +102,13 @@ void fallbackFonts()
 
 int main( int argc, char** argv )
 {
-#if QT_VERSION >= 0x050600
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	/* Attribute Qt::AA_EnableHighDpiScaling must be set before QCoreApplication is created. */
-	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+	QCoreApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
+	QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+	QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
+#endif
 #endif
 
 #if defined (USE_KDE)
