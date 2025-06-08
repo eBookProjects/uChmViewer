@@ -33,7 +33,7 @@ option(USE_DEPLOY_RUNTIME "Copy runtime dependencies for deployment"        OFF)
 option(USE_GETTEXT        "Use GNU Gettext for translation"                  ON)
 option(USE_MACOS_BUNDLE   "Install as macOS bundle"                          ON)
 use_in(USE_DBUS           "Use D-Bus integration"                       "Linux")
-use_in(USE_MAC_APP        "Use derived QApplication"                   "Darvin")
+use_in(USE_MAC_APP        "Use derived QApplication"                   "Darwin")
 
 # Init cmake
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
