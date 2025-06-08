@@ -36,7 +36,7 @@
 #include "helper_search_index.h"
 
 
-static const int DICT_VERSION = 4;
+static const int DICT_VERSION = 5;
 
 namespace QtAs
 {
@@ -70,8 +70,8 @@ QDataStream& operator>>( QDataStream& s, Document& l )
 
 QDataStream& operator<<( QDataStream& s, const Document& l )
 {
-	s << ( short )l.docNumber;
-	s << ( short )l.frequency;
+	s << l.docNumber;
+	s << l.frequency;
 	return s;
 }
 
@@ -347,7 +347,7 @@ void Index::writeDict( QDataStream& stream )
 	for ( QHash<QString, Entry*>::ConstIterator it = dict.begin(); it != dict.end(); ++it )
 	{
 		stream << it.key();
-		stream << ( int ) it.value()->documents.count();
+		stream << it.value()->documents.count();
 		stream << it.value()->documents;
 	}
 }
@@ -362,7 +362,7 @@ bool Index::readDict( QDataStream& stream )
 
 	stream >> version;
 
-	if ( version < 2 )
+	if ( version != DICT_VERSION )
 		return false;
 
 	stream >> m_charssplit;
@@ -424,9 +424,9 @@ QList< QUrl > Index::query( const QStringList& terms, const QStringList& termSeq
 
 			for ( QVector<Document>::ConstIterator doc_it = docs.constBegin(); doc_it != docs.constEnd(); ++doc_it )
 			{
-				if ( ( *minDoc_it ).docNumber == ( *doc_it ).docNumber )
+				if ( minDoc_it->docNumber == doc_it->docNumber )
 				{
-					( *minDoc_it ).frequency += ( *doc_it ).frequency;
+					minDoc_it->frequency += doc_it->frequency;
 					found = true;
 					break;
 				}
@@ -445,7 +445,7 @@ QList< QUrl > Index::query( const QStringList& terms, const QStringList& termSeq
 	if ( termSeq.isEmpty() )
 	{
 		for ( QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it )
-			results << docList.at( ( int )( *it ).docNumber );
+			results << docList.at( it->docNumber );
 
 		return results;
 	}
@@ -454,7 +454,7 @@ QList< QUrl > Index::query( const QStringList& terms, const QStringList& termSeq
 
 	for ( QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it )
 	{
-		fileName =  docList[( int )( *it ).docNumber ];
+		fileName =  docList[ it->docNumber ];
 
 		if ( searchForPhrases( termSeq, seqWords, fileName, chmFile ) )
 			results << fileName;
