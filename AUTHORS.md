@@ -14,7 +14,10 @@
 
 - [Zhong Jianxin](https://github.com/azuwis).
 - [arzam16](https://github.com/arzam16).
-- [oltolm](https://github.com/oltolm)
+- [ShoresOfNowhere](https://github.com/ShoresOfNowhere).
+- [Alexander Trufanov](https://github.com/trufanov-nok).
+- [Oleg Tolmatcev](https://github.com/oltolm).
+- [Binhao Qian](https://github.com/gonwan).
 
 
 ## Translations
