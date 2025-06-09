@@ -78,4 +78,9 @@ Thanks to:
 
 ## License
 
-uChmViewer is distributed under GNU GPL license version 3.
+uChmViewer is distributed under GNU GPL license version 3. You can get
+the source code at the following sites:
+
+- [GitHub](https://github.com/eBookProjects/uChmViewer)
+- [GitFlic](https://gitflic.ru/project/u-235/uchmviewer)
+- [Codeberg](https://codeberg.org/u-235/uchmviewer)
