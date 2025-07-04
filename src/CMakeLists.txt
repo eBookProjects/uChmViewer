@@ -122,11 +122,17 @@ target_link_libraries(uchmviewer
     )
 
 #
-# NEED_BZIP2_ARCHIVE is set by the vcpkg portfile.cmake file.  If set, we need to pick up the bzip2
-# archive as libzip will have been built as an archive not a .so/.dylib
+# IS_VCPKG_BUILD is set by the vcpkg portfile.cmake file.  If set, we need to pick up the
+# archive files for:
+#    bzip2
+#    zlib
+# as libzip will have been built as an archive not a .so/.dylib
 #
-if (NEED_BZIP2_ARCHIVE)
-    target_link_libraries(uchmviewer BZip2::BZip2)
+if (IS_VCPKG_BUILD)
+    target_link_libraries(uchmviewer 
+        BZip2::BZip2
+        ZLIB::ZLIB
+        )
 endif ()    
 
 target_link_libraries(uchmviewer i18n)
