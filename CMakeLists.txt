@@ -32,6 +32,7 @@ option(USE_STATIC_CHMLIB  "Use static link with chm library"                OFF)
 option(USE_DEPLOY_RUNTIME "Copy runtime dependencies for deployment"        OFF)
 option(USE_GETTEXT        "Use GNU Gettext for translation"                  ON)
 option(USE_MACOS_BUNDLE   "Install as macOS bundle"                          ON)
+option(NEED_BZIP2_ARCHIVE "Need to link BZip2 static library"                OFF)
 use_in(USE_DBUS           "Use D-Bus integration"                       "Linux")
 use_in(USE_MAC_APP        "Use derived QApplication"                   "Darwin")
 
@@ -101,10 +102,10 @@ if (${USE_KF5})
 endif ()
 
 #
-# If this variable exists the build is running under vcpkg, and we need to pick up the bzip2
+# NEED_BZIP2_ARCHIVE is set by the vcpkg portfile.cmake file.  If set, we need to pick up the bzip2
 # archive as libzip will have been built as an archive not a .so/.dylib
 #
-if (DEFINED VCPKG_TARGET_IS_OSX)
+if (NEED_BZIP2_ARCHIVE)
     find_package(BZip2 REQUIRED)
 endif ()
 
