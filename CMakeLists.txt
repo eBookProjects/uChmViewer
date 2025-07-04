@@ -100,6 +100,14 @@ if (${USE_KF5})
     target_compile_definitions(extra INTERFACE USE_KDE)
 endif ()
 
+#
+# If this variable exists the build is running under vcpkg, and we need to pick up the bzip2
+# archive as libzip will have been built as an archive not a .so/.dylib
+#
+if (DEFINED VCPKG_TARGET_IS_OSX)
+    find_package(BZip2 REQUIRED)
+endif ()
+
 include(cmake/qt-aliases.cmake)
 include(cmake/install-helper.cmake)
 
