@@ -126,7 +126,7 @@ target_link_libraries(uchmviewer
 # archive as libzip will have been built as an archive not a .so/.dylib
 #
 if (NEED_BZIP2_ARCHIVE)
-    target_link_libraries(uchmviewer PRIVATE BZip2::BZip2)
+    target_link_libraries(uchmviewer BZip2::BZip2)
 endif ()    
 
 target_link_libraries(uchmviewer i18n)
