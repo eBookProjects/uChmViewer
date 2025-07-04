@@ -122,10 +122,10 @@ target_link_libraries(uchmviewer
     )
 
 #
-# If the variable VCPKG_TARGET_IS_OSX exists the build is running under vcpkg, and we need to pick up the bzip2
+# NEED_BZIP2_ARCHIVE is set by the vcpkg portfile.cmake file.  If set, we need to pick up the bzip2
 # archive as libzip will have been built as an archive not a .so/.dylib
 #
-if (DEFINED VCPKG_TARGET_IS_OSX)
+if (NEED_BZIP2_ARCHIVE)
     target_link_libraries(uchmviewer PRIVATE BZip2::BZip2)
 endif ()    
 
