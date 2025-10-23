@@ -3,7 +3,7 @@
 #       Common option:
 # USE_KF5            - if defined, build with KDE Framework 5.
 # USE_STATIC_CHMLIB  - if defined, static linkage to the chm library is used.
-# USE_WEBENGINE      - if defined, WebEngine is used, otherwise WebKit is used.
+# USE_WEBKIT         - if defined, WebKit is used, otherwise WebEngine is used.
 # USE_GETTEXT        - if defined, then GNU Gettext will be used for translation.
 #                      The default is ON.
 # USE_DBUS           - if defined, build with D-Bus integration.
@@ -27,7 +27,7 @@ include(cmake/get-version.cmake)
 
 include(cmake/use-in.cmake)
 option(USE_KF5            "Use KDE Framework 5"                             OFF)
-option(USE_WEBENGINE      "Use Qt WebEngine"                                OFF)
+option(USE_WEBKIT         "Use Qt WebKit"                                   OFF)
 option(USE_STATIC_CHMLIB  "Use static link with chm library"                OFF)
 option(USE_DEPLOY_RUNTIME "Copy runtime dependencies for deployment"        OFF)
 option(USE_GETTEXT        "Use GNU Gettext for translation"                  ON)
@@ -46,17 +46,17 @@ add_library(extra INTERFACE)
 find_package(libzip REQUIRED)
 
 # Prepare to find Qt modules.
-set(APP_QT_MIN_VERSION 5.0)
+set(APP_QT_MIN_VERSION 5.9)
 set(APP_QT_MODULES Core Network PrintSupport Widgets Xml)
 # Modules for WebKit or WebEngine.
-if (USE_WEBENGINE)
-    set(APP_QT_MIN_VERSION 5.9)
-    list(APPEND APP_QT_MODULES WebEngineWidgets)
-    target_link_libraries(extra INTERFACE Qt::WebEngineWidgets)
-    target_compile_definitions(extra INTERFACE USE_WEBENGINE)
-else ()
+if (USE_WEBKIT)
+    set(APP_QT_MIN_VERSION 5.0)
     list(APPEND APP_QT_MODULES WebKit WebKitWidgets)
     target_link_libraries(extra INTERFACE Qt::WebKit Qt::WebKitWidgets)
+    target_compile_definitions(extra INTERFACE USE_WEBKIT)
+else ()
+    list(APPEND APP_QT_MODULES WebEngineWidgets)
+    target_link_libraries(extra INTERFACE Qt::WebEngineWidgets)
 endif ()
 
 set(APP_QT_VERSION ${APP_QT_MIN_VERSION} CACHE STRING "Preferred Qt version")

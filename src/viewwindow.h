@@ -2,10 +2,10 @@
 #define VIEWWINDOW_H
 
 // We support both engines
-#if defined (USE_WEBENGINE)
-	#include "qtwebengine/viewwindow.h"
-#else
+#if defined (USE_WEBKIT)
 	#include "qtwebkit/viewwindow.h"
+#else
+	#include "qtwebengine/viewwindow.h"
 #endif
 
 #endif // VIEWWINDOW_H

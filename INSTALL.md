@@ -62,7 +62,7 @@ cmake --install . [<options>]
 
     - `USE_KF5=<ON | OFF>` - build application with KDE support.
     - `USE_STATIC_CHMLIB=<ON | OFF>` - choosing static linking with CHMLib, default is  `OFF`. For static linking, the library is compiled from source in the `lib/CHMLib` folder. This folder can be obtained along with the sources of the application using the command `git clone --recursive`.
-    - `USE_WEBENGINE=<ON | OFF>` - choosing WebEngine instead of WebKit, default is `OFF`. WebEngine requires Qt version 5.9 or higher.
+    - `USE_WEBKIT=<ON | OFF>` - choosing WebKit instead of WebEngine, default is `OFF`. WebEngine requires Qt version 5.9 or higher.
     - `USE_GETTEXT=<ON | OFF>` - enabling translation of the application, default is `ON`. If Gettext is not available, this option will be ignored.
     - `USE_DEPLOY_RUNTIME=<ON | OFF>` - copying runtime dependencies for deployment, default is `OFF`.
     - `USE_MACOS_BUNDLE=<ON | OFF>` - install as macOS bundle, default is `ON`.
@@ -76,10 +76,10 @@ cmake --install . [<options>]
     - `CMAKE_PREFIX_PATH=<path/to/qt>` is the path to the Qt development package if it is simply unpacked or builds without installation. In my case, Qt version 5.5 is in /home/user/Qt and I use `-DCMAKE_PREFIX_PATH=~/Qt/5.5/gcc`.
     - `CMAKE_BUILD_TYPE=<Debug | Release | RelWithDebInfo | MinSizeRel>`
 
-  For example, configure cmake to build which Qt 5.15 and WebEngine
+  For example, configure cmake to build which Qt 5.15 and WebKit (default is WebEngine)
 
   ```sh
-  cmake -DCMAKE_PREFIX_PATH=~/Qt/5.15/gcc -DUSE_WEBENGINE=ON ../
+  cmake -DCMAKE_PREFIX_PATH=~/Qt/5.15/gcc -DUSE_WEBKIT=ON ../
   ```
 
 
@@ -107,7 +107,7 @@ apt install build-essential cmake git libzip-dev libchm-dev\
 git clone --recursive https://github.com/eBookProjects/uChmViewer
 mkdir uchmviewer/build
 cd uchmviewer/build
-cmake -DCMAKE_BUILD_TYPE=Release ../
+cmake -DCMAKE_BUILD_TYPE=Release -DUSE_WEBKIT=ON ../
 cmake --build . --config Release
 # Optional generate package
 cpack -G DEB -DCPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON
@@ -122,7 +122,7 @@ apt install build-essential cmake git libzip-dev libchm-dev\
 git clone --recursive https://github.com/eBookProjects/uChmViewer
 mkdir uchmviewer/build
 cd uchmviewer/build
-cmake -DCMAKE_BUILD_TYPE=Release -DUSE_WEBENGINE=ON ../
+cmake -DCMAKE_BUILD_TYPE=Release ../
 cmake --build . --config Release
 # Optional generate package
 cpack -G DEB -DCPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON
@@ -149,7 +149,7 @@ cpack -G DEB -DCPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON
 The project options for qmake are the similar to those for cmake.
 
 - `USE_STATIC_CHMLIB=1` if defined, use static CHMLib from git submodule.
-- `USE_WEBENGINE=1` if defined, use QtWebEngine.
+- `USE_WEBKIT=1` if defined, use QtWebKit.
 - `CHMLIB_ROOT=<path/to/chmlib>` folder to look up the library and headers for CHMLib.
 - `LIBZIP_ROOT=<path/to/libzip>`folder to look up the library and headers for libzip.
 

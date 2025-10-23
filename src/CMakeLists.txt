@@ -76,15 +76,7 @@ set(UIS
     window_browser.ui
     )
 
-if (USE_WEBENGINE)
-    list(APPEND CPP_SOURCES
-        qtwebengine/viewwindow.cpp
-        qtwebengine/viewwindow.h
-        qtwebengine/dataprovider.cpp
-        qtwebengine/dataprovider.h
-        )
-    list(APPEND MOC_HEADERS qtwebengine/viewwindow.h  qtwebengine/webenginepage.h)
-else ()
+if (USE_WEBKIT)
     list(APPEND CPP_SOURCES
         qtwebkit/viewwindow.cpp
         qtwebkit/viewwindow.h
@@ -92,6 +84,14 @@ else ()
         qtwebkit/dataprovider.h
         )
     list(APPEND MOC_HEADERS qtwebkit/viewwindow.h)
+else ()
+    list(APPEND CPP_SOURCES
+        qtwebengine/viewwindow.cpp
+        qtwebengine/viewwindow.h
+        qtwebengine/dataprovider.cpp
+        qtwebengine/dataprovider.h
+        )
+    list(APPEND MOC_HEADERS qtwebengine/viewwindow.h  qtwebengine/webenginepage.h)
 endif ()
 
 if (USE_DBUS)

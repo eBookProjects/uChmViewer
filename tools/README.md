@@ -53,11 +53,11 @@ For a more complete check, use the `USE_GETTEXT` and `USE_MAC_APP` flags.
 
 For QtWebEngine:
 
-    qmake -r CHECK_IWYU=1 USE_GETTEXT=1 USE_MAC_APP=1 USE_WEBENGINE=1 IWYU_EXTRA_FLAGS='-Xiwyu --update_comments' ..
+    qmake -r CHECK_IWYU=1 USE_GETTEXT=1 USE_MAC_APP=1 IWYU_EXTRA_FLAGS='-Xiwyu --update_comments' ..
 
 For QtWebKit:
 
-    qmake -r CHECK_IWYU=1 USE_GETTEXT=1 USE_MAC_APP=1 IWYU_EXTRA_FLAGS='-Xiwyu --update_comments' ..
+    qmake -r CHECK_IWYU=1 USE_GETTEXT=1 USE_MAC_APP=1 USE_WEBKIT=1 IWYU_EXTRA_FLAGS='-Xiwyu --update_comments' ..
 
 
 Additional links:

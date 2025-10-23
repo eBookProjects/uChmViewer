@@ -94,7 +94,7 @@ DialogSetup::DialogSetup( QWidget* parent )
 	m_openAllTOCEntries->setChecked( pConfig->m_tocOpenAllEntries );
 	boxUseSingleClick->setChecked( pConfig->m_tabUseSingleClick );
 
-#if defined (USE_WEBENGINE)
+#ifndef USE_WEBKIT
 	m_enableOfflineStorage->setChecked( false );
 	m_enableOfflineStorage->setEnabled( false );
 	m_enableJava->setChecked( false );

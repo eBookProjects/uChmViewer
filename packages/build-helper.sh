@@ -50,7 +50,7 @@ Options:
   -v version  Define the package version. By default version gettings from
               the version.h file.
   -w browser  Define the webengine to be used. Possible values:
-              WebEngine or WebKit (default).
+              WebEngine (default) or WebKit.
 
 It is assumed that the necessary dependencies and tools are already installed
 in the system.
@@ -300,8 +300,8 @@ PACKAGE_DIR       ${PACKAGE_DIR}
         QMAKE_OPTIONS="$QMAKE_OPTIONS VERSION=$PACKAGE_VERSION"
     fi
 
-    if [ "$PACKAGE_BROWSER" = webengine ]; then
-        QMAKE_OPTIONS="$QMAKE_OPTIONS USE_WEBENGINE=1"
+    if [ "$PACKAGE_BROWSER" = webkit ]; then
+        QMAKE_OPTIONS="$QMAKE_OPTIONS USE_WEBKIT=1"
     fi
 
     title1 "Prepare to build"

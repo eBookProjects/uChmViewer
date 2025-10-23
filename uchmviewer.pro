@@ -5,7 +5,7 @@
 # LIBZIP_ROOT       - the root directory in which the zip library is installed.
 # CHMLIB_ROOT       - the root directory in which the chm library is installed.
 # USE_STATIC_CHMLIB - if defined, static linkage to the chm library is used.
-# USE_WEBENGINE     - if defined, WebEngine is used, otherwise WebKit is used.
+# USE_WEBKIT        - if defined, WebKit is used, otherwise WebEngine is used.
 # USE_GETTEXT       - if specified, the msgfmt command will be used to compile
 #                     translations.
 # USE_MAC_APP       - if specified, force the use of the UchmviewerApp class

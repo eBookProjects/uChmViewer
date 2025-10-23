@@ -29,14 +29,14 @@ jobs:
         - {
             name:  "Cmake : Qt5 + WebEngine",
             os:    macos-13,
-            setup: "cmake -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
+            setup: "cmake -DUSE_STATIC_CHMLIB=ON .",
             build: "cmake --build . --config Release",
             install: "sudo cmake --install . --config Release"
           }
         - {
             name:  "qmake : Qt5 + WebEngine",
             os:    macos-13,
-            setup: 'qmake -r -early "QMAKE_DEFAULT_LIBDIRS=$(xcrun -show-sdk-path)/usr/lib" "USE_STATIC_CHMLIB=1" "USE_WEBENGINE=1" "LIBZIP_ROOT=/usr/local"',
+            setup: 'qmake -r -early "QMAKE_DEFAULT_LIBDIRS=$(xcrun -show-sdk-path)/usr/lib" "USE_STATIC_CHMLIB=1" "LIBZIP_ROOT=/usr/local"',
             build: "make",
             install: "echo skip"
           }
