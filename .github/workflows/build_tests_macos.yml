@@ -59,7 +59,7 @@ jobs:
         cd ../
         git clone https://github.com/nih-at/libzip.git
         cd libzip
-        git checkout v1.7.3
+        git checkout v1.11.4
         mkdir build
         cd build
         cmake ..
