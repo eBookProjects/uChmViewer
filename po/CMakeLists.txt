@@ -1,6 +1,6 @@
 # Create and install translation files.
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 
 set(CATALOG_NAME uchmviewer)
 # The languages.txt file contains a list of locales.

@@ -1,8 +1,7 @@
 # Getting the application version from the version.h file.
 # The result is saved in the APP_VERSION cache variables.
-# CMAKE_MATCH_n request CMake 3.9
 
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.16)
 
 set (f_ver "src/version.h")
 
