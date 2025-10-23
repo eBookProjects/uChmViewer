@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+if (CMAKE_SYSTEM_NAME MATCHES "Linux")
     install(FILES freedesktop/uchmviewer.desktop DESTINATION ${APP_DEF_INSTALL_DIR})
     install(DIRECTORY freedesktop/icons/ DESTINATION ${APP_ICONS_INSTALL_DIR})
 elseif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin" AND USE_MACOS_BUNDLE)
@@ -26,7 +26,7 @@ if (USE_DEPLOY_RUNTIME)
         install(FILES $<TARGET_FILE:chm> DESTINATION ${APP_BIN_INSTALL_DIR})
     endif ()
 
-    if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    if (CMAKE_SYSTEM_NAME MATCHES "Windows")
         # Copying runtime dependencies for Windows deployment
         # See https://doc.qt.io/qt-5/windows-deployment.html
         set(QT_DEPLOY_DIR ${CMAKE_CURRENT_BINARY_DIR}/qt-deploy)

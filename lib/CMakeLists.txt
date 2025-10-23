@@ -1,10 +1,10 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-if (${USE_STATIC_CHMLIB})
+if (USE_STATIC_CHMLIB)
     set(CHMLIB_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/CHMLib/src)
 
-    if (EXISTS ${CHMLIB_SRC_DIR}/chm_lib.h)
+    if (EXISTS "${CHMLIB_SRC_DIR}/chm_lib.h")
         add_library(chmlib STATIC
             ${CHMLIB_SRC_DIR}/chm_lib.c
             ${CHMLIB_SRC_DIR}/chm_lib.h
