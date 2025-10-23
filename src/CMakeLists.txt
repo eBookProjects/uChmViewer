@@ -75,7 +75,7 @@ set(UIS
     window_browser.ui
     )
 
-if (${USE_WEBENGINE})
+if (USE_WEBENGINE)
     list(APPEND CPP_SOURCES
         qtwebengine/viewwindow.cpp
         qtwebengine/viewwindow.h
@@ -93,13 +93,13 @@ else ()
     list(APPEND MOC_HEADERS qtwebkit/viewwindow.h)
 endif ()
 
-if (${USE_DBUS})
+if (USE_DBUS)
     list(APPEND CPP_SOURCES dbus_interface.cpp dbus_interface.h)
     list(APPEND MOC_HEADERS dbus_interface.h)
 endif ()
 
 # Mac OS specific
-if (${USE_MAC_APP})
+if (USE_MAC_APP)
     list(APPEND CPP_SOURCES uchmviewerapp.cpp uchmviewerapp.h)
     list(APPEND MOC_HEADERS uchmviewerapp.h)
 endif ()

@@ -47,7 +47,7 @@ find_package(libzip REQUIRED)
 set(APP_QT_MIN_VERSION 5.0)
 set(APP_QT_MODULES Core Network PrintSupport Widgets Xml)
 # Modules for WebKit or WebEngine.
-if (${USE_WEBENGINE})
+if (USE_WEBENGINE)
     set(APP_QT_MIN_VERSION 5.9)
     list(APPEND APP_QT_MODULES WebEngineWidgets)
     target_link_libraries(extra INTERFACE Qt::WebEngineWidgets)
@@ -71,18 +71,18 @@ endif ()
 
 set(QT Qt${QT_VERSION_MAJOR})
 # Since Qt 6 QTextCodec moved in the Qt 5 Core Compat module.
-if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+if (QT_VERSION_MAJOR GREATER_EQUAL 6)
     list(APPEND APP_QT_MODULES Core5Compat)
     target_link_libraries(extra INTERFACE ${QT}::Core5Compat)
 endif ()
 
-if (${USE_DBUS})
+if (USE_DBUS)
     list(APPEND APP_QT_MODULES DBus)
     target_link_libraries(extra INTERFACE Qt::DBus)
     target_compile_definitions(extra INTERFACE USE_DBUS)
 endif ()
 
-if (${USE_MAC_APP})
+if (USE_MAC_APP)
     target_compile_definitions(extra INTERFACE USE_MAC_APP)
 endif ()
 
