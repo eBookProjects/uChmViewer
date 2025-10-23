@@ -37,91 +37,59 @@ cmake_minimum_required(VERSION 3.16)
 #  Core macros             #
 ############################
 
-# qt_wrap_cpp(outfiles)
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_wrap_cpp)
-        qt5_wrap_cpp(${ARGV})
-    endmacro()
+if (NOT Qt5_FOUND OR Qt5_VERSION VERSION_GREATER_EQUAL 5.15)
+    return()
 endif ()
 
-# qt_add_resources(outfiles)
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_add_resources)
-        qt5_add_resources(${ARGV})
-    endmacro()
-endif ()
+macro(qt_wrap_cpp)
+    qt5_wrap_cpp(${ARGV})
+endmacro()
 
-# qt_generate_moc()
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_generate_moc)
-        qt5_generate_moc(${ARGV})
-    endmacro()
-endif ()
+macro(qt_add_resources)
+    qt5_add_resources(${ARGV})
+endmacro()
 
+macro(qt_generate_moc)
+    qt5_generate_moc(${ARGV})
+endmacro()
 
 ############################
 #  Widgets macros          #
 ############################
-
-# qt_wrap_ui(outfiles)
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_wrap_ui outfile)
-        qt5_wrap_ui(${ARGV})
-    endmacro()
-endif ()
-
+macro(qt_wrap_ui outfile)
+    qt5_wrap_ui(${ARGV})
+endmacro()
 
 ############################
 #  DBUS macros             #
 ############################
+macro(qt_add_dbus_interface)
+    qt5_add_dbus_interface(${ARGV})
+endmacro()
 
-# qt_add_dbus_interface(outfiles)
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_add_dbus_interface)
-        qt5_add_dbus_interface(${ARGV})
-    endmacro()
-endif ()
+macro(qt_add_dbus_interfaces)
+    qt5_add_dbus_interfaces(${ARGV})
+endmacro()
 
-# qt_add_dbus_interfaces(outfiles)
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_add_dbus_interfaces)
-        qt5_add_dbus_interfaces(${ARGV})
-    endmacro()
-endif()
+macro(qt_add_dbus_adaptor)
+    qt5_add_dbus_adaptor(${ARGV})
+endmacro()
 
-# qt_add_dbus_adaptor(outfiles)
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_add_dbus_adaptor)
-        qt5_add_dbus_adaptor(${ARGV})
-    endmacro()
-endif ()
-
-# qt_generate_dbus_interface()
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_generate_dbus_interface)
-        qt5_generate_dbus_interface(${ARGV})
-    endmacro()
-endif ()
-
+macro(qt_generate_dbus_interface)
+    qt5_generate_dbus_interface(${ARGV})
+endmacro()
 
 ############################
 #  Linguist tools macros   #
 ############################
 
-# qt_create_translation(qm_files)
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_create_translation)
-        qt5_create_translation(${ARGV})
-    endmacro()
-endif ()
+macro(qt_create_translation)
+    qt5_create_translation(${ARGV})
+endmacro()
 
-# qt_add_translation(qm_files)
-if (QT_VERSION_MAJOR VERSION_LESS 5.15)
-    macro(qt_add_translation)
-        qt5_add_translation(${ARGV})
-    endmacro()
-endif ()
-
+macro(qt_add_translation)
+    qt5_add_translation(${ARGV})
+endmacro()
 
 ############################
 #  Module aliases          #

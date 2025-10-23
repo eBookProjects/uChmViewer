@@ -47,7 +47,7 @@ jobs:
             os:    windows-2025,
             qt_version: "6.2.0",
             qt_modules: "addons.qtwebengine addons.qtwebchannel addons.qtpositioning qt5compat",
-            setup: "cmake -DUSE_STATIC_CHMLIB=ON .",
+            setup: "cmake -DUSE_QT5=OFF -DUSE_STATIC_CHMLIB=ON .",
             build: "cmake --build . --config Release",
             install: "cmake --install . --config Release"
           }
