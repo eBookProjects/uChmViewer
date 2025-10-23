@@ -18,7 +18,7 @@
 #                      The default is ON.
 ################################################
 
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.16)
 
 # Project info
 project(uchmviewer HOMEPAGE_URL "https://github.com/u-235/uchmviewer")
