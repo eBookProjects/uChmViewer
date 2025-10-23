@@ -26,7 +26,7 @@ jobs:
         config:
         - {
             name:  "Cmake : WebEngine :",
-            os:    windows-latest,
+            os:    windows-2025,
             qt_version: "5.14.1",
             qt_modules: "qtwebengine",
             setup: "cmake -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
@@ -35,7 +35,7 @@ jobs:
           }
         - {
             name:  "qmake : WebEngine :",
-            os:    windows-latest,
+            os:    windows-2025,
             qt_version: "5.14.1",
             qt_modules: "qtwebengine",
             setup: 'qmake -r "USE_STATIC_CHMLIB=1" "USE_WEBENGINE=1" "LIBZIP_ROOT=C:/Program Files (x86)/libzip"',
@@ -44,7 +44,7 @@ jobs:
           }
         - {
             name:  "Cmake : WebEngine :",
-            os:    windows-latest,
+            os:    windows-2025,
             qt_version: "6.2.0",
             qt_modules: "addons.qtwebengine addons.qtwebchannel addons.qtpositioning qt5compat",
             setup: "cmake -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON .",
@@ -53,7 +53,7 @@ jobs:
           }
         - {
             name:  "qmake : WebEngine :",
-            os:    windows-latest,
+            os:    windows-2025,
             qt_version: "6.2.0",
             qt_modules: "addons.qtwebengine addons.qtwebchannel addons.qtpositioning qt5compat",
             setup: 'qmake -r "USE_STATIC_CHMLIB=1" "USE_WEBENGINE=1" "LIBZIP_ROOT=C:/Program Files (x86)/libzip"',
