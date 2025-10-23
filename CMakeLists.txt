@@ -21,7 +21,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 # Project info
-project(uchmviewer HOMEPAGE_URL "https://github.com/u-235/uchmviewer")
+project(uchmviewer HOMEPAGE_URL "https://github.com/eBookProjects/uChmViewer")
 include(cmake/get-version.cmake)
 
 include(cmake/use-in.cmake)

@@ -9,9 +9,9 @@ Have you found a bug?
 ---------------------
 
 * Ensure the bug was not already reported in the
-  [issues](https://github.com/u-235/uchmviewer/issues?q=type%3Aissue).
+  [issues](https://github.com/eBookProjects/uChmViewer/issues?q=type%3Aissue).
 * If you have not found an open issue that solves the problem, open
-  a [new one](https://github.com/u-235/uchmviewer/issues/new). Be sure
+  a [new one](https://github.com/eBookProjects/uChmViewer/issues/new). Be sure
   to include a title and a clear description with information to help
   reproduce the bug. Useful information may be:
 
