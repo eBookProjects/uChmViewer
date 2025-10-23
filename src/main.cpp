@@ -120,7 +120,7 @@ int main( int argc, char** argv )
 	                       K4AboutData::License_GPL,
 	                       ki18n( "(c) 2004-2015 George Yunaev" ),
 	                       ki18n( "Please report bugs to nicegorov@ya.com" ),
-	                       "https://github.com/u-235/uchmviewer",
+	                       "https://github.com/eBookProjects/uChmViewer",
 	                       "" );
 
 	KCmdLineArgs::init( &aboutdata );

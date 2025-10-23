@@ -24,7 +24,7 @@ KchmViewer is written by [Georgy Yunaev](https://github.com/gyunaev), and is lic
 
 Fixed a bug causing false detection of an external link and displaying the “Open link in external program” dialog box.
 
-Read more in the [release note](https://github.com/u-235/uchmviewer/releases/latest) and in the [news](NEWS.md).
+Read more in the [release note](https://github.com/eBookProjects/uChmViewer/releases/latest) and in the [news](NEWS.md).
 
 
 ## Features
