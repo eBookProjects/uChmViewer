@@ -26,10 +26,12 @@
 #include <QApplication>
 #include <QByteArray>
 #include <QCoreApplication>
+#include <QDesktopServices>
 #include <QDialog>
 #include <QDir>
 #include <QEvent>
 #include <QFile>
+#include <QFileDialog>
 #include <QFileInfo>
 #include <QIODevice>
 #include <QIcon>
@@ -38,6 +40,7 @@
 #include <QList>
 #include <QMenu>
 #include <QMenuBar>
+#include <QMessageBox>
 #include <QObject>
 #include <QPixmap>
 #include <QPrinter>
@@ -59,16 +62,6 @@
 #include <QWhatsThis>
 #include <Qt>
 #include <QtGlobal>
-
-#ifdef USE_KDE
-	#include <kfiledialog.h>
-	#include <kmessagebox.h>
-	#include <krun.h>
-#else
-	#include <QDesktopServices>
-	#include <QFileDialog>
-	#include <QMessageBox>
-#endif
 
 class QCloseEvent;
 
@@ -411,13 +404,8 @@ void MainWindow::refreshCurrentBrowser( )
 
 	if ( title.isEmpty() )
 		title = QCoreApplication::applicationName();
-
-	// KDE adds application name automatically, so we don't need it here
-#if !defined (USE_KDE)
 	else
 		title = ( QString ) QCoreApplication::applicationName() + " - " + title;
-
-#endif
 
 	setWindowTitle( title );
 
@@ -490,11 +478,7 @@ bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, UBrowser::
 		// no break! should continue to open.
 		//-fallthrough
 		case Config::ACTION_ALWAYS_OPEN:
-#if defined (USE_KDE)
-			new KRun( url, 0 );
-#else
 			QDesktopServices::openUrl( url );
-#endif
 			break;
 		}
 
@@ -892,16 +876,12 @@ void MainWindow::actionNavigateHome()
 
 void MainWindow::actionOpenFile()
 {
-#if defined (USE_KDE)
-	QString fn = KFileDialog::getOpenFileName( pConfig->m_lastOpenedDir, i18n( "*.chm *.epub|All electronic book\n*.chm|Compressed Help Manual\n*.epub|EPUB electronic book" ), this );
-#else
 	QString fn = QFileDialog::getOpenFileName( this,
 	                                           i18n( "Open a chm file" ),
 	                                           pConfig->m_lastOpenedDir,
 	                                           i18n( "Electronic books (*.chm *.epub)" ),
 	                                           0,
 	                                           QFileDialog::DontResolveSymlinks );
-#endif
 
 	if ( !fn.isEmpty() )
 		loadFile( fn );
@@ -952,18 +932,11 @@ void MainWindow::actionExtractCHM()
 {
 	QList< QUrl > files;
 
-#if defined (USE_KDE)
-	QString outdir = KFileDialog::getExistingDirectory(
-	                     QUrl(),
-	                     this,
-	                     i18n( "Choose a directory to store CHM content" ) );
-#else
 	QString outdir = QFileDialog::getExistingDirectory(
 	                     this,
 	                     i18n( "Choose a directory to store CHM content" ),
 	                     QString(),
 	                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
-#endif
 
 	if ( outdir.isEmpty() )
 		return;
@@ -1184,16 +1157,12 @@ void MainWindow::actionAboutApp()
 	                    .arg( APP_VERSION ) .arg( info );
 
 	// It is quite funny that the argument order differs
-#if defined (USE_KDE)
-	KMessageBox::about( this, abouttext, i18n( "About uChmViewer" ) );
-#else
 	QDialog dlg;
 	Ui::DialogAbout ui;
 
 	ui.setupUi( &dlg );
 	ui.lblAbout->setText( abouttext );
 	dlg.exec();
-#endif
 }
 
 void MainWindow::actionAboutQt()

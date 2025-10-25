@@ -25,18 +25,6 @@ jobs:
       matrix:
         config:
         - {
-            name:     "CMake : WebKit + KF5",
-            os:       ubuntu-22.04,
-            packages: libqt5webkit5-dev extra-cmake-modules libkf5kdelibs4support-dev  gettext,
-            xmake:    "cmake -DUSE_KF5=ON -DUSE_STATIC_CHMLIB=ON ."
-          }
-        - {
-            name:     "CMake : WebEngine + KF5",
-            os:       ubuntu-22.04,
-            packages: qtwebengine5-dev extra-cmake-modules libkf5kdelibs4support-dev  gettext,
-            xmake:    "cmake -DUSE_KF5=ON -DUSE_STATIC_CHMLIB=ON -DUSE_WEBENGINE=ON ."
-          }
-        - {
             name:     "qmake : WebKit + Qt5",
             os:       ubuntu-22.04,
             packages: libqt5webkit5-dev,
@@ -73,7 +61,7 @@ jobs:
         cd ../
         git clone https://github.com/nih-at/libzip.git
         cd libzip
-        git checkout v1.7.3
+        git checkout v1.11.4
         mkdir build
         cd build
         cmake ..

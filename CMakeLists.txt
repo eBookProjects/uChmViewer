@@ -1,7 +1,6 @@
 # uChmViewer build script with cmake
 #
 #       Common option:
-# USE_KF5            - if defined, build with KDE Framework 5.
 # USE_STATIC_CHMLIB  - if defined, static linkage to the chm library is used.
 # USE_WEBENGINE      - if defined, WebEngine is used, otherwise WebKit is used.
 # USE_GETTEXT        - if defined, then GNU Gettext will be used for translation.
@@ -26,7 +25,6 @@ project(uchmviewer HOMEPAGE_URL "https://github.com/u-235/uchmviewer")
 include(cmake/get-version.cmake)
 
 include(cmake/use-in.cmake)
-option(USE_KF5            "Use KDE Framework 5"                             OFF)
 option(USE_WEBENGINE      "Use Qt WebEngine"                                OFF)
 option(USE_STATIC_CHMLIB  "Use static link with chm library"                OFF)
 option(USE_DEPLOY_RUNTIME "Copy runtime dependencies for deployment"        OFF)
@@ -90,15 +88,6 @@ endif ()
 
 # Now we know all the required Qt modules.
 find_package(${QT} REQUIRED ${APP_QT_MODULES})
-
-if (${USE_KF5})
-    # Needed by find_package(KF5) below.
-    find_package(ECM REQUIRED)
-    list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
-    find_package(KF5 REQUIRED KDELibs4Support)
-    target_link_libraries(extra INTERFACE KF5::KDELibs4Support)
-    target_compile_definitions(extra INTERFACE USE_KDE)
-endif ()
 
 include(cmake/qt-aliases.cmake)
 include(cmake/install-helper.cmake)

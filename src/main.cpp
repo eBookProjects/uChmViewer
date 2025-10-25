@@ -21,12 +21,7 @@
 #include <QStringList>
 #include <QtGlobal>
 
-#if defined USE_KDE
-	#include <k4aboutdata.h>
-	#include <kapplication.h>
-	#include <kcmdlineargs.h>
-	#include "version.h"
-#elif defined USE_MAC_APP
+#if defined USE_MAC_APP
 	#include "uchmviewerapp.h"
 #else
 	#include <QApplication>
@@ -111,25 +106,9 @@ int main( int argc, char** argv )
 #endif
 #endif
 
-#if defined (USE_KDE)
-	K4AboutData aboutdata( "uChmViewer",
-	                       QByteArray(),
-	                       ki18n( "uChmViewer" ),
-	                       APP_VERSION,
-	                       ki18n( "CHM file viewer" ),
-	                       K4AboutData::License_GPL,
-	                       ki18n( "(c) 2004-2015 George Yunaev" ),
-	                       ki18n( "Please report bugs to nicegorov@ya.com" ),
-	                       "https://github.com/u-235/uchmviewer",
-	                       "" );
-
-	KCmdLineArgs::init( &aboutdata );
-	KApplication app;
-#else
 	UchmviewerApp app( argc, argv );
 
 	app.addLibraryPath( "qt-plugins" );
-#endif
 
 	fallbackFonts();
 
@@ -160,19 +139,7 @@ int main( int argc, char** argv )
 
 #endif
 
-#if defined (USE_KDE)
-	// Because KDE insists of using its KCmdLineArgs class for argument processing, and does not let you just
-	// to use QCoreApplication::arguments(), it forces us to write two different process functions. To avoid this,
-	// we convert command-line options to arguments ourselves here.
-	QStringList arguments;
-
-	for ( int i = 0; i < argc; i++ )
-		arguments << QString::fromUtf8( argv[i] );
-
-	mainWindow = new MainWindow( arguments );
-#else
 	mainWindow = new MainWindow( QCoreApplication::arguments() );
-#endif
 
 	// If we already have the duplicate instance, the data has been already sent to it - quit now
 	if ( mainWindow->hasSameTokenInstance() )

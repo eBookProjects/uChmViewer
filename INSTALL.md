@@ -24,7 +24,6 @@
 
 - I recommend using [Git][5] to retrieve the source code. Although you can download and unpack the archive with the sources, this option is not covered here. Also, Git is more convenient if you want to use a submodule with CHMLib.
 - [GNU Gettext][6] is required to translate the user interface.
-- [KDELibs4Support][7] and [ECM][8] to build with KDE support.
 
 
 ## Getting sources
@@ -40,7 +39,7 @@ git clone --recursive https://github.com/eBookProjects/uChmViewer
 
 ## Usage CMake
 
-A modern [cmake][9] generates an build system script and also can be used as a build and installation driver.
+A modern [cmake][7] generates an build system script and also can be used as a build and installation driver.
 
 ```sh
 # Generate build system
@@ -60,7 +59,6 @@ cmake --install . [<options>]
 
     **Project-specific variables**
 
-    - `USE_KF5=<ON | OFF>` - build application with KDE support.
     - `USE_STATIC_CHMLIB=<ON | OFF>` - choosing static linking with CHMLib, default is  `OFF`. For static linking, the library is compiled from source in the `lib/CHMLib` folder. This folder can be obtained along with the sources of the application using the command `git clone --recursive`.
     - `USE_WEBENGINE=<ON | OFF>` - choosing WebEngine instead of WebKit, default is `OFF`. WebEngine requires Qt version 5.9 or higher.
     - `USE_GETTEXT=<ON | OFF>` - enabling translation of the application, default is `ON`. If Gettext is not available, this option will be ignored.
@@ -85,7 +83,7 @@ cmake --install . [<options>]
 
 ### Cpack
 
-CMake comes with a `cpack` utility for generating installers. The build scripts have basic `cpack` support, but in some cases [additional options][10] and [variables][11] may need to be specified. The [generator][12] must be specified in any case.
+CMake comes with a `cpack` utility for generating installers. The build scripts have basic `cpack` support, but in some cases [additional options][8] and [variables][9] may need to be specified. The [generator][10] must be specified in any case.
 
 
 ## Building in Debian
@@ -94,7 +92,6 @@ In GNU/Linux with package manager DEB-based you need the following packages and 
 
 - `build-essential` `cmake` `git` `libzip-dev`
 - `libqt5webkit5-dev` or `qtwebengine5-dev`
-- `libkf5kdelibs4support-dev` if you choose build with KDE support.
 - `libchm-dev`
 - `gettext`
 
@@ -129,21 +126,6 @@ cpack -G DEB -DCPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON
 ```
 
 
-### Build with KF5
-
-```sh
-apt install build-essential cmake git libzip-dev libchm-dev\
- gettext libqt5webkit5-dev libkf5kdelibs4support-dev
-git clone --recursive https://github.com/eBookProjects/uChmViewer
-mkdir uchmviewer/build
-cd uchmviewer/build
-cmake -DCMAKE_BUILD_TYPE=Release -DUSE_KF5=ON ../
-cmake --build . --config Release
-# Optional generate package
-cpack -G DEB -DCPACK_DEBIAN_PACKAGE_SHLIBDEPS=ON
-```
-
-
 ## Qmake options
 
 The project options for qmake are the similar to those for cmake.
@@ -160,9 +142,7 @@ The project options for qmake are the similar to those for cmake.
 [4]: https://github.com/madler/zlib "zlib repositoriy"
 [5]: https://git-scm.com/ "Git home page"
 [6]: https://www.gnu.org/software/gettext "GNU Gettext home page"
-[7]: https://api.kde.org/frameworks/kdelibs4support/html/index.html "Legacy support for kdelibs 4 compatibility"
-[8]: https://api.kde.org/frameworks/extra-cmake-modules/html/index.html "Extra CMake Modules"
-[9]: https://cmake.org/cmake/help/latest/manual/cmake.1.html "Launch cmake"
-[10]: https://cmake.org/cmake/help/latest/manual/cpack.1.html "Launch cpack"
-[11]: https://cmake.org/cmake/help/latest/module/CPack.html "Cpack module"
-[12]: https://cmake.org/cmake/help/latest/manual/cpack-generators.7.html "cpack generators"
+[7]: https://cmake.org/cmake/help/latest/manual/cmake.1.html "Launch cmake"
+[8]: https://cmake.org/cmake/help/latest/manual/cpack.1.html "Launch cpack"
+[9]: https://cmake.org/cmake/help/latest/module/CPack.html "Cpack module"
+[10]: https://cmake.org/cmake/help/latest/manual/cpack-generators.7.html "cpack generators"
