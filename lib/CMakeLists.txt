@@ -1,6 +1,4 @@
 
-cmake_minimum_required(VERSION 3.5)
-
 if (${USE_STATIC_CHMLIB})
     set(CHMLIB_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/CHMLib/src)
 

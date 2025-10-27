@@ -1,7 +1,5 @@
 # Tries to find libzip
 
-cmake_minimum_required(VERSION 3.5)
-
 find_path(libzip_INCLUDE_DIR NAMES zip.h
     PATHS ${libzip_ROOT}
     PATH_SUFFIXES libzip/include include)

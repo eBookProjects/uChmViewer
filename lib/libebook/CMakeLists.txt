@@ -1,6 +1,4 @@
 
-cmake_minimum_required(VERSION 3.5)
-
 # Project files
 set(CPP_SOURCES
     bitfiddle.h
