@@ -13,6 +13,9 @@ fi
 SCRIPT_DIR=$(realpath "$(dirname "$0")")
 SOURCE_DIR=$(realpath "$SCRIPT_DIR"/../)
 
+__NESTED__=1
+. "${SCRIPT_DIR}"/build-helper.sh
+
 clean()
 {
     if [ -f "${PACKAGE_FILE_NAME}".exe ]; then
@@ -93,8 +96,5 @@ portable()
         echo "The zip not found."
     fi
 }
-
-__NESTED__=1
-. "${SCRIPT_DIR}"/build-helper.sh
 
 create package portable

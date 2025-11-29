@@ -21,15 +21,6 @@ BUILD_DIR=${SOURCE_DIR}/build
 QMAKE=qmake
 MAKE_JOBS=$(nproc)
 
-# Work files
-########################################
-BIN_LIST_FILE=${BUILD_DIR}/get_dependies-bin.txt
-LDD_LIST_FILE=${BUILD_DIR}/get_dependies-ldd.txt
-OBJ_LIST_FILE=${BUILD_DIR}/get_dependies-obj.txt
-LIB_LIST_FILE=${BUILD_DIR}/get_dependies-lib.txt
-PKG_LIST_FILE=${BUILD_DIR}/get_dependies-pkg.txt
-DEP_LIST_FILE=${BUILD_DIR}/get_dependies-dep.txt
-
 usage()
 {
     echo "\
@@ -38,10 +29,10 @@ Usage:
 $(basename "$0") [-b bld_dir] [-p pkg_dir] [-q qmake] [-s suffix] [-v version] [-w browser]
 
 Options:
-  -b bld_dir  The directory where the application will be built.
+  -b bld_dir  The directory where the application will be build.
               By default it is <source_root>/build
-  -p pkg_dir  The directory where the package will be built.
-              By default this is <bld_dir>/<pkg_name>_<pkg_version>
+  -p pkg_dir  The directory where the package will be build.
+              By default this is <bld_dir>/${PACKAGE_NAME}_<pkg_version>
   -q qmake    The name or full path of the qmake utility. In some
               distributives, qmake for Qt 6 is named qmake6.
   -s suffux   The suffix that will be added to the package name after the
@@ -62,17 +53,17 @@ The created package is saved in the current working directory.
 help()
 {
     echo "\
-Build the application and create the package." 1>&2
+Build an application and create a package." 1>&2
 usage
 }
 
 while getopts ":b:p:q:s:v:w:h" options; do
     case "${options}" in
     b)
-        BUILD_DIR=${OPTARG}
+        BUILD_DIR="$(realpath "${OPTARG}")"
         ;;
     p)
-        PACKAGE_DIR=${OPTARG}
+        PACKAGE_DIR="$(realpath "${OPTARG}")"
         FORCE_PACKAGE_DIR=1
         ;;
     q)
@@ -112,11 +103,13 @@ while getopts ":b:p:q:s:v:w:h" options; do
     esac
 done
 
+QT_MAJOR=$($QMAKE -query QT_VERSION  | awk -F . '{print $1}')
+
 if ! [ "$FORCE_PACKAGE_DIR" = 1 ]; then
     PACKAGE_DIR=${BUILD_DIR}/${PACKAGE_NAME}_${PACKAGE_VERSION}
 fi
 PACKAGE_BIN_DIR=${PACKAGE_DIR}/${PACKAGE_INSTALL_PREFIX}/bin
-PACKAGE_FILE_NAME="${PACKAGE_NAME}-${PACKAGE_BROWSER}-${PACKAGE_VERSION}${PACKAGE_SUFFIX}_${PACKAGE_ARCH}"
+PACKAGE_FILE_NAME="${PACKAGE_NAME}-${PACKAGE_VERSION}${PACKAGE_SUFFIX}-${PACKAGE_ARCH}-qt${QT_MAJOR}-${PACKAGE_BROWSER}"
 
 title1()
 {
@@ -140,6 +133,15 @@ title3()
     echo "$1"
     echo "-------------------------"
 }
+
+# Work files
+########################################
+BIN_LIST_FILE=${BUILD_DIR}/get_dependies-bin.txt
+LDD_LIST_FILE=${BUILD_DIR}/get_dependies-ldd.txt
+OBJ_LIST_FILE=${BUILD_DIR}/get_dependies-obj.txt
+LIB_LIST_FILE=${BUILD_DIR}/get_dependies-lib.txt
+PKG_LIST_FILE=${BUILD_DIR}/get_dependies-pkg.txt
+DEP_LIST_FILE=${BUILD_DIR}/get_dependies-dep.txt
 
 # Calculates the dependencies and stores them in the variable PACKAGE_DEPENDS.
 #
@@ -268,6 +270,7 @@ create()
     title1 "\
 Try to build package with:
 
+QT_MAJOR          ${QT_MAJOR}
 PACKAGE_NAME      ${PACKAGE_NAME}
 PACKAGE_BROWSER   ${PACKAGE_BROWSER}
 PACKAGE_SUFFIX    ${PACKAGE_SUFFIX}
@@ -278,7 +281,6 @@ SOURCE_DIR        ${SOURCE_DIR}
 BUILD_DIR         ${BUILD_DIR}
 PACKAGE_DIR       ${PACKAGE_DIR}
 "
-
     if ! [ "$MODE_NO_CLEAN" = 1 ]; then
         title1 "Clean the build tree and the package dir"
         clean

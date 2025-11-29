@@ -6,9 +6,11 @@ set -e
 
 PACKAGE_ARCH=$(dpkg --print-architecture)
 PACKAGE_INSTALL_PREFIX=/usr
-
 SCRIPT_DIR=$(realpath "$(dirname "$0")")
 SOURCE_DIR=$(realpath "$SCRIPT_DIR"/../)
+
+__NESTED__=1
+. ${SCRIPT_DIR}/build-helper.sh
 
 clean()
 {
@@ -52,10 +54,9 @@ package()
 
     # https://www.debian.org/doc/debian-policy/ch-controlfields.html
     cat <<EOF > "$PACKAGE_DIR"/DEBIAN/control
-Package: ${PACKAGE_NAME}-${PACKAGE_BROWSER}
+Package: ${PACKAGE_NAME}-qt${QT_MAJOR}-${PACKAGE_BROWSER}
 Provides: $PACKAGE_NAME
-Replaces: $PACKAGE_NAME
-Breaks: $PACKAGE_NAME
+Replaces: $PACKAGE_NAME, ${PACKAGE_NAME}-webkit, ${PACKAGE_NAME}-qt5-webkit, ${PACKAGE_NAME}-qt6-webkit, ${PACKAGE_NAME}-webengine, ${PACKAGE_NAME}-qt5-webengine, ${PACKAGE_NAME}-qt6-webengine
 Version: $PACKAGE_VERSION
 Description: CHM and EBOOK viewer.
 Section: devel
@@ -70,8 +71,5 @@ EOF
     echo "dpkg-deb --build $PACKAGE_DIR ${PACKAGE_FILE_NAME}.deb"
     dpkg-deb --build "$PACKAGE_DIR" "${PACKAGE_FILE_NAME}.deb"
 }
-
-__NESTED__=1
-. ${SCRIPT_DIR}/build-helper.sh
 
 create package
