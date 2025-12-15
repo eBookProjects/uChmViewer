@@ -57,16 +57,28 @@ jobs:
         distr:
           - name:       trixie
             version:    13
-            extra_pack: ""
+            artifact:   "Qt5"
+            extra_pack: "qtwebengine5-dev"
+            flags:      "-w webengine"
+          - name:       trixie
+            version:    13
+            artifact:   "Qt6"
+            extra_pack: "qt6-webengine-dev qt6-5compat-dev"
+            flags:      "-q qmake6 -w webengine"
           - name:       bookworm
             version:    12
-            extra_pack: ""
+            artifact:   "Qt5"
+            extra_pack: "libqt5webkit5-dev"
+            flags:      ""
           - name:       bullseye
             version:    11
-            extra_pack: ""
-          - name:       buster
-            version:    10
-            extra_pack: "qt5-default"
+            artifact:   "Qt5"
+            extra_pack: "libqt5webkit5-dev"
+            flags:      ""
+          #- name:       buster
+          #  version:    10
+          #  extra_pack: "qt5-default qtbase5-dev libqt5webkit5-dev"
+          #  flags:      ""
         arch:
           - name: amd64
             id:   linux/amd64
@@ -81,15 +93,15 @@ jobs:
         run: |
           apt-get update
           # https://serverfault.com/a/992421
-          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y build-essential qtbase5-dev libqt5webkit5-dev gettext libzip-dev libchm-dev ${{matrix.distr.extra_pack}}
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y build-essential gettext libzip-dev libchm-dev ${{matrix.distr.extra_pack}}
 
       - name: Build
-        run: packages/build-deb.sh -s debian-${{matrix.distr.name}} -v ${{ needs.setup.outputs.version }}
+        run: packages/build-deb.sh ${{matrix.distr.flags}} -s debian-${{matrix.distr.name}} -v ${{ needs.setup.outputs.version }}
 
       - name: Upload debian packages
         uses: actions/upload-artifact@v4
         with:
-          name: debian-${{matrix.distr.name}}-${{matrix.arch.name}}
+          name: debian-${{matrix.distr.name}}-${{matrix.distr.artifact}}-${{matrix.arch.name}}
           path: '*.deb'
 
   # https://en.wikipedia.org/wiki/Ubuntu_version_history
@@ -103,13 +115,19 @@ jobs:
         distr:
           - name:       noble
             version:    24.04
-            extra_pack: ""
+            artifact:   "Qt5"
+            extra_pack: "libqt5webkit5-dev"
+            flags:      ""
           - name:       jammy
             version:    22.04
-            extra_pack: ""
+            artifact:   "Qt5"
+            extra_pack: "libqt5webkit5-dev"
+            flags:      ""
           - name:       focal
             version:    20.04
-            extra_pack: "qt5-default"
+            artifact:   "Qt5"
+            extra_pack: "qt5-default libqt5webkit5-dev"
+            flags:      ""
         arch:
           - name: amd64
             id:   linux/amd64
@@ -123,16 +141,60 @@ jobs:
       - name: Install Dependencies
         run: |
           apt-get update
-          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y build-essential qtbase5-dev libqt5webkit5-dev gettext libzip-dev libchm-dev ${{matrix.distr.extra_pack}}
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y build-essential gettext libzip-dev libchm-dev ${{matrix.distr.extra_pack}}
 
       - name: Build
-        run: packages/build-deb.sh -s ubuntu-${{matrix.distr.name}} -v ${{ needs.setup.outputs.version }}
+        run: packages/build-deb.sh ${{matrix.distr.flags}} -s ubuntu-${{matrix.distr.name}} -v ${{ needs.setup.outputs.version }}
 
       - name: Upload ubuntu packages
         uses: actions/upload-artifact@v4
         with:
-          name: ubuntu-${{matrix.distr.name}}-${{matrix.arch.name}}
+          name: ubuntu-${{matrix.distr.name}}-${{matrix.distr.artifact}}-${{matrix.arch.name}}
           path: '*.deb'
+
+  # https://en.wikipedia.org/wiki/Fedora_Linux_release_history
+  # https://hub.docker.com/_/fedora
+  build-fedora-packages:
+    runs-on: ubuntu-22.04
+    needs: setup
+    strategy:
+      fail-fast: false
+      matrix:
+        distr:
+          - version:    43
+            artifact:   "Qt5"
+            extra_pack: "qt5-qtwebkit-devel"
+            flags:      "-q qmake-qt5"
+          - version:    42
+            artifact:   "Qt5"
+            extra_pack: "qt5-qtwebkit-devel"
+            flags:      "-q qmake-qt5"
+          - version:    41
+            artifact:   "Qt5"
+            extra_pack: "qt5-qtwebkit-devel"
+            flags:      "-q qmake-qt5"
+        arch:
+          - name: amd64
+            id:   linux/amd64
+    container:
+      image: fedora:${{matrix.distr.version}}
+      options: --platform ${{matrix.arch.id}}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          dnf install -q -y coreutils gcc make cmake git gettext libzip-devel chmlib-devel rpm-build ${{matrix.distr.extra_pack}}
+
+      - name: Build
+        run: packages/build-rpm.sh ${{matrix.distr.flags}} -s fedora-${{matrix.distr.version}} -v ${{ needs.setup.outputs.version }}
+
+      - name: Upload fedora packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: fedora-${{matrix.distr.version}}-${{matrix.distr.artifact}}-${{matrix.arch.name}}
+          path: '*.rpm'
 
   build-windows-installer:
     runs-on: windows-2025
@@ -142,7 +204,6 @@ jobs:
       matrix:
         msystem:
           - mingw64
-          - mingw32
     defaults:
       run:
         shell: msys2 {0}
@@ -176,6 +237,8 @@ jobs:
             qt5-base:p
             qt5-translations:p
             qtwebkit:p
+            gettext-runtime:p
+            gettext-tools:p
 
       - name: Build
         run: packages/build-win-msys2.sh -s windows -v ${{ needs.setup.outputs.version }}
@@ -190,7 +253,7 @@ jobs:
 
   create-release:
     runs-on: ubuntu-22.04
-    needs: [build-debian-packages, build-ubuntu-packages, build-windows-installer]
+    needs: [build-debian-packages, build-ubuntu-packages, build-fedora-packages, build-windows-installer]
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
