@@ -1,3 +1,12 @@
+## 2025-12-21 v8.
+
+* Removed KDE support.
+* Added hidpi support.
+* Added packages for Fedora.
+* Fixed crash on some large chm file.
+* Fixed crash with Qt6.10.
+
+
 ## 2025-01-06 v8.4
 
 * Added Polish translation imported from https://github.com/artww/kchmviewer .

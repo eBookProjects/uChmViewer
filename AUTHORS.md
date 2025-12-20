@@ -14,7 +14,9 @@
 
 - [Zhong Jianxin](https://github.com/azuwis).
 - [arzam16](https://github.com/arzam16).
-- [oltolm](https://github.com/oltolm)
+- [oltolm](https://github.com/oltolm).
+- [gonwan](https://github.com/gonwan).
+- [a17r](https://github.com/a17r).
 
 
 ## Translations

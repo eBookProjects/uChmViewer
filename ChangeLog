@@ -1,4 +1,34 @@
-2024-01-06 u-235 <nicegorov@yandex.com>
+2025-12-21 u-235 <nicegorov@yandex.com>
+    - Fixed crash with Qt6.10
+    - v8.5 published
+
+2025-11-04 Andreas Sturmlechner <asturm@gentoo.org>
+    - Raised CMake minimum version to 3.16
+
+2025-10-25 u-235 <nicegorov@yandex.com>
+    - Dropped KDE support
+
+2025-06-08 Binhao Qian <gonwan@gmail.com>
+    - Fixed index overflow
+
+2025-06-06 Binhao Qian <gonwan@gmail.com>
+    - Added support for hidpi icon and fractional scaling
+
+2025-05-20 Binhao Qian <gonwan@gmail.com>
+    - Improved CJK fonts rendering under Windows
+
+2025-03-02 Binhao Qian <gonwan@gmail.com>
+    - Fixed memory leaks
+
+2025-02-15 u-235 <nicegorov@yandex.ru>
+    - Updated astyle.cfg for the 3.4 version and formatted sources
+    - Added the codespell support and fixed typos
+
+2025-02-14 Binhao Qian <gonwan@gmail.com>
+    - Added hdpi scaling in Qt5
+    - Fixed filename conversion from QString to char*
+
+2025-01-06 u-235 <nicegorov@yandex.com>
     - v8.4 published
 
 2024-12-28 u-235 <nicegorov@yandex.com>
