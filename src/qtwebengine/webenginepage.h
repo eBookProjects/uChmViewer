@@ -23,6 +23,7 @@
 #include <QtDebug>
 #include <QObject>
 #include <Qt>
+#include <QTimer>
 #include <QWebEnginePage>
 #include <QWebEngineProfile>
 
@@ -87,13 +88,18 @@ class WebEnginePage : public QWebEnginePage
 
 			if ( type == QWebEnginePage::NavigationTypeLinkClicked )
 			{
+				Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
+				bool enableEmit = ( mods & ( Qt::ShiftModifier | Qt::ControlModifier ) ) == 0;
+
 				/*
-				 * Here m_url is used as a flag. If linkClicked was emitted in the createWindow
-				 * function, the m_url variable has been cleared and we don't need to re-emit
-				 * linkClicked. This is specifically for QwebEngine < 6.2.
+				 * Emitting the linkClicked signal directly from here worked until Qt 6.10.
+				 * In 6.10, this sometimes caused the application to crash. The solution was
+				 * to use a timer to emit the signal asynchronously. Another way was to
+				 * connect the WebEnginePage::linkClicked signal to the ViewWindow::onLinkClicked
+				 * slot via a queue, but this requires registering the UBrowser::OpenMode type.
 				 */
-				if ( !m_url.isEmpty() )
-					emit linkClicked( url, UBrowser::OPEN_IN_CURRENT );
+				if ( enableEmit )
+					emitLinkClicked( url, UBrowser::OPEN_IN_CURRENT );
 
 				return false;
 			}
@@ -123,11 +129,9 @@ class WebEnginePage : public QWebEnginePage
 				Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
 
 				if ( ( mods & Qt::ShiftModifier ) != 0 || type == QWebEnginePage::WebBrowserTab )
-					emit linkClicked( m_url, UBrowser::OPEN_IN_NEW );
+					emitLinkClicked( m_url, UBrowser::OPEN_IN_NEW );
 				else
-					emit linkClicked( m_url, UBrowser::OPEN_IN_BACKGROUND );
-
-				m_url.clear();
+					emitLinkClicked( m_url, UBrowser::OPEN_IN_BACKGROUND );
 			}
 
 			return nullptr;
@@ -142,6 +146,15 @@ class WebEnginePage : public QWebEnginePage
 #endif
 
 			m_url = url;
+		}
+
+		void emitLinkClicked( const QUrl& url, UBrowser::OpenMode mode )
+		{
+			QTimer::singleShot( 10,
+			                    [ this, url, mode ]()
+			                    {
+			                        emit linkClicked( url, mode );
+			                    } );
 		}
 
 	protected:
