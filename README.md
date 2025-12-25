@@ -61,9 +61,16 @@ Getting uChmViewer
 Binary builds for Debian, Ubuntu, Fedora and Windows are available on the
 [release page](https://github.com/eBookProjects/uChmViewer/releases/latest).You
 can also build the application yourself by following the
-[build instructions](INSTALL.md). In addition, thanks to Андрей Алыпов (AndnoVember),
-[RPM packages](https://build.opensuse.org/package/show/home:AndnoVember:LXQt:Qt6/uchmviewer)
-for OpenSuse are available.
+[build instructions](INSTALL.md).
+
+In addition, third-party builds are available:
+
+- For
+  [OpenSuse](https://build.opensuse.org/package/show/home:AndnoVember:LXQt:Qt6/uchmviewer),
+  thanks to Андрей Алыпов (AndnoVember).
+- For
+  [Fedora and EPEL](https://copr.fedorainfracloud.org/coprs/nucleo/uchmviewer),
+  thanks to nucleo.
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/uchmviewer.svg)](https://repology.org/project/uchmviewer/versions)
 
@@ -101,6 +108,6 @@ License
 uChmViewer is distributed under GNU GPL license version 3. You can get the
 source code at the following sites:
 
-- [GitHub](https://github.com/GCodeProjects/uChmViewer)
+- [GitHub](https://github.com/eBookProjects/uChmViewer)
 - [GitFlic](https://gitflic.ru/project/u-235/uchmviewer)
 - [Codeberg](https://codeberg.org/u-235/uChmViewer)

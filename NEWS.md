@@ -1,4 +1,4 @@
-## 2025-12-21 v8.
+## 2025-12-21 v8.5
 
 * Removed KDE support.
 * Added hidpi support.

@@ -176,6 +176,7 @@ Build with __Qt5__ and __WebKit__ using __Qmake__
 
 	qmake -recursive CONFIG+=release USE_GETTEXT=1 ../
 	make
+	make i18n
 
 Build with __Qt5__ and __WebEngine__ using __CMake__
 
@@ -186,6 +187,7 @@ Build with __Qt5__ and __WebEngine__ using __Qmake__
 
 	qmake -recursive CONFIG+=release USE_GETTEXT=1 USE_WEBENGINE=1 ../
 	make
+	make i18n
 
 Build with __Qt6__ and __WebEngine__ using __CMake__
 
@@ -196,6 +198,7 @@ Build with __Qt6__ and __WebEngine__ using __Qmake__
 
 	qmake6 -recursive CONFIG+=release USE_GETTEXT=1 USE_WEBENGINE=1 ../
 	make
+	make i18n
 
 
 Creating a packages and an installers
