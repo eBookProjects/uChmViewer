@@ -152,7 +152,6 @@ int main( int argc, char** argv )
 		return 0;
 	}
 
-	mainWindow->show();
 	mainWindow->launch();
 
 	app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );

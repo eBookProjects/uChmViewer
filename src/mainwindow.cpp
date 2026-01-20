@@ -667,6 +667,23 @@ bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_ap
 		}
 	}
 
+	if ( force_background )
+		showMinimized();
+	else
+		show();
+
+	if ( from_another_app )
+	{
+		// On Windows it is not possible to activate the window of a non-active process. From MSDN:
+		// https://msdn.microsoft.com/en-us/library/windows/desktop/ms633539%28v=vs.85%29.aspx
+		//
+		// An application cannot force a window to the foreground while the user is working with another window.
+		// Instead, Windows flashes the taskbar button of the window to notify the user.
+		activateWindow();
+		raise();
+		show();
+	}
+
 	// Opening the file?
 	if ( !filename.isEmpty() )
 	{
@@ -710,20 +727,6 @@ bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_ap
 			m_autoteststate = STATE_INITIAL;
 			showMinimized();
 			runAutoTest();
-		}
-
-		if ( force_background )
-			showMinimized();
-		else if ( from_another_app )
-		{
-			// On Windows it is not possible to activate the window of a non-active process. From MSDN:
-			// https://msdn.microsoft.com/en-us/library/windows/desktop/ms633539%28v=vs.85%29.aspx
-			//
-			// An application cannot force a window to the foreground while the user is working with another window.
-			// Instead, Windows flashes the taskbar button of the window to notify the user.
-			activateWindow();
-			raise();
-			show();
 		}
 
 		return true;
