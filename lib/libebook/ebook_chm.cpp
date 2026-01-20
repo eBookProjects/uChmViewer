@@ -528,7 +528,6 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 
 			// offset+6 skips 'value='
 			offset = findStringInQuotes( tag, offset + value_pattern.length(), pvalue, false, true );
-								qWarning( "11111: value=%s", qUtf8Printable( pvalue ) );
 			if ( offset == -1 )
 				continue;
 
