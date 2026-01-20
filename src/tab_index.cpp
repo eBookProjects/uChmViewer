@@ -91,7 +91,7 @@ void TabIndex::onTextChanged( const QString& newvalue )
 	{
 		m_lastSelectedItem = items[0];
 		tree->setCurrentItem( m_lastSelectedItem );
-		tree->scrollToItem( m_lastSelectedItem );
+		tree->scrollToItem( m_lastSelectedItem, QAbstractItemView::PositionAtTop );
 	}
 	else
 		m_lastSelectedItem = 0;

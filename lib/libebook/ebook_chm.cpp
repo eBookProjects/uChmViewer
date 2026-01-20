@@ -410,12 +410,11 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 	}
 	*/
 
-	EBookTocEntry::Icon defaultimagenum = EBookTocEntry::IMAGE_AUTO;
 	int pos = 0, indent = 0, root_indent_offset = 0;
 	bool in_object = false, root_indent_offset_set = false;
 
 	ParsedEntry entry;
-	entry.iconid = defaultimagenum;
+	QMap< QString, ParsedEntry > indexNameEntryMap;
 
 	// Split the HHC file by HTML tags
 	int stringlen = src.length();
@@ -488,17 +487,22 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 
 				// Trim the entry name
 				entry.name = entry.name.trimmed();
-
 				int real_indent = indent - root_indent_offset;
-
 				entry.indent = real_indent;
-				data.push_back( entry );
+
+				if ( !asIndex )
+					data.push_back( entry );
+				else
+				{
+					QMap< QString, ParsedEntry >::iterator it = indexNameEntryMap.find( entry.name );
+					if ( it == indexNameEntryMap.end() )
+						indexNameEntryMap[ entry.name ] = entry;
+					else
+						it.value().urls.append( entry.urls );
+				}
 			}
 
-			entry.name = QString();
-			entry.urls.clear();
-			entry.iconid = defaultimagenum;
-			entry.seealso.clear();
+			entry.clear();
 			in_object = false;
 		}
 		else if ( tagword == "param" && in_object )
@@ -536,7 +540,7 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 			if ( pname == "name" || pname == "keyword" )
 			{
 				// Some help files contain duplicate names, where the second name is empty. Work it around by keeping the first one
-				if ( !pvalue.isEmpty() )
+				if ( !pvalue.isEmpty() && entry.name.isEmpty() )
 					entry.name = pvalue;
 			}
 			else if ( pname == "merge" )
@@ -601,6 +605,9 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 
 		pos = i;
 	}
+
+	if ( asIndex )
+		data = indexNameEntryMap.values();
 
 	// Dump our array
 //    for ( int i = 0; i < data.size(); i++ )
@@ -940,8 +947,12 @@ void EBook_CHM::fillTopicsUrlMap()
 		unsigned int off_url = get_int32_le( ( unsigned int* )( topics.data() + i + 8 ) );
 		off_url = get_int32_le( ( unsigned int* )( urltbl.data() + off_url + 8 ) ) + 8;
 
-		QUrl url = pathToUrl( ( const char* ) urlstr.data() + off_url );
+		QUrl url = pathToUrl( encodeInternalWithCurrentCodec( ( const char* ) urlstr.data() + off_url ) );
 
+		/*
+		 * Titles are extracted from the <title> field from html pages when compling the chm file, try with text codec.
+		 * These values are used in index search and index with multiple topics selection currently.
+		 */
 		if ( off_title < ( unsigned int )strings.size() )
 			m_url2topics[url] = encodeWithCurrentCodec( ( const char* ) strings.data() + off_title );
 		else
@@ -1136,10 +1147,4 @@ QString EBook_CHM::urlToPath( const QUrl& link ) const
 	}
 
 	return "";
-}
-
-EBook_CHM::ParsedEntry::ParsedEntry()
-{
-	iconid = 0;
-	indent = 0;
 }
