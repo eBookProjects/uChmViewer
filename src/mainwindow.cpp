@@ -382,8 +382,8 @@ bool MainWindow::loadFile( const QString& loadFileName, bool call_open_page )
 	else
 	{
 		QMessageBox mbox(
-		    i18n( "%1 - failed to load the chm file" ) . arg( QCoreApplication::applicationName() ),
-		    i18n( "Unable to load the chm file %1" ) . arg( fileName ),
+		    i18n( "%1 - failed to load file" ) . arg( QCoreApplication::applicationName() ),
+		    i18n( "Unable to load file %1" ) . arg( fileName ),
 		    QMessageBox::Critical,
 		    QMessageBox::Ok,
 		    Qt::NoButton,

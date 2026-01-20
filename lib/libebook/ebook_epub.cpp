@@ -26,6 +26,7 @@
 #include <QByteArray>
 #include <QChar>
 #include <QIODevice>
+#include <QFileInfo>
 #include <QList>
 #include <QMessageBox>
 #include <QString>
@@ -224,8 +225,8 @@ bool EBook_EPUB::parseBookinfo()
 	if ( !parseXML( container_parser.contentPath, &content_parser ) )
 		return false;
 
-	// At least title and the TOC must be present
-	if ( !content_parser.metadata.contains( "title" ) || content_parser.tocname.isEmpty() )
+	// At least the TOC must be present
+	if ( content_parser.tocname.isEmpty() )
 		return false;
 
 	// All the files, including TOC, are relative to the container_parser.contentPath
@@ -242,7 +243,10 @@ bool EBook_EPUB::parseBookinfo()
 		return false;
 
 	// Get the data
-	m_title = content_parser.metadata[ "title" ];
+	if ( content_parser.metadata.contains( "title" ) )
+		m_title = content_parser.metadata[ "title" ];
+	else
+		m_title = QFileInfo( m_epubFile ).fileName();
 
 	// Move the manifest entries into the list
 	Q_FOREACH ( QString f, content_parser.manifest.values() )
