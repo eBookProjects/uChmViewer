@@ -201,7 +201,19 @@ class EBook_CHM : public EBook
 		class ParsedEntry
 		{
 			public:
-				ParsedEntry();
+				ParsedEntry()
+				{
+					iconid = EBookTocEntry::IMAGE_AUTO;
+					indent = 0;
+				}
+				void clear()
+				{
+					name.clear();
+					urls.clear();
+					iconid = EBookTocEntry::IMAGE_AUTO;
+					indent = 0;
+					seealso.clear();
+				}
 
 				QString     name;
 				QList<QUrl> urls;
