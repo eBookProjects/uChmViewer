@@ -335,12 +335,18 @@ int EBook_CHM::findStringInQuotes( const QString& tag, int offset, QString& valu
 	int qbegin = tag.indexOf( '"', offset );
 
 	if ( qbegin == -1 )
-		qFatal( "EBook_CHMImpl::findStringInQuotes: cannot find first quote in <param> tag: '%s'", qPrintable( tag ) );
+	{
+		qWarning( "EBook_CHMImpl::findStringInQuotes: cannot find first quote in <param> tag: '%s'", qPrintable( tag ) );
+		return -1;
+	}
 
 	int qend = firstquote ? tag.indexOf( '"', qbegin + 1 ) : tag.lastIndexOf( '"' );
 
 	if ( qend == -1 || qend <= qbegin )
-		qFatal( "EBook_CHMImpl::findStringInQuotes: cannot find last quote in <param> tag: '%s'", qPrintable( tag ) );
+	{
+		qWarning( "EBook_CHMImpl::findStringInQuotes: cannot find last quote in <param> tag: '%s'", qPrintable( tag ) );
+		return -1;
+	}
 
 	// If we do not need to decode HTML entities, just return.
 	if ( decodeentities )
@@ -426,13 +432,19 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 				// find where quote ends, either by another quote, or by '>' symbol (some people don't know HTML)
 				int nextpos = src.indexOf( src[i], i + 1 );
 
-				if ( nextpos == -1  && ( nextpos = src.indexOf( '>', i + 1 ) ) == -1 )
+				if ( nextpos == -1 )
 				{
-					qWarning( "EBook_CHMImpl::ParseHhcAndFillTree: corrupted TOC: %s", qPrintable( src.mid( i ) ) );
-					return false;
+					if ( ( nextpos = src.indexOf( '>', i + 1 ) ) == -1 )
+					{
+						qWarning( "EBook_CHMImpl::ParseHhcAndFillTree: corrupted TOC: %s", qPrintable( src.mid( i ) ) );
+						return false;
+					}
+					else
+						// so that we can correctly find next '>' symbol and break in next loop
+						i = nextpos - 1;
 				}
-
-				i =  nextpos;
+				else
+					i =  nextpos;
 			}
 			else if ( src[i] == '>' )
 				break;
@@ -497,17 +509,28 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 			QString pname, pvalue;
 
 			if ( ( offset = tag.indexOf( name_pattern, 0, Qt::CaseInsensitive ) ) == -1 )
-				qFatal( "EBook_CHMImpl::ParseAndFillTopicsTree: bad <param> tag '%s': no name=\n", qPrintable( tag ) );
+			{
+				qWarning( "EBook_CHMImpl::ParseAndFillTopicsTree: bad <param> tag '%s': no name=\n", qPrintable( tag ) );
+				continue;
+			}
 
 			// offset+5 skips 'name='
 			offset = findStringInQuotes( tag, offset + name_pattern.length(), pname, true, false );
+			if ( offset == -1 )
+				continue;
 			pname = pname.toLower();
 
 			if ( ( offset = tag.indexOf( value_pattern, offset, Qt::CaseInsensitive ) ) == -1 )
-				qFatal( "EBook_CHMImpl::ParseAndFillTopicsTree: bad <param> tag '%s': no value=\n", qPrintable( tag ) );
+			{
+				qWarning( "EBook_CHMImpl::ParseAndFillTopicsTree: bad <param> tag '%s': no value=\n", qPrintable( tag ) );
+				continue;
+			}
 
 			// offset+6 skips 'value='
-			findStringInQuotes( tag, offset + value_pattern.length(), pvalue, false, true );
+			offset = findStringInQuotes( tag, offset + value_pattern.length(), pvalue, false, true );
+								qWarning( "11111: value=%s", qUtf8Printable( pvalue ) );
+			if ( offset == -1 )
+				continue;
 
 			//DEBUGPARSER(("<param>: name '%s', value '%s'", qPrintable( pname ), qPrintable( pvalue )));
 
@@ -562,7 +585,10 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 		{
 			// Fix for buggy help files
 			if ( ++indent >= MAX_NEST_DEPTH )
-				qFatal( "EBook_CHMImpl::ParseAndFillTopicsTree: max nest depth (%d) is reached, error in help file", MAX_NEST_DEPTH );
+			{
+				qWarning( "EBook_CHMImpl::ParseAndFillTopicsTree: max nest depth (%d) is reached, error in help file", MAX_NEST_DEPTH );
+				return false;
+			}
 
 			DEBUGPARSER( ( "<ul>: new intent is %d\n", indent - root_indent_offset ) );
 		}
@@ -596,7 +622,7 @@ bool EBook_CHM::hasFile( const QString& fileName ) const
 	chmUnitInfo ui;
 
 	return m_chmFile != NULL
-	       && ::chm_resolve_object( m_chmFile, qPrintable( fileName ), &ui ) ==
+	       && ::chm_resolve_object( m_chmFile, qUtf8Printable( fileName ), &ui ) ==
 	       CHM_RESOLVE_SUCCESS;
 }
 
@@ -836,7 +862,7 @@ bool EBook_CHM::guessTextEncoding()
 {
 	if ( !m_detectedLCID )
 	{
-		qFatal( "Could not detect LCID" );
+		qWarning( "Could not detect LCID" );
 		return false;
 	}
 
