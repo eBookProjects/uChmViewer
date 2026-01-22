@@ -146,7 +146,7 @@ bool EBook_CHM::getTableOfContents( QList<EBookTocEntry>& toc ) const
 		entry.name = e.name;
 
 		if ( !e.urls.empty() )
-			entry.url = e.urls[0];
+			entry.urls = e.urls;
 
 		toc.append( entry );
 	}
@@ -1068,7 +1068,7 @@ bool EBook_CHM::RecurseLoadBTOC( const QByteArray& tocidx,
 			if ( !entry.name.isEmpty() )
 			{
 				if ( !value.isEmpty() )
-					entry.url = pathToUrl( value );
+					entry.urls.append( pathToUrl( value ) );
 
 				entry.iconid = EBookTocEntry::IMAGE_AUTO;
 				entry.indent = level;

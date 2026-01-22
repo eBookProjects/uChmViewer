@@ -134,7 +134,7 @@ QString EBook_EPUB::title() const
 
 QUrl EBook_EPUB::homeUrl() const
 {
-	return m_tocEntries[0].url;
+	return m_tocEntries[0].urls.first();
 }
 
 bool EBook_EPUB::hasFeature( EBook::Feature code ) const
@@ -167,8 +167,11 @@ bool EBook_EPUB::getIndex( QList<EBookIndexEntry>& ) const
 
 QString EBook_EPUB::getTopicByUrl( const QUrl& url )
 {
-	if ( m_urlTitleMap.contains( url ) )
-		return m_urlTitleMap[ url ];
+	if ( m_urlEntryMap.contains( url ) )
+	{
+		int idx = m_urlEntryMap[ url ];
+		return m_tocEntries[ idx ].name;
+	}
 
 	return "";
 }
@@ -255,16 +258,78 @@ bool EBook_EPUB::parseBookinfo()
 	// Copy the manifest information and fill up the other maps if we have it
 	if ( !toc_parser.entries.isEmpty() )
 	{
-		Q_FOREACH ( EBookTocEntry e, toc_parser.entries )
+		QList< EBookTocEntry > prependEntries;
+		QList< EBookTocEntry > tocEntries;
+		Q_FOREACH ( const EBookTocEntry& e, toc_parser.entries )
 		{
-			// Add into url-title map
-			m_urlTitleMap[ e.url ] = e.name;
-			m_tocEntries.push_back( e );
+			tocEntries.push_back( e );
+			m_urlEntryMap[ e.urls.first() ] = tocEntries.size() - 1;
+		}
+
+		Q_FOREACH ( const QUrl& u, m_urlEntryMap.keys() )
+		{
+			if ( u.hasFragment() )
+			{
+				// Remove fragment, so that we can find it in the next step
+				QUrl u2 = u.adjusted(QUrl::RemoveFragment);
+				if ( !m_urlEntryMap.contains( u2 ) )
+					m_urlEntryMap[ u2 ] = m_urlEntryMap[ u ];
+			}
+		}
+
+		// Second pass to add entries in content.opf, but not in toc.ncx
+		int prevEntryIdx = -1;
+		Q_FOREACH ( const QString& u, content_parser.spine )
+		{
+			QMap< QString, QString >::iterator it = content_parser.manifest.find( u );
+			if ( it != content_parser.manifest.end() )
+			{
+				QUrl spineUrl = pathToUrl( it.value() );
+
+				if ( m_urlEntryMap.contains( spineUrl ) )
+					prevEntryIdx = m_urlEntryMap[ spineUrl ];
+				else
+				{
+					if ( prevEntryIdx != -1 )
+						tocEntries[ prevEntryIdx ].urls.append( spineUrl );
+					else
+					{
+						EBookTocEntry e;
+						e.name = u;
+						e.urls.append( spineUrl );
+						e.iconid = EBookTocEntry::IMAGE_NONE;
+						e.indent = 0;
+						prependEntries.push_back( e );
+					}
+				}
+			}
+		}
+		// Merge two list
+		if ( prependEntries.isEmpty() )
+			m_tocEntries.swap( tocEntries );
+		else
+		{
+			Q_FOREACH ( const EBookTocEntry& e, prependEntries )
+			{
+				m_tocEntries.push_back( e );
+				Q_FOREACH ( const QUrl &u, e.urls )
+				{
+					m_urlEntryMap[ u ] = m_tocEntries.size() - 1;
+				}
+			}
+			Q_FOREACH ( const EBookTocEntry& e, tocEntries )
+			{
+				m_tocEntries.push_back( e );
+				Q_FOREACH ( const QUrl &u, e.urls )
+				{
+					m_urlEntryMap[ u ] = m_tocEntries.size() - 1;
+				}
+			}
 		}
 	}
 	else
 	{
-		// Copy them from spline
+		// Copy them from spine
 		Q_FOREACH ( QString u, content_parser.spine )
 		{
 			EBookTocEntry e;
@@ -273,14 +338,12 @@ bool EBook_EPUB::parseBookinfo()
 			if ( content_parser.manifest.contains( u ) )
 				url = content_parser.manifest[ u ];
 
-			e.name = url;
-			e.url = pathToUrl( url );
+			e.name = u;
+			e.urls.append( pathToUrl( url ) );
 			e.iconid = EBookTocEntry::IMAGE_NONE;
 			e.indent = 0;
-
-			// Add into url-title map
-			m_urlTitleMap[ pathToUrl( url ) ] = url;
 			m_tocEntries.push_back( e );
+			m_urlEntryMap[ pathToUrl( url ) ] = m_tocEntries.size() - 1;
 		}
 	}
 

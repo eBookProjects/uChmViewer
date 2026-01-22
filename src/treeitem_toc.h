@@ -29,11 +29,13 @@ class QVariant;
 class TreeItem_TOC : public QTreeWidgetItem
 {
 	public:
-		TreeItem_TOC( QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image );
-		TreeItem_TOC( QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image );
+		TreeItem_TOC( QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, int image );
+		TreeItem_TOC( QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, int image );
 
-		QUrl        getUrl() const;
-		bool        containstUrl( const QUrl& url, bool ignorefragment ) const;
+		QUrl        getUrl( bool isFirst = true ) const;
+		bool        containsUrl( const QUrl& url, bool ignorefragment ) const;
+		QUrl        findPrevUrl( const QUrl& url );
+		QUrl        findNextUrl( const QUrl& url );
 
 		// Overridden methods
 		int         columnCount() const;
@@ -41,7 +43,7 @@ class TreeItem_TOC : public QTreeWidgetItem
 
 	private:
 		QString     m_name;
-		QUrl        m_url;
+		QList<QUrl> m_urls;
 		int         m_image;
 };
 

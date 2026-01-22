@@ -31,50 +31,91 @@
 #include "treeitem_toc.h"
 
 
-TreeItem_TOC::TreeItem_TOC( QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image )
+TreeItem_TOC::TreeItem_TOC( QTreeWidgetItem* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, int image )
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
-	m_url = url;
+	m_urls = urls;
 	m_image = image;
 }
 
-TreeItem_TOC::TreeItem_TOC( QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QUrl& url, int image )
+TreeItem_TOC::TreeItem_TOC( QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, int image )
 	: QTreeWidgetItem( parent, after )
 {
 	m_name = name;
-	m_url = url;
+	m_urls = urls;
 	m_image = image;
 }
 
-QUrl TreeItem_TOC::getUrl() const
+QUrl TreeItem_TOC::getUrl( bool isFirst ) const
 {
-	return m_url;
+	return isFirst ? m_urls.first() : m_urls.last();
 }
 
-bool TreeItem_TOC::containstUrl( const QUrl& url, bool ignorefragment ) const
+bool TreeItem_TOC::containsUrl( const QUrl& url, bool ignorefragment ) const
 {
 	if ( ignorefragment )
 	{
 		// This appears to be a bug in Qt: the url.path() returns a proper path starting with /,
 		// but m_url.path() returns a relative URL starting with no / - so we make sure both are.
 		QString urlpath = url.path();
-		QString ourpath = m_url.path();
 
 		// Memory allocation-wise this must really suck :( however this code is rarely used,
 		// and only for buggy epub/chms.
 		if ( !urlpath.startsWith( '/' ) )
 			urlpath.prepend( '/' );
 
-		if ( !ourpath.startsWith( '/' ) )
-			ourpath.prepend( '/' );
-
-		return urlpath == ourpath;
+		Q_FOREACH ( const QUrl& u, m_urls )
+		{
+			QString ourpath = u.path();
+			if ( !ourpath.startsWith( '/' ) )
+				ourpath.prepend( '/' );
+			if ( urlpath == ourpath )
+				return true;
+		}
+		return false;
 	}
 	else
 	{
-		return url == m_url;
+		return m_urls.contains( url );
 	}
+}
+
+QUrl TreeItem_TOC::findPrevUrl( const QUrl& url )
+{
+	bool found = false;
+	QList< QUrl >::reverse_iterator it = m_urls.rbegin();
+	for ( ; it != m_urls.rend(); ++it )
+	{
+		if ( *it == url )
+		{
+			found = true;
+			break;
+		}
+	}
+
+	if ( found && it != m_urls.rend() - 1 )
+		return *( ++it );
+	else
+		return QUrl();
+}
+
+QUrl TreeItem_TOC::findNextUrl( const QUrl& url )
+{
+	bool found = false;
+	QList< QUrl >::iterator it = m_urls.begin();
+	for ( ; it != m_urls.end(); ++it )
+	{
+		if ( *it == url )
+		{
+			found = true;
+			break;
+		}
+	}
+	if ( found && it != m_urls.end() - 1 )
+		return *( ++it );
+	else
+		return QUrl();
 }
 
 int TreeItem_TOC::columnCount() const
