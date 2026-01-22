@@ -172,6 +172,8 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 	protected:
 		// Reimplemented functions
 		void        closeEvent( QCloseEvent* e );
+		void        dragEnterEvent( QDragEnterEvent* e );
+		void        dropEvent( QDropEvent* e );
 		bool        event( QEvent* e );
 
 	private:

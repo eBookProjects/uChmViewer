@@ -29,6 +29,8 @@
 #include <QDesktopServices>
 #include <QDialog>
 #include <QDir>
+#include <QDragEnterEvent>
+#include <QDropEvent>
 #include <QEvent>
 #include <QFile>
 #include <QFileDialog>
@@ -41,6 +43,7 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QMimeData>
 #include <QObject>
 #include <QPixmap>
 #include <QPrinter>
@@ -103,6 +106,8 @@ MainWindow::MainWindow( const QStringList& arguments )
 
 	// UIC stuff
 	setupUi( this );
+
+	setAcceptDrops( true );
 
 	// Set up layout direction
 	if ( pConfig->m_advLayoutDirectionRL )
@@ -606,6 +611,32 @@ void MainWindow::closeEvent( QCloseEvent* e )
 	m_toolbarMgr->save();
 
 	QMainWindow::closeEvent( e );
+}
+
+void MainWindow::dragEnterEvent( QDragEnterEvent* e )
+{
+	if ( e->mimeData()->hasUrls() )
+		e->acceptProposedAction();
+	else
+		e->ignore();
+}
+
+void MainWindow::dropEvent( QDropEvent* e )
+{
+	if ( e->mimeData()->hasUrls() )
+	{
+		QUrl url = e->mimeData()->urls().first();
+
+		if ( url.isLocalFile() )
+		{
+			QString fileName = url.toLocalFile();
+
+			if ( fileName.endsWith( ".chm", Qt::CaseInsensitive ) || fileName.endsWith( ".epub", Qt::CaseInsensitive ) )
+				loadFile( fileName );
+		}
+
+		e->acceptProposedAction();
+	}
 }
 
 void MainWindow::printHelpAndExit()
