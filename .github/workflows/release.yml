@@ -241,7 +241,7 @@ jobs:
             gettext-tools:p
 
       - name: Build
-        run: packages/build-win-msys2.sh -s windows -v ${{ needs.setup.outputs.version }}
+        run: packages/build-win-msys2.sh -q qmake-qt5 -s windows -v ${{ needs.setup.outputs.version }}
 
       - name: Upload windows installers
         uses: actions/upload-artifact@v4
