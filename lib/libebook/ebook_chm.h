@@ -206,6 +206,7 @@ class EBook_CHM : public EBook
 					iconid = EBookTocEntry::IMAGE_AUTO;
 					indent = 0;
 				}
+
 				void clear()
 				{
 					name.clear();
@@ -245,9 +246,9 @@ class EBook_CHM : public EBook
 
 		//! Encode the string from internal files with the currently selected text codec, if possible.
 		//! Or return as-is, if not.
-		inline QString encodeInternalWithCurrentCodec( const QString& str ) const
+		inline QString encodeInternalWithCurrentCodec( const QByteArray& str ) const
 		{
-			return ( m_textCodecForSpecialFiles ? m_textCodecForSpecialFiles->toUnicode( qPrintable( str ) ) : str );
+			return ( m_textCodecForSpecialFiles ? m_textCodecForSpecialFiles->toUnicode( str.constData() ) : str );
 		}
 
 		//! Encode the string from internal files with the currently selected text codec, if possible.
