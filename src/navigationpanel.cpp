@@ -116,6 +116,8 @@ void NavigationPanel::getSettings( Settings* settings )
 
 void NavigationPanel::refresh()
 {
+	if ( m_indexTab )
+		m_indexTab->refillIndex();
 	if ( m_contentsTab )
 		m_contentsTab->refillTableOfContents();
 }
