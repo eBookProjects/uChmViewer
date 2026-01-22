@@ -616,9 +616,22 @@ void MainWindow::closeEvent( QCloseEvent* e )
 void MainWindow::dragEnterEvent( QDragEnterEvent* e )
 {
 	if ( e->mimeData()->hasUrls() )
-		e->acceptProposedAction();
-	else
-		e->ignore();
+	{
+		QUrl url = e->mimeData()->urls().first();
+
+		if ( url.isLocalFile() )
+		{
+			QString fileName = url.toLocalFile();
+
+			if ( fileName.endsWith( ".chm", Qt::CaseInsensitive ) || fileName.endsWith( ".epub", Qt::CaseInsensitive ) )
+			{
+				e->acceptProposedAction();
+				return;
+			}
+		}
+	}
+
+	e->ignore();
 }
 
 void MainWindow::dropEvent( QDropEvent* e )

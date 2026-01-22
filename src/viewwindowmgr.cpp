@@ -160,6 +160,7 @@ ViewWindow* ViewWindowMgr::current()
 ViewWindow* ViewWindowMgr::addNewTab( bool set_active )
 {
 	ViewWindow* browser = new ViewWindow( m_tabWidget );
+	browser->setAcceptDrops( false );
 
 	editFind->installEventFilter( this );
 
