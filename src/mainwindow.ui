@@ -544,7 +544,7 @@
     <string>Go to the next page in the chm or epub file</string>
    </property>
    <property name="whatsThis">
-    <string>Go to the next page in the chm or epub file&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;i&gt;Shortcut: Ctrl+Right Arrow&lt;/i&gt;</string>
+    <string>Go to the next page in the chm or epub file&lt;br&gt;&lt;br&gt;&lt;i&gt;Shortcut: Ctrl+Right Arrow&lt;/i&gt;</string>
    </property>
   </action>
   <action name="action_Close_window">
