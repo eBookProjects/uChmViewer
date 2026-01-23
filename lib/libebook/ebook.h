@@ -42,8 +42,8 @@ class EBookTocEntry
 		//! Entry name
 		QString     name;
 
-		//! Entry URL.
-		QUrl        url;
+		//! Entry URL. Epub files could associate multiple URLs
+		QList<QUrl> urls;
 
 		//! Associated image number. Used for TOC only; indexes does not have the image.
 		//! If IMAGE_NONE, no icon is associated. Otherwise use getBookIconPixmap() to get associated pixmap icon.
@@ -51,6 +51,17 @@ class EBookTocEntry
 
 		//! Indentation level for this entry.
 		int         indent;
+
+		//! Whether the entry is visible.
+		bool        visible;
+
+		EBookTocEntry()
+		{
+			iconid = IMAGE_NONE;
+			indent = 0;
+			visible = true;
+		}
+
 };
 
 
