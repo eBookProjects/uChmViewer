@@ -91,10 +91,6 @@ class NavigationPanel : public QDockWidget, public Ui::NavigatorPanel
 		// Add a new bookmark
 		void    addBookmark();
 
-		// Show previous/next page in table of contents
-		void    showPrevInToc();
-		void    showNextInToc();
-
 	private:
 		TabContents*                m_contentsTab;
 		TabIndex*               m_indexTab;

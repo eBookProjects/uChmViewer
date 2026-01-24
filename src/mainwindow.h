@@ -141,6 +141,9 @@ class MainWindow : public QMainWindow, public Ui::MainWindow
 		void        actionNavigateForward();
 		void        actionNavigateHome();
 
+		void        actionNavigatePrev();
+		void        actionNavigateNext();
+
 		void        actionAboutApp();
 		void        actionAboutQt();
 

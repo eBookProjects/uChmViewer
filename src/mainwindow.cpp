@@ -922,6 +922,28 @@ void MainWindow::actionNavigateHome()
 		openPage( chmFile()->homeUrl() );
 }
 
+void MainWindow::actionNavigatePrev()
+{
+	if ( m_ebookFile == nullptr )
+		return;
+
+	QUrl url = m_ebookFile->navigatorPrev( currentBrowser()->url() );
+
+	if ( ! url.isEmpty() )
+		openPage( url );
+}
+
+void MainWindow::actionNavigateNext()
+{
+	if ( m_ebookFile == nullptr )
+		return;
+
+	QUrl url = m_ebookFile->navigatorNext( currentBrowser()->url() );
+
+	if ( ! url.isEmpty() )
+		openPage( url );
+}
+
 void MainWindow::actionOpenFile()
 {
 	QString fn = QFileDialog::getOpenFileName( this,
@@ -1275,8 +1297,8 @@ void MainWindow::setupActions()
 	connect( nav_action_Back, SIGNAL( triggered() ), this, SLOT( actionNavigateBack() ) );
 	connect( nav_actionForward, SIGNAL( triggered() ), this, SLOT( actionNavigateForward() ) );
 	connect( nav_actionHome, SIGNAL( triggered() ), this, SLOT( actionNavigateHome() ) );
-	connect( nav_actionPreviousPage, SIGNAL( triggered() ), m_navPanel, SLOT( showPrevInToc() ) );
-	connect( nav_actionNextPageToc, SIGNAL( triggered() ), m_navPanel, SLOT( showNextInToc() ) );
+	connect( nav_actionPreviousPage, SIGNAL( triggered() ), this, SLOT( actionNavigatePrev() ) );
+	connect( nav_actionNextPageToc, SIGNAL( triggered() ), this, SLOT( actionNavigateNext() ) );
 
 	// m_viewWindowMgr fills and maintains 'Window' menu
 	m_viewWindowMgr->createMenu( menu_Windows, action_Close_window );
@@ -1348,16 +1370,16 @@ void MainWindow::setupActions()
 
 	// Open next page in TOC global shortcut
 	( void ) new QShortcut( QKeySequence( i18n( "Ctrl+Right" ) ),
-	                        m_navPanel,
-	                        SLOT( showNextInToc() ),
-	                        SLOT( showNextInToc() ),
+	                        this,
+	                        SLOT( actionNavigateNext() ),
+	                        SLOT( actionNavigateNext() ),
 	                        Qt::ApplicationShortcut );
 
 	// Open next page in TOC global shortcut
 	( void ) new QShortcut( QKeySequence( i18n( "Ctrl+Left" ) ),
-	                        m_navPanel,
-	                        SLOT( showPrevInToc() ),
-	                        SLOT( showPrevInToc() ),
+	                        this,
+	                        SLOT( actionNavigatePrev() ),
+	                        SLOT( actionNavigatePrev() ),
 	                        Qt::ApplicationShortcut );
 
 	// Copy current URL to clipboard global shortcut

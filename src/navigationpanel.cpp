@@ -148,42 +148,6 @@ void NavigationPanel::addBookmark()
 	m_bookmarksTab->onAddBookmarkPressed();
 }
 
-void NavigationPanel::showPrevInToc()
-{
-	if ( !m_contentsTab )
-		return;
-
-	// Try to find current list item
-	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->url() );
-
-	if ( !current )
-		return;
-
-	QTreeWidgetItemIterator lit( current );
-	lit--;
-
-	if ( *lit )
-		::mainWindow->openPage( ( ( TreeItem_TOC* )( *lit ) )->getUrl() );
-}
-
-void NavigationPanel::showNextInToc()
-{
-	if ( !m_contentsTab )
-		return;
-
-	// Try to find current list item
-	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->url() );
-
-	if ( !current )
-		return;
-
-	QTreeWidgetItemIterator lit( current );
-	lit++;
-
-	if ( *lit )
-		::mainWindow->openPage( ( ( TreeItem_TOC* )( *lit ) )->getUrl() );
-}
-
 int NavigationPanel::active() const
 {
 	QWidget* cur = m_tabWidget->currentWidget();
