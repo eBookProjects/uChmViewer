@@ -21,7 +21,14 @@
 
 #include <QList>
 #include <QString>
+#include <QtGlobal>
 #include <QUrl>
+
+#if (QT_VERSION < QT_VERSION_CHECK(5, 11, 0))
+	typedef int qsizetype;
+#elif QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+	#include <QtTypes>
+#endif
 
 class QByteArray;
 
@@ -119,6 +126,10 @@ class EBook
 		 * \ingroup information
 		 */
 		virtual QUrl homeUrl() const = 0;
+
+		QUrl navigatorPrev( const QUrl& current );
+
+		QUrl navigatorNext( const QUrl& current );
 
 		/*!
 		 * \brief Checks whether the specific feature is present in this file.
@@ -226,10 +237,32 @@ class EBook
 		// Extracts the path component from the URL
 		virtual QString urlToPath( const QUrl& link ) const = 0;
 
-
 	protected:
+		class Navigator: protected QList< QUrl >
+		{
+			public:
+				void addUrl( const QUrl& url );
+
+				void merge( const QList< EBookTocEntry >& toc );
+
+				qsizetype getIndex( const QUrl& url );
+
+				QUrl getUrl( qsizetype i );
+
+			protected:
+				qsizetype m_lastIndex{-1};
+				QUrl m_lastUrl{};
+		};
+
 		// Loads the file; returns true if loaded, false otherwise
 		virtual bool    load( const QString& archiveName ) = 0;
+		virtual void loadNavigation( Navigator& nav );
+
+	private:
+		void checkNavigation();
+
+		bool m_navigatorLoaded;
+		Navigator m_navigator;
 };
 
 
