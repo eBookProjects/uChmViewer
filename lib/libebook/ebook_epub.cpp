@@ -35,6 +35,12 @@
 #include <QXmlInputSource>
 #include <QXmlSimpleReader>
 #include <QtGlobal>
+// As long as qAsConst is used.
+// IWYU pragma: no_include "type_traits"
+// IWYU pragma: no_include <type_traits>
+#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
+	#define qAsConst(s) (s)
+#endif
 
 #include <zip.h>
 
@@ -252,6 +258,12 @@ bool EBook_EPUB::parseBookinfo()
 	Q_FOREACH ( QString f, content_parser.manifest.values() )
 		m_ebookManifest.push_back( pathToUrl( f ) );
 
+	for ( const auto& si : qAsConst( content_parser.spine ) )
+	{
+		if ( content_parser.manifest.contains( si ) )
+			m_spinePath.push_back( content_parser.manifest[ si ] );
+	}
+
 	// Copy the manifest information and fill up the other maps if we have it
 	if ( !toc_parser.entries.isEmpty() )
 	{
@@ -265,14 +277,9 @@ bool EBook_EPUB::parseBookinfo()
 	else
 	{
 		// Copy them from spline
-		Q_FOREACH ( QString u, content_parser.spine )
+		Q_FOREACH ( QString url, m_spinePath )
 		{
 			EBookTocEntry e;
-			QString url = u;
-
-			if ( content_parser.manifest.contains( u ) )
-				url = content_parser.manifest[ u ];
-
 			e.name = url;
 			e.url = pathToUrl( url );
 			e.iconid = EBookTocEntry::IMAGE_NONE;
@@ -325,6 +332,14 @@ QString EBook_EPUB::urlToPath( const QUrl& link ) const
 		return link.path();
 
 	return "";
+}
+
+void EBook_EPUB::loadNavigation( Navigator& nav )
+{
+	for ( const auto& path : qAsConst( m_spinePath ) )
+		nav.addUrl( pathToUrl( path ) );
+
+	nav.merge( m_tocEntries );
 }
 
 bool EBook_EPUB::getFileAsString( QString& str, const QString& path ) const

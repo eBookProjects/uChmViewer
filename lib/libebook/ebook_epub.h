@@ -176,6 +176,9 @@ class EBook_EPUB : public EBook
 		// Extracts the path component from the URL
 		QString urlToPath( const QUrl& link ) const override;
 
+	protected:
+		void loadNavigation( Navigator& nav ) override;
+
 	private:
 		// Parses the XML file using a specified parser
 		bool    parseXML( const QString& uri, QXmlDefaultHandler* reader );
@@ -203,6 +206,8 @@ class EBook_EPUB : public EBook
 
 		// Map of URL-Title
 		QMap< QUrl, QString>    m_urlTitleMap;
+
+		QList<QString>     m_spinePath;
 };
 
 #endif // EBOOK_EPUB_H
