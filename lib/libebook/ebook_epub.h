@@ -201,8 +201,8 @@ class EBook_EPUB : public EBook
 		// Table of contents
 		QList< EBookTocEntry >  m_tocEntries;
 
-		// Map of URL-Title
-		QMap< QUrl, QString>    m_urlTitleMap;
+		// Map of URL - TOC index
+		QMap< QUrl, int >   m_urlEntryMap;
 };
 
 #endif // EBOOK_EPUB_H

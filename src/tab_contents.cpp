@@ -133,7 +133,7 @@ void TabContents::refillTableOfContents( )
 		TreeItem_TOC* item;
 
 		if ( indent == 0 )
-			item = new TreeItem_TOC( tree, lastchild[indent], data[i].name, data[i].url, data[i].iconid );
+			item = new TreeItem_TOC( tree, lastchild[indent], data[i].name, data[i].urls, data[i].iconid );
 		else
 		{
 			// New non-root entry. It is possible (for some buggy CHMs) that there is no previous entry: previous entry had indent 1,
@@ -141,8 +141,11 @@ void TabContents::refillTableOfContents( )
 			if ( rootentry[indent - 1] == 0 )
 				qFatal( "Child entry indented as %d with no root entry!", indent );
 
-			item = new TreeItem_TOC( rootentry[indent - 1], lastchild[indent], data[i].name, data[i].url, data[i].iconid );
+			item = new TreeItem_TOC( rootentry[indent - 1], lastchild[indent], data[i].name, data[i].urls, data[i].iconid );
 		}
+
+		if ( !data[i].visible )
+			item->setHidden(true);
 
 		if ( pConfig->m_tocOpenAllEntries )
 			item->setExpanded( true );
@@ -156,7 +159,7 @@ void TabContents::refillTableOfContents( )
 
 static TreeItem_TOC* findTreeItem( TreeItem_TOC* item, const QUrl& url, bool ignorefragment )
 {
-	if ( item->containstUrl( url, ignorefragment ) )
+	if ( item->containsUrl( url, ignorefragment ) )
 		return item;
 
 	for ( int i = 0; i < item->childCount(); ++i )

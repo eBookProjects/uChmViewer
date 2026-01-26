@@ -34,7 +34,7 @@ class TreeItem_Index : public QTreeWidgetItem
 		TreeItem_Index( QTreeWidget* parent, QTreeWidgetItem* after, const QString& name, const QList<QUrl>& urls, const QString& seealso );
 
 		QUrl        getUrl() const;
-		bool        containstUrl( const QUrl& url ) const;
+		bool        containsUrl( const QUrl& url ) const;
 		bool        isSeeAlso() const;
 		QString     seeAlso() const;
 

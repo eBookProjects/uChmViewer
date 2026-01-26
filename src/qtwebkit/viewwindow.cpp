@@ -50,6 +50,9 @@ ViewWindow::ViewWindow( QWidget* parent )
 	invalidate();
 	m_storedScrollbarPosition = 0;
 
+	// Disable caching, some pages not refreshing with caching
+	settings()->setObjectCacheCapacities( 0, 0, 0 );
+
 	// Use our network emulation layer
 	page()->setNetworkAccessManager( new KCHMNetworkAccessManager( this ) );
 

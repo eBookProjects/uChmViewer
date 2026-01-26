@@ -154,16 +154,26 @@ void NavigationPanel::showPrevInToc()
 		return;
 
 	// Try to find current list item
-	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->url() );
+	QUrl url = ::mainWindow->currentBrowser()->url();
+	TreeItem_TOC* current = m_contentsTab->getTreeItem( url );
 
 	if ( !current )
 		return;
 
-	QTreeWidgetItemIterator lit( current );
-	lit--;
-
-	if ( *lit )
-		::mainWindow->openPage( ( ( TreeItem_TOC* )( *lit ) )->getUrl() );
+	QUrl prevUrl = current->findPrevUrl( url );
+	if ( prevUrl.isEmpty() )
+	{
+		QTreeWidgetItemIterator lit( current );
+		lit--;
+		if ( *lit )
+		{
+			prevUrl = ( ( TreeItem_TOC* )( *lit ) )->getUrl( false );
+			if ( !prevUrl.isEmpty() )
+				::mainWindow->openPage( prevUrl );
+		}
+	}
+	else
+		::mainWindow->openPage( prevUrl );
 }
 
 void NavigationPanel::showNextInToc()
@@ -172,16 +182,26 @@ void NavigationPanel::showNextInToc()
 		return;
 
 	// Try to find current list item
+	QUrl url = ::mainWindow->currentBrowser()->url();
 	TreeItem_TOC* current = m_contentsTab->getTreeItem( ::mainWindow->currentBrowser()->url() );
 
 	if ( !current )
 		return;
 
-	QTreeWidgetItemIterator lit( current );
-	lit++;
-
-	if ( *lit )
-		::mainWindow->openPage( ( ( TreeItem_TOC* )( *lit ) )->getUrl() );
+	QUrl nextUrl = current->findNextUrl( url );
+	if ( nextUrl.isEmpty() )
+	{
+		QTreeWidgetItemIterator lit( current );
+		lit++;
+		if ( *lit )
+		{
+			nextUrl = ( ( TreeItem_TOC* )( *lit ) )->getUrl( true );
+			if ( !nextUrl.isEmpty() )
+				::mainWindow->openPage( nextUrl );
+		}
+	}
+	else
+		::mainWindow->openPage( nextUrl );
 }
 
 int NavigationPanel::active() const

@@ -77,7 +77,7 @@ QUrl TreeItem_Index::getUrl() const
 	return dlg.getSelectedItemUrl( m_urls, titles );
 }
 
-bool TreeItem_Index::containstUrl( const QUrl& url ) const
+bool TreeItem_Index::containsUrl( const QUrl& url ) const
 {
 	for ( int i = 0; i < m_urls.size(); i++ )
 	{
