@@ -35,7 +35,7 @@
 #include "helper_search_index.h"
 
 
-static const int DICT_VERSION = 5;
+static const int DICT_VERSION = 6;
 
 namespace QtAs
 {
@@ -335,6 +335,9 @@ bool Index::parseDocumentToStringlist( EBook* chmFile, const QUrl& filename, QSt
 
 void Index::writeDict( QDataStream& stream )
 {
+	// Set a fixed stream version for compatibility
+	stream.setVersion( QDataStream::Qt_5_5 );
+
 	stream << DICT_VERSION;
 	stream << m_charssplit;
 	stream << m_charsword;
@@ -346,7 +349,6 @@ void Index::writeDict( QDataStream& stream )
 	for ( QHash<QString, Entry*>::ConstIterator it = dict.begin(); it != dict.end(); ++it )
 	{
 		stream << it.key();
-		stream << it.value()->documents.count();
 		stream << it.value()->documents;
 	}
 }
@@ -357,7 +359,10 @@ bool Index::readDict( QDataStream& stream )
 	docList.clear();
 
 	QString key;
-	int version, numOfDocs;
+	int version;
+
+	// Set a fixed stream version for compatibility
+	stream.setVersion( QDataStream::Qt_5_5 );
 
 	stream >> version;
 
@@ -373,9 +378,8 @@ bool Index::readDict( QDataStream& stream )
 	while ( !stream.atEnd() )
 	{
 		stream >> key;
-		stream >> numOfDocs;
 
-		QVector<Document> docs( numOfDocs );
+		QVector<Document> docs;
 
 		stream >> docs;
 		dict.insert( key, new Entry( docs ) );
