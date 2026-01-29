@@ -57,7 +57,7 @@ EBook_CHM::EBook_CHM()
 	m_filename = m_font = QString();
 
 	m_textCodec = 0;
-	m_textCodecForSpecialFiles = 0;
+	m_textCodecForInternalFiles = 0;
 	m_detectedLCID = 0;
 	m_currentEncoding = "UTF-8";
 	m_htmlEntityDecoder = 0;
@@ -84,7 +84,7 @@ void EBook_CHM::close()
 	m_indexFile.clear();
 
 	m_textCodec = 0;
-	m_textCodecForSpecialFiles = 0;
+	m_textCodecForInternalFiles = 0;
 	m_detectedLCID = 0;
 	m_currentEncoding = "UTF-8";
 	m_lookupTablesValid = false;
@@ -212,21 +212,6 @@ bool EBook_CHM::getFileContentAsBinary( QByteArray& data, const QUrl& url ) cons
 	return getBinaryContent( data, urlToPath( url ) );
 }
 
-bool EBook_CHM::getBinaryContent( QByteArray& data, const QString& url ) const
-{
-	chmUnitInfo ui;
-
-	if ( !ResolveObject( url, &ui ) )
-		return false;
-
-	data.resize( ui.length );
-
-	if ( RetrieveObject( &ui, ( unsigned char* ) data.data(), 0, ui.length ) )
-		return true;
-
-	return false;
-}
-
 bool EBook_CHM::getTextContent( QString& str, const QString& url, bool internal_encoding ) const
 {
 	QByteArray buf;
@@ -244,6 +229,21 @@ bool EBook_CHM::getTextContent( QString& str, const QString& url, bool internal_
 			return true;
 		}
 	}
+
+	return false;
+}
+
+bool EBook_CHM::getBinaryContent( QByteArray& data, const QString& url ) const
+{
+	chmUnitInfo ui;
+
+	if ( !ResolveObject( url, &ui ) )
+		return false;
+
+	data.resize( ui.length );
+
+	if ( RetrieveObject( &ui, ( unsigned char* ) data.data(), 0, ui.length ) )
+		return true;
 
 	return false;
 }
@@ -290,7 +290,7 @@ bool EBook_CHM::load( const QString& archiveName )
 
 	// Reset encoding
 	m_textCodec = 0;
-	m_textCodecForSpecialFiles = 0;
+	m_textCodecForInternalFiles = 0;
 	m_currentEncoding = "UTF-8";
 
 	// Get information from /#WINDOWS and /#SYSTEM files (encoding, title, context file and so)
@@ -892,7 +892,7 @@ bool EBook_CHM::changeFileEncoding( const QString& qtencoding )
 	if ( p != -1 )
 	{
 		QString global = qtencoding.left( p );
-		QString special = qtencoding.mid( p + 1 );
+		QString internal = qtencoding.mid( p + 1 );
 
 		m_textCodec = QTextCodec::codecForName( global.toUtf8() );
 
@@ -902,17 +902,17 @@ bool EBook_CHM::changeFileEncoding( const QString& qtencoding )
 			return false;
 		}
 
-		m_textCodecForSpecialFiles = QTextCodec::codecForName( special.toUtf8() );
+		m_textCodecForInternalFiles = QTextCodec::codecForName( internal.toUtf8() );
 
-		if ( !m_textCodecForSpecialFiles )
+		if ( !m_textCodecForInternalFiles )
 		{
-			qWarning( "Could not set up Text Codec for encoding '%s'", qPrintable( special ) );
+			qWarning( "Could not set up Text Codec for encoding '%s'", qPrintable( internal ) );
 			return false;
 		}
 	}
 	else
 	{
-		m_textCodecForSpecialFiles = m_textCodec = QTextCodec::codecForName( qtencoding.toUtf8() );
+		m_textCodecForInternalFiles = m_textCodec = QTextCodec::codecForName( qtencoding.toUtf8() );
 
 		if ( !m_textCodec )
 		{
