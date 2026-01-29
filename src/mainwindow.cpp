@@ -548,8 +548,6 @@ void MainWindow::setTextEncoding( const QString& encoding )
 		}
 	}
 
-	m_navPanel->refresh();
-
 	// Because updateView() will call view->invalidate(), which clears the view->url(),
 	// we have to make a copy of it.
 	QUrl url = currentBrowser()->url();
