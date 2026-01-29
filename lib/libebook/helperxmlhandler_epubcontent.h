@@ -38,7 +38,7 @@ class HelperXmlHandler_EpubContent : public QXmlDefaultHandler
 		// Manifest storage, id -> href
 		QMap< QString, QString >    manifest;
 
-		// Spline storage
+		// Spine storage
 		QList< QString >            spine;
 
 		// TOC (NCX) filename

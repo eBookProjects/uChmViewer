@@ -276,7 +276,7 @@ bool EBook_EPUB::parseBookinfo()
 	}
 	else
 	{
-		// Copy them from spline
+		// Copy them from spine
 		Q_FOREACH ( QString url, m_spinePath )
 		{
 			EBookTocEntry e;
