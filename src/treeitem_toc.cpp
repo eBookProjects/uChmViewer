@@ -52,7 +52,7 @@ QUrl TreeItem_TOC::getUrl() const
 	return m_url;
 }
 
-bool TreeItem_TOC::containstUrl( const QUrl& url, bool ignorefragment ) const
+bool TreeItem_TOC::containsUrl( const QUrl& url, bool ignorefragment ) const
 {
 	if ( ignorefragment )
 	{

@@ -156,7 +156,7 @@ void TabContents::refillTableOfContents( )
 
 static TreeItem_TOC* findTreeItem( TreeItem_TOC* item, const QUrl& url, bool ignorefragment )
 {
-	if ( item->containstUrl( url, ignorefragment ) )
+	if ( item->containsUrl( url, ignorefragment ) )
 		return item;
 
 	for ( int i = 0; i < item->childCount(); ++i )
