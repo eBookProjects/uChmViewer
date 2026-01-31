@@ -197,7 +197,7 @@ bool MainWindow::hasSameTokenInstance()
 	QString token;
 
 	// argv[0] in Qt is still a program name
-	for ( int i = 1; i < m_arguments.size(); i++ )
+	for ( int i = 1; i < m_arguments.size() - 1; i++ )
 	{
 		// This is not bulletproof (think -showPage -token) but this is not likely to happen
 		if ( m_arguments[i] == "-token" )
@@ -667,12 +667,7 @@ bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_ap
 		}
 	}
 
-	if ( force_background )
-		showMinimized();
-	else
-		show();
-
-	if ( from_another_app )
+	if ( from_another_app && !force_background && !do_autotest )
 	{
 		// On Windows it is not possible to activate the window of a non-active process. From MSDN:
 		// https://msdn.microsoft.com/en-us/library/windows/desktop/ms633539%28v=vs.85%29.aspx
@@ -681,8 +676,14 @@ bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_ap
 		// Instead, Windows flashes the taskbar button of the window to notify the user.
 		activateWindow();
 		raise();
-		show();
 	}
+
+	if ( force_background || do_autotest )
+		showMinimized();
+	else if ( isMinimized() )
+		showNormal();
+	else
+		show();
 
 	// Opening the file?
 	if ( !filename.isEmpty() )
@@ -721,11 +722,7 @@ bool MainWindow::parseCmdLineArgs( const QStringList& args, bool from_another_ap
 
 		if ( do_autotest )
 		{
-			if ( filename.isEmpty() )
-				qFatal( "Could not use Auto Test mode without a chm file!" );
-
 			m_autoteststate = STATE_INITIAL;
-			showMinimized();
 			runAutoTest();
 		}
 
