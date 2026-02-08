@@ -5,6 +5,8 @@ This is a fork of the [KchmViewer](http://www.ulduzsoft.com/linux/kchmviewer)
 with some improvements. uChmViewer is a chm (MS HTML help file format) and epub
 viewer, written in C++ using Qt framework.
 
+![](doc/files/img/screenshot_en_qt_5.png)
+
 - [Overview](#overview)
 - [Features](#features)
 - [Getting uChmViewer](#getting-uchmviewer)
