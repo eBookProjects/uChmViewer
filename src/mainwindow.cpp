@@ -410,9 +410,12 @@ void MainWindow::refreshCurrentBrowser( )
 
 	setWindowTitle( title );
 
-	currentBrowser()->invalidate();
-
 	m_navPanel->refresh();
+
+	auto browser = currentBrowser();
+
+	if ( browser != nullptr )
+		browser->invalidate();
 }
 
 void MainWindow::showBrowserContextMenu( ViewWindow* browser,
@@ -489,10 +492,14 @@ bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, UBrowser::
 	}
 
 
-	if ( mode == UBrowser::OPEN_IN_NEW || mode == UBrowser::OPEN_IN_BACKGROUND )
+	if ( browser == nullptr || mode != UBrowser::OPEN_IN_CURRENT )
 	{
-		qreal zoom = currentBrowser()->zoomFactor();
+		qreal zoom = browser == nullptr ? 1.0 : browser->zoomFactor();
 		browser = m_viewWindowMgr->addNewTab( mode != UBrowser::OPEN_IN_BACKGROUND );
+
+		if ( browser == nullptr )
+			return false;
+
 		browser->setZoomFactor( zoom );
 	}
 
@@ -544,14 +551,19 @@ void MainWindow::setTextEncoding( const QString& encoding )
 		}
 	}
 
-	// Because updateView() will call view->invalidate(), which clears the view->url(),
-	// we have to make a copy of it.
-	QUrl url = currentBrowser()->url();
-
 	// Regenerate the content and index trees
 	refreshCurrentBrowser();
 
-	currentBrowser()->load( url );
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
+	// Because updateView() will call view->invalidate(), which clears the view->url(),
+	// we have to make a copy of it.
+	QUrl url = browser->url();
+
+	browser->load( url );
 }
 
 void MainWindow::closeFile( )
@@ -902,12 +914,22 @@ void MainWindow::showInStatusBar( const QString& text )
 
 void MainWindow::actionNavigateBack()
 {
-	currentBrowser()->back();
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
+	browser->back();
 }
 
 void MainWindow::actionNavigateForward()
 {
-	currentBrowser()->forward();
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
+	browser->forward();
 }
 
 void MainWindow::actionNavigateHome()
@@ -918,10 +940,12 @@ void MainWindow::actionNavigateHome()
 
 void MainWindow::actionNavigatePrev()
 {
-	if ( m_ebookFile == nullptr )
+	auto browser = currentBrowser();
+
+	if ( m_ebookFile == nullptr || browser == nullptr )
 		return;
 
-	QUrl url = m_ebookFile->navigatorPrev( currentBrowser()->url() );
+	QUrl url = m_ebookFile->navigatorPrev( browser->url() );
 
 	if ( ! url.isEmpty() )
 		openPage( url );
@@ -929,10 +953,12 @@ void MainWindow::actionNavigatePrev()
 
 void MainWindow::actionNavigateNext()
 {
-	if ( m_ebookFile == nullptr )
+	auto browser = currentBrowser();
+
+	if ( m_ebookFile == nullptr || browser == nullptr )
 		return;
 
-	QUrl url = m_ebookFile->navigatorNext( currentBrowser()->url() );
+	QUrl url = m_ebookFile->navigatorNext( browser->url() );
 
 	if ( ! url.isEmpty() )
 		openPage( url );
@@ -953,6 +979,11 @@ void MainWindow::actionOpenFile()
 
 void MainWindow::actionPrint()
 {
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
 	QPrinter* printer = new QPrinter( QPrinter::HighResolution );
 	QPrintDialog dlg( printer, this );
 
@@ -962,22 +993,32 @@ void MainWindow::actionPrint()
 		return;
 	}
 
-	currentBrowser()->print( printer, [ = ]( bool success )
-	                         {
-	                             Q_UNUSED( success );
-	                             showInStatusBar( i18n( "Printing finished" ) );
-	                             delete printer;
-	                         } );
+	browser->print( printer, [ = ]( bool success )
+	                {
+	                    Q_UNUSED( success );
+	                    showInStatusBar( i18n( "Printing finished" ) );
+	                    delete printer;
+	                } );
 }
 
 void MainWindow::actionEditCopy()
 {
-	currentBrowser()->selectedCopy();
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
+	browser->selectedCopy();
 }
 
 void MainWindow::actionEditSelectAll()
 {
-	currentBrowser()->selectAll();
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
+	browser->selectAll();
 }
 
 void MainWindow::actionFindInPage()
@@ -1089,22 +1130,32 @@ void MainWindow::actionExtractCHM()
 
 void MainWindow::actionFontSizeIncrease()
 {
-	currentBrowser()->zoomIncrease();
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
+	browser->zoomIncrease();
 }
 
 void MainWindow::actionFontSizeDecrease()
 {
-	currentBrowser()->zoomDecrease();
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
+	browser->zoomDecrease();
 }
 
 void MainWindow::actionViewHTMLsource()
 {
-	if ( !m_ebookFile )
-	{
-		return;
-	}
+	auto browser = currentBrowser();
 
-	QUrl page = currentBrowser()->url();
+	if ( m_ebookFile == nullptr || browser == nullptr )
+		return;
+
+	QUrl page = browser->url();
 
 	if ( pConfig->m_advUseInternalEditor )
 	{
@@ -1193,7 +1244,12 @@ void MainWindow::navigatorVisibilityChanged( bool visible )
 
 void MainWindow::actionLocateInContentsTab()
 {
-	if ( m_navPanel->findUrlInContents( currentBrowser()->url() ) )
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
+	if ( m_navPanel->findUrlInContents( browser->url() ) )
 		m_navPanel->setActive( NavigationPanel::TAB_CONTENTS );
 	else
 		statusBar()->showMessage( i18n( "Could not locate opened topic in content window" ), 2000 );
@@ -1439,8 +1495,18 @@ void MainWindow::navSetForwardEnabled( bool enabled )
 
 void MainWindow::onHistoryChanged()
 {
-	navSetBackEnabled( currentBrowser()->canGoBack() );
-	navSetForwardEnabled( currentBrowser()->canGoForward() );
+	auto browser = currentBrowser();
+
+	if ( browser == nullptr )
+	{
+		navSetBackEnabled( false );
+		navSetForwardEnabled( false );
+	}
+	else
+	{
+		navSetBackEnabled( browser->canGoBack() );
+		navSetForwardEnabled( browser->canGoForward() );
+	}
 }
 
 void MainWindow::onUrlChanged( const QUrl& url )

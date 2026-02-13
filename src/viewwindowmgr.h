@@ -47,6 +47,8 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		ViewWindowMgr( QWidget* parent );
 		~ViewWindowMgr( );
 
+		bool isEmpty() const;
+
 		// Returns a handle to a currently viewed window.
 		// Guaranteeed to return a valid handle, or aborts.
 		ViewWindow*     current();

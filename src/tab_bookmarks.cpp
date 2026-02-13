@@ -139,7 +139,12 @@ TabBookmarks::TabBookmarks( QWidget* parent )
 void TabBookmarks::onAddBookmarkPressed( )
 {
 	bool ok;
-	QString url = ::mainWindow->currentBrowser()->url().toString();
+	auto browser = ::mainWindow->currentBrowser();
+
+	if ( browser == nullptr )
+		return;
+
+	QString url = browser->url().toString();
 	QString title = ::mainWindow->chmFile()->getTopicByUrl( url );
 	QString name = QInputDialog::getText(
 	                   this,
@@ -244,16 +249,19 @@ void TabBookmarks::onItemActivated( QListWidgetItem* item )
 		return;
 
 	BookmarkItem* treeitem = ( BookmarkItem* ) item;
+	auto browser = ::mainWindow->currentBrowser();
 
-	if ( ::mainWindow->currentBrowser()->url().toString() != treeitem->m_url )
+	if ( browser == nullptr )
+		return;
+	else if ( browser->url().toString() != treeitem->m_url )
 	{
 		::mainWindow->openPage( treeitem->m_url );
-		::mainWindow->currentBrowser()->setAutoScroll( treeitem->m_scroll_y );
+		browser->setAutoScroll( treeitem->m_scroll_y );
 	}
 	else
 	{
 		// Force the scroll since the page is not reloaded
-		::mainWindow->currentBrowser()->setScrollTop( treeitem->m_scroll_y );
+		browser->setScrollTop( treeitem->m_scroll_y );
 	}
 }
 

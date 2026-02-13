@@ -134,6 +134,11 @@ ViewWindowMgr::~ViewWindowMgr( )
 {
 }
 
+bool ViewWindowMgr::isEmpty() const
+{
+	return m_Windows.isEmpty();
+}
+
 void ViewWindowMgr::createMenu( QMenu* menuWindow, QAction* actionCloseWindow )
 {
 	m_menuWindow = menuWindow;
@@ -305,6 +310,10 @@ void ViewWindowMgr::restoreSettings( EBook* ebook, const Settings::viewindow_sav
 	for ( int i = 0; i < settings.size(); i++ )
 	{
 		ViewWindow* browser = addNewTab( false );
+
+		if ( browser == nullptr )
+			break;
+
 		// This confusing code fixes a URL that could contain a relative path.
 		// This behavior  was previously present in the EBook_EPUB class, and
 		// now the EBook_EPUB::pathToUrl function first tries to find the page
@@ -383,6 +392,9 @@ void ViewWindowMgr::onBrowserLoadFinished( ViewWindow* browser, bool success )
 
 void ViewWindowMgr::openNewTab()
 {
+	if ( isEmpty() )
+		return;
+
 	::mainWindow->openPage( current()->url(), UBrowser::OPEN_IN_NEW );
 }
 
@@ -468,6 +480,9 @@ void ViewWindowMgr::findResult( bool found, bool wrapped )
 
 void ViewWindowMgr::find( bool backward )
 {
+	if ( isEmpty() )
+		return;
+
 	// Pre-hide the wrapper
 	labelWrapped->hide();
 
@@ -494,6 +509,9 @@ void ViewWindowMgr::onFindPrevious()
 
 void ViewWindowMgr::copyUrlToClipboard()
 {
+	if ( isEmpty() )
+		return;
+
 	QString url = current()->url().toString();
 
 	if ( !url.isEmpty() )
