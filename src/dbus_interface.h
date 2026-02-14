@@ -21,7 +21,14 @@
 
 #include <QObject>
 #include <QString>
-#include <QStringList>
+#include <QtGlobal>
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	#include <QStringList>
+#else
+	template<typename T> class QList;
+	using QStringList = QList<QString>;
+#endif
 
 
 #define SERVICE_NAME            "net.uchmviewer.application"

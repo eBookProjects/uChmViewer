@@ -34,7 +34,6 @@ class QUrl;
 #include "settings.h"
 
 class EBook;
-class MainWindow;
 class ViewWindow;
 class ViewWindowTabWidget;
 

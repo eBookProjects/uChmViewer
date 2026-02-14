@@ -22,12 +22,19 @@
 #include <QDialog>
 #include <QObject>
 #include <QString>
-#include <QStringList>
+#include <QtGlobal>
+
+template<typename T> class QList;
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	#include <QStringList>
+#else
+	using QStringList = QList<QString>;
+#endif
 
 class QListWidgetItem;
 class QUrl;
 class QWidget;
-template<typename T> class QList;
 
 #include "ui_dialog_topicselector.h"
 

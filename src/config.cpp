@@ -25,9 +25,15 @@
 #include <QSettings>
 #include <QStandardPaths>
 #include <QString>
-#include <QStringList>
 #include <QVariant>
 #include <QtGlobal>
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	#include <QStringList>
+#else
+	#include <QList>
+	using QStringList = QList<QString>;
+#endif
 
 #include "config.h"
 

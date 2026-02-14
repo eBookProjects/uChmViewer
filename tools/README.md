@@ -48,6 +48,11 @@ The following additional parameters are possible:
 
 For a more complete check, use the `USE_GETTEXT` and `USE_MAC_APP` flags.
 
+__Ignore message "should add these lines"__
+
+    #include <QObject>  // for QTypeInfo<>::isComplex, QTypeInfo<>::isLarge, QTypeInfo<>::isRelocatable, QTypeInfo<>::isStatic
+    #include <utility>  // for move
+
 
 ### Examples
 

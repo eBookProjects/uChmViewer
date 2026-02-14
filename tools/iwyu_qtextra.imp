@@ -5,6 +5,8 @@
     { include: ['"qtmetamacros.h"', 'private', '<QObject>', 'public'] },
     { include: ['<qobjectdefs.h>', 'private', '<QObject>', 'public'] },
     { include: ['"qobjectdefs.h"', 'private', '<QObject>', 'public'] },
+    { include: ['<QtCore/qobjectdefs.h>', 'private', '<QObject>', 'public'] },
+    { include: ['"QtCore/qobjectdefs.h"', 'private', '<QObject>', 'public'] },
     { include: ['<qnamespace.h>', 'private', '<Qt>', 'public'] },
     { include: ['"qnamespace.h"', 'private', '<Qt>', 'public'] },
     { include: ['<qconfig.h>', 'private', '<QtGlobal>', 'public'] },
@@ -13,8 +15,8 @@
     { include: ['"qglobal.h"', 'private', '<QtGlobal>', 'public'] },
     { include: ['<QtCore/qglobal.h>', 'private', '<QtGlobal>', 'public'] },
     { include: ['"QtCore/qglobal.h"', 'private', '<QtGlobal>', 'public'] },
-    { include: ['"qtypeinfo.h"', 'private', '<QtGlobal>', 'public'] },
-    { include: ['<qtypeinfo.h>', 'private', '<QtGlobal>', 'public'] },
+    { include: ['"qtypeinfo.h"', 'private', '<QObject>', 'public'] },
+    { include: ['<qtypeinfo.h>', 'private', '<QObject>', 'public'] },
 
     { symbol:  ['QAtomicInt', 'private', '<QAtomicInt>', 'public'] },
     { symbol:  ['QMetaObject', 'private', '<QMetaObject>', 'public'] },
@@ -32,6 +34,16 @@
     { symbol:  ['QResizeEvent', 'private', '<QResizeEvent>', 'public'] },
     { symbol:  ['QCharRef', 'private',  '<QString>', 'public'] },
     { symbol:  ['QLatin1String', 'private',  '<QLatin1String>', 'public'] },
+
+    { symbol:  ['QSysInfo', 'private',  '<QSysInfo>', 'public'] },
+
+    { symbol:  ['QStringList', 'private',  '<QStringList>', 'public'] },
+    { symbol:  ['QVector', 'private',  '<QVector>', 'public'] },
+
+    { symbol:  ['QXmlAttributes', 'private',  '<QXmlAttributes>', 'public'] },
+    { symbol:  ['QXmlDefaultHandler', 'private',  '<QXmlDefaultHandler>', 'public'] },
+    { symbol:  ['QXmlInputSource', 'private',  '<QXmlInputSource>', 'public'] },
+    { symbol:  ['QXmlSimpleReader', 'private',  '<QXmlSimpleReader>', 'public'] },
 
     { symbol: ['QListWidgetItem', 'private', '<QListWidgetItem>', 'public'] },
     { symbol: ['QModelIndex', 'private', '<QModelIndex>', 'public'] },

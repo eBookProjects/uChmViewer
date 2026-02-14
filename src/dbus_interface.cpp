@@ -19,7 +19,14 @@
 #include <QApplication>
 #include <QDBusConnection>
 #include <QString>
-#include <QStringList>
+#include <QtGlobal>
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	#include <QStringList>
+#else
+	#include <QList>
+	using QStringList = QList<QString>;
+#endif
 
 #include "mainwindow.h"
 #include "navigationpanel.h"

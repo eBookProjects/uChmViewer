@@ -27,7 +27,6 @@
 #include <QString>
 #include <QTextCodec>
 #include <QUrl>
-#include <QtGlobal>
 
 // Enable Unicode use in libchm
 #if defined (WIN32)

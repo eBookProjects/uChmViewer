@@ -110,11 +110,6 @@ void EBook_EPUB::close()
 		zip_close( m_zipFile );
 		m_zipFile = 0;
 	}
-
-	//if ( m_epubFile.isOpen() )
-	//  m_epubFile.close();
-
-
 }
 
 bool EBook_EPUB::getFileContentAsString( QString& str, const QUrl& url ) const

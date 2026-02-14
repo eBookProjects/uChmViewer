@@ -495,6 +495,7 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 				else
 				{
 					QMap< QString, ParsedEntry >::iterator it = indexNameEntryMap.find( entry.name );
+
 					if ( it == indexNameEntryMap.end() )
 						indexNameEntryMap[ entry.name ] = entry;
 					else
@@ -520,8 +521,10 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 
 			// offset+5 skips 'name='
 			offset = findStringInQuotes( tag, offset + name_pattern.length(), pname, true, false );
+
 			if ( offset == -1 )
 				continue;
+
 			pname = pname.toLower();
 
 			if ( ( offset = tag.indexOf( value_pattern, offset, Qt::CaseInsensitive ) ) == -1 )
@@ -532,6 +535,7 @@ bool EBook_CHM::parseFileAndFillArray( const QString& file, QList< ParsedEntry >
 
 			// offset+6 skips 'value='
 			offset = findStringInQuotes( tag, offset + value_pattern.length(), pvalue, false, true );
+
 			if ( offset == -1 )
 				continue;
 

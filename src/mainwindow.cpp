@@ -36,7 +36,6 @@
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QIODevice>
-#include <QIcon>
 #include <QKeySequence>
 #include <QLabel>
 #include <QList>
@@ -56,6 +55,7 @@
 #include <QStatusBar>
 #include <QString>
 #include <QStringList>
+#include <QSysInfo>
 #include <QTemporaryFile>
 #include <QTextEdit>
 #include <QTimer>
@@ -65,8 +65,6 @@
 #include <QWhatsThis>
 #include <Qt>
 #include <QtGlobal>
-
-class QCloseEvent;
 
 #include <browser-types.hpp>
 #include <ebook.h>

@@ -20,21 +20,18 @@
 #include <QList>
 #include <QStringList>
 #include <QTabWidget>
-#include <QTreeWidgetItemIterator>
 #include <QUrl>
 #include <QtGlobal>
 
 #include <ebook.h>
 
 #include "i18n.h"
-#include "mainwindow.h"
 #include "settings.h"
 #include "tab_bookmarks.h"
 #include "tab_contents.h"
 #include "tab_index.h"
 #include "tab_search.h"
 #include "treeitem_toc.h"
-#include "viewwindow.h"
 
 #include "navigationpanel.h"
 
@@ -118,6 +115,7 @@ void NavigationPanel::refresh()
 {
 	if ( m_indexTab )
 		m_indexTab->refillIndex();
+
 	if ( m_contentsTab )
 		m_contentsTab->refillTableOfContents();
 }

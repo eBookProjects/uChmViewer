@@ -31,7 +31,6 @@
 
 class QAction;
 class QActionGroup;
-class QCloseEvent;
 class QMenu;
 class QPoint;
 class QSharedMemory;

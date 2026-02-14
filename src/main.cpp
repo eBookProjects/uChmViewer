@@ -18,9 +18,19 @@
 
 #include <QCoreApplication>
 #include <QObject>
-#include <QStringList>
-#include <Qt>
+#include <QList>
+#include <QString>
 #include <QtGlobal>
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	#include <QStringList>
+	#include <Qt>
+	#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+		#include <QGuiApplication>
+	#endif
+#else // QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	using QStringList = QList<QString>;
+#endif
 
 #if defined USE_MAC_APP
 	#include "uchmviewerapp.h"
@@ -31,6 +41,8 @@
 
 #ifdef _WIN32
 	#include <windows.h>
+	#include <QApplication>
+	#include <QFont>
 #endif
 
 #if defined USE_DBUS
