@@ -385,12 +385,10 @@ bool MainWindow::loadFile( const QString& loadFileName, bool call_open_page )
 	else
 	{
 		QMessageBox mbox(
+			QMessageBox::Critical,
 		    i18n( "%1 - failed to load file" ) . arg( QCoreApplication::applicationName() ),
 		    i18n( "Unable to load file %1" ) . arg( fileName ),
-		    QMessageBox::Critical,
-		    QMessageBox::Ok,
-		    Qt::NoButton,
-		    Qt::NoButton );
+		    QMessageBox::Ok );
 		mbox.exec();
 
 		statusBar()->showMessage(
@@ -476,8 +474,8 @@ bool MainWindow::onLinkClicked( ViewWindow* browser, const QUrl& url, UBrowser::
 			if ( QMessageBox::question( this,
 			                            i18n( "%1 - remote link clicked - %2" ) . arg( QCoreApplication::applicationName() ) . arg( otherlink ),
 			                            i18n( "A remote link %1 will start the external program to open it.\n\nDo you want to continue?" ).arg( url.toString() ),
-			                            i18n( "&Yes" ), i18n( "&No" ),
-			                            QString(), 0, 1 ) )
+			                            QMessageBox::Yes | QMessageBox::No,
+			                            QMessageBox::No ) )
 				return false;
 
 		// no break! should continue to open.
@@ -1388,15 +1386,13 @@ void MainWindow::setupActions()
 	// Context menu
 	m_contextMenu = new QMenu( this );
 
-	m_contextMenu->addAction( i18n( "&Open this link in a new tab" ),
-	                          this,
-	                          SLOT( onOpenPageInNewTab() ),
-	                          QKeySequence( "Shift+Enter" ) );
+	QAction* newTab = m_contextMenu->addAction( i18n( "&Open this link in a new tab" ) );
+	connect( newTab, &QAction::triggered, this, &MainWindow::onOpenPageInNewTab );
+	newTab->setShortcut( QKeySequence( "Shift+Enter" ) );
 
-	m_contextMenu->addAction( i18n( "&Open this link in a new background tab" ),
-	                          this,
-	                          SLOT( onOpenPageInNewBackgroundTab() ),
-	                          QKeySequence( "Ctrl+Enter" ) );
+	QAction* bckgTab = m_contextMenu->addAction( i18n( "&Open this link in a new background tab" ) );
+	connect( bckgTab, &QAction::triggered, this, &MainWindow::onOpenPageInNewBackgroundTab );
+	bckgTab->setShortcut( QKeySequence( "Ctrl+Enter" ) );
 }
 
 void MainWindow::updateToolbars()
