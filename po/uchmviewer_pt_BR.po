@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-06 14:40+0300\n"
+"POT-Creation-Date: 2026-02-15 10:17+0300\n"
 "PO-Revision-Date: 2009-12-15 23:31-0300\n"
 "Last-Translator: Márcio Moraes <marciopanto@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-doc@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Language: pt_BR\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1183
+#: ../src/dialog_about.ui:14
 #, fuzzy
 msgid "About uChmViewer"
 msgstr "uChmViewer"
@@ -299,33 +299,29 @@ msgstr ""
 msgid "Just text"
 msgstr "Sobre o &Qt"
 
-#: ../src/dialog_setup.cpp:214
+#: ../src/dialog_setup.cpp:209
 msgid ""
 "Changing those options requires restarting the application to take effect."
 msgstr ""
 "Alterar essas opções requer a reinicialização do programa para fazer efeito."
 
-#: ../src/dialog_setup.cpp:222
-msgid "*|Executables"
-msgstr "*|Executáveis"
-
-#: ../src/dialog_setup.cpp:222 ../src/dialog_setup.cpp:225
+#: ../src/dialog_setup.cpp:217
 msgid "Choose an editor executable"
 msgstr "Escolha um editor executável"
 
-#: ../src/dialog_setup.cpp:227
+#: ../src/dialog_setup.cpp:219
 msgid "Executables (*)"
 msgstr "Executáveis (*)"
 
-#: ../src/dialog_topicselector.ui:13
+#: ../src/dialog_topicselector.ui:14
 msgid "Multiple topics"
 msgstr ""
 
-#: ../src/dialog_topicselector.ui:25
+#: ../src/dialog_topicselector.ui:26
 msgid "Please select the topic to open:"
 msgstr ""
 
-#: ../src/mainwindow.ui:14 ../src/main.cpp:53
+#: ../src/mainwindow.ui:14
 #, fuzzy
 msgid "uChmViewer"
 msgstr "uChmViewer"
@@ -684,12 +680,14 @@ msgid "Previous"
 msgstr ""
 
 #: ../src/mainwindow.ui:529
-msgid "Go to the previous page in the Table of Contents"
+#, fuzzy
+msgid "Go to the previous page in the chm or epub file"
 msgstr "Ir para a página anterior na Tabela de Conteúdo"
 
 #: ../src/mainwindow.ui:532
+#, fuzzy
 msgid ""
-"Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
+"Go to the previous page in the chm or epub file<br><br><i>Shortcut: "
 "Ctrl+Left Arrow</i>"
 msgstr ""
 "Ir para a página anterior na <b>Tabela de Conteúdo</b><br><br><i>Atalho: "
@@ -700,13 +698,15 @@ msgid "Next"
 msgstr ""
 
 #: ../src/mainwindow.ui:544
-msgid "Go to the next page in the Table of Contents"
+#, fuzzy
+msgid "Go to the next page in the chm or epub file"
 msgstr "Ir para a próxima página na Tabela de Conteúdo"
 
 #: ../src/mainwindow.ui:547
+#, fuzzy
 msgid ""
-"Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: "
-"Ctrl+Right Arrow</i>"
+"Go to the next page in the chm or epub file<br><br><i>Shortcut: Ctrl+Right "
+"Arrow</i>"
 msgstr ""
 "Ir para a próxima página na <b>Tabela de Conteúdo</b><br><br><i>Atalho: "
 "Ctrl+Seta para a direita</i>"
@@ -756,36 +756,36 @@ msgstr ""
 msgid "Detected file encoding: %1 ( %2 )"
 msgstr "Codificação do arquivo detectado: %1 ( %2 )"
 
-#: ../src/mainwindow.cpp:388
-#, qt-format
-msgid "%1 - failed to load the chm file"
+#: ../src/mainwindow.cpp:389
+#, fuzzy, qt-format
+msgid "%1 - failed to load file"
 msgstr "%1 - falha ao carregar o arquivo chm"
 
-#: ../src/mainwindow.cpp:389
-#, qt-format
-msgid "Unable to load the chm file %1"
+#: ../src/mainwindow.cpp:390
+#, fuzzy, qt-format
+msgid "Unable to load file %1"
 msgstr "Não foi possível carregar o arquivo chm %1"
 
-#: ../src/mainwindow.cpp:397
+#: ../src/mainwindow.cpp:395
 #, qt-format
 msgid "Could not load file %1"
 msgstr "Não foi possível carregar arquivo %1"
 
-#: ../src/mainwindow.cpp:432
+#: ../src/mainwindow.cpp:427
 msgid "Open Link in a new tab\tShift+LMB"
 msgstr "Abrir Link em uma nova aba\tShift+Botão esquerdo do mouse"
 
-#: ../src/mainwindow.cpp:437
+#: ../src/mainwindow.cpp:430
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr ""
 "Abrir Link em uma nova aba em segundo plano\tCtrl+Botão esquerdo do mouse"
 
-#: ../src/mainwindow.cpp:484
+#: ../src/mainwindow.cpp:475
 #, qt-format
 msgid "%1 - remote link clicked - %2"
 msgstr "%1 - link remoto clicado - %2"
 
-#: ../src/mainwindow.cpp:485
+#: ../src/mainwindow.cpp:476
 #, qt-format
 msgid ""
 "A remote link %1 will start the external program to open it.\n"
@@ -796,76 +796,60 @@ msgstr ""
 "\n"
 "Você deseja continuar?"
 
-#: ../src/mainwindow.cpp:486
-msgid "&Yes"
-msgstr "&Sim"
-
-#: ../src/mainwindow.cpp:486
-msgid "&No"
-msgstr "&Não"
-
-#: ../src/mainwindow.cpp:894
-#, fuzzy
-msgid ""
-"*.chm *.epub|All electronic book\n"
-"*.chm|Compressed Help Manual\n"
-"*.epub|EPUB electronic book"
-msgstr "*.chm|Manual de Ajuda Comprimido (*.chm)"
-
-#: ../src/mainwindow.cpp:897
+#: ../src/mainwindow.cpp:944
 msgid "Open a chm file"
 msgstr "Abrir um arquivo chm"
 
-#: ../src/mainwindow.cpp:899
+#: ../src/mainwindow.cpp:946
 msgid "Electronic books (*.chm *.epub)"
 msgstr ""
 
-#: ../src/mainwindow.cpp:915
+#: ../src/mainwindow.cpp:961
 msgid "Printing aborted"
 msgstr "Impressão cancelada"
 
-#: ../src/mainwindow.cpp:921
+#: ../src/mainwindow.cpp:968
 msgid "Printing finished"
 msgstr "Impressão concluída"
 
-#: ../src/mainwindow.cpp:956 ../src/mainwindow.cpp:960
+#: ../src/mainwindow.cpp:1001
 msgid "Choose a directory to store CHM content"
 msgstr "Escolha um diretório para armazenar o conteúdo CHM"
 
-#: ../src/mainwindow.cpp:974
+#: ../src/mainwindow.cpp:1014
 msgid "Extracting CHM content"
 msgstr "Extraindo o conteúdo CHM"
 
-#: ../src/mainwindow.cpp:975
+#: ../src/mainwindow.cpp:1015
 msgid "Extracting files..."
 msgstr "Extraindo arquivos..."
 
-#: ../src/mainwindow.cpp:1076
+#: ../src/mainwindow.cpp:1118
 #, fuzzy
 msgid "HTML source"
 msgstr "&Exibir fonte do HTML"
 
-#: ../src/mainwindow.cpp:1106
+#: ../src/mainwindow.cpp:1148
 msgid "Cannot start external editor"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1107
+#: ../src/mainwindow.cpp:1149
 #, qt-format
 msgid ""
 "Cannot start external editor %1.\n"
 "Make sure the path is absolute!"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1157
+#: ../src/mainwindow.cpp:1199
 msgid "Could not locate opened topic in content window"
 msgstr "Não foi possível localizar tópico aberto na janela de conteúdo"
 
-#: ../src/mainwindow.cpp:1162
+#: ../src/mainwindow.cpp:1204
 #, qt-format
 msgid "Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1168
+#: ../src/mainwindow.cpp:1210
 #, qt-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
@@ -873,76 +857,76 @@ msgid ""
 "></head><body><p>This is a fork of KchmViewer, a chm and epub file viewer."
 "<br>KchmViewer is written by Georgy Yunaev.<br>uChmViewer version <b>%1</b></"
 "p><p>%2</p><p>Copyright (C) George Yunaev, 2004-2015<br>Copyright (C) Nick "
-"Egorrov, 2021</p><p>Licensed under GNU GPL license version 3.</p></body></"
-"html>"
+"Egorrov, 2021-2026</p><p>Licensed under GNU GPL license version 3.</p></"
+"body></html>"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1276
+#: ../src/mainwindow.cpp:1314
 msgid "Ctrl+1"
 msgstr "Ctrl+1"
 
-#: ../src/mainwindow.cpp:1282
+#: ../src/mainwindow.cpp:1320
 msgid "Ctrl+2"
 msgstr "Ctrl+2"
 
-#: ../src/mainwindow.cpp:1288
+#: ../src/mainwindow.cpp:1326
 msgid "Ctrl+3"
 msgstr "Ctrl+3"
 
-#: ../src/mainwindow.cpp:1294
+#: ../src/mainwindow.cpp:1332
 msgid "Ctrl+4"
 msgstr "Ctrl+4"
 
-#: ../src/mainwindow.cpp:1301
+#: ../src/mainwindow.cpp:1339
 msgid "/"
 msgstr "/"
 
-#: ../src/mainwindow.cpp:1308
+#: ../src/mainwindow.cpp:1346
 msgid "F3"
 msgstr "F3"
 
-#: ../src/mainwindow.cpp:1328
+#: ../src/mainwindow.cpp:1366
 msgid "Ctrl+Right"
 msgstr "Ctrl+Direito"
 
-#: ../src/mainwindow.cpp:1335
+#: ../src/mainwindow.cpp:1373
 msgid "Ctrl+Left"
 msgstr "Ctrl+Esquerdo"
 
-#: ../src/mainwindow.cpp:1342
+#: ../src/mainwindow.cpp:1380
 #, fuzzy
 msgid "Ctrl+I"
 msgstr "Ctrl+"
 
-#: ../src/mainwindow.cpp:1351
+#: ../src/mainwindow.cpp:1389
 #, fuzzy
 msgid "&Open this link in a new tab"
 msgstr "Abrir Link em uma nova aba\tShift+Botão esquerdo do mouse"
 
-#: ../src/mainwindow.cpp:1356
+#: ../src/mainwindow.cpp:1393
 #, fuzzy
 msgid "&Open this link in a new background tab"
 msgstr ""
 "Abrir Link em uma nova aba em segundo plano\tCtrl+Botão esquerdo do mouse"
 
-#: ../src/mainwindow.cpp:1436
+#: ../src/mainwindow.cpp:1472
 #, qt-format
 msgid "%1 ( %2 )"
 msgstr "%1 ( %2 )"
 
-#: ../src/navigationpanel.cpp:52
+#: ../src/navigationpanel.cpp:49
 msgid "Search"
 msgstr "Pesquisar"
 
-#: ../src/navigationpanel.cpp:55
+#: ../src/navigationpanel.cpp:52
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: ../src/navigationpanel.cpp:95
+#: ../src/navigationpanel.cpp:92
 msgid "Index"
 msgstr "Índice"
 
-#: ../src/navigationpanel.cpp:101
+#: ../src/navigationpanel.cpp:98
 msgid "Contents"
 msgstr "Conteúdo"
 
@@ -972,16 +956,16 @@ msgstr ""
 msgid "&Del"
 msgstr ""
 
-#: ../src/tab_bookmarks.cpp:147
+#: ../src/tab_bookmarks.cpp:146
 #, qt-format
 msgid "%1 - add a bookmark"
 msgstr "%1 - adicionar um marcador"
 
-#: ../src/tab_bookmarks.cpp:148 ../src/tab_bookmarks.cpp:188
+#: ../src/tab_bookmarks.cpp:147 ../src/tab_bookmarks.cpp:187
 msgid "Enter the name for this bookmark:"
 msgstr "Digite o nome para este marcador:"
 
-#: ../src/tab_bookmarks.cpp:187
+#: ../src/tab_bookmarks.cpp:186
 #, qt-format
 msgid "%1 - edit the bookmark name"
 msgstr "%1 - editar o nome do marcador"
@@ -1019,20 +1003,20 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: ../src/tab_search.cpp:183
+#: ../src/tab_search.cpp:187
 #, qt-format
 msgid "Search returned %1 result(s)"
 msgstr "A pesquisa devolveu %1 resultado(s)"
 
-#: ../src/tab_search.cpp:187
+#: ../src/tab_search.cpp:191
 msgid "Search returned no results"
 msgstr "A pesquisa não devolveu resultados"
 
-#: ../src/tab_search.cpp:190
+#: ../src/tab_search.cpp:194
 msgid "Search failed"
 msgstr "A pesquisa falhou"
 
-#: ../src/tab_search.cpp:219
+#: ../src/tab_search.cpp:223
 #, fuzzy
 msgid ""
 "<html><p>The improved search engine allows you to search for a word, symbol "
@@ -1059,29 +1043,29 @@ msgstr ""
 "de cotação, use aspas em vez disso. A engine trata uma cotação e uma aspa "
 "como o mesmo símbolo, o que permite usá-los em frases. </html>"
 
-#: ../src/tab_search.cpp:235
+#: ../src/tab_search.cpp:239
 msgid "Reading dictionary..."
 msgstr "Lendo diretório..."
 
-#: ../src/tab_search.cpp:249 ../src/tab_search.cpp:250
-#: ../src/tab_search.cpp:255
+#: ../src/tab_search.cpp:253 ../src/tab_search.cpp:254
+#: ../src/tab_search.cpp:259
 msgid "Generating search index..."
 msgstr "Gerando índice de pesquisa..."
 
-#: ../src/tab_search.cpp:265
+#: ../src/tab_search.cpp:269
 msgid "Cannot save index"
 msgstr ""
 
-#: ../src/tab_search.cpp:265
+#: ../src/tab_search.cpp:269
 #, qt-format
 msgid "The index cannot be saved into file %1"
 msgstr ""
 
-#: ../src/tab_search.cpp:303
+#: ../src/tab_search.cpp:307
 msgid "No index present"
 msgstr ""
 
-#: ../src/tab_search.cpp:303
+#: ../src/tab_search.cpp:307
 msgid "The index is not present"
 msgstr ""
 
@@ -1130,24 +1114,37 @@ msgstr ""
 msgid "Add page"
 msgstr "Adicionar página"
 
-#: ../src/viewwindowmgr.cpp:209 ../src/viewwindowmgr.cpp:287
+#: ../src/viewwindowmgr.cpp:205 ../src/viewwindowmgr.cpp:296
 #, qt-format
 msgid "Alt+%1"
 msgstr "Alt+%1"
 
-#: ../src/main.cpp:55
-msgid "CHM file viewer"
-msgstr "Visualizador de arquivos CHM"
+#~ msgid "&Yes"
+#~ msgstr "&Sim"
 
-#: ../src/main.cpp:57
-#, fuzzy
-msgid "(c) 2004-2015 George Yunaev"
-msgstr "(c) 2004-2008 George Yunaev, gyunaev@ulduzsoft.com"
+#~ msgid "&No"
+#~ msgstr "&Não"
 
-#: ../src/main.cpp:58
+#~ msgid "*|Executables"
+#~ msgstr "*|Executáveis"
+
 #, fuzzy
-msgid "Please report bugs to nicegorov@ya.com"
-msgstr "Por favor, relate falhas para nicegorov@ya.com"
+#~ msgid ""
+#~ "*.chm *.epub|All electronic book\n"
+#~ "*.chm|Compressed Help Manual\n"
+#~ "*.epub|EPUB electronic book"
+#~ msgstr "*.chm|Manual de Ajuda Comprimido (*.chm)"
+
+#~ msgid "CHM file viewer"
+#~ msgstr "Visualizador de arquivos CHM"
+
+#, fuzzy
+#~ msgid "(c) 2004-2015 George Yunaev"
+#~ msgstr "(c) 2004-2008 George Yunaev, gyunaev@ulduzsoft.com"
+
+#, fuzzy
+#~ msgid "Please report bugs to nicegorov@ya.com"
+#~ msgstr "Por favor, relate falhas para nicegorov@ya.com"
 
 #~ msgid ""
 #~ "Automatically detect encoding for KHTMLPart and WebKit browsers (not "

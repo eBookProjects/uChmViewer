@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kchmviewer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-06 14:40+0300\n"
+"POT-Creation-Date: 2026-02-15 10:17+0300\n"
 "PO-Revision-Date: 2006-08-31 20:54+0200\n"
 "Last-Translator: Hynek Fabian <hynek.fabian@mobilbonus.cz>\n"
 "Language-Team:  <cs@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: ../src/dialog_about.ui:14 ../src/mainwindow.cpp:1183
+#: ../src/dialog_about.ui:14
 msgid "About uChmViewer"
 msgstr ""
 
@@ -290,33 +290,29 @@ msgstr ""
 msgid "Just text"
 msgstr "O &Qt"
 
-#: ../src/dialog_setup.cpp:214
+#: ../src/dialog_setup.cpp:209
 msgid ""
 "Changing those options requires restarting the application to take effect."
 msgstr ""
 
-#: ../src/dialog_setup.cpp:222
-msgid "*|Executables"
-msgstr ""
-
-#: ../src/dialog_setup.cpp:222 ../src/dialog_setup.cpp:225
+#: ../src/dialog_setup.cpp:217
 msgid "Choose an editor executable"
 msgstr ""
 
-#: ../src/dialog_setup.cpp:227
+#: ../src/dialog_setup.cpp:219
 msgid "Executables (*)"
 msgstr ""
 
-#: ../src/dialog_topicselector.ui:13
+#: ../src/dialog_topicselector.ui:14
 msgid "Multiple topics"
 msgstr ""
 
-#: ../src/dialog_topicselector.ui:25
+#: ../src/dialog_topicselector.ui:26
 #, fuzzy
 msgid "Please select the topic to open:"
 msgstr "Zvolte si jedno z níže uvedených témat:"
 
-#: ../src/mainwindow.ui:14 ../src/main.cpp:53
+#: ../src/mainwindow.ui:14
 msgid "uChmViewer"
 msgstr ""
 
@@ -688,13 +684,13 @@ msgstr ""
 
 #: ../src/mainwindow.ui:529
 #, fuzzy
-msgid "Go to the previous page in the Table of Contents"
+msgid "Go to the previous page in the chm or epub file"
 msgstr "Přesun na obsahově předcházející stránku"
 
 #: ../src/mainwindow.ui:532
 #, fuzzy
 msgid ""
-"Go to the previous page in the <b>Table of Contents</b><br><br><i>Shortcut: "
+"Go to the previous page in the chm or epub file<br><br><i>Shortcut: "
 "Ctrl+Left Arrow</i>"
 msgstr "Přesun na obsahově předcházející stránku"
 
@@ -704,14 +700,14 @@ msgstr ""
 
 #: ../src/mainwindow.ui:544
 #, fuzzy
-msgid "Go to the next page in the Table of Contents"
+msgid "Go to the next page in the chm or epub file"
 msgstr "Přesun na obsahově následující stránku"
 
 #: ../src/mainwindow.ui:547
 #, fuzzy
 msgid ""
-"Go to the next page in the <b>Table of Contents</b><br><br><i>Shortcut: "
-"Ctrl+Right Arrow</i>"
+"Go to the next page in the chm or epub file<br><br><i>Shortcut: Ctrl+Right "
+"Arrow</i>"
 msgstr "Přesun na obsahově následující stránku"
 
 #: ../src/mainwindow.ui:556
@@ -761,35 +757,35 @@ msgstr ""
 msgid "Detected file encoding: %1 ( %2 )"
 msgstr ""
 
-#: ../src/mainwindow.cpp:388
-#, qt-format
-msgid "%1 - failed to load the chm file"
+#: ../src/mainwindow.cpp:389
+#, fuzzy, qt-format
+msgid "%1 - failed to load file"
 msgstr "%1 - načtení souboru s nápovědou se nezdařilo"
 
-#: ../src/mainwindow.cpp:389
-#, qt-format
-msgid "Unable to load the chm file %1"
+#: ../src/mainwindow.cpp:390
+#, fuzzy, qt-format
+msgid "Unable to load file %1"
 msgstr "Nepovedlo se načíst soubor nápovědy %1"
 
-#: ../src/mainwindow.cpp:397
+#: ../src/mainwindow.cpp:395
 #, qt-format
 msgid "Could not load file %1"
 msgstr "Nelze číst soubor %1"
 
-#: ../src/mainwindow.cpp:432
+#: ../src/mainwindow.cpp:427
 msgid "Open Link in a new tab\tShift+LMB"
 msgstr ""
 
-#: ../src/mainwindow.cpp:437
+#: ../src/mainwindow.cpp:430
 msgid "Open Link in a new background tab\tCtrl+LMB"
 msgstr ""
 
-#: ../src/mainwindow.cpp:484
+#: ../src/mainwindow.cpp:475
 #, qt-format
 msgid "%1 - remote link clicked - %2"
 msgstr "%1 - aktivován externí odkaz - %2"
 
-#: ../src/mainwindow.cpp:485
+#: ../src/mainwindow.cpp:476
 #, qt-format
 msgid ""
 "A remote link %1 will start the external program to open it.\n"
@@ -800,78 +796,62 @@ msgstr ""
 "\n"
 "Přejete si pokračovat?"
 
-#: ../src/mainwindow.cpp:486
-msgid "&Yes"
-msgstr "&Ano"
-
-#: ../src/mainwindow.cpp:486
-msgid "&No"
-msgstr "&Ne"
-
-#: ../src/mainwindow.cpp:894
-#, fuzzy
-msgid ""
-"*.chm *.epub|All electronic book\n"
-"*.chm|Compressed Help Manual\n"
-"*.epub|EPUB electronic book"
-msgstr "*.chm|Soubory nápovědy (*.chm)"
-
-#: ../src/mainwindow.cpp:897
+#: ../src/mainwindow.cpp:944
 #, fuzzy
 msgid "Open a chm file"
 msgstr "Otevřít"
 
-#: ../src/mainwindow.cpp:899
+#: ../src/mainwindow.cpp:946
 msgid "Electronic books (*.chm *.epub)"
 msgstr ""
 
-#: ../src/mainwindow.cpp:915
+#: ../src/mainwindow.cpp:961
 msgid "Printing aborted"
 msgstr "Tisk přerušen"
 
-#: ../src/mainwindow.cpp:921
+#: ../src/mainwindow.cpp:968
 #, fuzzy
 msgid "Printing finished"
 msgstr "Tisk přerušen"
 
-#: ../src/mainwindow.cpp:956 ../src/mainwindow.cpp:960
+#: ../src/mainwindow.cpp:1001
 msgid "Choose a directory to store CHM content"
 msgstr "Zvolte cílový adresář"
 
-#: ../src/mainwindow.cpp:974
+#: ../src/mainwindow.cpp:1014
 msgid "Extracting CHM content"
 msgstr "Rozbaluji soubor nápovědy"
 
-#: ../src/mainwindow.cpp:975
+#: ../src/mainwindow.cpp:1015
 msgid "Extracting files..."
 msgstr "Extrakce souborů..."
 
-#: ../src/mainwindow.cpp:1076
+#: ../src/mainwindow.cpp:1118
 #, fuzzy
 msgid "HTML source"
 msgstr "Zobrazit zdrojový kód"
 
-#: ../src/mainwindow.cpp:1106
+#: ../src/mainwindow.cpp:1148
 msgid "Cannot start external editor"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1107
+#: ../src/mainwindow.cpp:1149
 #, qt-format
 msgid ""
 "Cannot start external editor %1.\n"
 "Make sure the path is absolute!"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1157
+#: ../src/mainwindow.cpp:1199
 msgid "Could not locate opened topic in content window"
 msgstr "Téma nebylo nalezeno"
 
-#: ../src/mainwindow.cpp:1162
+#: ../src/mainwindow.cpp:1204
 #, qt-format
 msgid "Built for %1 arch using %2 ABI<br>Running on %3, Qt version %4"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1168
+#: ../src/mainwindow.cpp:1210
 #, qt-format
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
@@ -879,73 +859,73 @@ msgid ""
 "></head><body><p>This is a fork of KchmViewer, a chm and epub file viewer."
 "<br>KchmViewer is written by Georgy Yunaev.<br>uChmViewer version <b>%1</b></"
 "p><p>%2</p><p>Copyright (C) George Yunaev, 2004-2015<br>Copyright (C) Nick "
-"Egorrov, 2021</p><p>Licensed under GNU GPL license version 3.</p></body></"
-"html>"
+"Egorrov, 2021-2026</p><p>Licensed under GNU GPL license version 3.</p></"
+"body></html>"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1276
+#: ../src/mainwindow.cpp:1314
 msgid "Ctrl+1"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1282
+#: ../src/mainwindow.cpp:1320
 msgid "Ctrl+2"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1288
+#: ../src/mainwindow.cpp:1326
 msgid "Ctrl+3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1294
+#: ../src/mainwindow.cpp:1332
 msgid "Ctrl+4"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1301
+#: ../src/mainwindow.cpp:1339
 msgid "/"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1308
+#: ../src/mainwindow.cpp:1346
 msgid "F3"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1328
+#: ../src/mainwindow.cpp:1366
 msgid "Ctrl+Right"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1335
+#: ../src/mainwindow.cpp:1373
 msgid "Ctrl+Left"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1342
+#: ../src/mainwindow.cpp:1380
 msgid "Ctrl+I"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1351
+#: ../src/mainwindow.cpp:1389
 msgid "&Open this link in a new tab"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1356
+#: ../src/mainwindow.cpp:1393
 msgid "&Open this link in a new background tab"
 msgstr ""
 
-#: ../src/mainwindow.cpp:1436
+#: ../src/mainwindow.cpp:1472
 #, qt-format
 msgid "%1 ( %2 )"
 msgstr ""
 
-#: ../src/navigationpanel.cpp:52
+#: ../src/navigationpanel.cpp:49
 msgid "Search"
 msgstr "Hledání"
 
-#: ../src/navigationpanel.cpp:55
+#: ../src/navigationpanel.cpp:52
 #, fuzzy
 msgid "Bookmarks"
 msgstr "&Přidat záložku"
 
-#: ../src/navigationpanel.cpp:95
+#: ../src/navigationpanel.cpp:92
 msgid "Index"
 msgstr "Obsah"
 
-#: ../src/navigationpanel.cpp:101
+#: ../src/navigationpanel.cpp:98
 msgid "Contents"
 msgstr ""
 
@@ -975,16 +955,16 @@ msgstr ""
 msgid "&Del"
 msgstr ""
 
-#: ../src/tab_bookmarks.cpp:147
+#: ../src/tab_bookmarks.cpp:146
 #, qt-format
 msgid "%1 - add a bookmark"
 msgstr "%1 - vložení záložky"
 
-#: ../src/tab_bookmarks.cpp:148 ../src/tab_bookmarks.cpp:188
+#: ../src/tab_bookmarks.cpp:147 ../src/tab_bookmarks.cpp:187
 msgid "Enter the name for this bookmark:"
 msgstr "Zadejte jméno záložky"
 
-#: ../src/tab_bookmarks.cpp:187
+#: ../src/tab_bookmarks.cpp:186
 #, qt-format
 msgid "%1 - edit the bookmark name"
 msgstr "%1 - změna názvu záložky"
@@ -1022,20 +1002,20 @@ msgstr ""
 msgid "Location"
 msgstr "Umístění"
 
-#: ../src/tab_search.cpp:183
+#: ../src/tab_search.cpp:187
 #, qt-format
 msgid "Search returned %1 result(s)"
 msgstr "Nalezeno %1 výsledků"
 
-#: ../src/tab_search.cpp:187
+#: ../src/tab_search.cpp:191
 msgid "Search returned no results"
 msgstr "Hledání nevedlo k žádnému výsledku"
 
-#: ../src/tab_search.cpp:190
+#: ../src/tab_search.cpp:194
 msgid "Search failed"
 msgstr "Hledání se nezdařilo"
 
-#: ../src/tab_search.cpp:219
+#: ../src/tab_search.cpp:223
 msgid ""
 "<html><p>The improved search engine allows you to search for a word, symbol "
 "or phrase, which is set of words and symbols included in quotes. Only the "
@@ -1050,29 +1030,29 @@ msgid ""
 "html>"
 msgstr ""
 
-#: ../src/tab_search.cpp:235
+#: ../src/tab_search.cpp:239
 msgid "Reading dictionary..."
 msgstr ""
 
-#: ../src/tab_search.cpp:249 ../src/tab_search.cpp:250
-#: ../src/tab_search.cpp:255
+#: ../src/tab_search.cpp:253 ../src/tab_search.cpp:254
+#: ../src/tab_search.cpp:259
 msgid "Generating search index..."
 msgstr ""
 
-#: ../src/tab_search.cpp:265
+#: ../src/tab_search.cpp:269
 msgid "Cannot save index"
 msgstr ""
 
-#: ../src/tab_search.cpp:265
+#: ../src/tab_search.cpp:269
 #, qt-format
 msgid "The index cannot be saved into file %1"
 msgstr ""
 
-#: ../src/tab_search.cpp:303
+#: ../src/tab_search.cpp:307
 msgid "No index present"
 msgstr ""
 
-#: ../src/tab_search.cpp:303
+#: ../src/tab_search.cpp:307
 msgid "The index is not present"
 msgstr ""
 
@@ -1123,288 +1103,7 @@ msgstr "Práce se soubory"
 msgid "Add page"
 msgstr "Hledání na stránce"
 
-#: ../src/viewwindowmgr.cpp:209 ../src/viewwindowmgr.cpp:287
+#: ../src/viewwindowmgr.cpp:205 ../src/viewwindowmgr.cpp:296
 #, qt-format
 msgid "Alt+%1"
 msgstr ""
-
-#: ../src/main.cpp:55
-msgid "CHM file viewer"
-msgstr "Prohlížeč CHM souborů"
-
-#: ../src/main.cpp:57
-msgid "(c) 2004-2015 George Yunaev"
-msgstr ""
-
-#: ../src/main.cpp:58
-msgid "Please report bugs to nicegorov@ya.com"
-msgstr ""
-
-#~ msgid "Abort"
-#~ msgstr "Přerušit"
-
-#, fuzzy
-#~ msgid "New version available"
-#~ msgstr "Hledání se nezdařilo"
-
-#~ msgid "%1 - JavsScript link clicked"
-#~ msgstr "%1 - aktivován JavaScript odkaz"
-
-#~ msgid ""
-#~ "You have clicked a JavaScript link.\n"
-#~ "To prevent security-related issues JavaScript URLs are disabled in CHM "
-#~ "files."
-#~ msgstr ""
-#~ "Kliknuli jste na JavaScriptový odkaz\n"
-#~ "Z bezpečnostních důvodů je použití JavaScriptových adres v souborech "
-#~ "nápovědy potlačeno."
-
-#~ msgid "%1 - link to a new CHM file clicked"
-#~ msgstr "%1 - aktivován odkaz na CHM soubor"
-
-#~ msgid ""
-#~ "You have clicked a link, which leads to a new CHM file %1.\n"
-#~ "The current file will be closed.\n"
-#~ "\n"
-#~ "Do you want to continue?"
-#~ msgstr ""
-#~ "Kliknuli jste na odkaz ukazující na soubor nápovědy %1.\n"
-#~ "Aktuální soubor bude uzavřen.\n"
-#~ "\n"
-#~ "Přejete si pokračovat ?"
-
-#~ msgid "Compressed Help Manual (*.chm)"
-#~ msgstr "Soubory nápovědy (*.chm)"
-
-#~ msgid "Loading aborted"
-#~ msgstr "Načítaní přerušeno"
-
-#~ msgid "About %1"
-#~ msgstr "O aplikaci %1"
-
-#, fuzzy
-#~ msgid "&About"
-#~ msgstr "Přerušit"
-
-#, fuzzy
-#~ msgid "A CHM file to show"
-#~ msgstr "Prohlížeč CHM souborů"
-
-#~ msgid "If no arguments given on load"
-#~ msgstr "Bez parametrů při spučtení"
-
-#~ msgid "Version-specific settings"
-#~ msgstr "Zvláštní nastavení verzí"
-
-#~ msgid "KDE version settings"
-#~ msgstr "Nastavení KDE verze"
-
-#~ msgid "To show HTML content, use"
-#~ msgstr "HTML obsah zobrazit pomocí"
-
-#~ msgid "&QTextBrowser-based widget"
-#~ msgstr "&QTextBrowser prvku"
-
-#~ msgid "&KHTMLPart-based widget"
-#~ msgstr "&KHTMLPart prvku"
-
-#~ msgid "KHTMLPart security"
-#~ msgstr "Zabezpečení KHTMLPart"
-
-#~ msgid "Enable &refresh"
-#~ msgstr "Povolit obnovení"
-
-#~ msgid "Enable &plugins"
-#~ msgstr "&Povolit moduly"
-
-#~ msgid "&View HTML source"
-#~ msgstr "&Zobrazit zdroj"
-
-#~ msgid "&Locate in contents window"
-#~ msgstr "&Najít v obsahu"
-
-#, fuzzy
-#~ msgid "Previous page in Table of Context"
-#~ msgstr "Přesun na obsahově předcházející stránku"
-
-#, fuzzy
-#~ msgid "Previous page in TOC"
-#~ msgstr "Předchozí stránka"
-
-#, fuzzy
-#~ msgid "Next page in Table of Context"
-#~ msgstr "Následující stránka"
-
-#~ msgid "Next page in TOC"
-#~ msgstr "Následující stránka"
-
-#~ msgid "Qt version settings"
-#~ msgstr "Nastavení Qt verze"
-
-#~ msgid ""
-#~ "Enter the path to the program, which will be used as a browser for "
-#~ "external links.  A <i>%s</i> symbol will be replaced by the URL clicked."
-#~ msgstr ""
-#~ "Cesta k externímu prohlížeči. Symbol <i>%s</i> bude nahrazen volanou URL."
-
-#, fuzzy
-#~ msgid "Search engine to use"
-#~ msgstr "Hledání nevedlo k žádnému výsledku"
-
-#~ msgid ""
-#~ "_: NAME OF TRANSLATORS\n"
-#~ "Your names"
-#~ msgstr "Hynek Fabian"
-
-#~ msgid ""
-#~ "_: EMAIL OF TRANSLATORS\n"
-#~ "Your emails"
-#~ msgstr "radonek@gmail.com"
-
-#~ msgid "Topics"
-#~ msgstr "Témata"
-
-#, fuzzy
-#~ msgid ""
-#~ "%1 version %2\n"
-#~ "\n"
-#~ "Copyright (C) George Yunaev,gyunaev@ulduzsoft.com, 2004-2007\n"
-#~ "http://www.kchmviewer.net\n"
-#~ "\n"
-#~ "Licensed under GNU GPL license.\n"
-#~ "\n"
-#~ "Please check my another project, http://www.transientmail.com - temporary "
-#~ "e-mail address, which expires automatically."
-#~ msgstr ""
-#~ "%1 verze %2\n"
-#~ "\n"
-#~ "Copyright (C) George Yunaev,gyunaev@ulduzsoft.com, 2005-2006\n"
-#~ "www.kchmviewer.net\n"
-#~ "\n"
-#~ "Licencováno GNU GPL.\n"
-#~ "\n"
-#~ "Zkuste náš další projekt, www.transientmail.com - dočasná adresa "
-#~ "elektronické pošty která časem sama zaniká."
-
-#~ msgid "Click this button to open an existing chm file."
-#~ msgstr "Výběr existujícího souboru nápovědy k prohlížení"
-
-#~ msgid "Click this button to print the current page"
-#~ msgstr "Stiskem toho tlačítka vytisknete současnou stránku"
-
-#~ msgid ""
-#~ "Click this button to extract the whole CHM file content into a specific "
-#~ "directory"
-#~ msgstr ""
-#~ "Tímto tlačítkem extrahujete obsah souboru nápovědy do zadaného adresáře"
-
-#~ msgid "&Recent files"
-#~ msgstr "Ot&evřít nedávný"
-
-#~ msgid "What's &This"
-#~ msgstr "Co je &tohle ?"
-
-#~ msgid "Click this button to move backward in browser history"
-#~ msgstr "Přesun v historii o krok zpět"
-
-#~ msgid "Click this button to move forward in browser history"
-#~ msgstr "Přesun v historii o krok vpřed"
-
-#~ msgid "Go to the home page"
-#~ msgstr "Úvodní stránka"
-
-#~ msgid "Click this button to move to the home page"
-#~ msgstr "Přesun na úvodní stranu"
-
-#~ msgid "Enter here the text to search in the current page."
-#~ msgstr "Zde zadaný text bude vyhledán na aktuální stránce"
-
-#~ msgid "Previous search result"
-#~ msgstr "Předešlý výsledek hledání"
-
-#~ msgid "Click this button to find previous search result."
-#~ msgstr "Stiskem toho tlačítka se vrátíte předešlý nalezený výraz"
-
-#~ msgid "Next search result"
-#~ msgstr "Další výsledek hledání"
-
-#~ msgid "Click this button to find next search result."
-#~ msgstr ""
-#~ "Stiskem tohoto tlačítka se přesunete na další výskyt hledaného výrazu"
-
-#~ msgid ""
-#~ "Click this button to find current topic in the content window, and open "
-#~ "it."
-#~ msgstr "Stiskem tohoto tlačítka otevřete okno s obsahem na aktuálním tématu"
-
-#~ msgid "Click this button to increase the font size."
-#~ msgstr "Toto tlačítko zvětší velikost použitého písma"
-
-#~ msgid "Click this button to decrease the font size."
-#~ msgstr "Toto tlačítko zmenší velikost použítého písma"
-
-#~ msgid ""
-#~ "Click this button to open a separate window with the page HTML source."
-#~ msgstr ""
-#~ "Stisknutím tohoto tlačítka otevřete okno s HTML zdrojovým kódem stránky"
-
-#~ msgid "Add to bookmarks"
-#~ msgstr "Přidat k záložkám"
-
-#~ msgid "Click this button to add the current page to the bookmarks list."
-#~ msgstr "Tímto čudlíkem přidáte aktuální stránku mezi záložky"
-
-#~ msgid "&Increase font"
-#~ msgstr "Z&většit písmo"
-
-#~ msgid "&Decrease font"
-#~ msgstr "Z&menšit písmo"
-
-#~ msgid "&Set language"
-#~ msgstr "Vybrat &jazyk"
-
-#~ msgid "How to use search"
-#~ msgstr "Jak používat vyhledávání"
-
-#~ msgid ""
-#~ "The search query can contain a few prefixes.\n"
-#~ "A set of words inside the quote marks mean that you are searching for "
-#~ "exact phrase.\n"
-#~ "A word with minus sign means that it should be absent in the search "
-#~ "result.\n"
-#~ "A word with plus mark or without any mark means that it must be present "
-#~ "in the search result.\n"
-#~ "\n"
-#~ "Note that only letters and digits are indexed.\n"
-#~ "You cannot search for non-character symbols other than underscope, and "
-#~ "those symbols will be removed from the search query.\n"
-#~ "For example, search for 'C' will give the same result as searching for 'C+"
-#~ "+'."
-#~ msgstr ""
-#~ "Hledaný výraz může obsahovat několik prefixů.\n"
-#~ "Vložení několika slov do uvozovek značí že chcete najít přesnou frázi.\n"
-#~ "Slovo se znaménkem minus se ve výsledku nebude vyskytovat.\n"
-#~ "Slovo se znaménkem plus nebo bez znaménka musí být ve výsledku přítomno.\n"
-#~ "\n"
-#~ "Hledání bere v úvahu pouze písmena, číslice a znak podtržítka.\n"
-#~ "Ostatní znaky budou z hledaného výrazu odstraněny.\n"
-#~ "Například hledání 'C' povede ke stejným výsledkům jako hledaní 'C++'."
-
-#~ msgid "Printing (page %1)..."
-#~ msgstr "Probíhá tisk strany %1 ..."
-
-#~ msgid "Printing completed"
-#~ msgstr "Tisk dokončen"
-
-#~ msgid "%1 - could not print"
-#~ msgstr "%1 - nelze tisknout"
-
-#~ msgid ""
-#~ "Could not print.\n"
-#~ "Your Qt library has been compiled without printing support"
-#~ msgstr ""
-#~ "Není možné tisknout.\n"
-#~ "Vaše knihovna Qt byla přeložena bez podpory tisku."
-
-#~ msgid "Match similar words"
-#~ msgstr "Podobná slova"

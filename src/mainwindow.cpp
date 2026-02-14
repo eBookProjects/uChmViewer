@@ -385,7 +385,7 @@ bool MainWindow::loadFile( const QString& loadFileName, bool call_open_page )
 	else
 	{
 		QMessageBox mbox(
-			QMessageBox::Critical,
+		    QMessageBox::Critical,
 		    i18n( "%1 - failed to load file" ) . arg( QCoreApplication::applicationName() ),
 		    i18n( "Unable to load file %1" ) . arg( fileName ),
 		    QMessageBox::Ok );
@@ -1215,7 +1215,7 @@ void MainWindow::actionAboutApp()
 	                          "uChmViewer version <b>%1</b></p>"
 	                          "<p>%2</p>"
 	                          "<p>Copyright (C) George Yunaev, 2004-2015<br>"
-	                          "Copyright (C) Nick Egorrov, 2021</p>"
+	                          "Copyright (C) Nick Egorrov, 2021-2026</p>"
 	                          "<p>Licensed under GNU GPL license version 3.</p>"
 	                          "</body></html>" )
 	                    .arg( APP_VERSION ) .arg( info );
