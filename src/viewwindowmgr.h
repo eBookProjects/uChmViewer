@@ -50,10 +50,11 @@ class ViewWindowMgr : public QWidget, public Ui::TabbedBrowser
 		bool isEmpty() const;
 
 		// Returns a handle to a currently viewed window.
-		// Guaranteeed to return a valid handle, or aborts.
+		// If there are no tabs, returns nullptr.
 		ViewWindow*     current();
 
-		// Adds a new tab, creating a new browser window
+		// Adds a new tab, creating a new browser window.
+		// If the new browser could not be created, returns nullptr.
 		ViewWindow*     addNewTab( bool set_active );
 
 		// Sets the tab name and updates Windows menu
