@@ -190,13 +190,14 @@ class EBook_EPUB : public EBook
 		bool    getFileAsString( QString& str, const QString& path ) const;
 		bool    getFileAsBinary( QByteArray& data, const QString& path ) const;
 
+		static QString combinePath( const QString& baseDir, const QString& path );
+
 		// ZIP archive fd and structs
 		QFile           m_epubFile;
 		struct zip*     m_zipFile;
 
 		// Ebook info
 		QString         m_title;
-		QString         m_documentRoot;
 
 		// List of files in the ebook
 		QList<QUrl>     m_ebookManifest;

@@ -16,6 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QDir>
 #include <QString>
 #include <QUrl>
 #include <QXmlAttributes>
@@ -24,12 +25,13 @@
 #include "helperxmlhandler_epubtoc.h"
 
 
-HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC( EBook_EPUB* epub )
+HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC( EBook_EPUB* epub, const QString& documentRoot )
+	: m_inNavMap( false ),
+	  m_inText( false ),
+	  m_indent( 0 ),
+	  m_epub( epub ),
+	  m_documentRoot( documentRoot )
 {
-	m_epub = epub;
-	m_inNavMap = false;
-	m_inText = false;
-	m_indent = 0;
 }
 
 bool HelperXmlHandler_EpubTOC::startElement( const QString&, const QString& localName, const QString&, const QXmlAttributes& atts )
@@ -103,7 +105,8 @@ void HelperXmlHandler_EpubTOC::checkNewTocEntry()
 	{
 		EBookTocEntry entry;
 		entry.name = m_lastTitle;
-		entry.url = m_epub->pathToUrl( m_lastId );
+		QString combined = QDir( m_documentRoot ).filePath( m_lastId );
+		entry.url = m_epub->pathToUrl( QDir::cleanPath( combined ) );
 		entry.iconid = EBookTocEntry::IMAGE_AUTO;
 		entry.indent = m_indent - 1;
 

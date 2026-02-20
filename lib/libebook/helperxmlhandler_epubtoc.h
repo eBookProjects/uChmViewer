@@ -33,7 +33,7 @@ class EBook_EPUB;
 class HelperXmlHandler_EpubTOC : public QXmlDefaultHandler
 {
 	public:
-		HelperXmlHandler_EpubTOC( EBook_EPUB* epub );
+		HelperXmlHandler_EpubTOC( EBook_EPUB* epub, const QString& documentRoot );
 
 		QList< EBookTocEntry >  entries;
 
@@ -50,6 +50,7 @@ class HelperXmlHandler_EpubTOC : public QXmlDefaultHandler
 		QString         m_lastId;
 		QString         m_lastTitle;
 		EBook_EPUB*     m_epub;
+		QString         m_documentRoot;
 };
 
 #endif // HELPERXMLHANDLER_EPUBTOC_H

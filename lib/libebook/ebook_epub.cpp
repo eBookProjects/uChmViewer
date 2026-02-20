@@ -25,6 +25,7 @@
 
 #include <QByteArray>
 #include <QChar>
+#include <QDir>
 #include <QIODevice>
 #include <QFileInfo>
 #include <QList>
@@ -235,17 +236,26 @@ bool EBook_EPUB::parseBookinfo()
 	if ( content_parser.tocname.isEmpty() )
 		return false;
 
-	// All the files, including TOC, are relative to the container_parser.contentPath
-	m_documentRoot.clear();
+	// TOC is relative to the container_parser.contentPath
+	QString contentRoot;
 	int sep = container_parser.contentPath.lastIndexOf( '/' );
 
 	if ( sep != -1 )
-		m_documentRoot = container_parser.contentPath.left( sep + 1 );  // Keep the trailing slash
+		contentRoot = container_parser.contentPath.left( sep + 1 );  // Keep the trailing slash
+
+	QString tocPath = combinePath( contentRoot, content_parser.tocname );
+
+	// All pages are relative to the container_parser.tocname
+	QString tocRoot;
+	sep = tocPath.lastIndexOf( '/' );
+
+	if ( sep != -1 )
+		tocRoot = tocPath.left( sep + 1 );  // Keep the trailing slash
 
 	// Parse the TOC
-	HelperXmlHandler_EpubTOC toc_parser( this );
+	HelperXmlHandler_EpubTOC toc_parser( this, tocRoot );
 
-	if ( !parseXML( content_parser.tocname, &toc_parser ) )
+	if ( !parseXML( tocPath, &toc_parser ) )
 		return false;
 
 	// Get the data
@@ -256,12 +266,18 @@ bool EBook_EPUB::parseBookinfo()
 
 	// Move the manifest entries into the list
 	Q_FOREACH ( QString f, content_parser.manifest.values() )
-		m_ebookManifest.push_back( pathToUrl( f ) );
+	{
+		QString combined = combinePath( contentRoot, f );
+		m_ebookManifest.push_back( pathToUrl( combined ) );
+	}
 
 	for ( const auto& si : qAsConst( content_parser.spine ) )
 	{
 		if ( content_parser.manifest.contains( si ) )
-			m_spinePath.push_back( content_parser.manifest[ si ] );
+		{
+			QString combined = combinePath( contentRoot, content_parser.manifest[ si ] );
+			m_spinePath.push_back( combined );
+		}
 	}
 
 	// Copy the manifest information and fill up the other maps if we have it
@@ -372,12 +388,11 @@ bool EBook_EPUB::getFileAsBinary( QByteArray& data, const QString& path ) const
 {
 	// Retrieve the file size
 	struct zip_stat fileinfo;
-	QString completeUrl;
+
+	QString completeUrl = path;
 
 	if ( !path.isEmpty() && path[0] == '/' )
-		completeUrl = m_documentRoot + path.mid( 1 );
-	else
-		completeUrl = m_documentRoot + path;
+		completeUrl = path.mid( 1 );
 
 	//qDebug("URL requested: %s (%s)", qPrintable(path), qPrintable(completeUrl));
 
@@ -412,4 +427,10 @@ bool EBook_EPUB::getFileAsBinary( QByteArray& data, const QString& path ) const
 
 	zip_fclose( file );
 	return true;
+}
+
+QString EBook_EPUB::combinePath( const QString& baseDir, const QString& path )
+{
+	QString combined = QDir( baseDir ).filePath( path );
+	return QDir::cleanPath( combined );
 }
