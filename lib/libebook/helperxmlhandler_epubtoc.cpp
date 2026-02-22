@@ -25,12 +25,12 @@
 #include "helperxmlhandler_epubtoc.h"
 
 
-HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC( EBook_EPUB* epub, const QString& documentRoot )
+HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC( EBook_EPUB* epub, const QString& basePath )
 	: m_inNavMap( false ),
 	  m_inText( false ),
 	  m_indent( 0 ),
 	  m_epub( epub ),
-	  m_documentRoot( documentRoot )
+	  m_basePath( basePath )
 {
 }
 
@@ -105,8 +105,8 @@ void HelperXmlHandler_EpubTOC::checkNewTocEntry()
 	{
 		EBookTocEntry entry;
 		entry.name = m_lastTitle;
-		QString combined = QDir( m_documentRoot ).filePath( m_lastId );
-		entry.url = m_epub->pathToUrl( QDir::cleanPath( combined ) );
+		QString combined = EBook_EPUB::combinePath( m_basePath, m_lastId );
+		entry.url = m_epub->pathToUrl( combined );
 		entry.iconid = EBookTocEntry::IMAGE_AUTO;
 		entry.indent = m_indent - 1;
 

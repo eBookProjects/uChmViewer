@@ -19,12 +19,14 @@
 #include <QString>
 #include <QXmlAttributes>
 
+#include "ebook_epub.h"
 #include "helperxmlhandler_epubcontent.h"
 
 
-HelperXmlHandler_EpubContent::HelperXmlHandler_EpubContent()
+HelperXmlHandler_EpubContent::HelperXmlHandler_EpubContent( const QString& basePath )
+	: m_state( STATE_NONE ),
+	  m_basePath( basePath )
 {
-	m_state = STATE_NONE;
 }
 
 bool HelperXmlHandler_EpubContent::startElement( const QString&, const QString& localName, const QString&, const QXmlAttributes& atts )
@@ -48,10 +50,10 @@ bool HelperXmlHandler_EpubContent::startElement( const QString&, const QString& 
 		if ( idx_id == -1 || idx_href == -1 || idx_mtype == -1 )
 			return false;
 
-		manifest[ atts.value( idx_id ) ] = atts.value( idx_href );
+		manifest[ atts.value( idx_id ) ] = EBook_EPUB::combinePath( m_basePath, atts.value( idx_href ) );
 
 		if ( atts.value( idx_mtype ) == "application/x-dtbncx+xml" )
-			tocname = atts.value( idx_href );
+			tocPath = EBook_EPUB::combinePath( m_basePath, atts.value( idx_href ) );
 
 		//qDebug() << "MANIFEST: " << atts.value( idx_id ) << "->" << atts.value( idx_href );
 	}

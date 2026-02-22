@@ -227,35 +227,22 @@ bool EBook_EPUB::parseBookinfo()
 		return false;
 
 	// Parse the content.opf
-	HelperXmlHandler_EpubContent content_parser;
+	// TOC is relative to the container_parser.contentPath
+	QString parentPath = getParentPath( container_parser.contentPath );
+	HelperXmlHandler_EpubContent content_parser( parentPath );
 
 	if ( !parseXML( container_parser.contentPath, &content_parser ) )
 		return false;
 
 	// At least the TOC must be present
-	if ( content_parser.tocname.isEmpty() )
+	if ( content_parser.tocPath.isEmpty() )
 		return false;
 
-	// TOC is relative to the container_parser.contentPath
-	QString contentRoot;
-	int sep = container_parser.contentPath.lastIndexOf( '/' );
-
-	if ( sep != -1 )
-		contentRoot = container_parser.contentPath.left( sep + 1 );  // Keep the trailing slash
-
-	QString tocPath = combinePath( contentRoot, content_parser.tocname );
-
-	// All pages are relative to the container_parser.tocname
-	QString tocRoot;
-	sep = tocPath.lastIndexOf( '/' );
-
-	if ( sep != -1 )
-		tocRoot = tocPath.left( sep + 1 );  // Keep the trailing slash
-
 	// Parse the TOC
-	HelperXmlHandler_EpubTOC toc_parser( this, tocRoot );
+	parentPath = getParentPath( content_parser.tocPath );
+	HelperXmlHandler_EpubTOC toc_parser( this, parentPath );
 
-	if ( !parseXML( tocPath, &toc_parser ) )
+	if ( !parseXML( content_parser.tocPath, &toc_parser ) )
 		return false;
 
 	// Get the data
@@ -266,18 +253,12 @@ bool EBook_EPUB::parseBookinfo()
 
 	// Move the manifest entries into the list
 	Q_FOREACH ( QString f, content_parser.manifest.values() )
-	{
-		QString combined = combinePath( contentRoot, f );
-		m_ebookManifest.push_back( pathToUrl( combined ) );
-	}
+		m_ebookManifest.push_back( pathToUrl( f ) );
 
 	for ( const auto& si : qAsConst( content_parser.spine ) )
 	{
 		if ( content_parser.manifest.contains( si ) )
-		{
-			QString combined = combinePath( contentRoot, content_parser.manifest[ si ] );
-			m_spinePath.push_back( combined );
-		}
+			m_spinePath.push_back( content_parser.manifest[ si ] );
 	}
 
 	// Copy the manifest information and fill up the other maps if we have it
@@ -429,8 +410,18 @@ bool EBook_EPUB::getFileAsBinary( QByteArray& data, const QString& path ) const
 	return true;
 }
 
-QString EBook_EPUB::combinePath( const QString& baseDir, const QString& path )
+QString EBook_EPUB::combinePath( const QString& baseDirPath, const QString& path )
 {
-	QString combined = QDir( baseDir ).filePath( path );
+	QString combined = QDir( baseDirPath ).filePath( path );
 	return QDir::cleanPath( combined );
+}
+
+QString EBook_EPUB::getParentPath( const QString& path )
+{
+	int sep = path.lastIndexOf( '/' );
+
+	if ( sep != -1 )
+		return path.left( sep + 1 );  // Keep the trailing slash
+
+	return "";
 }

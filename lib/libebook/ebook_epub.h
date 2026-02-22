@@ -179,6 +179,10 @@ class EBook_EPUB : public EBook
 	protected:
 		void loadNavigation( Navigator& nav ) override;
 
+	public:
+		// Combine path and resolve relative path
+		static QString combinePath( const QString& baseDirPath, const QString& path );
+
 	private:
 		// Parses the XML file using a specified parser
 		bool    parseXML( const QString& uri, QXmlDefaultHandler* reader );
@@ -190,7 +194,8 @@ class EBook_EPUB : public EBook
 		bool    getFileAsString( QString& str, const QString& path ) const;
 		bool    getFileAsBinary( QByteArray& data, const QString& path ) const;
 
-		static QString combinePath( const QString& baseDir, const QString& path );
+		// Get parent path
+		static QString getParentPath( const QString& path );
 
 		// ZIP archive fd and structs
 		QFile           m_epubFile;
