@@ -31,7 +31,6 @@
 #include <QMessageBox>
 #include <QString>
 #include <QUrl>
-#include <QXmlDefaultHandler>
 #include <QXmlInputSource>
 #include <QXmlSimpleReader>
 #include <QtGlobal>
@@ -45,6 +44,7 @@
 #include <zip.h>
 
 #include "ebook_epub.h"
+#include "ebook_epub_helperxml.h"
 #include "helperxmlhandler_epubcontainer.h"
 #include "helperxmlhandler_epubcontent.h"
 #include "helperxmlhandler_epubtoc.h"
@@ -194,13 +194,13 @@ bool EBook_EPUB::isSupportedUrl( const QUrl& url )
 	return url.scheme() == URL_SCHEME_EPUB;
 }
 
-bool EBook_EPUB::parseXML( const QString& uri, QXmlDefaultHandler* parser )
+bool EBook_EPUB::parseXML( Ebook::Epub::HelperXml* parser )
 {
 	QByteArray container;
 
-	if ( !getFileAsBinary( container, uri ) )
+	if ( !getFileAsBinary( container, parser->filePath ) )
 	{
-		qDebug( "Failed to retrieve XML file %s", qPrintable( uri ) );
+		qDebug( "Failed to retrieve XML file %s", qPrintable( parser->filePath ) );
 		return false;
 	}
 
@@ -219,16 +219,16 @@ bool EBook_EPUB::parseXML( const QString& uri, QXmlDefaultHandler* parser )
 bool EBook_EPUB::parseBookinfo()
 {
 	// Parse the container.xml to find the content descriptor
-	HelperXmlHandler_EpubContainer container_parser;
+	HelperXmlHandler_EpubContainer container_parser( "META-INF/container.xml" );
 
-	if ( !parseXML( "META-INF/container.xml", &container_parser )
+	if ( !parseXML( &container_parser )
 	        || container_parser.contentPath.isEmpty() )
 		return false;
 
 	// Parse the content.opf
-	HelperXmlHandler_EpubContent content_parser;
+	HelperXmlHandler_EpubContent content_parser( container_parser.contentPath );
 
-	if ( !parseXML( container_parser.contentPath, &content_parser ) )
+	if ( !parseXML( &content_parser ) )
 		return false;
 
 	// At least the TOC must be present
@@ -243,9 +243,9 @@ bool EBook_EPUB::parseBookinfo()
 		m_documentRoot = container_parser.contentPath.left( sep + 1 );  // Keep the trailing slash
 
 	// Parse the TOC
-	HelperXmlHandler_EpubTOC toc_parser( this );
+	HelperXmlHandler_EpubTOC toc_parser( content_parser.tocname, this );
 
-	if ( !parseXML( content_parser.tocname, &toc_parser ) )
+	if ( !parseXML( &toc_parser ) )
 		return false;
 
 	// Get the data

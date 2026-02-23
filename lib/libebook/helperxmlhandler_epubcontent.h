@@ -22,15 +22,16 @@
 #include <QList>
 #include <QMap>
 #include <QString>
-#include <QXmlDefaultHandler>
 
 class QXmlAttributes;
 
+#include "ebook_epub_helperxml.h"
 
-class HelperXmlHandler_EpubContent : public QXmlDefaultHandler
+
+class HelperXmlHandler_EpubContent : public Ebook::Epub::HelperXml
 {
 	public:
-		HelperXmlHandler_EpubContent();
+		HelperXmlHandler_EpubContent( const QString& filePath );
 
 		// Keep the tag-associated metadata
 		QMap< QString, QString >    metadata;

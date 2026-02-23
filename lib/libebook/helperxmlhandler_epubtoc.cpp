@@ -24,7 +24,8 @@
 #include "helperxmlhandler_epubtoc.h"
 
 
-HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC( EBook_EPUB* epub )
+HelperXmlHandler_EpubTOC::HelperXmlHandler_EpubTOC( const QString& filePath, EBook_EPUB* epub ) :
+	Ebook::Epub::HelperXml( filePath )
 {
 	m_epub = epub;
 	m_inNavMap = false;

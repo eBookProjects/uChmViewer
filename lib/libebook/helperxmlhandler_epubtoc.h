@@ -21,19 +21,19 @@
 
 #include <QList>
 #include <QString>
-#include <QXmlDefaultHandler>
 
 class QXmlAttributes;
 
 #include "ebook.h"
+#include "ebook_epub_helperxml.h"
 
 class EBook_EPUB;
 
 
-class HelperXmlHandler_EpubTOC : public QXmlDefaultHandler
+class HelperXmlHandler_EpubTOC : public Ebook::Epub::HelperXml
 {
 	public:
-		HelperXmlHandler_EpubTOC( EBook_EPUB* epub );
+		HelperXmlHandler_EpubTOC( const QString& filePath, EBook_EPUB* epub );
 
 		QList< EBookTocEntry >  entries;
 

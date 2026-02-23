@@ -20,14 +20,17 @@
 #define HELPERXMLHANDLER_EPUBCONTAINER_H
 
 #include <QString>
-#include <QXmlDefaultHandler>
 
 class QXmlAttributes;
 
+#include "ebook_epub_helperxml.h"
 
-class HelperXmlHandler_EpubContainer : public QXmlDefaultHandler
+
+class HelperXmlHandler_EpubContainer : public Ebook::Epub::HelperXml
 {
 	public:
+		HelperXmlHandler_EpubContainer( const QString& filePath );
+
 		// Overridden members
 		bool startElement( const QString& namespaceURI, const QString& localName, const QString& qName, const QXmlAttributes& atts );
 

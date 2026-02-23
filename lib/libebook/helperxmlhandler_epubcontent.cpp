@@ -22,7 +22,8 @@
 #include "helperxmlhandler_epubcontent.h"
 
 
-HelperXmlHandler_EpubContent::HelperXmlHandler_EpubContent()
+HelperXmlHandler_EpubContent::HelperXmlHandler_EpubContent( const QString& filePath ) :
+	Ebook::Epub::HelperXml( filePath )
 {
 	m_state = STATE_NONE;
 }

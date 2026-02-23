@@ -25,10 +25,11 @@
 #include <QString>
 #include <QUrl>
 
+class QByteArray;
+
 #include "ebook.h"
 
-class QByteArray;
-class QXmlDefaultHandler;
+namespace Ebook { namespace Epub { class HelperXml; } }
 
 
 class EBook_EPUB : public EBook
@@ -181,7 +182,7 @@ class EBook_EPUB : public EBook
 
 	private:
 		// Parses the XML file using a specified parser
-		bool    parseXML( const QString& uri, QXmlDefaultHandler* reader );
+		bool    parseXML( Ebook::Epub::HelperXml* reader );
 
 		// Parses the book description file. Fills up the ebook info
 		bool    parseBookinfo();

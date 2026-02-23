@@ -10,6 +10,8 @@ set(CPP_SOURCES
     ebook_chm_encoding.h
     ebook_epub.cpp
     ebook_epub.h
+    ebook_epub_helperxml.cpp
+    ebook_epub_helperxml.h
     ebook_search.cpp
     ebook_search.h
     helper_entitydecoder.cpp

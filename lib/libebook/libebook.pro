@@ -12,6 +12,7 @@ HEADERS += \
     ebook_epub.h \
     ebook.h \
     ebook_chm_encoding.h \
+    ebook_epub_helperxml.h \
     ebook_search.h \
     helper_entitydecoder.h \
     helper_search_index.h \
@@ -24,6 +25,7 @@ SOURCES += \
     ebook_epub.cpp \
     ebook.cpp \
     ebook_chm_encoding.cpp \
+    ebook_epub_helperxml.cpp \
     ebook_search.cpp \
     helper_entitydecoder.cpp \
     helper_search_index.cpp \

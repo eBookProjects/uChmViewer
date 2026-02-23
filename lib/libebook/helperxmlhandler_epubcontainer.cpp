@@ -22,6 +22,11 @@
 #include "helperxmlhandler_epubcontainer.h"
 
 
+HelperXmlHandler_EpubContainer::HelperXmlHandler_EpubContainer( const QString& filePath ) :
+	Ebook::Epub::HelperXml( filePath )
+{
+}
+
 bool HelperXmlHandler_EpubContainer::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& atts )
 {
 	if ( qName == "rootfile" )
