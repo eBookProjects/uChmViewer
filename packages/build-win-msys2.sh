@@ -76,6 +76,7 @@ package()
 
         makensis \
           -DAPP_ARCH="$PACKAGE_ARCH" \
+          -DAPP_VERSION="$PACKAGE_VERSION" \
           -DINSTALLER_FILE="${OLD_PWD}/${PACKAGE_FILE_NAME}".exe \
           "${PACKAGE_DIR}"/win-installer.nsi
         rm "${PACKAGE_DIR}"/win-installer.nsi
