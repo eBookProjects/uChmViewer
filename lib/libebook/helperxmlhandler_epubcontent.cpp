@@ -49,10 +49,11 @@ bool HelperXmlHandler_EpubContent::startElement( const QString&, const QString& 
 		if ( idx_id == -1 || idx_href == -1 || idx_mtype == -1 )
 			return false;
 
-		manifest[ atts.value( idx_id ) ] = atts.value( idx_href );
+		QString filePath = cleanPath( atts.value( idx_href ) );
+		manifest[ atts.value( idx_id ) ] = filePath;
 
 		if ( atts.value( idx_mtype ) == "application/x-dtbncx+xml" )
-			tocname = atts.value( idx_href );
+			tocname = filePath;
 
 		//qDebug() << "MANIFEST: " << atts.value( idx_id ) << "->" << atts.value( idx_href );
 	}

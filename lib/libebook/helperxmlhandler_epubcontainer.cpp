@@ -36,7 +36,7 @@ bool HelperXmlHandler_EpubContainer::startElement( const QString&, const QString
 		if ( idx == -1 )
 			return false;
 
-		contentPath = atts.value( idx );
+		contentPath = cleanPath( "/", atts.value( idx ) );
 	}
 
 	return true;

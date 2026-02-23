@@ -62,7 +62,7 @@ bool HelperXmlHandler_EpubTOC::startElement( const QString&, const QString& loca
 		if ( idx == -1 )
 			return false;
 
-		m_lastId = atts.value( idx );
+		m_lastId = cleanPath( atts.value( idx ) );
 		checkNewTocEntry();
 	}
 

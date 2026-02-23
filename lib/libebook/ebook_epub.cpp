@@ -235,12 +235,7 @@ bool EBook_EPUB::parseBookinfo()
 	if ( content_parser.tocname.isEmpty() )
 		return false;
 
-	// All the files, including TOC, are relative to the container_parser.contentPath
-	m_documentRoot.clear();
-	int sep = container_parser.contentPath.lastIndexOf( '/' );
-
-	if ( sep != -1 )
-		m_documentRoot = container_parser.contentPath.left( sep + 1 );  // Keep the trailing slash
+	m_documentRoot = content_parser.baseDir;
 
 	// Parse the TOC
 	HelperXmlHandler_EpubTOC toc_parser( content_parser.tocname, this );
@@ -375,9 +370,9 @@ bool EBook_EPUB::getFileAsBinary( QByteArray& data, const QString& path ) const
 	QString completeUrl;
 
 	if ( !path.isEmpty() && path[0] == '/' )
-		completeUrl = m_documentRoot + path.mid( 1 );
+		completeUrl = path.mid( 1 );
 	else
-		completeUrl = m_documentRoot + path;
+		completeUrl = path;
 
 	//qDebug("URL requested: %s (%s)", qPrintable(path), qPrintable(completeUrl));
 
