@@ -106,12 +106,6 @@ Section "-Install"
     SetOutPath "$INSTDIR\${PKG_ICONS_DIR}"
     File /r "${APP_ICONS_DIR}\*.ico"
 
-    ;Store installation folder
-    WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\uChmViewer" "" "$INSTDIR"
-
-    ;Create uninstaller
-    WriteUninstaller "$INSTDIR\uninst.exe"
-
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
@@ -127,9 +121,6 @@ Section "Uninstall"
     Delete "$SMPROGRAMS\$R0\uChmViewer.lnk"
     RMDir  "$SMPROGRAMS\$R0"
     Pop $R0
-
-    DeleteRegKey HKEY_LOCAL_MACHINE "SOFTWARE\uChmViewer"
-    DeleteRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\uChmViewer"
 
     Delete "$INSTDIR\${PKG_ICONS_DIR}\*.ico"
     Delete "$INSTDIR\${PKG_BIN_DIR}\uChmViewer.exe"
@@ -223,5 +214,33 @@ Section "un.File type association"
     !insertmacro APP_UNASSOCIATE "chm" "uchmviewer.chm"
     !insertmacro APP_UNASSOCIATE "epub" "uchmviewer.epub"
     !insertmacro UPDATEFILEASSOC
+SectionEnd
+
+
+;==============================;
+; Uninstall info               ;
+;==============================;
+
+!define PRODUCT_DIR_REGKEY "Software\uChmViewer"
+!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\uChmViewer"
+
+Section "-Uninstall info"
+    WriteUninstaller "$INSTDIR\uninst.exe"
+    WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "InstallDir" $INSTDIR
+    WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "Version" "${APP_VERSION}"
+    WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\${PKG_BIN_DIR}\uChmViewer.exe"
+
+    WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
+    WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\${PKG_BIN_DIR}\uChmViewer.exe,0"
+    WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${APP_VERSION}"
+    WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "InstallLocation" "$INSTDIR"
+    WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "UninstallString" "$\"$INSTDIR\uninst.exe$\""
+    WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "https://github.com/eBookProjects/uChmViewer"
+    WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "Publisher" "eBookProjects"
+SectionEnd
+
+Section "un.Uninstall info"
+    DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
+    DeleteRegKey HKLM "${PRODUCT_UNINST_KEY}"
 SectionEnd
 
