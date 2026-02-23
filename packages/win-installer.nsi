@@ -28,6 +28,7 @@
 ;==============================;
 
     Unicode true
+    ManifestDPIAware true
     Name "uChmViewer"
     OutFile "${INSTALLER_FILE}"
 
@@ -157,7 +158,7 @@ SectionEnd
 
 
 ;==============================;
-; dependencies                    ;
+; Dependencies                 ;
 ;==============================;
 
 Section "-Install Dependencies"
@@ -171,3 +172,56 @@ Section "un.Install Dependencies"
     RMDir /r "$INSTDIR\${PKG_BIN_DIR}"
     RMDir "$INSTDIR"
 SectionEnd
+
+
+;==============================;
+; File type association        ;
+;==============================;
+
+!macro APP_ASSOCIATE EXT FILECLASS DESCRIPTION APPNAME ICON COMMANDTEXT COMMAND
+    WriteRegStr HKCU "Software\Classes\.${EXT}" "" "${FILECLASS}"
+    WriteRegNone HKCU "Software\Classes\.${EXT}\OpenWithProgids" "${FILECLASS}"
+
+    WriteRegStr HKCU "Software\Classes\${FILECLASS}" "" `${DESCRIPTION}`
+    WriteRegStr HKCU "Software\Classes\${FILECLASS}\Application\" "ApplicationName" `${APPNAME}`
+    WriteRegStr HKCU "Software\Classes\${FILECLASS}\DefaultIcon" "" `${ICON}`
+    WriteRegStr HKCU "Software\Classes\${FILECLASS}\shell" "" "open"
+    WriteRegStr HKCU "Software\Classes\${FILECLASS}\shell\open" "" `${COMMANDTEXT}`
+    WriteRegStr HKCU "Software\Classes\${FILECLASS}\shell\open\command" "" `${COMMAND}`
+!macroend
+
+!macro APP_UNASSOCIATE EXT FILECLASS
+    DeleteRegValue HKCU "Software\Classes\.${EXT}\OpenWithProgids" "${FILECLASS}"
+    DeleteRegKey HKCU `Software\Classes\${FILECLASS}`
+!macroend
+
+; !defines for use with SHChangeNotify
+!ifdef SHCNE_ASSOCCHANGED
+!undef SHCNE_ASSOCCHANGED
+!endif
+!define SHCNE_ASSOCCHANGED 0x08000000
+!ifdef SHCNF_FLUSH
+!undef SHCNF_FLUSH
+!endif
+!define SHCNF_FLUSH        0x1000
+
+!macro UPDATEFILEASSOC
+    ; Using the system.dll plugin to call the SHChangeNotify Win32 API function so we can update the shell.
+    System::Call "shell32::SHChangeNotify(i,i,i,i) (${SHCNE_ASSOCCHANGED}, ${SHCNF_FLUSH}, 0, 0)"
+!macroend
+
+
+Section "-File type association"
+    !insertmacro APP_ASSOCIATE "chm" "uchmviewer.chm" "CHM File" "uChmViewer" \
+        "$INSTDIR\${PKG_BIN_DIR}\uChmViewer.exe,0" "Open with uchmviewer" "$INSTDIR\${PKG_BIN_DIR}\uChmViewer.exe $\"%1$\""
+    !insertmacro APP_ASSOCIATE "epub" "uchmviewer.epub" "EPUB File" "uChmViewer" \
+        "$INSTDIR\${PKG_BIN_DIR}\uChmViewer.exe,0" "Open with uchmviewer" "$INSTDIR\${PKG_BIN_DIR}\uChmViewer.exe $\"%1$\""
+    !insertmacro UPDATEFILEASSOC
+SectionEnd
+
+Section "un.File type association"
+    !insertmacro APP_UNASSOCIATE "chm" "uchmviewer.chm"
+    !insertmacro APP_UNASSOCIATE "epub" "uchmviewer.epub"
+    !insertmacro UPDATEFILEASSOC
+SectionEnd
+
