@@ -173,10 +173,7 @@ bool EBook_EPUB::getIndex( QList<EBookIndexEntry>& ) const
 
 QString EBook_EPUB::getTopicByUrl( const QUrl& url )
 {
-	if ( m_urlTitleMap.contains( url ) )
-		return m_urlTitleMap[ url ];
-
-	return "";
+	return m_urlTitleMap.value( url, QString{} );
 }
 
 QString EBook_EPUB::currentEncoding() const
@@ -313,9 +310,7 @@ QUrl EBook_EPUB::pathToUrl( const QString& link ) const
 	else
 		path = link;
 
-	if ( !path.startsWith( '/' ) )
-		path.prepend( '/' );
-
+	path = cleanPath( path );
 	url.setPath( QUrl::fromPercentEncoding( path.toUtf8() ) );
 
 	return url;
@@ -324,7 +319,7 @@ QUrl EBook_EPUB::pathToUrl( const QString& link ) const
 QString EBook_EPUB::urlToPath( const QUrl& link ) const
 {
 	if ( link.scheme() == URL_SCHEME_EPUB )
-		return link.path();
+		return cleanPath( link.path() );
 
 	return "";
 }
@@ -341,7 +336,7 @@ bool EBook_EPUB::getFileAsString( QString& str, const QString& path ) const
 {
 	QByteArray data;
 
-	if ( !getFileAsBinary( data, path ) )
+	if ( !getFileAsBinary( data, cleanPath( path ) ) )
 		return false;
 
 	// I have never seen yet an UTF16 epub
@@ -407,4 +402,17 @@ bool EBook_EPUB::getFileAsBinary( QByteArray& data, const QString& path ) const
 
 	zip_fclose( file );
 	return true;
+}
+
+QString EBook_EPUB::cleanPath( const QString& path ) const
+{
+	QString result = path;
+
+	if ( !result.startsWith( '/' ) )
+		result.prepend( '/' );
+
+	if ( !m_ebookManifest.contains( result ) && m_ebookManifest.contains( m_documentRoot + result ) )
+		result.prepend( m_documentRoot );
+
+	return result;
 }

@@ -50,6 +50,7 @@ class QPoint;
 
 #include <browser-settings.hpp>
 #include <browser-types.hpp>
+#include <ebook.h>
 
 #include "config.h"
 #include "i18n.h"
@@ -296,7 +297,7 @@ void ViewWindowMgr::closeTab( const TabData& data )
 		( *it ).action->setShortcut( QKeySequence( i18n( "Alt+%1" ).arg( count ) ) );
 }
 
-void ViewWindowMgr::restoreSettings( const Settings::viewindow_saved_settings_t& settings )
+void ViewWindowMgr::restoreSettings( EBook* ebook, const Settings::viewindow_saved_settings_t& settings )
 {
 	// Destroy automatically created tab
 	closeWindow( m_Windows.first().widget );
@@ -304,7 +305,17 @@ void ViewWindowMgr::restoreSettings( const Settings::viewindow_saved_settings_t&
 	for ( int i = 0; i < settings.size(); i++ )
 	{
 		ViewWindow* browser = addNewTab( false );
-		browser->load( settings[i].url ); // will call setTabName()
+		// This confusing code fixes a URL that could contain a relative path.
+		// This behavior  was previously present in the EBook_EPUB class, and
+		// now the EBook_EPUB::pathToUrl function first tries to find the page
+		// by absolute path, and if that fails, by relative path.
+		QUrl url( settings[i].url );
+		QString path = url.path();
+
+		if ( url.hasFragment() )
+			path.append( "#" ).append( url.fragment() );
+
+		browser->load( ebook->pathToUrl( path ) ); // will call setTabName()
 		browser->setAutoScroll( settings[i].scroll_y );
 		browser->setZoomFactor( settings[i].zoom );
 	}

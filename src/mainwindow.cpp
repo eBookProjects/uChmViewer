@@ -353,7 +353,7 @@ bool MainWindow::loadFile( const QString& loadFileName, bool call_open_page )
 
 			if ( call_open_page )
 			{
-				m_viewWindowMgr->restoreSettings( m_currentSettings->m_viewwindows );
+				m_viewWindowMgr->restoreSettings( m_ebookFile, m_currentSettings->m_viewwindows );
 				m_viewWindowMgr->setCurrentPage( m_currentSettings->m_activetabwindow );
 
 				if ( m_ebookFile->hasFeature( EBook::FEATURE_TOC ) )
