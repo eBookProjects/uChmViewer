@@ -202,7 +202,7 @@ class EBook_EPUB : public EBook
 		QString         m_documentRoot;
 
 		// List of files in the ebook
-		QList<QUrl>     m_ebookManifest;
+		QList<QString>  m_ebookManifest;
 
 		// Table of contents
 		QList< EBookTocEntry >  m_tocEntries;

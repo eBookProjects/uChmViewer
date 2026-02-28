@@ -129,7 +129,11 @@ bool EBook_EPUB::getFileContentAsBinary( QByteArray& data, const QUrl& url ) con
 
 bool EBook_EPUB::enumerateFiles( QList<QUrl>& files )
 {
-	files = m_ebookManifest;
+	files.clear();
+
+	for ( const QString& file : qAsConst( m_ebookManifest ) )
+		files.push_back( pathToUrl( file ) );
+
 	return true;
 }
 
@@ -247,8 +251,7 @@ bool EBook_EPUB::parseBookinfo()
 		m_title = QFileInfo( m_epubFile ).fileName();
 
 	// Move the manifest entries into the list
-	Q_FOREACH ( QString f, content_parser.manifest.values() )
-		m_ebookManifest.push_back( pathToUrl( f ) );
+	m_ebookManifest = content_parser.manifest.values();
 
 	for ( const auto& si : qAsConst( content_parser.spine ) )
 	{
