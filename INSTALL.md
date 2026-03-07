@@ -119,6 +119,17 @@ Packages for __Qt6__:
     qt6-webengine-devel qt6-5compat-devel
 
 
+### Preparation in OpenSuse
+
+In OpenSuse distributions you need the following packages and their
+dependencies:
+
+- `coreutils` `gcc` `make` `cmake` `git`
+- `qt6-base-devel` `qt6-webenginewidgets-devel` and `qt6-qt5compat-devel`
+- `libzip-devel` `chmlib-devel`
+- `gettext`
+
+
 ### Preparation in  Windows with MSYS2
 
 Install the following packages:

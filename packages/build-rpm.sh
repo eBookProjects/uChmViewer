@@ -64,9 +64,12 @@ This is a fork of the kchmviewer with some improvements. KchmViewer is a
 chm (MS HTML help file format) and epub viewer, written in C++.
 
 %files
-%doc AUTHORS.md ChangeLog NEWS.md README.md
 ${PACKAGE_INSTALL_PREFIX}/bin/uchmviewer
 ${PACKAGE_INSTALL_PREFIX}/share/applications/uchmviewer.desktop
+${PACKAGE_INSTALL_PREFIX}/share/doc/uchmviewer/AUTHORS.md
+${PACKAGE_INSTALL_PREFIX}/share/doc/uchmviewer/ChangeLog
+${PACKAGE_INSTALL_PREFIX}/share/doc/uchmviewer/NEWS.md
+${PACKAGE_INSTALL_PREFIX}/share/doc/uchmviewer/README.md
 ${PACKAGE_INSTALL_PREFIX}/share/icons/hicolor/128x128/apps/uchmviewer.png
 ${PACKAGE_INSTALL_PREFIX}/share/locale/cs/LC_MESSAGES/uchmviewer.mo
 ${PACKAGE_INSTALL_PREFIX}/share/locale/de/LC_MESSAGES/uchmviewer.mo
