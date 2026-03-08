@@ -1,3 +1,25 @@
+## 2026-03-09 v8.6
+
+This release was made possible in large part by the efforts of Binhao Qian.
+
+### Bug Fixes
+
+* Fixed an error opening ePub books with an empty "title" field.
+* Fixed an error with some CHM books with poorly formatted HHC files.
+* Fixed an error handling CHM books containing index entries with multiple URLs.
+* Fixed an error reading the cached search index, leading to the creation of a new search index when reopening books.
+* Fixed an error opening ePub books that use relative URLs in some service fields.
+
+### Updates
+
+* Navigating ePub books with the "next/previous" buttons now uses not only the TOC, but also the internal page list, if present.
+
+### New Features
+
+* Added the ability to open books by dragging them onto the application.
+* The Windows installer now adds file associations.
+
+
 ## 2025-12-21 v8.5
 
 * Removed KDE support.

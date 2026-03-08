@@ -17,6 +17,7 @@
 - [oltolm](https://github.com/oltolm).
 - [gonwan](https://github.com/gonwan).
 - [a17r](https://github.com/a17r).
+- [RipleyTom](https://github.com/RipleyTom).
 
 
 ## Translations

@@ -1,3 +1,43 @@
+2026-03-09 u-235 <nicegorov@yandex.com>
+    - Fixed various typos.
+    - v8.6 published
+
+2026-02-28 u-235 <nicegorov@yandex.com>
+    - Fixed relative path in epub files.
+    - Improved searching for the current page in the TOC.
+
+2026-02-24 Binhao Qian <gonwan@gmail.com>
+    - Added file type association for windows installer.
+    - Display app info in windows 11 installed apps and control panel.
+
+2026-01-31 Binhao Qian <gonwan@gmail.com>
+    - Fixed start minimized.
+
+2026-01-30 Binhao Qian <gonwan@gmail.com>
+    - Fixed typos.
+    - Unify naming for chm internal files.
+
+2026-01-29 u-235 <nicegorov@yandex.com>
+    - Added navigator to libebook.
+    - Improved navigator in epub.
+    - Disabled caching in webkit, some pages not refreshing with caching. (Thanks to Binhao Qian)
+    - Updated the tooltip for the navigation. (Thanks to Binhao Qian)
+
+2026-01-26 RipleyTom <RipleyTom@users.noreply.github.com>
+    - Fixed Dict serialization
+
+2026-01-23 Binhao Qian <gonwan@gmail.com>
+    - Added dnd support.
+
+2026-01-22 Binhao Qian <gonwan@gmail.com>
+    - Fixed one index with multiple topic urls.
+    - Ensure encoding for internal files, and refresh index tab when changing encoding.
+    - Fixed CI due to msys2 qt5 changes.
+
+2026-01-20 Binhao Qian <gonwan@gmail.com>
+    - Fixed epub files with an empty title in metadata.
+    - Fixed chm files with a malformed hhc file.
+
 2025-12-21 u-235 <nicegorov@yandex.com>
     - Fixed crash with Qt6.10
     - v8.5 published
