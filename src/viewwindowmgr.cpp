@@ -229,7 +229,10 @@ void ViewWindowMgr::setTabName( ViewWindow* browser )
 	try
 	{
 		const TabData& tab = findTabData( browser );
-		QString title = browser->title().trimmed();
+		QString title = ::mainWindow->chmFile()->getTopicByUrl( browser->url() );
+
+		if ( title.isEmpty() )
+			title = browser->title().trimmed();
 
 		// Trim too long string
 		if ( title.length() > 25 )

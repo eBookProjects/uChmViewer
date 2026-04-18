@@ -105,7 +105,7 @@ void ViewWindow::applySettings( BrowserSettings& settings )
 
 QString ViewWindow::title() const
 {
-	QString title = ::mainWindow->chmFile()->getTopicByUrl( url() );
+	QString title = page()->mainFrame()->title();
 
 	// If no title is found, use the path (without the first /)
 	if ( title.isEmpty() )
