@@ -290,6 +290,7 @@ void MainWindow::checkForSharedMemoryMessage()
 bool MainWindow::loadFile( const QString& loadFileName, bool call_open_page )
 {
 	QString fileName = loadFileName;
+	bool showHome = call_open_page;
 
 	// Strip file:// prefix if any
 	if ( fileName.startsWith( "file://" ) )
@@ -349,8 +350,9 @@ bool MainWindow::loadFile( const QString& loadFileName, bool call_open_page )
 
 			m_navPanel->applySettings( m_currentSettings );
 
-			if ( call_open_page )
+			if ( call_open_page && !m_currentSettings->m_viewwindows.isEmpty() )
 			{
+				showHome = false;
 				m_viewWindowMgr->restoreSettings( m_ebookFile, m_currentSettings->m_viewwindows );
 				m_viewWindowMgr->setCurrentPage( m_currentSettings->m_activetabwindow );
 
@@ -369,10 +371,10 @@ bool MainWindow::loadFile( const QString& loadFileName, bool call_open_page )
 
 			if ( m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) )
 				setTextEncoding( m_ebookFile->currentEncoding() );
-
-			if ( call_open_page )
-				openPage( m_ebookFile->homeUrl() );
 		}
+
+		if ( showHome )
+			openPage( m_ebookFile->homeUrl() );
 
 		// Disable the menu if ebook format doesn't support encoding changes
 		view_Set_encoding_action->setEnabled( m_ebookFile->hasFeature( EBook::FEATURE_ENCODING ) );
